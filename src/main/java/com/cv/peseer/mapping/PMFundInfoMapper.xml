@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.peseer.dao.PMFundInfoMapper">
+	<resultMap id="BaseResultMap" type="com.cv.peseer.model.PMFundInfo">
+		<id column="fund_id" jdbcType="INTEGER" property="fundId" />
+		<result column="fund_name" jdbcType="VARCHAR" property="fundName" />
+		<result column="city" jdbcType="VARCHAR" property="city" />
+		<result column="town" jdbcType="VARCHAR" property="town" />
+		<result column="collect_finish_date" jdbcType="VARCHAR"
+			property="collectFinishDate" />
+		<result column="invest_date" jdbcType="VARCHAR" property="investDate" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+		type="com.cv.peseer.model.PMFundInfo">
+		<result column="fund_desc" jdbcType="LONGVARCHAR" property="fundDesc" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		fund_id, fund_name, city, town, collect_finish_date, invest_date
+	</sql>
+	<sql id="Blob_Column_List">
+		fund_desc
+	</sql>
+
+	<select id="getFundInfo" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select a.* from pm_fund_info a inner join pm_id_org_fund b on
+		a.fund_id=b.fund_id where b.org_id = #{orgId}
+	</select>
+
+	<select id="getIndexInfo" resultMap="BaseResultMap">
+		select * from pm_fund_info
+		where fund_name like concat('%',#{key},'%') limit #{from},10
+	</select>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from pm_fund_info
+		where fund_id = #{fundId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from pm_fund_info
+		where fund_id = #{fundId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.cv.peseer.model.PMFundInfo">
+		insert into pm_fund_info (fund_id, fund_name, city,
+		town, collect_finish_date, invest_date,
+		fund_desc)
+		values (#{fundId,jdbcType=INTEGER}, #{fundName,jdbcType=VARCHAR},
+		#{city,jdbcType=VARCHAR},
+		#{town,jdbcType=VARCHAR}, #{collectFinishDate,jdbcType=VARCHAR},
+		#{investDate,jdbcType=VARCHAR},
+		#{fundDesc,jdbcType=LONGVARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.cv.peseer.model.PMFundInfo">
+		insert into pm_fund_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fundId != null">
+				fund_id,
+			</if>
+			<if test="fundName != null">
+				fund_name,
+			</if>
+			<if test="city != null">
+				city,
+			</if>
+			<if test="town != null">
+				town,
+			</if>
+			<if test="collectFinishDate != null">
+				collect_finish_date,
+			</if>
+			<if test="investDate != null">
+				invest_date,
+			</if>
+			<if test="fundDesc != null">
+				fund_desc,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="fundId != null">
+				#{fundId,jdbcType=INTEGER},
+			</if>
+			<if test="fundName != null">
+				#{fundName,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				#{city,jdbcType=VARCHAR},
+			</if>
+			<if test="town != null">
+				#{town,jdbcType=VARCHAR},
+			</if>
+			<if test="collectFinishDate != null">
+				#{collectFinishDate,jdbcType=VARCHAR},
+			</if>
+			<if test="investDate != null">
+				#{investDate,jdbcType=VARCHAR},
+			</if>
+			<if test="fundDesc != null">
+				#{fundDesc,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.cv.peseer.model.PMFundInfo">
+		update pm_fund_info
+		<set>
+			<if test="fundName != null">
+				fund_name = #{fundName,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				city = #{city,jdbcType=VARCHAR},
+			</if>
+			<if test="town != null">
+				town = #{town,jdbcType=VARCHAR},
+			</if>
+			<if test="collectFinishDate != null">
+				collect_finish_date = #{collectFinishDate,jdbcType=VARCHAR},
+			</if>
+			<if test="investDate != null">
+				invest_date = #{investDate,jdbcType=VARCHAR},
+			</if>
+			<if test="fundDesc != null">
+				fund_desc = #{fundDesc,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where fund_id = #{fundId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cv.peseer.model.PMFundInfo">
+		update pm_fund_info
+		set fund_name = #{fundName,jdbcType=VARCHAR},
+		city = #{city,jdbcType=VARCHAR},
+		town = #{town,jdbcType=VARCHAR},
+		collect_finish_date = #{collectFinishDate,jdbcType=VARCHAR},
+		invest_date = #{investDate,jdbcType=VARCHAR},
+		fund_desc = #{fundDesc,jdbcType=LONGVARCHAR}
+		where fund_id = #{fundId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.cv.peseer.model.PMFundInfo">
+		update pm_fund_info
+		set fund_name = #{fundName,jdbcType=VARCHAR},
+		city = #{city,jdbcType=VARCHAR},
+		town = #{town,jdbcType=VARCHAR},
+		collect_finish_date = #{collectFinishDate,jdbcType=VARCHAR},
+		invest_date = #{investDate,jdbcType=VARCHAR}
+		where fund_id = #{fundId,jdbcType=INTEGER}
+	</update>
+</mapper>

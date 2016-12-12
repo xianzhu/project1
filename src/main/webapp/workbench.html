@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>工作台</title>
+    <link rel="icon" href="img/logo-ico.png" type="image/png">
+    <link href="css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/common/model-mask.css" rel="stylesheet">
+    <link href="css/common/jquery-ui.css" rel="stylesheet">
+    <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+
+    <link href="css/comstyle.css" rel="stylesheet">
+    <link href="css/business/workbench.css" rel="stylesheet">
+    <script src="js/common/jquery-2.1.1.js"></script>
+    <script src="js/common/bootstrap.min.js"></script>
+    <script src="js/common/jquery.cookie.js"></script>
+    <script src="js/common/jquery-ui.js"></script>
+    <script src="js/common/vue.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!--<script src="js/plugins/summernote/summernote.min.js"></script>-->
+    <script src="js/plugins/dataTables/datatables.min.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation" id="v-navModel">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <img id="logo-img-bar" hidefocus="true" v-bind:src="logoPath" style="width: auto;height: 60px;">
+                </li>
+                <li v-bind:class="{'active':item.isActive}" v-for="item in menuList" >
+                    <a href="#" v-on:click="goto(item.pageurl,id)">
+                        <i class="fa fa-th-large"></i>
+                        <span class="nav-label"
+                              v-text="item.text"></span>
+                        <span class="fa" v-bind:class="{'arrow':item.showChild}"></span></a>
+                    <ul class="nav nav-second-level" v-if="item.showChild">
+                        <li v-bind:class="{'active':cItem.isActive}" v-for="cItem in item.childMenu"><a
+                                v-on:click="goto(cItem.pageurl,id)" v-text="cItem.text"></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom" id="v-userModel">
+            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary"><i
+                            class="fa fa-bars"></i> </a>
+                </div>
+
+                <ul class="nav navbar-top-links navbar-right font-14">
+                    <!--<li style="margin-right:40px;">-->
+                        <!--<input onkeypress="searchBarPress(event,this.value)" type="text" placeholder="请输入查询条件 . . . "-->
+                               <!--class="form-control" id="top-search">-->
+                    <!--</li>-->
+                    <li class="welcome-message">
+                        <span class="m-r text-muted f-l">
+                            <strong class="font-bold m-r">欢迎你</strong>
+                            <span v-text="uname" style="color:green"></span>
+                            <strong class="font-bold">，</strong>
+                        </span>
+                        <span class="text-muted text-xs m-r-lg f-l m-l">
+                            <strong class="font-bold">当前积分：</strong>
+                            <span v-text="uscore" style="color:orangered"></span>
+                            <strong class="font-bold">分</strong>
+                        </span>
+                    </li>
+                    <li>
+                        <a onclick="loginOut()"><i class="fa fa-sign-out"></i>Log out</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="wrapper wrapper-content" id="v-workbenchModel">
+            <div class="row">
+                <div class="col-lg-6">
+                    <!--事件-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>事件</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link pull-right">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                        <a class="pull-right m-r"  v-on:click="doEventAdd()"><i class="fa fa-newspaper-o"></i>Add</a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="event_table">
+                                            <thead>
+                                            <tr>
+                                                <th>事件类型</th>
+                                                <th>标题</th>
+                                                <th>当前状态</th>
+                                                <th class="td-lg-W150 td-md-W120 td-W100">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in eventList">
+                                                <td v-text="item.type|eventShowFilter"></td>
+                                                <td v-text="item.title"></td>
+                                                <td v-text="item.status|statusShowFilter"></td>
+                                                <td style="text-align:center">
+                                                    <a class="no-padding btn-sm m-r" v-on:click="doEventEdit(item)"><i class="fa fa-pencil"></i>Edit</a>
+                                                    <a class="no-padding btn-sm" v-on:click="doDelete(item.id,commonObj.event)"><i class="fa fa-trash-o"></i>del</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--业务咨询-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>业务咨询</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link pull-right">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                        <a class="pull-right m-r"  v-on:click="doAdvisoryAdd()"><i class="fa fa-newspaper-o"></i>Add</a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>业务咨询描述</th>
+                                                <th>当前状态</th>
+                                                <th class="td-lg-W150 td-md-W120 td-W100">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in advisoryList">
+                                                <td v-text="item.content"></td>
+                                                <td v-text="item.status|statusShowFilter"></td>
+                                                <td style="text-align:center">
+                                                    <a class="no-padding btn-sm m-r" v-on:click="doAdvisoryEdit(item)"><i class="fa fa-pencil"></i>Edit</a>
+                                                    <a class="no-padding btn-sm" v-on:click="doDelete(item.id,commonObj.cousult)"><i class="fa fa-trash-o"></i>del</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--问题反馈-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>问题反馈</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link pull-right">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                        <a class="pull-right m-r"  v-on:click="doFeedbackSubmit()"><i class="fa fa-newspaper-o"></i>Submit</a>
+                                    </div>
+                                </div>
+                                <!--<div class="ibox-content no-padding">-->
+                                    <!--&lt;!&ndash;<div class="summernote"></div>&ndash;&gt;-->
+                                <!--</div>-->
+                                <div class="ibox-content">
+                                    <textarea style="width:100%;height:200px;" v-model="feedbackContent"></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--&lt;!&ndash;问题反馈&ndash;&gt;
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>问题反馈</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link pull-right">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                        <a class="pull-right m-r"  v-on:click="doFeedbackAdd()"><i class="fa fa-newspaper-o"></i>Add</a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>业务咨询描述</th>
+                                                <th>当前状态</th>
+                                                <th class="td-lg-W150 td-md-W120 td-W100">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in feedbackList">
+                                                <td v-text="item.content"></td>
+                                                <td v-text="item.status"></td>
+                                                <td style="text-align:center">
+                                                    <a class="no-padding btn-sm m-r" v-on:click="doFeedbackEdit(item)"><i class="fa fa-pencil"></i>Edit</a>
+                                                    <a class="no-padding btn-sm" v-on:click="doDelete(item.id,commonObj.feedback)"><i class="fa fa-trash-o"></i>del</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+
+                <div class="col-lg-6">
+                    <!--行业分析-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>行业分析</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link pull-right">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                        <a class="pull-right m-r"  v-on:click="doIntelAdd()"><i class="fa fa-newspaper-o"></i>Add</a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>行业类型</th>
+                                                <th>时间</th>
+                                                <th>当前状态</th>
+                                                <th class="td-lg-W150 td-md-W120 td-W100">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in intelList">
+                                                <td v-text="item.type|cvShowFilter"></td>
+                                                <td v-text="item.frequency|cvFrequencyFilter"></td>
+                                                <td v-text="item.status|statusShowFilter"></td>
+                                                <td style="text-align:center">
+                                                    <a class="no-padding btn-sm m-r" v-on:click="doIntelEdit(item)"><i class="fa fa-pencil"></i>Edit</a>
+                                                    <a class="no-padding btn-sm" v-on:click="doDelete(item.id,commonObj.cv)"><i class="fa fa-trash-o"></i>del</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--研究报告-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>研究报告</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link pull-right">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                        <a class="pull-right m-r"  v-on:click="doResearchAdd()"><i class="fa fa-newspaper-o"></i>Add</a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>研报类型</th>
+                                                <th>时间</th>
+                                                <th>当前状态</th>
+                                                <th class="td-lg-W150 td-md-W120 td-W100">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in researchList">
+                                                <td v-text="item.type|traderShowFilter"></td>
+                                                <td v-text="item.frequency|traderFrequencyFilter"></td>
+                                                <td v-text="item.status|statusShowFilter"></td>
+                                                <td style="text-align:center">
+                                                    <a class="no-padding btn-sm m-r" v-on:click="doResearchEdit(item)"><i class="fa fa-pencil"></i>Edit</a>
+                                                    <a class="no-padding btn-sm" v-on:click="doDelete(item.id,commonObj.trader)"><i class="fa fa-trash-o"></i>del</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--监控设置-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>监控设置</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link pull-right">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                        <a class="pull-right m-r"  v-on:click="doMonitorAdd()"><i class="fa fa-newspaper-o"></i>Add</a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>监控类型</th>
+                                                <th>关键字</th>
+                                                <!--<th>当前状态</th>-->
+                                                <th class="td-lg-W150 td-md-W120 td-W100">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in monitorList">
+                                                <td v-text="item.type|monitorShowFilter"></td>
+                                                <td v-text="item.content"></td>
+                                                <!--<td v-text="item.status|statusShowFilter"></td>-->
+                                                <td style="text-align:center">
+                                                    <a class="no-padding btn-sm m-r" v-on:click="doMonitorEdit(item)"><i class="fa fa-pencil"></i>Edit</a>
+                                                    <a class="no-padding btn-sm" v-on:click="doDelete(item.id,commonObj.monitor)"><i class="fa fa-trash-o"></i>del</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="v-maskmodalModel">
+<!--研报---研究报告*************************增改-->
+<div style="display:none;" class="modal-mask" transition="modal" v-show="showResearchDiv">
+    <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-2 col-xs-1"></div>
+        <div class="col-lg-4 col-md-6 col-sm-8 col-xs-10 modal-wrapper-lg" style="margin-top:15%;">
+            <div class="modal-container-lg form-horizontal">
+                <div class="form-group-m">
+                    <div class="row">
+                        <div class="col-xs-12" style="vertical-align:middle;">
+                            <label class="col-xs-4 control-label label-overflow" style="padding-top:0px;">研报类型</label>
+                            <select class="col-lg-7 col-md-7 col-sm-8 col-xs-8" style="font-size:14px;" v-model="researchTypeSelect">
+                                <option v-for="item in researchTypeList" value="{{item.value}}"
+                                        v-text="item.name"></option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12" style="vertical-align:middle;margin-top:5px;">
+                            <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label label-overflow" style="padding-top:0px;">时间类型</label>
+                            <select class="col-lg-7 col-md-7 col-sm-8 col-xs-8" style="font-size:14px;" v-model="researchDateSelect">
+                                <option v-for="item in researchDateList" value="{{item.value}}"
+                                        v-text="item.name"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-line-title"></div>
+                <div style="margin-bottom:15px;">
+                    <button class="modal-default-button" v-on:click="submitResearch()">确 定</button>
+                    <button class="modal-default-button" v-on:click="cancelResearch()">取 消</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-2 col-xs-1"></div>
+    </div>
+</div>
+<!--行业分析*************************增改-->
+<div style="display:none;" class="modal-mask" transition="modal" v-show="showIntelligenceDiv">
+    <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-2 col-xs-1"></div>
+        <div class="col-lg-4 col-md-6 col-sm-8 col-xs-10 modal-wrapper-lg" style="margin-top:15%;">
+            <div class="modal-container-lg form-horizontal">
+                <div class="form-group-m">
+                    <div class="row">
+                        <div class="col-xs-12" style="vertical-align:middle;">
+                            <label class="col-xs-4 control-label label-overflow" style="padding-top:0px;">行业类型</label>
+                            <select class="col-lg-7 col-md-7 col-sm-8 col-xs-8" style="font-size:14px;" v-model="intelTypeSelect">
+                                <option v-for="item in intelTypeList" value="{{item.value}}"
+                                        v-text="item.name"></option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12" style="vertical-align:middle;margin-top:5px;">
+                            <label class="col-xs-4 control-label label-overflow" style="padding-top:0px;">时间类型</label>
+                            <select class="col-lg-7 col-md-7 col-sm-8 col-xs-8" style="font-size:14px;" v-model="intelDateSelect">
+                                <option v-for="item in intelDateList" value="{{item.value}}"
+                                        v-text="item.name"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-line-title" v-if="9|checkIntelParam">备注(自定义必填)</div>
+                <div class="form-group-m" v-if="9|checkIntelParam">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:3px;">
+                            <label class="col-lg-2 col-xs-2 control-label label-overflow">详情</label>
+                            <textarea class="col-lg-10 col-xs-10 form-input-control" style="height:100px;" v-model="advisoryContent"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-line-title"></div>
+                <div style="margin-bottom:15px;">
+                    <button class="modal-default-button" v-on:click="submitIntel()">确 定</button>
+                    <button class="modal-default-button" v-on:click="cancelIntel()">取 消</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-2 col-xs-1"></div>
+    </div>
+</div>
+<!--业务咨询*************************增改-->
+<div style="display:none;" class="modal-mask" transition="modal" v-show="showAdvisoryDiv">
+    <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-2 col-xs-1"></div>
+        <div class="col-lg-4 col-md-6 col-sm-8 col-xs-10 modal-wrapper-lg"  style="margin-top:15%;">
+            <div class="modal-container-lg form-horizontal">
+                <div class="hr-line-title" style="font-size:14px;font-weight: bold;">描述</div>
+                <div class="form-group-m">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:3px;">
+                            <label class="col-lg-2 col-xs-2 control-label label-overflow">详情
+                                <div>
+                                    <small class="monitor-text-small">(必填)</small>
+                                </div>
+                            </label>
+                            <textarea class="col-lg-10 col-xs-10 form-input-control" style="height:100px;" v-model="advisoryContent"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-line-title"></div>
+                <div style="margin-bottom:15px;">
+                    <button class="modal-default-button" v-on:click="submitAdvisory()">确 定</button>
+                    <button class="modal-default-button" v-on:click="cancelAdvisory()">取 消</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-2 col-xs-1"></div>
+    </div>
+</div>
+<!--事件*************************增改-->
+<div class="modal-mask" v-show="showEventDiv" transition="modal" style="display:none;">
+    <div class="row">
+        <div class="col-xl-2 col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
+    <div id="event-subdiv" class="col-xl-7 col-lg-6 col-md-8 col-sm-10 col-xs-10 modal-wrapper-lg">
+        <div class="modal-container-lg form-horizontal">
+            <div class="form-group-m">
+                <div class="row">
+                    <div class="workbench-event-form-item-hole">
+                        <label class="label-overflow">事件类型</label>
+                        <select class="form-input-control" onchange="changeEventSelection()" v-model="eventTypeSelect" id="eventTypeSelect">
+                            <option v-for="item in eventTypeList" value="{{item.value}}"
+                                    v-text="item.name"></option>
+                        </select>
+                    </div>
+                    </div>
+                <div class="row">
+                    <div class="workbench-event-form-item-hole">
+                        <label class="label-overflow">标题</label>
+                        <input class="form-input-control" placeholder="事件标题(必填)" v-model="eventTitle">
+                    </div>
+                </div>
+            </div>
+
+            <div class="hr-line-title">可选参数</div>
+            <div class="form-group-m">
+                <div class="row">
+                    <div class="workbench-event-form-item" v-if="'V1001'|checkEventParam">
+                        <label class="label-overflow">投资方</label>
+                        <input class="form-input-control" v-model="eventParams.V1001">
+                    </div>
+                    <div class="workbench-event-form-item" v-if="'V1002'|checkEventParam">
+                        <label class="label-overflow">项目负责人</label>
+                        <input class="form-input-control" v-model="eventParams.V1002">
+                    </div>
+                    <div class="workbench-event-form-item" v-if="'V1003'|checkEventParam">
+                        <label class="label-overflow">基金名</label>
+                        <input class="form-input-control" v-model="eventParams.V1003">
+                    </div>
+                    <div class="workbench-event-form-item" v-if="'V1004'|checkEventParam">
+                        <label class="label-overflow">轮次</label>
+                        <input class="form-input-control" v-model="eventParams.V1004">
+                    </div>
+                    <div class="workbench-event-form-item" v-if="'V1005'|checkEventParam">
+                        <label class="label-overflow">金额</label>
+                        <input class="form-input-control" v-model="eventParams.V1005">
+                    </div>
+                    <div class="workbench-event-form-item" v-if="'V1006'|checkEventParam">
+                        <label class="label-overflow">被投资方</label>
+                        <input class="form-input-control" v-model="eventParams.V1006">
+                    </div>
+                    <div class="workbench-event-form-item" v-if="'V1007'|checkEventParam">
+                        <label class="label-overflow">并购方</label>
+                        <input class="form-input-control" v-model="eventParams.V1007">
+                    </div>
+                    <div class="workbench-event-form-item" v-if="'V1008'|checkEventParam">
+                        <label class="label-overflow">并购标的</label>
+                        <input class="form-input-control" v-model="eventParams.V1008">
+                    </div>
+                    <div class="workbench-event-form-item" v-if="'V1009'|checkEventParam">
+                        <label class="label-overflow">退出方</label>
+                        <input class="form-input-control" v-model="eventParams.V1009">
+                    </div>
+                    <div class="workbench-event-form-item" v-if="'V1010'|checkEventParam">
+                        <label class="label-overflow">账面回报率</label>
+                        <input class="form-input-control" v-model="eventParams.V1010">
+                    </div>
+                    <div class="workbench-event-form-item" v-if="'V1011'|checkEventParam">
+                        <label class="label-overflow">账面IRR</label>
+                        <input class="form-input-control" v-model="eventParams.V1011">
+                    </div>
+                    <div class="workbench-event-form-item" v-if="'V1012'|checkEventParam">
+                        <label class="label-overflow">募集方</label>
+                        <input class="form-input-control" v-model="eventParams.V1012">
+                    </div>
+                    <div class="workbench-event-form-item" v-if="'V1013'|checkEventParam">
+                        <label class="label-overflow">计划募集额度</label>
+                        <input class="form-input-control" v-model="eventParams.V1013">
+                    </div>
+                    <div class="workbench-event-form-item" v-if="'V1014'|checkEventParam">
+                        <label class="label-overflow">实际募集额度</label>
+                        <input class="form-input-control" v-model="eventParams.V1014">
+                    </div>
+                    <div class="workbench-event-form-item" v-if="'V1015'|checkEventParam">
+                        <label class="label-overflow">LP名录</label>
+                        <input class="form-input-control" v-model="eventParams.V1015">
+                    </div>
+                    <div class="workbench-event-form-item">
+                        <label class="label-overflow">消息来源</label>
+                        <input class="form-input-control" v-model="eventParams.V1016">
+                    </div>
+                    <div class="workbench-event-form-item">
+                        <label class="label-overflow">事件发生日期</label>
+                        <input class="dateTimePicker form-input-control" type="text"
+                             readonly id="eventTimePicker" v-model="eventParams.V1017">
+                    </div>
+                </div>
+            </div>
+            <div class="hr-line-title"></div>
+            <div class="form-group-m">
+                <div class="row">
+                    <div class="workbench-event-form-item-hole">
+                        <label class="label-overflow">详情</label>
+                        <textarea class="form-input-control" style="height:100px;" v-model="eventParams.V1018"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="hr-line-title"></div>
+            <div style="margin-bottom:15px;">
+                <button class="modal-default-button" v-on:click="submitEvent()">确 定</button>
+                <button class="modal-default-button" v-on:click="cancelEvent()">取 消</button>
+            </div>
+
+        </div>
+    </div>
+        <div class="col-xl-3 col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
+    </div>
+</div>
+<!--监控设置*************************增改-->
+<div style="display:none;" class="modal-mask" transition="modal" v-show="showMonitorDiv">
+        <div class="row">
+            <div class="col-lg-3 col-sm-1 col-xs-1"></div>
+            <div class="col-lg-6 col-sm-10 col-xs-10 modal-wrapper-lg">
+                <div class="modal-container-lg form-horizontal">
+                    <div class="hr-line-title">监控设置</div>
+                    <div class="form-group-m">
+                        <div class="row">
+                            <div class="wmonitor-div-l">
+                                <label style="width:60px;">监控类型</label>
+                                <select style="font-size:14px;padding:3px 2px;width:calc(100% - 70px);" onchange="changeMonitorSelection()" v-model="monitorTypeSelect" id="monitorTypeSelect">
+                                    <option v-for="item in monitorTypeList" value="{{item.value}}"
+                                            v-text="item.name"></option>
+                                </select>
+                            </div>
+                            <div class="wmonitor-div-r">
+                                <input placeholder="请输入查询关键字...  " style="margin-right:3px;width:100%;" v-model="monitorSearchKey">
+                            </div>
+                            <div style="padding-top:5px;padding-left:3px;float:left;">
+                                <i v-on:click="doMonitorSearch()" class="fa fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="row" v-show="monitorSearchShow">
+                            <div class="wmonitor-div-c">
+                                <table class="table table-bordered table-hover" id="monitor_result_table">
+                                        <thead style="display:none;"><tr><th></th></tr></thead>
+                                        <tbody class="single-row-selected">
+                                        <tr v-for="item in monitorResultList" class="pointer-cursor"  v-on:click="selectedMonitor(item.name,item.id,$event)">
+                                            <td v-text="item.name"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+
+                        <!--<div class="hr-line-title"></div>-->
+                    <div class="form-group-m" style="margin-top:10px;">
+                        <div class="row">
+                            <div class="wmonitor-div-c">
+                            <label style="width:60px;margin-right:1px;">监控内容</label>
+                            <input placeholder="请选择需要监控的企业或机构" readonly="true" class="form-input-control" style="width:calc(100% - 65px);padding:3px;" v-model="monitorContent">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-title"></div>
+                    <div style="margin-bottom:15px;">
+                        <button class="modal-default-button" v-on:click="submitMonitor()">确 定</button>
+                        <button class="modal-default-button" v-on:click="cancelMonitor()">取 消</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-1 col-xs-1"></div>
+        </div>
+    </div>
+<!--反馈*************************增改-->
+<div style="display:none;" class="modal-mask" transition="modal" v-show="showFeedbackDiv">
+        <div class="row">
+            <div class="col-lg-3 col-sm-1 col-xs-1"></div>
+            <div class="col-lg-6 col-sm-10 col-xs-10 modal-wrapper-lg">
+                <div class="modal-container-lg form-horizontal">
+                    <div class="hr-line-title">描述</div>
+                    <div class="form-group-m">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:3px;">
+                                <label class="col-lg-2 col-xs-2 control-label label-overflow">详情</label>
+                                <textarea class="col-lg-10 col-xs-10 form-input-control" style="height:100px;" v-model="feedbackContent"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-title"></div>
+                    <div style="margin-bottom:15px;">
+                        <button class="modal-default-button" v-on:click="submitFeedback()">确 定</button>
+                        <button class="modal-default-button" v-on:click="cancelFeedback()">取 消</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-1 col-xs-1"></div>
+        </div>
+    </div>
+</div>
+
+<!--信息提示框*******************info-->
+<script type="x/template" id="modal-template">
+    <div class="modal-mask" v-show="show" transition="modal">
+        <div class="modal-wrapper">
+            <div class="modal-container">
+                <div class="modal-header" style="border-bottom: 1px solid #7f7f7f">
+                    <slot name="header">
+                        default header
+                    </slot>
+                </div>
+                <div class="modal-body">
+                    <slot name="body">
+                        default body
+                    </slot>
+                </div>
+                <div class="modal-footer" style="border-top: 1px solid #7f7f7f">
+                    <slot name="footer">
+                        <!--default footer-->
+                        <button class="modal-default-button"
+                                @click="show = false">
+                            确定
+                        </button>
+                    </slot>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!-- 信息提示框 模态框 -->
+<div id="v-model-mask-info">
+    <modal_mask :show.sync="showModal">
+        <h3 slot="header" v-text="header"></h3>
+
+        <p slot="body" style="font-size:14px;text-align: center" v-text="information"></p>
+    </modal_mask>
+</div>
+
+<!-- Mainly scripts -->
+<script src="data/menu/menu.workbench.js"></script>
+<script src="data/workbench.data.js"></script>
+<script src="js/mycommon/function.common.js"></script>
+<script src="js/mycommon/common.data.js"></script>
+<script src="js/mycommon/menu.common.js"></script>
+<script src="js/mycommon/ibox.function.js"></script>
+<script src="js/mycommon/mask.info.js"></script>
+
+<script src="js/business/workbench.js"></script>
+</body>
+</html>

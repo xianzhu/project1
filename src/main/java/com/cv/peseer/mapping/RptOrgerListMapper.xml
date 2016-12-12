@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.peseer.dao.RptOrgerListMapper">
+	<resultMap id="BaseResultMap" type="com.cv.peseer.model.RptOrgerList">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="user_name" jdbcType="VARCHAR" property="userName" />
+		<result column="organize_name" jdbcType="VARCHAR" property="organizeName" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+		type="com.cv.peseer.model.RptOrgerList">
+		<result column="description" jdbcType="LONGVARCHAR" property="description" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, user_name, organize_name, title
+	</sql>
+	<sql id="Blob_Column_List">
+		description
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from rpt_orger_list
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+
+	<select id="getOrgList" resultMap="BaseResultMap">
+		select * from rpt_orger_list order by id asc limit 50
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		rpt_orger_list
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.cv.peseer.model.RptOrgerList">
+		insert into rpt_orger_list
+		(id, user_name, organize_name,
+		title, description)
+		values
+		(#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR},
+		#{organizeName,jdbcType=VARCHAR},
+		#{title,jdbcType=VARCHAR},
+		#{description,jdbcType=LONGVARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.cv.peseer.model.RptOrgerList">
+		insert into rpt_orger_list
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="organizeName != null">
+				organize_name,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="description != null">
+				description,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="organizeName != null">
+				#{organizeName,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null">
+				#{description,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.cv.peseer.model.RptOrgerList">
+		update rpt_orger_list
+		<set>
+			<if test="userName != null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="organizeName != null">
+				organize_name = #{organizeName,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null">
+				description = #{description,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cv.peseer.model.RptOrgerList">
+		update
+		rpt_orger_list
+		set user_name = #{userName,jdbcType=VARCHAR},
+		organize_name = #{organizeName,jdbcType=VARCHAR},
+		title =
+		#{title,jdbcType=VARCHAR},
+		description =
+		#{description,jdbcType=LONGVARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.cv.peseer.model.RptOrgerList">
+		update
+		rpt_orger_list
+		set user_name = #{userName,jdbcType=VARCHAR},
+		organize_name = #{organizeName,jdbcType=VARCHAR},
+		title =
+		#{title,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

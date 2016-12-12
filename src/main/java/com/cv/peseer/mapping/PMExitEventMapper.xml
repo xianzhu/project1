@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.peseer.dao.PMExitEventMapper">
+  <resultMap id="BaseResultMap" type="com.cv.peseer.model.PMExitEvent">
+    <id column="event_id" jdbcType="INTEGER" property="eventId" />
+    <result column="ent_cn_name" jdbcType="VARCHAR" property="entCnName" />
+    <result column="exit_type" jdbcType="VARCHAR" property="exitType" />
+    <result column="event_title" jdbcType="VARCHAR" property="eventTitle" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="happen_date" jdbcType="VARCHAR" property="happenDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    event_id, ent_cn_name, exit_type, event_title, user_name, happen_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pm_exit_event
+    where event_id = #{eventId,jdbcType=INTEGER}
+  </select>
+  
+    <select id="getOrgExitEvent" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select a.* from pm_exit_event a inner join
+	pm_id_org_exit_event b on a.event_id=b.event_id 
+	where b.org_id = #{orgId}
+  </select>
+  
+   <select id="getInvestorExitEvent" resultMap="BaseResultMap">
+    select a.* from pm_exit_event a inner join pm_id_user_exit_event b on a.event_id=b.event_id 
+    where 
+    <if test="filter != null">
+    a.exit_type in 
+	<foreach collection="filter" item="item" index="index" open="(" separator="," close=") and ">#{item}</foreach>
+    </if>
+    <if test="key != null">
+    (a.ent_cn_name like concat('%',#{key},'%') or a.event_title like concat('%',#{key},'%')) and
+    </if>
+     b.user_id=#{userId} ORDER BY happen_date DESC limit #{from},10
+  </select>
+  
+  <select id="getFundExitEvent" resultMap="BaseResultMap">
+    select a.* from pm_exit_event a inner join pm_id_fund_exit_event b on a.event_id=b.event_id 
+    where
+    <if test="filter != null">
+    a.exit_type in 
+	<foreach collection="filter" item="item" index="index" open="(" separator="," close=") and ">#{item}</foreach>
+    </if>
+    <if test="key != null">
+    (a.ent_cn_name like concat('%',#{key},'%') or a.event_title like concat('%',#{key},'%')) and
+    </if>
+     b.fund_id=#{fundId} ORDER BY happen_date DESC limit #{from},10
+  </select>
+  
+  <select id="getFundExitEventAll" resultMap="BaseResultMap">
+    select a.* from pm_exit_event a inner join pm_id_fund_exit_event b on a.event_id=b.event_id 
+    where b.fund_id=#{fundId}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pm_exit_event
+    where event_id = #{eventId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cv.peseer.model.PMExitEvent">
+    insert into pm_exit_event (event_id, ent_cn_name, exit_type, 
+      event_title, user_name, happen_date
+      )
+    values (#{eventId,jdbcType=INTEGER}, #{entCnName,jdbcType=VARCHAR}, #{exitType,jdbcType=VARCHAR}, 
+      #{eventTitle,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{happenDate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cv.peseer.model.PMExitEvent">
+    insert into pm_exit_event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="eventId != null">
+        event_id,
+      </if>
+      <if test="entCnName != null">
+        ent_cn_name,
+      </if>
+      <if test="exitType != null">
+        exit_type,
+      </if>
+      <if test="eventTitle != null">
+        event_title,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="happenDate != null">
+        happen_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="eventId != null">
+        #{eventId,jdbcType=INTEGER},
+      </if>
+      <if test="entCnName != null">
+        #{entCnName,jdbcType=VARCHAR},
+      </if>
+      <if test="exitType != null">
+        #{exitType,jdbcType=VARCHAR},
+      </if>
+      <if test="eventTitle != null">
+        #{eventTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="happenDate != null">
+        #{happenDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cv.peseer.model.PMExitEvent">
+    update pm_exit_event
+    <set>
+      <if test="entCnName != null">
+        ent_cn_name = #{entCnName,jdbcType=VARCHAR},
+      </if>
+      <if test="exitType != null">
+        exit_type = #{exitType,jdbcType=VARCHAR},
+      </if>
+      <if test="eventTitle != null">
+        event_title = #{eventTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="happenDate != null">
+        happen_date = #{happenDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where event_id = #{eventId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cv.peseer.model.PMExitEvent">
+    update pm_exit_event
+    set ent_cn_name = #{entCnName,jdbcType=VARCHAR},
+      exit_type = #{exitType,jdbcType=VARCHAR},
+      event_title = #{eventTitle,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      happen_date = #{happenDate,jdbcType=VARCHAR}
+    where event_id = #{eventId,jdbcType=INTEGER}
+  </update>
+</mapper>

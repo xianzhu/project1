@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.peseer.dao.RptOrgOverallTrendsMapper">
+  <resultMap id="BaseResultMap" type="com.cv.peseer.model.RptOrgOverallTrends">
+    <result column="dur_time" jdbcType="VARCHAR" property="durTime" />
+    <result column="i_num" jdbcType="INTEGER" property="iNum" />
+    <result column="e_num" jdbcType="INTEGER" property="eNum" />
+    <result column="ps_ibmpa" jdbcType="DOUBLE" property="psIbmpa" />
+  </resultMap>
+  <insert id="insert" parameterType="com.cv.peseer.model.RptOrgOverallTrends">
+    insert into rpt_org_overall_trends (dur_time, i_num, e_num, 
+      ps_ibmpa)
+    values (#{durTime,jdbcType=VARCHAR}, #{iNum,jdbcType=INTEGER}, #{eNum,jdbcType=INTEGER}, 
+      #{psIbmpa,jdbcType=DOUBLE})
+  </insert>
+  
+  <select id="getOverallTrends" resultMap="BaseResultMap">
+    select * from rpt_org_overall_trends order by dur_time asc
+  </select>
+  
+  <insert id="insertSelective" parameterType="com.cv.peseer.model.RptOrgOverallTrends">
+    insert into rpt_org_overall_trends
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="durTime != null">
+        dur_time,
+      </if>
+      <if test="iNum != null">
+        i_num,
+      </if>
+      <if test="eNum != null">
+        e_num,
+      </if>
+      <if test="psIbmpa != null">
+        ps_ibmpa,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="durTime != null">
+        #{durTime,jdbcType=VARCHAR},
+      </if>
+      <if test="iNum != null">
+        #{iNum,jdbcType=INTEGER},
+      </if>
+      <if test="eNum != null">
+        #{eNum,jdbcType=INTEGER},
+      </if>
+      <if test="psIbmpa != null">
+        #{psIbmpa,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+</mapper>

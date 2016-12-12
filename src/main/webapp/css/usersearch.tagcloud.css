@@ -1,0 +1,8 @@
+
+#extend_tag_cloud{
+    position:relative;
+}
+
+#extend_tag_cloud a{
+    position:absolute;
+}

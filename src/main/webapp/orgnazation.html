@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>机构信息查询</title>
+    <link rel="icon" href="img/logo-ico.png" type="image/png">
+    <link href="css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+
+    <link href="css/comstyle.css" rel="stylesheet">
+    <script src="js/common/jquery-2.1.1.js"></script>
+    <script src="js/common/bootstrap.min.js"></script>
+    <script src="js/common/jquery.cookie.js"></script>
+    <script src="js/common/vue.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="js/plugins/dataTables/datatables.min.js"></script>
+    <script src="js/plugins/echarts2/echarts.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation" id="v-navModel">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <img id="logo-img-bar" hidefocus="true" v-bind:src="logoPath" style="width: auto;height: 60px;">
+                </li>
+                <li v-bind:class="{'active':item.isActive}" v-for="item in menuList" >
+                    <a href="#" v-on:click="goto(item.pageurl,id)">
+                        <i class="fa fa-th-large"></i>
+                        <span class="nav-label"
+                              v-text="item.text"></span>
+                        <span class="fa" v-bind:class="{'arrow':item.showChild}"></span></a>
+                    <ul class="nav nav-second-level" v-if="item.showChild">
+                        <li v-bind:class="{'active':cItem.isActive}" v-for="cItem in item.childMenu"><a
+                                v-on:click="goto(cItem.pageurl,id)" v-text="cItem.text"></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom" id="v-userModel">
+            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary"><i
+                            class="fa fa-bars"></i> </a>
+                </div>
+
+                <ul class="nav navbar-top-links navbar-right font-14">
+                    <!--<li style="margin-right:40px;">-->
+                        <!--<input onkeypress="searchBarPress(event,this.value)" type="text" placeholder="请输入查询条件 . . . "-->
+                               <!--class="form-control" id="top-search">-->
+                    <!--</li>-->
+                    <li class="welcome-message">
+                        <span class="m-r text-muted f-l">
+                            <strong class="font-bold m-r">欢迎你</strong>
+                            <span v-text="uname" style="color:green"></span>
+                            <strong class="font-bold">，</strong>
+                        </span>
+                        <span class="text-muted text-xs m-r-lg f-l m-l">
+                            <strong class="font-bold">当前积分：</strong>
+                            <span v-text="uscore" style="color:orangered"></span>
+                            <strong class="font-bold">分</strong>
+                        </span>
+                    </li>
+                    <li>
+                        <a onclick="loginOut()"><i class="fa fa-sign-out"></i>Log out</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="wrapper wrapper-content" id="v-orgnazationModel">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>机构查询</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link pull-right">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <div class="pull-right" style="margin-right:20px;margin-top:-7px;">
+                                    <input onkeypress="searchBarPress(event,this.value)" type="text" placeholder="请输入查询条件 . . . "
+                                           class="form-control" id="top-search" v-model="key">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="ibox-content"  style="display:none;" v-show="result|checkNotEmptyFilter">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="result_table" >
+                                    <thead>
+                                    <tr>
+                                        <th>机构名称</th>
+                                        <th>简称</th>
+                                        <th>简介</th>
+                                        <th>对应实体</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="ele in result">
+                                        <td v-text="ele.orgCnName" style="cursor:pointer" v-on:click="goto('orgBasic',ele.orgId)"></td>
+                                        <td v-text="ele.orgCnShort"></td>
+                                        <td v-text="ele.orgCnDesc|getShortStrFilter"></td>
+                                        <td v-text="ele.orgMapEntity"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <!--<div style="text-align:center" v-show="doSearch|showNoMoreFilter">没有更多查询结果</div>-->
+                                <div class="pull-right">
+                                    <button style="margin-right:10px;" v-if="pageControlFilter(0)" v-on:click="changeResultPage(0)">上页</button>
+                                    <span v-text="resultPage|currentPageFilter"></span>
+                                    <button style="margin-left:10px;" v-if="pageControlFilter(1)" v-on:click="changeResultPage(1)">下页</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="display:none;" v-show="result|showIfEmptyFilter">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>股权投资行为的趋势和边际利润率</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div style="height:380px;width:100%;" id="rptEcharts"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="display:none;" v-show="result|showIfEmptyFilter">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>股权类投资基金监控</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="rpt_table">
+                                    <thead>
+                                    <tr>
+                                        <th style="width:25%;">基金名称</th>
+                                        <th class="td-W95">注册时间</th>
+                                        <th style="width:25%;">基金管理机构</th>
+                                        <th>基金投资领域</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="ele in rptPeFundList">
+                                        <td v-text="ele.fundName" style="cursor:pointer" v-on:click="gotoCompany(ele.fundUuid)"></td>
+                                        <td v-text="ele.regTime"></td>
+                                        <td v-text="ele.manager" style="cursor:pointer" v-on:click="gotoCompany(ele.mUuid)"></td>
+                                        <td v-text="ele.domain"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!-- Mainly scripts -->
+<script src="data/menu/orgnazation/menu.orgnazation.js"></script>
+<script src="data/echartOption.data.js"></script>
+<script src="js/mycommon/function.common.js"></script>
+<script src="js/mycommon/common.data.js"></script>
+<script src="js/mycommon/menu.common.js"></script>
+
+<script src="js/mycommon/ibox.function.js"></script>
+<script src="js/business/orgnazation/orgnazation.js"></script>
+
+
+</html>

@@ -1,0 +1,133 @@
+Peseer-API
+
+首页
+=============================================================================
+1. 首页搜索
+http://localhost:8080/peseer/elasticsearch/top
+
+2. 登录
+http://localhost:8080/peseer/login?user_name=vip_caoyi&password=caoyi
+3. 退出
+http://localhost:8080/peseer/logout
+=============================================================================
+
+用户页
+============================================================================
+1. 用户信息
+http://localhost:8080/peseer/top/person
+2. 推送新闻
+http://localhost:8080/peseer/elasticsearch?mode=personal
+3. 报告--未过
+http://localhost:8080/peseer/report/personal?type=
+4. 信息同步 --未过
+http://localhost:8080/peseer/top/mediasync
+5. 项目信息 
+http://localhost:8080/peseer/org/recommond
+6. 地图新闻
+http://localhost:8080/peseer/top/news?locationNewsId=0
+7. 综合查询
+http://localhost:8080/peseer/topsearch?key=IDG
+8. 企业搜索
+http://localhost:8080/peseer/entinfo/search?key=IDG
+========================================================================================
+
+监控页
+=========================================================================================
+1. 监控企业
+http://localhost:8080/peseer/monitor/entInfo
+2. 监控机构
+http://localhost:8080/peseer/monitor/orgInfo
+3. 企业查询
+http://localhost:8080/peseer/entinfo/search?key=IDG
+4. 机构查询
+http://localhost:8080/peseer/org/search?key=idg
+5. 企业投资事件
+http://localhost:8080/peseer/entinfo/invest?id=7d1d90c4-fab0-40bf-b449-53130909400c
+6. 机构投资退出事件
+http://localhost:8080/peseer/org/captail?id=241
+7. 机构族谱
+http://localhost:8080/peseer/org/extend?id=1248
+=========================================================================================
+
+机构页
+==============================================================================
+http://localhost:8080/peseer/org/top
+http://localhost:8080/peseer/org/search?key=idg
+http://localhost:8080/peseer/org/basic?id=241
+http://localhost:8080/peseer/org/fund?id=241
+http://localhost:8080/peseer/org/captail?id=241
+http://localhost:8080/peseer/org/detail?id=241
+http://localhost:8080/peseer/org/recommond
+=========================================================================================
+
+投资者
+==================================================================================
+http://localhost:8080/peseer/investor/top
+http://localhost:8080/peseer/investor/search?key=lu
+http://localhost:8080/peseer/investor/basic?id=3833001
+http://localhost:8080/peseer/investor/detail?id=79504&type=invest
+http://localhost:8080/peseer/investor/event?id=3833001&type=invest
+======================================================================================================
+
+
+企业
+================================================================================
+http://localhost:8080/peseer/entinfo/search?key=IDG 
+http://localhost:8080/peseer/entinfo/basic?id=7d1d90c4-fab0-40bf-b449-53130909400c
+http://localhost:8080/peseer/entinfo/deep?id=7d1d90c4-fab0-40bf-b449-53130909400c
+http://localhost:8080/peseer/entinfo/credit?id=7d1d90c4-fab0-40bf-b449-53130909400c
+http://localhost:8080/peseer/entinfo/data?id=7d1d90c4-fab0-40bf-b449-53130909400c
+http://localhost:8080/peseer/entinfo/notice?id=7d1d90c4-fab0-40bf-b449-53130909400c
+http://localhost:8080/peseer/entinfo/top?id=7d1d90c4-fab0-40bf-b449-53130909400c
++企业融资情况
+http://localhost:8080/peseer/entinfo/finance?id=d8ef16fc-2b96-4b8e-90bd-73e84b809ade
+=====================================================================================================================
+
+基金
+===================================================================================================
+http://localhost:8080/peseer/fund/search?key=IDG
+http://localhost:8080/peseer/fund/basic?id=1
+http://localhost:8080/peseer/fund/detail?id=1&type=exit
+http://localhost:8080/peseer/fund/event?id=1&type=invest&key=&filter=
+===================================================================================================
+
+
+报告
+====================================================================================================
+http://localhost:8080/peseer/report/personal?type=trader&key=
+http://localhost:8080/peseer/report?key=
+=======================================================================================================
+
+工作台
+===============================================================================================
+http://localhost:8080/peseer/tools/ciassociated?type=10012
+http://localhost:8080/peseer/tools/xsblistmatching?topic_content=idg
+http://localhost:8080/peseer/custInfo/query?uid=vip_caoyi&object=9
+http://localhost:8080/peseer/custInfo/update?...
+
+用户定制模块改变
+http://localhost:8080/peseer/custInfo/update/event
+http://localhost:8080/peseer/custInfo/add/event
+http://localhost:8080/peseer/custInfo/del/event
+
+http://localhost:8080/peseer/custInfo/update/consult
+http://localhost:8080/peseer/custInfo/add/consult
+http://localhost:8080/peseer/custInfo/del/consult
+
+http://localhost:8080/peseer/custInfo/update/monitor
+http://localhost:8080/peseer/custInfo/add/monitor
+http://localhost:8080/peseer/custInfo/del/monitor
+
+http://localhost:8080/peseer/custInfo/update/cv
+http://localhost:8080/peseer/custInfo/add/cv
+http://localhost:8080/peseer/custInfo/del/cv
+
+http://localhost:8080/peseer/custInfo/update/trader
+http://localhost:8080/peseer/custInfo/add/trader
+http://localhost:8080/peseer/custInfo/del/trader
+
+http://localhost:8080/peseer/custInfo/add/qa
+================================================================================================
+
+stockId/UUId 转换
+http://localhost:8080/peseer/tools/transfer?id=

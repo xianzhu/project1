@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>模拟计算</title>
+    <link rel="icon" href="img/logo-ico.png" type="image/png">
+    <link href="css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/common/model-mask.css" rel="stylesheet">
+    <link href="css/comstyle.css" rel="stylesheet">
+
+    <script src="js/common/jquery-2.1.1.js"></script>
+    <script src="js/common/bootstrap.min.js"></script>
+    <script src="js/common/jquery.cookie.js"></script>
+    <script src="js/common/vue.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation" id="v-navModel">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <img id="logo-img-bar" hidefocus="true" v-bind:src="logoPath" style="width: auto;height: 60px;">
+                </li>
+                <li v-bind:class="{'active':item.isActive}" v-for="item in menuList" >
+                    <a href="#" v-on:click="goto(item.pageurl,id)">
+                        <i class="fa fa-th-large"></i>
+                        <span class="nav-label"
+                              v-text="item.text"></span>
+                        <span class="fa" v-bind:class="{'arrow':item.showChild}"></span></a>
+                    <ul class="nav nav-second-level" v-if="item.showChild">
+                        <li v-bind:class="{'active':cItem.isActive}" v-for="cItem in item.childMenu"><a
+                                v-on:click="goto(cItem.pageurl,id)" v-text="cItem.text"></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom" id="v-userModel">
+            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary"><i
+                            class="fa fa-bars"></i> </a>
+                </div>
+
+                <ul class="nav navbar-top-links navbar-right font-14">
+                    <!--<li style="margin-right:40px;">-->
+                        <!--<input onkeypress="searchBarPress(event,this.value)" type="text" placeholder="请输入查询条件 . . . "-->
+                               <!--class="form-control" id="top-search">-->
+                    <!--</li>-->
+                    <li class="welcome-message">
+                        <span class="m-r text-muted f-l">
+                            <strong class="font-bold m-r">欢迎你</strong>
+                            <span v-text="uname" style="color:green"></span>
+                            <strong class="font-bold">，</strong>
+                        </span>
+                        <span class="text-muted text-xs m-r-lg f-l m-l">
+                            <strong class="font-bold">当前积分：</strong>
+                            <span v-text="uscore" style="color:orangered"></span>
+                            <strong class="font-bold">分</strong>
+                        </span>
+                    </li>
+                    <li>
+                        <a onclick="loginOut()"><i class="fa fa-sign-out"></i>Log out</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="wrapper wrapper-content" id="v-benchmarkModel">
+            <!--对标参数-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>目标企业参数设置</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content form-horizontal">
+                            <div class="form-group-m m-r-lg">
+                                <div class="row m-r-lg">
+                                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                                        <!--是否国资背景-->
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
+                                             style="margin-bottom:3px; padding-left:0px;padding-right:0px;">
+                                            <label style="padding-right:2px;padding-left:2px;"
+                                                   class="col-lg-7 col-md-6 col-sm-6 col-xs-4 control-label label-overflow">是否国资背景</label>
+
+                                            <div class="col-lg-5 col-md-6 col-sm-6 col-xs-7 form-input-control"
+                                                 style="padding-right:0px;padding-left:0px;font-size:14px;margin-top:3px;">
+                                                <select v-model="is_state_hold" id="is_state_hold" style="width:100%;">
+                                                    <option selected="selected" value="">未知</option>
+                                                    <option value="1">是</option>
+                                                    <option value="0">否</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!--资产总计-->
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
+                                             style="margin-bottom:3px; padding-left:0px;padding-right:0px;">
+                                            <label style="padding-right:2px;padding-left:2px;"
+                                                   class="col-lg-7 col-md-6 col-sm-6 col-xs-4 control-label label-overflow">资产总计(元)</label>
+                                            <input class="col-lg-5 col-md-6 col-sm-6 col-xs-7 form-input-control"
+                                                   style="margin-top:3px;" v-model="total_asset">
+                                        </div>
+                                        <!--营业收入-->
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
+                                             style="margin-bottom:3px; padding-left:0px;padding-right:0px;">
+                                            <label style="padding-right:2px;padding-left:2px;"
+                                                   class="col-lg-7 col-md-6 col-sm-6 col-xs-4 control-label label-overflow">营业收入(元)</label>
+                                            <input style="margin-top:3px;"
+                                                   class="col-lg-5 col-md-6 col-sm-6 col-xs-7 form-input-control"
+                                                   v-model="opt_income">
+                                        </div>
+                                        <!--营业利润-->
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
+                                             style="margin-bottom:3px; padding-left:0px;padding-right:0px;">
+                                            <label style="padding-right:2px;padding-left:2px;"
+                                                   class="col-lg-7 col-md-6 col-sm-6 col-xs-4 control-label label-overflow">营业利润(元)</label>
+                                            <input style="margin-top:3px;"
+                                                   class="col-lg-5 col-md-6 col-sm-6 col-xs-7 form-input-control"
+                                                   v-model="opt_profit">
+                                        </div>
+                                        <!--资产负债率-->
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
+                                             style="margin-bottom:3px; padding-left:0px;padding-right:0px;">
+                                            <label style="padding-right:2px;padding-left:2px;"
+                                                   class="col-lg-7 col-md-6 col-sm-6 col-xs-4 control-label label-overflow">资产负债率(%)</label>
+                                            <input style="margin-top:3px;"
+                                                   class="col-lg-5 col-md-6 col-sm-6 col-xs-7 form-input-control"
+                                                   v-model="liab_ratio">
+                                        </div>
+                                        <!--销售毛利率-->
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
+                                             style="margin-bottom:3px;padding-left:0px;padding-right:0px;">
+                                            <label style="padding-right:2px;padding-left:2px;"
+                                                   class="col-lg-7 col-md-6 col-sm-6 col-xs-4 control-label label-overflow">销售毛利率(%)</label>
+                                            <input style="margin-top:3px;"
+                                                   class="col-lg-5 col-md-6 col-sm-6 col-xs-7 form-input-control"
+                                                   v-model="gross_profit_margin">
+                                        </div>
+                                    </div>
+                                    <!--经营范围-->
+                                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"
+                                         style="margin-bottom:3px; padding-left:0px;padding-right:0px;">
+                                        <label style="padding-left:2px;padding-right:2px" class="text-right col-lg-4 col-md-2 col-sm-3 col-xs-4 control-label label-overflow">经营范围</label>
+
+                                        <div class="col-lg-8 col-md-10 col-sm-9 col-xs-8 form-input-control"
+                                             style="padding-left:9px;">
+                                            <textarea placeholder="请输入经营范围(必填项)..." style="height:60px;width:calc(100% - 20px);"
+                                                      class="form-control pull-left" v-model="topic_content"></textarea>
+                                            <div class="pull-right" style="padding-top:40px;"  ><i class="fa fa-search" v-on:click="doSearch()"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>对标新三板公司</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>公司名称</th>
+                                        <th>国资背景</th>
+                                        <th>资产总计(元)</th>
+                                        <th>营业收入(元)</th>
+                                        <th>营业利润(元)</th>
+                                        <th>营业利润率(%)</th>
+                                        <th>资产负债率(%)</th>
+                                        <th>销售毛利率(%)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="item in xsbMatchList">
+                                        <td v-text="item.company_name" style="cursor:pointer" v-on:click="goto(item.stock_code,1)"></td>
+                                        <td v-text="item.is_state_hold|stateHoldFilter"></td>
+                                        <td v-text="item.total_asset"></td>
+                                        <td v-text="item.opt_income"></td>
+                                        <td v-text="item.opt_profit"></td>
+                                        <td v-text="item.opt_profit_on_income"></td>
+                                        <td v-text="item.liab_ratio"></td>
+                                        <td v-text="item.gross_profit_margin"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>对标上市公司</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>公司名称</th>
+                                        <th>国资背景</th>
+                                        <th>资产总计(元)</th>
+                                        <th>营业收入(元)</th>
+                                        <th>营业利润(元)</th>
+                                        <th>营业利润率(%)</th>
+                                        <th>资产负债率(%)</th>
+                                        <th>销售毛利率(%)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="item in listMatchList">
+                                        <td v-text="item.company_name" style="cursor:pointer" v-on:click="goto(item.stock_code,0)"></td>
+                                        <td v-text="item.is_state_hold|stateHoldFilter"></td>
+                                        <td v-text="item.total_asset"></td>
+                                        <td v-text="item.opt_income"></td>
+                                        <td v-text="item.opt_profit"></td>
+                                        <td v-text="item.opt_profit_on_income"></td>
+                                        <td v-text="item.liab_ratio"></td>
+                                        <td v-text="item.gross_profit_margin"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--信息提示框*******************info-->
+<script type="x/template" id="modal-template">
+    <div class="modal-mask" v-show="show" transition="modal">
+        <div class="modal-wrapper">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <slot name="header">
+                        default header
+                    </slot>
+                </div>
+                <div class="modal-body">
+                    <slot name="body">
+                        default body
+                    </slot>
+                </div>
+                <div class="modal-footer">
+                    <slot name="footer">
+                        <!--default footer-->
+                        <button class="modal-default-button"
+                                @click="show = false">
+                            确定
+                        </button>
+                    </slot>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!-- 信息提示框 模态框 -->
+<div id="v-model-mask-info">
+    <modal_mask :show.sync="showModal">
+        <h3 slot="header" v-text="header"></h3>
+
+        <p slot="body" v-text="information"></p>
+    </modal_mask>
+</div>
+
+<!-- Mainly scripts -->
+<script src="data/menu/menu.benchmark.js"></script>
+<script src="js/mycommon/function.common.js"></script>
+<script src="js/mycommon/common.data.js"></script>
+<script src="js/mycommon/menu.common.js"></script>
+<script src="js/mycommon/ibox.function.js"></script>
+<script src="js/mycommon/mask.info.js"></script>
+
+<script src="js/business/benchmark.js"></script>
+</body>
+</html>

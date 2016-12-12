@@ -1,0 +1,14 @@
+/target/
+.classpath
+.idea
+/logs/
+/src/main/webapp/js/mycommon/common.main.js
+/src/main/java/com/chinaventure/test/
+/.settings/
+src/main/webapp/.idea
+.project
+target
+.settings
+src/main/webapp/js/mycommon/common.data.js
+src/main/webapp/js/index/common.data.index.js
+

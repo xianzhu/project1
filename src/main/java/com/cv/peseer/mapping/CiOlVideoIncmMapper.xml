@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.peseer.dao.CiOlVideoIncmMapper">
+  <resultMap id="BaseResultMap" type="com.cv.peseer.model.CiOlVideoIncm">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="stat_date" jdbcType="VARCHAR" property="statDate" />
+    <result column="olv_quarter_value" jdbcType="DOUBLE" property="olvQuarterValue" />
+    <result column="olv_up_quarter" jdbcType="DOUBLE" property="olvUpQuarter" />
+    <result column="olv_rg_quarter" jdbcType="DOUBLE" property="olvRgQuarter" />
+    <result column="ola_quarter_value" jdbcType="DOUBLE" property="olaQuarterValue" />
+    <result column="ola_up_quarter" jdbcType="DOUBLE" property="olaUpQuarter" />
+    <result column="ola_rg_quarter" jdbcType="DOUBLE" property="olaRgQuarter" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, stat_date, olv_quarter_value, olv_up_quarter, olv_rg_quarter, ola_quarter_value, 
+    ola_up_quarter, ola_rg_quarter
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from ci_ol_video_incm
+  </select>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ci_ol_video_incm
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ci_ol_video_incm
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cv.peseer.model.CiOlVideoIncm">
+    insert into ci_ol_video_incm (id, stat_date, olv_quarter_value, 
+      olv_up_quarter, olv_rg_quarter, ola_quarter_value, 
+      ola_up_quarter, ola_rg_quarter)
+    values (#{id,jdbcType=INTEGER}, #{statDate,jdbcType=VARCHAR}, #{olvQuarterValue,jdbcType=DOUBLE}, 
+      #{olvUpQuarter,jdbcType=DOUBLE}, #{olvRgQuarter,jdbcType=DOUBLE}, #{olaQuarterValue,jdbcType=DOUBLE}, 
+      #{olaUpQuarter,jdbcType=DOUBLE}, #{olaRgQuarter,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cv.peseer.model.CiOlVideoIncm">
+    insert into ci_ol_video_incm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="statDate != null">
+        stat_date,
+      </if>
+      <if test="olvQuarterValue != null">
+        olv_quarter_value,
+      </if>
+      <if test="olvUpQuarter != null">
+        olv_up_quarter,
+      </if>
+      <if test="olvRgQuarter != null">
+        olv_rg_quarter,
+      </if>
+      <if test="olaQuarterValue != null">
+        ola_quarter_value,
+      </if>
+      <if test="olaUpQuarter != null">
+        ola_up_quarter,
+      </if>
+      <if test="olaRgQuarter != null">
+        ola_rg_quarter,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="statDate != null">
+        #{statDate,jdbcType=VARCHAR},
+      </if>
+      <if test="olvQuarterValue != null">
+        #{olvQuarterValue,jdbcType=DOUBLE},
+      </if>
+      <if test="olvUpQuarter != null">
+        #{olvUpQuarter,jdbcType=DOUBLE},
+      </if>
+      <if test="olvRgQuarter != null">
+        #{olvRgQuarter,jdbcType=DOUBLE},
+      </if>
+      <if test="olaQuarterValue != null">
+        #{olaQuarterValue,jdbcType=DOUBLE},
+      </if>
+      <if test="olaUpQuarter != null">
+        #{olaUpQuarter,jdbcType=DOUBLE},
+      </if>
+      <if test="olaRgQuarter != null">
+        #{olaRgQuarter,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cv.peseer.model.CiOlVideoIncm">
+    update ci_ol_video_incm
+    <set>
+      <if test="statDate != null">
+        stat_date = #{statDate,jdbcType=VARCHAR},
+      </if>
+      <if test="olvQuarterValue != null">
+        olv_quarter_value = #{olvQuarterValue,jdbcType=DOUBLE},
+      </if>
+      <if test="olvUpQuarter != null">
+        olv_up_quarter = #{olvUpQuarter,jdbcType=DOUBLE},
+      </if>
+      <if test="olvRgQuarter != null">
+        olv_rg_quarter = #{olvRgQuarter,jdbcType=DOUBLE},
+      </if>
+      <if test="olaQuarterValue != null">
+        ola_quarter_value = #{olaQuarterValue,jdbcType=DOUBLE},
+      </if>
+      <if test="olaUpQuarter != null">
+        ola_up_quarter = #{olaUpQuarter,jdbcType=DOUBLE},
+      </if>
+      <if test="olaRgQuarter != null">
+        ola_rg_quarter = #{olaRgQuarter,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cv.peseer.model.CiOlVideoIncm">
+    update ci_ol_video_incm
+    set stat_date = #{statDate,jdbcType=VARCHAR},
+      olv_quarter_value = #{olvQuarterValue,jdbcType=DOUBLE},
+      olv_up_quarter = #{olvUpQuarter,jdbcType=DOUBLE},
+      olv_rg_quarter = #{olvRgQuarter,jdbcType=DOUBLE},
+      ola_quarter_value = #{olaQuarterValue,jdbcType=DOUBLE},
+      ola_up_quarter = #{olaUpQuarter,jdbcType=DOUBLE},
+      ola_rg_quarter = #{olaRgQuarter,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
