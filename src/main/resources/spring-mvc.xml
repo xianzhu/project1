@@ -32,11 +32,11 @@
     	<mvc:exclude-mapping path="/index.html"/>
     	<mvc:exclude-mapping path="/category_index.html"/>
     	<mvc:exclude-mapping path="/"/>
-    	<mvc:exclude-mapping path="/peseer/login"/>
-    	<mvc:exclude-mapping path="/peseer/elasticsearch/top"/>
-    	<mvc:exclude-mapping path="/peseer/index.html"/>
-    	<mvc:exclude-mapping path="/peseer/category_index.html"/>
-    	<mvc:exclude-mapping path="/peseer"/>
+    	<mvc:exclude-mapping path="/keandata/login"/>
+    	<mvc:exclude-mapping path="/keandata/elasticsearch/top"/>
+    	<mvc:exclude-mapping path="/keandata/index.html"/>
+    	<mvc:exclude-mapping path="/keandata/category_index.html"/>
+    	<mvc:exclude-mapping path="/keandata"/>
     	<mvc:exclude-mapping path="/js/**"/>
     	<mvc:exclude-mapping path="/common/**"/>
     	<mvc:exclude-mapping path="/css/**"/>

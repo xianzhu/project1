@@ -81,7 +81,7 @@ public class ElasticSearchClient {
 		TransportClient client = null;
 		try {
 			client = TransportClient.builder().settings(settings).build()
-					.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("192.168.0.70"), 9300));
+					.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("10.26.201.247"), 9300));
 			if (client == null) {
 				LOGGER.info("Init Elasticsearch client failed!");
 			} else {
@@ -295,7 +295,7 @@ public class ElasticSearchClient {
 		// 3. 解析结果
 		return analysisResult(res);
 	}
-	
+
 	//用作首页搜索
 	public List<Information> search_top(String key, Date begin_time, Date end_time,
 			Collection<String> channel_list, int from, int count) {

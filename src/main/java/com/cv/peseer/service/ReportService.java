@@ -334,7 +334,7 @@ public class ReportService {
 			return;
 		}
 
-		String root_folder = "/home/rdd/workdir/report";
+		String root_folder = "/home/appuser/workdir/report";
 		ResultSet rs = null;
 		String sql = "select report_path from rpt_cv where rid=?";
 		Object[] parameters = { id };
@@ -394,7 +394,7 @@ public class ReportService {
 			return;
 		}
 
-		String root_folder = "/home/daqian/program/choice_report/";
+		String root_folder = "/home/appuser/workdir/report";
 		ResultSet rs = null;
 		String sql = "select attachment from rpt_trader where id=?";
 		Object[] parameters = { id };

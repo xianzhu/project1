@@ -21,7 +21,7 @@ public class LoginValidation implements HandlerInterceptor{
 	        }
 	        ResponseObject basicResponse = new ResponseObject();
 	        if (token == null) {
-	        	basicResponse.setStatus(RDDWebConst.FAILURE);
+	        	basicResponse.setStatus(RDDWebConst.TIMEOUT);
 	        	basicResponse.setMessage("Please relogin");
 //	            response.sendRedirect("/index.html");
 	            response.getWriter().print(JsonKit.toJson(basicResponse));

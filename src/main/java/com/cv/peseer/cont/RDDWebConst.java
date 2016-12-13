@@ -21,9 +21,12 @@ public class RDDWebConst {
 		capital_key_set.add("退出");
 	}
 
+	public static final String TOPICSERVICEIP = "10.27.70.43";
+
 	//返回类型
 	public static final String SUCCESS = "success";
 	public static final String FAILURE = "failure";
+	public static final String TIMEOUT = "timeout";
 	public static final int INVALID_VALUE = -1;
 
 	public static final String TOKEN = "cookie_code";

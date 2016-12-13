@@ -27,7 +27,7 @@ import org.xml.sax.SAXException;
 public class WordSegmentUtil {
 	private static final Logger LOGGER = LoggerFactory.getLogger(WordSegmentUtil.class);
 
-	private static final String ltp_url = "http://192.168.0.70:12345/ltp";
+	private static final String ltp_url = "http://10.27.70.43:12345/ltp";
 	private static final String b = "b";
 	private static final String ws = "ws";
 
@@ -45,7 +45,7 @@ public class WordSegmentUtil {
 	 * <xml4nlp> <note sent="y" word="y" pos="n" ne="n" parser="n" wsd="n" srl=
 	 * "n" /> <doc> <para id="0"> <sent id="0" cont="财富管理"> <word id="0" cont=
 	 * "财富" /> <word id="1" cont="管理" /> </sent> </para> </doc> </xml4nlp>
-	 * 
+	 *
 	 * @param xml
 	 * @return
 	 * @throws SAXException
@@ -71,10 +71,10 @@ public class WordSegmentUtil {
 				wordList.add(content);
 			}
 		}
-		
+
 		return wordList;
 	}
-	
+
 		public static List<String> getWordSegment(String key) {
 		List<String> wordList = null;
 		CloseableHttpResponse resp = null;
@@ -98,7 +98,7 @@ public class WordSegmentUtil {
 		} finally {
 			try {
 				httpclient.close();
-				
+
 				if (resp != null) {
 					resp.close();
 				}

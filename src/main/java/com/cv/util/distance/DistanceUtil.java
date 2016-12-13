@@ -15,22 +15,23 @@ import org.apache.thrift.transport.TTransport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.cv.peseer.cont.RDDWebConst;
 import com.cv.peseer.model.WordWeight;
 
 
 public class DistanceUtil {
 	private static final Logger LOGGER = LoggerFactory.getLogger(DistanceUtil.class);
 
-	private static final String SERVER_IP = "192.168.0.70";
+	private static final String SERVER_IP = RDDWebConst.TOPICSERVICEIP;
 	private static final int PORT_WORD = 5555;
 	private static final int PORT_PHRASE_MACRO = 5556;
 	private static final int PORT_PHRASE_MICRO = 5558;
-	
+
 	//精准搜索里面查找不到的指定词的情况下, 搜索该服务
 	private static final int PORT_4_EXCEPTION_SEARCH = 5559;
-	
+
 	private static final int TIMEOUT = 30000;
-	
+
 	public static String replaceSpecialChars(String extendWords) {
 		if (extendWords == null) {
 			return null;
@@ -90,7 +91,7 @@ public class DistanceUtil {
 	public static List<WordWeight> getSingleWordWeigt(String word) {
 		return doQuery2(word, SERVER_IP, PORT_WORD);
 	}
-	
+
 	//在经过搜索 org_user_info,organize_info,org_usr_info_cvs都找不到有用信息的情况下, 调用该服务
 	public static List<WordWeight> getExceptionWordWeight(List<String> wordList)
 	{
@@ -115,8 +116,8 @@ public class DistanceUtil {
 			transport.open();
 			long end = System.currentTimeMillis();
 			System.out.println("cost time:"+(end-start));
-			QueryResult result = client.doQuery(word);			
-			
+			QueryResult result = client.doQuery(word);
+
 			if (result != null) {
 				if (result.isSetWordDistList()) {
 					for (WordDist wordDist : result.getWordDistList()) {
@@ -134,26 +135,26 @@ public class DistanceUtil {
 		}
 		return wordWeightList;
 	}
-	
+
 	public static void main(String[] args) {
 //		List<String> aaa = new ArrayList<>();
 //		aaa.add("真格");
 //		aaa.add("基金");
 //		System.out.println(getAllRelatedUserOrg(aaa));
-		
+
 		List<String> aaa = new ArrayList<>();
 		aaa.add("人工智能");
 		//aaa.add("智能");
-		
+
 		long start = System.currentTimeMillis();
 	//	List<WordWeight> exceptionWordList = getExceptionWordWeight(aaa);
 		List<WordWeight> exceptionWordList = getExceptionWordWeight(aaa);
 		long end = System.currentTimeMillis();
 		System.out.println("cost time:"+(end-start));
-		
+
 //		for (WordWeight wordWeight:exceptionWordList){
 //			System.out.println(wordWeight.word);
 //		}
-		
+
 	}
 }

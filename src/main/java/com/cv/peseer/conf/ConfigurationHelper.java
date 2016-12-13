@@ -9,7 +9,7 @@ import com.cv.peseer.util.StringUtil;
 
 public class ConfigurationHelper {
 	private static Logger log = LoggerFactory.getLogger(ConfigurationHelper.class);
-	
+
 
 	static {
 		WEB_DB_DRIVER = getWEBDBDriver();
@@ -48,7 +48,7 @@ public class ConfigurationHelper {
 
 	/**
 	 * Solr微信公众号监控Url
-	 * 
+	 *
 	 */
 	public static final String SOLR_WECHAT_SOGOU_URL;
 
@@ -61,7 +61,7 @@ public class ConfigurationHelper {
 
 	/**
 	 * Solr 投资退出事件Url
-	 * 
+	 *
 	 */
 	public static final String SOLR_INVEST_EXIT_URL;
 
@@ -74,7 +74,7 @@ public class ConfigurationHelper {
 
 	/**
 	 * Solr媒体监控日志URL
-	 * 
+	 *
 	 */
 	public static final String SOLR_MEDIA_MONITOR_LOG_URL;
 
@@ -87,7 +87,7 @@ public class ConfigurationHelper {
 
 	/**
 	 * Solr返回数据是内容显示长度
-	 * 
+	 *
 	 */
 	public static final int SOLR_CONTENT_DISPLAY_LENGTH;
 
@@ -99,7 +99,7 @@ public class ConfigurationHelper {
 
 	/**
 	 * Solr投融资数据搜索返回最大条数
-	 * 
+	 *
 	 */
 	public static final int SOLR_INVEST_EXIT_RET_COUNTER;
 
@@ -366,8 +366,8 @@ public class ConfigurationHelper {
 		log.info(String.format("elasticsearchResultCount:[%s]", temp));
 		return temp;
 	}
-	
-	public static final String DEFAULT_DB_URL = "jdbc:mysql://192.168.0.66:3306/%s?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&autoReconnectForPools=true";
+
+	public static final String DEFAULT_DB_URL = "jdbc:mysql://10.47.113.150:3306/%s?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&autoReconnectForPools=true";
 	public static final String DEFAULT_DB_DRIVER = "com.mysql.jdbc.Driver";
 	public static final String DEFAULT_USER_NAME = "root";
 	public static final String DEFAULT_DB_PASSWORD = "password";

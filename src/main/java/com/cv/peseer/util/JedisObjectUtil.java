@@ -13,8 +13,6 @@ import org.msgpack.template.Templates;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Pipeline;
 
@@ -47,15 +45,15 @@ public abstract class JedisObjectUtil {
 	public static final int ONE_DAY = 24*ONE_HOUR; //一天
 	public static final int ONE_WEEK = 7*ONE_DAY; //一周
 	public static final int ONE_MONTH = 30*ONE_DAY; //一个月30天
-	
+
 	@SuppressWarnings("unchecked")
 	public static <T> T getData(Class<T> className, String key) {
-		Jedis jedis = RedisUtil.getJedis();
-		
+		Jedis jedis = RedisAliyun.getJedis();
+
 		T queryValue = null;
 
 		try {
-			
+
 			byte[] data = jedis.get(key.getBytes());
 			if (data != null) {
 				queryValue = (T) SerializeUtil.deserialize(data,className);
@@ -76,12 +74,12 @@ public abstract class JedisObjectUtil {
 
 		return queryValue;
 	}
-	
+
 	public static <T> List<T> getDataFromList(String key, Class<T> clazz) {
-		Jedis jedis = RedisUtil.getJedis();
+		Jedis jedis = RedisAliyun.getJedis();
 		List<T> queryValue = null;
 		try {
-			
+
 			byte[] data = jedis.get(key.getBytes());
 			if (data != null) {
 				MessagePack messagePack = new MessagePack();
@@ -109,7 +107,7 @@ public abstract class JedisObjectUtil {
 	static long totalbytes = 0;
 	static long totalredis = 0;
 	protected static void saveData(String key, Object obj, int timeout) {
-		Jedis jedis = RedisUtil.getJedis();
+		Jedis jedis = RedisAliyun.getJedis();
 		try {
 			 jedis.set(key.getBytes(), SerializeUtil.serialize(obj));
 			if (timeout > 0) {
@@ -129,9 +127,9 @@ public abstract class JedisObjectUtil {
 			}
 		}
 	}
-	
+
 	protected static void delData(String key) {
-		Jedis jedis = RedisUtil.getJedis();
+		Jedis jedis = RedisAliyun.getJedis();
 		try {
 			jedis.del(key.getBytes());
 		} catch (Exception ex) {
@@ -148,9 +146,9 @@ public abstract class JedisObjectUtil {
 			}
 		}
 	}
-	
+
 	public static void batchDelData(String key_pre_str) {
-		Jedis jedis = RedisUtil.getJedis();
+		Jedis jedis = RedisAliyun.getJedis();
 		try {
 			String patten = (String.format("%s", key_pre_str)+"*");
 			Set<byte[]> key_bytes = jedis.keys(patten.getBytes());
@@ -171,9 +169,9 @@ public abstract class JedisObjectUtil {
 			}
 		}
 	}
-	
+
 	protected static <T> HashSet<T> getDataForSet(String key, Class<T> className) {
-		Jedis jedis = RedisUtil.getJedis();
+		Jedis jedis = RedisAliyun.getJedis();
 		HashSet<T> queryValue = new HashSet<>();
 
 		try {
@@ -202,11 +200,11 @@ public abstract class JedisObjectUtil {
 
 		return queryValue;
 	}
-	
+
 	protected static <T> void saveDataForSet(String key, HashSet<T> hashSetObject, int expire_time) {
-		Jedis jedis = RedisUtil.getJedis();
+		Jedis jedis = RedisAliyun.getJedis();
 		try {
-			
+
 			byte[][] values = new byte[hashSetObject.size()][];
 			MessagePack messagePack = new MessagePack();
 			int index = 0;
@@ -233,15 +231,15 @@ public abstract class JedisObjectUtil {
 			}
 		}
 	}
-	
+
 	public static void clearAllData(){
-		Jedis jedis = RedisUtil.getJedis();
+		Jedis jedis = RedisAliyun.getJedis();
 		jedis.flushDB();
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	public static void pipelineData(HashMap<String,Object> map){
-		Jedis jedis = RedisUtil.getJedis();
+		Jedis jedis = RedisAliyun.getJedis();
 		Pipeline pipe = jedis.pipelined();
 		try {
 			Iterator iter = map.entrySet().iterator();
@@ -249,7 +247,7 @@ public abstract class JedisObjectUtil {
 				Map.Entry entry = (Map.Entry) iter.next();
 				String key = (String) entry.getKey();
 				Object val = entry.getValue();
-				pipe.set(key.getBytes(),SerializeUtil.serialize(val));	
+				pipe.set(key.getBytes(),SerializeUtil.serialize(val));
 			}
 			pipe.sync();
 		} catch (Exception ex) {
@@ -266,9 +264,9 @@ public abstract class JedisObjectUtil {
 			}
 		}
 	}
-	
+
 	public static <T> void pipelineMap(HashMap<String,List<T>> map){
-		Jedis jedis = RedisUtil.getJedis();
+		Jedis jedis = RedisAliyun.getJedis();
 		Pipeline pipe = jedis.pipelined();
 		try {
 			Iterator iter = map.entrySet().iterator();
@@ -276,7 +274,7 @@ public abstract class JedisObjectUtil {
 				Map.Entry entry = (Map.Entry) iter.next();
 				String key = (String) entry.getKey();
 				Object val = entry.getValue();
-				pipe.set(key.getBytes(),SerializeUtil.serialize(val));	
+				pipe.set(key.getBytes(),SerializeUtil.serialize(val));
 			}
 			pipe.sync();
 		} catch (Exception ex) {
@@ -293,9 +291,9 @@ public abstract class JedisObjectUtil {
 			}
 		}
 	}
-	
+
 	public static void saveHMap(String key,HashMap<String,String> map){
-		Jedis jedis = RedisUtil.getJedis();
+		Jedis jedis = RedisAliyun.getJedis();
 		try {
 			jedis.hmset(key, map);
 		} catch (Exception ex) {
