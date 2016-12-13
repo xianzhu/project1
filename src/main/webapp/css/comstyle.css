@@ -29,13 +29,6 @@
     width:220px !important;
 }
 
-
-/*
- *
- *   INSPINIA - Responsive Admin Theme
- *   version 2.4
- *
-*/
 h1,
 h2,
 h3,
@@ -82,7 +75,8 @@ h5 {
 }
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus {
-    background-color: #293846;
+    /*background-color: #293846;*/
+    background-color: #3f3846;
     color: white;
 }
 .nav .open > a,
@@ -192,8 +186,6 @@ h5 {
     font-size: 12px;
 }
 .nav-header {
-    /*padding: 33px 25px;*/
-    /*background: url("patterns/header-profile.png") no-repeat;*/
     height:60px;
     /*width:220px;*/
     width:100%;
@@ -205,7 +197,10 @@ h5 {
 }
 .nav > li.active {
     border-left: 4px solid #19aa8d;
-    background: #293846;
+    /*background: #293846;*/
+    /*background:#160726;*/
+    /*background:#ecba52;*/
+    background:#38283c;
 }
 .nav.nav-second-level > li.active {
     border: none;
@@ -659,8 +654,10 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
     color: #fff;
 }
 .btn-primary {
-    background-color: #1ab394;
-    border-color: #1ab394;
+    /*background-color: #1ab394;*/
+    /*border-color: #1ab394;*/
+    background-color: #3e2c42;
+    border-color: #3e2c42;
     color: #FFFFFF;
 }
 .btn-primary:hover,
@@ -672,8 +669,12 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 .btn-primary:active:hover,
 .btn-primary.active:hover,
 .btn-primary.active:focus {
-    background-color: #18a689;
-    border-color: #18a689;
+    /*background-color: #18a689;*/
+    /*border-color: #18a689;*/
+    /*background-color: #38283c;*/
+    /*border-color: #38283c;*/
+    background-color: #3f3846;
+    border-color: #3f3846;;
     color: #FFFFFF;
 }
 .btn-primary:active,
@@ -1096,7 +1097,8 @@ button.dim:active:before {
 }
 .label-primary,
 .badge-primary {
-    background-color: #1ab394;
+    /*background-color: #1ab394;*/
+    background-color:#38283c;
     color: #FFFFFF;
 }
 .label-success,
@@ -3346,7 +3348,9 @@ body.tour-open .animated {
 }
 body {
     font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: #2f4050;
+    /*background-color: #2f4050;*/
+    /*background-color:#1e192f;*/
+    background-color: #3e2c42;
     font-size: 13px;
     color: #676a6c;
     overflow-x: hidden;
@@ -3652,6 +3656,7 @@ body.body-small .footer.fixed {
 .nav-tabs > li > a:focus {
     background-color: #e6e6e6;
     color: #676a6c;
+    /*color:#f76a6c;*/
 }
 .ui-tab .tab-content {
     padding: 20px 0;
@@ -5836,15 +5841,7 @@ body.body-small .vote-icon {
         transform: scaleY(1);
     }
 }
-/*
- *  Usage:
- *
- *    <div class="sk-spinner sk-spinner-wandering-cubes">
- *      <div class="sk-cube1"></div>
- *      <div class="sk-cube2"></div>
- *    </div>
- *
- */
+
 .sk-spinner-wandering-cubes.sk-spinner {
     margin: 0 auto;
     width: 32px;
@@ -6883,14 +6880,12 @@ body.rtls.top-navigation .footer.fixed {
 }
 .blue-skin {
     font-weight: 600;
-    background: url("patterns/header-profile-skin-1.png") repeat scroll 0 0;
 }
 .blue-skin:hover {
     background: #0d8ddb;
 }
 .yellow-skin {
     font-weight: 600;
-    background: url("patterns/header-profile-skin-3.png") repeat scroll 0 100%;
 }
 .yellow-skin:hover {
     background: #ce8735;
@@ -6898,17 +6893,9 @@ body.rtls.top-navigation .footer.fixed {
 .ultra-skin {
     padding: 20px 10px;
     font-weight: 600;
-    background: url("patterns/3.png") repeat scroll 0 0;
 }
-.ultra-skin:hover {
-    background: url("patterns/4.png") repeat scroll 0 0;
-}
-/*
- *
- *   SKIN 1 - INSPINIA - Responsive Admin Theme
- *   NAME - Blue light
- *
-*/
+
+
 .skin-1 .minimalize-styl-2 {
     margin: 14px 5px 5px 30px;
 }
@@ -6921,10 +6908,9 @@ body.rtls.top-navigation .footer.fixed {
 .skin-1 .spin-icon {
     background: #0e9aef !important;
 }
-.skin-1 .nav-header {
-    background: #0e9aef;
-    background: url('patterns/header-profile-skin-1.png');
-}
+/*.skin-1 .nav-header {*/
+    /*background: #0e9aef;*/
+/*}*/
 .skin-1.mini-navbar .nav-second-level {
     background: #3e495f;
 }
@@ -6978,9 +6964,6 @@ body.skin-1 {
 .skin-1 .nav > li.active {
     border: none;
 }
-.skin-1 .nav-header {
-    padding: 35px 25px 25px 25px;
-}
 .skin-1 .nav-header a.dropdown-toggle {
     color: #fff;
     margin-top: 10px;
@@ -7024,10 +7007,9 @@ body.skin-2 {
 .skin-2 .spin-icon {
     background: #23c6c8 !important;
 }
-.skin-2 .nav-header {
-    background: #23c6c8;
-    background: url('patterns/header-profile-skin-2.png');
-}
+/*.skin-2 .nav-header {*/
+    /*background: #23c6c8;*/
+/*}*/
 .skin-2.mini-navbar .nav-second-level {
     background: #ededed;
 }
@@ -7084,9 +7066,6 @@ body.skin-2 #wrapper {
 .fixed-nav.skin-2 .navbar-fixed-top {
     background: #213a53;
     border-bottom: none !important;
-}
-.skin-2 .nav-header {
-    padding: 30px 25px 30px 25px;
 }
 .skin-2 .dashboard-header {
     background: rgba(255, 255, 255, 0.4);
@@ -7174,10 +7153,9 @@ body.skin-2 #wrapper {
 body.boxed-layout.skin-3 #wrapper {
     background: #3e2c42;
 }
-.skin-3 .nav-header {
-    background: #ecba52;
-    background: url('patterns/header-profile-skin-3.png');
-}
+/*.skin-3 .nav-header {*/
+    /*background: #ecba52;*/
+/*}*/
 .skin-3.mini-navbar .nav-second-level {
     background: #3e2c42;
 }
@@ -7231,9 +7209,6 @@ body.skin-3 {
 .skin-3 .nav > li.active {
     border: none;
 }
-.skin-3 .nav-header {
-    padding: 35px 25px 25px 25px;
-}
 .skin-3 .nav-header a.dropdown-toggle {
     color: #fff;
     margin-top: 10px;
@@ -7263,9 +7238,7 @@ body.md-skin {
     font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: #ffffff;
 }
-.md-skin .nav-header {
-    background: url("patterns/4.png") no-repeat;
-}
+
 .md-skin .label,
 .md-skin .badge {
     font-family: 'Roboto';
