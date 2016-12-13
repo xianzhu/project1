@@ -26,7 +26,10 @@
 	</sql>
 
 	<select id="getIndexInfo" resultMap="BaseResultMap">
-		select * from pm_org_info where org_cn_name like concat('%',#{0},'%') limit #{1},10
+		select * from pm_org_info where 
+		org_cn_name like concat('%',#{0},'%') or
+		org_cn_short like concat('%',#{0},'%') or
+		org_nickname like concat('%',#{0},'%') limit #{1},10
 	</select>
 
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
