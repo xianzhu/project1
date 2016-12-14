@@ -40,7 +40,7 @@ public class LoginLogoutService {
 			if(StringUtil.isNullOrEmpty(token)){
 				token = UUID.randomUUID().toString();
 				loginInfo.setCookie(token);
-				loginInfoMapper.insertSelective(loginInfo);
+				loginInfoMapper.updateByPrimaryKey(loginInfo);
 			}
 			LoginInfoCache.getInstance().putUid(token, loginInfo.getUid());
 			response.setToken(token);
