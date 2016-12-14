@@ -76,7 +76,8 @@ h5 {
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus {
     /*background-color: #293846;*/
-    background-color: #3f3846;
+    /*background-color: #3f3846;*/
+    background-color:#38283c;
     color: white;
 }
 .nav .open > a,
@@ -97,6 +98,7 @@ h5 {
 .navbar-default {
     background-color: transparent;
     border-color: #2f4050;
+    font-family:"Microsoft YaHei" !important;
 }
 .navbar-top-links li {
     vertical-align: middle;
@@ -196,11 +198,13 @@ h5 {
     transition: all 0.4s;
 }
 .nav > li.active {
-    border-left: 4px solid #19aa8d;
+    /*border-left: 4px solid #19aa8d;*/
+    border-left:4px solid #ecba52;
     /*background: #293846;*/
     /*background:#160726;*/
     /*background:#ecba52;*/
-    background:#38283c;
+    /*background:#38283c;*/
+    background: #3e2c42;
 }
 .nav.nav-second-level > li.active {
     border: none;
@@ -657,7 +661,9 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
     /*background-color: #1ab394;*/
     /*border-color: #1ab394;*/
     background-color: #3e2c42;
-    border-color: #3e2c42;
+    /*border-color: #974d76;*/
+    /*background-color: #6a588a;*/
+    border-color: #6a588a;
     color: #FFFFFF;
 }
 .btn-primary:hover,
@@ -673,8 +679,8 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
     /*border-color: #18a689;*/
     /*background-color: #38283c;*/
     /*border-color: #38283c;*/
-    background-color: #3f3846;
-    border-color: #3f3846;;
+    background-color: #3e2a42;
+    border-color: #3e2a42;;
     color: #FFFFFF;
 }
 .btn-primary:active,
@@ -1098,7 +1104,7 @@ button.dim:active:before {
 .label-primary,
 .badge-primary {
     /*background-color: #1ab394;*/
-    background-color:#38283c;
+    background-color:#6a588a;
     color: #FFFFFF;
 }
 .label-success,
@@ -3350,7 +3356,9 @@ body {
     font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     /*background-color: #2f4050;*/
     /*background-color:#1e192f;*/
-    background-color: #3e2c42;
+    /*background-color: #3e2c42;*/
+    background-color: #41314f;
+    /*background-color:#6a588a;*/
     font-size: 13px;
     color: #676a6c;
     overflow-x: hidden;
@@ -3896,7 +3904,8 @@ table.table-mail tr td {
     background-color: #f3f3f4;
 }
 .white-bg {
-    background-color: #ffffff;
+    /*background-color: #6a588a;*/
+    background-color:transparent;
 }
 .navy-bg {
     background-color: #1ab394;
@@ -7151,13 +7160,15 @@ body.skin-2 #wrapper {
     background: #ecba52 !important;
 }
 body.boxed-layout.skin-3 #wrapper {
-    background: #3e2c42;
+    /*background: #3e2c42;*/
+    background: #42325f;
 }
 /*.skin-3 .nav-header {*/
     /*background: #ecba52;*/
 /*}*/
 .skin-3.mini-navbar .nav-second-level {
-    background: #3e2c42;
+    /*background: #3e2c42;*/
+    background: #42325f;
 }
 .skin-3 .breadcrumb {
     background: transparent;
@@ -7182,7 +7193,8 @@ body.boxed-layout.skin-3 #wrapper {
     border-color: #ecba52;
 }
 body.skin-3 {
-    background: #3e2c42;
+    /*background: #3e2c42;*/
+    background: #42325f;
 }
 .skin-3 .navbar-static-top {
     background: #ffffff;

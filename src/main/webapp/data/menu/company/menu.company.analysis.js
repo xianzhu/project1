@@ -1,8 +1,9 @@
 /**
- * Created by a88u on 2016/10/12.
+ * Created by a88u on 2016/12/13.
  */
+
 var menuList;
-var menuList_stock =  [
+var menuList_stock = [
     {
         isActive: false,
         pageurl: "#",
@@ -12,235 +13,114 @@ var menuList_stock =  [
             {
                 isActive: false,
                 pageurl: "homePage",
-                text: "用户主页"
-            },
-            {
-                isActive: false,
-                pageurl: "userSearch",
-                text: "综合查询"
+                text: "主页"
             },
             {
                 isActive:false,
                 pageurl:"userMonitor",
-                text:"监控页"
-            }
-        ]
-    },
-    {
-        isActive: false,
-        pageurl: "orgnazation",
-        text: "机构信息",
-        showChild: false,
-        childMenu: [
-            {
-                isActive: false,
-                pageurl: "orgBasic",
-                text: "基本信息"
+                text:"监控"
             },
             {
-                isActive: false,
-                pageurl: "orgFund",
-                text: "基金"
+                isActive:false,
+                pageurl:"workbench",
+                text:"个人设置"
             }
         ]
     },
     {
+        isActive:false,
+        pageurl:"userSearch",
+        text:"综合查询"
+    },
+    {
+        isActive:false,
+        pageurl:"reportSearch",
+        text:"报告",
+        showChild:false
+    },
+    {
         isActive: false,
-        pageurl: "personal",
-        text: "投资者信息",
-        showChild: false,
+        pageurl: "#",
+        text: "投资者",
+        showChild: true,
         childMenu: [
             {
-                isActive: false,
-                pageurl: "personalBasic",
-                text: "基本信息"
+                isActive:false,
+                pageurl:"personal",
+                text:"投资者查询"
             }
         ]
     },
     {
         isActive: false,
-        pageurl: "reportSearch",
-        text: "报告",
-        showChild: false
+        pageurl: "#",
+        text: "机构",
+        showChild: true,
+        childMenu: [
+            {
+                isActive:false,
+                pageurl:"orgnazation",
+                text:"机构查询"
+            }
+        ]
     },
     {
         isActive:true,
-        pageurl:"company",
-        text:"企业",
+        pageurl:"#",
+        text:"��ҵ��Ϣ",
         showChild:true,
         childMenu:[
             {
                 isActive:false,
+                pageurl:"company",
+                text:"��ҵ��ѯ"
+            },
+            {
+                isActive:false,
                 pageurl:"companyBasic",
-                text:"基本信息"
+                text:"������Ϣ"
             },
             {
                 isActive:false,
                 pageurl:"companyDepth",
-                text:"深度报告"
+                text:"��ȱ���"
             },
             {
                 isActive:false,
                 pageurl:"companyReport",
-                text:"信用报告"
+                text:"���ñ���"
             },
             {
                 isActive:true,
                 pageurl:"companyAnalysis",
-                text:"数据分析"
+                text:"���ݷ���"
             },
             {
                 isActive:false,
                 pageurl:"companyAnnounce",
-                text:"公告数据"
+                text:"����"
             }
         ]
     },
-    {
-        isActive:false,
-        pageurl:"#",
-        text:"工具",
-        showChild:true,
-        childMenu:[
-            {
-                isActive:false,
-                pageurl:"workbench",
-                text:"工作台"
-            },
-            {
-                isActive:false,
-                pageurl:"benchmark",
-                text:"模拟计算"
-            },
-            {
-                isActive:false,
-                pageurl:"industryTools",
-                text:"行业统计"
-            }
-        ]
-    }
-];
-
-var menuList_qxb =  [
     {
         isActive: false,
         pageurl: "#",
-        text: "用户",
+        text: "����",
         showChild: true,
-        childMenu: [
-            {
-                isActive: false,
-                pageurl: "homePage",
-                text: "用户主页"
-            },
-            {
-                isActive: false,
-                pageurl: "userSearch",
-                text: "综合查询"
-            },
-            {
-                isActive:false,
-                pageurl:"userMonitor",
-                text:"监控页"
-            }
-        ]
-    },
-    {
-        isActive: false,
-        pageurl: "orgnazation",
-        text: "机构信息",
-        showChild: false,
-        childMenu: [
-            {
-                isActive: false,
-                pageurl: "orgBasic",
-                text: "基本信息"
-            },
-            {
-                isActive: false,
-                pageurl: "orgFund",
-                text: "基金"
-            }
-        ]
-    },
-    {
-        isActive: false,
-        pageurl: "personal",
-        text: "投资者信息",
-        showChild: false,
-        childMenu: [
-            {
-                isActive: false,
-                pageurl: "personalBasic",
-                text: "基本信息"
-            }
-        ]
-    },
-    {
-        isActive: false,
-        pageurl: "reportSearch",
-        text: "报告",
-        showChild: false
-    },
-    {
-        isActive:false,
-        pageurl:"company",
-        text:"企业",
-        showChild:false,
         childMenu:[
-            {
-                isActive:false,
-                pageurl:"companyBasic",
-                text:"基本信息"
-            },
-            {
-                isActive:false,
-                pageurl:"companyDepth",
-                text:"深度报告"
-            },
-            {
-                isActive:false,
-                pageurl:"companyReport",
-                text:"信用报告"
-            },
-        ]
-    },
-    {
-        isActive:false,
-        pageurl:"#",
-        text:"工具",
-        showChild:true,
-        childMenu:[
-            {
-                isActive:false,
-                pageurl:"workbench",
-                text:"工作台"
-            },
             {
                 isActive:false,
                 pageurl:"benchmark",
-                text:"模拟计算"
+                text:"ģ�����"
             },
             {
                 isActive:false,
                 pageurl:"industryTools",
-                text:"行业统计"
+                text:"��ҵͳ��"
             }
         ]
     }
 ];
-
-//var type=getUrlQueryStr("type",location.href);
-//v_navModel.$data.isCompany=true;
-//v_navModel.$data.comType=type;
-//if(type==0){ // 上市
-//    menuList=menuList_stock;
-//}else if(type==1){ // 新三板
-//    menuList=menuList_stock;
-//}else if(type==2){ // 未上市
-//    menuList=menuList_qxb;
-//}
-
 
 
 

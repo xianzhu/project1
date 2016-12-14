@@ -127,6 +127,57 @@ function bindSimpleDataTable(domId,perLength){
             var theadRows=$(thead).parent().find("tr");
             theadRows.each(function(){
                 var self=$(this);
+                //console.log(self);
+                if(self.find("th").eq(0)) {
+                    self.find("th").eq(0).removeClass("sorting_asc");
+                }else{
+                    console.log("not found");
+                }
+            });
+        },
+        dom: '<"html5buttons"B>lTfgitp',
+
+        buttons: [
+            //'copy','excel','pdf','print'
+            {extend: 'copy',text:"复制"},
+            //{extend: 'csv',chartSet:'utf-8'},
+            {extend: 'excel'},
+            {extend: 'pdf',ChartSet:'utf-8'},
+            {extend: 'print',
+                customize: function (win){
+                    $(win.document.body).addClass('white-bg');
+                    $(win.document.body).css('font-size', '10px');
+
+                    $(win.document.body).find('table')
+                        .addClass('compact')
+                        .css('font-size', 'inherit');
+                }
+            }
+        ]
+    };
+    if(perLength>0){
+        tableOptions.dom='<"html5buttons"B>tp';
+        tableOptions.pageLength=perLength; // 设置每页显示项数
+    }else{
+        tableOptions.dom='<"html5buttons"B>t';
+        tableOptions.paginate=false; // 不分页
+    }
+
+    $(dom).DataTable(tableOptions);
+}
+
+function bindSimpleDataTable_old(domId,perLength){
+    var dom='#'+domId;
+    var tableOptions={
+        searching:false,
+        ordering:false,
+        language:{
+            url:"data/dataTables_cn.json"
+        },
+        headerCallback: function( thead, data, start, end, display ) { // 去掉表头的排序图标---需要考虑所有行
+            var theadRows=$(thead).parent().find("tr");
+            theadRows.each(function(){
+                var self=$(this);
                 self.find("th").eq(0).removeClass("sorting_asc");
             });
         },
@@ -284,11 +335,45 @@ function goToNotlogon(){
 }
 
 function openFilesOnline(path){
-    //var pdfUrl="pdfPreview.html?path="+path;
-    //var pdfUrl="//192.168.0.67:18081/"+path;
     var pdfUrl=path;
+    if(isTest){
+        pdfUrl="http://192.168.0.67:28080/"+path;
+    }
     console.log(pdfUrl);
-    window.open(pdfUrl);
+    $.ajax({
+        url: pdfUrl,              //请求地址
+        type: "POST",                            //请求方式
+        data: {},
+        success: function (res) {
+            console.log(res);
+            if(res.status=='failure'){
+                //goToLoginout();
+                console.log("failure",res.message);
+                window.open("404.html");
+                return;
+            }else if(res.status=="timeout"){
+                console.log("timeout");
+                goToNotlogon();
+            }else{
+                console.log("success....");
+                window.open(pdfUrl);
+                return;
+            }
+        },
+        fail: function (status) {
+            console.error("event id=", id, " error. status=", status);
+        },
+        statusCode: {
+            404: function() {
+                goTo404();
+            },
+            500:function(){
+                goTo500();
+            }
+        }
+    });
+    //console.log("open url");
+    //window.open(pdfUrl);
 }
 
 function initPopover(){

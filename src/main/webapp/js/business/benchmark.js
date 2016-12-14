@@ -68,8 +68,10 @@ function doMatchSearch(){
         data: params,        //请求参数
         dataType: "json",
         success: function (res) {
-            if(res.status=="failure"){
-                console.log("failure",res.message);
+            if(res.status=="failure") {
+                console.log("failure", res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=="success"){
                 var response = res;

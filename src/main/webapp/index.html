@@ -36,9 +36,7 @@
                         <div class="post-preview col-xs-10  no-gutter">
                             <a href="#" target="_blank" v-bind:href="item.url" style="color:#333337"><h2
                                     v-text="item.title"></h2></a>
-
                             <p id="pw" class="pww" style="text-align: right;" v-text="item.time"></p>
-
                             <p class="meta" v-text="item.content">
                                 <a href="#" id="pp" class="ppp"></a><i class="link-spacer"></i> <i
                                     class="fa fa-bookmark"></i>
@@ -50,9 +48,11 @@
                 <div class="home-page-categories animated fadeIn hide" id="v-cateMenuModel">
                     <div class="category row">
                         <section>
-                            <div class="category-preview col-lm-h col-lg-2 col-md-3 col-sm-3 col-xs-4" v-for="item in menuList">
+                            <div class="category-preview col-lm-h col-lg-2 col-md-3 col-sm-3 col-xs-4"
+                                 v-for="item in menuList">
                                 <a v-on:click="gotoCategory(item.id,item.tpcId)">
-                                    <img v-bind:src="item.imgUrl" style="cursor:pointer;width:100%;height:100%;" alt="category-image"></a>
+                                    <img v-bind:src="item.imgUrl" style="cursor:pointer;width:100%;height:100%;"
+                                         alt="category-image"></a>
 
                                 <div><h2 v-text="item.name"></h2></div>
                             </div>
@@ -84,7 +84,9 @@
     <div class="bg"></div>
     <div class="Suspension" style="padding-top:15px;width:350px;height:318px;">
         <h2>Welcome to Peseer</h2>
+
         <p>Login in. To see it in action.</p>
+
         <div class="Suspension-center">
             <input type="text" style="margin-top:10px;" placeholder="Username" class="input1" id="iptName"><br>
             <input type="password" style="margin-top:10px;" placeholder="password" class="input2" id="iptPwd">

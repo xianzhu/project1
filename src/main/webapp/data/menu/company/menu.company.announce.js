@@ -1,5 +1,5 @@
 /**
- * Created by a88u on 2016/10/12.
+ * Created by a88u on 2016/12/13.
  */
 
 var menuList;
@@ -13,63 +13,68 @@ var menuList_stock = [
             {
                 isActive: false,
                 pageurl: "homePage",
-                text: "用户主页"
-            },
-            {
-                isActive: false,
-                pageurl: "userSearch",
-                text: "综合查询"
+                text: "主页"
             },
             {
                 isActive:false,
                 pageurl:"userMonitor",
                 text:"监控页"
-            }
-        ]
-    },
-    {
-        isActive: false,
-        pageurl: "orgnazation",
-        text: "机构信息",
-        showChild: false,
-        childMenu: [
-            {
-                isActive: false,
-                pageurl: "orgBasic",
-                text: "基本信息"
             },
             {
-                isActive: false,
-                pageurl: "orgFund",
-                text: "基金"
+                isActive:false,
+                pageurl:"workbench",
+                text:"个人设置"
             }
         ]
     },
     {
+        isActive:false,
+        pageurl:"userSearch",
+        text:"综合查询"
+    },
+    {
+        isActive:false,
+        pageurl:"reportSearch",
+        text:"报告",
+        showChild:false
+    },
+    {
         isActive: false,
-        pageurl: "personal",
+        pageurl: "#",
         text: "投资者信息",
-        showChild: false,
+        showChild: true,
         childMenu: [
             {
-                isActive: false,
-                pageurl: "personalBasic",
-                text: "基本信息"
+                isActive:false,
+                pageurl:"personal",
+                text:"投资者查询"
             }
         ]
     },
     {
         isActive: false,
-        pageurl: "reportSearch",
-        text: "报告",
-        showChild: false
+        pageurl: "#",
+        text: "机构信息",
+        showChild: true,
+        childMenu: [
+            {
+                isActive:false,
+                pageurl:"orgnazation",
+                text:"机构查询"
+            }
+        ]
     },
     {
         isActive:true,
-        pageurl:"company",
-        text:"企业",
+        pageurl:"#",
+        text:"企业信息",
         showChild:true,
         childMenu:[
+            {
+                isActive:false,
+                pageurl:"company",
+                text:"企业查询"
+            },
             {
                 isActive:false,
                 pageurl:"companyBasic",
@@ -93,21 +98,16 @@ var menuList_stock = [
             {
                 isActive:true,
                 pageurl:"companyAnnounce",
-                text:"公告数据"
+                text:"公告"
             }
         ]
     },
     {
-        isActive:false,
-        pageurl:"#",
-        text:"工具",
-        showChild:true,
+        isActive: false,
+        pageurl: "#",
+        text: "工具",
+        showChild: true,
         childMenu:[
-            {
-                isActive:false,
-                pageurl:"workbench",
-                text:"工作台"
-            },
             {
                 isActive:false,
                 pageurl:"benchmark",
@@ -121,12 +121,6 @@ var menuList_stock = [
         ]
     }
 ];
-
-
-
-
-
-
 
 
 

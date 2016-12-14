@@ -41,6 +41,8 @@ function getBasicInfo(){
         success: function (res) {
             if(res.status=="failure"){
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=="success"){
                  var response = res;

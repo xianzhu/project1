@@ -162,6 +162,8 @@ console.log("get ",key);
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 console.log("send ajax success");
@@ -228,6 +230,8 @@ function getCompanyResultInfo(key){
         success: function (res) {
             if(res.status=="failure"){
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=="success"){
                 var response = res;
@@ -297,6 +301,8 @@ function getSubNewsPage(key,page){
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 //console.log("send ajax success");
@@ -353,6 +359,8 @@ function getSubReportPage(key,page,rtype){
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 //console.log("send ajax success");

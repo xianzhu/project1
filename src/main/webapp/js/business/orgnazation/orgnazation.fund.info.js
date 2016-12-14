@@ -82,6 +82,8 @@ var v_fundBasicModel=new Vue({
                     if(res.status=='failure'){
                         //goToLoginout();
                         console.log("failure",res.message);
+                    }else if(res.status=="timeout"){
+                        console.log("timeout");
                         goToNotlogon();
                     }else if(res.status=='success') {
                         var response = res;
@@ -143,6 +145,8 @@ function getFundBasicInfo(id){
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 var response = res;

@@ -171,9 +171,9 @@ $(window).bind("resize", function () {
 });
 
 // check if browser support HTML5 local storage
-function localStorageSupport() {
-    return (('localStorage' in window) && window['localStorage'] !== null)
-}
+//function localStorageSupport() {
+//    return (('localStorage' in window) && window['localStorage'] !== null)
+//}
 
 
 function SmoothlyMenu() {

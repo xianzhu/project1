@@ -106,6 +106,8 @@ var v_personBasicModel=new Vue({
                     if(res.status=='failure'){
                         //goToLoginout();
                         console.log("failure",res.message);
+                    }else if(res.status=="timeout"){
+                        console.log("timeout");
                         goToNotlogon();
                     }else if(res.status=='success') {
                         var response = res;
@@ -187,6 +189,8 @@ function getBasicInfo(){
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 v_personBasicModel.$data.pName=res.investor.userName;
@@ -239,6 +243,8 @@ function getSubReportPage(key){
         success: function (res) {
             if(res.status=='failure'){
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 //console.log("send ajax success");

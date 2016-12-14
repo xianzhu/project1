@@ -176,7 +176,7 @@ getStatData();
 requestProjectInfo();
 //refreshChart(1);  // 暂时拿掉
 
-setInterval(getStatData,1000*60);
+//setInterval(getStatData,1000*60);
 
 //function changeRptSelect(value){
 //    console.log(v_homepageModel.$data.currentRptSelect);
@@ -208,6 +208,8 @@ function requestProjectInfo(){
         success: function (res) {
             if(res.status=='failure'){
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 var response=res;
@@ -231,6 +233,8 @@ function requestBasicInfo(){
         success: function (res) {
             if(res.status=='failure'){
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 var response=res;
@@ -255,6 +259,8 @@ function refreshChart(type){
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 var response = res.charts;
@@ -295,6 +301,8 @@ function getSubNewsPage(key,page,order){
         success: function (res) {
             if(res.status=="failure"){
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=="success") {
                 v_homepageModel.$data.homeNews = res.list;
@@ -347,6 +355,8 @@ function getSubReportPage(key,page,rtype){
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure: ",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 //console.log("send ajax success");
@@ -385,7 +395,17 @@ function getSubReportPage(key,page,rtype){
 }
 
 // 统计数据
-function getStatData(){
+function getStatData(){ // 暂时写死
+    var results = {
+        "media": {"itemName": "media", "total": 406650, "update": 1105},
+        "report": {"itemName": "report", "total": 15874, "update": 345},
+        "ent": {"itemName": "ent", "total": 1576206, "update": 373},
+        "event": {"itemName": "event", "total": 55872, "update": 130}
+    };
+    v_homepageModel.$data.statData=results;
+}
+
+/*function getStatData(){
     $.ajax({
         url: commonUrls.homeBasicStatUrl,              //请求地址
         type: "POST",                            //请求方式
@@ -394,6 +414,8 @@ function getStatData(){
         success: function (res) {
             if(res.status=='failure'){
                 console.log("failure:",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
             }else if(res.status=='success') {
                 var response=res;
                 v_homepageModel.$data.statData=response.results;
@@ -411,7 +433,7 @@ function getStatData(){
             }
         }
     });
-}
+}*/
 
 function drawChart(type,data){
     dataset1[0].data=data2;

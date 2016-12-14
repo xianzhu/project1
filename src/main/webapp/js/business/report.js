@@ -105,8 +105,6 @@ $("#top-search").val(key);
 v_reportModel.$data.key=key; // 记录当前查询关键字，防止后面用户在搜索栏输入但不查询的刷新
 getReasultInfo(key);
 
-
-
 function getReasultInfo(skey){
     //var rId=getUrlQueryStr("id",location.href);
 
@@ -135,6 +133,8 @@ function getSubResultPage(type,key,page,types){ // rType: 0--all;1--cv;2--other
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 //console.log("send ajax success");

@@ -55,6 +55,8 @@ var refresh = function() {
         success:function(res){
             if(res.status=="failure"){
                 console.log("failure:",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
             }else if(res.status=="success") {
                 var response = res;
                 // 中国地图[{id,lng,lat,news}]
