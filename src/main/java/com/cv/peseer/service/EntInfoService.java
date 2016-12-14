@@ -539,7 +539,9 @@ public class EntInfoService {
 			DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
 			StockInstInvest item1 = stockInstInvestMapper.selectByStockCode(code);
 			StockInstInvestFacade item = new StockInstInvestFacade();
-			item.setInstInvestFacade(JSONArray.parseArray(item1.getInstInv()));
+			if(item1 != null){
+				item.setInstInvestFacade(JSONArray.parseArray(item1.getInstInv()));
+			}
 //			item.setInstInv(null);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("success!");
@@ -567,7 +569,9 @@ public class EntInfoService {
 			DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
 			StockEquityCtrl item1 = stockEquityCtrlMapper.selectByStockCode(code);
 			StockEquityCtrlFacade item = new StockEquityCtrlFacade();
-			item.setEquityCtrl(JSONArray.parseArray(item1.getEqComp()));
+			if(item1 != null){
+				item.setEquityCtrl(JSONArray.parseArray(item1.getEqComp()));
+			}
 			//item.setEqComp(null);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("success!");
