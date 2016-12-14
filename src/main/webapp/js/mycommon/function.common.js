@@ -355,9 +355,9 @@ function openFilesOnline(path){
             }else{
                 //console.log(typeof res);
                 var isTimeout=res.indexOf('{');
-                //console.log(isTimeout);
-                if(res.indexOf('{')==0){ // timeout 服务器返回的是字符串，而不是json
-                    console.log("timeout");
+                // timeout 服务器返回的是字符串，而不是json   {"message":"Please relogin","status":"timeout"}
+                if(res.indexOf('{')==0){
+                    console.log("timeout",res);
                     goToNotlogon();
                 }else{
                     console.log("success....");
