@@ -130,6 +130,7 @@ function getSubResultPage(type,key,page,types){ // rType: 0--all;1--cv;2--other
         },
         dataType: "json",
         success: function (res) {
+            console.log(typeof res);
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);

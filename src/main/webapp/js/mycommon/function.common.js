@@ -336,28 +336,33 @@ function goToNotlogon(){
 
 function openFilesOnline(path){
     var pdfUrl=path;
+
     if(isTest){
-        pdfUrl="http://192.168.0.67:28080/"+path;
+        pdfUrl=hostUrl+path;
     }
+
     console.log(pdfUrl);
     $.ajax({
         url: pdfUrl,              //请求地址
         type: "POST",                            //请求方式
         data: {},
         success: function (res) {
-            console.log(res);
+            //console.log(typeof res);
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
                 window.open("404.html");
-                return;
-            }else if(res.status=="timeout"){
-                console.log("timeout");
-                goToNotlogon();
             }else{
-                console.log("success....");
-                window.open(pdfUrl);
-                return;
+                //console.log(typeof res);
+                var isTimeout=res.indexOf('{');
+                //console.log(isTimeout);
+                if(res.indexOf('{')==0){ // timeout 服务器返回的是字符串，而不是json
+                    console.log("timeout");
+                    goToNotlogon();
+                }else{
+                    console.log("success....");
+                    window.open(pdfUrl);
+                }
             }
         },
         fail: function (status) {
@@ -372,8 +377,8 @@ function openFilesOnline(path){
             }
         }
     });
-    //console.log("open url");
-    //window.open(pdfUrl);
+    console.log("open url");
+    //window.open("pdfPreview.html?path="+path);
 }
 
 function initPopover(){

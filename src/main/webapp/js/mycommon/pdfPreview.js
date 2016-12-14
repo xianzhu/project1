@@ -8,25 +8,28 @@ var isTest=true;
 //var isTest=false;
 
 $(function(){
-    var type=getUrlQueryStr('type',location.href);
-    var id=getUrlQueryStr('id',location.href);
-
     var psrc="";
     if(isTest){
         psrc="http://www.peseer.com/";
     }
-    if(type=="trader"){
-        psrc=psrc+"trader_rpt?id="+id;
-    }else if(type=="cv"){
-        psrc=psrc+"cv_rpt?id="+id;
-    }
+
+    //var type=getUrlQueryStr('type',location.href);
+    //var id=getUrlQueryStr('id',location.href);
+    //
+    //if(type=="trader"){
+    //    psrc=psrc+"trader_rpt?id="+id;
+    //}else if(type=="cv"){
+    //    psrc=psrc+"cv_rpt?id="+id;
+    //}
+    var path=getUrlQueryStr('path',location.href);
+    psrc=psrc+path;
 
     $.ajax({
         url: psrc,              //请求地址
         type: "POST",                            //请求方式
         data: {},
         success: function (res) {
-            //console.log(res);
+            console.log(res);
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
@@ -37,7 +40,7 @@ $(function(){
             }else{
                 console.log("success...");
                 $("#viewIframe").attr('src',psrc);
-                alert(res);
+                //alert(res);
             }
         },
         fail: function (status) {
