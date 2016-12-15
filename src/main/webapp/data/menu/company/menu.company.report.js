@@ -79,7 +79,7 @@ var menuList_stock = [
                 text:menuInfo.entdepth  // "深度报告"
             },
             {
-                isActive:false,
+                isActive:true,
                 pageurl:"companyReport",
                 text:menuInfo.entcredit     // "信用报告"
             },
@@ -103,7 +103,7 @@ var menuList_stock = [
         childMenu:[
             {
                 isActive:false,
-                pageurl:"#",
+                pageurl:"userSearch",
                 text:menuInfo.usersearch     // "综合查询",
             },
             {
@@ -199,7 +199,7 @@ var menuList_qxb = [
                 text:menuInfo.entdepth  // "深度报告"
             },
             {
-                isActive:false,
+                isActive:true,
                 pageurl:"companyReport",
                 text:menuInfo.entcredit     // "信用报告"
             }
@@ -213,7 +213,7 @@ var menuList_qxb = [
         childMenu:[
             {
                 isActive:false,
-                pageurl:"#",
+                pageurl:"userSearch",
                 text:menuInfo.usersearch     // "综合查询",
             },
             {

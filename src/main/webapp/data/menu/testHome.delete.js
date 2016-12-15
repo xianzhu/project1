@@ -120,7 +120,7 @@ var menuList = [
         childMenu:[
             {
                 isActive:true,
-                pageurl:"#",
+                pageurl:"userSearch",
                 text:menuInfo.usersearch     // "综合查询",
             },
             {

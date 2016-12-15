@@ -115,7 +115,7 @@ function bindExportedDataTable(domId,perLength,exportTitle,customOptions){
     $(dom).DataTable(tableOptions);
 }
 
-function bindSimpleDataTable(domId,perLength){
+function bindSimpleDataTable_new(domId,perLength){
     var dom='#'+domId;
     var tableOptions={
         searching:false,
@@ -142,7 +142,7 @@ function bindSimpleDataTable(domId,perLength){
             {extend: 'copy',text:"复制"},
             //{extend: 'csv',chartSet:'utf-8'},
             {extend: 'excel'},
-            {extend: 'pdf',ChartSet:'utf-8'},
+            {extend: 'pdf'},
             {extend: 'print',
                 customize: function (win){
                     $(win.document.body).addClass('white-bg');
@@ -166,7 +166,7 @@ function bindSimpleDataTable(domId,perLength){
     $(dom).DataTable(tableOptions);
 }
 
-function bindSimpleDataTable_old(domId,perLength){
+function bindSimpleDataTable(domId,perLength){
     var dom='#'+domId;
     var tableOptions={
         searching:false,

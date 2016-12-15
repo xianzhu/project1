@@ -118,7 +118,7 @@ var menuList = [
         childMenu:[
             {
                 isActive:false,
-                pageurl:"#",
+                pageurl:"userSearch",
                 text:menuInfo.usersearch     // "综合查询",
             },
             {
