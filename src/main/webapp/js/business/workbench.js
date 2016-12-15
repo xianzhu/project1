@@ -527,6 +527,8 @@ function getDataList(){
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 var response = res;
@@ -569,6 +571,8 @@ function doItemDelete(id,object){
                 //goToLoginout();
                 console.log("failure: ",res.message);
                 showInfo("提示","操作未成功."+res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 showInfo("成功","删除成功!");
@@ -605,6 +609,8 @@ function refreshData(objId){
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 var response = res;
@@ -667,6 +673,8 @@ function doItemOperation(datas,operaType,object){
                 //goToLoginout();
                 console.log("failure: ",res.message);
                 showInfo("提示","操作未成功."+res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 showInfo("成功","操作成功!");
@@ -765,6 +773,9 @@ function searchCompanyInfo(key){
                 //goToLoginout();
                 console.log("failure",res.message);
                 showInfo("提示","企业查询失败!");
+            }else if(res.status=="timeout"){
+                console.log("timeout");
+                goToNotlogon();
             }else if(res.status=='success') {
                 var response = res;
                 console.log("response", response);
@@ -802,6 +813,9 @@ function searchOrgInfo(key){
                 //goToLoginout();
                 console.log("failure",res.message);
                 showInfo("提示","机构查询失败!");
+            }else if(res.status=="timeout"){
+                console.log("timeout");
+                goToNotlogon();
             }else if(res.status=='success') {
                 var response = res;
                 console.log("response", response);
@@ -828,6 +842,10 @@ function searchOrgInfo(key){
 function changeMonitorSelection(){
     if(v_maskmodalModel.$data.currentMonitorModel==1){ // Edit状态下不能更改监控类型
         $("#monitorTypeSelect").val(v_maskmodalModel.$data.monitorTypeSelect);
+    }else{ // add状态下清空之前所选
+        v_maskmodalModel.$data.monitorSearchShow=false;
+        v_maskmodalModel.$data.monitorSearchKey="";
+        v_maskmodalModel.$data.monitorContent="";
     }
 }
 

@@ -4,20 +4,58 @@
 
 
 
-//$('a.media').attr('href',path);
+var isTest=true;
+//var isTest=false;
 
-$(function() {
-    var pdfDir="files/PDF/";
-    var file = getUrlQueryStr('path',location.href);
-    var path=pdfDir+file;
+$(function(){
+    var psrc="";
+    if(isTest){
+        psrc="http://www.peseer.com/";
+    }
 
-    $('a.media').attr('href',path);
-    $('a.media').media({width:'100%', height:'100%'});
-    //$('a.media').media();
+    //var type=getUrlQueryStr('type',location.href);
+    //var id=getUrlQueryStr('id',location.href);
+    //
+    //if(type=="trader"){
+    //    psrc=psrc+"trader_rpt?id="+id;
+    //}else if(type=="cv"){
+    //    psrc=psrc+"cv_rpt?id="+id;
+    //}
+    var path=getUrlQueryStr('path',location.href);
+    psrc=psrc+path;
+
+    $.ajax({
+        url: psrc,              //请求地址
+        type: "POST",                            //请求方式
+        data: {},
+        success: function (res) {
+            console.log(res);
+            if(res.status=='failure'){
+                //goToLoginout();
+                console.log("failure",res.message);
+                $("#viewIframe").attr('src',"404.html");
+            }else if(res.status=="timeout"){
+                console.log("timeout");
+                goToNotlogon();
+            }else{
+                console.log("success...");
+                $("#viewIframe").attr('src',psrc);
+                //alert(res);
+            }
+        },
+        fail: function (status) {
+            console.error("event id=", id, " error. status=", status);
+        },
+        statusCode: {
+            404: function() {
+                goTo404();
+            },
+            500:function(){
+                goTo500();
+            }
+        }
+    });
 });
-
-
-
 
 
 

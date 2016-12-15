@@ -114,6 +114,8 @@ function getSubResultPage(key,page){
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 //console.log("send ajax success");
@@ -156,6 +158,8 @@ function getPersonInfo(){
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 var response = res;

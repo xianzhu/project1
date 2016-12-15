@@ -157,9 +157,12 @@ var orgTrendsOption = {
         //backgroundColor:'rgba(0,0,250,0.4)',
         formatter:function(params){
             var tip=params[0].name;
-            for(var i=0;i<params.length;i++){
-                tip+="<br>"+params[i].seriesName+": "+parseFloat(params[i].value).toFixed(2);
-            }
+            //for(var i=0;i<params.length;i++){
+            //    tip+="<br>"+params[i].seriesName+": "+parseFloat(params[i].value).toFixed(2);
+            //}
+            tip+="<br>"+params[0].seriesName+": "+parseFloat(params[0].value).toFixed(0); // 投资事件
+            tip+="<br>"+params[1].seriesName+": "+parseFloat(params[1].value).toFixed(0); // 退出事件
+            tip+="<br>"+params[2].seriesName+": "+parseFloat(params[2].value).toFixed(2); // 边际收益率
             return tip;
         }
     },

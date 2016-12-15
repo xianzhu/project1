@@ -7,7 +7,15 @@ var radar_option = {
         text: ''
     },
     tooltip : {
-        trigger: 'axis'
+        trigger: 'axis',
+        formatter:function(params){
+            var tip=params[0].indicator;
+            for(var i=0;i<params.length;i++){
+                console.log(i,": ",params[i]);
+                tip+="<br>"+params[i].name+": "+parseFloat(params[i].value).toFixed(2);
+            }
+            return tip;
+        }
     },
     legend: {
         data:['评分','均值'],

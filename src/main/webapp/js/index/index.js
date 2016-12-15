@@ -70,6 +70,7 @@ var v_indexNewsModel=new Vue({
 function getNewsList(){
     $.ajax({
         url:indexCommonUrls.newsUrl,
+        //url:"http:192.168.0.67:28080/elasticsearch/top2",
         type:'post',
         data:{},
         dataType:'json',
@@ -78,6 +79,11 @@ function getNewsList(){
             v_indexNewsModel.$data.cateNews=dataList;
         },
         error:function(status){
+        },
+        statusCode:{
+            //404:function(){
+            //    console.log("statusCode=404");
+            //}
         }
     })
 }

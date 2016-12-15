@@ -160,6 +160,8 @@ function getMonitorList(){
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 var response = res;
@@ -209,6 +211,10 @@ function requestNewData() {
         var level = selectNode.level; // 级别
 
         if (type == nodeType.company) {
+            if(selectNode.uuid==""){
+                console.log("click empty node.");
+                return;
+            }
             console.log(v_userMonitorModel.$data.monitorTypeSelect);
             if(level==0||(v_userMonitorModel.$data.monitorTypeSelect==2&&level==1)) {
                 var uuid = selectNode.uuid;
@@ -354,6 +360,8 @@ function getCompanyReportInfo(id){
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 var response = res;
@@ -409,6 +417,8 @@ function getCompanyBasicInfo(id){
         success: function (res) {
             if(res.status=="failure"){
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=="success"){
                 var response = res;
@@ -444,6 +454,8 @@ function getCompanyFinanceInfo(id){
         success: function (res) {
             if(res.status=="failure"){
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=="success"){
                 var response = res;
@@ -486,6 +498,8 @@ function getOrgInfo(id){
             if(res.status=='failure'){
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             }else if(res.status=='success') {
                 var response = res;
@@ -525,6 +539,8 @@ function getCompanyExtendNode(sid, type, cgy, level, uuid) {
             if (res.status == 'failure') {
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             } else if (res.status == 'success') {
                 var response = res;
@@ -623,6 +639,8 @@ function getOrgFamilyNode(sid, type, cgy, level, oid) {
             if (res.status == 'failure') {
                 //goToLoginout();
                 console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
                 goToNotlogon();
             } else if (res.status == 'success') {
                 var response = res;
