@@ -79,7 +79,7 @@ public class ReportController {
     public ReportResponse getTraderRpt(HttpServletRequest request,HttpServletResponse resp, Model model){
 
 		ReportResponse searchResponse = new ReportResponse();
-		service.getTraderReport(request,resp,searchResponse);
+		service.getRemoteTraderReport(request,resp,searchResponse);
 		return searchResponse;
 	}
 
@@ -88,7 +88,7 @@ public class ReportController {
     public ReportResponse getCvRpt(HttpServletRequest request,HttpServletResponse resp, Model model){
 
 		ReportResponse searchResponse = new ReportResponse();
-		service.getCVReport(request,resp,searchResponse);
+		service.getRemoteCVReport(request,resp,searchResponse);
 		return searchResponse;
 	}
 }

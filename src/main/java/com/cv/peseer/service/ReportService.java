@@ -31,6 +31,7 @@ import com.cv.peseer.model.UdfRptTrader;
 import com.cv.peseer.response.ReportResponse;
 import com.cv.peseer.response.ResponseObject;
 import com.cv.peseer.util.MysqlHelper;
+import com.cv.peseer.util.RemoteFile;
 import com.cv.peseer.util.StringUtil;
 @Service
 public class ReportService {
@@ -41,11 +42,16 @@ public class ReportService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ReportService.class);
 	private static final HashMap<String, String> time2Internal = new HashMap<>(); // 时间串对应间隔天数
 
+	private static RemoteFile remoteFile = new RemoteFile();
 	static {
 		time2Internal.put("2", "30"); // 月
 		time2Internal.put("3", "90"); // 季度
 		time2Internal.put("4", "180"); // 半年
 		time2Internal.put("5", "365"); // 年
+
+		remoteFile.setAddress("116.62.42.50");
+		remoteFile.setUsername("appuser");
+		remoteFile.setPassword("1QAZ3edc2WSX");
 	}
 
 	public List<UdfRptCV> getRptCV(String token) {
@@ -385,6 +391,55 @@ public class ReportService {
 		}
 	}
 
+	public void getRemoteCVReport(HttpServletRequest req, HttpServletResponse resp,ResponseObject response){
+
+		String id = req.getParameter("id");
+
+		if (StringUtils.isEmpty(id)) {
+			response.setStatus(RDDWebConst.FAILURE);
+			response.setMessage("Get CV report failed!");
+			return;
+		}
+
+		String root_folder = "/home/appuser/workdir/report/";
+		ResultSet rs = null;
+		String sql = "select report_path from rpt_cv where rid=?";
+		Object[] parameters = { id };
+		try {
+			rs = MysqlHelper.getInstance(RDDWebConst.PESEER_DB_ONLINE).executeQuery(sql, parameters);
+			if (rs.next()) {
+				String report_path = rs.getString("report_path");
+				report_path = report_path.replaceAll(" ", "_");
+
+				String realPath = String.format("%s%s", root_folder, report_path);
+
+				OutputStream outputStream = resp.getOutputStream();
+				if(remoteFile.ftpReadFile(realPath, outputStream)){
+					//resp.setHeader("Content-disposition", "attachment;filename=" + URLEncoder.encode(report_name, "UTF-8"));
+					if (report_path.endsWith(".pdf")) {
+						resp.setContentType("application/pdf");
+					} else if (report_path.endsWith(".doc") || report_path.endsWith(".docx")) {
+						resp.setContentType("application/msword");
+					} else if (report_path.endsWith(".xls") || report_path.endsWith(".xlsx")) {
+						resp.setContentType("application/vnd.ms-excel");
+					} else if (report_path.endsWith(".ppt") || report_path.endsWith(".pptx")) {
+						resp.setContentType("application/vnd.ms-powerpoint");
+					}
+				}else {
+					response.setStatus(RDDWebConst.FAILURE);
+					response.setMessage("id is invaild!");
+				}
+			} else {
+				response.setStatus(RDDWebConst.FAILURE);
+				response.setMessage("id is invaild!");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			MysqlHelper.getInstance(RDDWebConst.PESEER_DB_ONLINE).close(rs);
+		}
+	}
+
 	public void getTraderReport(HttpServletRequest req, HttpServletResponse resp,ResponseObject response){
 		String id = req.getParameter("id");
 
@@ -430,6 +485,53 @@ public class ReportService {
 					outputStream.close();
 					inputStream.close();
 
+				} else {
+					response.setStatus(RDDWebConst.FAILURE);
+					response.setMessage("id is invaild!");
+				}
+			} else {
+				response.setStatus(RDDWebConst.FAILURE);
+				response.setMessage("id is invaild!");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			MysqlHelper.getInstance(RDDWebConst.PESEER_DB_ONLINE).close(rs);
+		}
+	}
+
+	public void getRemoteTraderReport(HttpServletRequest req, HttpServletResponse resp,ResponseObject response){
+		String id = req.getParameter("id");
+
+		if (StringUtils.isEmpty(id)) {
+			response.setStatus(RDDWebConst.FAILURE);
+			response.setMessage("Get CV report failed!");
+			return;
+		}
+
+		String root_folder = "/home/appuser/workdir/report/";
+		ResultSet rs = null;
+		String sql = "select attachment from rpt_trader where id=?";
+		Object[] parameters = { id };
+		try {
+			rs = MysqlHelper.getInstance(RDDWebConst.PESEER_DB_ONLINE).executeQuery(sql, parameters);
+			if (rs.next()) {
+				String report_path = rs.getString("attachment");
+				report_path = report_path.replaceAll(" ", "_");
+				String realPath = String.format("%s%s", root_folder, report_path);
+
+				OutputStream outputStream = resp.getOutputStream();
+				if(remoteFile.ftpReadFile(realPath, outputStream)){
+					//resp.setHeader("Content-disposition", "attachment;filename=" + URLEncoder.encode(report_name, "UTF-8"));
+					if (report_path.endsWith(".pdf")) {
+						resp.setContentType("application/pdf");
+					} else if (report_path.endsWith(".doc") || report_path.endsWith(".docx")) {
+						resp.setContentType("application/msword");
+					} else if (report_path.endsWith(".xls") || report_path.endsWith(".xlsx")) {
+						resp.setContentType("application/vnd.ms-excel");
+					} else if (report_path.endsWith(".ppt") || report_path.endsWith(".pptx")) {
+						resp.setContentType("application/vnd.ms-powerpoint");
+					}
 				} else {
 					response.setStatus(RDDWebConst.FAILURE);
 					response.setMessage("id is invaild!");
