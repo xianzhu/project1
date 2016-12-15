@@ -6,8 +6,8 @@ import java.util.Date;
 
 public class TimeUtil {
 
-//	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");// 设置日期格式
+	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
+//	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");// 设置日期格式
 
 	public static String getCurrentTime() {
 		String time = sdf.format(Calendar.getInstance().getTime());
@@ -22,7 +22,7 @@ public class TimeUtil {
 
 	/**
 	 * 得到几天前的时间
-	 * 
+	 *
 	 * @param d
 	 * @param day
 	 * @return
@@ -36,7 +36,7 @@ public class TimeUtil {
 
 	/**
 	 * 得到几天后的时间
-	 * 
+	 *
 	 * @param d
 	 * @param day
 	 * @return
@@ -47,7 +47,7 @@ public class TimeUtil {
 		now.set(Calendar.DATE, now.get(Calendar.DATE) + day);
 		return now.getTime();
 	}
-	
+
 	public static Date getCurrentDate(){
 		return new Date();
 	}

@@ -215,7 +215,7 @@ public class ElasticSearchClient {
 					if (mediaType == 2) {
 						//删除两天前的微信记录
 						String daysBefore = TimeUtil.getDaysBefore(2);
-						if (daysBefore.compareToIgnoreCase(createTime) != -1) {
+						if (daysBefore.compareToIgnoreCase(createTime) >= 0) {
 							continue;
 						}
 					}
