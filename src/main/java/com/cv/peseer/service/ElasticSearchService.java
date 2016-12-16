@@ -106,7 +106,7 @@ public class ElasticSearchService {
 		String token = (String) req.getSession().getAttribute(RDDWebConst.TOKEN);
 		LoginInfo extend = PersonalInfo.getLoginInfo(token);
 		List<Information> informations = null;
-		if (extend != null) {
+		if (extend != null && extend.getDomainTips() != null) {
 			informations = queryData(para.getKey(), para.getFrom(), extend);
 		} else {
 			informations = ConstElasticClient.getElasticSeachClient().search_extend(para.getKey(), null, null, null,
