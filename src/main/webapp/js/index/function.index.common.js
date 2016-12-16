@@ -46,9 +46,12 @@ function setCategoryImg(){
 
 function login(){
     var name=$('#iptName').val();
-    var pwd=$('#iptPwd').val();
+    var password=$('#iptPwd').val();
     var url=indexCommonUrls.loginUrl;
     //var url="http://192.168.0.67:18083/login";
+
+    var pwd=hex_md5(password);
+    console.log(pwd);
 
     console.log("login:",name,', ',pwd);
     $.ajax({
