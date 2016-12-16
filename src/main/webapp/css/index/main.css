@@ -74,6 +74,7 @@ h2 {
     text-align:center;
     font-size: 32px;
     font-size: 3.2rem;
+    color:rgba(106,88,138,0.8);
 }
 /* line 60, ../sass/_type.sass */
 h2.favorites {
@@ -1971,6 +1972,13 @@ a:hover, a:active, a:focus {
     background:#516b91;
 }
 
+.Suspension-btn{
+    background-color:#6a588a !important;
+}
 
+.forget-pas{
+    color:#6a588a;
+    font-size:13px;
+}
 
 
