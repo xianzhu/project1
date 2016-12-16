@@ -74,7 +74,6 @@ h2 {
     text-align:center;
     font-size: 32px;
     font-size: 3.2rem;
-    color:rgba(106,88,138,0.8);
 }
 /* line 60, ../sass/_type.sass */
 h2.favorites {
@@ -1970,6 +1969,10 @@ a:hover, a:active, a:focus {
 
 .poster-main .poster-list .poster-item{
     background:#516b91;
+}
+
+.Suspension h2{
+    color:rgba(106,88,138,0.8);
 }
 
 .Suspension-btn{

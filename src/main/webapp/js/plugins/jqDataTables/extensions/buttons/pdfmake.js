@@ -70,6 +70,8 @@
 	};
 
 	function Document(docDefinition, fonts, vfs) {
+		//console.log(fonts);
+		console.log(docDefinition);
 		this.docDefinition = docDefinition;
 		this.fonts = fonts || defaultClientFonts;
 		this.vfs = vfs;
@@ -188,6 +190,9 @@
 
 	module.exports = {
 		createPdf: function(docDefinition) {
+			console.log(docDefinition);
+			//docDefinition.defaultStyle={font:'msyh'};
+			//docDefinition.pageOrientation='landscape';
 			return new Document(docDefinition, window.pdfMake.fonts, window.pdfMake.vfs);
 		}
 	};
@@ -14919,8 +14924,9 @@
 	FontWrapper.prototype.encode = function(text){
 	  var self = this;
 
-	  var charTypesInInline = _.chain(text.split('')).map(toCharCode).uniq().value();
+	  var charTypesInInline = _.chain(text.substr(0,self.MAX_CHAR_TYPES-2).split('')).map(toCharCode).uniq().value();
 		if (charTypesInInline.length > self.MAX_CHAR_TYPES) {
+			console.log(charTypesInInline);
 			throw new Error('Inline has more than '+ self.MAX_CHAR_TYPES + ': ' + text + ' different character types and therefore cannot be properly embedded into pdf.');
 		}
 
@@ -16201,7 +16207,9 @@
 		text = text.replace('\t', '    ');
 
 		//TODO: refactor - extract from measure
+		//var fontName = getStyleProperty({}, styleContextStack, 'font', 'Roboto');
 		var fontName = getStyleProperty({}, styleContextStack, 'font', 'Roboto');
+
 		var fontSize = getStyleProperty({}, styleContextStack, 'fontSize', 12);
 		var bold = getStyleProperty({}, styleContextStack, 'bold', false);
 		var italics = getStyleProperty({}, styleContextStack, 'italics', false);
@@ -16338,6 +16346,7 @@
 		var normalized = normalizeTextArray(textArray);
 
 		normalized.forEach(function(item) {
+			//var fontName = getStyleProperty(item, styleContextStack, 'font', 'Roboto');
 			var fontName = getStyleProperty(item, styleContextStack, 'font', 'Roboto');
 			var fontSize = getStyleProperty(item, styleContextStack, 'fontSize', 12);
 			var bold = getStyleProperty(item, styleContextStack, 'bold', false);

@@ -2,16 +2,6 @@
  * Created by a88u on 2016/10/8.
  */
 
-pdfMake.fonts  = {
-    msyh:{
-        normal:'msyh.ttf',
-        bold:'msyh.ttf',
-        italics:'msyh.ttf',
-        bolditalics:'msyh.ttf'
-    }
-};
-
-
 // 获取url参数
 function getUrlQueryStr(sArgName, urlStr) {
     //console.log(urlStr);
