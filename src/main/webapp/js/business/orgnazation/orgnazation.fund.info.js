@@ -124,8 +124,8 @@ var v_fundBasicModel=new Vue({
             }
             return result;
         },
-        formatDateFilter:function(value){
-            return toDateFormat(value);
+        formatDataFilter:function(value){
+            return toDataFormat(value);
         }
     }
 });

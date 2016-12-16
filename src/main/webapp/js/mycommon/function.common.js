@@ -85,7 +85,7 @@ function bindExportedDataTable(domId,perLength,exportTitle,customOptions){
             {extend: 'copy',text:"复制"},
             //{extend: 'csv'},
             //{extend: 'excel'},
-            {extend: 'pdf',title:exportTitle,defaultStyle:{font:'msyh'}},
+            {extend: 'pdf',title:exportTitle},
             {extend: 'print',title:exportTitle,
                 customize: function (win){
                     $(win.document.body).addClass('white-bg');
@@ -490,7 +490,7 @@ function toRateFormat(value,fixed){
     return parseFloat(value*100).toFixed(fixed)+"%";
 }
 
-function toDateFormat(value){
+function toDataFormat(value){
     var result="";
     if(value&&value!=null&&value.toLowerCase()!="null"){
         //console.log(value);

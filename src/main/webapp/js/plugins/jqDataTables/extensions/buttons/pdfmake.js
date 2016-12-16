@@ -71,7 +71,7 @@
 
 	function Document(docDefinition, fonts, vfs) {
 		//console.log(fonts);
-		console.log(docDefinition);
+		//console.log(docDefinition);
 		this.docDefinition = docDefinition;
 		this.fonts = fonts || defaultClientFonts;
 		this.vfs = vfs;
@@ -190,7 +190,7 @@
 
 	module.exports = {
 		createPdf: function(docDefinition) {
-			console.log(docDefinition);
+			//console.log(docDefinition);
 			//docDefinition.defaultStyle={font:'msyh'};
 			//docDefinition.pageOrientation='landscape';
 			return new Document(docDefinition, window.pdfMake.fonts, window.pdfMake.vfs);

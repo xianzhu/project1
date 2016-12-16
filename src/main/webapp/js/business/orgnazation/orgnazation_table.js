@@ -193,7 +193,7 @@ function getRptData(){
                 v_orgnazationModel.$data.rptPeFundList=response.rptPeFundList;
                 v_orgnazationModel.$nextTick(function(){
                     console.log("simpletable");
-                    bindSimpleDataTable_new("rpt_table",10);
+                    bindExportedDataTable("rpt_table",10);
                 });
 
                 showRptEcharts(response.tendsList,"rptEcharts");
