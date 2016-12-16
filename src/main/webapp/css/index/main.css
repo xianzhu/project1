@@ -930,7 +930,9 @@ ol li {
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
-    transition: all 450ms;
+    transition: all 2500ms;
+    /*-webkit-transition-property:width;*/
+    /*-moz-transition-property:width;*/
 }
 @media (min-width: 768px) {
     /* line 1, ../sass/partials/_sidebar.sass */
