@@ -340,8 +340,8 @@ function initModelMaskVue(){
             dataTitle:""
         },
         filters:{
-            formatDateFilter:function(value){
-                return toDateFormat(value);
+            formatDataFilter:function(value){
+                return toDataFormat(value);
             }
         }
     });

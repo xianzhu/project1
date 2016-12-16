@@ -930,7 +930,9 @@ ol li {
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
-    transition: all 450ms;
+    transition: all 2500ms;
+    /*-webkit-transition-property:width;*/
+    /*-moz-transition-property:width;*/
 }
 @media (min-width: 768px) {
     /* line 1, ../sass/partials/_sidebar.sass */
@@ -1969,6 +1971,17 @@ a:hover, a:active, a:focus {
     background:#516b91;
 }
 
+.Suspension h2{
+    color:rgba(106,88,138,0.8);
+}
 
+.Suspension-btn{
+    background-color:#6a588a !important;
+}
+
+.forget-pas{
+    color:#6a588a;
+    font-size:13px;
+}
 
 

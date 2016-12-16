@@ -6,6 +6,15 @@
  * Copyright © 2016 Eli Grey - http://eligrey.com
  */
 
+pdfMake.fonts  = {
+	msyh:{
+		normal:'msyh.ttf',
+		bold:'msyh.ttf',
+		italics:'msyh.ttf',
+		bolditalics:'msyh.ttf'
+	}
+};
+
 (function( factory ){
 	if ( typeof define === 'function' && define.amd ) {
 		// AMD
@@ -1274,7 +1283,8 @@ DataTable.ext.buttons.pdfHtml5 = {
 				message: {}
 			},
 			defaultStyle: {
-				fontSize: 10
+				fontSize: 10,
+				font:'msyh'
 			}
 		};
 

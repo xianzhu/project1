@@ -99,6 +99,9 @@ var v_orgnazationModel=new Vue({
                 }
             }
             return false;
+        },
+        formatDataFilter:function(value){
+            return toDataFormat(value);
         }
     }
 });

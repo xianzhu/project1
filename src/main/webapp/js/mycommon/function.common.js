@@ -115,57 +115,6 @@ function bindExportedDataTable(domId,perLength,exportTitle,customOptions){
     $(dom).DataTable(tableOptions);
 }
 
-function bindSimpleDataTable_new(domId,perLength){
-    var dom='#'+domId;
-    var tableOptions={
-        searching:false,
-        ordering:false,
-        language:{
-            url:"data/dataTables_cn.json"
-        },
-        headerCallback: function( thead, data, start, end, display ) { // 去掉表头的排序图标---需要考虑所有行
-            var theadRows=$(thead).parent().find("tr");
-            theadRows.each(function(){
-                var self=$(this);
-                //console.log(self);
-                if(self.find("th").eq(0)) {
-                    self.find("th").eq(0).removeClass("sorting_asc");
-                }else{
-                    console.log("not found");
-                }
-            });
-        },
-        dom: '<"html5buttons"B>lTfgitp',
-
-        buttons: [
-            //'copy','excel','pdf','print'
-            {extend: 'copy',text:"复制"},
-            //{extend: 'csv',chartSet:'utf-8'},
-            {extend: 'excel'},
-            {extend: 'pdf'},
-            {extend: 'print',
-                customize: function (win){
-                    $(win.document.body).addClass('white-bg');
-                    $(win.document.body).css('font-size', '10px');
-
-                    $(win.document.body).find('table')
-                        .addClass('compact')
-                        .css('font-size', 'inherit');
-                }
-            }
-        ]
-    };
-    if(perLength>0){
-        tableOptions.dom='<"html5buttons"B>tp';
-        tableOptions.pageLength=perLength; // 设置每页显示项数
-    }else{
-        tableOptions.dom='<"html5buttons"B>t';
-        tableOptions.paginate=false; // 不分页
-    }
-
-    $(dom).DataTable(tableOptions);
-}
-
 function bindSimpleDataTable(domId,perLength){
     var dom='#'+domId;
     var tableOptions={
@@ -541,7 +490,7 @@ function toRateFormat(value,fixed){
     return parseFloat(value*100).toFixed(fixed)+"%";
 }
 
-function toDateFormat(value){
+function toDataFormat(value){
     var result="";
     if(value&&value!=null&&value.toLowerCase()!="null"){
         //console.log(value);

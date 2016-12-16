@@ -10,7 +10,8 @@
     <link rel="icon" href="img/logo-ico.png" type="image/png">
     <link href="css/common/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+    <link href="css/plugins/jqDataTables/jquery.dataTables.css" rel="stylesheet">
+    <link href="css/plugins/jqDataTables/extensions/buttons/buttons.dataTables.css" rel="stylesheet">
     <link href="css/common/model-mask.css" rel="stylesheet">
 
     <link href="css/comstyle.css" rel="stylesheet">
@@ -20,7 +21,12 @@
     <script src="js/common/vue.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="js/plugins/dataTables/datatables.min.js"></script>
+    <script src="js/plugins/jqDataTables/jquery.dataTables.js"></script>
+    <script src="js/plugins/jqDataTables/extensions/buttons/dataTables.buttons.js"></script>
+    <script src="js/plugins/jqDataTables/extensions/buttons/buttons.print.js"></script>
+    <script src="js/plugins/jqDataTables/extensions/buttons/pdfmake.js"></script>
+    <script src="js/plugins/jqDataTables/extensions/buttons/vfs_fonts.js"></script>
+    <script src="js/plugins/jqDataTables/extensions/buttons/buttons.html5.js"></script>
     <script src="js/plugins/echarts2/echarts.js"></script>
 
 </head>
@@ -110,8 +116,8 @@
                                             <tr role="row" v-for="ele in fundList">
                                                 <td v-text="ele.fundName" style="cursor:pointer" v-on:click="getFundInfo(ele,$event)"></td>
                                                 <td v-text="ele.fundDesc|getShortStrFilter"></td>
-                                                <td class="td-W95" v-text="ele.investDate|formatDateFilter"></td>
-                                                <td class="td-W95" v-text="ele.collectFinishDate|formatDateFilter"></td>
+                                                <td class="td-W95" v-text="ele.investDate|formatDataFilter"></td>
+                                                <td class="td-W95" v-text="ele.collectFinishDate|formatDataFilter"></td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -226,7 +232,7 @@
                                                 <td v-text="ele.investType"></td>
                                                 <td v-text="ele.eventTitle"></td>
                                                 <td v-text="ele.entCnName"></td>
-                                                <td v-text="ele.happenDate|formatDateFilter"></td>
+                                                <td v-text="ele.happenDate|formatDataFilter"></td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -303,7 +309,7 @@
                                                 <td v-text="ele.exitType"></td>
                                                 <td v-text="ele.eventTitle"></td>
                                                 <td v-text="ele.entCnName"></td>
-                                                <td v-text="ele.happenDate|formatDateFilter"></td>
+                                                <td v-text="ele.happenDate|formatDataFilter"></td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -432,7 +438,7 @@
         <p slot="capitalDesc" v-text="information.eventDesc"></p>
         <span slot="person" v-text="information.person_name"></span>
         <span slot="fund" v-text="information.fundName"></span>
-        <span slot="time" v-text="information.happenDate|formatDateFilter"></span>
+        <span slot="time" v-text="information.happenDate|formatDataFilter"></span>
         <span slot="target" v-text="information.orgCnName"></span>
         <h5 slot="dataTitle" v-text="dataTitle"></h5>
 

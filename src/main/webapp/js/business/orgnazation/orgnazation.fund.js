@@ -59,8 +59,8 @@ var v_orgFundModel = new Vue({
             }
             return result;
         },
-        formatDateFilter:function(value){
-            return toDateFormat(value);
+        formatDataFilter:function(value){
+            return toDataFormat(value);
         }
     }
 });

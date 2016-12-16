@@ -660,9 +660,9 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 .btn-primary {
     /*background-color: #1ab394;*/
     /*border-color: #1ab394;*/
-    background-color: #3e2c42;
+    /*background-color: #3e2c42;*/
     /*border-color: #974d76;*/
-    /*background-color: #6a588a;*/
+    background-color: #6a588a;
     border-color: #6a588a;
     color: #FFFFFF;
 }
@@ -679,8 +679,8 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
     /*border-color: #18a689;*/
     /*background-color: #38283c;*/
     /*border-color: #38283c;*/
-    background-color: #3e2a42;
-    border-color: #3e2a42;;
+    background-color: #6a588a;
+    border-color: #6a588a;;
     color: #FFFFFF;
 }
 .btn-primary:active,
@@ -3904,8 +3904,8 @@ table.table-mail tr td {
     background-color: #f3f3f4;
 }
 .white-bg {
-    /*background-color: #6a588a;*/
-    background-color:transparent;
+    background-color: #fff;
+    /*background-color:transparent;*/
 }
 .navy-bg {
     background-color: #1ab394;
