@@ -49,6 +49,10 @@
     select * from login_info where uid=#{userName} and pwd=#{passwd}
   </select>
   
+  <select id="selectByUserName" resultMap="ResultMapWithBLOBs">
+    select * from login_info where uid=#{userName}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from login_info
     where id = #{id,jdbcType=INTEGER}

@@ -22,4 +22,6 @@ public interface LoginInfoMapper {
     LoginInfo selectByCookie(@Param("cookie")String cookie);
 
     LoginInfo selectByUser(@Param("userName")String userName, @Param("passwd")String passwd);
+
+    LoginInfo selectByUserName(@Param("userName")String userName);
 }

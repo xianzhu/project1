@@ -19,6 +19,7 @@ import com.cv.peseer.model.RequestConext;
 import com.cv.peseer.response.LoginLogoutResponse;
 import com.cv.peseer.util.LogWriterHelper;
 import com.cv.peseer.util.LoginInfoCache;
+import com.cv.peseer.util.MD5Util;
 import com.cv.peseer.util.StringUtil;
 
 @Service
@@ -31,9 +32,9 @@ public class LoginLogoutService {
 		String password = req.getParameter("password");
 
 		DBContextHolder.setDbType(DBContextHolder.PESEER_LOGIN);
-		LoginInfo loginInfo = loginInfoMapper.selectByUser(username, password);
+		LoginInfo loginInfo = loginInfoMapper.selectByUserName(username);
 
-		if(loginInfo != null){
+		if(MD5Util.strMD5Validation(loginInfo.getPwd(), password)){
 			response.setStatus("success");
 			response.setMessage("登录成功");
 			String token = loginInfo.getCookie();
