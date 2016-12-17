@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.kdata.dao.CiChnFilmBoxMapper">
+  <resultMap id="BaseResultMap" type="com.cv.kdata.model.CiChnFilmBox">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="stat_date" jdbcType="VARCHAR" property="statDate" />
+    <result column="tot_year_value" jdbcType="DOUBLE" property="totYearValue" />
+    <result column="tot_growth_rate" jdbcType="DOUBLE" property="totGrowthRate" />
+    <result column="dom_year_value" jdbcType="DOUBLE" property="domYearValue" />
+    <result column="dom_growth_rate" jdbcType="DOUBLE" property="domGrowthRate" />
+    <result column="imp_year_value" jdbcType="DOUBLE" property="impYearValue" />
+    <result column="imp_growth_rate" jdbcType="DOUBLE" property="impGrowthRate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, stat_date, tot_year_value, tot_growth_rate, dom_year_value, dom_growth_rate, 
+    imp_year_value, imp_growth_rate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ci_chn_film_box
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from ci_chn_film_box
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ci_chn_film_box
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cv.kdata.model.CiChnFilmBox">
+    insert into ci_chn_film_box (id, stat_date, tot_year_value, 
+      tot_growth_rate, dom_year_value, dom_growth_rate, 
+      imp_year_value, imp_growth_rate)
+    values (#{id,jdbcType=INTEGER}, #{statDate,jdbcType=VARCHAR}, #{totYearValue,jdbcType=DOUBLE}, 
+      #{totGrowthRate,jdbcType=DOUBLE}, #{domYearValue,jdbcType=DOUBLE}, #{domGrowthRate,jdbcType=DOUBLE}, 
+      #{impYearValue,jdbcType=DOUBLE}, #{impGrowthRate,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cv.kdata.model.CiChnFilmBox">
+    insert into ci_chn_film_box
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="statDate != null">
+        stat_date,
+      </if>
+      <if test="totYearValue != null">
+        tot_year_value,
+      </if>
+      <if test="totGrowthRate != null">
+        tot_growth_rate,
+      </if>
+      <if test="domYearValue != null">
+        dom_year_value,
+      </if>
+      <if test="domGrowthRate != null">
+        dom_growth_rate,
+      </if>
+      <if test="impYearValue != null">
+        imp_year_value,
+      </if>
+      <if test="impGrowthRate != null">
+        imp_growth_rate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="statDate != null">
+        #{statDate,jdbcType=VARCHAR},
+      </if>
+      <if test="totYearValue != null">
+        #{totYearValue,jdbcType=DOUBLE},
+      </if>
+      <if test="totGrowthRate != null">
+        #{totGrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="domYearValue != null">
+        #{domYearValue,jdbcType=DOUBLE},
+      </if>
+      <if test="domGrowthRate != null">
+        #{domGrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="impYearValue != null">
+        #{impYearValue,jdbcType=DOUBLE},
+      </if>
+      <if test="impGrowthRate != null">
+        #{impGrowthRate,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cv.kdata.model.CiChnFilmBox">
+    update ci_chn_film_box
+    <set>
+      <if test="statDate != null">
+        stat_date = #{statDate,jdbcType=VARCHAR},
+      </if>
+      <if test="totYearValue != null">
+        tot_year_value = #{totYearValue,jdbcType=DOUBLE},
+      </if>
+      <if test="totGrowthRate != null">
+        tot_growth_rate = #{totGrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="domYearValue != null">
+        dom_year_value = #{domYearValue,jdbcType=DOUBLE},
+      </if>
+      <if test="domGrowthRate != null">
+        dom_growth_rate = #{domGrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="impYearValue != null">
+        imp_year_value = #{impYearValue,jdbcType=DOUBLE},
+      </if>
+      <if test="impGrowthRate != null">
+        imp_growth_rate = #{impGrowthRate,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cv.kdata.model.CiChnFilmBox">
+    update ci_chn_film_box
+    set stat_date = #{statDate,jdbcType=VARCHAR},
+      tot_year_value = #{totYearValue,jdbcType=DOUBLE},
+      tot_growth_rate = #{totGrowthRate,jdbcType=DOUBLE},
+      dom_year_value = #{domYearValue,jdbcType=DOUBLE},
+      dom_growth_rate = #{domGrowthRate,jdbcType=DOUBLE},
+      imp_year_value = #{impYearValue,jdbcType=DOUBLE},
+      imp_growth_rate = #{impGrowthRate,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.kdata.dao.PMInvestEventMapper">
+  <resultMap id="BaseResultMap" type="com.cv.kdata.model.PMInvestEvent">
+    <id column="event_id" jdbcType="INTEGER" property="eventId" />
+    <result column="ent_cn_name" jdbcType="VARCHAR" property="entCnName" />
+    <result column="invest_type" jdbcType="VARCHAR" property="investType" />
+    <result column="event_title" jdbcType="VARCHAR" property="eventTitle" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="happen_date" jdbcType="VARCHAR" property="happenDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    event_id, ent_cn_name, invest_type, event_title, user_name, happen_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pm_invest_event
+    where event_id = #{eventId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="getOrgInvestEvent" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select a.* from pm_invest_event a inner join
+	pm_id_org_invest_event b on a.event_id=b.event_id 
+	where b.org_id = #{orgId}
+  </select>
+  
+  <select id="getInvestorInvestEvent" resultMap="BaseResultMap">
+    select a.* from pm_invest_event a inner join pm_id_user_invest_event b on a.event_id=b.event_id 
+    where 
+    <if test="filter != null">
+    a.invest_type in 
+	<foreach collection="filter" item="item" index="index" open="(" separator="," close=") and ">#{item}</foreach>
+    </if>
+    <if test="key != null">
+    (a.ent_cn_name like concat('%',#{key},'%') or a.event_title like concat('%',#{key},'%')) and
+    </if>
+     b.user_id=#{userId} ORDER BY happen_date DESC limit #{from},10
+  </select>
+  
+  <select id="getFundInvestEvent" resultMap="BaseResultMap">
+    select a.* from pm_invest_event a inner join pm_id_fund_invest_event b on a.event_id=b.event_id 
+    where 
+    <if test="filter != null">
+    a.invest_type in 
+	<foreach collection="filter" item="item" index="index" open="(" separator="," close=") and ">#{item}</foreach>
+    </if>
+    <if test="key != null">
+    (a.ent_cn_name like concat('%',#{key},'%') or a.event_title like concat('%',#{key},'%')) and
+    </if>
+     b.fund_id=#{fundId} ORDER BY happen_date DESC limit #{from},10
+  </select>
+  
+   <select id="getFundInvestEventAll" resultMap="BaseResultMap">
+    select a.* from pm_invest_event a inner join pm_id_fund_invest_event b on a.event_id=b.event_id 
+    where b.fund_id=#{fundId}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pm_invest_event
+    where event_id = #{eventId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cv.kdata.model.PMInvestEvent">
+    insert into pm_invest_event (event_id, ent_cn_name, invest_type, 
+      event_title, user_name, happen_date
+      )
+    values (#{eventId,jdbcType=INTEGER}, #{entCnName,jdbcType=VARCHAR}, #{investType,jdbcType=VARCHAR}, 
+      #{eventTitle,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{happenDate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cv.kdata.model.PMInvestEvent">
+    insert into pm_invest_event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="eventId != null">
+        event_id,
+      </if>
+      <if test="entCnName != null">
+        ent_cn_name,
+      </if>
+      <if test="investType != null">
+        invest_type,
+      </if>
+      <if test="eventTitle != null">
+        event_title,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="happenDate != null">
+        happen_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="eventId != null">
+        #{eventId,jdbcType=INTEGER},
+      </if>
+      <if test="entCnName != null">
+        #{entCnName,jdbcType=VARCHAR},
+      </if>
+      <if test="investType != null">
+        #{investType,jdbcType=VARCHAR},
+      </if>
+      <if test="eventTitle != null">
+        #{eventTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="happenDate != null">
+        #{happenDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cv.kdata.model.PMInvestEvent">
+    update pm_invest_event
+    <set>
+      <if test="entCnName != null">
+        ent_cn_name = #{entCnName,jdbcType=VARCHAR},
+      </if>
+      <if test="investType != null">
+        invest_type = #{investType,jdbcType=VARCHAR},
+      </if>
+      <if test="eventTitle != null">
+        event_title = #{eventTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="happenDate != null">
+        happen_date = #{happenDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where event_id = #{eventId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cv.kdata.model.PMInvestEvent">
+    update pm_invest_event
+    set ent_cn_name = #{entCnName,jdbcType=VARCHAR},
+      invest_type = #{investType,jdbcType=VARCHAR},
+      event_title = #{eventTitle,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      happen_date = #{happenDate,jdbcType=VARCHAR}
+    where event_id = #{eventId,jdbcType=INTEGER}
+  </update>
+</mapper>

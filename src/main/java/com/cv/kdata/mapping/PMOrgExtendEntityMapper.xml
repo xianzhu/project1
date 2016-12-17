@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.kdata.dao.PMOrgExtendEntityMapper">
+  <resultMap id="BaseResultMap" type="com.cv.kdata.model.PMOrgExtendEntity">
+    <result column="org_id" jdbcType="INTEGER" property="orgId" />
+    <result column="org_cn_short" jdbcType="VARCHAR" property="orgCnShort" />
+    <result column="org_prime_entity" jdbcType="VARCHAR" property="orgPrimeEntity" />
+    <result column="org_entity" jdbcType="VARCHAR" property="orgEntity" />
+    <result column="uuid" jdbcType="VARCHAR" property="uuid" />
+  </resultMap>
+  <insert id="insert" parameterType="com.cv.kdata.model.PMOrgExtendEntity">
+    insert into pm_org_extend_entity (org_id, org_cn_short, org_prime_entity, 
+      org_entity, uuid)
+    values (#{orgId,jdbcType=INTEGER}, #{orgCnShort,jdbcType=VARCHAR}, #{orgPrimeEntity,jdbcType=VARCHAR}, 
+      #{orgEntity,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR})
+  </insert>
+  
+  <select id="getOrgExtends" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from pm_org_extend_entity where org_id = #{orgId}
+  </select>
+  
+  <insert id="insertSelective" parameterType="com.cv.kdata.model.PMOrgExtendEntity">
+    insert into pm_org_extend_entity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="orgCnShort != null">
+        org_cn_short,
+      </if>
+      <if test="orgPrimeEntity != null">
+        org_prime_entity,
+      </if>
+      <if test="orgEntity != null">
+        org_entity,
+      </if>
+      <if test="uuid != null">
+        uuid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="orgCnShort != null">
+        #{orgCnShort,jdbcType=VARCHAR},
+      </if>
+      <if test="orgPrimeEntity != null">
+        #{orgPrimeEntity,jdbcType=VARCHAR},
+      </if>
+      <if test="orgEntity != null">
+        #{orgEntity,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

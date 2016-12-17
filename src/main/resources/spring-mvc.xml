@@ -10,7 +10,7 @@
                         http://www.springframework.org/schema/mvc    
                         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
-	<context:component-scan base-package="com.cv.peseer.controller" />
+	<context:component-scan base-package="com.cv.kdata.controller" />
 	<mvc:annotation-driven />
 
 	<bean
@@ -48,7 +48,7 @@
     	<!-- <mvc:exclude-mapping path="/peseer/*html"/>
     	<mvc:exclude-mapping path="/*html"/> -->
     	
-    	<bean class="com.cv.peseer.interceptor.LoginValidation"></bean>
+    	<bean class="com.cv.kdata.interceptor.LoginValidation"></bean>
     	</mvc:interceptor>
    </mvc:interceptors>
    

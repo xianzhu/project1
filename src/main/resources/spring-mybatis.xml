@@ -100,7 +100,7 @@
     </bean>
     
     <!-- 动态数据源 -->    
-   <bean id="dynamicDataSource" class="com.cv.peseer.datasource.DynamicDataSource">    
+   <bean id="dynamicDataSource" class="com.cv.kdata.datasource.DynamicDataSource">    
        <!-- 通过key-value关联数据源 -->    
        <property name="targetDataSources">    
            <map>    
@@ -116,12 +116,12 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
         <property name="dataSource" ref="dynamicDataSource" />  
         <!-- 自动扫描mapping.xml文件 -->  
-        <property name="mapperLocations" value="classpath:com/cv/peseer/mapping/*.xml"></property>  
+        <property name="mapperLocations" value="classpath:com/cv/kdata/mapping/*.xml"></property>  
     </bean>  
   
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
-        <property name="basePackage" value="com.cv.peseer.dao" />  
+        <property name="basePackage" value="com.cv.kdata.dao" />  
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
     </bean>  
   

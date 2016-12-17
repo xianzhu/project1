@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.kdata.dao.CiMoneySupMapper">
+  <resultMap id="BaseResultMap" type="com.cv.kdata.model.CiMoneySup">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="stat_date" jdbcType="VARCHAR" property="statDate" />
+    <result column="m0_closing_bal" jdbcType="DOUBLE" property="m0ClosingBal" />
+    <result column="m1_closing_bal" jdbcType="DOUBLE" property="m1ClosingBal" />
+    <result column="m2_closing_bal" jdbcType="DOUBLE" property="m2ClosingBal" />
+    <result column="m0_growth_rate" jdbcType="DOUBLE" property="m0GrowthRate" />
+    <result column="m1_growth_rate" jdbcType="DOUBLE" property="m1GrowthRate" />
+    <result column="m2_growth_rate" jdbcType="DOUBLE" property="m2GrowthRate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, stat_date, m0_closing_bal, m1_closing_bal, m2_closing_bal, m0_growth_rate, m1_growth_rate, 
+    m2_growth_rate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ci_money_sup
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="getCiMoneySupList" resultMap="BaseResultMap">
+    select * from ci_money_sup
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ci_money_sup
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cv.kdata.model.CiMoneySup">
+    insert into ci_money_sup (id, stat_date, m0_closing_bal, 
+      m1_closing_bal, m2_closing_bal, m0_growth_rate, 
+      m1_growth_rate, m2_growth_rate)
+    values (#{id,jdbcType=INTEGER}, #{statDate,jdbcType=VARCHAR}, #{m0ClosingBal,jdbcType=DOUBLE}, 
+      #{m1ClosingBal,jdbcType=DOUBLE}, #{m2ClosingBal,jdbcType=DOUBLE}, #{m0GrowthRate,jdbcType=DOUBLE}, 
+      #{m1GrowthRate,jdbcType=DOUBLE}, #{m2GrowthRate,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cv.kdata.model.CiMoneySup">
+    insert into ci_money_sup
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="statDate != null">
+        stat_date,
+      </if>
+      <if test="m0ClosingBal != null">
+        m0_closing_bal,
+      </if>
+      <if test="m1ClosingBal != null">
+        m1_closing_bal,
+      </if>
+      <if test="m2ClosingBal != null">
+        m2_closing_bal,
+      </if>
+      <if test="m0GrowthRate != null">
+        m0_growth_rate,
+      </if>
+      <if test="m1GrowthRate != null">
+        m1_growth_rate,
+      </if>
+      <if test="m2GrowthRate != null">
+        m2_growth_rate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="statDate != null">
+        #{statDate,jdbcType=VARCHAR},
+      </if>
+      <if test="m0ClosingBal != null">
+        #{m0ClosingBal,jdbcType=DOUBLE},
+      </if>
+      <if test="m1ClosingBal != null">
+        #{m1ClosingBal,jdbcType=DOUBLE},
+      </if>
+      <if test="m2ClosingBal != null">
+        #{m2ClosingBal,jdbcType=DOUBLE},
+      </if>
+      <if test="m0GrowthRate != null">
+        #{m0GrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="m1GrowthRate != null">
+        #{m1GrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="m2GrowthRate != null">
+        #{m2GrowthRate,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cv.kdata.model.CiMoneySup">
+    update ci_money_sup
+    <set>
+      <if test="statDate != null">
+        stat_date = #{statDate,jdbcType=VARCHAR},
+      </if>
+      <if test="m0ClosingBal != null">
+        m0_closing_bal = #{m0ClosingBal,jdbcType=DOUBLE},
+      </if>
+      <if test="m1ClosingBal != null">
+        m1_closing_bal = #{m1ClosingBal,jdbcType=DOUBLE},
+      </if>
+      <if test="m2ClosingBal != null">
+        m2_closing_bal = #{m2ClosingBal,jdbcType=DOUBLE},
+      </if>
+      <if test="m0GrowthRate != null">
+        m0_growth_rate = #{m0GrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="m1GrowthRate != null">
+        m1_growth_rate = #{m1GrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="m2GrowthRate != null">
+        m2_growth_rate = #{m2GrowthRate,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cv.kdata.model.CiMoneySup">
+    update ci_money_sup
+    set stat_date = #{statDate,jdbcType=VARCHAR},
+      m0_closing_bal = #{m0ClosingBal,jdbcType=DOUBLE},
+      m1_closing_bal = #{m1ClosingBal,jdbcType=DOUBLE},
+      m2_closing_bal = #{m2ClosingBal,jdbcType=DOUBLE},
+      m0_growth_rate = #{m0GrowthRate,jdbcType=DOUBLE},
+      m1_growth_rate = #{m1GrowthRate,jdbcType=DOUBLE},
+      m2_growth_rate = #{m2GrowthRate,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

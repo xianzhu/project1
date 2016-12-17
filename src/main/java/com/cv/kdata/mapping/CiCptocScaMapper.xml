@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.kdata.dao.CiCptocScaMapper">
+  <resultMap id="BaseResultMap" type="com.cv.kdata.model.CiCptocSca">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="stat_date" jdbcType="VARCHAR" property="statDate" />
+    <result column="deal_year_value" jdbcType="DOUBLE" property="dealYearValue" />
+    <result column="deal_growth_rate" jdbcType="DOUBLE" property="dealGrowthRate" />
+    <result column="ent_year_value" jdbcType="DOUBLE" property="entYearValue" />
+    <result column="ent_growth_rate" jdbcType="DOUBLE" property="entGrowthRate" />
+    <result column="chn_year_value" jdbcType="DOUBLE" property="chnYearValue" />
+    <result column="chn_growth_rate" jdbcType="DOUBLE" property="chnGrowthRate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, stat_date, deal_year_value, deal_growth_rate, ent_year_value, ent_growth_rate, 
+    chn_year_value, chn_growth_rate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ci_cptoc_sca
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from ci_cptoc_sca
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ci_cptoc_sca
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cv.kdata.model.CiCptocSca">
+    insert into ci_cptoc_sca (id, stat_date, deal_year_value, 
+      deal_growth_rate, ent_year_value, ent_growth_rate, 
+      chn_year_value, chn_growth_rate)
+    values (#{id,jdbcType=INTEGER}, #{statDate,jdbcType=VARCHAR}, #{dealYearValue,jdbcType=DOUBLE}, 
+      #{dealGrowthRate,jdbcType=DOUBLE}, #{entYearValue,jdbcType=DOUBLE}, #{entGrowthRate,jdbcType=DOUBLE}, 
+      #{chnYearValue,jdbcType=DOUBLE}, #{chnGrowthRate,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cv.kdata.model.CiCptocSca">
+    insert into ci_cptoc_sca
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="statDate != null">
+        stat_date,
+      </if>
+      <if test="dealYearValue != null">
+        deal_year_value,
+      </if>
+      <if test="dealGrowthRate != null">
+        deal_growth_rate,
+      </if>
+      <if test="entYearValue != null">
+        ent_year_value,
+      </if>
+      <if test="entGrowthRate != null">
+        ent_growth_rate,
+      </if>
+      <if test="chnYearValue != null">
+        chn_year_value,
+      </if>
+      <if test="chnGrowthRate != null">
+        chn_growth_rate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="statDate != null">
+        #{statDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dealYearValue != null">
+        #{dealYearValue,jdbcType=DOUBLE},
+      </if>
+      <if test="dealGrowthRate != null">
+        #{dealGrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="entYearValue != null">
+        #{entYearValue,jdbcType=DOUBLE},
+      </if>
+      <if test="entGrowthRate != null">
+        #{entGrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="chnYearValue != null">
+        #{chnYearValue,jdbcType=DOUBLE},
+      </if>
+      <if test="chnGrowthRate != null">
+        #{chnGrowthRate,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cv.kdata.model.CiCptocSca">
+    update ci_cptoc_sca
+    <set>
+      <if test="statDate != null">
+        stat_date = #{statDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dealYearValue != null">
+        deal_year_value = #{dealYearValue,jdbcType=DOUBLE},
+      </if>
+      <if test="dealGrowthRate != null">
+        deal_growth_rate = #{dealGrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="entYearValue != null">
+        ent_year_value = #{entYearValue,jdbcType=DOUBLE},
+      </if>
+      <if test="entGrowthRate != null">
+        ent_growth_rate = #{entGrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="chnYearValue != null">
+        chn_year_value = #{chnYearValue,jdbcType=DOUBLE},
+      </if>
+      <if test="chnGrowthRate != null">
+        chn_growth_rate = #{chnGrowthRate,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cv.kdata.model.CiCptocSca">
+    update ci_cptoc_sca
+    set stat_date = #{statDate,jdbcType=VARCHAR},
+      deal_year_value = #{dealYearValue,jdbcType=DOUBLE},
+      deal_growth_rate = #{dealGrowthRate,jdbcType=DOUBLE},
+      ent_year_value = #{entYearValue,jdbcType=DOUBLE},
+      ent_growth_rate = #{entGrowthRate,jdbcType=DOUBLE},
+      chn_year_value = #{chnYearValue,jdbcType=DOUBLE},
+      chn_growth_rate = #{chnGrowthRate,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

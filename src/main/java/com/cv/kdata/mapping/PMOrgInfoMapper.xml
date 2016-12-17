@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.kdata.dao.PMOrgInfoMapper">
+	<resultMap id="BaseResultMap" type="com.cv.kdata.model.PMOrgInfo">
+		<id column="org_id" jdbcType="INTEGER" property="orgId" />
+		<result column="org_cn_name" jdbcType="VARCHAR" property="orgCnName" />
+		<result column="org_cn_short" jdbcType="VARCHAR" property="orgCnShort" />
+		<result column="org_nickname" jdbcType="VARCHAR" property="orgNickname" />
+		<result column="org_en_name" jdbcType="VARCHAR" property="orgEnName" />
+		<result column="org_map_entity" jdbcType="VARCHAR" property="orgMapEntity" />
+		<result column="fund_info" jdbcType="VARCHAR" property="fundInfo" />
+		<result column="invest_info" jdbcType="VARCHAR" property="investInfo" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+		type="com.cv.kdata.model.PMOrgInfo">
+		<result column="org_cn_desc" jdbcType="LONGVARCHAR" property="orgCnDesc" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		org_id, org_cn_name, org_cn_short, org_nickname,
+		org_en_name, org_map_entity,
+		fund_info,
+		invest_info
+	</sql>
+	<sql id="Blob_Column_List">
+		org_cn_desc
+	</sql>
+
+	<select id="getIndexInfo" resultMap="BaseResultMap">
+		select * from pm_org_info where 
+		org_cn_name like concat('%',#{0},'%') or
+		org_cn_short like concat('%',#{0},'%') or
+		org_nickname like concat('%',#{0},'%') limit #{1},10
+	</select>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from pm_org_info
+		where org_id = #{orgId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		pm_org_info
+		where org_id = #{orgId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.cv.kdata.model.PMOrgInfo">
+		insert into pm_org_info
+		(org_id, org_cn_name, org_cn_short,
+		org_nickname, org_en_name,
+		org_map_entity,
+		fund_info, invest_info, org_cn_desc
+		)
+		values
+		(#{orgId,jdbcType=INTEGER}, #{orgCnName,jdbcType=VARCHAR},
+		#{orgCnShort,jdbcType=VARCHAR},
+		#{orgNickname,jdbcType=VARCHAR},
+		#{orgEnName,jdbcType=VARCHAR}, #{orgMapEntity,jdbcType=VARCHAR},
+		#{fundInfo,jdbcType=VARCHAR}, #{investInfo,jdbcType=VARCHAR},
+		#{orgCnDesc,jdbcType=LONGVARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.cv.kdata.model.PMOrgInfo">
+		insert into pm_org_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="orgId != null">
+				org_id,
+			</if>
+			<if test="orgCnName != null">
+				org_cn_name,
+			</if>
+			<if test="orgCnShort != null">
+				org_cn_short,
+			</if>
+			<if test="orgNickname != null">
+				org_nickname,
+			</if>
+			<if test="orgEnName != null">
+				org_en_name,
+			</if>
+			<if test="orgMapEntity != null">
+				org_map_entity,
+			</if>
+			<if test="fundInfo != null">
+				fund_info,
+			</if>
+			<if test="investInfo != null">
+				invest_info,
+			</if>
+			<if test="orgCnDesc != null">
+				org_cn_desc,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="orgId != null">
+				#{orgId,jdbcType=INTEGER},
+			</if>
+			<if test="orgCnName != null">
+				#{orgCnName,jdbcType=VARCHAR},
+			</if>
+			<if test="orgCnShort != null">
+				#{orgCnShort,jdbcType=VARCHAR},
+			</if>
+			<if test="orgNickname != null">
+				#{orgNickname,jdbcType=VARCHAR},
+			</if>
+			<if test="orgEnName != null">
+				#{orgEnName,jdbcType=VARCHAR},
+			</if>
+			<if test="orgMapEntity != null">
+				#{orgMapEntity,jdbcType=VARCHAR},
+			</if>
+			<if test="fundInfo != null">
+				#{fundInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="investInfo != null">
+				#{investInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="orgCnDesc != null">
+				#{orgCnDesc,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.cv.kdata.model.PMOrgInfo">
+		update pm_org_info
+		<set>
+			<if test="orgCnName != null">
+				org_cn_name = #{orgCnName,jdbcType=VARCHAR},
+			</if>
+			<if test="orgCnShort != null">
+				org_cn_short = #{orgCnShort,jdbcType=VARCHAR},
+			</if>
+			<if test="orgNickname != null">
+				org_nickname = #{orgNickname,jdbcType=VARCHAR},
+			</if>
+			<if test="orgEnName != null">
+				org_en_name = #{orgEnName,jdbcType=VARCHAR},
+			</if>
+			<if test="orgMapEntity != null">
+				org_map_entity = #{orgMapEntity,jdbcType=VARCHAR},
+			</if>
+			<if test="fundInfo != null">
+				fund_info = #{fundInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="investInfo != null">
+				invest_info = #{investInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="orgCnDesc != null">
+				org_cn_desc = #{orgCnDesc,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where org_id = #{orgId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cv.kdata.model.PMOrgInfo">
+		update
+		pm_org_info
+		set org_cn_name = #{orgCnName,jdbcType=VARCHAR},
+		org_cn_short = #{orgCnShort,jdbcType=VARCHAR},
+		org_nickname =
+		#{orgNickname,jdbcType=VARCHAR},
+		org_en_name =
+		#{orgEnName,jdbcType=VARCHAR},
+		org_map_entity =
+		#{orgMapEntity,jdbcType=VARCHAR},
+		fund_info =
+		#{fundInfo,jdbcType=VARCHAR},
+		invest_info =
+		#{investInfo,jdbcType=VARCHAR},
+		org_cn_desc =
+		#{orgCnDesc,jdbcType=LONGVARCHAR}
+		where org_id =
+		#{orgId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.cv.kdata.model.PMOrgInfo">
+		update pm_org_info
+		set org_cn_name = #{orgCnName,jdbcType=VARCHAR},
+		org_cn_short =
+		#{orgCnShort,jdbcType=VARCHAR},
+		org_nickname =
+		#{orgNickname,jdbcType=VARCHAR},
+		org_en_name =
+		#{orgEnName,jdbcType=VARCHAR},
+		org_map_entity =
+		#{orgMapEntity,jdbcType=VARCHAR},
+		fund_info =
+		#{fundInfo,jdbcType=VARCHAR},
+		invest_info =
+		#{investInfo,jdbcType=VARCHAR}
+		where org_id = #{orgId,jdbcType=INTEGER}
+	</update>
+</mapper>

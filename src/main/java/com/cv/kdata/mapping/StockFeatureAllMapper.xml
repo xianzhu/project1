@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.kdata.dao.StockFeatureAllMapper">
+  <resultMap id="BaseResultMap" type="com.cv.kdata.model.StockFeatureAll">
+    <result column="stock_code" jdbcType="VARCHAR" property="stockCode" />
+    <result column="cn_name" jdbcType="VARCHAR" property="cnName" />
+    <result column="stock_type" jdbcType="BIGINT" property="stockType" />
+    <result column="csrc_industry" jdbcType="VARCHAR" property="csrcIndustry" />
+    <result column="em_industry" jdbcType="VARCHAR" property="emIndustry" />
+    <result column="topic_industry" jdbcType="BIGINT" property="topicIndustry" />
+    <result column="prov" jdbcType="VARCHAR" property="prov" />
+    <result column="is_dev" jdbcType="BIGINT" property="isDev" />
+    <result column="chairman_cum_ceo" jdbcType="BIGINT" property="chairmanCumCeo" />
+    <result column="is_state_hold" jdbcType="BIGINT" property="isStateHold" />
+    <result column="top1_hold" jdbcType="DOUBLE" property="top1Hold" />
+    <result column="top10_hold" jdbcType="DOUBLE" property="top10Hold" />
+    <result column="share_conc" jdbcType="DOUBLE" property="shareConc" />
+    <result column="share_balance" jdbcType="DOUBLE" property="shareBalance" />
+    <result column="person_hold" jdbcType="DOUBLE" property="personHold" />
+    <result column="ceo_education" jdbcType="BIGINT" property="ceoEducation" />
+    <result column="ceo_age" jdbcType="BIGINT" property="ceoAge" />
+    <result column="pe" jdbcType="DOUBLE" property="pe" />
+    <result column="pb" jdbcType="DOUBLE" property="pb" />
+    <result column="ps" jdbcType="DOUBLE" property="ps" />
+    <result column="total_stock" jdbcType="DOUBLE" property="totalStock" />
+    <result column="market_cap" jdbcType="DOUBLE" property="marketCap" />
+    <result column="net_profit" jdbcType="DOUBLE" property="netProfit" />
+    <result column="opt_profit_growth" jdbcType="DOUBLE" property="optProfitGrowth" />
+    <result column="net_profit_on_asset" jdbcType="DOUBLE" property="netProfitOnAsset" />
+    <result column="opt_profit" jdbcType="DOUBLE" property="optProfit" />
+    <result column="total_asset" jdbcType="DOUBLE" property="totalAsset" />
+    <result column="profit" jdbcType="DOUBLE" property="profit" />
+    <result column="profit_growth" jdbcType="DOUBLE" property="profitGrowth" />
+    <result column="total_asset_growth" jdbcType="DOUBLE" property="totalAssetGrowth" />
+    <result column="holder_equity_on_liab" jdbcType="DOUBLE" property="holderEquityOnLiab" />
+    <result column="liab_ratio" jdbcType="DOUBLE" property="liabRatio" />
+    <result column="opt_income" jdbcType="DOUBLE" property="optIncome" />
+    <result column="asset_turnover" jdbcType="DOUBLE" property="assetTurnover" />
+    <result column="net_profit_on_income" jdbcType="DOUBLE" property="netProfitOnIncome" />
+    <result column="opt_profit_on_income" jdbcType="DOUBLE" property="optProfitOnIncome" />
+    <result column="net_profit_margin" jdbcType="DOUBLE" property="netProfitMargin" />
+    <result column="ma_fee_on_income" jdbcType="DOUBLE" property="maFeeOnIncome" />
+    <result column="trade_cycle" jdbcType="DOUBLE" property="tradeCycle" />
+    <result column="days_in_inventory" jdbcType="DOUBLE" property="daysInInventory" />
+    <result column="interest_liab_on_capital" jdbcType="DOUBLE" property="interestLiabOnCapital" />
+    <result column="current_asset_ratio" jdbcType="DOUBLE" property="currentAssetRatio" />
+    <result column="tangible_asset_ratio" jdbcType="DOUBLE" property="tangibleAssetRatio" />
+    <result column="roa" jdbcType="DOUBLE" property="roa" />
+    <result column="non_current_asset_ratio" jdbcType="DOUBLE" property="nonCurrentAssetRatio" />
+    <result column="tangible_asset_on_liab" jdbcType="DOUBLE" property="tangibleAssetOnLiab" />
+    <result column="current_liab_ratio" jdbcType="DOUBLE" property="currentLiabRatio" />
+    <result column="gross_profit_margin" jdbcType="DOUBLE" property="grossProfitMargin" />
+    <result column="opt_cost_on_income" jdbcType="DOUBLE" property="optCostOnIncome" />
+    <result column="roic" jdbcType="DOUBLE" property="roic" />
+    <result column="opt_income_growth" jdbcType="DOUBLE" property="optIncomeGrowth" />
+    <result column="roe" jdbcType="DOUBLE" property="roe" />
+  </resultMap>
+  
+  <select id="getStockPotentialInfo" resultMap="BaseResultMap">
+	select ent.stock_code, ent.cn_name,ent.is_state_hold,ent.total_asset,ent.opt_income,ent.opt_profit,ent.opt_profit_on_income,ent.liab_ratio,ent.gross_profit_margin ,ent.stock_type
+	from stock_list_potential_ma ma inner join stock_feature_all ent on ma.list_stock_code = ent.stock_code where ma.xsb_stock_code = #{stockCode} and ma.is_xsb_ma = 1
+  </select>
+  
+  <select id="getXsbPotentialInfo" resultMap="BaseResultMap">
+	select ent.stock_code, ent.cn_name,ent.is_state_hold,ent.total_asset,ent.opt_income,ent.opt_profit,ent.opt_profit_on_income,ent.liab_ratio,ent.gross_profit_margin ,ent.stock_type
+	from stock_list_potential_ma ma inner join stock_feature_all ent on ma.xsb_stock_code = ent.stock_code where ma.list_stock_code = #{stockCode} and ma.is_list_ma = 1
+  </select>
+  
+  <select id="getStockInfo" resultMap="BaseResultMap">
+	select ent.stock_code, ent.cn_name,ent.is_state_hold,ent.total_asset,ent.opt_income,ent.opt_profit,ent.opt_profit_on_income,ent.liab_ratio,ent.gross_profit_margin ,ent.stock_type
+	from stock_xsb_list_matching ma inner join stock_feature_all ent on ma.list_stock_code = ent.stock_code where ma.xsb_stock_code = #{stockCode} and ma.is_xsb_matching = 1
+  </select>
+  
+  <select id="getXsbInfo" resultMap="BaseResultMap">
+	select ent.stock_code, ent.cn_name,ent.is_state_hold,ent.total_asset,ent.opt_income,ent.opt_profit,ent.opt_profit_on_income,ent.liab_ratio,ent.gross_profit_margin ,ent.stock_type
+	from stock_xsb_list_matching ma inner join stock_feature_all ent on ma.xsb_stock_code = ent.stock_code where ma.list_stock_code = #{stockCode} and ma.is_list_matching = 1
+  </select>
+  
+  <insert id="insert" parameterType="com.cv.kdata.model.StockFeatureAll">
+    insert into stock_feature_all (stock_code, cn_name, stock_type, 
+      csrc_industry, em_industry, topic_industry, 
+      prov, is_dev, chairman_cum_ceo, 
+      is_state_hold, top1_hold, top10_hold, 
+      share_conc, share_balance, person_hold, 
+      ceo_education, ceo_age, pe, 
+      pb, ps, total_stock, market_cap, 
+      net_profit, opt_profit_growth, net_profit_on_asset, 
+      opt_profit, total_asset, profit, 
+      profit_growth, total_asset_growth, holder_equity_on_liab, 
+      liab_ratio, opt_income, asset_turnover, 
+      net_profit_on_income, opt_profit_on_income, net_profit_margin, 
+      ma_fee_on_income, trade_cycle, days_in_inventory, 
+      interest_liab_on_capital, current_asset_ratio, 
+      tangible_asset_ratio, roa, non_current_asset_ratio, 
+      tangible_asset_on_liab, current_liab_ratio, gross_profit_margin, 
+      opt_cost_on_income, roic, opt_income_growth, 
+      roe)
+    values (#{stockCode,jdbcType=VARCHAR}, #{cnName,jdbcType=VARCHAR}, #{stockType,jdbcType=BIGINT}, 
+      #{csrcIndustry,jdbcType=VARCHAR}, #{emIndustry,jdbcType=VARCHAR}, #{topicIndustry,jdbcType=BIGINT}, 
+      #{prov,jdbcType=VARCHAR}, #{isDev,jdbcType=BIGINT}, #{chairmanCumCeo,jdbcType=BIGINT}, 
+      #{isStateHold,jdbcType=BIGINT}, #{top1Hold,jdbcType=DOUBLE}, #{top10Hold,jdbcType=DOUBLE}, 
+      #{shareConc,jdbcType=DOUBLE}, #{shareBalance,jdbcType=DOUBLE}, #{personHold,jdbcType=DOUBLE}, 
+      #{ceoEducation,jdbcType=BIGINT}, #{ceoAge,jdbcType=BIGINT}, #{pe,jdbcType=DOUBLE}, 
+      #{pb,jdbcType=DOUBLE}, #{ps,jdbcType=DOUBLE}, #{totalStock,jdbcType=DOUBLE}, #{marketCap,jdbcType=DOUBLE}, 
+      #{netProfit,jdbcType=DOUBLE}, #{optProfitGrowth,jdbcType=DOUBLE}, #{netProfitOnAsset,jdbcType=DOUBLE}, 
+      #{optProfit,jdbcType=DOUBLE}, #{totalAsset,jdbcType=DOUBLE}, #{profit,jdbcType=DOUBLE}, 
+      #{profitGrowth,jdbcType=DOUBLE}, #{totalAssetGrowth,jdbcType=DOUBLE}, #{holderEquityOnLiab,jdbcType=DOUBLE}, 
+      #{liabRatio,jdbcType=DOUBLE}, #{optIncome,jdbcType=DOUBLE}, #{assetTurnover,jdbcType=DOUBLE}, 
+      #{netProfitOnIncome,jdbcType=DOUBLE}, #{optProfitOnIncome,jdbcType=DOUBLE}, #{netProfitMargin,jdbcType=DOUBLE}, 
+      #{maFeeOnIncome,jdbcType=DOUBLE}, #{tradeCycle,jdbcType=DOUBLE}, #{daysInInventory,jdbcType=DOUBLE}, 
+      #{interestLiabOnCapital,jdbcType=DOUBLE}, #{currentAssetRatio,jdbcType=DOUBLE}, 
+      #{tangibleAssetRatio,jdbcType=DOUBLE}, #{roa,jdbcType=DOUBLE}, #{nonCurrentAssetRatio,jdbcType=DOUBLE}, 
+      #{tangibleAssetOnLiab,jdbcType=DOUBLE}, #{currentLiabRatio,jdbcType=DOUBLE}, #{grossProfitMargin,jdbcType=DOUBLE}, 
+      #{optCostOnIncome,jdbcType=DOUBLE}, #{roic,jdbcType=DOUBLE}, #{optIncomeGrowth,jdbcType=DOUBLE}, 
+      #{roe,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cv.kdata.model.StockFeatureAll">
+    insert into stock_feature_all
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stockCode != null">
+        stock_code,
+      </if>
+      <if test="cnName != null">
+        cn_name,
+      </if>
+      <if test="stockType != null">
+        stock_type,
+      </if>
+      <if test="csrcIndustry != null">
+        csrc_industry,
+      </if>
+      <if test="emIndustry != null">
+        em_industry,
+      </if>
+      <if test="topicIndustry != null">
+        topic_industry,
+      </if>
+      <if test="prov != null">
+        prov,
+      </if>
+      <if test="isDev != null">
+        is_dev,
+      </if>
+      <if test="chairmanCumCeo != null">
+        chairman_cum_ceo,
+      </if>
+      <if test="isStateHold != null">
+        is_state_hold,
+      </if>
+      <if test="top1Hold != null">
+        top1_hold,
+      </if>
+      <if test="top10Hold != null">
+        top10_hold,
+      </if>
+      <if test="shareConc != null">
+        share_conc,
+      </if>
+      <if test="shareBalance != null">
+        share_balance,
+      </if>
+      <if test="personHold != null">
+        person_hold,
+      </if>
+      <if test="ceoEducation != null">
+        ceo_education,
+      </if>
+      <if test="ceoAge != null">
+        ceo_age,
+      </if>
+      <if test="pe != null">
+        pe,
+      </if>
+      <if test="pb != null">
+        pb,
+      </if>
+      <if test="ps != null">
+        ps,
+      </if>
+      <if test="totalStock != null">
+        total_stock,
+      </if>
+      <if test="marketCap != null">
+        market_cap,
+      </if>
+      <if test="netProfit != null">
+        net_profit,
+      </if>
+      <if test="optProfitGrowth != null">
+        opt_profit_growth,
+      </if>
+      <if test="netProfitOnAsset != null">
+        net_profit_on_asset,
+      </if>
+      <if test="optProfit != null">
+        opt_profit,
+      </if>
+      <if test="totalAsset != null">
+        total_asset,
+      </if>
+      <if test="profit != null">
+        profit,
+      </if>
+      <if test="profitGrowth != null">
+        profit_growth,
+      </if>
+      <if test="totalAssetGrowth != null">
+        total_asset_growth,
+      </if>
+      <if test="holderEquityOnLiab != null">
+        holder_equity_on_liab,
+      </if>
+      <if test="liabRatio != null">
+        liab_ratio,
+      </if>
+      <if test="optIncome != null">
+        opt_income,
+      </if>
+      <if test="assetTurnover != null">
+        asset_turnover,
+      </if>
+      <if test="netProfitOnIncome != null">
+        net_profit_on_income,
+      </if>
+      <if test="optProfitOnIncome != null">
+        opt_profit_on_income,
+      </if>
+      <if test="netProfitMargin != null">
+        net_profit_margin,
+      </if>
+      <if test="maFeeOnIncome != null">
+        ma_fee_on_income,
+      </if>
+      <if test="tradeCycle != null">
+        trade_cycle,
+      </if>
+      <if test="daysInInventory != null">
+        days_in_inventory,
+      </if>
+      <if test="interestLiabOnCapital != null">
+        interest_liab_on_capital,
+      </if>
+      <if test="currentAssetRatio != null">
+        current_asset_ratio,
+      </if>
+      <if test="tangibleAssetRatio != null">
+        tangible_asset_ratio,
+      </if>
+      <if test="roa != null">
+        roa,
+      </if>
+      <if test="nonCurrentAssetRatio != null">
+        non_current_asset_ratio,
+      </if>
+      <if test="tangibleAssetOnLiab != null">
+        tangible_asset_on_liab,
+      </if>
+      <if test="currentLiabRatio != null">
+        current_liab_ratio,
+      </if>
+      <if test="grossProfitMargin != null">
+        gross_profit_margin,
+      </if>
+      <if test="optCostOnIncome != null">
+        opt_cost_on_income,
+      </if>
+      <if test="roic != null">
+        roic,
+      </if>
+      <if test="optIncomeGrowth != null">
+        opt_income_growth,
+      </if>
+      <if test="roe != null">
+        roe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stockCode != null">
+        #{stockCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cnName != null">
+        #{cnName,jdbcType=VARCHAR},
+      </if>
+      <if test="stockType != null">
+        #{stockType,jdbcType=BIGINT},
+      </if>
+      <if test="csrcIndustry != null">
+        #{csrcIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="emIndustry != null">
+        #{emIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="topicIndustry != null">
+        #{topicIndustry,jdbcType=BIGINT},
+      </if>
+      <if test="prov != null">
+        #{prov,jdbcType=VARCHAR},
+      </if>
+      <if test="isDev != null">
+        #{isDev,jdbcType=BIGINT},
+      </if>
+      <if test="chairmanCumCeo != null">
+        #{chairmanCumCeo,jdbcType=BIGINT},
+      </if>
+      <if test="isStateHold != null">
+        #{isStateHold,jdbcType=BIGINT},
+      </if>
+      <if test="top1Hold != null">
+        #{top1Hold,jdbcType=DOUBLE},
+      </if>
+      <if test="top10Hold != null">
+        #{top10Hold,jdbcType=DOUBLE},
+      </if>
+      <if test="shareConc != null">
+        #{shareConc,jdbcType=DOUBLE},
+      </if>
+      <if test="shareBalance != null">
+        #{shareBalance,jdbcType=DOUBLE},
+      </if>
+      <if test="personHold != null">
+        #{personHold,jdbcType=DOUBLE},
+      </if>
+      <if test="ceoEducation != null">
+        #{ceoEducation,jdbcType=BIGINT},
+      </if>
+      <if test="ceoAge != null">
+        #{ceoAge,jdbcType=BIGINT},
+      </if>
+      <if test="pe != null">
+        #{pe,jdbcType=DOUBLE},
+      </if>
+      <if test="pb != null">
+        #{pb,jdbcType=DOUBLE},
+      </if>
+      <if test="ps != null">
+        #{ps,jdbcType=DOUBLE},
+      </if>
+      <if test="totalStock != null">
+        #{totalStock,jdbcType=DOUBLE},
+      </if>
+      <if test="marketCap != null">
+        #{marketCap,jdbcType=DOUBLE},
+      </if>
+      <if test="netProfit != null">
+        #{netProfit,jdbcType=DOUBLE},
+      </if>
+      <if test="optProfitGrowth != null">
+        #{optProfitGrowth,jdbcType=DOUBLE},
+      </if>
+      <if test="netProfitOnAsset != null">
+        #{netProfitOnAsset,jdbcType=DOUBLE},
+      </if>
+      <if test="optProfit != null">
+        #{optProfit,jdbcType=DOUBLE},
+      </if>
+      <if test="totalAsset != null">
+        #{totalAsset,jdbcType=DOUBLE},
+      </if>
+      <if test="profit != null">
+        #{profit,jdbcType=DOUBLE},
+      </if>
+      <if test="profitGrowth != null">
+        #{profitGrowth,jdbcType=DOUBLE},
+      </if>
+      <if test="totalAssetGrowth != null">
+        #{totalAssetGrowth,jdbcType=DOUBLE},
+      </if>
+      <if test="holderEquityOnLiab != null">
+        #{holderEquityOnLiab,jdbcType=DOUBLE},
+      </if>
+      <if test="liabRatio != null">
+        #{liabRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="optIncome != null">
+        #{optIncome,jdbcType=DOUBLE},
+      </if>
+      <if test="assetTurnover != null">
+        #{assetTurnover,jdbcType=DOUBLE},
+      </if>
+      <if test="netProfitOnIncome != null">
+        #{netProfitOnIncome,jdbcType=DOUBLE},
+      </if>
+      <if test="optProfitOnIncome != null">
+        #{optProfitOnIncome,jdbcType=DOUBLE},
+      </if>
+      <if test="netProfitMargin != null">
+        #{netProfitMargin,jdbcType=DOUBLE},
+      </if>
+      <if test="maFeeOnIncome != null">
+        #{maFeeOnIncome,jdbcType=DOUBLE},
+      </if>
+      <if test="tradeCycle != null">
+        #{tradeCycle,jdbcType=DOUBLE},
+      </if>
+      <if test="daysInInventory != null">
+        #{daysInInventory,jdbcType=DOUBLE},
+      </if>
+      <if test="interestLiabOnCapital != null">
+        #{interestLiabOnCapital,jdbcType=DOUBLE},
+      </if>
+      <if test="currentAssetRatio != null">
+        #{currentAssetRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="tangibleAssetRatio != null">
+        #{tangibleAssetRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="roa != null">
+        #{roa,jdbcType=DOUBLE},
+      </if>
+      <if test="nonCurrentAssetRatio != null">
+        #{nonCurrentAssetRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="tangibleAssetOnLiab != null">
+        #{tangibleAssetOnLiab,jdbcType=DOUBLE},
+      </if>
+      <if test="currentLiabRatio != null">
+        #{currentLiabRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="grossProfitMargin != null">
+        #{grossProfitMargin,jdbcType=DOUBLE},
+      </if>
+      <if test="optCostOnIncome != null">
+        #{optCostOnIncome,jdbcType=DOUBLE},
+      </if>
+      <if test="roic != null">
+        #{roic,jdbcType=DOUBLE},
+      </if>
+      <if test="optIncomeGrowth != null">
+        #{optIncomeGrowth,jdbcType=DOUBLE},
+      </if>
+      <if test="roe != null">
+        #{roe,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+</mapper>

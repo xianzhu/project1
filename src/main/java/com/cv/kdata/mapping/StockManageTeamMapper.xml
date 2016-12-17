@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.kdata.dao.StockManageTeamMapper">
+  <resultMap id="BaseResultMap" type="com.cv.kdata.model.StockManageTeam">
+    <result column="stock_code" jdbcType="VARCHAR" property="stockCode" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="pos_type" jdbcType="VARCHAR" property="posType" />
+    <result column="pos_startdate" jdbcType="VARCHAR" property="posStartdate" />
+    <result column="pos_enddate" jdbcType="VARCHAR" property="posEnddate" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="birthdate" jdbcType="VARCHAR" property="birthdate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cv.kdata.model.StockManageTeam">
+    <result column="resume" jdbcType="LONGVARCHAR" property="resume" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    resume
+  </sql>
+  <insert id="insert" parameterType="com.cv.kdata.model.StockManageTeam">
+    insert into stock_manage_team (stock_code, name, position, 
+      pos_type, pos_startdate, pos_enddate, 
+      sex, country, education, 
+      birthdate, resume)
+    values (#{stockCode,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{posType,jdbcType=VARCHAR}, #{posStartdate,jdbcType=VARCHAR}, #{posEnddate,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, 
+      #{birthdate,jdbcType=VARCHAR}, #{resume,jdbcType=LONGVARCHAR})
+  </insert>
+  
+  <select id="selectByStockCode" resultMap="BaseResultMap">
+	select * from stock_manage_team where stock_code = #{stockCode}
+  </select>
+  
+  <insert id="insertSelective" parameterType="com.cv.kdata.model.StockManageTeam">
+    insert into stock_manage_team
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stockCode != null">
+        stock_code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="posType != null">
+        pos_type,
+      </if>
+      <if test="posStartdate != null">
+        pos_startdate,
+      </if>
+      <if test="posEnddate != null">
+        pos_enddate,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="birthdate != null">
+        birthdate,
+      </if>
+      <if test="resume != null">
+        resume,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stockCode != null">
+        #{stockCode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="posType != null">
+        #{posType,jdbcType=VARCHAR},
+      </if>
+      <if test="posStartdate != null">
+        #{posStartdate,jdbcType=VARCHAR},
+      </if>
+      <if test="posEnddate != null">
+        #{posEnddate,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null">
+        #{birthdate,jdbcType=VARCHAR},
+      </if>
+      <if test="resume != null">
+        #{resume,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.kdata.dao.RptOrgForcusEntMapper">
+  <resultMap id="BaseResultMap" type="com.cv.kdata.model.RptOrgForcusEnt">
+    <result column="org_id" jdbcType="INTEGER" property="orgId" />
+    <result column="ent_cn_name" jdbcType="VARCHAR" property="entCnName" />
+    <result column="ent_uuid" jdbcType="VARCHAR" property="entUuid" />
+    <result column="happen_date" jdbcType="VARCHAR" property="happenDate" />
+  </resultMap>
+  <insert id="insert" parameterType="com.cv.kdata.model.RptOrgForcusEnt">
+    insert into rpt_org_forcus_ent (org_id, ent_cn_name, ent_uuid, 
+      happen_date)
+    values (#{orgId,jdbcType=INTEGER}, #{entCnName,jdbcType=VARCHAR}, #{entUuid,jdbcType=VARCHAR}, 
+      #{happenDate,jdbcType=VARCHAR})
+  </insert>
+  
+   <select id="getOrgFocusInfo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from rpt_org_forcus_ent where org_id = #{orgId} order by happen_date desc limit 10
+  </select>
+  
+  <insert id="insertSelective" parameterType="com.cv.kdata.model.RptOrgForcusEnt">
+    insert into rpt_org_forcus_ent
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="entCnName != null">
+        ent_cn_name,
+      </if>
+      <if test="entUuid != null">
+        ent_uuid,
+      </if>
+      <if test="happenDate != null">
+        happen_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="entCnName != null">
+        #{entCnName,jdbcType=VARCHAR},
+      </if>
+      <if test="entUuid != null">
+        #{entUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="happenDate != null">
+        #{happenDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

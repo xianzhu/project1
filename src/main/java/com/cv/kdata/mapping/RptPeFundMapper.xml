@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.kdata.dao.RptPeFundMapper">
+  <resultMap id="BaseResultMap" type="com.cv.kdata.model.RptPeFund">
+    <result column="fund_name" jdbcType="VARCHAR" property="fundName" />
+    <result column="fund_uuid" jdbcType="VARCHAR" property="fundUuid" />
+    <result column="reg_time" jdbcType="VARCHAR" property="regTime" />
+    <result column="manager" jdbcType="VARCHAR" property="manager" />
+    <result column="m_uuid" jdbcType="VARCHAR" property="mUuid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cv.kdata.model.RptPeFund">
+    <result column="domain" jdbcType="LONGVARCHAR" property="domain" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    domain
+  </sql>
+  <insert id="insert" parameterType="com.cv.kdata.model.RptPeFund">
+    insert into rpt_pe_fund (fund_name, fund_uuid, reg_time, 
+      manager, m_uuid, domain
+      )
+    values (#{fundName,jdbcType=VARCHAR}, #{fundUuid,jdbcType=VARCHAR}, #{regTime,jdbcType=VARCHAR}, 
+      #{manager,jdbcType=VARCHAR}, #{mUuid,jdbcType=VARCHAR}, #{domain,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <select id="getRptPeList" resultMap="BaseResultMap">
+    select * from rpt_pe_fund order by reg_time desc limit 100
+  </select>
+  <insert id="insertSelective" parameterType="com.cv.kdata.model.RptPeFund">
+    insert into rpt_pe_fund
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fundName != null">
+        fund_name,
+      </if>
+      <if test="fundUuid != null">
+        fund_uuid,
+      </if>
+      <if test="regTime != null">
+        reg_time,
+      </if>
+      <if test="manager != null">
+        manager,
+      </if>
+      <if test="mUuid != null">
+        m_uuid,
+      </if>
+      <if test="domain != null">
+        domain,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fundName != null">
+        #{fundName,jdbcType=VARCHAR},
+      </if>
+      <if test="fundUuid != null">
+        #{fundUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null">
+        #{regTime,jdbcType=VARCHAR},
+      </if>
+      <if test="manager != null">
+        #{manager,jdbcType=VARCHAR},
+      </if>
+      <if test="mUuid != null">
+        #{mUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="domain != null">
+        #{domain,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

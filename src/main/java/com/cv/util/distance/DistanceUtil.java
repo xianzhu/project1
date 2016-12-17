@@ -15,8 +15,8 @@ import org.apache.thrift.transport.TTransport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.cv.peseer.cont.RDDWebConst;
-import com.cv.peseer.model.WordWeight;
+import com.cv.kdata.cont.RDDWebConst;
+import com.cv.kdata.model.WordWeight;
 
 
 public class DistanceUtil {
