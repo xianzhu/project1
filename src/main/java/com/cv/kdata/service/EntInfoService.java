@@ -680,7 +680,12 @@ public class EntInfoService {
 		if(list !=null && !list.isEmpty()){
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("success!");
-			response.setRptToMaList(list.subList(from, from+20));
+
+			if(from < list.size()){
+				response.setRptToMaList(list.subList(from, from+20));
+			}else{
+				response.setMessage(String.format("from is more than %d",list.size()));
+			}
 			return;
 		}
 
