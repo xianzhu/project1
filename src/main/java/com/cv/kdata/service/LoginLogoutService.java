@@ -34,7 +34,7 @@ public class LoginLogoutService {
 		DBContextHolder.setDbType(DBContextHolder.PESEER_LOGIN);
 		LoginInfo loginInfo = loginInfoMapper.selectByUserName(username);
 
-		if(MD5Util.strMD5Validation(loginInfo.getPwd(), password)){
+		if(null != loginInfo && MD5Util.strMD5Validation(loginInfo.getPwd(), password)){
 			response.setStatus("success");
 			response.setMessage("登录成功");
 			String token = loginInfo.getCookie();
