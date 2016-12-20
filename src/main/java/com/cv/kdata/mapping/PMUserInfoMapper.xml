@@ -34,7 +34,7 @@
 
 	<select id="getOrgUserInfo" parameterType="java.lang.String"
 		resultMap="BaseResultMap">
-		select user_id,user_name,title from pm_user_info where organize_id =
+		select user_id,user_name,title, contact from pm_user_info where organize_id =
 		#{orgId}
 	</select>
 
