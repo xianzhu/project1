@@ -181,8 +181,8 @@ public class ElasticSearchService {
 	 * @param key
 	 * @return
 	 */
-	public List<Information> accureQuery(String key) {
-		List<Information> informations = ConstElasticClient.getElasticSeachClient().accurateSearch(key);
+	public List<Information> accureQuery(String key, int from, int count) {
+		List<Information> informations = ConstElasticClient.getElasticSeachClient().accurateSearch(key,from,count);
 		Collections.sort(informations);
 		return informations;
 	}

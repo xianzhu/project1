@@ -100,7 +100,7 @@ public class ElasticSearchClient {
 	 * @param key
 	 * @return
 	 */
-	public List<Information> accurateSearch(String key) {
+	public List<Information> accurateSearch(String key, int from, int count) {
 		// 1. 建立查询规则，key为空查询所有
 		QueryBuilder builder = QueryBuilders.matchAllQuery();
 		if (!StringUtils.isEmpty(key)) {
@@ -109,9 +109,12 @@ public class ElasticSearchClient {
 		}
 
 		// 2. 查询
+		from = from < 0 ? 0 : from;
+		count = count < 1 ? indexCount : count;
+
 		long startTime = System.currentTimeMillis();
 		SearchResponse res = client.prepareSearch(index).setTypes().setQuery(builder)
-				.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setSize(indexCount).setExplain(true)
+				.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setFrom(from).setSize(count).setExplain(true)
 				.execute().actionGet();
 		LOGGER.info(String.format("total time is %d\n", System.currentTimeMillis() - startTime));
 

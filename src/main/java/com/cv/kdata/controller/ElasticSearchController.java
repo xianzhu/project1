@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.model.Information;
 import com.cv.kdata.service.ElasticSearchService;
+import com.cv.kdata.util.StringUtil;
 import com.jfinal.plugin.activerecord.Db;
 
 @Controller
@@ -77,9 +78,12 @@ public class ElasticSearchController {
     public Map<String,Object> accurateSearch(HttpServletRequest request,Model model){
 
 		String key = request.getParameter("key");
+		int from = StringUtil.parseInt(request.getParameter("from"), 0);
+		int count = StringUtil.parseInt(request.getParameter("count"), 0);
 		ElasticSearchService service = new ElasticSearchService();
 
-		List<Information> infos = service.accureQuery(key);
+		List<Information> infos = service.accureQuery(key,from,count);
+
 
 		Map<String,Object> data = new HashMap<String,Object>();
 		data.put("status", RDDWebConst.SUCCESS);
