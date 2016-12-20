@@ -175,4 +175,15 @@ public class ElasticSearchService {
 
 		return information_list;
 	}
+
+	/**
+	 * 精确查询
+	 * @param key
+	 * @return
+	 */
+	public List<Information> accureQuery(String key) {
+		List<Information> informations = ConstElasticClient.getElasticSeachClient().accurateSearch(key);
+		Collections.sort(informations);
+		return informations;
+	}
 }

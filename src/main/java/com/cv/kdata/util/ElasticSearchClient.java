@@ -95,45 +95,28 @@ public class ElasticSearchClient {
 		return client;
 	}
 
-	public List<Information> search(String key) {
-		List<Information> list = new ArrayList<>();
-
+	/**
+	 * 精确匹配
+	 * @param key
+	 * @return
+	 */
+	public List<Information> accurateSearch(String key) {
 		// 1. 建立查询规则，key为空查询所有
 		QueryBuilder builder = QueryBuilders.matchAllQuery();
 		if (!StringUtils.isEmpty(key)) {
+			key = "\""+key+"\"";
 			builder = QueryBuilders.queryStringQuery(key);
 		}
 
 		// 2. 查询
 		long startTime = System.currentTimeMillis();
-		SearchResponse res = client.prepareSearch("index").setTypes().setQuery(builder)
-				.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setFrom(0).setSize(indexCount).setExplain(true)
+		SearchResponse res = client.prepareSearch(index).setTypes().setQuery(builder)
+				.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setSize(indexCount).setExplain(true)
 				.execute().actionGet();
 		LOGGER.info(String.format("total time is %d\n", System.currentTimeMillis() - startTime));
 
-		// 4. 解析
-		SearchHits shs = res.getHits();
-		for (SearchHit it : shs) {
-
-			Map<String, Object> fields = it.getSource();
-			if (!fields.isEmpty()) {
-				@SuppressWarnings("unchecked")
-				Map<String, Object> field = (Map<String, Object>) fields.get("doc");
-				if (!field.isEmpty()) {
-					String title = (String) field.get("title");
-					String channel = (String) field.get("channel");
-					String content = (String) field.get("content");
-					String url = (String) field.get("url");
-					String createTime = (String) field.get("create_time");
-
-					TypeInfo typeInfo = TypeInfoDataHelper.getTypeInfoWithCategoryNo(channel);
-
-					Information info = new Information(typeInfo, title, content, url, createTime);
-					list.add(info);
-				}
-			}
-		}
-		return list;
+		// 3. 解析
+		return analysisResult(res);
 	}
 
 	public void generateSearchRule(String key, Date begin_time, Date end_time, Collection<String> channel_list) {

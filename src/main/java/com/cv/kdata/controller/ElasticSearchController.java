@@ -71,4 +71,19 @@ public class ElasticSearchController {
 		data.put("list", infos);
 		return data;
 	}
+
+	@RequestMapping(value="/elasticsearch/accurate",method={RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+    public Map<String,Object> accurateSearch(HttpServletRequest request,Model model){
+
+		String key = request.getParameter("key");
+		ElasticSearchService service = new ElasticSearchService();
+
+		List<Information> infos = service.accureQuery(key);
+
+		Map<String,Object> data = new HashMap<String,Object>();
+		data.put("status", RDDWebConst.SUCCESS);
+		data.put("list", infos);
+		return data;
+	}
 }
