@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cv.kdata.cache.LoginInfoCache;
-import com.cv.kdata.cache.OrgInfoCache;
 import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.dao.CategoryTableMapper;
 import com.cv.kdata.dao.LoginInfoMapper;
@@ -88,8 +87,11 @@ public class OrganizeInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			PMOrgInfoFacade organizeInfo = OrgInfoCache.getInstance().getOrgInfo(Integer.valueOf(orgId).intValue());
-			response.setOrgInfo(organizeInfo);
+//			PMOrgInfoFacade organizeInfo = OrgInfoCache.getInstance().getOrgInfo(Integer.valueOf(orgId).intValue());
+			DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
+			PMOrgInfo organizeInfo = orgInfoMapper.selectByPrimaryKey(StringUtil.parseInt(orgId, 0));
+			PMOrgInfoFacade facade = new PMOrgInfoFacade(organizeInfo);
+			response.setOrgInfo(facade);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent organize basic info success!");
 		}

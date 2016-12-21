@@ -22,12 +22,12 @@
 	</sql>
 
 	<select id="getFundInfo" parameterType="java.lang.String"
-		resultMap="BaseResultMap">
+		resultMap="ResultMapWithBLOBs">
 		select a.* from pm_fund_info a inner join pm_id_org_fund b on
 		a.fund_id=b.fund_id where b.org_id = #{orgId}
 	</select>
 
-	<select id="getIndexInfo" resultMap="BaseResultMap">
+	<select id="getIndexInfo" resultMap="ResultMapWithBLOBs">
 		select * from pm_fund_info
 		where fund_name like concat('%',#{key},'%') limit #{from},10
 	</select>
