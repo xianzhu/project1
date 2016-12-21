@@ -1,5 +1,6 @@
 package com.cv.kdata.service;
 
+import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,16 +10,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cv.kdata.cache.LoginInfoCache;
 import com.cv.kdata.conf.ConfigurationHelper;
 import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.dao.LoginInfoMapper;
+import com.cv.kdata.dao.UserInfoMapper;
 import com.cv.kdata.datasource.DBContextHolder;
 import com.cv.kdata.model.LoginInfo;
 import com.cv.kdata.model.LoginRequestContext;
 import com.cv.kdata.model.RequestConext;
+import com.cv.kdata.model.UserInfoWithBLOBs;
 import com.cv.kdata.response.LoginLogoutResponse;
 import com.cv.kdata.util.LogWriterHelper;
-import com.cv.kdata.util.LoginInfoCache;
 import com.cv.kdata.util.MD5Util;
 import com.cv.kdata.util.StringUtil;
 
@@ -26,6 +29,9 @@ import com.cv.kdata.util.StringUtil;
 public class LoginLogoutService {
 	@Autowired
 	LoginInfoMapper loginInfoMapper;
+	@Autowired
+	UserInfoMapper userInfoMapper;
+
 	private static Logger LOGGER = LoggerFactory.getLogger(LoginLogoutService.class);
 	public void login(HttpServletRequest req, LoginLogoutResponse response){
 		String username = req.getParameter("user_name");
@@ -44,6 +50,12 @@ public class LoginLogoutService {
 				loginInfoMapper.updateByPrimaryKey(loginInfo);
 			}
 			LoginInfoCache.getInstance().putUid(token, loginInfo.getUid());
+			UserInfoWithBLOBs user = userInfoMapper.selectByPrimaryKey(loginInfo.getUid());
+			if(user != null){
+				user.setLastLoginTime(new Date());
+				userInfoMapper.updateByPrimaryKeySelective(user);
+			}
+
 			response.setToken(token);
 			req.getSession().setAttribute(RDDWebConst.TOKEN, token);
 			writeLog(req, loginInfo.getUid(), response.getStatus());

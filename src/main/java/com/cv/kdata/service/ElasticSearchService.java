@@ -8,16 +8,26 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.cv.kdata.cache.CategoryInfoCache;
+import com.cv.kdata.cache.LoginInfoCache;
 import com.cv.kdata.cont.RDDWebConst;
+import com.cv.kdata.dao.UserInfoMapper;
+import com.cv.kdata.datasource.DBContextHolder;
 import com.cv.kdata.model.Information;
-import com.cv.kdata.model.LoginInfo;
+import com.cv.kdata.model.UserInfoWithBLOBs;
 import com.cv.kdata.util.ConstElasticClient;
-import com.cv.kdata.util.PersonalInfo;
 import com.cv.kdata.util.StringUtil;
+import com.jfinal.plugin.activerecord.Db;
 
+@Service
 public class ElasticSearchService {
 	private static Logger logger = LoggerFactory.getLogger(ElasticSearchService.class);
+
+	@Autowired
+	UserInfoMapper userInfoMapper;
 
 	public class Paramenter {
 		private String callback; // 回调函数
@@ -103,10 +113,18 @@ public class ElasticSearchService {
 			para.setKey(para.getKey().toUpperCase());
 		}
 
-		String token = (String) req.getSession().getAttribute(RDDWebConst.TOKEN);
-		LoginInfo extend = PersonalInfo.getLoginInfo(token);
 		List<Information> informations = null;
-		if (extend != null && extend.getDomainTips() != null) {
+		UserInfoWithBLOBs extend = null;
+		String token = (String) req.getSession().getAttribute(RDDWebConst.TOKEN);
+		if(!StringUtil.isNullOrEmpty(token)){
+			String uid = LoginInfoCache.getInstance().getUid(token);
+			if(!StringUtil.isNullOrEmpty(uid)){
+				DBContextHolder.setDbType(DBContextHolder.PESEER_LOGIN);
+				extend = userInfoMapper.selectByPrimaryKey(uid);
+			}
+		}
+
+		if (extend != null && extend.getDomainTips()!= null) {
 			informations = queryData(para.getKey(), para.getFrom(), extend);
 		} else {
 			informations = ConstElasticClient.getElasticSeachClient().search_extend(para.getKey(), null, null, null,
@@ -159,21 +177,61 @@ public class ElasticSearchService {
 	 * @param extend
 	 * @return
 	 */
-	public List<Information> queryData(String key, int from, LoginInfo extend) {
+	public List<Information> queryData(String key, int from, UserInfoWithBLOBs extend) {
 		List<Information> information_list = null;
 
-		String key_word = null;
-		key_word = extend.getDomainTips() + key;
-
-		// a bug in elasticsearch. cannot parse the "/"
-		if(!StringUtil.isNullOrEmpty(key_word)){
-			key_word = key_word.replaceAll("/", " ");
+		List<String> channels = null;
+		if(extend != null && !StringUtil.isNullOrEmpty(extend.getDomainTips())){
+			channels = transferToChannel(extend.getDomainTips());
 		}
 
-		logger.info("417 Searh keyword is " + key_word);
-		information_list = ConstElasticClient.getElasticSeachClient().search_extend(key_word, null, null, null, from);
+		logger.info("417 Searh keyword is " + key);
+		if(!StringUtil.isNullOrEmpty(key)){
+			information_list = ConstElasticClient.getElasticSeachClient().search_extend(key, null, null, channels, from);
+		}else{
+			//如果key为null，则为推送新闻，返回较新的新闻
+			information_list = ConstElasticClient.getElasticSeachClient().search_top(key, null, null, channels,from,0);
+		}
 
 		return information_list;
+	}
+
+	/**
+	 * 把domain转化为channel
+	 * @param domain
+	 * @return
+	 */
+	public List<String> transferToChannel(String domain){
+		if(StringUtil.isNullOrEmpty(domain)){
+			return null;
+		}
+		List<String> channels = new ArrayList<>();
+
+		String [] domains = domain.split(",");
+		String tmpDomain = "";
+		for(int i=0; i<domains.length; i++){
+			String channel = CategoryInfoCache.getInstance().getIdFromDomain(domains[i]);
+			if(!StringUtil.isNullOrEmpty(channel)){
+//				channels.add(channel);
+				tmpDomain = tmpDomain + channel+ " ";
+			}
+		}
+		tmpDomain = tmpDomain.trim();
+		tmpDomain = tmpDomain.replaceAll(" ", ",");
+
+
+		if(!StringUtil.isNullOrEmpty(tmpDomain)){
+			try{
+				String sql = String.format("select topic_id from ops_category_media where biz_cat_id in (%s)", tmpDomain);
+				List<Integer> topicIds =  Db.query(sql);
+				for (Integer topicIdStr : topicIds) {
+					channels.add(String.valueOf(topicIdStr));
+				}
+			}catch(Exception ex){
+				ex.printStackTrace();
+			}
+		}
+		return channels;
 	}
 
 	/**
@@ -183,7 +241,7 @@ public class ElasticSearchService {
 	 */
 	public List<Information> accureQuery(String key, int from, int count) {
 		List<Information> informations = ConstElasticClient.getElasticSeachClient().accurateSearch(key,from,count);
-		Collections.sort(informations);
+//		Collections.sort(informations);
 		return informations;
 	}
 }

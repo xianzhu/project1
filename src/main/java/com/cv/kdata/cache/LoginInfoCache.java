@@ -1,10 +1,11 @@
-package com.cv.kdata.util;
+package com.cv.kdata.cache;
 
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.cv.kdata.cont.RDDWebConst;
+import com.cv.kdata.util.MysqlHelper;
 
 
 public class LoginInfoCache {

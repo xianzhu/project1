@@ -1,6 +1,7 @@
 package com.cv.kdata.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,14 +25,8 @@ import com.jfinal.plugin.activerecord.Db;
 @Controller
 public class ElasticSearchController {
 
-	@RequestMapping(value="/elasticsearch/top1",method={RequestMethod.GET,RequestMethod.POST})
-	public String topSearch(HttpServletRequest request,Model model){
-		String key = request.getParameter("key");
-		List<Information> infos = ElasticSearchService.simpleQuery(key);
-		model.addAttribute("list", infos);
-		return "elasticsearch";
-	}
-
+	@Autowired
+	ElasticSearchService service;
 	@RequestMapping(value="/elasticsearch/top",method={RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
     public List<Information> simpleSearch2(HttpServletRequest request,Model model){
@@ -57,7 +53,7 @@ public class ElasticSearchController {
     public Map<String,Object> search(HttpServletRequest request,Model model){
 
 		String mode = request.getParameter("mode");
-		ElasticSearchService service = new ElasticSearchService();
+//		ElasticSearchService service = new ElasticSearchService();
 
 
 		List<Information> infos = new ArrayList<>();
@@ -80,10 +76,13 @@ public class ElasticSearchController {
 		String key = request.getParameter("key");
 		int from = StringUtil.parseInt(request.getParameter("from"), 0);
 		int count = StringUtil.parseInt(request.getParameter("count"), 0);
-		ElasticSearchService service = new ElasticSearchService();
+//		ElasticSearchService service = new ElasticSearchService();
 
 		List<Information> infos = service.accureQuery(key,from,count);
-
+		if ("2".equals(request.getParameter("order")) && infos != null && infos.size()>1) {
+			// 按时间排序，默认按相关性排序
+			Collections.sort(infos);
+		}
 
 		Map<String,Object> data = new HashMap<String,Object>();
 		data.put("status", RDDWebConst.SUCCESS);

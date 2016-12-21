@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cv.kdata.cache.LoginInfoCache;
 import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.dao.EntBasicInfoMapper;
 import com.cv.kdata.dao.UdfMonitorMapper;
@@ -16,7 +17,6 @@ import com.cv.kdata.model.EntBasicInfo;
 import com.cv.kdata.model.PMOrgInfo;
 import com.cv.kdata.model.UdfMonitor;
 import com.cv.kdata.response.MonitorResponse;
-import com.cv.kdata.util.LoginInfoCache;
 import com.cv.kdata.util.StringUtil;
 
 @Service

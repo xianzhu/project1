@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cv.kdata.dao.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.cv.kdata.model.UserInfo">
+    <id column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="org_id" jdbcType="INTEGER" property="orgId" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="cn_name" jdbcType="VARCHAR" property="cnName" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="other_tips" jdbcType="VARCHAR" property="otherTips" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cv.kdata.model.UserInfoWithBLOBs">
+    <result column="people_info" jdbcType="LONGVARCHAR" property="peopleInfo" />
+    <result column="org_info" jdbcType="LONGVARCHAR" property="orgInfo" />
+    <result column="domain_tips" jdbcType="LONGVARCHAR" property="domainTips" />
+    <result column="telephone" jdbcType="LONGVARCHAR" property="telephone" />
+    <result column="venture_tips" jdbcType="LONGVARCHAR" property="ventureTips" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uid, type, org_id, org_name, cn_name, sex, level, other_tips, score, create_time, 
+    update_time, last_login_time
+  </sql>
+  <sql id="Blob_Column_List">
+    people_info, org_info, domain_tips, telephone, venture_tips
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from user_info
+    where uid = #{uid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_info
+    where uid = #{uid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.cv.kdata.model.UserInfoWithBLOBs">
+    insert into user_info (uid, type, org_id, 
+      org_name, cn_name, sex, 
+      level, other_tips, score, 
+      create_time, update_time, last_login_time, 
+      people_info, org_info, domain_tips, 
+      telephone, venture_tips)
+    values (#{uid,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}, 
+      #{orgName,jdbcType=VARCHAR}, #{cnName,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{level,jdbcType=VARCHAR}, #{otherTips,jdbcType=VARCHAR}, #{score,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{peopleInfo,jdbcType=LONGVARCHAR}, #{orgInfo,jdbcType=LONGVARCHAR}, #{domainTips,jdbcType=LONGVARCHAR}, 
+      #{telephone,jdbcType=LONGVARCHAR}, #{ventureTips,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cv.kdata.model.UserInfoWithBLOBs">
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="orgName != null">
+        org_name,
+      </if>
+      <if test="cnName != null">
+        cn_name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="otherTips != null">
+        other_tips,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="peopleInfo != null">
+        people_info,
+      </if>
+      <if test="orgInfo != null">
+        org_info,
+      </if>
+      <if test="domainTips != null">
+        domain_tips,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="ventureTips != null">
+        venture_tips,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="cnName != null">
+        #{cnName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="otherTips != null">
+        #{otherTips,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="peopleInfo != null">
+        #{peopleInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="orgInfo != null">
+        #{orgInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="domainTips != null">
+        #{domainTips,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ventureTips != null">
+        #{ventureTips,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cv.kdata.model.UserInfoWithBLOBs">
+    update user_info
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null">
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="cnName != null">
+        cn_name = #{cnName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="otherTips != null">
+        other_tips = #{otherTips,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="peopleInfo != null">
+        people_info = #{peopleInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="orgInfo != null">
+        org_info = #{orgInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="domainTips != null">
+        domain_tips = #{domainTips,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ventureTips != null">
+        venture_tips = #{ventureTips,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cv.kdata.model.UserInfoWithBLOBs">
+    update user_info
+    set type = #{type,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=INTEGER},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      cn_name = #{cnName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      level = #{level,jdbcType=VARCHAR},
+      other_tips = #{otherTips,jdbcType=VARCHAR},
+      score = #{score,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      people_info = #{peopleInfo,jdbcType=LONGVARCHAR},
+      org_info = #{orgInfo,jdbcType=LONGVARCHAR},
+      domain_tips = #{domainTips,jdbcType=LONGVARCHAR},
+      telephone = #{telephone,jdbcType=LONGVARCHAR},
+      venture_tips = #{ventureTips,jdbcType=LONGVARCHAR}
+    where uid = #{uid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cv.kdata.model.UserInfo">
+    update user_info
+    set type = #{type,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=INTEGER},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      cn_name = #{cnName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      level = #{level,jdbcType=VARCHAR},
+      other_tips = #{otherTips,jdbcType=VARCHAR},
+      score = #{score,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP}
+    where uid = #{uid,jdbcType=VARCHAR}
+  </update>
+</mapper>

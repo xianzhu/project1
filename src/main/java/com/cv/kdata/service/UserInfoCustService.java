@@ -13,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cv.kdata.cache.LoginInfoCache;
 import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.dao.UdfConsultMapper;
 import com.cv.kdata.dao.UdfEventMapper;
@@ -28,7 +29,6 @@ import com.cv.kdata.model.UdfQA;
 import com.cv.kdata.model.UdfRptCV;
 import com.cv.kdata.model.UdfRptTrader;
 import com.cv.kdata.response.UserInfoCustResponse;
-import com.cv.kdata.util.LoginInfoCache;
 import com.cv.kdata.util.MysqlHelper;
 import com.cv.kdata.util.StringUtil;
 

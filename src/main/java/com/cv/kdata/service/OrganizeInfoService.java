@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cv.kdata.cache.LoginInfoCache;
 import com.cv.kdata.cache.OrgInfoCache;
 import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.dao.CategoryTableMapper;
@@ -24,9 +25,9 @@ import com.cv.kdata.dao.PMUserInfoMapper;
 import com.cv.kdata.dao.RptOrgForcusEntMapper;
 import com.cv.kdata.dao.RptOrgOverallTrendsMapper;
 import com.cv.kdata.dao.RptPeFundMapper;
+import com.cv.kdata.dao.UserInfoMapper;
 import com.cv.kdata.datasource.DBContextHolder;
 import com.cv.kdata.facade.PMOrgInfoFacade;
-import com.cv.kdata.model.LoginInfo;
 import com.cv.kdata.model.PMExitEvent;
 import com.cv.kdata.model.PMExitEventDetail;
 import com.cv.kdata.model.PMFundInfo;
@@ -40,6 +41,7 @@ import com.cv.kdata.model.Redis2Module;
 import com.cv.kdata.model.RptOrgForcusEnt;
 import com.cv.kdata.model.RptOrgOverallTrends;
 import com.cv.kdata.model.RptPeFund;
+import com.cv.kdata.model.UserInfoWithBLOBs;
 import com.cv.kdata.response.OrganizeResponse;
 import com.cv.kdata.util.StringUtil;
 
@@ -74,6 +76,8 @@ public class OrganizeInfoService {
 	LoginInfoMapper loginInfoMapper;
 	@Autowired
 	CategoryTableMapper categoryMapper;
+	@Autowired
+	UserInfoMapper usrInfoMapper;
 
 	public void getBasicOrgInfo(HttpServletRequest req, OrganizeResponse response) {
 		if (RDDWebConst.FAILURE.equals(response.getStatus())) {
@@ -231,9 +235,14 @@ public class OrganizeInfoService {
 
 		if(!StringUtil.isNullOrEmpty(token)){
 			DBContextHolder.setDbType(DBContextHolder.PESEER_LOGIN);
-			LoginInfo login = loginInfoMapper.selectByCookie(token);
-			if(null != login){
-				String customInfo = login.getDomainTips();
+			UserInfoWithBLOBs userInfo = null;
+				String uid = LoginInfoCache.getInstance().getUid(token);
+				if(!StringUtil.isNullOrEmpty(uid)){
+					userInfo = usrInfoMapper.selectByPrimaryKey(uid);
+				}
+
+			if(null != userInfo){
+				String customInfo = userInfo.getDomainTips();
 				if(!StringUtil.isNullOrEmpty(customInfo)){
 
 					String[] custom = customInfo.split(",");

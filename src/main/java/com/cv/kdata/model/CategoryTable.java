@@ -8,7 +8,7 @@ public class CategoryTable implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Integer bizId;
+	private String bizId;
 
     private String biz;
 
@@ -16,11 +16,11 @@ public class CategoryTable implements Serializable {
 
     private String media;
 
-    public Integer getBizId() {
+    public String getBizId() {
         return bizId;
     }
 
-    public void setBizId(Integer bizId) {
+    public void setBizId(String bizId) {
         this.bizId = bizId;
     }
 
