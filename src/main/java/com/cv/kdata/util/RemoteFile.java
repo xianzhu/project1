@@ -122,7 +122,7 @@ public class RemoteFile {
 //		String path = "/home/appuser/workdir/report/cv/2015年中国IPO市场十大事件.pdf";
 
 		try {
-			path = new String(path.getBytes(),FTP.DEFAULT_CONTROL_ENCODING);
+			path = new String(path.getBytes(),"utf-8");
 			OutputStream outputStream = new FileOutputStream(new File("C:/dev/test.pdf"));
 //			file.readFile(path, outputStream);
 			file.ftpReadFile(path, outputStream);

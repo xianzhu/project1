@@ -87,6 +87,7 @@ public class ReportController {
 	@ResponseBody
     public ReportResponse getCvRpt(HttpServletRequest request,HttpServletResponse resp, Model model){
 
+		resp.setCharacterEncoding("UTF-8");
 		ReportResponse searchResponse = new ReportResponse();
 		service.getRemoteCVReport(request,resp,searchResponse);
 		return searchResponse;
@@ -96,6 +97,7 @@ public class ReportController {
 	@ResponseBody
     public ReportResponse getCvRptTest(HttpServletRequest request,HttpServletResponse resp, Model model){
 
+		resp.setCharacterEncoding("UTF-8");
 		ReportResponse searchResponse = new ReportResponse();
 		service.getRemoteCVReportTest(request,resp,searchResponse);
 		return searchResponse;
