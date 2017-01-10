@@ -26,4 +26,6 @@ public interface PMInvestEventMapper {
     List<PMInvestEvent> getFundInvestEvent(@Param("fundId")String fundId, @Param("filter")List<String> filter, @Param("key")String key, @Param("from")int from);
 
     List<PMInvestEvent> getFundInvestEventAll(@Param("fundId")String fundId);
+
+    List<PMInvestEvent> getEventsAfterDate(@Param("date")String date, @Param("from")int from);
 }

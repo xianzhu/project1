@@ -118,12 +118,12 @@ public class RemoteFile {
 		file.setAddress("116.62.42.50");
 		file.setPassword("1QAZ3edc2WSX");
 		file.setUsername("appuser");
-		String path = "/home/appuser/workdir/report/report_attach/H3_AP201507310010359900_1.pdf";
+		String path = "/home/appuser/workdir/report/cv/2015年中国IPO市场十大事件.pdf";
 //		String path = "/home/appuser/workdir/report/cv/2015年中国IPO市场十大事件.pdf";
 
 		try {
 			path = new String(path.getBytes(),FTP.DEFAULT_CONTROL_ENCODING);
-			OutputStream outputStream = new FileOutputStream(new File("C:/dev/test.txt"));
+			OutputStream outputStream = new FileOutputStream(new File("C:/dev/test.pdf"));
 //			file.readFile(path, outputStream);
 			file.ftpReadFile(path, outputStream);
 		} catch (Exception e) {

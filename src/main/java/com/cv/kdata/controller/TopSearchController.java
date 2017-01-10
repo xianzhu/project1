@@ -15,15 +15,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cv.kdata.cont.RDDWebConst;
+import com.cv.kdata.datasource.DBContextHolder;
 import com.cv.kdata.model.LocationNews;
+import com.cv.kdata.response.EventAssociateResponse;
 import com.cv.kdata.response.MediaSyncResponse;
 import com.cv.kdata.response.MonitorResponse;
 import com.cv.kdata.response.TopSearchResponse;
 import com.cv.kdata.response.UserInfoResponse;
+import com.cv.kdata.service.EventService;
 import com.cv.kdata.service.MediaSyncService;
 import com.cv.kdata.service.MonitorService;
 import com.cv.kdata.service.TopSearchService;
 import com.cv.kdata.service.UserInfoService;
+import com.cv.kdata.util.StringUtil;
+
 
 @Controller
 public class TopSearchController {
@@ -37,6 +42,8 @@ public class TopSearchController {
 	private UserInfoService userInfoService;
 	@Autowired
 	private MonitorService monitorService;
+	@Autowired
+	private EventService eventService;
 
 	private static Logger logger = LoggerFactory.getLogger(TopSearchController.class);
 	@RequestMapping(value="/topsearch",method={RequestMethod.GET,RequestMethod.POST})
@@ -107,6 +114,26 @@ public class TopSearchController {
     public MonitorResponse orgInfoMonitor(HttpServletRequest request,Model model){
 		MonitorResponse response = new MonitorResponse();
 		monitorService.getMonitorOrg(request,response);
+		return response;
+	}
+
+	@RequestMapping(value="/top/dayevent",method={RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+    public EventAssociateResponse getCurrentDayEvent(HttpServletRequest request,Model model){
+		EventAssociateResponse response = new EventAssociateResponse();
+		String type = request.getParameter("type");
+		int from = StringUtil.parseInt(request.getParameter("from"), 0);
+		DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
+		if("invest".equals(type)){
+			response.setInvestEventList(eventService.getCurrentDateInvestEvents(from));
+		}else if("exit".equals(type)){
+			response.setExitEventList(eventService.getCurrentDateExitEvents(from));
+		}else{
+			response.setInvestEventList(eventService.getCurrentDateInvestEvents(from));
+			response.setExitEventList(eventService.getCurrentDateExitEvents(from));
+		}
+		response.setStatus(RDDWebConst.SUCCESS);
+		response.setMessage("get current date events success!");
 		return response;
 	}
 

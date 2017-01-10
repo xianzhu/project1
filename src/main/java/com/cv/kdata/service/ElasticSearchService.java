@@ -124,12 +124,9 @@ public class ElasticSearchService {
 			}
 		}
 
-		if (extend != null && extend.getDomainTips()!= null) {
-			informations = queryData(para.getKey(), para.getFrom(), extend);
-		} else {
-			informations = ConstElasticClient.getElasticSeachClient().search_extend(para.getKey(), null, null, null,
-					para.getFrom());
-		}
+
+		informations = queryData(para.getKey(), para.getFrom(), extend);
+
 		if ("2".equals(req.getParameter("order"))) {
 			// 按时间排序，默认按相关性排序
 			Collections.sort(informations);

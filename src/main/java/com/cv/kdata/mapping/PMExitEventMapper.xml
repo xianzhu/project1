@@ -56,6 +56,11 @@
     where b.fund_id=#{fundId}
   </select>
   
+  <select id="getEventsAfterDate" resultMap="BaseResultMap">
+    select * from pm_exit_event where happen_date !='NULL' and happen_date > #{date}
+    order by happen_date limit #{from}, 10
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from pm_exit_event
     where event_id = #{eventId,jdbcType=INTEGER}

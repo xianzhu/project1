@@ -10,12 +10,25 @@ import com.cv.kdata.cont.RDDWebConst;
 public class StockMapId {
 	private static StockMapId instance = new StockMapId();
 	private Map<String, String> IdStockMap = new HashMap<>();
-	
+
 	public static StockMapId getInstance() {
 		return instance;
 	}
-	
+
 	private StockMapId(){
+		initMap();
+	}
+
+	public String getStockOrUUID(String uuidOrStock){
+		String record = IdStockMap.get(uuidOrStock);
+		if(StringUtil.isNullOrEmpty(record)){
+			initMap();
+			record = IdStockMap.get(uuidOrStock);
+		}
+		return record;
+	}
+
+	public void initMap(){
 		ResultSet rs = null;
 		String sql = "select uuid, stock_code from id_ent_stock";
 		try{
@@ -29,9 +42,5 @@ public class StockMapId {
 		}finally {
 			MysqlHelper.getInstance(RDDWebConst.PESEER_DB_ONLINE).close(rs);
 		}
-	}
-	
-	public String getStockOrUUID(String uuidOrStock){
-		return IdStockMap.get(uuidOrStock);
 	}
 }
