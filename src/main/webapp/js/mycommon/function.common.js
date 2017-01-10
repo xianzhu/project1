@@ -310,7 +310,7 @@ function openFilesOnline(path){
                     goToNotlogon();
                 }else{
                     console.log("success....");
-                    window.open(pdfUrl);
+                    window.open("/cv_rpt/test");
                 }
             }
         },

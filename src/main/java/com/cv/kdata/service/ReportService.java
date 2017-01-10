@@ -547,4 +547,37 @@ public class ReportService {
 		}
 	}
 
+	public void getRemoteCVReportTest(HttpServletRequest req, HttpServletResponse resp,ResponseObject response){
+
+		String root_folder = "/home/appuser/";
+
+		try {
+				String report_path = "test.pdf";
+
+				Path tempPath = Paths.get(root_folder, report_path);
+				//String realPath = String.format("%s%s", root_folder, report_path);
+				//File file = new File(realPath);
+				File file = tempPath.toFile();
+				if (file.exists()) {
+					//resp.setHeader("Content-disposition", "attachment;filename=" + URLEncoder.encode(report_name, "UTF-8"));
+					if (report_path.endsWith(".pdf")) {
+						resp.setContentType("application/pdf");
+					} else if (report_path.endsWith(".doc") || report_path.endsWith(".docx")) {
+						resp.setContentType("application/msword");
+					} else if (report_path.endsWith(".xls") || report_path.endsWith(".xlsx")) {
+						resp.setContentType("application/vnd.ms-excel");
+					} else if (report_path.endsWith(".ppt") || report_path.endsWith(".pptx")) {
+						resp.setContentType("application/vnd.ms-powerpoint");
+					}
+			} else {
+				response.setStatus(RDDWebConst.FAILURE);
+				response.setMessage("id is invaild!");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+
+		}
+	}
+
 }

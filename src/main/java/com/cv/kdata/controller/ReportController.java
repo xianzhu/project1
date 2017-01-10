@@ -91,4 +91,13 @@ public class ReportController {
 		service.getRemoteCVReport(request,resp,searchResponse);
 		return searchResponse;
 	}
+
+	@RequestMapping(value="/cv_rpt/test",method={RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+    public ReportResponse getCvRptTest(HttpServletRequest request,HttpServletResponse resp, Model model){
+
+		ReportResponse searchResponse = new ReportResponse();
+		service.getRemoteCVReportTest(request,resp,searchResponse);
+		return searchResponse;
+	}
 }
