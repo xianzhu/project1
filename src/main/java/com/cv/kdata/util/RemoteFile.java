@@ -53,6 +53,8 @@ public class RemoteFile {
 			ftp.connect(address);
 			// 2.登录服务器 如果采用默认端口，可以使用ftp.connect(url)的方式直接连接FTP服务器
 			ftp.login(username, password);
+			ftp.setControlEncoding("utf-8");
+			ftp.enterLocalPassiveMode();
 			// 3.判断登陆是否成功
 			reply = ftp.getReplyCode();
 			if (!FTPReply.isPositiveCompletion(reply)) {
@@ -61,19 +63,14 @@ public class RemoteFile {
 			}
 
 			file = new String(file.getBytes(),FTP.DEFAULT_CONTROL_ENCODING);
-			InputStream inputStream = ftp.retrieveFileStream(file);
-			if (inputStream == null) {
-				return false;
-			}
-			byte[] buffer = new byte[1024];
-			int i = -1;
-			while ((i = inputStream.read(buffer)) != -1) {
-				outputStream.write(buffer, 0, i);
+			if(ftp.retrieveFile(file, outputStream)){
+				System.out.println("successful!");
+			}else{
+				System.out.println("failed!");
 			}
 
 			outputStream.flush();
 			outputStream.close();
-			inputStream.close();
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -123,7 +120,8 @@ public class RemoteFile {
 
 		try {
 			path = new String(path.getBytes(),"utf-8");
-			OutputStream outputStream = new FileOutputStream(new File("C:/dev/test.pdf"));
+			OutputStream outputStream = new FileOutputStream(new File("/home/appuser/test.pdf"));
+//			OutputStream outputStream = new FileOutputStream(new File("C:/dev/test.pdf"));
 //			file.readFile(path, outputStream);
 			file.ftpReadFile(path, outputStream);
 		} catch (Exception e) {

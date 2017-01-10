@@ -134,26 +134,26 @@ public class XsbListMatchingService {
 
 		Collections.sort(compareResults_stocka, new Comparator<MatchingCalculateResult>(){
 			@Override
-			public int compare(MatchingCalculateResult o1, MatchingCalculateResult o2) {				
+			public int compare(MatchingCalculateResult o1, MatchingCalculateResult o2) {
 				return o1.diff>o2.diff?1:(o1.diff<o2.diff?-1:0);
 			}
 		});
-		
+
 		Collections.sort(compareResults_xsb, new Comparator<MatchingCalculateResult>(){
 			@Override
-			public int compare(MatchingCalculateResult o1, MatchingCalculateResult o2) {				
+			public int compare(MatchingCalculateResult o1, MatchingCalculateResult o2) {
 				return o1.diff>o2.diff?1:(o1.diff<o2.diff?-1:0);
 			}
 		});
-		
+
 		MiddleReturnValue middleReturnValue = new MiddleReturnValue();
 		middleReturnValue.compareResults_stocka = compareResults_stocka;
 		middleReturnValue.compareResults_xsb = compareResults_xsb;
 		return middleReturnValue;
 	}
-	
+
 	public void search(HttpServletRequest req, XsbListMatchingResponse xsbListMatchingResponse){
-		
+
 		String topic_content = req.getParameter("topic_content");
 		if (StringUtils.isEmpty(topic_content)) {
 			xsbListMatchingResponse.setStatus(RDDWebConst.FAILURE);
@@ -163,7 +163,7 @@ public class XsbListMatchingService {
 
 		String topic_industry = TopicClient.getIndustryTopic(topic_content);
 		if (topic_industry == null) {
-			
+
 			xsbListMatchingResponse.setStatus(RDDWebConst.FAILURE);
 			xsbListMatchingResponse.setMessage("topic_industry calculate error!!");
 			return;
@@ -175,21 +175,21 @@ public class XsbListMatchingService {
 		List<StockFeatureAllScaled> xsb_list = StockFeatureAllScaledDataHelper.getInstance()
 				.getXsbFeatureAllScaled(topic_industry);
 		if (stockFeatureParameter == null) {
-			
+
 			xsbListMatchingResponse.setStatus(RDDWebConst.FAILURE);
 			xsbListMatchingResponse.setMessage("failed to get stockFeatureParameter");
 			return;
 		}
 
 		if (stocka_list == null) {
-			
+
 			xsbListMatchingResponse.setStatus(RDDWebConst.FAILURE);
 			xsbListMatchingResponse.setMessage("failed to get stocka_list");
 			return;
 		}
 
 		if (xsb_list == null) {
-			
+
 			xsbListMatchingResponse.setStatus(RDDWebConst.FAILURE);
 			xsbListMatchingResponse.setMessage("failed to get xsb_list");
 			return;
@@ -209,23 +209,23 @@ public class XsbListMatchingService {
 
 		String input_total_asset_str = req.getParameter("total_asset");
 		if (!StringUtils.isEmpty(input_total_asset_str) && input_total_asset_str.matches("[0-9]+.")) {
-			is_state_hold = Double.valueOf(input_total_asset_str);
+			input_total_asset = Double.valueOf(input_total_asset_str);
 		}
 		String input_liab_ratio_str = req.getParameter("input_liab_ratio");
 		if (!StringUtils.isEmpty(input_liab_ratio_str) && input_liab_ratio_str.matches("[0-9]+.")) {
-			is_state_hold = Double.valueOf(input_liab_ratio_str);
+			input_liab_ratio = Double.valueOf(input_liab_ratio_str);
 		}
 		String input_opt_profit_str = req.getParameter("input_opt_profit");
 		if (!StringUtils.isEmpty(input_opt_profit_str) && input_opt_profit_str.matches("[0-9]+.")) {
-			is_state_hold = Double.valueOf(input_opt_profit_str);
+			input_opt_profit = Double.valueOf(input_opt_profit_str);
 		}
 		String input_opt_income_str = req.getParameter("input_opt_income");
 		if (!StringUtils.isEmpty(input_opt_income_str) && input_opt_income_str.matches("[0-9]+.")) {
-			is_state_hold = Double.valueOf(input_opt_income_str);
+			input_opt_income = Double.valueOf(input_opt_income_str);
 		}
 		String input_gross_profit_margin_str = req.getParameter("input_gross_profit_margin");
 		if (!StringUtils.isEmpty(input_gross_profit_margin_str) && input_gross_profit_margin_str.matches("[0-9]+.")) {
-			is_state_hold = Double.valueOf(input_gross_profit_margin_str);
+			input_gross_profit_margin = Double.valueOf(input_gross_profit_margin_str);
 		}
 
 		double total_asset = (input_total_asset - stockFeatureParameter.avg_total_asset) * 1.0
@@ -298,7 +298,7 @@ public class XsbListMatchingService {
 			MysqlHelper.getInstance(RDDWebConst.PESEER_DB_ONLINE).close(rs);
 		}
 
-		
+
 		xsbListMatchingResponse.setStatus(RDDWebConst.SUCCESS);
 		xsbListMatchingResponse.setMessage("calculate ok");
 		xsbListMatchingResponse.list_matching_list = stocka_match_list;

@@ -30,8 +30,8 @@ import com.cv.kdata.model.UdfRptCV;
 import com.cv.kdata.model.UdfRptTrader;
 import com.cv.kdata.response.ReportResponse;
 import com.cv.kdata.response.ResponseObject;
+import com.cv.kdata.util.JschUtil;
 import com.cv.kdata.util.MysqlHelper;
-import com.cv.kdata.util.RemoteFile;
 import com.cv.kdata.util.StringUtil;
 @Service
 public class ReportService {
@@ -42,16 +42,22 @@ public class ReportService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ReportService.class);
 	private static final HashMap<String, String> time2Internal = new HashMap<>(); // 时间串对应间隔天数
 
-	private static RemoteFile remoteFile = new RemoteFile();
+//	private static RemoteFile remoteFile = new RemoteFile();
+	private static JschUtil sftp = new JschUtil();
+
 	static {
 		time2Internal.put("2", "30"); // 月
 		time2Internal.put("3", "90"); // 季度
 		time2Internal.put("4", "180"); // 半年
 		time2Internal.put("5", "365"); // 年
 
-		remoteFile.setAddress("116.62.42.50");
-		remoteFile.setUsername("appuser");
-		remoteFile.setPassword("1QAZ3edc2WSX");
+		sftp.setUsername("appuser");
+        sftp.setPassword("1QAZ3edc2WSX");
+        sftp.setHost("116.62.42.50");
+        sftp.setPort(22);
+//		remoteFile.setAddress("116.62.42.50");
+//		remoteFile.setUsername("appuser");
+//		remoteFile.setPassword("1QAZ3edc2WSX");
 	}
 
 	public List<UdfRptCV> getRptCV(String token) {
@@ -414,7 +420,8 @@ public class ReportService {
 				String realPath = String.format("%s%s", root_folder, report_path);
 
 				OutputStream outputStream = resp.getOutputStream();
-				if(remoteFile.ftpReadFile(realPath, outputStream)){
+
+				if(sftp.getRemoteFile(realPath, outputStream)){
 					//resp.setHeader("Content-disposition", "attachment;filename=" + URLEncoder.encode(report_name, "UTF-8"));
 					if (report_path.endsWith(".pdf")) {
 						resp.setContentType("application/pdf");
@@ -465,7 +472,8 @@ public class ReportService {
 				File file = tempPath.toFile();
 				if (file.exists()) {
 					if (report_path.endsWith(".pdf")) {
-						resp.setContentType("application/pdf");
+//						resp.setContentType("application/pdf");
+						resp.setHeader("Content-type", "application/pdf;charset=UTF-8");
 					} else if (report_path.endsWith(".doc") || report_path.endsWith(".docx")) {
 						resp.setContentType("application/msword");
 					} else if (report_path.endsWith(".xls") || report_path.endsWith(".xlsx")) {
@@ -521,10 +529,12 @@ public class ReportService {
 				String realPath = String.format("%s%s", root_folder, report_path);
 
 				OutputStream outputStream = resp.getOutputStream();
-				if(remoteFile.ftpReadFile(realPath, outputStream)){
+
+				if(sftp.getRemoteFile(realPath, outputStream)){
 					//resp.setHeader("Content-disposition", "attachment;filename=" + URLEncoder.encode(report_name, "UTF-8"));
 					if (report_path.endsWith(".pdf")) {
-						resp.setContentType("application/pdf");
+//						resp.setContentType("application/pdf");
+						resp.setHeader("Content-type", "application/pdf;charset=UTF-8");
 					} else if (report_path.endsWith(".doc") || report_path.endsWith(".docx")) {
 						resp.setContentType("application/msword");
 					} else if (report_path.endsWith(".xls") || report_path.endsWith(".xlsx")) {
