@@ -569,6 +569,16 @@ public class ReportService {
 					} else if (report_path.endsWith(".ppt") || report_path.endsWith(".pptx")) {
 						resp.setContentType("application/vnd.ms-powerpoint");
 					}
+					OutputStream outputStream = resp.getOutputStream();
+					InputStream inputStream = new FileInputStream(file);
+					byte[] buffer = new byte[1024];
+					int i = -1;
+					while ((i = inputStream.read(buffer)) != -1) {
+						outputStream.write(buffer, 0, i);
+					}
+					outputStream.flush();
+					outputStream.close();
+					inputStream.close();
 			} else {
 				response.setStatus(RDDWebConst.FAILURE);
 				response.setMessage("id is invaild!");
