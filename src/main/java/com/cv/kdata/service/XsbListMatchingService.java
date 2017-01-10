@@ -211,19 +211,19 @@ public class XsbListMatchingService {
 		if (!StringUtils.isEmpty(input_total_asset_str) && input_total_asset_str.matches("[0-9]+.")) {
 			input_total_asset = Double.valueOf(input_total_asset_str);
 		}
-		String input_liab_ratio_str = req.getParameter("input_liab_ratio");
+		String input_liab_ratio_str = req.getParameter("liab_ratio");
 		if (!StringUtils.isEmpty(input_liab_ratio_str) && input_liab_ratio_str.matches("[0-9]+.")) {
 			input_liab_ratio = Double.valueOf(input_liab_ratio_str);
 		}
-		String input_opt_profit_str = req.getParameter("input_opt_profit");
+		String input_opt_profit_str = req.getParameter("opt_profit");
 		if (!StringUtils.isEmpty(input_opt_profit_str) && input_opt_profit_str.matches("[0-9]+.")) {
 			input_opt_profit = Double.valueOf(input_opt_profit_str);
 		}
-		String input_opt_income_str = req.getParameter("input_opt_income");
+		String input_opt_income_str = req.getParameter("opt_income");
 		if (!StringUtils.isEmpty(input_opt_income_str) && input_opt_income_str.matches("[0-9]+.")) {
 			input_opt_income = Double.valueOf(input_opt_income_str);
 		}
-		String input_gross_profit_margin_str = req.getParameter("input_gross_profit_margin");
+		String input_gross_profit_margin_str = req.getParameter("gross_profit_margin");
 		if (!StringUtils.isEmpty(input_gross_profit_margin_str) && input_gross_profit_margin_str.matches("[0-9]+.")) {
 			input_gross_profit_margin = Double.valueOf(input_gross_profit_margin_str);
 		}

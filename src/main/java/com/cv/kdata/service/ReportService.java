@@ -42,7 +42,6 @@ public class ReportService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ReportService.class);
 	private static final HashMap<String, String> time2Internal = new HashMap<>(); // 时间串对应间隔天数
 
-//	private static RemoteFile remoteFile = new RemoteFile();
 	private static JschUtil sftp = new JschUtil();
 
 	static {
@@ -55,9 +54,6 @@ public class ReportService {
         sftp.setPassword("1QAZ3edc2WSX");
         sftp.setHost("116.62.42.50");
         sftp.setPort(22);
-//		remoteFile.setAddress("116.62.42.50");
-//		remoteFile.setUsername("appuser");
-//		remoteFile.setPassword("1QAZ3edc2WSX");
 	}
 
 	public List<UdfRptCV> getRptCV(String token) {
@@ -556,48 +552,4 @@ public class ReportService {
 			MysqlHelper.getInstance(RDDWebConst.PESEER_DB_ONLINE).close(rs);
 		}
 	}
-
-	public void getRemoteCVReportTest(HttpServletRequest req, HttpServletResponse resp,ResponseObject response){
-
-		String root_folder = "/home/appuser/";
-
-		try {
-				String report_path = "test.pdf";
-
-				Path tempPath = Paths.get(root_folder, report_path);
-				//String realPath = String.format("%s%s", root_folder, report_path);
-				//File file = new File(realPath);
-				File file = tempPath.toFile();
-				if (file.exists()) {
-					//resp.setHeader("Content-disposition", "attachment;filename=" + URLEncoder.encode(report_name, "UTF-8"));
-					if (report_path.endsWith(".pdf")) {
-						resp.setContentType("application/pdf");
-					} else if (report_path.endsWith(".doc") || report_path.endsWith(".docx")) {
-						resp.setContentType("application/msword");
-					} else if (report_path.endsWith(".xls") || report_path.endsWith(".xlsx")) {
-						resp.setContentType("application/vnd.ms-excel");
-					} else if (report_path.endsWith(".ppt") || report_path.endsWith(".pptx")) {
-						resp.setContentType("application/vnd.ms-powerpoint");
-					}
-					OutputStream outputStream = resp.getOutputStream();
-					InputStream inputStream = new FileInputStream(file);
-					byte[] buffer = new byte[1024];
-					int i = -1;
-					while ((i = inputStream.read(buffer)) != -1) {
-						outputStream.write(buffer, 0, i);
-					}
-					outputStream.flush();
-					outputStream.close();
-					inputStream.close();
-			} else {
-				response.setStatus(RDDWebConst.FAILURE);
-				response.setMessage("id is invaild!");
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-
-		}
-	}
-
 }
