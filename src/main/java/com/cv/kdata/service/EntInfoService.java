@@ -12,7 +12,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alibaba.fastjson.JSONArray;
 import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.dao.CiMoneySupMapper;
 import com.cv.kdata.dao.CiRcaPayMapper;
@@ -197,7 +196,7 @@ public class EntInfoService {
 			if (record != null && !StringUtil.isNullOrEmpty(record.getRecord())) {
 				String tmpRecord = record.getRecord();
 				tmpRecord = tmpRecord.replaceAll("\"entChgRecordInfos\":", "");
-				response.setEntChgRecordInfos(JSONArray.parseArray(tmpRecord));
+				response.setEntChgRecordInfos(StringUtil.toJsonArray(tmpRecord));
 			}
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent Branch info success!");
@@ -540,7 +539,7 @@ public class EntInfoService {
 			StockInstInvest item1 = stockInstInvestMapper.selectByStockCode(code);
 			StockInstInvestFacade item = new StockInstInvestFacade();
 			if(item1 != null){
-				item.setInstInvestFacade(JSONArray.parseArray(item1.getInstInv()));
+				item.setInstInvestFacade(StringUtil.toJsonArray(item1.getInstInv()));
 			}
 //			item.setInstInv(null);
 			response.setStatus(RDDWebConst.SUCCESS);
@@ -570,7 +569,7 @@ public class EntInfoService {
 			StockEquityCtrl item1 = stockEquityCtrlMapper.selectByStockCode(code);
 			StockEquityCtrlFacade item = new StockEquityCtrlFacade();
 			if(item1 != null){
-				item.setEquityCtrl(JSONArray.parseArray(item1.getEqComp()));
+				item.setEquityCtrl(StringUtil.toJsonArray(item1.getEqComp()));
 			}
 			//item.setEqComp(null);
 			response.setStatus(RDDWebConst.SUCCESS);

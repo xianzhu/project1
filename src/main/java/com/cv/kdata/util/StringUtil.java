@@ -16,6 +16,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.alibaba.fastjson.JSONArray;
+
 /**
  * 字符串处理实用类
  *
@@ -512,4 +514,13 @@ public final class StringUtil
         matcher.appendTail(sb);
         return sb.toString();
     }
+
+    public static JSONArray toJsonArray(String text){
+		try{
+			return JSONArray.parseArray(text);
+		}catch(Exception e){
+			log.error(e.toString());
+			return null;
+		}
+	}
 }
