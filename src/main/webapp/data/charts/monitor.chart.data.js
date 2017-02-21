@@ -11,17 +11,6 @@ var relation_company_option = {
     tooltip : {
         trigger: 'item',
         formatter: function(data){
-            //var result="";
-            ////if(data.data.type==1){ // 企业
-            ////    result="企业:";
-            ////}else if(data.data.type==2){ // 机构
-            ////    result="机构:";
-            ////}else if(data.data.type==3){ // 基金
-            ////    result="基金:";
-            ////}
-            //
-            //result=result+data.data.text;
-            //console.log(data.data);
             return data.data.text;
         }
     },
@@ -47,7 +36,8 @@ var relation_company_option = {
                     name: '当前点',
                     itemStyle: {
                         normal: {
-                            color : '#87cdfa'
+                            //color : '#87cdfa'
+                            color:'#38a6ec'
                         }
                     }
                 },
@@ -55,7 +45,7 @@ var relation_company_option = {
                     name:'普通点',
                     itemStyle: {
                         normal: {
-                            color : '#9acd32'
+                            color : '#c1daea'
                         }
                     }
                 },
@@ -98,7 +88,8 @@ var relation_company_option = {
             itemStyle: {
                 normal: {
                     label: {
-                        show: false,
+                        show: true,
+                        position:'top',
                         textStyle: {
                             color: '#800080'
                         }
@@ -114,7 +105,7 @@ var relation_company_option = {
                 },
                 emphasis: {
                     label: {
-                        show: false
+                        show: true
                         // textStyle: null      // 默认使用全局文本样式，详见TEXTSTYLE
                     },
                     nodeStyle : {
@@ -129,8 +120,9 @@ var relation_company_option = {
             draggable: true,
             minRadius : 1,
             maxRadius : 25,
-            density : 0.05,
-            attractiveness: 1.2,
+            gravity: 1.1,
+            scaling: 1.4,
+            roam: 'move',
             nodes:[],
             links : []
         }
@@ -183,7 +175,8 @@ var relation_org_option = {
                     name: '当前点',
                     itemStyle: {
                         normal: {
-                            color : '#87cdfa'
+                            //color : '#87cdfa'
+                            color:'#38a6ec'
                         }
                     }
                 },
@@ -191,7 +184,8 @@ var relation_org_option = {
                     name:'普通点',
                     itemStyle: {
                         normal: {
-                            color : '#9acd32'
+                            //color : '#9acd32'
+                            color : '#c1daea'
                         }
                     }
                 },
@@ -234,7 +228,8 @@ var relation_org_option = {
             itemStyle: {
                 normal: {
                     label: {
-                        show: false,
+                        show: true,
+                        position:'top',
                         textStyle: {
                             color: '#800080'
                         }
@@ -262,11 +257,13 @@ var relation_org_option = {
                 }
             },
             //linkSymbol:"arrow",
+
             draggable: true,
             minRadius : 1,
             maxRadius : 20,
-            density : 0.05,
-            attractiveness: 1.2,
+            gravity: 1.1,
+            scaling: 1.6,
+            roam: 'move',
             nodes:[],
             links : []
         }

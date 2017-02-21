@@ -51,8 +51,6 @@ function login(){
     //var url="http://192.168.0.67:18083/login";
 
     var pwd=hex_md5(password);
-    console.log(pwd);
-
     console.log("login:",name,', ',pwd);
     $.ajax({
         "url":url,

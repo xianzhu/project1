@@ -7,32 +7,46 @@ var v_industryToolsModel=new Vue({
     el:"#v-industryToolsModel",
     data:{
         selectTableTitle:"",
+        filterKey:"pleaseSearch",
         tableSelections:selectedTables,
         result:[],
         tableColumns:[]
-},
+    },
     methods:{
-
+        changeSelect:function(value,title){
+            getDataList(value, title);
+        }
     },
     filters:{
-    checkEmptyFilter:function(value){
-        var result=false;
-        if(value&&value.length>0){
-            result=true;
+        checkEmptyFilter:function(value){
+            var result=false;
+            if(value&&value.length>0){
+                result=true;
+            }
+            return result;
         }
-        return result;
-    }
     }
 });
 
-function changeTableSelect(){
-    var obj = document.getElementById("selectedTableModel"); //selectid
-    var index = obj.selectedIndex; // 选中索引
-    if(index>0) {
-        var title = obj.options[index].text; // 选中文本
-        var value = obj.options[index].value; // 选中值
+//function changeTableSelect(){
+//    var obj = document.getElementById("selectedTableModel"); //selectid
+//    var index = obj.selectedIndex; // 选中索引
+//    if(index>0) {
+//        var title = obj.options[index].text; // 选中文本
+//        var value = obj.options[index].value; // 选中值
+//
+//        getDataList(value, title);
+//    }
+//}
 
-        getDataList(value, title);
+function filterKeyPress(event,value){
+    var event = window.event||event; // 为了兼容firefox没有全局event对象
+    if(event.keyCode==13) {
+        if (value != "") {
+            v_industryToolsModel.$data.filterKey = value;
+        } else {
+            v_industryToolsModel.$data.filterKey = "pleaseSearch";
+        }
     }
 }
 
@@ -64,11 +78,15 @@ function getDataList(value,title){
 
                 var columns=[];
                 for(var item in res.propertities) {
-                    if(item!="id") {
+                    if(item=="id"){
+                        continue;
+                    }else if(item=="statDate"||item=="statTime"||item=="statRate"||item=="happenDate"||item=="date"){
+                        columns.unshift({value: item, name: res.propertities[item]});
+                    }else{
                         columns.push({value: item, name: res.propertities[item]});    // thead
                     }
                 }
-
+                //console.log(columns);
                 v_industryToolsModel.$data.tableColumns=columns;
             }
         },

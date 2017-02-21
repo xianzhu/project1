@@ -275,10 +275,10 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="ibox-content" style="background-color:#000;" >
+                            <div class="ibox-content">
                                 <div style="height:400px;overflow:hidden;" id="extend_tag_cloud">
                                 <a v-for="item in extendSearch" v-on:click="onTagClick(item)" v-text="item.name"
-                                   style="color:#fff;font-weight:bold" data-container="body" data-toggle="popover" data-placement="left"
+                                   class="cloud-item-a" data-container="body" data-toggle="popover" data-placement="left"
                                    v-bind:data-content="item.desc"></a>
                                 <strong v-if="extendEmpty">暂无数据</strong>
                                 </div>

@@ -12,14 +12,14 @@
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="css/plugins/jqDataTables/jquery.dataTables.css" rel="stylesheet">
     <link href="css/plugins/jqDataTables/extensions/buttons/buttons.dataTables.css" rel="stylesheet">
-    <link href="css/usersearch.tagcloud.css" rel="stylesheet">
+    <!--<link href="css/usersearch.tagcloud.css" rel="stylesheet">-->
 
     <link href="css/comstyle.css" rel="stylesheet">
     <script src="js/common/jquery-2.1.1.js"></script>
     <script src="js/common/bootstrap.min.js"></script>
     <script src="js/common/jquery.cookie.js"></script>
     <script src="js/common/vue.js"></script>
-    <script src="js/plugins/tabCloud.min.js"></script>
+    <!--<script src="js/plugins/tabCloud.min.js"></script>-->
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="js/plugins/jqDataTables/jquery.dataTables.js"></script>
@@ -172,7 +172,7 @@
 
                     <div class="row">
                         <!--族谱-->
-                        <div class="col-lg-6" style="display:none;">
+                        <!--<div class="col-lg-6" style="display:none;">
                             <div class="ibox float-e-margins">
                                         <div class="ibox-title">
                                             <h5>机构族谱预测</h5>
@@ -199,7 +199,7 @@
                                             </div>
                                         </div>
                                     </div>
-                        </div>
+                        </div>-->
                         <!--关注企业-->
                         <div class="col-lg-12">
                             <!--最近关注企业-->
@@ -243,11 +243,25 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="ibox-content" style="background:#000;">
-                                    <div style="height:400px;overflow:hidden;" id="extend_tag_cloud">
-                                        <a v-for="item in orgTeam" style="color:#fff;font-weight:bold" v-on:click="goto('personalBasic',item.userId)" v-text="item.userName"
-                                           data-container="body" data-toggle="popover" data-placement="left" v-bind:data-content="item.title"></a>
-                                        <strong v-if="extendEmpty">暂无数据</strong>
+                                <div class="ibox-content">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="team_table">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:90px;">姓名</th>
+                                                <th style="width:100px;">职位</th>
+                                                <th>联系方式</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in orgTeam" style="text-align: center;">
+                                                <td style="width:90px;" class="link-handle-pointer" v-text="item.userName"
+                                                           v-on:click="goto('personalBasic',item.userId)"></td>
+                                                <td style="width:100px;" v-text="item.title"></td>
+                                                <td v-text="item.contact|formatEmptyFilter"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
