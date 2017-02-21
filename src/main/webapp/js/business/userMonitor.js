@@ -671,7 +671,8 @@ function getCompanyExtendNode(sid, type, cgy, level, uuid) {
                             myoption.series[0].links.push({
                                 source: sid,
                                 target: "com_" + tid,
-                                text: "投资企业",
+                                //text: "投资企业",
+                                text: "",
                                 weight: Math.random() * 50 + 1 // 20
                             });
                         }
@@ -796,7 +797,8 @@ function getOrgFamilyNode(sid, type, cgy, level, oid) {
                             myoption.series[0].links.push({
                                 source: sid,
                                 target: "com_" + tid,
-                                text: we, // "机构族谱",
+                                //text: we, // "机构族谱",
+                                text: "", // "机构族谱",
                                 weight: we
                             });
                         }
@@ -908,7 +910,8 @@ function getOrgComInvestNode(sid, type, cgy, level, uuid) {
                             myoption.series[0].links.push({
                                 source: sid,
                                 target: "com_" + tid,
-                                text: "投资企业",
+                                //text: "投资企业",
+                                text:"",
                                 weight: Math.random() * 50 + 1 // 20
                             });
                         }
