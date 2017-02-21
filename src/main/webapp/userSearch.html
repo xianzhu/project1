@@ -250,7 +250,7 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr v-for="item in companyInfos">
-                                                    <td v-text="item.ent_name"
+                                                    <td v-text="item.ent_name" class="link-handle-pointer"
                                                         v-on:click="gotoCompany(item.ent_id,item.is_stock,item.stock_type)"
                                                         data-container="body" data-toggle="popover"
                                                         data-placement="left"
