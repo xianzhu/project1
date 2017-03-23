@@ -425,8 +425,10 @@ public class EntInfoService {
 					finance_item = "营业利润同比增长(%)";
 				}
 				// String em_industry = record.getStr("em_industry").trim();
-				String report_date = record.getStr("report_date").trim();
-
+				String report_date = record.getStr("report_date");
+				if (!StringUtil.isNullOrEmpty(report_date)) {
+					report_date = report_date.trim();
+				}
 				Double max_value = record.getDouble("percentile_90");
 
 				String enKey = StockACapitalDebtIndexResponse.mapping.get(finance_item);
