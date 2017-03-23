@@ -134,7 +134,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr v-for="item in branchs" style="cursor:pointer" v-on:click="gotoCompany(item.bUuid)">
+                                        <tr v-for="item in branchs" v-bind:class="[item.bUuid==null?'':'link-handle-pointer']"v-on:click="gotoCompany(item.bUuid)">
                                             <td v-text="item.bName"></td>
                                             <td v-text="item.bLegal"></td>
                                         </tr>

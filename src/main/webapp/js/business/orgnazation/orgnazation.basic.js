@@ -74,6 +74,13 @@ var v_orgBasicModel=new Vue({
                 result=true;
             }
             return result;
+        },
+        formatEmptyFilter:function(value){
+            var result="--";
+            if(value&&value!=""){
+                result=value;
+            }
+            return result;
         }
     }
 });
@@ -108,18 +115,19 @@ function getBasicInfo(){
             }else if(res.status=='success') {
                 //console.log("send ajax success");
                 var response = res;
-                $("#family_table").DataTable().destroy();
+                //$("#family_table").DataTable().destroy();
                 $("#focus_table").DataTable().destroy();
+                $("team_table").DataTable().destroy();
                 v_orgBasicModel.$data.orgName=response.orgInfo.orgCnName;
                 v_orgBasicModel.$data.orgDescription=response.orgInfo.orgCnDesc;
 
                 v_orgBasicModel.$data.entName=response.orgInfo.orgMapEntity;
                 v_orgBasicModel.$data.entUuid=response.orgInfo.orgMapEntityId;
 
-                v_orgBasicModel.$data.familyOrg=response.extendList;
+                //v_orgBasicModel.$data.familyOrg=response.extendList;
                 v_orgBasicModel.$data.focusCompany=response.focusList;
 
-                stopTabCloudAnimite();
+                //stopTabCloudAnimite();
                 v_orgBasicModel.$data.orgTeam=response.teams;
                 if(v_orgBasicModel.$data.orgTeam.length==0){
                     v_orgBasicModel.$data.orgTeamEmpty=true;
@@ -130,9 +138,10 @@ function getBasicInfo(){
                 //v_orgBasicModel.ready=function(){bindTable()};
                 v_orgBasicModel.$nextTick(function(){
                     //bindExportedDataTable("team_table",10,"机构团队信息");
-                    bindSimpleDataTable("family_table",10);
+                    //bindSimpleDataTable("family_table",8);
                     bindSimpleDataTable("focus_table",10);
-                    setTabCloud("extend_tag_cloud");
+                    //setTabCloud("extend_tag_cloud");
+                    bindSimpleDataTable("team_table",12);
                     initPopover();
                 });
                 v_orgBasicModel.$data.newsFilterKey=response.orgInfo.orgCnName;

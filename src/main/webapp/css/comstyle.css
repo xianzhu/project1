@@ -7883,6 +7883,7 @@ div .chart-h160{
 
 .link-handle-pointer{
     cursor: pointer;
+    color:#098ddf;
 }
 
 .single-row-selected .selected{

@@ -175,9 +175,9 @@
                                     </thead>
                                     <tbody>
                                     <tr v-for="ele in rptPeFundList">
-                                        <td v-text="ele.fundName" style="cursor:pointer" v-on:click="gotoCompany(ele.fundUuid)"></td>
+                                        <td v-text="ele.fundName" v-bind:class="[ele.fundUuid==null?'':'link-handle-pointer']" v-on:click="gotoCompany(ele.fundUuid)"></td>
                                         <td v-text="ele.regTime"></td>
-                                        <td v-text="ele.manager" style="cursor:pointer" v-on:click="gotoCompany(ele.mUuid)"></td>
+                                        <td v-text="ele.manager" v-bind:class="[ele.mUuid==null?'':'link-handle-pointer']" v-on:click="gotoCompany(ele.mUuid)"></td>
                                         <td v-text="ele.domain"></td>
                                     </tr>
                                     </tbody>

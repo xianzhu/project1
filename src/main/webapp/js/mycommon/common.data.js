@@ -30,7 +30,7 @@ var commonUrls_real = {
 
     orgSearchUrl: "org/search", // 机构--查询
     orgnazationBasicUrl: "org/basic", // 机构基本信息
-    orgBasicNewsUrl:"elasticsearch", // 机构--新闻
+    orgBasicNewsUrl:"elasticsearch/accurate", // 机构--新闻   old: elasticsearch
     orgnazationFundUrl: "org/fund", // 机构基金信息
 
     orgRptDataUrl:"org/top", // 机构--查询--股权投资（查询页初始显示）
@@ -44,7 +44,7 @@ var commonUrls_real = {
     personBasicUrl: "investor/basic", // 投资者--基本信息
     personDetailUrl:"investor/detail", // 投资者--基金事件详情
     personEventUrl: "investor/event", // 投资者--基金事件列表
-    personIntelgeUrl:"elasticsearch", // 投资者--情报
+    personIntelgeUrl:"elasticsearch/accurate", // 投资者--情报  old: elasticsearch
 
     reportUrl: "report", // 报告查询
 
@@ -91,7 +91,7 @@ var commonUrls_real_local = {
 
     orgSearchUrl: hostUrl+"org/search", // 机构--查询
     orgnazationBasicUrl: hostUrl+"org/basic", // 机构基本信息
-    orgBasicNewsUrl:hostUrl+"elasticsearch", // 机构--新闻
+    orgBasicNewsUrl:hostUrl+"elasticsearch/accurate", // 机构--新闻
     orgnazationFundUrl: hostUrl+"org/fund", // 机构基金信息
 
     orgRptDataUrl:hostUrl+"org/top", // 机构--查询--股权投资（查询页初始显示）
@@ -105,7 +105,7 @@ var commonUrls_real_local = {
     personBasicUrl: hostUrl+"investor/basic", // 投资者--基本信息
     personDetailUrl:hostUrl+"investor/detail", // 投资者--基金事件详情
     personEventUrl: hostUrl+"investor/event", // 投资者--基金事件列表
-    personIntelgeUrl:hostUrl+"elasticsearch", // 投资者--情报
+    personIntelgeUrl:hostUrl+"elasticsearch/accurate", // 投资者--情报
 
     reportUrl: hostUrl+"report", // 报告查询
 

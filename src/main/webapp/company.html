@@ -181,11 +181,11 @@
                                         </thead>
                                         <tbody>
                                         <tr role="row" v-for="item in companyMergeList">
-                                            <td class="link-handle-pointer" v-text="item.targetName"
+                                            <td v-bind:class="[item.targetUuid==null?'':'link-handle-pointer']" v-text="item.targetName"
                                                 v-on:click="gotoCompany(item.targetUuid)"></td>
-                                            <td class="link-handle-pointer" v-text="item.buyerName"
+                                            <td v-bind:class="[item.buyerToeUuid==null?'':'link-handle-pointer']" v-text="item.buyerName"
                                                 v-on:click="gotoCompany(item.buyerToeUuid)"></td>
-                                            <td class="link-handle-pointer" v-text="item.ownerName"
+                                            <td v-bind:class="[item.ownerToeUuid==null?'':'link-handle-pointer']" v-text="item.ownerName"
                                                 v-on:click="gotoCompany(item.ownerToeUuid)"></td>
                                             <td class="td-W70" v-text="item.happenDate"></td>
                                             <td v-text="item.tips"></td>
