@@ -178,7 +178,7 @@ public class ElasticSearchClient {
 			if (!fields.isEmpty()) {
 				@SuppressWarnings("unchecked")
 				Map<String, Object> field = (Map<String, Object>) fields.get("doc");
-				if (!field.isEmpty()) {
+				if (field != null && !field.isEmpty()) {
 					String title = (String) field.get("title");
 
 					String channel = String.valueOf(field.get("channel"));
