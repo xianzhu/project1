@@ -148,13 +148,13 @@ public class DistanceUtil {
 
 		long start = System.currentTimeMillis();
 	//	List<WordWeight> exceptionWordList = getExceptionWordWeight(aaa);
-		List<WordWeight> exceptionWordList = getExceptionWordWeight(aaa);
+		List<WordWeight> exceptionWordList = getSingleWordWeigt(aaa.get(0));
 		long end = System.currentTimeMillis();
 		System.out.println("cost time:"+(end-start));
 
-//		for (WordWeight wordWeight:exceptionWordList){
-//			System.out.println(wordWeight.word);
-//		}
+		for (WordWeight wordWeight:exceptionWordList){
+			System.out.println(wordWeight.word);
+		}
 
 	}
 }
