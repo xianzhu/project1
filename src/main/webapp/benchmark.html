@@ -26,7 +26,7 @@
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
-                    <img id="logo-img-bar" hidefocus="true" v-bind:src="logoPath" style="width: auto;height: 60px;">
+                    <img id="logo-img-bar" hidefocus="true" v-bind:src="logoPath">
                 </li>
                 <li v-bind:class="{'active':item.isActive}" v-for="item in menuList" >
                     <a href="#" v-on:click="goto(item.pageurl,id)">

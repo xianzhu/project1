@@ -395,18 +395,18 @@ function getSubReportPage(key,page,rtype){
 }
 
 //// 统计数据
-//function getStatData(){ // 暂时写死
-//    var results = {
-//        "media": {"itemName": "media", "total": 406650, "update": 1105},
-//        "report": {"itemName": "report", "total": 15874, "update": 345},
-//        "ent": {"itemName": "ent", "total": 1576206, "update": 373},
-//        "event": {"itemName": "event", "total": 55872, "update": 130}
-//    };
-//    v_homepageModel.$data.statData=results;
-//}
+function getStatData(){ // 暂时写死
+    var results = {
+        "media": {"itemName": "media", "total": 406650, "update": 1105},
+        "report": {"itemName": "report", "total": 15874, "update": 345},
+        "ent": {"itemName": "ent", "total": 1576206, "update": 373},
+        "event": {"itemName": "event", "total": 55872, "update": 130}
+    };
+    v_homepageModel.$data.statData=results;
+}
 
 // 统计数据
-function getStatData(){
+function getStatData_ok(){
     $.ajax({
         url: commonUrls.homeBasicStatUrl,              //请求地址
         type: "POST",                            //请求方式

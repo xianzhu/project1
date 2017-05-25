@@ -28,7 +28,7 @@
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
-                    <img id="logo-img-bar" hidefocus="true" v-bind:src="logoPath" style="width: auto;height: 60px;">
+                    <img id="logo-img-bar" hidefocus="true" v-bind:src="logoPath" >
                 </li>
                 <li v-bind:class="{'active':item.isActive}" v-for="item in menuList" >
                     <a href="#" v-on:click="goto(item.pageurl,id)">
@@ -205,7 +205,7 @@
                                                 <th style="width:20%">名称</th>
                                                 <th class="td-W75">申请日</th>
                                                 <th class="td-W75">申请号</th>
-                                                <th>授权公告号</th>
+                                                <th class="td-W75">授权公告号</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -215,7 +215,7 @@
                                                 <td style="width:20%" v-text="item.patentName"></td>
                                                 <td class="td-W75" v-text="item.requestDate"></td>
                                                 <td class="td-W75" v-text="item.requestNum"></td>
-                                                <td v-text="item.typeName"></td>
+                                                <td class="td-W75" v-text="item.typeName"></td>
                                             </tr>
                                             </tbody>
                                         </table>
