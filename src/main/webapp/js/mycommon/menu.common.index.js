@@ -3,7 +3,8 @@
  */
 
 // 获取用户名密码
-var uname = getUrlQueryStr("uname", location.href);
+//var uname = getUrlQueryStr("uname", location.href);
+    var uname="test1";
 var password="";
 
 var score=0;
@@ -22,7 +23,7 @@ var v_userModel=new Vue({
         uname: uname,
         uscore: score,
         organizeName:"",
-        logoPath:"img/logo.jpg",
+        logoPath:"img/logo.png",
         newMessageNum:0
     },
     filters:{
@@ -46,7 +47,7 @@ var v_navModel = new Vue({
     el: "#v-navModel",
     data: {
         id: id,
-        logoPath:"img/logo.jpg",
+        logoPath:"img/logo.png",
         menuList: menuList,
         isCompany:false,
         comType:-1

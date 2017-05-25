@@ -6,10 +6,11 @@
     <title>新闻首页</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <link rel="icon" href="img/logo-ico.png" type="image/png">
+    <link rel="icon" href="img/logo_tree.jpg" type="image/png">
     <link rel="stylesheet" href="css/index/bootstrap.min.css">
     <link rel="stylesheet" href="css/index/main.css">
     <script src="js/common/jquery-2.1.1.js"></script>
+    <script src="js/common/md5.js"></script>
     <script src="js/plugins/picCarouse/PicCarousel.js"></script>
     <script src="js/common/jquery.jpanelmenu.min.js"></script>
     <script src="js/common/bootstrap.min.js"></script>
@@ -18,6 +19,7 @@
     <script src="js/index/main.js"></script>
     <script src="js/common/vue.js"></script>
     <script src="js/mycommon/function.cookie.js"></script>
+    <script src="js/index/common.data.index.js"></script>
     <script src="js/index/function.index.common.js"></script>
 </head>
 <body>
@@ -31,33 +33,11 @@
                     <img src="./img/logo.png" style="width: auto;height:30px;position:absolute;right:5px;top:10px;">
                 </div>
                 <div class="home-page-posts animated fadeIn" id="v-indexNewsModel">
-                    <article class="post">
-                        <div class="post-preview col-xs-10  no-gutter">
-                            <a href="http://www.gov.cn/guowuyuan/2016-12/08/content_5145176.htm" target="_blank" style="color:#333337"><h2>中国公安部与美国国土安全部第三次部级会晤举行</h2></a>
-
-                            <p id="pw1" class="pww" style="text-align: right;">2016-12-08 16:58:45</p>
-
-                            <p class="meta">中国公安部与美国国土安全部第三次部级会晤举行 郭声琨和约翰逊共同主持 当地时间12月7日下午，国务委员、公安部部长郭声琨和美国国土安全部部长约翰逊在华盛顿共同主持两部第三次部级会晤。图：张建鑫 当地时间12月7日下午，国务委员、公安部部长郭声琨和美国国土安全部部长约翰逊在华盛顿共同主持两部第三次部级会晤。 郭声琨指出，</p>
-                        </div>
-                    </article>
-
-                    <article class="post">
-                        <div class="post-preview col-xs-10  no-gutter">
-                            <a href="http://www.networkworld.com/article/3148275/mobile/samsung-still-struggling-with-the-recovery-of-note7-phones-from-users.html" target="_blank" style="color:#333337"><h2>Samsung still struggling with the recovery of Note7 phones from users</h2></a>
-
-                            <p id="pw2" class="pww" style="text-align: right;">2016-12-08 16:43:05</p>
-
-                            <p class="meta">Samsung’s recall of Galaxy Note7 smartphones because of exploding batteries is far from complete with some users, for example, in Canada still not turning in th</p>
-                        </div>
-                    </article>
-
                     <article class="post" v-for="item in cateNews">
                         <div class="post-preview col-xs-10  no-gutter">
                             <a href="#" target="_blank" v-bind:href="item.url" style="color:#333337"><h2
                                     v-text="item.title"></h2></a>
-
                             <p id="pw" class="pww" style="text-align: right;" v-text="item.time"></p>
-
                             <p class="meta" v-text="item.content">
                                 <a href="#" id="pp" class="ppp"></a><i class="link-spacer"></i> <i
                                     class="fa fa-bookmark"></i>
@@ -69,9 +49,11 @@
                 <div class="home-page-categories animated fadeIn hide" id="v-cateMenuModel">
                     <div class="category row">
                         <section>
-                            <div class="category-preview col-lm-h col-lg-2 col-md-3 col-sm-3 col-xs-4" v-for="item in menuList">
+                            <div class="category-preview col-lm-h col-lg-2 col-md-3 col-sm-3 col-xs-4"
+                                 v-for="item in menuList">
                                 <a v-on:click="gotoCategory(item.id,item.tpcId)">
-                                    <img v-bind:src="item.imgUrl" style="cursor:pointer;width:100%;height:100%;" alt="category-image"></a>
+                                    <img v-bind:src="item.imgUrl" style="cursor:pointer;width:100%;height:100%;"
+                                         alt="category-image"></a>
 
                                 <div><h2 v-text="item.name"></h2></div>
                             </div>
@@ -102,8 +84,10 @@
 <div class="Bomb-box" style="display:none">
     <div class="bg"></div>
     <div class="Suspension" style="padding-top:15px;width:350px;height:318px;">
-        <h2>Welcome to Peseer</h2>
+        <h2>Welcome to KeanData</h2>
+
         <p>Login in. To see it in action.</p>
+
         <div class="Suspension-center">
             <input type="text" style="margin-top:10px;" placeholder="Username" class="input1" id="iptName"><br>
             <input type="password" style="margin-top:10px;" placeholder="password" class="input2" id="iptPwd">
