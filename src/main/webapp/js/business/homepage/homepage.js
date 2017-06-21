@@ -394,7 +394,7 @@ function getSubReportPage(key,page,rtype){
     });
 }
 
-// 统计数据
+//// 统计数据
 function getStatData(){ // 暂时写死
     var results = {
         "media": {"itemName": "media", "total": 406650, "update": 1105},
@@ -403,6 +403,37 @@ function getStatData(){ // 暂时写死
         "event": {"itemName": "event", "total": 55872, "update": 130}
     };
     v_homepageModel.$data.statData=results;
+}
+
+// 统计数据
+function getStatData_ok(){
+    $.ajax({
+        url: commonUrls.homeBasicStatUrl,              //请求地址
+        type: "POST",                            //请求方式
+        data: {},
+        dataType: "json",
+        success: function (res) {
+            if(res.status=='failure'){
+                console.log("failure:",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
+            }else if(res.status=='success') {
+                var response=res;
+                v_homepageModel.$data.statData=response.results;
+            }
+        },
+        fail: function (status) {
+            console.error("event id=", id, " error. status=", status);
+        },
+        statusCode: {
+            404: function() {
+                goTo404();
+            },
+            500:function(){
+                goTo500();
+            }
+        }
+    });
 }
 
 /*function getStatData(){

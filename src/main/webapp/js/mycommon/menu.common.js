@@ -23,7 +23,7 @@ var v_userModel=new Vue({
         uname: uname,
         uscore: score,
         organizeName:"",
-        logoPath:"img/logo.jpg",
+        //logoPath:"img/kdlogo-1.png",
         newMessageNum:0
     },
     filters:{
@@ -47,7 +47,7 @@ var v_navModel = new Vue({
     el: "#v-navModel",
     data: {
         id: id,
-        logoPath:"img/logo.jpg",
+        logoPath:"img/kdlogo-1.png",
         menuList: menuList,
         isCompany:false,
         comType:-1

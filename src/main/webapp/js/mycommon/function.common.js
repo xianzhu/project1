@@ -269,7 +269,8 @@ function gotoCompanyByCode(code,type){
 }
 
 function goTo404(){
-window.location.href="404.html";
+    console.log("goto 404");
+//window.location.href="404.html";
 }
 function goTo500(){
 
@@ -521,6 +522,47 @@ function savecurrentSearchPage(key,value){
     var stateObj={foo:"bar"};
     history.pushState(stateObj,"测试页面1",newurl);
 }
+
+function login(){
+    var name="test1";
+    var password="test1";
+    var url=indexCommonUrls.loginUrl;
+    //var url="http://192.168.0.67:18083/login";
+
+    var pwd=hex_md5(password);
+    console.log("login:",name,', ',pwd);
+    $.ajax({
+        "url":url,
+        type:'POST',
+        dataType:'json',
+        data:{
+            user_name:name,
+            password:pwd
+        },
+        success:function(res){
+            console.log(res);
+            if (res.status=="failure") {
+                // console.log("login success");
+                $("#login-fail").show().html("用户名密码错误,请重新输入!")
+            } else {
+                var response=res;
+
+                console.log("login success:",response);
+                window.location.href="homePage.html?uname="+name;
+            }
+        },
+        fail:function(res){
+            console.log("fail:",res);
+        }
+    });
+
+    return false;
+}
+
+
+
+
+
 
 
 

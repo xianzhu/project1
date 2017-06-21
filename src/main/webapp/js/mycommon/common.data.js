@@ -5,12 +5,12 @@
 var isTest = false; // 正式版
 //var isTest = true; // 测试版
 
-var hostUrl="http://192.168.0.67:28080/";
+var hostUrl="http://116.62.52.41:18081/";
 //var hostUrl="http://192.168.0.67:18083/";
 var commonUrls_real = {
     homeBasicUrl: "top/person", // 用户信息
-    //homeBasicMapUrl: "top/news", // 地图新闻(locationNewsId)
-    homeBasicMapUrl:"testData/homemapnews.data.json",
+    homeBasicMapUrl: "top/news", // 地图新闻(locationNewsId)
+    //homeBasicMapUrl:"testData/homemapnews.data.json",
     homeBasicNewsUrl: "elasticsearch?mode=personal", // 推送新闻(mode=personal)
     homeBasicReportUrl: "report/personal", // 报告(type)
     homeBasicStatUrl:"top/mediasync", // 信息同步--统计信息

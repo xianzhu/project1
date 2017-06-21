@@ -191,7 +191,13 @@ h5 {
     height:60px;
     /*width:220px;*/
     width:100%;
+    padding-left:20px;
+    padding-top:5px;
     background-color:transparent;
+}
+.nav-header > img{
+    width:auto;
+    height:54px;
 }
 
 .pace-done .nav-header {
@@ -7879,6 +7885,9 @@ div .chart-h160{
     .col-xl-offset-2{margin-left:16.66666667%}
     .col-xl-offset-1{margin-left:8.33333333%}
     .col-xl-offset-0{margin-left:0}
+}
+.handle-pointer{
+    cursor: pointer;
 }
 
 .link-handle-pointer{
