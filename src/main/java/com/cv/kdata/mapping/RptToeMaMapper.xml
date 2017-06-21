@@ -50,7 +50,7 @@
   </sql>
   
   	<select id="getRpt2MaList" resultMap="BaseResultMap">
-		select * from rpt_toe_ma order by happen_date desc limit #{from}, 20
+		select * from rpt_toe_ma order by happen_date desc limit #{from}, #{count}
 	</select>
 	
   <insert id="insert" parameterType="com.cv.kdata.model.RptToeMa">

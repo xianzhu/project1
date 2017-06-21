@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,7 +126,7 @@ public class ElasticSearchService {
 		}
 
 
-		informations = queryData(para.getKey(), para.getFrom(), extend);
+		informations = queryData(para.getKey(), para.getFrom(),para.getCount(), extend);
 
 		if ("2".equals(req.getParameter("order"))) {
 			// 按时间排序，默认按相关性排序
@@ -166,6 +167,31 @@ public class ElasticSearchService {
 		return informations;
 	}
 
+	public static List<Information> simpleQuery(HttpServletRequest request) {
+
+		String key = request.getParameter("key");
+		int from = StringUtil.parseInt(request.getParameter("from"), 0);
+		int count = StringUtil.parseInt(request.getParameter("count"), 20);
+		List<String> channel = new ArrayList<>();
+		String channelStr = request.getParameter("id");
+		if(StringUtils.isNotBlank(channelStr)){
+			try{
+				int biz_cat_id = Integer.parseInt(channelStr);
+				List<Integer> topicIds =  Db.query(" select topic_id from ops_category_media where biz_cat_id = ? ", biz_cat_id);
+				for (Integer topicIdStr : topicIds) {
+					channel.add(String.valueOf(topicIdStr));
+				}
+			}catch(Exception ex){
+				ex.printStackTrace();
+			}
+		}
+
+		List<Information> informations = ConstElasticClient.getElasticSeachClient().search_top(key, null, null,
+				channel, from, count);
+		Collections.sort(informations);
+		return informations;
+	}
+
 	/**
 	 * 新添加，没有customerInfo
 	 *
@@ -174,7 +200,7 @@ public class ElasticSearchService {
 	 * @param extend
 	 * @return
 	 */
-	public List<Information> queryData(String key, int from, UserInfoWithBLOBs extend) {
+	public List<Information> queryData(String key, int from,int count, UserInfoWithBLOBs extend) {
 		List<Information> information_list = null;
 
 		List<String> channels = null;
@@ -184,10 +210,10 @@ public class ElasticSearchService {
 
 		logger.info("417 Searh keyword is " + key);
 		if(!StringUtil.isNullOrEmpty(key)){
-			information_list = ConstElasticClient.getElasticSeachClient().search_extend(key, null, null, channels, from);
+			information_list = ConstElasticClient.getElasticSeachClient().search_extend(key, null, null, channels, from,count);
 		}else{
 			//如果key为null，则为推送新闻，返回较新的新闻
-			information_list = ConstElasticClient.getElasticSeachClient().search_top(key, null, null, channels,from,0);
+			information_list = ConstElasticClient.getElasticSeachClient().search_top(key, null, null, channels,from,count);
 		}
 
 		return information_list;

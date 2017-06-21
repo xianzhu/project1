@@ -123,7 +123,27 @@ public class TopSearchController {
 		EventAssociateResponse response = new EventAssociateResponse();
 		String type = request.getParameter("type");
 		int from = StringUtil.parseInt(request.getParameter("from"), 0);
+//		int count = StringUtil.parseInt(request.getParameter("from"), 10);
 		DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
+		/*
+		switch(type){
+		case "A轮":
+		case "B轮":
+		case "C轮":
+		case "pre-A轮":
+		case "D轮":
+		case "轮":
+			response.setInvestEventList(eventService.getCurrentDateInvestEvents(type,from,count));
+			break;
+		case "上市":
+		case "收购":
+			response.setExitEventList(eventService.getCurrentDateExitEvents(type,from,count));
+			break;
+		default:
+			//默认获取投资事件前十条
+			response.setInvestEventList(eventService.getCurrentDateInvestEvents(from));
+		}
+		*/
 		if("invest".equals(type)){
 			response.setInvestEventList(eventService.getCurrentDateInvestEvents(from));
 		}else if("exit".equals(type)){

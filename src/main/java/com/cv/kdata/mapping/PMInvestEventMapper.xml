@@ -30,6 +30,14 @@
     order by happen_date limit #{from}, 10
   </select>
   
+  <select id="getEventsAfterDateByType" resultMap="BaseResultMap">
+    select * from pm_invest_event where 
+    happen_date !='NULL' and 
+    happen_date > #{date} and 
+    invest_type = #{type} 
+    order by happen_date limit #{from}, #{count}
+  </select>
+  
   <select id="getInvestorInvestEvent" resultMap="BaseResultMap">
     select a.* from pm_invest_event a inner join pm_id_user_invest_event b on a.event_id=b.event_id 
     where 
@@ -40,7 +48,7 @@
     <if test="key != null">
     (a.ent_cn_name like concat('%',#{key},'%') or a.event_title like concat('%',#{key},'%')) and
     </if>
-     b.user_id=#{userId} ORDER BY happen_date DESC limit #{from},10
+     b.user_id=#{userId} ORDER BY happen_date DESC limit #{from},#{count}
   </select>
   
   <select id="getFundInvestEvent" resultMap="BaseResultMap">

@@ -19,6 +19,7 @@ import com.cv.kdata.util.CollectionUtil;
 import com.cv.kdata.util.MysqlHelper;
 import com.cv.kdata.util.StockFeatureAllScaledDataHelper;
 import com.cv.kdata.util.StockFeatureParameterDataHelper;
+import com.cv.kdata.util.StringUtil;
 import com.cv.kdata.util.TopicClient;
 import com.cv.kdata.xsbresponse.EntMatch;
 import com.cv.kdata.xsbresponse.MatchingCalculateResult;
@@ -252,8 +253,10 @@ public class XsbListMatchingService {
 		List<EntMatch> stocka_match_list = new ArrayList<>();
 
 		List<String> stock_code_all = new ArrayList<>();
+
+		int count = StringUtil.parseInt(req.getParameter("count"), 10);
 		for (MatchingCalculateResult matchingCalculateResult : middleReturnValue.compareResults_stocka) {
-			if (index == 10) {
+			if (index == count) {
 				break;
 			}
 			stock_code_all.add(matchingCalculateResult.stock_code);
@@ -261,7 +264,7 @@ public class XsbListMatchingService {
 		}
 		index = 0;
 		for (MatchingCalculateResult matchingCalculateResult : middleReturnValue.compareResults_xsb) {
-			if (index == 10) {
+			if (index == count) {
 				break;
 			}
 			stock_code_all.add(matchingCalculateResult.stock_code);

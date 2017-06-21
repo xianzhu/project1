@@ -35,7 +35,7 @@
     <if test="key != null">
     (a.ent_cn_name like concat('%',#{key},'%') or a.event_title like concat('%',#{key},'%')) and
     </if>
-     b.user_id=#{userId} ORDER BY happen_date DESC limit #{from},10
+     b.user_id=#{userId} ORDER BY happen_date DESC limit #{from},#{count}
   </select>
   
   <select id="getFundExitEvent" resultMap="BaseResultMap">
@@ -59,6 +59,13 @@
   <select id="getEventsAfterDate" resultMap="BaseResultMap">
     select * from pm_exit_event where happen_date !='NULL' and happen_date > #{date}
     order by happen_date limit #{from}, 10
+  </select>
+  
+  <select id="getEventsAfterDateByType" resultMap="BaseResultMap">
+    select * from pm_exit_event where 
+    happen_date !='NULL' and happen_date > #{date} 
+    and exit_type=#{type} 
+    order by happen_date limit #{from}, #{count}
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

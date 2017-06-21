@@ -8,7 +8,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +19,6 @@ import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.model.Information;
 import com.cv.kdata.service.ElasticSearchService;
 import com.cv.kdata.util.StringUtil;
-import com.jfinal.plugin.activerecord.Db;
 
 @Controller
 public class ElasticSearchController {
@@ -30,21 +28,8 @@ public class ElasticSearchController {
 	@RequestMapping(value="/elasticsearch/top",method={RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
     public List<Information> simpleSearch2(HttpServletRequest request,Model model){
-		String key = request.getParameter("key");
-		List<String> channel = new ArrayList<>();
-		String channelStr = request.getParameter("id");
-		if(StringUtils.isNotBlank(channelStr)){
-			try{
-				int biz_cat_id = Integer.parseInt(channelStr);
-				List<Integer> topicIds =  Db.query(" select topic_id from ops_category_media where biz_cat_id = ? ", biz_cat_id);
-				for (Integer topicIdStr : topicIds) {
-					channel.add(String.valueOf(topicIdStr));
-				}
-			}catch(Exception ex){
-				ex.printStackTrace();
-			}
-		}
-		List<Information> infos = ElasticSearchService.simpleQuery(key,channel);
+
+		List<Information> infos = ElasticSearchService.simpleQuery(request);
 		return infos;
 	}
 
@@ -75,7 +60,7 @@ public class ElasticSearchController {
 
 		String key = request.getParameter("key");
 		int from = StringUtil.parseInt(request.getParameter("from"), 0);
-		int count = StringUtil.parseInt(request.getParameter("count"), 0);
+		int count = StringUtil.parseInt(request.getParameter("count"), 10);
 //		ElasticSearchService service = new ElasticSearchService();
 
 		List<Information> infos = service.accureQuery(key,from,count);

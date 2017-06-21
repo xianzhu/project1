@@ -31,12 +31,32 @@ public class EventService {
 	}
 
 	/**
+	 * 根据类型获取当天投资时间
+	 * @return
+	 */
+	public List<PMInvestEvent> getCurrentDateInvestEvents(String type, int from, int count){
+		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		List<PMInvestEvent> list = investEventMapper.getEventsAfterDateByType(date, type,from,count);
+		return list;
+	}
+
+	/**
 	 * 获取当天退出事件
 	 * @return
 	 */
 	public List<PMExitEvent> getCurrentDateExitEvents(int from){
 		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		List<PMExitEvent> list = exitEventMapper.getEventsAfterDate(date, from);
+		return list;
+	}
+
+	/**
+	 * 根据类型获取当天退出事件
+	 * @return
+	 */
+	public List<PMExitEvent> getCurrentDateExitEvents(String type, int from, int count){
+		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		List<PMExitEvent> list = exitEventMapper.getEventsAfterDateByType(date,type, from,count);
 		return list;
 	}
 

@@ -94,6 +94,7 @@ public class InvestorInfoService {
 		String filter = req.getParameter("filter");
 		String key = req.getParameter("key");
 		int from = StringUtil.parseInt(req.getParameter("from"), 0);
+		int count = StringUtil.parseInt(req.getParameter("count"), 10);
 		if (StringUtil.isNullOrEmpty(userId)) {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
@@ -104,7 +105,8 @@ public class InvestorInfoService {
 			if(!StringUtil.isNullOrEmpty(filter)){
 				filters = Arrays.asList(filter.split(","));
 			}
-			List<PMExitEvent> eventList = exitEventMapper.getInvestorExitEvent(userId, filters, key, from);
+			List<PMExitEvent> eventList = exitEventMapper.getInvestorExitEvent(
+					userId, filters, key, from, count);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get invest event success!");
 			response.setExitList(eventList);
@@ -120,6 +122,7 @@ public class InvestorInfoService {
 		String filter = req.getParameter("filter");
 		String key = req.getParameter("key");
 		int from = StringUtil.parseInt(req.getParameter("from"), 0);
+		int count = StringUtil.parseInt(req.getParameter("count"), 10);
 
 		if (StringUtil.isNullOrEmpty(userId)) {
 			response.setStatus(RDDWebConst.FAILURE);
@@ -130,7 +133,8 @@ public class InvestorInfoService {
 			if(!StringUtil.isNullOrEmpty(filter)){
 				filters = Arrays.asList(filter.split(","));
 			}
-			List<PMInvestEvent> eventList = investEventMapper.getInvestorInvestEvent(userId, filters,key, from);
+			List<PMInvestEvent> eventList = investEventMapper.getInvestorInvestEvent(
+					userId, filters,key, from, count);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get invest event success!");
 			response.setInventList(eventList);

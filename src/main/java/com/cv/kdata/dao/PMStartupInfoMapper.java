@@ -22,4 +22,9 @@ public interface PMStartupInfoMapper {
     int updateByPrimaryKey(PMStartupInfo record);
 
     List<PMStartupInfo> getProjectInfo(@Param("custom")List<String> custom);
+    List<PMStartupInfo> searchProjectInfo(
+    		@Param("domain") String domain,
+    		@Param("key") String key,
+    		@Param("from") int from,
+    		@Param("from") int count);
 }

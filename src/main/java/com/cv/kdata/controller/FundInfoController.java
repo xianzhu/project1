@@ -50,7 +50,11 @@ public class FundInfoController {
 		String type = request.getParameter("type");
 		if ("invest".equals(type)) {
 			service.getInvestEvent(request, basicResponse);
-		} else {
+		} else if("exit".equals(type)){
+			service.getExitEvent(request, basicResponse);
+		}else{
+			//all events
+			service.getInvestEvent(request, basicResponse);
 			service.getExitEvent(request, basicResponse);
 		}
 

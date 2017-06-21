@@ -21,11 +21,22 @@ public interface PMExitEventMapper {
 
     List<PMExitEvent> getOrgExitEvent(String orgId);
 
-    List<PMExitEvent> getInvestorExitEvent(@Param("userId")String userId, @Param("filter")List<String> filter, @Param("key")String key, @Param("from")int from);
+    List<PMExitEvent> getInvestorExitEvent(
+    		@Param("userId")String userId,
+    		@Param("filter")List<String> filter,
+    		@Param("key")String key,
+    		@Param("from")int from,
+    		@Param("count")int count);
 
     List<PMExitEvent> getFundExitEvent(@Param("fundId")String fundId, @Param("filter")List<String> filter, @Param("key")String key, @Param("from")int from);
 
     List<PMExitEvent> getFundExitEventAll(@Param("fundId")String fundId);
 
     List<PMExitEvent> getEventsAfterDate(@Param("date")String date, @Param("from")int from);
+
+    List<PMExitEvent> getEventsAfterDateByType(
+    		@Param("date")String date,
+    		@Param("type")String type,
+    		@Param("from")int from,
+    		@Param("count")int count);
 }
