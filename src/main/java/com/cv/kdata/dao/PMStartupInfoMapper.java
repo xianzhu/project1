@@ -26,5 +26,5 @@ public interface PMStartupInfoMapper {
     		@Param("domain") String domain,
     		@Param("key") String key,
     		@Param("from") int from,
-    		@Param("from") int count);
+    		@Param("count") int count);
 }
