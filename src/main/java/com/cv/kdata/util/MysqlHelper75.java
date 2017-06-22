@@ -13,21 +13,21 @@ import java.util.Map.Entry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.cv.kdata.conf.ConfigurationHelper;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-public class MysqlHelper {
-	private static final Logger LOGGER = LoggerFactory.getLogger(MysqlHelper.class);
-	static HashMap<String, MysqlHelper> dbName2Helper = new HashMap<>();
+public class MysqlHelper75 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(MysqlHelper75.class);
+	static HashMap<String, MysqlHelper75> dbName2Helper = new HashMap<>();
 	private ComboPooledDataSource basicDataSource = null;
 
-	public static MysqlHelper getInstance(String db_name) {
-		MysqlHelper instance = dbName2Helper.get(db_name);
+	public static MysqlHelper75 getInstance(String db_name) {
+		MysqlHelper75 instance = dbName2Helper.get(db_name);
 
 		if (instance == null) {
-			synchronized (MysqlHelper.class) {
+			synchronized (MysqlHelper75.class) {
+				instance = dbName2Helper.get(db_name);
 				if (instance == null) {
-					instance = new MysqlHelper(db_name);
+					instance = new MysqlHelper75(db_name);
 					dbName2Helper.put(db_name, instance);
 				}
 			}
@@ -52,16 +52,14 @@ public class MysqlHelper {
 		return basicDataSource;
 	}
 
-	private MysqlHelper(String db_name) {
-		String dbUrl = null;
-
-		// configure a default db helper
-		dbUrl = String.format(ConfigurationHelper.DEFAULT_DB_URL, db_name);
+	private MysqlHelper75(String db_name) {
+		String dbUrl = String.format(
+				"jdbc:mysql://datanode-03:3306/%s?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&autoReconnectForPools=true",
+				db_name);
 
 		if (this.basicDataSource == null)
 			try {
-				basicDataSource = getDataSource(ConfigurationHelper.DEFAULT_DB_DRIVER, dbUrl,
-						ConfigurationHelper.DEFAULT_USER_NAME, ConfigurationHelper.DEFAULT_DB_PASSWORD);
+				basicDataSource = getDataSource("com.mysql.jdbc.Driver", dbUrl, "rdd", "s6eN8HZTg9Sgr2kD");
 			} catch (PropertyVetoException | SQLException ex) {
 				ex.printStackTrace();
 				LOGGER.error("exception", ex);
@@ -76,11 +74,7 @@ public class MysqlHelper {
 		ResultSet resultSet = null;
 		Statement pStatement = null;
 		try {
-			// LOGGER.info(String.format("current connection count:%d, busy
-			// count:%d",
-			// basicDataSource.getNumConnections(),basicDataSource.getNumBusyConnections()));
 			pStatement = basicDataSource.getConnection().createStatement();
-			// LOGGER.info(String.format("after "));
 			resultSet = pStatement.executeQuery(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -93,7 +87,6 @@ public class MysqlHelper {
 	public void close(ResultSet rs) {
 		try {
 			if (rs != null) {
-				// LOGGER.info("close result set ");
 				Statement statement = rs.getStatement();
 				rs.close();
 				close("close resultset", statement);
@@ -105,11 +98,9 @@ public class MysqlHelper {
 
 	public void close(String source, Statement statement) throws SQLException {
 		if (statement != null) {
-			// LOGGER.info(source+",====> close statement");
 			Connection connection = statement.getConnection();
 			statement.close();
 			if (connection != null) {
-				// LOGGER.info("close connection");
 				connection.close();
 			}
 		}
@@ -142,8 +133,6 @@ public class MysqlHelper {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e.getMessage());
-		} finally {
-
 		}
 		return rs;
 	}
@@ -162,24 +151,21 @@ public class MysqlHelper {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e.getMessage());
-		} finally {
-
 		}
 		return rs;
 	}
 
 	// update/delete/insert
-	// sql格式:UPDATE tablename SET columnn = ? WHERE column = ?
+	// sql格式 eg:UPDATE tablename SET columnn = ? WHERE column = ?
 	public void executeUpdate(String sql, Object[] parameters) throws SQLException {
 		PreparedStatement ps = null;
 		try {
 			// 1.创建一个ps
 			ps = basicDataSource.getConnection().prepareStatement(sql);
-			// 给？赋值
+			// 给参数赋值
 			if (parameters != null)
 				for (int i = 0; i < parameters.length; i++) {
 					ps.setObject(i + 1, parameters[i]);
-					// ps.setString(i + 1, parameters[i]);
 				}
 			// 执行
 			ps.executeUpdate();
@@ -213,12 +199,11 @@ public class MysqlHelper {
 	}
 
 	public void close() {
-		// basicDataSource.get
 		basicDataSource.close(true);
 	}
 
 	public static void closeAll() {
-		for (Entry<String, MysqlHelper> entry : dbName2Helper.entrySet()) {
+		for (Entry<String, MysqlHelper75> entry : dbName2Helper.entrySet()) {
 			entry.getValue().close();
 		}
 	}

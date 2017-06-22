@@ -17,11 +17,11 @@ import com.cv.kdata.cache.LoginInfoCache;
 import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.dao.UserInfoMapper;
 import com.cv.kdata.datasource.DBContextHolder;
-import com.cv.kdata.model.Information;
 import com.cv.kdata.model.UserInfoWithBLOBs;
 import com.cv.kdata.util.ConstElasticClient;
 import com.cv.kdata.util.StringUtil;
 import com.jfinal.plugin.activerecord.Db;
+import com.kdata.defined.model.Information;
 
 @Service
 public class ElasticSearchService {

@@ -23,8 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cv.kdata.conf.ConfigurationHelper;
-import com.cv.kdata.model.Information;
-import com.cv.kdata.model.TypeInfo;
+import com.kdata.defined.model.Information;
 
 
 public class ElasticSearchClient {
@@ -178,7 +177,7 @@ public class ElasticSearchClient {
 			if (!fields.isEmpty()) {
 				@SuppressWarnings("unchecked")
 				Map<String, Object> field = (Map<String, Object>) fields.get("doc");
-				if (field != null && !field.isEmpty()) {
+				if (!field.isEmpty()) {
 					String title = (String) field.get("title");
 
 					String channel = String.valueOf(field.get("channel"));
@@ -195,9 +194,6 @@ public class ElasticSearchClient {
 					}
 					int mediaType = (int) field.get("media_type");
 
-					// 根据channel字段获取type信息
-					TypeInfo typeInfo = TypeInfoDataHelper.getTypeInfoWithCategoryNo(channel);
-
 					if (mediaType == 2) {
 						//删除两天前的微信记录
 						String daysBefore = TimeUtil.getDaysBefore(2);
@@ -205,7 +201,7 @@ public class ElasticSearchClient {
 							continue;
 						}
 					}
-					Information info = new Information(typeInfo, title, content, url, createTime);
+					com.kdata.defined.model.Information info = new com.kdata.defined.model.Information(null,null,title, content, url, createTime);
 					list.add(info);
 				}
 			}

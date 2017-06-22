@@ -2,7 +2,6 @@ package com.cv.kdata.response;
 
 import java.util.List;
 
-import com.cv.kdata.model.Information;
 import com.cv.kdata.model.PMExitEvent;
 import com.cv.kdata.model.PMExitEventDetail;
 import com.cv.kdata.model.PMInvestEvent;
@@ -10,6 +9,7 @@ import com.cv.kdata.model.PMInvestEventDetail;
 import com.cv.kdata.model.PMUserInfo;
 import com.cv.kdata.model.RptAngelList;
 import com.cv.kdata.model.RptOrgerList;
+import com.kdata.defined.model.Information;
 
 public class InvestorInfoResponse extends ResponseObject{
 	private List<PMUserInfo> userList;  //投资者列表，用于搜索返回
@@ -97,7 +97,7 @@ public class InvestorInfoResponse extends ResponseObject{
 	public void setIntelligence(List<Information> intelligence) {
 		this.intelligence = intelligence;
 	}
-	
-	
-	
+
+
+
 }

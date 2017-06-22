@@ -18,11 +18,13 @@ import com.cv.kdata.cache.EventTypeCache;
 import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.datasource.DBContextHolder;
 import com.cv.kdata.model.LocationNews;
+import com.cv.kdata.response.DailyEventResponse;
 import com.cv.kdata.response.EventAssociateResponse;
 import com.cv.kdata.response.MediaSyncResponse;
 import com.cv.kdata.response.MonitorResponse;
 import com.cv.kdata.response.TopSearchResponse;
 import com.cv.kdata.response.UserInfoResponse;
+import com.cv.kdata.service.DailyEventService;
 import com.cv.kdata.service.EventService;
 import com.cv.kdata.service.MediaSyncService;
 import com.cv.kdata.service.MonitorService;
@@ -45,6 +47,9 @@ public class TopSearchController {
 	private MonitorService monitorService;
 	@Autowired
 	private EventService eventService;
+
+	@Autowired
+	private DailyEventService dailyEventService;
 
 	private static Logger logger = LoggerFactory.getLogger(TopSearchController.class);
 	@RequestMapping(value="/topsearch",method={RequestMethod.GET,RequestMethod.POST})
@@ -138,6 +143,20 @@ public class TopSearchController {
 		}
 		response.setStatus(RDDWebConst.SUCCESS);
 		response.setMessage("get current date events success!");
+		return response;
+	}
+
+	@RequestMapping(value="/top/daydetail",method={RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+    public Object getDailyEventDetail(HttpServletRequest request,Model model){
+		String eventName = request.getParameter("event");
+		String type = request.getParameter("type");
+
+		DailyEventResponse response = new DailyEventResponse();
+		dailyEventService.getDailyEventDetail(eventName, type, response);
+
+		response.setStatus(RDDWebConst.SUCCESS);
+		response.setMessage("get events success!");
 		return response;
 	}
 

@@ -2,7 +2,7 @@ package com.cv.kdata.response;
 
 import java.util.List;
 
-import com.cv.kdata.model.Information;
+import com.kdata.defined.model.Information;
 
 
 public class ElasticSearchResponse extends ResponseObject{

@@ -14,6 +14,17 @@ public class TimeUtil {
 		return time;
 	}
 
+	/**
+	 *
+	 * @param format = "yyyy-MM-dd" or "yyyy-MM-dd HH:mm:ss"
+	 * @return
+	 */
+	public static String getCurrentTime(String format) {
+		SimpleDateFormat sdFormat = new SimpleDateFormat(format);
+		String time = sdFormat.format(Calendar.getInstance().getTime());
+		return time;
+	}
+
 	public static String getDaysBefore(int day) {
 		Date currentDate = Calendar.getInstance().getTime();
 		String time = sdf.format(getDateBefore(currentDate, day));

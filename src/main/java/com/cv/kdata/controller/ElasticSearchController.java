@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cv.kdata.cont.RDDWebConst;
-import com.cv.kdata.model.Information;
 import com.cv.kdata.service.ElasticSearchService;
 import com.cv.kdata.util.StringUtil;
+import com.kdata.defined.model.Information;
 
 @Controller
 public class ElasticSearchController {
