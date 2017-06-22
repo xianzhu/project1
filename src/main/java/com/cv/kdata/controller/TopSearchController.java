@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cv.kdata.cache.EventTypeCache;
 import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.datasource.DBContextHolder;
 import com.cv.kdata.model.LocationNews;
@@ -123,34 +124,17 @@ public class TopSearchController {
 		EventAssociateResponse response = new EventAssociateResponse();
 		String type = request.getParameter("type");
 		int from = StringUtil.parseInt(request.getParameter("from"), 0);
-//		int count = StringUtil.parseInt(request.getParameter("from"), 10);
+		int count = StringUtil.parseInt(request.getParameter("count"), 10);
+		String investOrExit = EventTypeCache.getInstance().isInvestOrExit(type);
 		DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
-		/*
-		switch(type){
-		case "A轮":
-		case "B轮":
-		case "C轮":
-		case "pre-A轮":
-		case "D轮":
-		case "轮":
+
+		if("invest".equals(investOrExit)){
 			response.setInvestEventList(eventService.getCurrentDateInvestEvents(type,from,count));
-			break;
-		case "上市":
-		case "收购":
+		}else if("exit".equals(investOrExit)){
 			response.setExitEventList(eventService.getCurrentDateExitEvents(type,from,count));
-			break;
-		default:
-			//默认获取投资事件前十条
-			response.setInvestEventList(eventService.getCurrentDateInvestEvents(from));
-		}
-		*/
-		if("invest".equals(type)){
-			response.setInvestEventList(eventService.getCurrentDateInvestEvents(from));
-		}else if("exit".equals(type)){
-			response.setExitEventList(eventService.getCurrentDateExitEvents(from));
 		}else{
-			response.setInvestEventList(eventService.getCurrentDateInvestEvents(from));
-			response.setExitEventList(eventService.getCurrentDateExitEvents(from));
+			//默认获取投资事件前十条
+			response.setInvestEventList(eventService.getCurrentDateInvestEvents(null,from,count));
 		}
 		response.setStatus(RDDWebConst.SUCCESS);
 		response.setMessage("get current date events success!");

@@ -33,8 +33,10 @@
   <select id="getEventsAfterDateByType" resultMap="BaseResultMap">
     select * from pm_invest_event where 
     happen_date !='NULL' and 
-    happen_date > #{date} and 
-    invest_type = #{type} 
+    happen_date > #{date} 
+    <if test="type != null">
+       and invest_type = #{type}
+     </if> 
     order by happen_date limit #{from}, #{count}
   </select>
   

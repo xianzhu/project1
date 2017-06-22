@@ -24,8 +24,9 @@ public class EventService {
 	 * 获取当天投资时间
 	 * @return
 	 */
-	public List<PMInvestEvent> getCurrentDateInvestEvents(int from){
-		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+	public List<PMInvestEvent> getCurrentDateInvestEvents(int from, int count){
+//		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		String date = "2016-12-12";//为了测试修改的固定日期
 		List<PMInvestEvent> list = investEventMapper.getEventsAfterDate(date, from);
 		return list;
 	}
@@ -35,7 +36,8 @@ public class EventService {
 	 * @return
 	 */
 	public List<PMInvestEvent> getCurrentDateInvestEvents(String type, int from, int count){
-		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+//		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		String date = "2016-12-12";
 		List<PMInvestEvent> list = investEventMapper.getEventsAfterDateByType(date, type,from,count);
 		return list;
 	}
@@ -55,7 +57,8 @@ public class EventService {
 	 * @return
 	 */
 	public List<PMExitEvent> getCurrentDateExitEvents(String type, int from, int count){
-		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+//		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		String date = "2016-12-12";
 		List<PMExitEvent> list = exitEventMapper.getEventsAfterDateByType(date,type, from,count);
 		return list;
 	}
