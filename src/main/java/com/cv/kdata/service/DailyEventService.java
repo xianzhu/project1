@@ -118,7 +118,7 @@ public class DailyEventService {
 
 	public void getDailyEventDetail(String event, String type, DailyEventResponse response) {
 
-		if (StringUtil.isNullOrEmpty(event) || StringUtil.isNullOrEmpty(type)) {
+		if (StringUtil.isNullOrEmpty(event)) {
 			return;
 		}
 
