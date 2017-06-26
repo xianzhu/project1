@@ -177,7 +177,7 @@ public class ElasticSearchClient {
 			if (!fields.isEmpty()) {
 				@SuppressWarnings("unchecked")
 				Map<String, Object> field = (Map<String, Object>) fields.get("doc");
-				if (!field.isEmpty()) {
+				if (field != null && !field.isEmpty()) {
 					String title = (String) field.get("title");
 
 					String channel = String.valueOf(field.get("channel"));
@@ -201,7 +201,7 @@ public class ElasticSearchClient {
 							continue;
 						}
 					}
-					com.kdata.defined.model.Information info = new com.kdata.defined.model.Information(null,null,title, content, url, createTime);
+					com.kdata.defined.model.Information info = new com.kdata.defined.model.Information(channel,null,title, content, url, createTime);
 					list.add(info);
 				}
 			}

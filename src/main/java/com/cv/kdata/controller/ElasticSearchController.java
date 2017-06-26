@@ -45,7 +45,7 @@ public class ElasticSearchController {
 		if ("personal".equals(mode)){
 			infos = service.searchByPersonal(request);
 		}else{
-			infos = service.searchJob(request);
+			infos = ElasticSearchService.simpleQuery(request);
 		}
 
 		Map<String,Object> data = new HashMap<String,Object>();

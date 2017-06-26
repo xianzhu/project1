@@ -2,7 +2,13 @@ package com.cv.kdata.model;
 
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.cv.kdata.util.CryptoUtil;
+
 public class LoginInfo {
+	private static Logger LOGGER = LoggerFactory.getLogger(LoginInfo.class);
     private Integer id;
 
     private String uid;
@@ -61,5 +67,15 @@ public class LoginInfo {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String decryptPwd() {
+    	try {
+			return CryptoUtil.aesDecrypt(pwd, CryptoUtil.CryptoKey);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			LOGGER.error(e.toString());
+		}
+        return pwd;
     }
 }

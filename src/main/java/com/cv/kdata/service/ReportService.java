@@ -52,7 +52,7 @@ public class ReportService {
 
 		sftp.setUsername("appuser");
         sftp.setPassword("1QAZ3edc2WSX");
-        sftp.setHost("116.62.42.50");
+        sftp.setHost("10.27.224.63");
         sftp.setPort(22);
 	}
 
@@ -403,7 +403,7 @@ public class ReportService {
 			return;
 		}
 
-		String root_folder = "/home/appuser/workdir/report/";
+		String root_folder = "/home/appuser/workdir/service/web-spider/report";
 		ResultSet rs = null;
 		String sql = "select report_path from rpt_cv where rid=?";
 		Object[] parameters = { id };
@@ -513,7 +513,7 @@ public class ReportService {
 			return;
 		}
 
-		String root_folder = "/home/appuser/workdir/report/";
+		String root_folder = "/home/appuser/workdir/service/web-spider/report";
 		ResultSet rs = null;
 		String sql = "select attachment from rpt_trader where id=?";
 		Object[] parameters = { id };
