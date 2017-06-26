@@ -138,6 +138,14 @@ public class ElasticSearchService {
 	}
 
 
+	/**
+	 * 用作登录页搜索，三个因素
+	 * 1. 可按行业搜索；
+	 * 2. 可按关键字搜索
+	 * 3. 按时间倒序排列；
+	 * @param request
+	 * @return
+	 */
 	public static List<Information> simpleQuery(HttpServletRequest request) {
 
 		String key = request.getParameter("key");
@@ -159,6 +167,41 @@ public class ElasticSearchService {
 		}
 
 		List<Information> infos = ConstElasticClient.getElasticSeachClient().search_top(key, null, null, channel, from,
+				count);
+		if ("2".equals(request.getParameter("order")) && infos != null && infos.size() > 1) {
+			Collections.sort(infos);
+		}
+		return infos;
+	}
+
+	/**
+	 * 用作普通搜索，两个因素
+	 * 1. 可按行业搜索；
+	 * 2. 可按关键字搜索；
+	 * @param request
+	 * @return
+	 */
+	public static List<Information> normalQuery(HttpServletRequest request) {
+
+		String key = request.getParameter("key");
+		int from = StringUtil.parseInt(request.getParameter("from"), 0);
+		int count = StringUtil.parseInt(request.getParameter("count"), 20);
+		List<String> channel = new ArrayList<>();
+		String channelStr = request.getParameter("id");
+		if (StringUtils.isNotBlank(channelStr)) {
+			try {
+				int biz_cat_id = Integer.parseInt(channelStr);
+				List<Integer> topicIds = Db.query(" select topic_id from ops_category_media where biz_cat_id = ? ",
+						biz_cat_id);
+				for (Integer topicIdStr : topicIds) {
+					channel.add(String.valueOf(topicIdStr));
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+
+		List<Information> infos = ConstElasticClient.getElasticSeachClient().search_extend(key, null, null, channel, from,
 				count);
 		if ("2".equals(request.getParameter("order")) && infos != null && infos.size() > 1) {
 			Collections.sort(infos);

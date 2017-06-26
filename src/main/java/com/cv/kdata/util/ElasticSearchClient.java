@@ -211,39 +211,16 @@ public class ElasticSearchClient {
 
 	}
 
-	public List<Information> search_extend(String key, Date begin_time, Date end_time,
-			Collection<String> channel_list, int from) {
-		long startTime = System.currentTimeMillis();
-
-		// 1. 生成查询规则
-		generateSearchRule(key, begin_time, end_time, channel_list);
-
-		// 3. 查询
-		from = from < 0 ? 0 : from;
-
-		SearchResponse res = null;
-		LOGGER.info(String.format("create the search is %d\n", System.currentTimeMillis() - startTime));
-		LOGGER.info("print the client " + client.toString() + "\n");
-		if (filter != null) {
-			LOGGER.info(query.toString() + filter.toString());
-
-			startTime = System.currentTimeMillis();
-			res = client.prepareSearch(index).setTypes().setQuery(query).setPostFilter(filter)
-					.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setFrom(from).setSize(indexCount).setExplain(true)
-					.execute().actionGet();
-			LOGGER.info(String.format("total time is %d\n", System.currentTimeMillis() - startTime));
-		} else {
-			startTime = System.currentTimeMillis();
-			res = client.prepareSearch(index).setTypes().setQuery(query).setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
-					.setFrom(from).setSize(indexCount).setExplain(true).execute().actionGet();
-			LOGGER.info(String.format("total time is %d\n", System.currentTimeMillis() - startTime));
-
-		}
-
-		// 3. 解析结果
-		return analysisResult(res);
-	}
-
+	/**
+	 * 普通搜索，可按关键字，可按行业
+	 * @param key
+	 * @param begin_time
+	 * @param end_time
+	 * @param channel_list
+	 * @param from
+	 * @param count
+	 * @return
+	 */
 	public List<Information> search_extend(String key, Date begin_time, Date end_time,
 			Collection<String> channel_list, int from, int count) {
 		long startTime = System.currentTimeMillis();
@@ -278,7 +255,16 @@ public class ElasticSearchClient {
 		return analysisResult(res);
 	}
 
-	//用作首页搜索
+	/**
+	 * 首页搜索，按时间倒序排列
+	 * @param key
+	 * @param begin_time
+	 * @param end_time
+	 * @param channel_list
+	 * @param from
+	 * @param count
+	 * @return
+	 */
 	public List<Information> search_top(String key, Date begin_time, Date end_time,
 			Collection<String> channel_list, int from, int count) {
 		long startTime = System.currentTimeMillis();
