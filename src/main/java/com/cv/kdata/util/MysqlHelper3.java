@@ -29,10 +29,12 @@ public class MysqlHelper3 {
 
 	public static void main(String[] args){
 		new MysqlHelper3();
-		 String sql = "select * from pm_org_info where org_cn_name like ?";
-		 String para = "%红杉%";
-
-		 List<Record> results = Db.find(sql,para);
+//		 String sql = "select * from pm_org_info where org_cn_name like ?";
+//		 String para = "%红杉%";
+//
+//		 List<Record> results = Db.find(sql,para);
+		String sql = "select * from stat_trend where name = ? ";
+		List<Record> results = Db.find(sql, "7f518820-e92f-42ba-89b6-508fdd3b4a8e");
 
 		 System.out.println("total results: " + results.size());
 		 }
