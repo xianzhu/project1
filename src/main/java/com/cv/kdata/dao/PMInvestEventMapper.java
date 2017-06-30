@@ -27,7 +27,11 @@ public interface PMInvestEventMapper {
     		@Param("from")int from,
     		@Param("count")int count);
 
-    List<PMInvestEvent> getFundInvestEvent(@Param("fundId")String fundId, @Param("filter")List<String> filter, @Param("key")String key, @Param("from")int from);
+    List<PMInvestEvent> getFundInvestEvent(@Param("fundId")String fundId,
+    		@Param("filter")List<String> filter,
+    		@Param("key")String key,
+    		@Param("from")int from,
+    		@Param("count")int count);
 
     List<PMInvestEvent> getFundInvestEventAll(@Param("fundId")String fundId);
 

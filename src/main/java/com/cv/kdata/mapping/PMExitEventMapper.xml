@@ -48,7 +48,7 @@
     <if test="key != null">
     (a.ent_cn_name like concat('%',#{key},'%') or a.event_title like concat('%',#{key},'%')) and
     </if>
-     b.fund_id=#{fundId} ORDER BY happen_date DESC limit #{from},10
+     b.fund_id=#{fundId} ORDER BY happen_date DESC limit #{from},#{count}
   </select>
   
   <select id="getFundExitEventAll" resultMap="BaseResultMap">

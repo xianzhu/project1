@@ -28,7 +28,11 @@ public interface PMExitEventMapper {
     		@Param("from")int from,
     		@Param("count")int count);
 
-    List<PMExitEvent> getFundExitEvent(@Param("fundId")String fundId, @Param("filter")List<String> filter, @Param("key")String key, @Param("from")int from);
+    List<PMExitEvent> getFundExitEvent(@Param("fundId")String fundId,
+    		@Param("filter")List<String> filter,
+    		@Param("key")String key,
+    		@Param("from")int from,
+    		@Param("count")int count);
 
     List<PMExitEvent> getFundExitEventAll(@Param("fundId")String fundId);
 
