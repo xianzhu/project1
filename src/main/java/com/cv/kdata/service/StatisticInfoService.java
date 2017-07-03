@@ -14,6 +14,7 @@ import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.dao.LoginInfoMapper;
 import com.cv.kdata.dao.UserInfoMapper;
 import com.cv.kdata.response.DashboardResponse;
+import com.cv.kdata.response.StatEventResponse;
 import com.cv.kdata.response.TrendResponse;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
@@ -76,13 +77,13 @@ public class StatisticInfoService {
 	 * @param req
 	 * @param response
 	 */
-	public void getEventOneStat(HttpServletRequest req, TrendResponse response){
+	public void getEventOneStat(HttpServletRequest req, StatEventResponse response){
 		try{
 			// 获取仪表盘统计信息
 			String sql = "select * from stat_event_round_one "
 					+ "order by count_date desc limit 7 ";
 			List<Record> records = Db.find(sql);
-			response.setTrend(transferToEvent1(records));
+			response.setEvent1(transferToEvent1(records));
 
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("get event statistic successful!");
@@ -92,14 +93,14 @@ public class StatisticInfoService {
 			}
 	}
 
-	public void getEventTwoStat(HttpServletRequest req, TrendResponse response){
+	public void getEventTwoStat(HttpServletRequest req, StatEventResponse response){
 		try{
 			// 获取仪表盘统计信息
 			String sql = "select a.*, b.round_name from stat_event_round_two a "
 					+ "left join event_round_two b "
 					+ "on a.type_id=b.id ";
 			List<Record> records = Db.find(sql);
-			response.setTrend(transferToEvent2(records));
+			response.setEvent2(transferToEvent2(records));
 
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("get event statistic successful!");

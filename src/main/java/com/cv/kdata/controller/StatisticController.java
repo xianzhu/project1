@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cv.kdata.response.DashboardResponse;
+import com.cv.kdata.response.StatEventResponse;
 import com.cv.kdata.response.TrendResponse;
 import com.cv.kdata.service.StatisticInfoService;
 
@@ -32,19 +33,13 @@ public class StatisticController {
 		return response;
 	}
 
-	@RequestMapping(value="/stat/event1",method={RequestMethod.GET,RequestMethod.POST})
-	@ResponseBody
-    public TrendResponse statEvent1(HttpServletRequest request,Model model){
-		TrendResponse response = new TrendResponse();
-		service.getEventOneStat(request, response);
-		return response;
-	}
 
-	@RequestMapping(value="/stat/event2",method={RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="/stat/event",method={RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
-    public TrendResponse statEvent2(HttpServletRequest request,Model model){
-		TrendResponse response = new TrendResponse();
+    public StatEventResponse statEvent(HttpServletRequest request,Model model){
+		StatEventResponse response = new StatEventResponse();
 		service.getEventTwoStat(request, response);
+		service.getEventOneStat(request, response);
 		return response;
 	}
 }
