@@ -18,6 +18,8 @@ import com.cv.kdata.response.TrendResponse;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
 import com.kdata.defined.model.StatDashboard;
+import com.kdata.defined.model.StatEventOne;
+import com.kdata.defined.model.StatEventTwo;
 import com.kdata.defined.model.StatTrendAll;
 
 @Service
@@ -67,6 +69,44 @@ public class StatisticInfoService {
 			LOGGER.error("get dashboard error" + e.getMessage());
 		}
 
+	}
+
+	/**
+	 * 获取第一级别事件统计
+	 * @param req
+	 * @param response
+	 */
+	public void getEventOneStat(HttpServletRequest req, TrendResponse response){
+		try{
+			// 获取仪表盘统计信息
+			String sql = "select * from stat_event_round_one "
+					+ "order by count_date desc limit 7 ";
+			List<Record> records = Db.find(sql);
+			response.setTrend(transferToEvent1(records));
+
+			response.setStatus(RDDWebConst.SUCCESS);
+			response.setMessage("get event statistic successful!");
+
+			}catch(Exception e){
+				LOGGER.error("get event statistic error" + e.getMessage());
+			}
+	}
+
+	public void getEventTwoStat(HttpServletRequest req, TrendResponse response){
+		try{
+			// 获取仪表盘统计信息
+			String sql = "select a.*, b.round_name from stat_event_round_two a "
+					+ "left join event_round_two b "
+					+ "on a.type_id=b.id ";
+			List<Record> records = Db.find(sql);
+			response.setTrend(transferToEvent2(records));
+
+			response.setStatus(RDDWebConst.SUCCESS);
+			response.setMessage("get event statistic successful!");
+
+			}catch(Exception e){
+				LOGGER.error("get event statistic error" + e.getMessage());
+			}
 	}
 
 	/**
@@ -131,4 +171,52 @@ public class StatisticInfoService {
 		return trendList;
 	}
 
+	/**
+	 * 把record列表转换成一级事件统计列表
+	 * @param records
+	 * @return
+	 */
+	public List<StatEventOne> transferToEvent1(List<Record> records) {
+		if (records == null) {
+			return null;
+		}
+		List<StatEventOne> trendList = new ArrayList<>();
+		for (Record record : records) {
+			StatEventOne trend = new StatEventOne();
+			trend.setId(record.get("id"));
+			trend.setExitOne(record.getInt("exit_one"));
+			trend.setExitTwo(record.getInt("exit_two"));
+			trend.setInvestEarly(record.getInt("invest_early"));
+			trend.setInvestMiddle(record.getInt("invest_middle"));
+			trend.setInvestLate(record.getInt("invest_late"));
+			trend.setInvestOther(record.getInt("invest_other"));
+			trend.setCountDate(record.getStr("count_date"));
+			trendList.add(trend);
+		}
+
+		return trendList;
+	}
+
+	/**
+	 * 把record列表转换成二级事件统计列表
+	 * @param records
+	 * @return
+	 */
+	public List<StatEventTwo> transferToEvent2(List<Record> records) {
+		if (records == null) {
+			return null;
+		}
+		List<StatEventTwo> trendList = new ArrayList<>();
+		for (Record record : records) {
+			StatEventTwo trend = new StatEventTwo();
+			trend.setId(record.get("id"));
+			trend.setTypeName(record.getStr("round_name"));
+			trend.setTypeId(record.getInt("type_id"));
+			trend.setCount(record.getInt("count"));
+			trend.setCountDate(record.getStr("count_date"));
+			trendList.add(trend);
+		}
+
+		return trendList;
+	}
 }

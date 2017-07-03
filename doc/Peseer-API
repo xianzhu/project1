@@ -137,4 +137,6 @@ http://localhost:8080/peseer/tools/transfer?id=
 ==========================================================================================
 http://localhost:8080/keandata/stat/trend		//趋势图（机构调研，并购事件。。。）
 http://localhost:8080/keandata/stat/dashboard	//仪表盘 （企业，项目，报告。。）
+http://localhost:8080/keandata/stat/event1		//事件第一级别分类统计
+http://localhost:8080/keandata/stat/event2 		//事件第二级别分类统计
 

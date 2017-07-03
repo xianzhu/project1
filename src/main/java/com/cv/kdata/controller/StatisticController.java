@@ -26,9 +26,25 @@ public class StatisticController {
 
 	@RequestMapping(value="/stat/dashboard",method={RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
-    public DashboardResponse logout(HttpServletRequest request,Model model){
+    public DashboardResponse dashboard(HttpServletRequest request,Model model){
 		DashboardResponse response = new DashboardResponse();
 		service.getDashboardInfo(request, response);
+		return response;
+	}
+
+	@RequestMapping(value="/stat/event1",method={RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+    public TrendResponse statEvent1(HttpServletRequest request,Model model){
+		TrendResponse response = new TrendResponse();
+		service.getEventOneStat(request, response);
+		return response;
+	}
+
+	@RequestMapping(value="/stat/event2",method={RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+    public TrendResponse statEvent2(HttpServletRequest request,Model model){
+		TrendResponse response = new TrendResponse();
+		service.getEventTwoStat(request, response);
 		return response;
 	}
 }
