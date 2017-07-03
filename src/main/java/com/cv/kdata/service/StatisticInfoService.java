@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cv.kdata.cont.RDDWebConst;
-import com.cv.kdata.cont.StatisticConst;
 import com.cv.kdata.dao.LoginInfoMapper;
 import com.cv.kdata.dao.UserInfoMapper;
 import com.cv.kdata.response.DashboardResponse;
@@ -19,7 +18,7 @@ import com.cv.kdata.response.TrendResponse;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
 import com.kdata.defined.model.StatDashboard;
-import com.kdata.defined.model.StatTrend;
+import com.kdata.defined.model.StatTrendAll;
 
 @Service
 public class StatisticInfoService {
@@ -37,27 +36,10 @@ public class StatisticInfoService {
 
 		try{
 		// 获取机构调研趋势
-		String sql = "select * from stat_trend where name = ? ";
-		List<Record> records = Db.find(sql, StatisticConst.ORG_INVEST);
-		response.setOrgTrend(transferToTrend(records));
+		String sql = "select * from stat_trend_all order by stat_date desc limit 7 ";
+		List<Record> records = Db.find(sql);
+		response.setTrend(transferToTrend(records));
 
-		// 获取并购事件趋势
-		sql = "select * from stat_trend where name = ? "
-				+ "order by stat_date desc";
-		records = Db.find(sql, StatisticConst.MERGE_EVENT);
-		response.setMergeTrend(transferToTrend(records));
-
-		// 获取基金备案趋势
-		sql = "select * from stat_trend where name = ? "
-				+ "order by stat_date desc";
-		records = Db.find(sql, StatisticConst.FUND_RECORD);
-		response.setFundTrend(transferToTrend(records));
-
-		// 获取投退事件趋势
-		sql = "select * from stat_trend where name = ? "
-				+ "order by stat_date desc";
-		records = Db.find(sql, StatisticConst.INVEST_EXIT_EVENT);
-		response.setEventTrend(transferToTrend(records));
 		response.setStatus(RDDWebConst.SUCCESS);
 		response.setMessage("get trend successful!");
 		}catch(Exception e){
@@ -93,18 +75,30 @@ public class StatisticInfoService {
 	 * @param records
 	 * @return
 	 */
-	public List<StatTrend> transferToTrend(List<Record> records) {
+	public List<StatTrendAll> transferToTrend(List<Record> records) {
 		if (records == null) {
 			return null;
 		}
-		List<StatTrend> trendList = new ArrayList<>();
+		List<StatTrendAll> trendList = new ArrayList<>();
 		for (Record record : records) {
-			StatTrend trend = new StatTrend();
+			StatTrendAll trend = new StatTrendAll();
 			trend.setId(record.get("id"));
-			trend.setName(record.getStr("name"));
-			trend.setType(record.getStr("type"));
-			trend.setCount(record.getDouble("cnt"));
+			trend.setAm(record.getDouble("am"));
+			trend.setBroker(record.getDouble("broker"));
+			trend.setBank(record.getDouble("bank"));
+			trend.setCapIncrease(record.getDouble("cap_increase"));
+			trend.setExitEvents(record.getDouble("exit_events"));
+			trend.setInsurance(record.getDouble("insurance"));
+			trend.setInvestEvents(record.getDouble("invest_events"));
+			trend.setInvestment(record.getDouble("investment"));
+			trend.setPe(record.getDouble("pe"));
+			trend.setProTransfer(record.getDouble("pro_transfer"));
+			trend.setSharePurchase(record.getDouble("share_purchase"));
+			trend.setStartFund(record.getDouble("start_fund"));
 			trend.setStatDate(record.getStr("stat_date"));
+			trend.setStockFund(record.getDouble("stock_fund"));
+			trend.setTrust(record.getDouble("trust"));
+
 			trendList.add(trend);
 		}
 
