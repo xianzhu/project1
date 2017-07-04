@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.cv.kdata.cont.RDDWebConst;
+import com.cv.kdata.model.PMExitEvent;
+import com.cv.kdata.model.PMInvestEvent;
 import com.cv.kdata.response.DailyEventResponse;
 import com.cv.kdata.util.BeanConverter;
 import com.cv.kdata.util.MysqlHelper;
@@ -98,24 +100,6 @@ public class DailyEventService {
 	}
 
 
-	/*public void getDailyAllEvent(DailyEventResponse response) {
-
-		List<DailyEventGeneralObject> objectList = Redis2Module.getDailyEvent();
-
-		if (objectList != null && response.getFrom() < objectList.size()){
-			if(response.getFrom() + response.getTotal() < objectList.size()) {
-				response.setEventsList(objectList.subList(response.getFrom(), response.getFrom() + response.getTotal()));
-			}else{
-				response.setEventsList(objectList.subList(response.getFrom(), objectList.size()));
-			}
-		} else {
-			response.setMessage(String.format("no more datas"));
-		}
-		return;
-
-	}*/
-
-
 	public void getDailyEventDetail(String event, String type, DailyEventResponse response) {
 
 		if (StringUtil.isNullOrEmpty(event)) {
@@ -146,5 +130,109 @@ public class DailyEventService {
 		}finally{
 			MysqlHelper.getInstance(RDDWebConst.PESEER_DB_ONLINE).close(rs);
 		}
+	}
+
+	/**
+	 * 根据退出类型获取今日投资事件
+	 * 到datanode-03库里查询
+	 * @param type
+	 * @param from
+	 * @param count
+	 * @return
+	 */
+	public List<PMInvestEvent> getCurrentDateInvestEvents(String type, int from, int count) {
+//		String date = TimeUtil.getCurrentTime("yyyy-MM-dd");
+		String date = "2017-04-13"; //测试时间
+
+		List<PMInvestEvent> objectList = new ArrayList<>();
+		List<Object> para = new ArrayList<>();
+		para.add(date);
+
+		String sql = "select event_id, event_title, happen_date, ent_cn_name,invest_type "
+				+ "from ops_invest_event_detail "
+				+ "where create_time > ? ";
+
+		if(!StringUtil.isNullOrEmpty(type)){
+			sql = sql + "and invest_type=? ";
+			para.add(type);
+		}
+
+		sql = sql + "group by event_title order by happen_date desc limit ?,?";
+
+		para.add(from);
+		para.add(count);
+
+		ResultSet rs = null;
+		try {
+
+			rs = MysqlHelper75.getInstance(RDDWebConst.ops_rdd).executeQuery(sql, para);
+
+			while (rs.next()) {
+				PMInvestEvent record = (PMInvestEvent) BeanConverter.convert(rs,
+						PMInvestEvent.class);
+				if (record != null) {
+					objectList.add(record);
+				}
+			}
+
+		} catch (Exception e) {
+			logger.error(e.toString());
+		}finally{
+			MysqlHelper75.getInstance(RDDWebConst.ops_rdd).close(rs);
+		}
+
+		return objectList;
+	}
+
+
+	/**
+	 * 根据退出类型获取今日退出事件
+	 * 到datanode-03库里查询
+	 * @param type
+	 * @param from
+	 * @param count
+	 * @return
+	 */
+	public List<PMExitEvent> getCurrentDateExitEvents(String type, int from, int count){
+//		String date = TimeUtil.getCurrentTime("yyyy-MM-dd");
+		String date = "2017-04-13"; //测试时间
+
+		List<PMExitEvent> objectList = new ArrayList<>();
+		List<Object> para = new ArrayList<>();
+		para.add(date);
+
+		String sql = "select event_id, event_title, happen_date, ent_cn_name,exit_type "
+				+ "from ops_exit_event_detail "
+				+ "where create_time > ? ";
+		if(!StringUtil.isNullOrEmpty(type)){
+			sql = sql + "and exit_type=? ";
+			para.add(type);
+		}
+
+		sql = sql + "group by event_title order by happen_date desc limit ?,?";
+
+		para.add(from);
+		para.add(count);
+
+		ResultSet rs = null;
+		try {
+
+			rs = MysqlHelper75.getInstance(RDDWebConst.ops_rdd).executeQuery(sql, para);
+
+			while (rs.next()) {
+				PMExitEvent record = (PMExitEvent) BeanConverter.convert(rs,
+						PMExitEvent.class);
+				if (record != null) {
+					objectList.add(record);
+				}
+			}
+
+		} catch (Exception e) {
+			logger.error(e.toString());
+		}finally{
+			MysqlHelper75.getInstance(RDDWebConst.ops_rdd).close(rs);
+		}
+
+		return objectList;
 	}
 }

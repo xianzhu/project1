@@ -49,8 +49,12 @@ public class BeanConverter {
 		            params = new Object[]{rs.getLong(i+1)};
 	            }else if (rs.getMetaData().getColumnTypeName(i+1).equalsIgnoreCase("CHAR")||rs.getMetaData().getColumnTypeName(i+1).equalsIgnoreCase("VARCHAR")||rs.getMetaData().getColumnTypeName(i+1).equalsIgnoreCase("TEXT")||rs.getMetaData().getColumnTypeName(i+1).equalsIgnoreCase("XML")){
 		            params = new Object[]{rs.getString(i+1)};
-	            }else if(rs.getMetaData().getColumnTypeName(i+1).equalsIgnoreCase("TIMESTAMP")||rs.getMetaData().getColumnTypeName(i+1).equalsIgnoreCase("TIME")||rs.getMetaData().getColumnTypeName(i+1).equalsIgnoreCase("DATETIME")){
+	            }else if(rs.getMetaData().getColumnTypeName(i+1).equalsIgnoreCase("TIMESTAMP")
+	            		||rs.getMetaData().getColumnTypeName(i+1).equalsIgnoreCase("TIME")
+	            		||rs.getMetaData().getColumnTypeName(i+1).equalsIgnoreCase("DATETIME")){
 	            	params = new Object[]{rs.getDate(i+1)+" "+rs.getTime(i+1)};
+	            }else if(rs.getMetaData().getColumnTypeName(i+1).equalsIgnoreCase("DATE")){
+	            	params = new Object[]{rs.getDate(i+1)};
 	            }else{
 	            	params= new Object[]{rs.getString(i+1)};
 	            }

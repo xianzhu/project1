@@ -8,11 +8,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.model.PMOrgInfo;
 import com.cv.kdata.model.PMUserInfo;
+import com.cv.kdata.response.GeneralResponse;
 import com.cv.kdata.response.TopSearchResponse;
 import com.cv.kdata.util.BeanConverter;
 import com.cv.kdata.util.CollectionUtil;
@@ -20,6 +23,7 @@ import com.cv.kdata.util.ExtendInfoUtil;
 import com.cv.kdata.util.MysqlHelper;
 import com.cv.kdata.util.StringUtil;
 import com.cv.kdata.util.WordSegmentUtil;
+import com.kdata.defined.model.RptSchedule;
 
 @Service
 public class TopSearchService {
@@ -28,6 +32,8 @@ public class TopSearchService {
 	 */
 	public final static int PEOPLE_MAX_DISP_LENGTH = 32;
 	public final static int ORG_MAX_DISP_LENGTH = 40;
+
+	private static final Logger logger = LoggerFactory.getLogger(TopSearchService.class);
 
 	public void getBasicSearchInfo(HttpServletRequest req, TopSearchResponse response) {
 		if (RDDWebConst.FAILURE.equals(response.getStatus())) {
@@ -248,4 +254,49 @@ public class TopSearchService {
 		return true;
 	}
 
+	public void getDailySchedule(HttpServletRequest req, GeneralResponse response){
+
+		String date = req.getParameter("date");
+		String to = req.getParameter("to");
+		int from = StringUtil.parseInt(req.getParameter("from"), 0);
+		int count = StringUtil.parseInt(req.getParameter("count"), 40);
+
+		List<RptSchedule> objectList = new ArrayList<>();
+		List<Object> para = new ArrayList<>();
+
+    	String sql = "select * from rpt_schedule where time > ? ";
+		para.add(date);
+
+		if(!StringUtil.isNullOrEmpty(to)){
+			sql = sql + " and time < ?";
+			para.add(to);
+		}
+
+		sql = sql + " order by time limit ?,? ";
+		para.add(from);
+		para.add(count);
+
+		ResultSet rs = null;
+		try {
+
+			rs = MysqlHelper.getInstance(RDDWebConst.PESEER_DB_ONLINE).executeQuery(sql, para);
+
+			while (rs.next()) {
+				RptSchedule record = (RptSchedule) BeanConverter.convert(rs,
+						RptSchedule.class);
+				if (record != null) {
+					objectList.add(record);
+				}
+			}
+			response.setStatus(RDDWebConst.SUCCESS);
+			response.setMessage("get daily schedule successful!");
+			response.setObject(objectList);
+		} catch (Exception e) {
+			logger.error(e.toString());
+			response.setStatus(RDDWebConst.FAILURE);
+			response.setMessage("get daily schedule failed!");
+		}finally{
+			MysqlHelper.getInstance(RDDWebConst.PESEER_DB_ONLINE).close(rs);
+		}
+	}
 }

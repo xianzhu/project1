@@ -131,12 +131,16 @@ http://localhost:8080/peseer/custInfo/add/qa
 
 stockId/UUId 转换
 http://localhost:8080/peseer/tools/transfer?id=
+http://localhost:8080/keandata/top/dayevent?type=上市&count=5
+http://localhost:8080/keandata/top/schedule?date=2017-07&to=2017-07-04    //日程相关（date,to,from,count）
 
 
 统计相关
 ==========================================================================================
 http://localhost:8080/keandata/stat/trend		//趋势图（机构调研，并购事件。。。）
 http://localhost:8080/keandata/stat/dashboard	//仪表盘 （企业，项目，报告。。）
-http://localhost:8080/keandata/stat/event1		//事件第一级别分类统计
-http://localhost:8080/keandata/stat/event2 		//事件第二级别分类统计
+http://localhost:8080/keandata/stat/event		//事件第一级别分类统计
+http://localhost:8080/keandata/stat/overall		//信息指数
+
+==========================================================================================
 

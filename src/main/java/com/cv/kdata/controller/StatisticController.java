@@ -42,4 +42,18 @@ public class StatisticController {
 		service.getEventOneStat(request, response);
 		return response;
 	}
+
+	/**
+	 * 信心指数
+	 * @param request
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/stat/overall",method={RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+	public TrendResponse overallTrend(HttpServletRequest request,Model model){
+		TrendResponse response = new TrendResponse();
+		service.getOverallTrends(request, response);
+		return response;
+	}
 }

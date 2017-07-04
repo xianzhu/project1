@@ -12,7 +12,10 @@ import org.springframework.stereotype.Service;
 
 import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.dao.LoginInfoMapper;
+import com.cv.kdata.dao.RptOrgOverallTrendsMapper;
 import com.cv.kdata.dao.UserInfoMapper;
+import com.cv.kdata.datasource.DBContextHolder;
+import com.cv.kdata.model.RptOrgOverallTrends;
 import com.cv.kdata.response.DashboardResponse;
 import com.cv.kdata.response.StatEventResponse;
 import com.cv.kdata.response.TrendResponse;
@@ -29,6 +32,8 @@ public class StatisticInfoService {
 	LoginInfoMapper loginInfoMapper;
 	@Autowired
 	UserInfoMapper userInfoMapper;
+	@Autowired
+	RptOrgOverallTrendsMapper rptOrgOverallTrendsMapper;
 
 	private static Logger LOGGER = LoggerFactory.getLogger(StatisticInfoService.class);
 
@@ -219,5 +224,23 @@ public class StatisticInfoService {
 		}
 
 		return trendList;
+	}
+
+	/**
+	 * 信心指数统计
+	 * @param req
+	 * @param resp
+	 * @param response
+	 */
+	public void getOverallTrends(HttpServletRequest req, TrendResponse response) {
+		if (RDDWebConst.FAILURE.equals(response.getStatus())) {
+			return;
+		}
+
+		DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
+		List<RptOrgOverallTrends> trendList = rptOrgOverallTrendsMapper.getOverallTrends();
+		response.setStatus(RDDWebConst.SUCCESS);
+		response.setMessage("Get OverallTrends list success!");
+		response.setTrend(trendList);
 	}
 }

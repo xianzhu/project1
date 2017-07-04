@@ -6,11 +6,11 @@ import java.util.Date;
 
 public class TimeUtil {
 
-	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-//	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");// 设置日期格式
+	private static SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
+	private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");// 设置日期格式
 
 	public static String getCurrentTime() {
-		String time = sdf.format(Calendar.getInstance().getTime());
+		String time = timeFormat.format(Calendar.getInstance().getTime());
 		return time;
 	}
 
@@ -27,7 +27,7 @@ public class TimeUtil {
 
 	public static String getDaysBefore(int day) {
 		Date currentDate = Calendar.getInstance().getTime();
-		String time = sdf.format(getDateBefore(currentDate, day));
+		String time = timeFormat.format(getDateBefore(currentDate, day));
 		return time;
 	}
 
@@ -61,6 +61,15 @@ public class TimeUtil {
 
 	public static Date getCurrentDate(){
 		return new Date();
+	}
+
+
+	public static Date stringToDate(String date){
+		try{
+			return dateFormat.parse(date);
+		}catch(Exception e){
+			return null;
+		}
 	}
 
 }

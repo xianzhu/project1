@@ -20,6 +20,7 @@ import com.cv.kdata.datasource.DBContextHolder;
 import com.cv.kdata.model.LocationNews;
 import com.cv.kdata.response.DailyEventResponse;
 import com.cv.kdata.response.EventAssociateResponse;
+import com.cv.kdata.response.GeneralResponse;
 import com.cv.kdata.response.MediaSyncResponse;
 import com.cv.kdata.response.MonitorResponse;
 import com.cv.kdata.response.TopSearchResponse;
@@ -134,12 +135,12 @@ public class TopSearchController {
 		DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
 
 		if("invest".equals(investOrExit)){
-			response.setInvestEventList(eventService.getCurrentDateInvestEvents(type,from,count));
+			response.setInvestEventList(dailyEventService.getCurrentDateInvestEvents(type,from,count));
 		}else if("exit".equals(investOrExit)){
-			response.setExitEventList(eventService.getCurrentDateExitEvents(type,from,count));
+			response.setExitEventList(dailyEventService.getCurrentDateExitEvents(type,from,count));
 		}else{
 			//默认获取投资事件前十条
-			response.setInvestEventList(eventService.getCurrentDateInvestEvents(null,from,count));
+			response.setInvestEventList(dailyEventService.getCurrentDateInvestEvents(null,from,count));
 		}
 		response.setStatus(RDDWebConst.SUCCESS);
 		response.setMessage("get current date events success!");
@@ -157,6 +158,14 @@ public class TopSearchController {
 
 		response.setStatus(RDDWebConst.SUCCESS);
 		response.setMessage("get events success!");
+		return response;
+	}
+
+	@RequestMapping(value="/top/schedule",method={RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+    public Object getDailySchedule(HttpServletRequest request,Model model){
+		GeneralResponse response = new GeneralResponse();
+		service.getDailySchedule(request, response);
 		return response;
 	}
 
