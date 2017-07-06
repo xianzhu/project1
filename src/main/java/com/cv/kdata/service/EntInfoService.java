@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cv.kdata.cont.RDDWebConst;
+import com.cv.kdata.cont.RedisPrexConst;
 import com.cv.kdata.dao.CiMoneySupMapper;
 import com.cv.kdata.dao.CiRcaPayMapper;
 import com.cv.kdata.dao.CiSfScaMapper;
@@ -31,32 +32,21 @@ import com.cv.kdata.facade.StockInstInvestFacade;
 import com.cv.kdata.model.CiMoneySup;
 import com.cv.kdata.model.CiRcaPay;
 import com.cv.kdata.model.CiSfSca;
-import com.cv.kdata.model.EntAbnormalItem;
 import com.cv.kdata.model.EntBasicInfo;
-import com.cv.kdata.model.EntBranch;
-import com.cv.kdata.model.EntChgRecord;
-import com.cv.kdata.model.EntCopyRights;
-import com.cv.kdata.model.EntEquity;
-import com.cv.kdata.model.EntHolder;
-import com.cv.kdata.model.EntInvest;
-import com.cv.kdata.model.EntLaw;
-import com.cv.kdata.model.EntMortgages;
-import com.cv.kdata.model.EntPatent;
-import com.cv.kdata.model.EntRelated;
-import com.cv.kdata.model.EntSoftCopyrights;
 import com.cv.kdata.model.PMInvestEventDetail;
-import com.cv.kdata.model.Redis2Module;
 import com.cv.kdata.model.RptEntJudgeValue;
 import com.cv.kdata.model.RptToeMa;
 import com.cv.kdata.model.StockACapitalDebtIndexResponse;
 import com.cv.kdata.model.StockEquityCtrl;
-import com.cv.kdata.model.StockHolderLatest;
 import com.cv.kdata.model.StockInstInvest;
 import com.cv.kdata.model.StockManageTeam;
 import com.cv.kdata.response.EntInfoResponse;
 import com.cv.kdata.util.StringUtil;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
+import com.kd.jfinal.redis.RedisJfinalModel;
+import com.kd.model.general.EntCopyrights;
+import com.kd.model.general.EntGeneralObject;
 @Service
 public class EntInfoService {
 	@Autowired
@@ -90,13 +80,14 @@ public class EntInfoService {
 		if (RDDWebConst.FAILURE.equals(response.getStatus())) {
 			return;
 		}
-		EntBasicInfo basicInfo = null;
+		com.kd.model.general.EntBasicInfo basicInfo = null;
 		String entId = req.getParameter("id");
 		if (StringUtil.isNullOrEmpty(entId)) {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			basicInfo = Redis2Module.getEntBasicInfo(entId);
+//			basicInfo = RedisMybatisModel.getEntBasicInfo(entId);
+			basicInfo = RedisJfinalModel.getEntBasicInfo(entId);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent info success!");
 			response.setEntBasicInfo(basicInfo);
@@ -113,13 +104,12 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			List<EntInvest> investList = Redis2Module.getEntInvestFromList(entId);
-			if(investList != null){
-				Collections.sort(investList);
-			}
+			EntGeneralObject record = RedisJfinalModel.getEntGeneralObject(entId, RedisPrexConst.EntInvestSync);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent invest info success!");
-			response.setEntInvestInfos(investList);
+			if (record != null) {
+				response.setEntInvestInfos(StringUtil.toJsonArray(record.getRecord()));
+			}
 		}
 	}
 
@@ -133,7 +123,8 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			List<EntBranch> BranchList = Redis2Module.getEntBranchFromList(entId);
+//			List<EntBranch> BranchList = RedisMybatisModel.getEntBranchFromList(entId);
+			List<com.kd.model.general.EntBranch> BranchList = RedisJfinalModel.getEntBranchFromList(entId);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent Branch info success!");
 			response.setEntBranchInfos(BranchList);
@@ -150,10 +141,12 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			List<EntHolder> holderList = Redis2Module.getEntHolderFromList(entId);
+			com.kd.model.general.EntGeneralObject record = RedisJfinalModel.getEntGeneralObject(entId, RedisPrexConst.EntHolderSync);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent Branch info success!");
-			response.setEntHolderInfos(holderList);
+			if (record != null) {
+				response.setEntHolderInfos(StringUtil.toJsonArray(record.getRecord()));
+			}
 		}
 	}
 
@@ -167,11 +160,11 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			EntBasicInfo basicInfo = Redis2Module.getEntBasicInfo(entId);
+			com.kd.model.general.EntBasicInfo basicInfo = RedisJfinalModel.getEntBasicInfo(entId);
 			if (basicInfo != null && !StringUtil.isNullOrEmpty(basicInfo.getEmail())) {
 				String mail = basicInfo.getEmail();
 				String subffix = mail.substring(mail.indexOf("@") + 1);
-				List<EntRelated> RelatedList = Redis2Module.getEntRelated(subffix);
+				List<com.kd.model.general.EntRelated> RelatedList = RedisJfinalModel.getEntRelated(subffix);
 				response.setEntRelatedInfos(RelatedList);
 			}
 
@@ -192,7 +185,8 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			EntChgRecord record = Redis2Module.getEntChgRecord(entId);
+//			EntChgRecord record = RedisMybatisModel.getEntChgRecord(entId);
+			com.kd.model.general.EntChgRecord record = RedisJfinalModel.getEntChgRecord(entId);
 			if (record != null && !StringUtil.isNullOrEmpty(record.getRecord())) {
 				String tmpRecord = record.getRecord();
 				tmpRecord = tmpRecord.replaceAll("\"entChgRecordInfos\":", "");
@@ -213,13 +207,13 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			List<EntLaw> chgRecordList = Redis2Module.getEntLawFromList(entId);
-			if(chgRecordList != null){
-				Collections.sort(chgRecordList);
-			}
+//			List<EntLaw> chgRecordList = RedisMybatisModel.getEntLawFromList(entId);
+			com.kd.model.general.EntGeneralObject record = RedisJfinalModel.getEntGeneralObject(entId, RedisPrexConst.EntLawSync);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent Branch info success!");
-			response.setEntLawInfos(chgRecordList);
+			if (record != null) {
+				response.setEntLawInfos(StringUtil.toJsonArray(record.getRecord()));
+			}
 		}
 	}
 
@@ -233,7 +227,7 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			List<EntCopyRights> copyRightsList = Redis2Module.getEntCopyRightsFromList(entId);
+			List<EntCopyrights> copyRightsList = RedisJfinalModel.getEntCopyRightsFromList(entId);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent copyrights info success!");
 			response.setEntCopyrightsInfos(copyRightsList);
@@ -250,7 +244,7 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			List<EntSoftCopyrights> copyRightsList = Redis2Module.getEntSoftCopyrightsFromList(entId);
+			List<com.kd.model.general.EntSoftCopyrights> copyRightsList = RedisJfinalModel.getEntSoftCopyrightsFromList(entId);
 			if(copyRightsList != null){
 				Collections.sort(copyRightsList);
 			}
@@ -270,7 +264,7 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			List<EntEquity> equityList = Redis2Module.getEntEquityFromList(entId);
+			List<com.kd.model.general.EntEquity> equityList = RedisJfinalModel.getEntEquityFromList(entId);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent software copyrights info success!");
 			response.setEntEquityInfos(equityList);
@@ -287,13 +281,12 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			List<EntMortgages> mortgagesList = Redis2Module.getEntMortgages(entId);
-			if(mortgagesList != null){
-				Collections.sort(mortgagesList);
-			}
+			com.kd.model.general.EntGeneralObject record = RedisJfinalModel.getEntGeneralObject(entId, RedisPrexConst.EntMortgagesSync);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent mortgages info success!");
-			response.setEntMortgagesInfos(mortgagesList);
+			if (record != null) {
+				response.setEntMortgagesInfos(StringUtil.toJsonArray(record.getRecord()));
+			}
 		}
 	}
 
@@ -307,13 +300,12 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			List<EntPatent> patentList = Redis2Module.getEntPatentFromList(entId);
-			if(patentList != null){
-				Collections.sort(patentList);
-			}
+			EntGeneralObject record = RedisJfinalModel.getEntGeneralObject(entId, RedisPrexConst.EntPatentSync);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent patent info success!");
-			response.setEntPatentInfos(patentList);
+			if (record != null) {
+				response.setEntPatentInfos(StringUtil.toJsonArray(record.getRecord()));
+			}
 		}
 	}
 
@@ -327,7 +319,7 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			List<EntAbnormalItem> abnormalList = Redis2Module.getEntAbnormalItemFromList(entId);
+			List<com.kd.model.general.EntAbnormalItem> abnormalList = RedisJfinalModel.getEntAbnormalItemFromList(entId);
 			if(abnormalList != null){
 				Collections.sort(abnormalList);
 			}
@@ -473,7 +465,7 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild code");
 		} else {
-			List<StockManageTeam> manageTeam = Redis2Module.getStockManageTeam(code);
+			List<com.kd.model.general.StockManageTeam> manageTeam = RedisJfinalModel.getStockManageTeam(code);
 			if(manageTeam !=null && !manageTeam.isEmpty()){
 				response.setStatus(RDDWebConst.SUCCESS);
 				response.setMessage("success!");
@@ -503,7 +495,7 @@ public class EntInfoService {
 			response.setMessage("Please input a vaild code");
 		} else {
 			//先取redis数据，如果取不到，再取mysql
-			List<StockHolderLatest> holderTeam = Redis2Module.getStockHolderLatest(code);
+			List<com.kd.model.general.StockHolderLatest> holderTeam = RedisJfinalModel.getStockHolderLatest(code);
 			if(holderTeam !=null && !holderTeam.isEmpty()){
 				response.setStatus(RDDWebConst.SUCCESS);
 				response.setMessage("success!");
@@ -512,10 +504,10 @@ public class EntInfoService {
 			}
 
 			DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
-			holderTeam = stockHolderLatestMapper.selectByStockCode(code);
+			List<com.cv.kdata.model.StockHolderLatest> team = stockHolderLatestMapper.selectByStockCode(code);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("success!");
-			response.setStockHolder(holderTeam);
+			response.setStockHolder(team);
 		}
 	}
 
@@ -649,7 +641,7 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			RptEntJudgeValue list = Redis2Module.getEntJudgeValue(entId);
+			com.kd.model.general.RptEntJudgeValue list = RedisJfinalModel.getEntJudgeValue(entId);
 			if(list !=null){
 				response.setStatus(RDDWebConst.SUCCESS);
 				response.setMessage("success!");
@@ -678,7 +670,7 @@ public class EntInfoService {
 
 		int from = StringUtil.parseInt(req.getParameter("from"),0);
 		int count = StringUtil.parseInt(req.getParameter("count"),18);
-		List<RptToeMa> list = Redis2Module.getRpt2MaList();
+		List<com.kd.model.general.RptToeMa> list = RedisJfinalModel.getRpt2MaList();
 		if(list !=null && !list.isEmpty()){
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("success!");

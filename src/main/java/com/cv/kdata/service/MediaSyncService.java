@@ -13,7 +13,7 @@ import com.cv.kdata.cache.LngLatCache;
 import com.cv.kdata.model.LngLat;
 import com.cv.kdata.model.LocationNews;
 import com.cv.kdata.model.OpsMonitorMediaIndex;
-import com.cv.kdata.model.Redis2Module;
+import com.cv.kdata.model.RedisMybatisModel;
 import com.cv.kdata.model.StaticsInfo;
 import com.cv.kdata.response.MediaSyncResponse;
 
@@ -35,7 +35,7 @@ public class MediaSyncService {
 
 	public void getStaticInfo(HttpServletRequest req,MediaSyncResponse response){
 		//add the redis process
-		StaticsInfo staticInfo = Redis2Module.getStaticsInfo();
+		StaticsInfo staticInfo = RedisMybatisModel.getStaticsInfo();
 		response.setResults(staticInfo);
 
 		response.setStatus("success");
@@ -49,11 +49,11 @@ public class MediaSyncService {
 		List<OpsMonitorMediaIndex> tmpList = new ArrayList<>();
 		List<OpsMonitorMediaIndex> mediaList = new ArrayList<>();
 		if("0".equals(id)){
-			mediaList = Redis2Module.getMeidaTotal();
+			mediaList = RedisMybatisModel.getMeidaTotal();
 		}else{
 			int tmpId = Integer.valueOf(id).intValue();
 			int index = 0;
-			tmpList = Redis2Module.getMeidaList();
+			tmpList = RedisMybatisModel.getMeidaList();
 //			int len = tmpList.size();
 			for(OpsMonitorMediaIndex tmp:tmpList){
 				if(tmp.getId() == tmpId){

@@ -22,7 +22,7 @@ import com.cv.kdata.model.PMExitEventDetail;
 import com.cv.kdata.model.PMInvestEvent;
 import com.cv.kdata.model.PMInvestEventDetail;
 import com.cv.kdata.model.PMUserInfo;
-import com.cv.kdata.model.Redis2Module;
+import com.cv.kdata.model.RedisMybatisModel;
 import com.cv.kdata.model.RptAngelList;
 import com.cv.kdata.model.RptOrgerList;
 import com.cv.kdata.response.InvestorInfoResponse;
@@ -189,7 +189,7 @@ public class InvestorInfoService {
 			return;
 		}
 
-		List<RptAngelList> list = Redis2Module.getRptAngelList();
+		List<RptAngelList> list = RedisMybatisModel.getRptAngelList();
 		if (list != null && !list.isEmpty()) {
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("success!");
@@ -216,7 +216,7 @@ public class InvestorInfoService {
 			return;
 		}
 
-		List<RptOrgerList> list = Redis2Module.getRptOrgList();
+		List<RptOrgerList> list = RedisMybatisModel.getRptOrgList();
 		if (list != null && !list.isEmpty()) {
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("success!");

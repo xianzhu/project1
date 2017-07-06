@@ -8,7 +8,7 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 public class RedisAliyun {
-	public static Logger log = LoggerFactory.getLogger(RedisUtil.class);
+	public static Logger log = LoggerFactory.getLogger(RedisAliyun.class);
     //Redis服务器IP
     private static String ADDR = "10.47.113.150";
 

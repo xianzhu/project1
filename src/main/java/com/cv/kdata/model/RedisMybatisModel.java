@@ -6,9 +6,7 @@ import java.util.List;
 import com.cv.kdata.cont.RedisPrexConst;
 import com.cv.kdata.util.JedisObjectUtil;
 
-
-
-public class Redis2Module {
+public class RedisMybatisModel {
 	public static EntAdmin getEntAdmin(String uuid) {
 		String key = String.format("%s%s%s", RedisPrexConst.EntAdminSync, JedisObjectUtil.SEPARATOR, uuid);
 		EntAdmin tmp = JedisObjectUtil.getData(EntAdmin.class, key);

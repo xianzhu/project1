@@ -2,9 +2,11 @@ package com.cv.kdata.cont;
 
 
 public class RedisPrexConst {
-	
+
+	public static final String SEPARATOR = ":";
 	public static final String EntAbnormalItemSync = "EntAbnormalItemSync";
 	public static final String EntAdminSync = "EntAdminSync";
+	public static final String EntBasicInfoSync = "EntBasicInfoSync";
 	public static final String ENT_BASIC_INFO = "entBasicInfo";
 	public static final String EntBranchSync = "EntBranchSync";
 	public static final String EntChgRecordSync = "EntChgRecordSync";
