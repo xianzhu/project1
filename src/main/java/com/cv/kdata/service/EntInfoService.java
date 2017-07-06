@@ -34,12 +34,9 @@ import com.cv.kdata.model.CiRcaPay;
 import com.cv.kdata.model.CiSfSca;
 import com.cv.kdata.model.EntBasicInfo;
 import com.cv.kdata.model.PMInvestEventDetail;
-import com.cv.kdata.model.RptEntJudgeValue;
-import com.cv.kdata.model.RptToeMa;
 import com.cv.kdata.model.StockACapitalDebtIndexResponse;
 import com.cv.kdata.model.StockEquityCtrl;
 import com.cv.kdata.model.StockInstInvest;
-import com.cv.kdata.model.StockManageTeam;
 import com.cv.kdata.response.EntInfoResponse;
 import com.cv.kdata.util.StringUtil;
 import com.jfinal.plugin.activerecord.Db;
@@ -47,6 +44,7 @@ import com.jfinal.plugin.activerecord.Record;
 import com.kd.jfinal.redis.RedisJfinalModel;
 import com.kd.model.general.EntCopyrights;
 import com.kd.model.general.EntGeneralObject;
+
 @Service
 public class EntInfoService {
 	@Autowired
@@ -74,7 +72,6 @@ public class EntInfoService {
 	@Autowired
 	PMInvestEventDetailMapper investEventDetailMapper;
 
-
 	// 获取企业基本信息
 	public void getEntBasicInfo(HttpServletRequest req, EntInfoResponse response) {
 		if (RDDWebConst.FAILURE.equals(response.getStatus())) {
@@ -86,7 +83,7 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-//			basicInfo = RedisMybatisModel.getEntBasicInfo(entId);
+			// basicInfo = RedisMybatisModel.getEntBasicInfo(entId);
 			basicInfo = RedisJfinalModel.getEntBasicInfo(entId);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent info success!");
@@ -123,7 +120,8 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-//			List<EntBranch> BranchList = RedisMybatisModel.getEntBranchFromList(entId);
+			// List<EntBranch> BranchList =
+			// RedisMybatisModel.getEntBranchFromList(entId);
 			List<com.kd.model.general.EntBranch> BranchList = RedisJfinalModel.getEntBranchFromList(entId);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent Branch info success!");
@@ -141,7 +139,8 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			com.kd.model.general.EntGeneralObject record = RedisJfinalModel.getEntGeneralObject(entId, RedisPrexConst.EntHolderSync);
+			com.kd.model.general.EntGeneralObject record = RedisJfinalModel.getEntGeneralObject(entId,
+					RedisPrexConst.EntHolderSync);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent Branch info success!");
 			if (record != null) {
@@ -185,7 +184,7 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-//			EntChgRecord record = RedisMybatisModel.getEntChgRecord(entId);
+			// EntChgRecord record = RedisMybatisModel.getEntChgRecord(entId);
 			com.kd.model.general.EntChgRecord record = RedisJfinalModel.getEntChgRecord(entId);
 			if (record != null && !StringUtil.isNullOrEmpty(record.getRecord())) {
 				String tmpRecord = record.getRecord();
@@ -207,8 +206,10 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-//			List<EntLaw> chgRecordList = RedisMybatisModel.getEntLawFromList(entId);
-			com.kd.model.general.EntGeneralObject record = RedisJfinalModel.getEntGeneralObject(entId, RedisPrexConst.EntLawSync);
+			// List<EntLaw> chgRecordList =
+			// RedisMybatisModel.getEntLawFromList(entId);
+			com.kd.model.general.EntGeneralObject record = RedisJfinalModel.getEntGeneralObject(entId,
+					RedisPrexConst.EntLawSync);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent Branch info success!");
 			if (record != null) {
@@ -244,8 +245,9 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			List<com.kd.model.general.EntSoftCopyrights> copyRightsList = RedisJfinalModel.getEntSoftCopyrightsFromList(entId);
-			if(copyRightsList != null){
+			List<com.kd.model.general.EntSoftCopyrights> copyRightsList = RedisJfinalModel
+					.getEntSoftCopyrightsFromList(entId);
+			if (copyRightsList != null) {
 				Collections.sort(copyRightsList);
 			}
 			response.setStatus(RDDWebConst.SUCCESS);
@@ -281,7 +283,8 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			com.kd.model.general.EntGeneralObject record = RedisJfinalModel.getEntGeneralObject(entId, RedisPrexConst.EntMortgagesSync);
+			com.kd.model.general.EntGeneralObject record = RedisJfinalModel.getEntGeneralObject(entId,
+					RedisPrexConst.EntMortgagesSync);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("Get ent mortgages info success!");
 			if (record != null) {
@@ -319,8 +322,9 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild id");
 		} else {
-			List<com.kd.model.general.EntAbnormalItem> abnormalList = RedisJfinalModel.getEntAbnormalItemFromList(entId);
-			if(abnormalList != null){
+			List<com.kd.model.general.EntAbnormalItem> abnormalList = RedisJfinalModel
+					.getEntAbnormalItemFromList(entId);
+			if (abnormalList != null) {
 				Collections.sort(abnormalList);
 			}
 			response.setStatus(RDDWebConst.SUCCESS);
@@ -328,7 +332,6 @@ public class EntInfoService {
 			response.setEntAbnormalItemInfos(abnormalList);
 		}
 	}
-
 
 	public void getStockPotentialInfo(String code, EntInfoResponse response) {
 		if (RDDWebConst.FAILURE.equals(response.getStatus())) {
@@ -342,9 +345,9 @@ public class EntInfoService {
 
 			Object stock_list_potential_ma;
 			DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
-			if(code.startsWith("4") || code.startsWith("8")){
+			if (code.startsWith("4") || code.startsWith("8")) {
 				stock_list_potential_ma = stockFeatureAllMapper.getStockPotentialInfo(code);
-			}else{
+			} else {
 				stock_list_potential_ma = stockFeatureAllMapper.getXsbPotentialInfo(code);
 			}
 
@@ -353,7 +356,6 @@ public class EntInfoService {
 			response.setStockPotentialMaInfo(stock_list_potential_ma);
 		}
 	}
-
 
 	public void getStockXsbInfo(String code, EntInfoResponse response) {
 		if (RDDWebConst.FAILURE.equals(response.getStatus())) {
@@ -367,9 +369,9 @@ public class EntInfoService {
 
 			Object stock_xsb_list_matching;
 			DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
-			if(code.startsWith("4") || code.startsWith("8")){
+			if (code.startsWith("4") || code.startsWith("8")) {
 				stock_xsb_list_matching = stockFeatureAllMapper.getStockInfo(code);
-			}else{
+			} else {
 				stock_xsb_list_matching = stockFeatureAllMapper.getXsbInfo(code);
 			}
 
@@ -378,7 +380,6 @@ public class EntInfoService {
 			response.setStockXsbMatchInfo(stock_xsb_list_matching);
 		}
 	}
-
 
 	public void getChartsInfo(String code, EntInfoResponse response) {
 		if (RDDWebConst.FAILURE.equals(response.getStatus())) {
@@ -466,18 +467,12 @@ public class EntInfoService {
 			response.setMessage("Please input a vaild code");
 		} else {
 			List<com.kd.model.general.StockManageTeam> manageTeam = RedisJfinalModel.getStockManageTeam(code);
-			if(manageTeam !=null && !manageTeam.isEmpty()){
-				response.setStatus(RDDWebConst.SUCCESS);
-				response.setMessage("success!");
-				response.setTeams(manageTeam);
-				return;
-			}
 
-			DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
-			List<StockManageTeam> teamList = stockManageTeamMapper.selectByStockCode(code);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("success!");
-			response.setTeams(teamList);
+			response.setTeams(manageTeam);
+			return;
+
 		}
 	}
 
@@ -494,20 +489,14 @@ public class EntInfoService {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("Please input a vaild code");
 		} else {
-			//先取redis数据，如果取不到，再取mysql
+			// 先取redis数据，如果取不到，再取mysql
 			List<com.kd.model.general.StockHolderLatest> holderTeam = RedisJfinalModel.getStockHolderLatest(code);
-			if(holderTeam !=null && !holderTeam.isEmpty()){
-				response.setStatus(RDDWebConst.SUCCESS);
-				response.setMessage("success!");
-				response.setStockHolder(holderTeam);
-				return;
-			}
 
-			DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
-			List<com.cv.kdata.model.StockHolderLatest> team = stockHolderLatestMapper.selectByStockCode(code);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("success!");
-			response.setStockHolder(team);
+			response.setStockHolder(holderTeam);
+			return;
+
 		}
 	}
 
@@ -532,10 +521,10 @@ public class EntInfoService {
 			DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
 			StockInstInvest item1 = stockInstInvestMapper.selectByStockCode(code);
 			StockInstInvestFacade item = new StockInstInvestFacade();
-			if(item1 != null){
+			if (item1 != null) {
 				item.setInstInvestFacade(StringUtil.toJsonArray(item1.getInstInv()));
 			}
-//			item.setInstInv(null);
+			// item.setInstInv(null);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("success!");
 			response.setStockInstInvest(item.getInstInvestFacade());
@@ -562,10 +551,10 @@ public class EntInfoService {
 			DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
 			StockEquityCtrl item1 = stockEquityCtrlMapper.selectByStockCode(code);
 			StockEquityCtrlFacade item = new StockEquityCtrlFacade();
-			if(item1 != null){
+			if (item1 != null) {
 				item.setEquityCtrl(StringUtil.toJsonArray(item1.getEqComp()));
 			}
-			//item.setEqComp(null);
+			// item.setEqComp(null);
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("success!");
 			response.setStockEquityCtrl(item.getEquityCtrl());
@@ -585,35 +574,34 @@ public class EntInfoService {
 		List<Object> params = new ArrayList<>();
 		String sql = "select a.ent_id,a.ent_name,a.biz_area,a.legal_person,a.biz_stat,a.opt_time_start,case when length(b.stock_code)>0 then true else false end as is_stock,b.stock_code,b.stock_type from ent_basic_info a %s stock_feature_all b on a.ent_name = b.cn_name where 1 = 1 ";
 
-		if(isStock){//上市公司
+		if (isStock) {// 上市公司
 			sql = String.format(sql, " inner join ");
-		}else{
+		} else {
 			sql = String.format(sql, " left join ");
 		}
 
+		Enumeration<String> pNames = request.getParameterNames();
+		while (pNames.hasMoreElements()) {
+			String name = pNames.nextElement();
 
-		Enumeration<String> pNames=request.getParameterNames();
-		while(pNames.hasMoreElements()){
-		    String name=pNames.nextElement();
-
-		    String value=request.getParameter(name);
-		    if(StringUtils.isNotBlank(value)){
-		    	if(name.equalsIgnoreCase("key")){
-		    		sql += " and a.ent_name like ? ";
+			String value = request.getParameter(name);
+			if (StringUtils.isNotBlank(value)) {
+				if (name.equalsIgnoreCase("key")) {
+					sql += " and a.ent_name like ? ";
 					params.add("%" + value + "%");
-			    }else if(name.equalsIgnoreCase("isXsb")){
-			    	sql += " and  b.stock_type = ? ";
-			    	params.add(Double.parseDouble(value));
-			    } else if(name.endsWith("_max")){
-			    	name = name.replace("_max", "");
-			    	sql +=" and " + name + " <= ? ";
-			    	params.add(Double.parseDouble(value));
-			    }else if(name.endsWith("_min")){
-			    	name = name.replace("_min", "");
-			    	sql +=" and " + name + " >= ? ";
-			    	params.add(Double.parseDouble(value));
-			    }
-		    }
+				} else if (name.equalsIgnoreCase("isXsb")) {
+					sql += " and  b.stock_type = ? ";
+					params.add(Double.parseDouble(value));
+				} else if (name.endsWith("_max")) {
+					name = name.replace("_max", "");
+					sql += " and " + name + " <= ? ";
+					params.add(Double.parseDouble(value));
+				} else if (name.endsWith("_min")) {
+					name = name.replace("_min", "");
+					sql += " and " + name + " >= ? ";
+					params.add(Double.parseDouble(value));
+				}
+			}
 		}
 
 		sql += " limit 50 ";
@@ -625,6 +613,7 @@ public class EntInfoService {
 		basicResponse.setMessage("success!");
 		basicResponse.setSearchResult(results);
 	}
+
 	/**
 	 *
 	 *
@@ -642,18 +631,12 @@ public class EntInfoService {
 			response.setMessage("Please input a vaild id");
 		} else {
 			com.kd.model.general.RptEntJudgeValue list = RedisJfinalModel.getEntJudgeValue(entId);
-			if(list !=null){
-				response.setStatus(RDDWebConst.SUCCESS);
-				response.setMessage("success!");
-				response.setRptEntJudgeValue(list);
-				return;
-			}
 
-			DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
-			RptEntJudgeValue entJudge = RptEntJudgeValueMapper.selectByUuid(entId);
 			response.setStatus(RDDWebConst.SUCCESS);
-			response.setMessage("Get ent judge success!");
-			response.setRptEntJudgeValue(entJudge);
+			response.setMessage("success!");
+			response.setRptEntJudgeValue(list);
+			return;
+
 		}
 	}
 
@@ -668,26 +651,20 @@ public class EntInfoService {
 			return;
 		}
 
-		int from = StringUtil.parseInt(req.getParameter("from"),0);
-		int count = StringUtil.parseInt(req.getParameter("count"),18);
+		int from = StringUtil.parseInt(req.getParameter("from"), 0);
+		int count = StringUtil.parseInt(req.getParameter("count"), 18);
 		List<com.kd.model.general.RptToeMa> list = RedisJfinalModel.getRpt2MaList();
-		if(list !=null && !list.isEmpty()){
+		if (list != null && !list.isEmpty()) {
 			response.setStatus(RDDWebConst.SUCCESS);
 			response.setMessage("success!");
 
-			if(from < list.size()){
-				response.setRptToMaList(list.subList(from, from+count));
-			}else{
-				response.setMessage(String.format("from is more than %d",list.size()));
+			if (from < list.size()) {
+				response.setRptToMaList(list.subList(from, from + count));
+			} else {
+				response.setMessage(String.format("from is more than %d", list.size()));
 			}
 			return;
 		}
-
-		DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
-		List<RptToeMa> trendList = RptToeMaMapper.getRpt2MaList(from,count);
-		response.setStatus(RDDWebConst.SUCCESS);
-		response.setMessage("Get rpt_toe_ma list success!");
-		response.setRptToMaList(trendList);
 	}
 
 	/**
@@ -743,12 +720,12 @@ public class EntInfoService {
 		response.setCiRcaPay(trendList);
 	}
 
-	public List<EntBasicInfo> getEntInfoByLike(String entName){
+	public List<EntBasicInfo> getEntInfoByLike(String entName) {
 		List<EntBasicInfo> list = entBasicInfoMapper.selectLikeName(entName);
 		return list;
 	}
 
-	public void getFinanceInfo(HttpServletRequest req, EntInfoResponse response){
+	public void getFinanceInfo(HttpServletRequest req, EntInfoResponse response) {
 		String uuid = req.getParameter("id");
 		DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
 		List<PMInvestEventDetail> list = investEventDetailMapper.selectByUuid(uuid);
