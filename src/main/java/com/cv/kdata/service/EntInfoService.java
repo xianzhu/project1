@@ -653,18 +653,24 @@ public class EntInfoService {
 
 		int from = StringUtil.parseInt(req.getParameter("from"), 0);
 		int count = StringUtil.parseInt(req.getParameter("count"), 18);
-		List<com.kd.model.general.RptToeMa> list = RedisJfinalModel.getRpt2MaList();
-		if (list != null && !list.isEmpty()) {
-			response.setStatus(RDDWebConst.SUCCESS);
-			response.setMessage("success!");
+//		List<com.kd.model.general.RptToeMa> list = RedisJfinalModel.getRpt2MaList();
+//		if (list != null && !list.isEmpty()) {
+//			response.setStatus(RDDWebConst.SUCCESS);
+//			response.setMessage("success!");
+//
+//			if (from < list.size()) {
+//				response.setRptToMaList(list.subList(from, from + count));
+//			} else {
+//				response.setMessage(String.format("from is more than %d", list.size()));
+//			}
+//			return;
+//		}
 
-			if (from < list.size()) {
-				response.setRptToMaList(list.subList(from, from + count));
-			} else {
-				response.setMessage(String.format("from is more than %d", list.size()));
-			}
-			return;
-		}
+		DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
+		List<com.cv.kdata.model.RptToeMa> trendList = RptToeMaMapper.getRpt2MaList(from,count);
+		response.setStatus(RDDWebConst.SUCCESS);
+		response.setMessage("Get rpt_toe_ma list success!");
+		response.setRptToMaList(trendList);
 	}
 
 	/**
