@@ -6,7 +6,7 @@ import com.kd.model.general.base.BaseEntSoftCopyrights;
  *
  */
 @SuppressWarnings("serial")
-public class EntSoftCopyrights extends BaseEntSoftCopyrights<EntSoftCopyrights> implements Comparable<EntSoftCopyrights> {
+public class EntSoftCopyrights extends BaseEntSoftCopyrights<EntSoftCopyrights> implements Comparable<EntSoftCopyrights>{
 	public static final EntSoftCopyrights dao = new EntSoftCopyrights();
 
 	@Override
