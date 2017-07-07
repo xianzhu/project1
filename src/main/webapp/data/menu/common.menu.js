@@ -39,7 +39,7 @@
 var menuList = {
     "homepage": {
         "isActive": false,
-        "pageurl": "homepage",
+        "pageurl": "homePage",
         "text": "",
         "name": menuInfo.homepage,     // "主页",
         "showChild": false,
