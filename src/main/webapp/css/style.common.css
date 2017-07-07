@@ -439,8 +439,11 @@
 }
 table.dataTable{
     border-collapse: collapse;
+    width:calc(100% - 1px);
 }
-
+table.table{
+    width:calc(100% - 1px);
+}
 table.dataTable thead th, table.dataTable thead td {
     padding: 5px 10px;
     text-align: center;
