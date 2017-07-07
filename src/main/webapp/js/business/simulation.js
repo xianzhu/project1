@@ -122,7 +122,7 @@ function doSimulation() {
             if (res.status == "failure") {
                 console.log("failure", res.message);
                 v_simulParamModel.$data.showSimulParamDiv = false;
-                showInfo("计算失败","计算失败："+res.message);
+                showInfo("计算失败","计算失败：无法分析输入的经营范围，请重新输入！");
             } else if (res.status == "timeout") {
                 console.log("timeout");
                 goToNotlogon();
