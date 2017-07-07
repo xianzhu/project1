@@ -7,41 +7,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="icon" href="img/logo_tree.jpg" type="image/png">
+    <link href="css/mycommon/loading-animate.css" rel="stylesheet">
     <script src="js/common/jquery-2.1.1.js"></script>
     <script src="js/common/md5.js"></script>
-    <style type="text/css">
-        .loading-animate{
-            position: absolute;
-            left: 50%;
-            top:35%;
-            float: left;
-            width: 32px;
-            height: 32px;
-            margin: 0 0 0 -16px;
-            background: url(img/loading-gradient.png) no-repeat top left;
-            -webkit-animation: spin 0.75s infinite linear;
-            -moz-animation: spin 0.75s infinite linear;
-            -o-animation: spin 0.75s infinite linear;
-            animation: spin 0.75s infinite linear;
-        }
-
-        @-webkit-keyframes spin {
-            0% { -webkit-transform: rotate(0deg);}
-            100% { -webkit-transform: rotate(360deg);}
-        }
-        @-moz-keyframes spin {
-            0% { -moz-transform: rotate(0deg);}
-            100% { -moz-transform: rotate(360deg);}
-        }
-        @-o-keyframes spin {
-            0% { -o-transform: rotate(0deg);}
-            100% { -o-transform: rotate(360deg);}
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg);}
-            100% { transform: rotate(360deg);}
-        }
-    </style>
 </head>
 <body>
 <div>
@@ -51,8 +19,8 @@
 <script>
     var name="test1";
     var password="test1";
-    var url="login";
-//    var url="http://116.62.52.41:18081/login";
+//    var url="login";
+    var url="http://116.62.52.41:17081/login";
 
     var pwd=hex_md5(password);
     console.log("login:",name,', ',pwd);
@@ -71,7 +39,7 @@
             } else {
                 var response=res;
                 console.log("login success:",response);
-                window.location.href="homePage.html?uname="+name;
+                window.location.href="homePage.html?uname="+name+"&score=0";
             }
         },
         fail:function(res){

@@ -1,0 +1,21 @@
+#modal_detail_container{
+    padding:0px 1px;
+    overflow:auto;
+    width:75%;
+    max-width:800px;
+    margin:40px auto 10px auto;
+}
+
+.modal-info-close-button{
+    margin-right:0px;
+    margin-top:-13px;
+}
+
+
+
+
+
+
+
+
+

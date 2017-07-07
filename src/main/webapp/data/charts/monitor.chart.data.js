@@ -175,7 +175,7 @@ var relation_org_option = {
                     name: '当前点',
                     itemStyle: {
                         normal: {
-                            //color : '#87cdfa'
+                            // color : '#87cdfa'
                             color:'#38a6ec'
                         }
                     }
@@ -184,7 +184,7 @@ var relation_org_option = {
                     name:'普通点',
                     itemStyle: {
                         normal: {
-                            //color : '#9acd32'
+                            // color : '#9acd32'
                             color : '#c1daea'
                         }
                     }

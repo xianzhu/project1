@@ -1,0 +1,198 @@
+.modal-mask {
+    position: fixed;
+    z-index: 100;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background-color: rgba(250, 250, 250, .5);*/
+    background-color:rgba(189,189,189,0.4);
+    /*background-color: rgba(192, 192, 192, .1);*/
+    /*display: table;*/
+    transition: opacity .5s ease;
+}
+
+.modal-wrapper {
+    /*display: table-cell;*/
+    vertical-align: middle;
+    height:100%;
+}
+
+.modal-container {
+    width: 60%;
+    margin:15px auto 5px auto;
+    max-height:calc(100% - 70px);
+    overflow:auto;
+    padding: 0px 30px;
+    background-color: rgba(250, 250, 250, 0.9);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .8s ease;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-container-info{
+    width:230px;
+    margin:100px auto 5px auto;
+    max-height:calc(100% - 70px);
+    overflow:auto;
+    padding: 0px 30px;
+    background-color: rgba(250, 250, 250, 0.9);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .8s ease;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.modal-header{
+    padding:15px 10px 0px 0px;
+    border-bottom:1px solid #555;
+}
+.modal-header h3 {
+    margin-top: 0;
+    color:#2fa4e7;
+    /*color:#555;*/
+}
+
+.modal-body {
+    margin: 5px 0 20px 0;
+    color:#555;
+}
+.modal-footer{
+    border-top:none;
+}
+.modal-default-button {
+    float: right;
+    background:transparent;
+    border:none;
+    position:relative;
+    margin-right:-30px;
+}
+
+.modal-info-close-button{
+    margin-right: -30px;
+    margin-top: 2px;
+    float: right;
+    background: transparent;
+    border: none;
+    position: relative;
+}
+
+.modal-enter, .modal-leave {
+    opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave .modal-container {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.modal-wait-mask{
+    position: fixed;
+    z-index: 9998;
+    top: 60px;
+    left: 60px;
+    width: calc(100% - 60px);
+    height: calc(100% - 60px);
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+}
+.modal-template-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+}
+
+.modal-template-wrapper {
+    /*display: table-cell;*/
+    vertical-align: middle;
+}
+
+.modal-template-container {
+    width: 50%;
+    margin: 0px auto;
+    padding: 20px 30px;
+    /*background-color: rgba(123, 123, 123, 0.59);*/
+    /*background-color:#ccc;*/
+    background-color:#fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .3s ease;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-template-header h3 {
+    margin-top: 0;
+    /*color: #00ff00;*/
+    color:#333;
+}
+
+.modal-template-body {
+    margin: 5px 0;
+}
+
+.modal-template-default-button {
+    float: right;
+}
+
+.modal-template-list .half-item{
+    width:50%;
+    float:right;
+}
+
+.modal-template-list strong{
+    margin-right:10px;
+}
+
+.modal-template-footer{
+    margin-bottom:15px;
+}
+
+.modal-enter, .modal-leave {
+    opacity: 0;
+}
+
+.modal-enter .modal-template-container,
+.modal-leave .modal-template-container {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.modal-event-wrapper {
+    /*display: table-cell;*/
+    vertical-align: middle;
+}
+
+.modal-event-container {
+    width: 75%;
+    margin: 40px auto 10px auto;
+    padding: 0;
+    /*overflow:auto;*/
+    max-width:800px;
+    background-color:#fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .3s ease;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.modal-event-header{
+    padding:15px 0px 0px 20px;
+}
+.modal-event-body{
+    margin:5px 0;
+    overflow:auto;
+    padding:0px 20px 10px 20px;
+}
+.hr-line-title{
+    border-bottom:1px solid rgba(139, 138, 139,0.8);
+    color: rgba(100, 100, 100,0.8);
+    font-weight: bold;
+    margin-top:15px;
+    margin-bottom:10px;
+}

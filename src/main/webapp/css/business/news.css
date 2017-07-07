@@ -1,0 +1,123 @@
+.text-navy {
+    color: #2fa4e7;
+}
+.project-brand{
+    /*color:#2fa4e7;*/
+    color:#23527c;
+}
+.project-information-div{
+    margin-top:4px;
+    /*padding:0px 5px;*/
+    /*text-indent: 1em;*/
+}
+strong.comments-info{
+    color:red;
+    font-size:14px;
+}
+strong.description-info{
+    color: #2fa4e7;
+    font-size:14px;
+}
+.feed-element{
+    padding:10px;
+}
+.industry-list-group{
+    list-style: none;
+    position: absolute;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 0px;
+    z-index: 99;
+    max-height:300px;
+    overflow:auto;
+}
+li.industry-list-item label{
+    width:100%;
+    padding:2px 10px;
+    text-align:left;
+    border:1px solid transparent;
+}
+li.industry-list-item label:hover{
+    /*background-color:#1eacae;*/
+    /*border:1px solid black;*/
+    background-color:rgba(238,238,238,.3);
+    border:1px solid rgba(198,198,198,.7);
+}
+
+.search-news-bar{
+    width:100%;
+    height:40px;
+}
+.search-news-bar .form-input-control{
+    height: 32px;
+    width:82px;
+    margin-top: 1px;
+    margin-right: 6px;
+    border-radius:3px;
+}
+.search-news-bar > div.form-control-div{
+    width:calc(100% - 88px);
+    float:right;
+}
+
+.search-news-bar i{
+    position:absolute;
+    right:20px;
+    top:9px;
+    font-size:16px;
+}
+.search-news-bar i.clear-filter-ico{
+    right:10px;
+}
+.report-lists .feed-element{
+    padding:5px 10px 5px 10px;
+}
+.active-div{
+
+}
+.unactive-div button{
+
+}
+#filter_input_div{
+    position:relative;
+    width:100%;
+    /*top:0px;*/
+    top:-45px;
+    z-index:10;
+}
+.industry-filter-label{
+    width:100%;z-index:9;height:34px;line-height: 34px;
+    border-width: 1px;
+    border-style:solid;
+    border-color: #aaaaaa;
+    background-color:white;
+    border-radius:5px;
+    padding-left: 7px;
+}
+@media (min-width:1200px) {
+    .col-lg-left-side{
+        padding-right:5px;
+    }
+    .col-lg-right-side{
+        padding-left:5px;
+    }
+}
+@media (max-width:768px){
+   #page-wrapper{
+       position: absolute;
+       top: 60px;
+       left: 62px;
+       width: calc(100% - 62px);
+       margin:0;
+   }
+}
+
+.btn-order-correlation,.btn-order-time{
+    width:20px;
+    height:20px;
+    top:8px;
+    margin-left:5px !important;
+    border:none;
+}
+
+

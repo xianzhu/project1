@@ -2,12 +2,10 @@
  * Created by a88u on 2016/10/8.
  */
 
-
-
 // 获取url参数
 function getUrlQueryStr(sArgName, urlStr) {
     //console.log(urlStr);
-    var url=decodeURI(urlStr);
+    var url = decodeURI(urlStr);
     //console.log(url);
     var args = url.split("?");
     var retval;
@@ -25,18 +23,17 @@ function getUrlQueryStr(sArgName, urlStr) {
     }
     return retval;
 }
-
-function replaceUrlQueryStr(sArgName,srcStr,newvalue){
-    var newstr="";
-    console.log(sArgName,srcStr,newvalue);
-    var from=srcStr.indexOf(sArgName+"=");
-    if(from==-1){ // 没有此参数，直接加上
-        if(srcStr.indexOf("?")<0){
-            newstr=srcStr + "?" + sArgName + "=" + newvalue;
-        }else {
+function replaceUrlQueryStr(sArgName, srcStr, newvalue) {
+    var newstr = "";
+    console.log(sArgName, srcStr, newvalue);
+    var from = srcStr.indexOf(sArgName + "=");
+    if (from == -1) { // 没有此参数，直接加上
+        if (srcStr.indexOf("?") < 0) {
+            newstr = srcStr + "?" + sArgName + "=" + newvalue;
+        } else {
             newstr = srcStr + "&" + sArgName + "=" + newvalue;
         }
-    }else {
+    } else {
         var head = srcStr.substr(0, from);
         var next = srcStr.indexOf("&", from);
         var foot = "";
@@ -51,28 +48,28 @@ function replaceUrlQueryStr(sArgName,srcStr,newvalue){
 }
 
 // jquery dataTables表设置
-function bindExportedDataTable(domId,perLength,exportTitle,customOptions){
-    var dom='#'+domId;
-    var tableOptions={
-        searching:false,
-        ordering:false,
-        language:{
-            url:"data/dataTables_cn.json"
+function bindExportedDataTable(domId, perLength, exportTitle, customOptions) {
+    var dom = '#' + domId;
+    var tableOptions = {
+        searching: false,
+        ordering: false,
+        language: {
+            url: "data/dataTables_cn.json"
         },
-        headerCallback: function( thead, data, start, end, display ) { // 去掉表头的排序图标---需要考虑所有行
-            var theadRows=$(thead).parent().find("tr");
-            theadRows.each(function(){
-                var self=$(this);
+        headerCallback: function (thead, data, start, end, display) { // 去掉表头的排序图标---需要考虑所有行
+            var theadRows = $(thead).parent().find("tr");
+            theadRows.each(function () {
+                var self = $(this);
                 //console.log(self);
-                if(self.find("th").eq(0)) {
+                if (self.find("th").eq(0)) {
                     self.find("th").eq(0).removeClass("sorting_asc");
-                }else{
+                } else {
                     console.log("not found");
                 }
             });
         },
 //            lengthChange:false,
-            dom: '<"html5buttons"B>lTfgitp',
+        dom: '<"html5buttons"B>lTfgitp',
         /*
          l:每页显示数量
          B:按钮，button
@@ -82,12 +79,11 @@ function bindExportedDataTable(domId,perLength,exportTitle,customOptions){
          t:table
          */
         buttons: [
-            {extend: 'copy',text:"复制"},
-            //{extend: 'csv'},
-            //{extend: 'excel'},
-            {extend: 'pdf',title:exportTitle},
-            {extend: 'print',title:exportTitle,
-                customize: function (win){
+            {extend: 'copy', text: "复制"},
+            // {extend: 'csv',title:exportTitle},
+            {
+                extend: 'print', title: exportTitle,
+                customize: function (win) {
                     $(win.document.body).addClass('white-bg');
                     $(win.document.body).css('font-size', '10px');
 
@@ -98,63 +94,100 @@ function bindExportedDataTable(domId,perLength,exportTitle,customOptions){
             }
         ]
     };
-    if(perLength>0){
-        tableOptions.dom='<"html5buttons"B>tp';
-        tableOptions.pageLength=perLength; // 设置每页显示项数
-    }else{
-        tableOptions.dom='<"html5buttons"B>t';
-        tableOptions.paginate=false; // 不分页
+    if (perLength > 0) {
+        tableOptions.dom = '<"html5buttons"B>tp';
+        tableOptions.pageLength = perLength; // 设置每页显示项数
+    } else {
+        tableOptions.dom = '<"html5buttons"B>t';
+        tableOptions.paginate = false; // 不分页
     }
-    if(typeof customOptions!='undefined'){
+    if (typeof customOptions != 'undefined') {
         console.log("do custom options");
-        tableOptions=joinJsonObject(tableOptions,customOptions);
+        tableOptions = joinJsonObject(tableOptions, customOptions);
     }
 
-    //console.log("no pageinate",tableOptions.dom);
-//console.log(tableOptions);
     $(dom).DataTable(tableOptions);
 }
-
-function bindSimpleDataTable(domId,perLength){
-    var dom='#'+domId;
-    var tableOptions={
-        searching:false,
-        ordering:false,
-        language:{
-            url:"data/dataTables_cn.json"
+function bindSimpleDataTable(domId, perLength) {
+    var dom = '#' + domId;
+    var tableOptions = {
+        searching: false,
+        ordering: false,
+        language: {
+            url: "data/dataTables_cn.json"
         },
-        headerCallback: function( thead, data, start, end, display ) { // 去掉表头的排序图标---需要考虑所有行
-            var theadRows=$(thead).parent().find("tr");
-            theadRows.each(function(){
-                var self=$(this);
+        headerCallback: function (thead, data, start, end, display) { // 去掉表头的排序图标---需要考虑所有行
+            var theadRows = $(thead).parent().find("tr");
+            theadRows.each(function () {
+                var self = $(this);
                 self.find("th").eq(0).removeClass("sorting_asc");
             });
         },
         dom: 'tp',
         buttons: []
     };
-    if(perLength>0){
-        tableOptions.dom='tp';
-        tableOptions.pageLength=perLength; // 设置每页显示项数
-    }else{
-        tableOptions.dom='t';
-        tableOptions.paginate=false; // 不分页
+    if (perLength > 0) {
+        tableOptions.dom = 'tp';
+        tableOptions.pageLength = perLength; // 设置每页显示项数
+    } else {
+        tableOptions.dom = 't';
+        tableOptions.paginate = false; // 不分页
     }
 
     $(dom).DataTable(tableOptions);
 }
+function bindDataTable(domId, perLength, exportTitle, extendButtons, cOptions) {
+    var dom = '#' + domId;
+    var tableOptions = {
+        searching: false,
+        order: [],
+        ordering: false,
+        language: {
+            url: "data/dataTables_cn.json"
+        },
+        headerCallback: function (thead, data, start, end, display) {
+            $(thead).find("th").eq(0).removeClass("sorting_asc");
+        },
+        dom: '<"html5buttons"B>tp',
+        buttons: [
+            {extend: 'copy', text: "复制"},
+            {extend: 'csv', title: exportTitle},
+            {
+                extend: 'print', title: exportTitle,
+                customize: function (win) {
+                    $(win.document.body).addClass('white-bg');
+                    $(win.document.body).css('font-size', '10px');
 
-function joinJsonObject(jObj1,jObj2){
-    var result={};
-    for(var item in jObj1){
-        result[item]=jObj1[item];
+                    $(win.document.body).find('table')
+                        .addClass('compact')
+                        .css('font-size', 'inherit');
+                }
+            }
+        ]
+    };
+    if (perLength > 0) {
+        tableOptions.pageLength = perLength; // 设置每页显示项数
+    } else {
+        tableOptions.paginate = false; // 不分页
     }
-    for(var item in jObj2){
-        result[item]=jObj2[item];
+
+    tableOptions = joinJsonObject(tableOptions, cOptions);
+    for (var i = 0; i < extendButtons.length; i++) {
+        tableOptions.buttons.unshift(extendButtons[i]);
+    }
+    $(dom).DataTable(tableOptions);
+}
+
+function joinJsonObject(jObj1, jObj2) {
+    var result = {};
+    for (var item in jObj1) {
+        result[item] = jObj1[item];
+    }
+    for (var item in jObj2) {
+        result[item] = jObj2[item];
     }
     return result;
 }
-
 function clone(obj) {
     var o;
     if (typeof obj == "object") {
@@ -179,174 +212,139 @@ function clone(obj) {
     return o;
 }
 
-function gotoClickPage(url,id){
-    //var score=parseFloat(Math.random()*100).toFixed(0);
-    var score=0;
-console.log("gotoClickPage: ",url,', ',id);
-    if(id&&id!=null&&id!="null"&&id!="") {
-        var murl = url + ".html?id=" + id + "&uname=" + v_userModel.$data.uname + "&score=" + score;
+function gotoClickPage(url, id) {
+    console.log("gotoClickPage: ", url, ', ', id);
+    if (id && id != null && id != "null" && id != "") {
+        var murl = url + ".html?id=" + id + "&uname=" + v_userModel.$data.uname
+            + "&score=" + v_userModel.$data.uscore;
         window.location.href = murl;
     }
 }
-
-function gotoMenuPage(url,id){
-    var score=0;
-    var murl = url + ".html?id=" + id + "&uname=" + v_userModel.$data.uname + "&score=" + score;
-    window.location.href = murl;
+function openUrl(url) {
+    window.open(url);
 }
 
-function openClickPage(url,id){
-    var murl=url+".html?id="+id;
-    window.open(murl);
-}
-
-function sendMonitor(options){
+function sendMonitor(options) {
     var img = new Image(),
         id = 'img' + new Date();
     img.id = id;
-    img.onload = img.onerror = img.onabort = function() { window[id] = undefined; };
+    img.onload = img.onerror = img.onabort = function () {
+        window[id] = undefined;
+    };
     window[id] = img;
-    img.src = 'testData/loginout.json?url='+options.url; // 此处设置src
+    img.src = 'testData/loginout.json?url=' + options.url; // 此处设置src
 }
 
-function gotoSearchPage(url,key){
-    var score=parseFloat(Math.random()*100).toFixed(0);
-    console.log("goto ",url);
-    var murl=url+".html?key="+key+"&uname="+v_userModel.$data.uname+"&score="+score;
-    window.location.href=murl;
+// 跳转综合查询
+function gotoMutiSearch(key) {
+    console.log("goto mutisearch:", key);
+    var murl = "mutisearch.html?key=" + key + "&uname=" + v_userModel.$data.uname
+        + "&score=" + v_userModel.$data.uscore;
+    window.location.href = murl;
 }
 
-function gotoCompanyPage(url,id,type){
-    console.log("goto:",id,', ',type);
-    if(id&&id!=""&&id!=null&&id.length>3) {
-        var score = parseFloat(Math.random() * 100).toFixed(0);
-        var murl = url + ".html?id=" + id + "&comtype=" + type + "&uname="
-            + v_userModel.$data.uname + "&score=" + score;
+function gotoPersonPage(id) {
+    console.log("goto person", id);
+    if (id && id != "" && id != null) {
+        var murl = "personinfo.html?id=" + id + "&uname="
+            + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
         window.location.href = murl;
     }
 }
+function gotoOrgFundPage(id,oid) {
+    console.log("goto org-fund ", id,oid);
+    if (id && id != "" && id != null) {
+        var murl = "orgfundinfo.html?id=" + id +"&oid="+oid+ "&uname="
+            + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
+        window.location.href = murl;
+    }
+}
+function gotoOrgPage(id) {
+    console.log("goto org ", id);
+    if (id && id != "" && id != null) {
+        var murl = "orgnazationinfo.html?id=" + id + "&uname="
+            + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
+        window.location.href = murl;
+    }
+}
+function gotoProjectPage() {
+    console.log("goto project:");
+    var murl = "projects.html?uname=" + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
+    window.location.href = murl;
+}
+function gotoNewsPage() {
+    console.log("goto news:");
+    var murl = "news.html?uname=" + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
+    window.location.href = murl;
+}
+function gotoSimulationPage() {
+    console.log("goto simulation:");
+    var murl = "simulation.html?uname=" + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
+    window.location.href = murl;
+}
+function gotoCustSettingPage() {
+    console.log("goto customer setting:");
+    var murl = "customerSetting.html?uname=" + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
+    window.location.href = murl;
+}
+function gotoCvReportPage() {
+    console.log("goto cvReports");
+    var murl = "cvReports.html?uname=" + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
+    window.location.href = murl;
+}
+function gotoTraderReportPage() {
+    console.log("goto traderReports");
+    var murl = "traderReports.html?uname=" + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
+    window.location.href = murl;
+}
 
-function gotoCompanyByCode(code,type){
+function gotoCompanyPage(id, type,stock_code) {  // 0---A股；1---新三板；2---非上市
+    console.log("gotocompany:", id, ', ', type);
+    if (id && id != "" && id != null && id.length > 3) {
+        var murl = "companyinfo.html?id=" + id + "&comtype=" + type + "&uname="
+            + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
+        window.location.href = murl;
+    }
+}
+function gotoCompanyByCode(code, type) {
     $.ajax({
         url: commonUrls.companyIdUrl,              //请求地址
         type: "POST",                            //请求方式
         data: { //请求参数
-            id:code
+            id: code
         },
         dataType: "text",
         success: function (res) {
             var response = res;
             console.log(res);
-            //if((typeof response!=undefined)&&response!=""&&response!="null"&&response!=null) {
-            if(res){
-                console.log("if",res);
-                var id=res;
-                if(code.substr(0,2)=="80"){ // 新三板
-                    gotoCompanyPage("companyBasic",id,1);
-                }else{ // A股
-                    gotoCompanyPage("companyBasic",id,0);
+            if (res) {
+                console.log("if", res);
+                var id = res;
+                if (code.substr(0, 2) == "80") { // 新三板
+                    gotoCompanyPage(id, 1,code);
+                } else { // A股
+                    gotoCompanyPage(id, 0,code);
                 }
-
-                //item = {type: type, id: response.stockCode};
-            }else{
-                console.log("not found:",code);
-                ////item={type:type,id:response.uuid};
-                //gotoCompanyPage("companyBasic",id,2);
+            } else {
+                console.log("not found:", code);
             }
         },
         fail: function (status) {
             console.error("event id=", id, " error. status=", status);
         },
         statusCode: {
-            404: function() {
+            404: function () {
                 goTo404();
             },
-            500:function(){
+            500: function () {
                 goTo500();
             }
         }
     });
 }
-
-function goTo404(){
-    console.log("goto 404");
-//window.location.href="404.html";
-}
-function goTo500(){
-
-}
-function goToFailure(res){
-    if(res.message=="未登录或者登录已经失效"){
-        goToNotlogon();
-    }
-}
-function goToNotlogon(){
-    window.location.href="notlogon.html";
-}
-
-function openFilesOnline(path){
-    var pdfUrl=path;
-
-    if(isTest){
-        pdfUrl=hostUrl+path;
-    }
-
-    console.log(pdfUrl);
-    $.ajax({
-        url: pdfUrl,              //请求地址
-        type: "POST",                            //请求方式
-        data: {},
-        success: function (res) {
-            //console.log(typeof res);
-            if(res.status=='failure'){
-                //goToLoginout();
-                console.log("failure",res.message);
-                window.open("404.html");
-            }else{
-                //console.log(typeof res);
-                var isTimeout=res.indexOf('{');
-                // timeout 服务器返回的是字符串，而不是json   {"message":"Please relogin","status":"timeout"}
-                if(res.indexOf('{')==0){
-                    console.log("timeout",res);
-                    goToNotlogon();
-                }else{
-                    console.log("success....");
-                    window.open(pdfUrl);
-                }
-            }
-        },
-        fail: function (status) {
-            console.error("event id=", id, " error. status=", status);
-        },
-        statusCode: {
-            404: function() {
-                goTo404();
-            },
-            500:function(){
-                goTo500();
-            }
-        }
-    });
-    console.log("open url");
-    //window.open("pdfPreview.html?path="+path);
-}
-
-function initPopover(){
-    var options={
-        trigger:"hover focus",
-        delay:{
-            show:300,
-            hide:200
-        }
-    };
-    $("[data-toggle='popover']").popover(options);
-}
-
-function gotoCompanybyId(id){
-    //var uuid=id;
+function gotoCompanybyId(id) {
     console.log(id);
-    if(id&&id!="NULL"&&id!="-") {
-        //var item;
+    if (id && id != "NULL" && id != "-") {
         $.ajax({
             url: commonUrls.companyIdUrl,              //请求地址
             type: "POST",                            //请求方式
@@ -357,19 +355,16 @@ function gotoCompanybyId(id){
             success: function (res) {
                 var response = res;
                 console.log(res);
-                //if((typeof response!=undefined)&&response!=""&&response!="null"&&response!=null) {
                 if (res) {
-                    console.log("if", res);
+                    console.log("gotoCompanybyId：上市，", res);
                     if (res.substr(0, 2) == "80") { // 新三板
-                        gotoCompanyPage("companyBasic", id, 1);
+                        gotoCompanyPage(id, 1,res);
                     } else { // A股
-                        gotoCompanyPage("companyBasic", id, 0);
+                        gotoCompanyPage(id, 0,res);
                     }
-                    //item = {type: type, id: response.stockCode};
                 } else {
-                    console.log("elseif: ");
-                    //item={type:type,id:response.uuid};
-                    gotoCompanyPage("companyBasic", id, 2);
+                    console.log("gotoCompanybyId: 非上市");
+                    gotoCompanyPage(id, 2,"");
                 }
             },
             fail: function (status) {
@@ -387,14 +382,79 @@ function gotoCompanybyId(id){
     }
 }
 
-function checkNotEmptyList(value){
-    var result=false;
-    if(value&&value!=null&&value!=""){
-        result=true;
+function goTo404() {
+    console.log("goto 404");
+//window.location.href="404.html";
+}
+function goTo500() {
+
+}
+function goToNotlogon() {
+    window.location.href = "notlogon.html";
+}
+
+function openFilesOnline(path) {
+    var pdfUrl = path;
+    if (isTest) {
+        pdfUrl = hostUrl + path;
+    }
+
+    console.log(pdfUrl);
+    $.ajax({
+        url: pdfUrl,              //请求地址
+        type: "POST",                            //请求方式
+        data: {},
+        success: function (res) {
+            //console.log(typeof res);
+            if (res.status == 'failure') {
+                //goToLoginout();
+                console.log("failure", res.message);
+                window.open("404.html");
+            } else {
+                //console.log(typeof res);
+                var isTimeout = res.indexOf('{');
+                // timeout 服务器返回的是字符串，而不是json   {"message":"Please relogin","status":"timeout"}
+                if (res.indexOf('{') == 0) {
+                    console.log("timeout", res);
+                    goToNotlogon();
+                } else {
+                    console.log("success....");
+                    window.open(pdfUrl);
+                }
+            }
+        },
+        fail: function (status) {
+            console.error("event id=", id, " error. status=", status);
+        },
+        statusCode: {
+            404: function () {
+                goTo404();
+            },
+            500: function () {
+                goTo500();
+            }
+        }
+    });
+}
+
+function initPopover() {
+    var options = {
+        trigger: "hover focus",
+        delay: {
+            show: 300,
+            hide: 200
+        }
+    };
+    $("[data-toggle='popover']").popover(options);
+}
+
+function checkNotEmptyList(value) {
+    var result = false;
+    if (value && value != null && value != "") {
+        result = true;
     }
     return result;
 }
-
 
 // 退出登录
 function loginOut() {
@@ -422,17 +482,16 @@ function loginOut() {
     });
 }
 
-
 // key-value键值对
 function Map() {
-    var struct = function(key, value) {
+    var struct = function (key, value) {
         this.key = key;
         this.value = value;
     };
 
-    var put = function(key, value){
+    var put = function (key, value) {
         for (var i = 0; i < this.arr.length; i++) {
-            if ( this.arr[i].key === key ) {
+            if (this.arr[i].key === key) {
                 this.arr[i].value = value;
                 return;
             }
@@ -440,129 +499,213 @@ function Map() {
         this.arr[this.arr.length] = new struct(key, value);
     };
 
-    var get = function(key) {
+    var get = function (key) {
         for (var i = 0; i < this.arr.length; i++) {
-            if ( this.arr[i].key === key ) {
+            if (this.arr[i].key === key) {
                 return this.arr[i].value;
             }
         }
         return null;
     };
 
-    var getByIndex=function(index){
-        if(this.arr.length>index)
+    var getByIndex = function (index) {
+        if (this.arr.length > index)
             return this.arr[index].value;
     };
 
-    var remove = function(key) {
+    var remove = function (key) {
         var v;
         for (var i = 0; i < this.arr.length; i++) {
             v = this.arr.pop();
-            if ( v.key === key ) {
+            if (v.key === key) {
                 continue;
             }
             this.arr.unshift(v);
         }
     };
 
-    var size = function() {
+    var size = function () {
         return this.arr.length;
     };
 
-    var isEmpty = function() {
+    var isEmpty = function () {
         return this.arr.length <= 0;
     };
 
-    var clear=function(){
-        this.arr.length=0;
+    var clear = function () {
+        this.arr.length = 0;
     };
 
     this.arr = new Array();
     this.get = get;
-    this.getByIndex=getByIndex;
+    this.getByIndex = getByIndex;
     this.put = put;
-    this.clear=clear;
+    this.clear = clear;
     this.remove = remove;
     this.size = size;
     this.isEmpty = isEmpty;
 }
 
-function toRateFormat(value,fixed){
-    return parseFloat(value*100).toFixed(fixed)+"%";
+function toRateFormat(value, fixed) {
+    return parseFloat(value * 100).toFixed(fixed) + "%";
 }
 
-function toDataFormat(value){
-    var result="";
-    if(value&&value!=null&&value.toLowerCase()!="null"){
+function toDataFormat(value) {
+    var result = "";
+    if (value && value != null && value.toLowerCase() != "null") {
         //console.log(value);
-        result=value;
-    }else{
-        result="--";
+        result = value;
+    } else {
+        result = "--";
     }
     return result;
 }
 
-function toAmountFormat(value,fixed,unit) {
-    var value=(parseFloat(value).toFixed(fixed) + '').replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,');
-    return unit+value;
+function toAmountFormat(value, fixed, unit) {
+    var value = (parseFloat(value).toFixed(fixed) + '').replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,');
+    return unit + value;
 }
 
-function checkIfCompanyMenu(url){
-    //var result=false;
-    if(url.indexOf("company")==0&&url.length>7){
-        return true;
-    }else{
-        return false;
-    }
-}
-
-function savecurrentSearchPage(key,value){
-    var url=window.location.href;
-    var newurl=replaceUrlQueryStr(key,url,value);
-    var stateObj={foo:"bar"};
-    history.pushState(stateObj,"测试页面1",newurl);
-}
-
-function login(){
-    var name="test1";
-    var password="test1";
-    var url=indexCommonUrls.loginUrl;
+function login() {
+    var name = "test1";
+    var password = "test1";
+    var url = indexCommonUrls.loginUrl;
     //var url="http://192.168.0.67:18083/login";
 
-    var pwd=hex_md5(password);
-    console.log("login:",name,', ',pwd);
+    var pwd = hex_md5(password);
+    console.log("login:", name, ', ', pwd);
     $.ajax({
-        "url":url,
-        type:'POST',
-        dataType:'json',
-        data:{
-            user_name:name,
-            password:pwd
+        "url": url,
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            user_name: name,
+            password: pwd
         },
-        success:function(res){
+        success: function (res) {
             console.log(res);
-            if (res.status=="failure") {
+            if (res.status == "failure") {
                 // console.log("login success");
                 $("#login-fail").show().html("用户名密码错误,请重新输入!")
             } else {
-                var response=res;
+                var response = res;
 
-                console.log("login success:",response);
-                window.location.href="homePage.html?uname="+name;
+                console.log("login success:", response);
+                window.location.href = "homePage.html?uname=" + name;
             }
         },
-        fail:function(res){
-            console.log("fail:",res);
+        fail: function (res) {
+            console.log("fail:", res);
         }
     });
 
     return false;
 }
 
+function setMonitorData(type, content, mid) {
+    if (getUserMonitorCount() >= customerSettings.monitorMaxNum) {
+        showInfo("提示", "目前仅支持" + customerSettings.monitorMaxNum + "条监控设置，如需帮助，请联系我们！");
+        return;
+    }
 
+    var ourl = commonUrls.workbenchUpdateUrl + "/add/monitor";
+    var datas = {
+        type: type,
+        content: content,
+        uid: v_userModel.$data.uname
+    };
+    if (type == customerSettings.entMonitorType) {
+        datas.uuid = mid;
+    } else if (type == customerSettings.orgMonitorType) {
+        datas.orgId = mid;
+    }
 
+    $.ajax({
+        url: ourl,              //请求地址
+        type: "POST",                            //请求方式
+        data: datas,
+        dataType: "json",
+        success: function (res) {
+            if (res.status == 'failure') {
+                //goToLoginout();
+                console.log("failure: ", res.message);
+                showInfo("提示", "操作未成功." + res.message);
+            } else if (res.status == "timeout") {
+                console.log("timeout");
+                goToNotlogon();
+            } else if (res.status == 'success') {
+                showInfo("成功", "操作成功!");
+                getUserMonitorList();
+                return;
+            }
+        },
+        fail: function (status) {
+            console.error("event id=", id, " error. status=", status);
+            showInfo("提示", "操作未成功." + status);
+        },
+        statusCode: {
+            404: function () {
+                goTo404();
+            },
+            500: function () {
+                goTo500();
+            }
+        }
+    });
+}
 
+function getUserMonitorList() {
+    console.log("getUserMonitorList");
+    $.ajax({
+        url: commonUrls.custMonitorUrl,              //请求地址
+        type: "POST",                            //请求方式
+        data: { //请求参数
+            object: 5,
+            uid: v_userModel.$data.uname
+        },
+        dataType: "json",
+        success: function (res) {
+            if (res.status == 'failure') {
+                console.log("failure", res.message);
+            } else if (res.status == "timeout") {
+                console.log("timeout");
+                goToNotlogon();
+            } else if (res.status == 'success') {
+                var response = res;
 
+                var entResult = [];
+                var orgResult = [];
+                for (var i = 0; i < res.monitorList.length; i++) {
+                    var item = res.monitorList[i];
+                    if (item.type == customerSettings.entMonitorType) { // 企业
+                        entResult.push(item.uuid);
+                    } else if (item.type == customerSettings.orgMonitorType) { // 机构
+                        orgResult.push(item.orgId);
+                    }
+                }
 
+                setCookie("entMonitor", entResult.join("|"), 10);
+                setCookie("orgMonitor", orgResult.join("|"), 10);
+            }
+        },
+        fail: function (status) {
+            console.error("event id=", id, " error. status=", status);
+        },
+        statusCode: {
+            404: function () {
+                goTo404();
+            },
+            500: function () {
+                goTo500();
+            }
+        }
+    });
+}
 
-
+function getSubString(value,length){
+    var result=value;
+    if(value&&value.length>length){
+        result=result.substr(0,length)+"...";
+    }
+    return result;
+}

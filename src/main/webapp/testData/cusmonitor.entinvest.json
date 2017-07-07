@@ -1,0 +1,45 @@
+{
+  "stockXsbMatchInfo": null,
+  "searchResult": null,
+  "stockInstInvest": null,
+  "entMortgagesInfos": null,
+  "entBranchInfos": null,
+  "stockHolder": null,
+  "ciSfSca": null,
+  "rptToMaList": null,
+  "entAbnormalItemInfos": null,
+  "entEquityInfos": null,
+  "entBasicInfo": null,
+  "rptEntJudgeValue": null,
+  "entPatentInfos": null,
+  "stockPotentialMaInfo": null,
+  "entFinancalList": null,
+  "entExitEventList": null,
+  "teams": null,
+  "entLawInfos": null,
+  "entRelatedInfos": null,
+  "entChgRecordInfos": null,
+  "entCopyrightsInfos": null,
+  "enSoftCopyrightsInfos": null,
+  "message": "Get ent invest info success!",
+  "ciRcaPay": null,
+  "entHolderInfos": null,
+  "entInvestInfos": [
+    {
+      "iUuid": "9f71fba2-2fa5-4d14-86ff-1a479b680668",
+      "sDate": "2015-07-30",
+      "name": "和谐汇股权投资管理（北京）有限公司",
+      "legal": "翟萍"
+    },
+    {
+      "iUuid": "ff7755c3-9780-91b8-4334-faa2c6b2a7cb",
+      "sDate": "2013-05-29",
+      "name": "和谐汇房地产投资管理（北京）有限公司",
+      "legal": "皇甫炳君"
+    }
+  ],
+  "stockCharts": null,
+  "ciMoneySup": null,
+  "stockEquityCtrl": null,
+  "status": "success"
+}

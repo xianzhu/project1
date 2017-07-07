@@ -1,314 +1,480 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>用户主页</title>
+    <title>主页</title>
     <link rel="icon" href="img/logo-ico.png" type="image/png">
     <link href="css/common/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="css/plugins/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet">
-
-    <link href="css/homepage.map.css" rel="stylesheet">
-    <link href="css/comstyle.css" rel="stylesheet">
+    <link href="css/plugins/calendar/calendar.css" rel="stylesheet">
+    <link href="css/plugins/jqDataTables/jquery.dataTables.css" rel="stylesheet">
+    <link href="css/plugins/jqDataTables/extensions/buttons/buttons.dataTables.css" rel="stylesheet">
+    <link href="css/plugins/accordion.menu.css" rel="stylesheet">
+    <link href="css/common/modal-mask.css" rel="stylesheet">
+    <link href="css/mycommon/loading-animate.css" rel="stylesheet">
+    <link href="css/style.common.css" rel="stylesheet">
+    <link href="css/business/homepage.css" rel="stylesheet">
     <script src="js/common/jquery-2.1.1.js"></script>
-    <script src="js/common/md5.js"></script>
+    <script src="js/common/jquery.easing.1.3.js"></script>
     <script src="js/common/bootstrap.min.js"></script>
-    <script src="js/common/jquery.cookie.js"></script>
     <script src="js/common/vue.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
-    <script src="js/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
-    <script src="js/plugins/jvectormap/jquery-jvectormap-dijishi.js"></script>
-
-    <script src="js/business/homepage/jvm-china-map.js"></script>
 </head>
 
 <body>
 <div id="wrapper">
-    <nav class="navbar-default navbar-static-side" role="navigation" id="v-navModel">
-        <div class="sidebar-collapse">
-            <ul class="nav metismenu" id="side-menu">
-                <li class="nav-header">
-                    <img id="logo-img-bar" hidefocus="true" v-bind:src="logoPath">
-                </li>
-                <li v-bind:class="{'active':item.isActive}" v-for="item in menuList" >
-                    <a href="#" v-on:click="goto(item.pageurl,id)">
-                        <i class="fa fa-th-large"></i>
-                        <span class="nav-label"
-                              v-text="item.text"></span>
-                        <span class="fa" v-bind:class="{'arrow':item.showChild}"></span></a>
-                    <ul class="nav nav-second-level" v-if="item.showChild">
-                        <li v-bind:class="{'active':cItem.isActive}" v-for="cItem in item.childMenu"><a
-                                v-on:click="goto(cItem.pageurl,id)" v-text="cItem.text"></a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div id="page-wrapper" class="gray-bg">
-        <div class="row border-bottom" id="v-userModel">
-            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header">
-                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary"><i
-                            class="fa fa-bars"></i> </a>
-                </div>
-
-                <div style="margin-left:30px;font-weight:900;" class="pull-left">
-                    <h2 v-text="organizeName" style="margin-top:15px;font-weight:bold"></h2>
-                </div>
+    <div id="header-wrapper">
+        <nav id="v-userModel" class="navbar" role="navigation" style="margin-bottom: 0">
+            <div class="user-logo"><img id="logo-img-bar" hidefocus="true" v-bind:src="logoPath"></div>
+            <div class="user-right">
                 <ul class="nav navbar-top-links navbar-right font-14">
-                    <li style="margin-right:40px;">
-                        <input onkeypress="searchBarPress(event,this.value)" type="text" placeholder="请输入查询条件 . . . "
-                               class="form-control" id="top-search">
-                    </li>
                     <li class="welcome-message">
-                        <span class="m-r text-muted f-l">
+                        <span class="m-r text-welcome f-l">
                             <strong class="font-bold m-r">欢迎你</strong>
                             <span v-text="uname" style="color:green"></span>
                             <strong class="font-bold">，</strong>
                         </span>
-                        <span class="text-muted text-xs m-r-lg f-l m-l">
+                        <span class="text-welcome text-xs m-r f-l m-l">
                             <strong class="font-bold">当前积分：</strong>
                             <span v-text="uscore" style="color:orangered"></span>
                             <strong class="font-bold">分</strong>
                         </span>
                     </li>
+                    <li class="search-bar">
+                        <select class="search-type-select" v-on:change="changeSearchSelection()"
+                                v-model="currentSearchSelect" id="currentSearchSelect">
+                            <option v-for="item in searchList" value="{{item.value}}" v-text="item.text"></option>
+                        </select>
+                        <div class="input-group-addon">
+                            <span style="margin-right:5px;">
+                                <input type="checkbox" id="stockCompanyRadio">上市
+                            </span>
+                        </div>
+                        <input class="search-key-input form-control" onkeypress="searchBarPress(event,this.value)"
+                               type="text" placeholder="请输入查询条件 . . . " id="top-search">
+                        <i class="fa fa-search search-ico cursor-link" onclick="doHeaderSearch()"></i>
+                    </li>
+                    <li class="navbar-report-item">
+                        <a href="#" title="报告"><i class="fa fa-file-text-o"></i></a>
+                        <ul class="report-lists">
+                            <li><a v-on:click="gotoCvReport()">行业分析</a></li>
+                            <li><a v-on:click="gotoTraderReport()">研究报告</a></li>
+                        </ul>
+                    </li>
+                    <li class="tools-bar-item">
+                        <ul>
+                            <li>
+                                <a v-on:click="gotoProject()" title="项目"><i class="fa fa-list"></i> </a>
+                            </li>
+                            <li>
+                                <a v-on:click="gotoNews()" title="新闻"><i class="fa fa-newspaper-o"></i> </a>
+                            </li>
+                            <li>
+                                <a v-on:click="gotoSimulation()" title="模拟计算"><i class="fa fa-calculator"></i> </a>
+                            </li>
+                            <li>
+                                <a v-on:click="gotoCustomerSetting()" title="个人设置"><i class="fa fa-cog"></i> </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li>
-                        <a onclick="loginOut()"><i class="fa fa-sign-out"></i>Log out</a>
+                        <a onclick="loginOut()" title="退出"><i class="fa fa-sign-out"></i></a>
                     </li>
                 </ul>
-            </nav>
-        </div>
+            </div>
+        </nav>
+    </div>
+    <div id="nav-wrapper">
+        <nav class="navbar-static-side" role="navigation" id="v-navModel">
+            <ul class="nav nav-first-level" id="side-menu">
+                <li v-bind:class="{'current active':item.isActive}" v-for="item in menuList">
+                    <a href="#" v-on:click="goto(item.pageurl,id)" v-bind:title="item.name">
+                        <!--<i class="fa fa-th-large"></i>-->
+                        <i v-bind:class="[item.ico? item.ico:'fa fa-th-large']"></i>
+                        <span class="nav-label"
+                              v-text="item.text"></span>
+                        <span class="fa" v-bind:class="{'arrow':item.showChild}"></span></a>
+                    <ul class="nav nav-second-level menu-dropdown" v-if="item.showChild">
+                        <li v-bind:class="{'active':cItem.isActive}" v-for="cItem in item.childMenu">
+                            <a v-bind:title="cItem.name"
+                               v-on:click="goto(cItem.pageurl,id)">
+                                <i v-bind:class="[cItem.ico? cItem.ico:'fa fa-th-large']"></i>
+                                <span v-text="cItem.text"></span>
+                            </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="page-wrapper">
         <div class="wrapper wrapper-content" id="v-homepageModel">
-            <!--统计数据-->
-            <div class="row" >
-                <!--新闻 & 情报   语料-->
-                <div class="col-lg-3 col-md-6">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <span class="label label-primary pull-right">Today</span>
-                            <h5>新闻 & 情报</h5>
-                        </div>
-                        <div class="ibox-content">
-                            <h1 class="no-margins" v-text="statData.media.update|amountFormatFilter"></h1>
-                            <div class="stat-percent font-bold text-success">
-                                <span class="pull-right" style="font-size:14px;" v-text="statData.media.total|amountFormatFilter"></span>
-                                <small class="pull-right m-r" style="font-weight:bold;color:#000;padding-top:1px;">Total</small>
-                                <!--<i v-bind:class="['fa',statData.income.isDown? 'fa-level-down':'fa-level-up']"></i>-->
+            <div class="row">
+                <div class="page-left-wrapper">
+                    <!--指数、统计值-->
+                    <div class="row">
+                        <!--市场投资信心指数  折线图-->
+                        <div class="col-lg-7 col-md-7" id="homemodule_orgInvest_row">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>一级市场投资者信心指数(PMICI)</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div id="orgInvestChart"></div>
+                                </div>
                             </div>
-                            <div style="height:14px;"><small ></small></div>
+                        </div>
+                        <!--统计信息-->
+                        <div class="col-lg-5 col-md-5" id="homemodule_statistical_row">
+                            <div class="row">
+                                <!--投退事件-->
+                                <div class="col-lg-6 col-md-6 col-sm-6 margin-sm-left">
+                                    <div class="panel statistic-panel"
+                                         style="background-color:#8bc34a;">
+                                        <div class="panel-title">
+                                            <h5>投退事件</h5>
+                                            <div class="panel-data-today">
+                                                <strong>今日</strong>
+                                                <small v-text="statEventData.current"></small>
+                                            </div>
+                                        </div>
+                                        <div class="panel-content">
+                                            <div id="event_panel_Chart"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--机构调研-->
+                                <div class="col-lg-6 col-md-6 col-sm-6 margin-sm-right">
+                                    <div class="panel statistic-panel"
+                                         style="background-color:#00bcd4">
+                                        <div class="panel-title">
+                                            <h5>机构调研</h5>
+                                            <div class="panel-data-today">
+                                                <strong>今日</strong>
+                                                <small v-text="statOrgData.current"></small>
+                                            </div>
+                                        </div>
+                                        <div class="panel-content">
+                                            <div id="org_panel_Chart"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!--并购事件-->
+                                <div class="col-lg-6 col-md-6 col-sm-6 margin-sm-left">
+                                    <div class="panel statistic-panel" style="background-color:#ba68c8;">
+                                        <div class="panel-title">
+                                            <h5>并购事件</h5>
+                                            <div class="panel-data-today">
+                                                <strong>今日</strong>
+                                                <small v-text="statMergeData.current"></small>
+                                            </div>
+                                        </div>
+                                        <div class="panel-content">
+                                            <div id="merge_panel_Chart"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--基金备案-->
+                                <div class="col-lg-6 col-md-6 col-sm-6 margin-sm-right">
+                                    <div class="panel statistic-panel" style="background-color:#ffa726;">
+                                        <div class="panel-title">
+                                            <h5>基金备案</h5>
+                                            <div class="panel-data-today">
+                                                <strong>今日</strong>
+                                                <small v-text="statFundData.current"></small>
+                                            </div>
+                                        </div>
+                                        <div class="panel-content">
+                                            <div id="fund_panel_Chart"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--今日资本事件-->
+                    <div class="row" id="homemodule_event_row">
+                        <div class="col-lg-12 dayevent-col">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>今日资本事件</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-bordered table-hover table-single-line"
+                                                       id="event_bar_table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="td-Wmin43 td-single">类型</th>
+                                                        <th class="td-single">标题</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr v-for="ele in eventList">
+                                                        <td class="td-Wmin43 td-single" v-text="ele.eventClass"></td>
+                                                        <td v-text="ele.eventTitle"
+                                                            class="link-handle-pointer td-single"
+                                                            v-on:click="getEventDetail(ele.eventTitle,ele.eventClass,ele.eventType)"></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="pull-right hide-div">
+                                                    <button style="margin-right:10px;" v-if="eventPageControlFilter(0)"
+                                                            v-on:click="changeEventPage(0)">上页
+                                                    </button>
+                                                    <span v-text="eventPage|currentEventPageFilter"></span>
+                                                    <button style="margin-left:10px;" v-if="eventPageControlFilter(1)"
+                                                            v-on:click="changeEventPage(1)">下页
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--<div class="col-lg-4 col-item-lm-half" style="padding:0px;">-->
+                                        <!--<div id="event_pie_charts"></div>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-lg-4 col-item-lm-half" style="padding:0px;">-->
+                                        <!--<div id="event_bar_charts"></div>-->
+                                        <!--</div>-->
+                                        <div class="col-lg-8" style="padding:0px">
+                                            <div id="event_mix_charts"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--仪表盘-->
+                    <div class="row" id="homemodule_dashboard_row">
+                        <!--项目-->
+                        <div class="col-lg-3 col-md-6 col-sm-6 statistic-dash">
+                            <div class="dash">
+                                <div class="dash-title ibox-title"><h5>项目</h5></div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div id="project_dashboard_chart"></div>
+                                        <div class="dash-data">
+                                            <div class="dash-data-total">
+                                                <strong>总量</strong>
+                                                <small v-text="projDashData.total"></small>
+                                            </div>
+                                            <div class="dash-data-today">
+                                                <strong>今日</strong>
+                                                <small v-text="projDashData.current"></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--企业-->
+                        <div class="col-lg-3 col-md-6 col-sm-6 statistic-dash">
+                            <div class="dash">
+                                <div class="dash-title ibox-title"><h5>企业</h5></div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div id="company_dashboard_chart"></div>
+                                        <div class="dash-data">
+                                            <div class="dash-data-total">
+                                                <strong>总量</strong>
+                                                <small v-text="companyDashData.total"></small>
+                                            </div>
+                                            <div class="dash-data-today">
+                                                <strong>今日</strong>
+                                                <small v-text="companyDashData.current"></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--报告-->
+                        <div class="col-lg-3 col-md-6 col-sm-6 statistic-dash">
+                            <div class="dash">
+                                <div class="dash-title ibox-title"><h5>报告</h5></div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div id="report_dashboard_chart"></div>
+                                        <div class="dash-data">
+                                            <div class="dash-data-total">
+                                                <strong>总量</strong>
+                                                <small v-text="reportDashData.total"></small>
+                                            </div>
+                                            <div class="dash-data-today">
+                                                <strong>今日</strong>
+                                                <small v-text="reportDashData.current"></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--情报-->
+                        <div class="col-lg-3 col-md-6 col-sm-6 statistic-dash">
+                            <div class="dash">
+                                <div class="dash-title ibox-title"><h5>情报</h5></div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div id="elastic_dashboard_chart"></div>
+                                        <div class="dash-data">
+                                            <div class="dash-data-total">
+                                                <strong>总量</strong>
+                                                <small v-text="elasticDashData.total"></small>
+                                            </div>
+                                            <div class="dash-data-today">
+                                                <strong>今日</strong>
+                                                <small v-text="elasticDashData.current"></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!--资本事件-->
-                <div class="col-lg-3 col-md-6">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <span class="label label-primary pull-right">Today</span>
-                            <h5>资本事件</h5>
-                        </div>
-                        <div class="ibox-content">
-                            <h1 class="no-margins" v-text="statData.event.update|amountFormatFilter"></h1>
-                            <div class="stat-percent font-bold text-success">
-                                <span class="pull-right"  style="font-size:14px;"  v-text="statData.event.total|amountFormatFilter"></span>
-                                <small class="pull-right m-r" style="padding-top:1px;font-weight:bold;color:#000">Total</small><!--<i v-bind:class="['fa',statData.income.isDown? 'fa-level-down':'fa-level-up']"></i>-->
+                <div class="page-right-wrapper">
+                    <!--流言-->
+                    <div class="row" id="homemodule_rumor_row">
+                        <div class="col-lg-12"></div>
+                    </div>
+                    <!--新闻-->
+                    <div class="row" id="homemodule_news_row">
+                        <div class="col-lg-12 homepage-news">
+                            <div class="ibox float-e-margins" id="homemodule_news_ibox">
+                                <div class="ibox-title">
+                                    <h5>新闻</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <div style="padding:2px 5px;">
+                                        <div class="feed-activity-list">
+                                            <div class="feed-element" v-for="item in newsList">
+                                                <div>
+                                                    <strong class="pull-right text-navy"
+                                                            v-text="item.channel_name"></strong>
+                                                    <a v-bind:href="item.url" v-on:click="openNews(item.url)"
+                                                       target="_blank"><strong v-text="item.title"></strong></a>
+                                                    <div v-text="item.content|getNewsShortStrFilter"></div>
+                                                    <small class="text-muted pull-right" v-text="item.time"></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div style="height:14px;"><small ></small></div>
                         </div>
                     </div>
-                </div>
-                <!--企业信息-->
-                <div class="col-lg-3 col-md-6">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <!--<span class="label label-info pull-right">Annual</span>-->
-                            <span class="label label-primary pull-right">Today</span>
-                            <h5>企业信息</h5>
-                        </div>
-                        <div class="ibox-content">
-                            <h1 class="no-margins" v-text="statData.ent.update|amountFormatFilter"></h1>
-                            <div class="stat-percent font-bold text-success">
-                                <span class="pull-right"  style="font-size:14px;" v-text="statData.ent.total|amountFormatFilter"></span>
-                                <small class="pull-right m-r" style="padding-top:1px;font-weight:bold;color:#000">Total</small><!--<i v-bind:class="['fa',statData.income.isDown? 'fa-level-down':'fa-level-up']"></i>-->
-                            </div>
-                            <div style="height:14px;"><small ></small></div>
-                        </div>
-                    </div>
-                </div>
-                <!--行研报告-->
-                <div class="col-lg-3 col-md-6">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <!--<span class="label label-success pull-right">Monthly</span>-->
-                            <span class="label label-primary pull-right">Today</span>
-                            <h5>行研报告</h5>
-                        </div>
-                        <div class="ibox-content">
-                            <h1 class="no-margins" v-text="statData.report.update|amountFormatFilter"></h1>
-                            <div class="stat-percent font-bold text-success" style="margin-bottom:10px;">
-                                <span class="pull-right"  style="font-size:14px;"v-text="statData.report.total|amountFormatFilter"></span>
-                                <small class="pull-right m-r" style="padding-top:1px;font-weight:bold;color:#000">Total</small><!--<i v-bind:class="['fa',statData.income.isDown? 'fa-level-down':'fa-level-up']"></i>-->
-                            </div>
-                            <div style="height:14px;"><small ></small></div>
+                    <!--日历-->
+                    <div class="row" id="homemodule_calendar_row">
+                        <div class="col-lg-12 homepage-calendar">
+                            <div id="calendar"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-8" >
-                    <!--新闻地图-->
-                    <div class="row"  style="margin-bottom:5px;margin-right:5px;">
-                        <div class="col-lg-12">
-                            <div id="map-main-div" class="jvectormap-main-div">
-                                <div id="locationNews-map" class="map-class">
-                                    <a id="newsInfo_0" style="top:48%;right:5px;width:15%;float:right;"></a>
-                                    <a id="newsInfo_1" style="top:10%;left:34%;width:30%;"></a>
-                                    <a id="newsInfo_2" style="top:2%;left:10px;width:16%;"></a>
-                                    <a id="newsInfo_3" style="bottom:7%;left:5px;width:25%;"></a>
-                                    <a id="newsInfo_4" style="bottom:2%;left:10%;width:32%;"></a>
-                                    <a id="newsInfo_5" style="bottom:2%;right:5px;width:14%;"></a>
+        </div>
+    </div>
+</div>
+<!--查询结果显示-->
+<div style="display: none;" class="modal-mask" id="v-search-result-mask-info"
+     transition="modal" v-show="showMask">
+    <div v-bind:class="[showResult==1? 'modal-wrapper show-div':'modal-wrapper hide-div']">
+        <div class="modal-container">
+            <button class="modal-default-button" v-on:click="close()">
+                <i class="fa fa-close"></i>
+            </button>
+            <div class="no-border modal-header">
+                <h3 class="pull-left" v-text="title"></h3>
+            </div>
+            <div class="modal-body ibox no-border">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="no-m-b no-border ibox">
+                            <div class="ibox-content ibox-content-withpage">
+                                <div v-bind:class="[currentModule==1? 'table-responsive show-div':'table-responsive hide-div']">
+                                    <!--<div class="table-responsive" v-if="checkModule(1)">-->
+                                    <table class="table table-striped table-bordered table-hover"
+                                           id="personal_result_table">
+                                        <thead>
+                                        <tr>
+                                            <th>姓名</th>
+                                            <th class="td-W30">性别</th>
+                                            <th>职务</th>
+                                            <th>机构</th>
+                                            <th>关注领域</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="ele in pResult">
+                                            <td class="cursor-link-only" v-on:click="gotoPersonal(ele.userId)"
+                                                v-text="ele.userName"></td>
+                                            <td class="td-W30" v-text="ele.sex"></td>
+                                            <td v-text="ele.title"></td>
+                                            <td v-text="ele.organizeName"></td>
+                                            <td v-text="ele.focusDomain"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <canvas id="staticCav" class="map-canvas"></canvas>
-                                <canvas id="animatedCav" class="map-canvas"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <!--监控数据-->
-                    <div class="row"  v-show="monitorShow" style="display:none;">
-                        <div class="col-lg-5">
-                            <div class="ibox float-e-margins">
-                                <div class="ibox-title">
-                                    <h5>监控数据</h5>
+                                <div v-bind:class="[currentModule==2? 'table-responsive show-div':'table-responsive hide-div']">
+                                    <table class="table table-striped table-bordered table-hover" id="org_result_table">
+                                        <thead>
+                                        <tr>
+                                            <th>机构名称</th>
+                                            <th>简称</th>
+                                            <th>对应实体</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr role="row" v-for="ele in oResult">
+                                            <td v-text="ele.orgCnName" style="cursor:pointer"
+                                                v-on:click="gotoOrg(ele.orgId)"></td>
+                                            <td v-text="ele.orgCnShort"></td>
+                                            <td v-text="ele.orgMapEntity|formatDataFilter"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div v-bind:class="[currentModule==3? 'table-responsive show-div':'table-responsive hide-div']">
+                                    <table class="table table-striped table-bordered table-hover"
+                                           id="company_result_table">
+                                        <thead>
+                                        <tr>
+                                            <th>名称</th>
+                                            <th>法人</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="ele in cResult">
+                                            <td v-on:click="gotoCompany(ele.ent_id,ele.is_stock,ele.stock_type,ele.stock_code)"
+                                                v-text="ele.ent_name" class="cursor-link"></td>
+                                            <td v-text="ele.legal_person"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div v-bind:class="[searchResultEmpty?'m-t hide-div':'m-t show-div']">
                                     <div class="pull-right">
-                                        <div class="btn-group">
-                                            <button v-bind:class="[monitorFreq==1?'btn-primary':'btn-white']" type="button" class="btn btn-xs" v-on:click="monitorChange(1)">Daily</button>
-                                            <button v-bind:class="[monitorFreq==2?'btn-primary':'btn-white']" type="button" class="btn btn-xs" v-on:click="monitorChange(2)">Weekly</button>
-                                            <button v-bind:class="[monitorFreq==3?'btn-primary':'btn-white']" type="button" class="btn btn-xs" v-on:click="monitorChange(3)">Monthly</button>
-                                        </div>
+                                        <button style="margin-right:10px;" v-if="pageControlShow(0)"
+                                                v-on:click="changeResultPage(0)">上页
+                                        </button>
+                                        <span v-text="currentPage|currentPageFilter"></span>
+                                        <button style="margin-left:10px;" v-if="pageControlShow(1)"
+                                                v-on:click="changeResultPage(1)">下页
+                                        </button>
                                     </div>
-                                </div>
-                                <div class="ibox-content">
-                                    <div class="row m-r"><div class="col-lg-12">
-                                        <div class="flot-chart chart-h160">
-                                            <div class="flot-chart-content" id="monitor-chart-1"></div>
-                                        </div>
-                                    </div> </div>
-                                    <div class="row m-r"><div class="col-lg-12">
-                                        <div class="flot-chart chart-h160">
-                                            <div class="flot-chart-content" id="monitor-chart-2"></div>
-                                        </div>
-                                    </div> </div>
-                                    <div class="row m-r"><div class="col-lg-12">
-                                        <div class="flot-chart chart-h160">
-                                            <div class="flot-chart-content" id="monitor-chart-3"></div>
-                                        </div>
-                                    </div> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--推送-->
-                    <div class="row" >
-                        <!--项目推荐-->
-                        <div class="col-lg-6">
-                            <div class="ibox float-e-margins">
-                                <div class="ibox-title">
-                                    <h5>项目信息</h5>
-                                    <div class="ibox-tools">
-                                        <a class="collapse-link">
-                                            <i class="fa fa-chevron-up"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="ibox-content" style="display:none;" v-show="postProject|checkNotEmptyFilter">
-                                    <div class="feed-activity-list">
-                                        <div class="feed-element" v-for="item in postProject">
-                                            <div>
-                                                <small class="pull-right text-navy" v-text="item.brand"></small>
-                                                <strong v-text="item.entName" style="cursor:pointer;" v-on:click="gotoEntCompany(item.uuid)"
-                                                        data-container="body" data-toggle="popover" data-placement="right"
-                                                        v-bind:data-content="item.brief"></strong>
-
-                                                <div v-text="item.brief|getShortStrFilter"></div>
-                                                <small class="text-muted pull-right" v-text="item.domain"></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--推送报告-->
-                        <div class="col-lg-6">
-                            <div class="ibox float-e-margins">
-                                <div class="ibox-title">
-                                    <div class="ibox-tools">
-                                        <h5 class="pull-left handle-pointer" style="margin-right:15px;" v-on:click="changeRptSelect(1)" v-bind:class="[currentRptSelect==1?'labelSelected':'labelNotSelected']">研究报告</h5>
-                                        <h5 class="pull-left handle-pointer" v-on:click="changeRptSelect(2)" v-bind:class="[currentRptSelect==2?'labelSelected':'labelNotSelected']">行业分析</h5>
-
-                                        <a class="collapse-link">
-                                            <i class="fa fa-chevron-up"></i>
-                                        </a>
-                                        <input v-model="reportFilterKey" type="text" onkeypress="doFilterSearch(event,2)"  placeholder="请输入关键字..." class="search-key-form form-control">
-                                    </div>
-                                </div>
-                                <div class="ibox-content">
-                                    <!--研究报告 行业分析-->
-                                    <div class="feed-activity-list" style="padding-bottom:35px;">
-                                        <div class="feed-element" v-for="item in report"  style="display:none;" v-show="report|checkNotEmptyFilter">
-                                            <div>
-                                                <strong style="cursor:pointer;" v-on:click="openPdfOnline(item.url)" v-text="item.report_name"></strong>
-                                                <small class="text-muted pull-right" v-text="item.industry_type"></small>
-                                            </div>
-                                        </div>
-                                        <div style="display:none;" v-show="report|checkEmptyFilter">没有更多报告</div>
-                                        <div class="pull-right" style="margin-top:13px;margin-bottom:2px;">
-                                            <button style="margin-right:10px;" v-if="pageControlFilter(0,2)" v-on:click="changePage(0,2)">上页</button>
-                                            <span v-text="reportPage|currentPageFilter"></span>
-                                            <button style="margin-left:10px;" v-if="pageControlFilter(1,2)" v-on:click="changePage(1,2)">下页</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <!--推送新闻-->
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>推送新闻</h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link pull-right">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                                <div class="pull-right">
-                                    <a class="hint hint-bottom m-r" v-bind:data-hint="newsOrder|orderStringFilter" v-on:click="changeOrder()"><i class="fa fa-sort"></i></a>
-                                    <input v-model="newsFilterKey" type="text" style="right:50px;" onkeypress="doFilterSearch(event,1)"  placeholder="请输入关键字..." class="search-key-form form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <div class="feed-activity-list" style="padding-bottom:35px;">
-                                <div class="feed-element"v-for="item in homeNews" style="display:none;" v-show="homeNews|checkNotEmptyFilter">
-                                    <div>
-                                        <small class="pull-right text-navy" v-text="item.channel_name"></small>
-                                        <a v-bind:href="item.url" v-on:click="openNews(item.url)" target="_blank"><strong v-text="item.title"></strong></a>
-                                        <div v-text="item.content"></div>
-                                        <small class="text-muted pull-right" v-text="item.time"></small>
-                                    </div>
-                                </div>
-                                <div style="display:none;" v-show="newsEnd">没有更多新闻</div>
-                                <div class="pull-right" style="margin-top:13px;margin-bottom:2px;">
-                                    <button style="margin-right:10px;" v-if="pageControlFilter(0,1)" v-on:click="changePage(0,1)">上页</button>
-                                    <span v-text="newsPage|currentPageFilter"></span>
-                                    <button style="margin-left:10px;" v-if="pageControlFilter(1,1)" v-on:click="changePage(1,1)">下页</button>
                                 </div>
                             </div>
                         </div>
@@ -317,16 +483,186 @@
             </div>
         </div>
     </div>
-
+    <div v-bind:class="[showResult==0? 'search-result-waiting show-div':'search-result-waiting hide-div']">
+        <img class="loading-animate" src="img/loading-gradient.png">
+    </div>
+    <div v-bind:class="[showResult==2? 'search-result-fault show-div':'search-result-fault hide-div']">
+        <div class="search-fault-info">
+            <button class="modal-default-button" v-on:click="close()">
+                <i class="fa fa-close"></i>
+            </button>
+            <p>请求数据失败</p>
+        </div>
+    </div>
 </div>
 
+<!--日历信息提示框*******************-->
+<script type="x/template" id="modal-template">
+    <div class="modal-mask" v-show="show" transition="modal">
+        <div class="modal-wrapper">
+            <div class="modal-container-info">
+                <button class="modal-info-close-button" @click="show = false"><i class="fa fa-close"></i></button>
+                <div class="modal-header">
+                    <slot name="header">
+                        default header
+                    </slot>
+                </div>
+                <div class="modal-calendar-body">
+                    <div class="accordion" id="mask_modal_body">
+                        <slot name="calendar_body">
+                        </slot>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!-- 信息提示框 模态框 -->
+<div id="v-model-mask-info">
+    <modal_mask :show.sync="showModal">
+        <h3 slot="header" v-text="header" style="color: #2fa4e7;border:none;margin-bottom:2px;"></h3>
+        <dl slot="calendar_body">
+            <div v-for="item in information">
+                <dt style="position:relative;">
+                    <ul class="calendar-title-labels">
+                        <li><label v-text="item.geo"></label></li>
+                        <li><label v-text="item.type"></label></li>
+                        <li><label v-text="item.category"></label></li>
+
+                    </ul>
+                    <a v-bind:href="item.domId" v-bind:aria-controls="item.domid"
+                       class="accordion-title accordionTitle js-accordionTrigger" aria-expanded="false"
+                       v-text="item.name"></a>
+                </dt>
+                <dd class="accordion-content accordionItem is-collapsed" aria-hidden="true" v-bind:id="item.domid">
+                    <p v-text="item.comment" class="calendar-open-link" v-on:click="openurl(item.url)"></p>
+                </dd>
+            </div>
+        </dl>
+    </modal_mask>
+</div>
+
+<!--今日资本事件详情-->
+<div style="display: none;" class="modal-template-mask ibox" id="v-model-event-info"
+     transition="modal" v-show="showModal">
+    <div class="modal-event-wrapper">
+        <div class="modal-event-container">
+            <div class="modal-event-header modal-template-header">
+                <button class="modal-info-close-button detail-close-button" v-on:click="closeEventDetail()">
+                    <i class="fa fa-close"></i>
+                </button>
+                <h3 style="display:inline-block;" v-text="title"></h3>
+                <span class="m-l font-red" v-text="type"></span>
+                <span class="m-l font-enphasis" v-text="entName"></span>
+            </div>
+            <div class="modal-event-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins" style="margin-bottom:10px;">
+                            <div class="ibox-title">
+                                <h5>简介</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <p v-text="desc"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins" style="margin-bottom:0px;">
+                            <div class="ibox-title">
+                                <h5>相关信息</h5>
+
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="table-responsive" style="display: none;" v-show="isInvest">
+                                    <table class="table table-striped table-bordered table-hover"
+                                           id="invest_data_table">
+                                        <thead>
+                                        <tr>
+                                            <th>机构名</th>
+                                            <th>基金名</th>
+                                            <th>投资金额(万美元)</th>
+                                            <th>股权比例(%)</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr role="row" v-for="item in iList">
+                                            <td v-text="item.orgCnName|formatEmptyFilter"></td>
+                                            <td v-text="item.fundName|formatEmptyFilter"></td>
+                                            <td class="td-center" v-text="item.amount|formatEmptyFilter"></td>
+                                            <td class="td-center" v-text="item.stockRight|formatEmptyFilter"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="table-responsive" style="display: none;" v-show="isExit">
+                                    <table class="table table-striped table-bordered table-hover" id="exit_data_table">
+                                        <thead>
+                                        <tr>
+                                            <th>机构名</th>
+                                            <th>基金名</th>
+                                            <th>投资金额(万美元)</th>
+                                            <th>退出时股比(%)</th>
+                                            <th>首次投资时间</th>
+                                            <th>总投资额(万美元)</th>
+                                            <th>IRR</th>
+                                            <th>回报率(%)</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr role="row" v-for="item in eList">
+                                            <td v-text="item.orgCnName|formatEmptyFilter"></td>
+                                            <td v-text="item.fundName|formatEmptyFilter"></td>
+                                            <td class="td-center" v-text="item.amount|formatEmptyFilter"></td>
+                                            <td class="td-center" v-text="item.stockRight|formatEmptyFilter"></td>
+                                            <td class="td-center" v-text="item.firstInvestDate|formatEmptyFilter"></td>
+                                            <td class="td-center" v-text="item.totalInvest|formatEmptyFilter"></td>
+                                            <td class="td-center" v-text="item.irr|formatEmptyFilter"></td>
+                                            <td class="td-center" v-text="item.bringRate|formatEmptyFilter"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/plugins/jqDataTables/jquery.dataTables.js"></script>
+<script src="js/plugins/jqDataTables/extensions/buttons/dataTables.buttons.js"></script>
+<script src="js/plugins/jqDataTables/extensions/buttons/buttons.print.js"></script>
+<script src="js/plugins/jqDataTables/extensions/buttons/buttons.html5.js"></script>
+<script src="js/plugins/calendar/calendar.js"></script>
+<!--<script src="js/plugins/zrender/zrender.js"></script>-->
+<script src="js/plugins/echarts-2.2.7/echarts.js"></script>
+<!--<script src="js/plugins/echarts-2.2.7/esl.js"></script>-->
+<!--<script src="js/plugins/echart2_new/echarts.js"></script>-->
+
 <script src="js/mycommon/common.data.js"></script>
-<script src="data/menu/menu.homepage.js"></script>
+<script src="data/menu/common.menu.js"></script>
 <script src="js/mycommon/function.common.js"></script>
 <script src="js/mycommon/menu.common.js"></script>
 <script src="js/mycommon/ibox.function.js"></script>
+<script src="js/mycommon/mask.info.js"></script>
+<script src="data/charts/homepage.charts.data.js"></script>
 <script src="js/business/homepage/homepage.js"></script>
-<script src="js/business/homepage/homepage.map.js"></script>
-
+<script src="js/business/homepage/homepage.charts.js"></script>
 </body>
 </html>

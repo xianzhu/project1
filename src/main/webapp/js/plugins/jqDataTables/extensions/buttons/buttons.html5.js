@@ -6,15 +6,6 @@
  * Copyright © 2016 Eli Grey - http://eligrey.com
  */
 
-pdfMake.fonts  = {
-	msyh:{
-		normal:'msyh.ttf',
-		bold:'msyh.ttf',
-		italics:'msyh.ttf',
-		bolditalics:'msyh.ttf'
-	}
-};
-
 (function( factory ){
 	if ( typeof define === 'function' && define.amd ) {
 		// AMD
@@ -24,7 +15,7 @@ pdfMake.fonts  = {
 	}
 	else if ( typeof exports === 'object' ) {
 		// CommonJS
-		module.exports = function (root, $, jszip, pdfmake) {
+		module.exports = function (root, $, jszip) {
 			if ( ! root ) {
 				root = window;
 			}
@@ -37,14 +28,14 @@ pdfMake.fonts  = {
 				require('datatables.net-buttons')(root, $);
 			}
 
-			return factory( $, root, root.document, jszip, pdfmake );
+			return factory( $, root, root.document, jszip );
 		};
 	}
 	else {
 		// Browser
 		factory( jQuery, window, document );
 	}
-}(function( $, window, document, jszip, pdfmake, undefined ) {
+}(function( $, window, document, jszip, undefined ) {
 'use strict';
 var DataTable = $.fn.dataTable;
 
@@ -52,9 +43,6 @@ var DataTable = $.fn.dataTable;
 // Otherwise, use globally defined variables, if they are available.
 function _jsZip () {
 	return jszip || window.JSZip;
-}
-function _pdfMake () {
-	return pdfmake || window.pdfMake;
 }
 
 
@@ -1199,152 +1187,6 @@ DataTable.ext.buttons.excelHtml5 = {
 
 	footer: false
 };
-
-//
-// PDF export - using pdfMake - http://pdfmake.org
-//
-DataTable.ext.buttons.pdfHtml5 = {
-	className: 'buttons-pdf buttons-html5',
-
-	available: function () {
-		return window.FileReader !== undefined && _pdfMake();
-	},
-
-	text: function ( dt ) {
-		return dt.i18n( 'buttons.pdf', 'PDF' );
-	},
-
-	action: function ( e, dt, button, config ) {
-		var newLine = _newLine( config );
-		var data = dt.buttons.exportData( config.exportOptions );
-		var rows = [];
-
-		if ( config.header ) {
-			rows.push( $.map( data.header, function ( d ) {
-				return {
-					text: typeof d === 'string' ? d : d+'',
-					style: 'tableHeader'
-				};
-			} ) );
-		}
-
-		for ( var i=0, ien=data.body.length ; i<ien ; i++ ) {
-			rows.push( $.map( data.body[i], function ( d ) {
-				return {
-					text: typeof d === 'string' ? d : d+'',
-					style: i % 2 ? 'tableBodyEven' : 'tableBodyOdd'
-				};
-			} ) );
-		}
-
-		if ( config.footer && data.footer) {
-			rows.push( $.map( data.footer, function ( d ) {
-				return {
-					text: typeof d === 'string' ? d : d+'',
-					style: 'tableFooter'
-				};
-			} ) );
-		}
-
-		var doc = {
-			pageSize: config.pageSize,
-			pageOrientation: config.orientation,
-			content: [
-				{
-					table: {
-						headerRows: 1,
-						body: rows
-					},
-					layout: 'noBorders'
-				}
-			],
-			styles: {
-				tableHeader: {
-					bold: true,
-					fontSize: 11,
-					color: 'white',
-					fillColor: '#2d4154',
-					alignment: 'center'
-				},
-				tableBodyEven: {},
-				tableBodyOdd: {
-					fillColor: '#f3f3f3'
-				},
-				tableFooter: {
-					bold: true,
-					fontSize: 11,
-					color: 'white',
-					fillColor: '#2d4154'
-				},
-				title: {
-					alignment: 'center',
-					fontSize: 15
-				},
-				message: {}
-			},
-			defaultStyle: {
-				fontSize: 10,
-				font:'msyh'
-			}
-		};
-
-		if ( config.message ) {
-      doc.content.unshift( {
-        text: typeof config.message == 'function' ? config.message(dt, button, config) : config.message,
-        style: 'message',
-        margin: [ 0, 0, 0, 12 ]
-      } );
-		}
-
-		if ( config.title ) {
-			doc.content.unshift( {
-				text: _title( config, false ),
-				style: 'title',
-				margin: [ 0, 0, 0, 12 ]
-			} );
-		}
-
-		if ( config.customize ) {
-			config.customize( doc, config );
-		}
-
-		var pdf = _pdfMake().createPdf( doc );
-
-		if ( config.download === 'open' && ! _isDuffSafari() ) {
-			pdf.open();
-		}
-		else {
-			pdf.getBuffer( function (buffer) {
-				var blob = new Blob( [buffer], {type:'application/pdf'} );
-
-				_saveAs( blob, _filename( config ) );
-			} );
-		}
-	},
-
-	title: '*',
-
-	filename: '*',
-
-	extension: '.pdf',
-
-	exportOptions: {},
-
-	orientation: 'portrait',
-
-	pageSize: 'A4',
-
-	header: true,
-
-	footer: false,
-
-	message: null,
-
-	customize: null,
-
-	download: 'download'
-};
-
 
 return DataTable.Buttons;
 }));

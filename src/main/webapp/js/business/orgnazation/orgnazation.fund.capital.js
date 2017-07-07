@@ -33,115 +33,6 @@ function initButtons(){
 
 initButtons();
 
-function bindDataTable(domId,perLength,exportTitle,extendButtons,cOptions){
-    var dom='#'+domId;
-
-    var tableOptions={
-        searching:false,
-        order:[],
-        ordering:false,
-        language:{
-            url:"data/dataTables_cn.json"
-        },
-        headerCallback: function( thead, data, start, end, display ) {
-            $(thead).find("th").eq(0).removeClass("sorting_asc");
-        },
-        dom:'<"html5buttons"B>tp',
-        buttons: [
-            {extend: 'copy',text:"复制"},
-            {extend: 'pdf',title:exportTitle},
-            {extend: 'print',title:exportTitle,
-                customize: function (win){
-                    $(win.document.body).addClass('white-bg');
-                    $(win.document.body).css('font-size', '10px');
-
-                    $(win.document.body).find('table')
-                        .addClass('compact')
-                        .css('font-size', 'inherit');
-                }
-            }
-        ]
-    };
-    if(perLength>0){
-        tableOptions.pageLength=perLength; // 设置每页显示项数
-    }else{
-        tableOptions.paginate=false; // 不分页
-    }
-
-    tableOptions=joinJsonObject(tableOptions,cOptions);
-    for(var i=0;i<extendButtons.length;i++) {
-        tableOptions.buttons.unshift(extendButtons[i]);
-    }
-    //console.log(tableOptions);
-    //console.log(domId,", ",exportTitle);
-    $(dom).DataTable(tableOptions);
-}
-
-function getSubDataPage(fid,type,key,page,subType){
-    console.log(fid,type,key,page,subType);
-
-    var turl=commonUrls.orgFundCaptailUrl;
-    var from=page*commonPageNum.orgFundEventNum;
-var etype="invest";
-    if(type==2){
-        etype="exit";
-    }
-    var rdata={
-        id:fid,
-        from:from,
-        key:key,
-        type:etype   // 请求数据类型：投资，并购，退出
-    };
-    if(subType!=""){
-        rdata.filter=subType;
-    }
-
-    $.ajax({
-        url: turl,              //请求地址
-        type: "POST",                            //请求方式
-        data: rdata,
-        dataType: "json",
-        success: function (res) {
-            if(res.status=='failure'){
-                //goToLoginout();
-                console.log("failure",res.message);
-            }else if(res.status=="timeout"){
-                console.log("timeout");
-                goToNotlogon();
-            }else if(res.status=='success') {
-                console.log("send ajax success:",res);
-                var response = res;
-                //var capitalList=response.capitalList;
-                if(type==0){
-                    updateInvestTable(response.inventList);
-                    updateExitTable(response.exitList);
-                    drawChart(response.inventList,response.exitList);
-                }else if(type==1){
-                    ivsFilterKey=key;
-                    updateInvestTable(response.inventList);
-                    drawChart(response.inventList,v_fundBasicModel.$data.extCapitalList);
-                }else if(type==2){
-                    extFilterKey=key;
-                    updateExitTable(response.exitList);
-                    drawChart(v_fundBasicModel.$data.ivsCapitalList,response.exitList);
-                }
-            }
-        },
-        fail: function (status) {
-            console.error("error. status=", status);
-        },
-        statusCode: {
-            404: function() {
-                goTo404();
-            },
-            500:function(){
-                goTo500();
-            }
-        }
-    });
-}
-
-
 // 初始化类型选择 --- 全选
 function bothCheck(){
     var content=$(".type-check-list");
@@ -179,10 +70,10 @@ function typeRecheck(type){
 function updateInvestTable(data) {
     $('#invest_table').DataTable().destroy();
     v_fundBasicModel.$data.ivsCapitalList = data;
-    if (data.length == 0) {
-        v_fundBasicModel.$data.ivsEnd = true;
-    } else {
+    if (data&&data.length != 0) {
         v_fundBasicModel.$data.ivsEnd = false;
+    } else {
+        v_fundBasicModel.$data.ivsEnd = true;
     }
     v_fundBasicModel.$nextTick(function () {
         var options={
@@ -198,10 +89,10 @@ function updateInvestTable(data) {
 function updateExitTable(data) {
     $('#exit_table').DataTable().destroy();
     v_fundBasicModel.$data.extCapitalList = data;
-    if (data == 0) {
-        v_fundBasicModel.$data.extEnd = true;
-    } else {
+    if (data&&data.length != 0) {
         v_fundBasicModel.$data.extEnd = false;
+    } else {
+        v_fundBasicModel.$data.extEnd = true;
     }
     v_fundBasicModel.$nextTick(function () {
         var options={
@@ -216,10 +107,10 @@ function updateExitTable(data) {
 
 // 各表自有搜索框
 function doDataSearch(event,type,key){
-    console.log("do data search");
+    //console.log("do data search");
     var event = event || window.event; // 为了兼容firefox没有全局event对象
     if (event.keyCode == 13) { // 回车搜索
-        var subType=0;
+        console.log("do data search");
         if(type==1){
             v_fundBasicModel.$data.ivsPage=0;
             v_fundBasicModel.$data.ivsSubType="";
@@ -233,7 +124,7 @@ function doDataSearch(event,type,key){
 }
 
 function showTypeFilter(type){
-    console.log("doTypeFilter");
+    //console.log("doTypeFilter");
     if(type==1){ // 设置类型过滤条件选择
         for(var i=0;i<v_fundBasicModel.$data.ivsTypeSelections.length;i++){
             var item=v_fundBasicModel.$data.ivsTypeSelections[i];
@@ -313,10 +204,6 @@ function closeSelect(type){
     }
 }
 
-/**
- * Created by a88u on 2016/8/18.
- */
-
 Vue.component('modal_mask', {
     template: '#modal-template',
     props: {
@@ -349,9 +236,8 @@ function initModelMaskVue(){
     return v_model_mask_info;
 }
 
-
 function showCapitalDetail(type,capital) {
-    console.log(type,', ',capital);
+    //console.log(type,', ',capital);
     if(type==1){
         $("#invest_data_row").css("display","block");
         $("#exit_data_row").css("display","none");
@@ -367,9 +253,48 @@ function showCapitalDetail(type,capital) {
     modal_mask_info.$data.showModal = true;
 }
 
-//function show(type,id){
-//    showCapitalDetail(type,"header", "infomation");
-//}
+function bindDataTable(domId,perLength,exportTitle,extendButtons,cOptions){
+    var dom='#'+domId;
+
+    var tableOptions={
+        searching:false,
+        order:[],
+        ordering:false,
+        language:{
+            url:"data/dataTables_cn.json"
+        },
+        headerCallback: function( thead, data, start, end, display ) {
+            $(thead).find("th").eq(0).removeClass("sorting_asc");
+        },
+        dom:'<"html5buttons"B>tp',
+        buttons: [
+            {extend: 'copy',text:"复制"},
+            {extend: 'csv',title:exportTitle},
+            {extend: 'print',title:exportTitle,
+                customize: function (win){
+                    $(win.document.body).addClass('white-bg');
+                    $(win.document.body).css('font-size', '10px');
+
+                    $(win.document.body).find('table')
+                        .addClass('compact')
+                        .css('font-size', 'inherit');
+                }
+            }
+        ]
+    };
+    if(perLength>0){
+        tableOptions.pageLength=perLength; // 设置每页显示项数
+    }else{
+        tableOptions.paginate=false; // 不分页
+    }
+
+    tableOptions=joinJsonObject(tableOptions,cOptions);
+    for(var i=0;i<extendButtons.length;i++) {
+        tableOptions.buttons.unshift(extendButtons[i]);
+    }
+    $(dom).DataTable(tableOptions);
+}
+
 
 
 

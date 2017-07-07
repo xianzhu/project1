@@ -1,0 +1,72 @@
+{
+  "status": "success",
+  "message": "get daily schedule successful!",
+  "object": [
+    {
+      "id": 1,
+      "time": "2017-07-12",
+      "name": "第十一届中国基金合伙人峰会",
+      "type": "峰会",
+      "category": "资产配置/财富管理",
+      "orgCnShort": null,
+      "geo": "北京",
+      "url": "http://events.pedaily.cn/cvcf/549/Introduce.shtml",
+      "comment": "将邀请知名优秀FOFs、政府引导基金、上市公司、险资、私人银行、财富管理机构、富有家族及个人、VC/PE机构出席，深度探寻国内外LP市场发展趋势，分享最新的资产配置策略。"
+    },
+    {
+      "id": 8,
+      "time": "2017-07-12",
+      "name": "2017硅谷高创会",
+      "type": "峰会",
+      "category": "TMT-互联网",
+      "orgCnShort": null,
+      "geo": "上海",
+      "url": "http://www.huodongxing.com/event/8371583605600#event-details-lite-map-anchor",
+      "comment": "硅谷高科技创新创业峰会"
+    },
+    {
+      "id": 2,
+      "time": "2017-07-21",
+      "name": "2017第一届中国创投精英沙漠挑战赛",
+      "type": "定制活动",
+      "category": "资产配置/财富管理",
+      "orgCnShort": null,
+      "geo": "鄂尔多斯",
+      "url": "http://events.pedaily.cn/zclub/565/journey.shtml",
+      "comment": "投资人、创始人、合伙人将以小组形式徒步穿越茫茫大漠，历经两天一夜，总计55公里。"
+    },
+    {
+      "id": 7,
+      "time": "2017-07-21",
+      "name": "全球创新技术峰会",
+      "type": "峰会",
+      "category": "TMT-互联网",
+      "orgCnShort": null,
+      "geo": "北京",
+      "url": "http://wot.51cto.com/act/2017/innovation",
+      "comment": "专注互联网IT技术领域的技术峰会"
+    },
+    {
+      "id": 3,
+      "time": "2017-07-28",
+      "name": "佛山暨金融·科技·产业融合创新洽谈会",
+      "type": "系列活动",
+      "category": "资产配置/财富管理",
+      "orgCnShort": null,
+      "geo": "佛山",
+      "url": "http://events.pedaily.cn/cvcf/563/introduce.shtml",
+      "comment": "将汇聚众多顶级投资机构，多角度剖析佛山股权投资行业发展中的关键点。"
+    },
+    {
+      "id": 9,
+      "time": "2017-07-12",
+      "name": "2017年CCF人工智能会议",
+      "type": "学会",
+      "category": "人工智能",
+      "orgCnShort": null,
+      "geo": "昆明",
+      "url": "http://www.liip.cn/ccfai2017/default.html",
+      "comment": "中国计算机学会人工智能会议（CCFAI，CCF Conference on Artificial Intelligence）是由中国计算机学会主办，中国计算机学会人工智能与模式识别专业委员会协办的人工智能领域盛会。该系列会议每两年举行一次，现已成为国内人工智能领域最主要的学术活动之一，为广大人工智能研究人员提供了一个交流、合作的平台，分享人工智能领域的研究成果、创新思想以及最新进展。"
+    }
+  ]
+}

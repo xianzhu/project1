@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企业基本信息</title>
+    <link rel="icon" href="img/logo-ico.png" type="image/png">
+    <link href="css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/jqDataTables/jquery.dataTables.css" rel="stylesheet">
+    <link href="css/plugins/jqDataTables/extensions/buttons/buttons.dataTables.css" rel="stylesheet">
+    <link href="css/common/modal-mask.css" rel="stylesheet">
+    <link href="css/mycommon/loading-animate.css" rel="stylesheet">
+    <link href="css/style.common.css" rel="stylesheet">
+    <link href="css/business/company/company.common.css" rel="stylesheet">
+
+    <script src="js/common/jquery-2.1.1.js"></script>
+    <script src="js/common/jquery.easing.1.3.js"></script>
+    <script src="js/common/bootstrap.min.js"></script>
+    <script src="js/common/vue.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="header-wrapper">
+        <nav id="v-userModel" class="navbar" role="navigation" style="margin-bottom: 0">
+            <div class="user-logo"><img id="logo-img-bar" hidefocus="true" v-bind:src="logoPath"></div>
+            <div class="user-right">
+                <ul class="nav navbar-top-links navbar-right font-14">
+                    <li class="welcome-message">
+                        <span class="m-r text-welcome f-l">
+                            <strong class="font-bold m-r">欢迎你</strong>
+                            <span v-text="uname" style="color:green"></span>
+                            <strong class="font-bold">，</strong>
+                        </span>
+                        <span class="text-welcome text-xs m-r f-l m-l">
+                            <strong class="font-bold">当前积分：</strong>
+                            <span v-text="uscore" style="color:orangered"></span>
+                            <strong class="font-bold">分</strong>
+                        </span>
+                    </li>
+                    <li class="search-bar">
+                        <select class="search-type-select" v-on:change="changeSearchSelection()"
+                                v-model="currentSearchSelect" id="currentSearchSelect">
+                            <option v-for="item in searchList" value="{{item.value}}" v-text="item.text"></option>
+                        </select>
+                        <div class="input-group-addon">
+                            <span style="margin-right:5px;">
+                                <input type="checkbox" id="stockCompanyRadio">上市
+                            </span>
+                        </div>
+                        <input class="search-key-input form-control" onkeypress="searchBarPress(event,this.value)"
+                               type="text" placeholder="请输入查询条件 . . . " id="top-search">
+                        <i class="fa fa-search search-ico cursor-link" onclick="doHeaderSearch()"></i>
+                    </li>
+                    <li class="navbar-report-item">
+                        <a href="#" title="报告"><i class="fa fa-file-text-o"></i></a>
+                        <ul class="report-lists">
+                            <li><a v-on:click="gotoCvReport()">行业分析</a></li>
+                            <li><a v-on:click="gotoTraderReport()">研究报告</a></li>
+                        </ul>
+                    </li>
+                    <li class="tools-bar-item">
+                        <ul>
+                            <li>
+                                <a v-on:click="gotoProject()" title="项目"><i class="fa fa-list"></i> </a>
+                            </li>
+                            <li>
+                                <a v-on:click="gotoNews()" title="新闻"><i class="fa fa-newspaper-o"></i> </a>
+                            </li>
+                            <li>
+                                <a v-on:click="gotoSimulation()" title="模拟计算"><i class="fa fa-calculator"></i> </a>
+                            </li>
+                            <li>
+                                <a v-on:click="gotoCustomerSetting()" title="个人设置"><i class="fa fa-cog"></i> </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a onclick="loginOut()" title="退出"><i class="fa fa-sign-out"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div id="nav-wrapper">
+        <nav class="navbar-static-side" role="navigation" id="v-navModel">
+            <ul class="nav nav-first-level" id="side-menu">
+                <li v-bind:class="{'current active':item.isActive}" v-for="item in menuList">
+                    <a href="#" v-on:click="goto(item.pageurl,id)" v-bind:title="item.name">
+                        <!--<i class="fa fa-th-large"></i>-->
+                        <i v-bind:class="[item.ico? item.ico:'fa fa-th-large']" ></i>
+                        <span class="nav-label"
+                              v-text="item.text"></span>
+                        <span class="fa" v-bind:class="{'arrow':item.showChild}"></span></a>
+                    <ul class="nav nav-second-level menu-dropdown" v-if="item.showChild">
+                        <li v-bind:class="{'active':cItem.isActive}" v-for="cItem in item.childMenu">
+                            <a v-bind:title="cItem.name"
+                               v-on:click="goto(cItem.pageurl,id)">
+                                <i v-bind:class="[cItem.ico? cItem.ico:'fa fa-th-large']"></i>
+                                <span  v-text="cItem.text"></span>
+                            </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="page-wrapper">
+        <div class="wrapper wrapper-content" id="v-companyInfoModel">
+            <!--公司名称-->
+            <div class="row">
+                <div class="col-lg-12 company-page-row">
+                        <h2 class="pull-left" style="font-size:32px;margin-top:0px;" v-text="info.ent_name"></h2>
+                    <div class="pull-left" style="padding-top:8px;">
+                        <span v-bind:class="[curPageModule==1? 'current-page-title':'normal-page-title']"
+                              v-on:click="changePageModule(1)">基本信息</span>
+                        <span v-show="isStockCmp" v-bind:class="[curPageModule==2? 'current-page-title':'normal-page-title']"
+                              v-on:click="changePageModule(2)">财务数据</span>
+                        <span v-show="isStockCmp" v-bind:class="[curPageModule==3? 'current-page-title':'normal-page-title']"
+                              v-on:click="changePageModule(3)">对标预测</span>
+                    </div>
+                        <span class="monitor-add-title" v-if="isInMonitor" v-on:click="addToMonitor(info.ent_name,info.ent_id)">加入监控</span>
+                </div>
+            </div>
+            <!--基本信息-->
+            <div v-bind:class="[curPageModule==1? 'row show-div':'row hide-div']">
+                <!--基本、评分-->
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <!--基本信息-->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="tabs-container">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a data-toggle="tab" href="#tab-1">基本信息</a> </li>
+                                            <li><a data-toggle="tab" href="#tab-2">关于我们</a> </li>
+                                        </ul>
+                                        <div class="tab-content tab-info-content">
+                                            <div id="tab-1" class="tab-pane active">
+                                                <div class="panel-body">
+                                                    <div class="row company-info">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>统一社会信用代码:</label><span
+                                                                v-text="info.credit_code"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>组织机构代码:</label><span
+                                                                v-text="info.org_code"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>注册号:</label><span
+                                                                v-text="info.reg_code"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>经营状态:</label><span
+                                                                v-text="info.biz_stat"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>企业类型:</label><span
+                                                                v-text="info.econ_kind"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>法定代表人:</label><span
+                                                                v-text="info.legal_person"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>注册资本:</label><span
+                                                                v-text="info.reg_capital"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>单位:</label><span
+                                                                v-text="info.unit"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>登记机关:</label><span
+                                                                v-text="info.reg_auth"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>发照日期:</label><span
+                                                                v-text="info.check_date"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>开业日期:</label><span
+                                                                v-text="info.start_date"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>注销日期:</label><span
+                                                                v-text="info.end_date"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>经营开始时间:</label><span
+                                                                v-text="info.opt_time_start"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>经营结束时间:</label><span
+                                                                v-text="info.opt_time_end"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>省份:</label><span
+                                                                v-text="info.province"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>城市:</label><span
+                                                                v-text="info.city"></span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="tab-2" class="tab-pane">
+                                                <div class="panel-body">
+                                                    <div class="row about-info">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>电话:</label><span
+                                                                v-text="info.tel"></span></div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>邮件:</label><span
+                                                                v-text="info.email"></span></div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hole-line"><label>注册地址:</label><span
+                                                                v-text="info.reg_addr"></span></div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hole-line"><label>经营地址:</label><span
+                                                                v-text="info.oper_addr"></span></div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hole-line"><label>经营范围:</label><div
+                                                                v-text="info.biz_area"></div></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <!-- 评分体系 -->
+                            <div class="row">
+                                <div class="ibox float-e-margins flot-chart-right-side">
+                                    <div class="ibox-title">
+                                        <h5>评分体系</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="flot-chart" style="height:225px;">
+                                            <div class="flot-chart-content" id="scoreSystem"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--变更信息-->
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>企业变更</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="table-responsive" style="display:none;" v-show="changeList|checkEmptyFilter">
+                                        <table class="table table-striped table-bordered table-hover" id="change_table">
+                                            <thead>
+                                            <tr>
+                                                <th class="td-W100">变更时间</th>
+                                                <th class="td-W180">项目</th>
+                                                <th>变更前</th>
+                                                <th>变更后</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in changeList">
+                                                <td class="text-center" v-text="item.changeDate"></td>
+                                                <td v-text="item.changeItem"></td>
+                                                <td v-text="item.beforeContent"></td>
+                                                <td v-text="item.afterContent"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--股权关系-->
+                <div class="col-lg-12">
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs">
+                            <li class="active" v-on:click="changeStockRightModule(1)"><a data-toggle="tab" href="#tab-3">股东</a></li>
+                            <li v-on:click="changeStockRightModule(2)"><a data-toggle="tab" href="#tab-4">投资企业</a></li>
+                            <li v-on:click="changeStockRightModule(3)"><a data-toggle="tab" href="#tab-5">分支机构</a></li>
+                            <li v-show="isStockCmp" v-on:click="changeStockRightModule(4)"><a data-toggle="tab" href="#tab-6">董监高</a></li>
+                            <li v-show="isStockCmp" v-on:click="changeStockRightModule(5)"><a data-toggle="tab" href="#tab-7">参控股子公司</a></li>
+                            <li v-show="isStockCmp" v-on:click="changeStockRightModule(6)"><a data-toggle="tab" href="#tab-8">最新股东信息</a></li>
+                            <li v-show="isStockCmp" v-on:click="changeStockRightModule(7)"><a data-toggle="tab" href="#tab-9">机构控股</a></li>
+                            <li v-on:click="changeStockRightModule(8)"><a data-toggle="tab" href="#tab-10">关联企业</a></li>
+                            <li v-bind:class="[stockRightModule==4?'pull-right show-div':'pull-right hide-div']">
+                                <div class="btn-group" style="top:15px;right:15px;">
+                                    <button class="btn btn-xs btn-tab-shadow" v-bind:class="[highlevelSelect==1?'btn-primary':'btn-white']" v-on:click="highlevelChange(1)">监事会</button>
+                                    <button class="btn btn-xs btn-tab-shadow" v-bind:class="[highlevelSelect==2?'btn-primary':'btn-white']" v-on:click="highlevelChange(2)">董事会</button>
+                                    <button class="btn btn-xs btn-tab-shadow" v-bind:class="[highlevelSelect==3?'btn-primary':'btn-white']" v-on:click="highlevelChange(3)">高管</button>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="tab-3" class="tab-pane active">
+                                <div class="panel-body">
+                                    <!--股东-->
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="holder_table">
+                                            <thead>
+                                            <tr>
+                                                <th>股本类型</th>
+                                                <th>股东名称</th>
+                                                <th>实缴出资情况(日期 额度)</th>
+                                                <th>应缴出资情况(日期 额度)</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in stockHolder">
+                                                <td v-text="item.stockType"></td>
+                                                <td v-text="item.name"></td>
+                                                <td v-text="item.rCapi"></td>
+                                                <td v-text="item.sCapi"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-4" class="tab-pane">
+                                <div class="panel-body">
+                                    <!--投资企业-->
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="invest_table">
+                                            <thead>
+                                            <tr>
+                                                <th>公司名称</th>
+                                                <th>企业法人</th>
+                                                <th>投资日期</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in investCompany">
+                                                <td v-text="item.name" class="link-handle-pointer" v-on:click="gotoCompanyById(item.iUuid)"></td>
+                                                <td v-text="item.legal"></td>
+                                                <td v-text="item.sDate"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-5" class="tab-pane">
+                                <div class="panel-body">
+                                    <!--分支机构-->
+                                    <div class="table-responsive">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered table-hover" id="branch_table">
+                                                <thead>
+                                                <tr>
+                                                    <th>分支企业名称</th>
+                                                    <th>法人代表</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr v-for="item in branchs">
+                                                    <td v-text="item.b_name" v-bind:class="[item.b_uuid=='-'?'':'link-handle-pointer']" v-on:click="gotoCompanyById(item.b_uuid)"></td>
+                                                    <td v-text="item.b_legal"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-6" class="tab-pane">
+                                <div class="panel-body">
+                                    <!--董监高-->
+                                    <div class="table-responsive">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered table-hover" id="team_table">
+                                                <thead>
+                                                <tr>
+                                                    <th>姓名</th>
+                                                    <th>性别</th>
+                                                    <th>职务</th>
+                                                    <th>任职日期</th>
+                                                    <th>离职日期</th>
+                                                    <th>国籍</th>
+                                                    <th>学历</th>
+                                                    <th>出生年月</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr v-for="item in highlevelTeams|highlevelFilter">
+                                                    <td v-text="item.name" data-container="body" data-toggle="popover" data-placement="right" v-bind:data-content="item.resume"></td>
+                                                    <td v-text="item.sex"></td>
+                                                    <td v-text="item.position"></td>
+                                                    <td v-text="item.posStartdate"></td>
+                                                    <td v-text="item.posEnddate"></td>
+                                                    <td v-text="item.country"></td>
+                                                    <td v-text="item.education"></td>
+                                                    <td v-text="item.birthdate"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-7" class="tab-pane">
+                                <div class="panel-body">
+                                    <!--参控股子公司-->
+                                    <div class="table-responsive">
+                                        <div class="table-responsive" >
+                                            <table class="table table-striped table-bordered table-hover" id="subinvest_table">
+                                                <thead>
+                                                <tr>
+                                                    <th style="width:25%">参控公司</th>
+                                                    <th style="width:15%">参控关系</th>
+                                                    <th style="width:10%">持股比例</th>
+                                                    <th style="width:15%">营业收入(万元)</th>
+                                                    <th style="width:15%">净利润</th>
+                                                    <th style="width:10%">上市/挂牌</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr v-for="item in entCtrl">
+                                                    <td v-text="item.BHCompName"></td>
+                                                    <td v-text="item.HoldingType"></td>
+                                                    <td v-text="item.SharehdRatio"></td>
+                                                    <td v-text="item.Operatereve"></td>
+                                                    <td v-text="item.Netprofit"></td>
+                                                    <td v-text="item.IsNewSanban"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-8" class="tab-pane">
+                                <div class="panel-body">
+                                    <!--十大股东-->
+                                    <div class="table-responsive">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered table-hover" id="stockholder_table">
+                                                <thead>
+                                                <tr>
+                                                    <th>股本性质</th>
+                                                    <th style="width:20%">股东名称</th>
+                                                    <th>股东性质</th>
+                                                    <th>股东类型</th>
+                                                    <th>持股数量(股)</th>
+                                                    <th>持股比例(%)</th>
+                                                    <th>持股比例变动</th>
+                                                    <th style="width:12%">持股比例变动比例(%)</th>
+                                                    <th>数据来源</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr v-for="item in stockHolderLatest">
+                                                    <td v-text="item.stockChar"></td>
+                                                    <td v-text="item.holderName"></td>
+                                                    <td v-text="item.holderChar"></td>
+                                                    <td v-text="item.holderType"></td>
+                                                    <td v-text="item.qty"></td>
+                                                    <td v-text="item.stockRatio"></td>
+                                                    <td v-text="item.qtyChange"></td>
+                                                    <td v-text="item.stockRatioChange"></td>
+                                                    <td v-text="item.reportDate"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-9" class="tab-pane">
+                                <div class="panel-body">
+                                    <!--机构控股-->
+                                    <div class="table-responsive">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered table-hover" id="orgholder_table">
+                                                <thead>
+                                                <tr>
+                                                    <th style="width:20%">所属公司</th>
+                                                    <th style="width:15%">占流通股比例(%)</th>
+                                                    <th style="width:15%">持流通股数量(股):</th>
+                                                    <th style="width:20%">机构股东名称</th>
+                                                    <th style="width:12%">机构类型</th>
+                                                    <th style="width:12%">数据来源</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr v-for="item in orgholder">
+                                                    <td v-text="item['所属公司']"></td>
+                                                    <td v-text="item['占流通股比例(%)']"></td>
+                                                    <td v-text="item['持流通股数量(股)']"></td>
+                                                    <td v-text="item['机构股东名称']"></td>
+                                                    <td v-text="item['机构类型']"></td>
+                                                    <td v-text="item['date']"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-10" class="tab-pane">
+                                <div class="panel-body">
+                                    <!--关联企业-->
+                                    <div class="table-responsive">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered" id="relation_table">
+                                                <thead>
+                                                <tr>
+                                                    <th>关联公司名称</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr v-for="items in perRelation">
+                                                    <td>
+                                                        <ul style="list-style: none;">
+                                                            <li v-for="item in items" class="half-line-li">
+                                                                <a v-text="item.ent_name" class="link-handle-pointer" v-on:click="gotoCompanyById(item.ent_id)"></a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                    <!--<td v-text="item.entName" class="link-handle-pointer"  v-on:click="gotoCompanyById(item.entId)"></td>-->
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--知识产权-->
+                <div class="col-lg-12">
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab-11">专利</a></li>
+                            <li><a data-toggle="tab" href="#tab-12">软件著作权</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab-11" class="tab-pane active">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="patent_table">
+                                            <thead>
+                                            <tr>
+                                                <th class="td-W75">授权公告日</th>
+                                                <th>摘要</th>
+                                                <th style="width:20%">名称</th>
+                                                <th class="td-W75">申请日</th>
+                                                <th class="td-W75">申请号</th>
+                                                <th class="td-W75">授权公告号</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in patentList">
+                                                <td class="td-W75" v-text="item.outhorDate"></td>
+                                                <td v-text="item.brief|getShortStrFilter"></td>
+                                                <td style="width:20%" v-text="item.patentName"></td>
+                                                <td class="td-W75" v-text="item.requestDate"></td>
+                                                <td class="td-W75" v-text="item.requestNum"></td>
+                                                <td class="td-W75" v-text="item.typeName"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-12" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="softCopy_table">
+                                            <thead>
+                                            <tr>
+                                                <th>登记批准日期</th>
+                                                <th>软件著作权名称</th>
+                                                <th>软件著作权登记号</th>
+                                                <th>软件简称</th>
+                                                <th>版本号</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in softCopyrightsList">
+                                                <td v-text="item.app_date"></td>
+                                                <td v-text="item.name"></td>
+                                                <td v-text="item.number"></td>
+                                                <td v-text="item.short_name"></td>
+                                                <td v-text="item.version"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--法务-->
+                <div class="col-lg-12">
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab-13">法务</a></li>
+                            <li><a data-toggle="tab" href="#tab-14">经营异常</a></li>
+                            <li><a data-toggle="tab" href="#tab-15">股权质押</a></li>
+                            <li><a data-toggle="tab" href="#tab-16">动产抵押</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab-13" class="tab-pane active">
+                                <div class="panel-body">
+                                    <!--法务-->
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="law_table">
+                                            <thead>
+                                            <tr>
+                                                <th>文书案号</th>
+                                                <th>法院裁判文书标题</th>
+                                                <th class="td-W95">类型</th>
+                                                <th class="td-W95">发布日期</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in entLawList">
+                                                <td v-text="item.caseNo"></td>
+                                                <td v-text="item.title"></td>
+                                                <td class="td-W95" v-text="item.type"></td>
+                                                <td class="td-W95" v-text="item.date"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-14" class="tab-pane">
+                                <div class="panel-body">
+                                    <!--经营异常-->
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="abnormal_table">
+                                            <thead>
+                                            <tr>
+                                                <th>作出决定机关</th>
+                                                <th>列入时间</th>
+                                                <th>列入原因</th>
+                                                <th>移出时间</th>
+                                                <th>移出原因</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in abnormalItemList">
+                                                <td v-text="item.dept"></td>
+                                                <td v-text="item.in_date"></td>
+                                                <td v-text="item.in_reason"></td>
+                                                <td v-text="item.out_date"></td>
+                                                <td v-text="item.out_reason"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-15" class="tab-pane">
+                                <div class="panel-body">
+                                    <!--股权质押-->
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="equity_table">
+                                            <thead>
+                                            <tr>
+                                                <th>登记日期</th>
+                                                <th>登记编号</th>
+                                                <th>质权人</th>
+                                                <th>出质股权数</th>
+                                                <th>出质人证件号码</th>
+                                                <th>质权公司</th>
+                                                <th>质权人证件号码</th>
+                                                <th>股权出质状态</th>
+                                                <th>备注</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in equityList">
+                                                <td v-text="item.date"></td>
+                                                <td v-text="item.number"></td>
+                                                <td v-text="item.pdg"></td>
+                                                <td v-text="item.pdg_amount"></td>
+                                                <td v-text="item.pdg_identify_no"></td>
+                                                <td v-text="item.pw"></td>
+                                                <td v-text="item.pw_id_no"></td>
+                                                <td v-text="item.status"></td>
+                                                <td v-text="item.remark"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-16" class="tab-pane">
+                                <div class="panel-body">
+                                    <!--动产抵押-->
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="mortgages_table">
+                                            <thead>
+                                            <tr>
+                                                <th>登记日期</th>
+                                                <th>登记机关</th>
+                                                <th>登记编号</th>
+                                                <th>被担保债权种类</th>
+                                                <th>备注</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="item in mortgagesList">
+                                                <td v-text="item.date"></td>
+                                                <td v-text="item.department"></td>
+                                                <td v-text="item.number"></td>
+                                                <td v-text="item.type"></td>
+                                                <td v-text="item.remarks"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--财务分析-->
+            <div v-bind:class="[curPageModule==2? 'row show-div':'row hide-div']">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>财务分析</h5>
+                            <div class="ibox-tools">
+                                <a class="pull-right collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row">
+                                <!-- 营业利润／营业总收入(%)analysis-chart-totalRevenue -->
+                                <div class="col-lg-6">
+                                    <div class="ibox float-e-margins ibox-chart">
+                                        <div class="ibox-title">
+                                            <!--analysis-chart-totalRevenue-->
+                                            <h5>营业利润／营业总收入(%)</h5>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="flot-chart">
+                                                <div class="flot-chart-content" id="analysis-chart-totalRevenue"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--资产负债率(%)analysis-chart-debtRatio-->
+                                <div class="col-lg-6">
+                                    <div class="ibox float-e-margins ibox-chart">
+                                        <div class="ibox-title">
+                                            <h5>资产负债率(%)</h5>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="flot-chart">
+                                                <div class="flot-chart-content" id="analysis-chart-debtRatio"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--净资产收益率-年化(%)analysis-chart-rOEAnnualized-->
+                                <div class="col-lg-6">
+                                    <div class="ibox float-e-margins ibox-chart">
+                                        <div class="ibox-title">
+                                            <h5>净资产收益率-年化(%)</h5>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="flot-chart">
+                                                <div class="flot-chart-content" id="analysis-chart-rOEAnnualized"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--销售净利率(%)analysis-chart-netProfitMargin-->
+                                <div class="col-lg-6">
+                                    <div class="ibox float-e-margins ibox-chart">
+                                        <div class="ibox-title">
+                                            <h5>销售净利率(%)</h5>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="flot-chart">
+                                                <div class="flot-chart-content" id="analysis-chart-netProfitMargin"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--总资产周转率(次)analysis-chart-turnover-->
+                                <div class="col-lg-6">
+                                    <div class="ibox float-e-margins ibox-chart">
+                                        <div class="ibox-title">
+                                            <h5>总资产周转率(次)</h5>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="flot-chart">
+                                                <div class="flot-chart-content" id="analysis-chart-turnover"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--营业利润同比增长(%)营业利润同比增长(%)analysis-chart-optprofit-->
+                                <div class="col-lg-6">
+                                    <div class="ibox float-e-margins ibox-chart">
+                                        <div class="ibox-title">
+                                            <h5>营业利润同比增长(%)</h5>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="flot-chart">
+                                                <div class="flot-chart-content" id="analysis-chart-optprofit"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--对标预测-->
+            <div v-bind:class="[curPageModule==3? 'row show-div':'row hide-div']">
+                <!-- 分析预测模块一 并购-->
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5 v-text="analysisModelFirst"></h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="table-responsive" style="display:none;" v-show="firstModel|checkEmptyFilter">
+                                <table class="table table-striped table-bordered table-hover" id="analysis_table_1">
+                                    <thead>
+                                    <tr>
+                                        <th>公司名称</th>
+                                        <th>国资背景</th>
+                                        <th>资产总计(元)</th>
+                                        <th>营业收入(元)</th>
+                                        <th>营业利润(元)</th>
+                                        <th>营业利润率(%)</th>
+                                        <th>资产负债率(%)</th>
+                                        <th>销售毛利率(%)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr style="cursor:pointer;" v-on:click="gotoCompany(item.stockCode,item.stockType)" v-for="item in firstModel">
+                                        <td v-text="item.cnName"></td>
+                                        <td v-text="item.isStateHold|stateHoldFilter"></td>
+                                        <td v-text="item.totalAsset"></td>
+                                        <td v-text="item.optIncome"></td>
+                                        <td v-text="item.optProfit"></td>
+                                        <td v-text="item.optProfitOnIncome"></td>
+                                        <td v-text="item.liabRatio"></td>
+                                        <td v-text="item.grossProfitMargin"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 分析预测模块二 对标-->
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5 v-text="analysisModelSecond"></h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="table-responsive" style="display:none;" v-show="secondModel|checkEmptyFilter">
+                                <table class="table table-striped table-bordered table-hover" id="analysis_table_2">
+                                    <thead>
+                                    <tr>
+                                        <th>公司名称</th>
+                                        <th>国资背景</th>
+                                        <th>资产总计(元)</th>
+                                        <th>营业收入(元)</th>
+                                        <th>营业利润(元)</th>
+                                        <th>营业利润率(%)</th>
+                                        <th>资产负债率(%)</th>
+                                        <th>销售毛利率(%)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr style="cursor:pointer;" v-on:click="gotoCompany(item.stockCode,item.stockType)" v-for="item in secondModel">
+                                        <td v-text="item.cnName"></td>
+                                        <td v-text="item.isStateHold|stateHoldFilter"></td>
+                                        <td v-text="item.totalAsset"></td>
+                                        <td v-text="item.optIncome"></td>
+                                        <td v-text="item.optProfit"></td>
+                                        <td v-text="item.optProfitOnIncome"></td>
+                                        <td v-text="item.liabRatio"></td>
+                                        <td v-text="item.grossProfitMargin"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--查询结果显示-->
+<div style="display: none;" class="modal-mask" id="v-search-result-mask-info"
+     transition="modal" v-show="showMask">
+    <div v-bind:class="[showResult==1? 'modal-wrapper show-div':'modal-wrapper hide-div']">
+        <div class="modal-container">
+            <button class="modal-default-button" v-on:click="close()">
+                <i class="fa fa-close"></i>
+            </button>
+            <div class="no-border modal-header">
+                <h3 class="pull-left" v-text="title"></h3>
+            </div>
+            <div class="modal-body ibox no-border">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="no-m-b no-border ibox">
+                            <div class="ibox-content ibox-content-withpage">
+                                <div v-bind:class="[currentModule==1? 'table-responsive show-div':'table-responsive hide-div']">
+                                    <!--<div class="table-responsive" v-if="checkModule(1)">-->
+                                    <table class="table table-striped table-bordered table-hover"
+                                           id="personal_result_table">
+                                        <thead>
+                                        <tr>
+                                            <th>姓名</th>
+                                            <th class="td-W30">性别</th>
+                                            <th>职务</th>
+                                            <th>机构</th>
+                                            <th>关注领域</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="ele in pResult">
+                                            <td class="cursor-link-only" v-on:click="gotoPersonal(ele.userId)" v-text="ele.userName"></td>
+                                            <td class="td-W30" v-text="ele.sex"></td>
+                                            <td v-text="ele.title"></td>
+                                            <td v-text="ele.organizeName"></td>
+                                            <td v-text="ele.focusDomain"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div v-bind:class="[currentModule==2? 'table-responsive show-div':'table-responsive hide-div']">
+                                    <table class="table table-striped table-bordered table-hover" id="org_result_table">
+                                        <thead>
+                                        <tr>
+                                            <th>机构名称</th>
+                                            <th>简称</th>
+                                            <th>对应实体</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr role="row" v-for="ele in oResult">
+                                            <td v-text="ele.orgCnName" style="cursor:pointer" v-on:click="gotoOrg(ele.orgId)"></td>
+                                            <td v-text="ele.orgCnShort"></td>
+                                            <td v-text="ele.orgMapEntity|formatDataFilter"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div v-bind:class="[currentModule==3? 'table-responsive show-div':'table-responsive hide-div']">
+                                    <table class="table table-striped table-bordered table-hover"
+                                           id="company_result_table">
+                                        <thead>
+                                        <tr>
+                                            <th>名称</th>
+                                            <th>法人</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="ele in cResult">
+                                            <td v-on:click="gotoCompany(ele.ent_id,ele.is_stock,ele.stock_type,ele.stock_code)"
+                                                v-text="ele.ent_name" class="cursor-link"></td>
+                                            <td v-text="ele.legal_person"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div v-bind:class="[searchResultEmpty?'m-t hide-div':'m-t show-div']">
+                                    <div class="pull-right">
+                                        <button style="margin-right:10px;" v-if="pageControlShow(0)"
+                                                v-on:click="changeResultPage(0)">上页
+                                        </button>
+                                        <span v-text="currentPage|currentPageFilter"></span>
+                                        <button style="margin-left:10px;" v-if="pageControlShow(1)"
+                                                v-on:click="changeResultPage(1)">下页
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div v-bind:class="[showResult==0? 'search-result-waiting show-div':'search-result-waiting hide-div']">
+        <img class="loading-animate" src="img/loading-gradient.png">
+    </div>
+    <div v-bind:class="[showResult==2? 'search-result-fault show-div':'search-result-fault hide-div']">
+        <div class="search-fault-info">
+            <button class="modal-default-button" v-on:click="close()">
+                <i class="fa fa-close"></i>
+            </button>
+            <p>请求数据失败</p>
+        </div>
+    </div>
+</div>
+<!--信息提示框*******************info-->
+<script type="x/template" id="modal-template">
+    <div class="modal-mask" v-show="show" transition="modal">
+        <div class="modal-wrapper">
+            <div class="modal-container-info">
+                <button class="modal-info-close-button" @click="show = false">
+                    <i class="fa fa-close"></i>
+                </button>
+                <div class="modal-header">
+                    <slot name="header">
+                        default header
+                    </slot>
+                </div>
+                <div class="modal-body">
+                    <slot name="body">
+                        default body
+                    </slot>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!-- 信息提示框 模态框 -->
+<div id="v-model-mask-info">
+    <modal_mask :show.sync="showModal">
+        <h3 slot="header" v-text="header"></h3>
+        <p slot="body" style="font-size:14px;text-align: center" v-text="information"></p>
+    </modal_mask>
+</div>
+
+<script src="js/plugins/jqDataTables/jquery.dataTables.js"></script>
+<script src="js/plugins/jqDataTables/extensions/buttons/dataTables.buttons.js"></script>
+<script src="js/plugins/jqDataTables/extensions/buttons/buttons.print.js"></script>
+<script src="js/plugins/jqDataTables/extensions/buttons/buttons.html5.js"></script>
+<script src="js/plugins/echarts-2.2.7/echarts.js"></script>
+
+<script src="js/mycommon/common.data.js"></script>
+<script src="data/menu/common.menu.js"></script>
+<script src="js/mycommon/function.common.js"></script>
+<script src="js/mycommon/menu.common.js"></script>
+<script src="js/mycommon/ibox.function.js"></script>
+<script src="js/mycommon/function.cookie.js"></script>
+<script src="js/mycommon/mask.info.js"></script>
+<script src="js/business/company/company.common.js"></script>
+<script src="js/business/company/company.financial.js"></script>
+<script src="data/charts/company.chartOption.js"></script>
+<script src="js/business/company/company.finacial.chart.js"></script>
+<script src="js/business/company/company.depth.js"></script>
+</body>
+</html>

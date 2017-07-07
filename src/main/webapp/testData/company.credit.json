@@ -1,0 +1,93 @@
+{
+  "stockXsbMatchInfo": null,
+  "searchResult": null,
+  "stockInstInvest": null,
+  "entMortgagesInfos": null,
+  "entBranchInfos": null,
+  "stockHolder": null,
+  "ciSfSca": null,
+  "rptToMaList": null,
+  "entAbnormalItemInfos": null,
+  "entEquityInfos": null,
+  "entBasicInfo": null,
+  "rptEntJudgeValue": null,
+  "entPatentInfos": null,
+  "stockPotentialMaInfo": null,
+  "entFinancalList": null,
+  "entExitEventList": null,
+  "teams": null,
+  "entLawInfos": [
+    {
+      "date": "2016-05-20",
+      "title": "5469平安银行股份有限公司与林家华信用卡纠纷一审民事裁定书",
+      "type": "民事案件",
+      "caseNo": "（2016）粤0303民初5469号"
+    },
+    {
+      "date": "2016-05-20",
+      "title": "5476平安银行股份有限公司与林源泉信用卡纠纷一审民事裁定书",
+      "type": "民事案件",
+      "caseNo": "（2016）粤0303民初5476号"
+    },
+    {
+      "date": "2016-05-20",
+      "title": "5364平安银行股份有限公司与陈惠宣信用卡纠纷一审民事裁定书",
+      "type": "民事案件",
+      "caseNo": "（2016）粤0303民初5364号"
+    },
+    {
+      "date": "2016-07-28",
+      "title": "上海重型机器厂有限公司与平安银行股份有限公司济南花园路支行、平安银行股份有限公司票据损害责任纠纷一审民事裁定书",
+      "type": "民事案件",
+      "caseNo": "（2016）沪0112民初17839号"
+    },
+    {
+      "date": "2016-05-20",
+      "title": "5462平安银行股份有限公司与梁苑芳信用卡纠纷一审民事裁定书",
+      "type": "民事案件",
+      "caseNo": "（2016）粤0303民初5462号"
+    },
+    {
+      "date": "2016-05-20",
+      "title": "5526平安银行股份有限公司与欧志伟信用卡纠纷一审民事裁定书",
+      "type": "民事案件",
+      "caseNo": "（2016）粤0303民初5526号"
+    },
+    {
+      "date": "2016-05-20",
+      "title": "5628平安银行股份有限公司与游惠萍信用卡纠纷一审民事裁定书",
+      "type": "民事案件",
+      "caseNo": "（2016）粤0303民初5628号"
+    },
+    {
+      "date": "2016-08-05",
+      "title": "王金兰与平安银行股份有限公司天津分行,平安银行股份有限公司信用卡纠纷一审民事判决书",
+      "type": "民事案件",
+      "caseNo": "（2015）南民初字第10716号"
+    },
+    {
+      "date": "2016-05-20",
+      "title": "5488平安银行股份有限公司与刘利君信用卡纠纷一审民事裁定书",
+      "type": "民事案件",
+      "caseNo": "（2016）粤0303民初5488号"
+    },
+    {
+      "date": "2016-08-18",
+      "title": "平安银行股份有限公司与李志强、龚晓丽等金融借款合同纠纷一审民事判决书",
+      "type": "民事案件",
+      "caseNo": "（2016）浙0782民初9660号"
+    }
+  ],
+  "entRelatedInfos": null,
+  "entChgRecordInfos": null,
+  "entCopyrightsInfos": null,
+  "enSoftCopyrightsInfos": null,
+  "message": "Get ent mortgages info success!",
+  "ciRcaPay": null,
+  "entHolderInfos": null,
+  "entInvestInfos": null,
+  "stockCharts": null,
+  "ciMoneySup": null,
+  "stockEquityCtrl": null,
+  "status": "success"
+}

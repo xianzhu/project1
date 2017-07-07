@@ -1,0 +1,18 @@
+.btn-order-correlation,.btn-order-time{
+    width:20px;
+    height:20px;
+    top:8px;
+    margin-left:5px !important;
+    border:none;
+}
+
+#extend_tag_cloud{
+    position:relative;
+}
+
+#extend_tag_cloud a{
+    position:absolute;
+    color:#1c84c6;
+    /*color:#0cb9a5;*/
+    font-weight:600;
+}

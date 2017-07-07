@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3响应式垂直手风琴菜单DEMO演示</title>
+
+    <link rel="stylesheet" type="text/css" href="css/plugins/accordion.menu.css">
+
+</head>
+<body>
+
+<div class="container" id="containerModule">
+<div><button v-on:click="changeData()">change</button></div>
+    <div class="accordion">
+        <dl>
+            <div v-for="item in allList">
+                <dt><a v-bind:href="item.domId" aria-expanded="false" v-bind:aria-controls="item.did"
+                       class="accordion-title accordionTitle js-accordionTrigger" v-text="item.title"></a>
+                </dt>
+                <dd class="accordion-content accordionItem is-collapsed" v-bind:id="item.did" aria-hidden="true">
+                    <p v-text="item.desc"></p>
+                </dd>
+            </div>
+        </dl>
+    </div>
+
+</div>
+<script src="js/common/vue.js"></script>
+<script src="js/testNews.js"></script>
+<script type="text/javascript">
+    //uses classList, setAttribute, and querySelectorAll
+    //if you want this to work in IE8/9 youll need to polyfill these
+
+</script>
+
+</body>
+</html>

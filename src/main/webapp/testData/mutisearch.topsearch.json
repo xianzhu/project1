@@ -1,0 +1,65 @@
+{
+  "status": "success",
+  "message": "Get extend info success!",
+  "userBasicList": [],
+  "orgBasicList": [
+    {
+      "orgId": 68010,
+      "orgCnName": "平安创投",
+      "orgCnShort": null,
+      "orgNickname": null,
+      "orgEnName": null,
+      "orgMapEntity": null,
+      "fundInfo": null,
+      "investInfo": null,
+      "orgCnDesc": null
+    }
+  ],
+  "userExtendList": [],
+  "orgExtendList": [
+    {
+      "orgId": 108,
+      "orgCnName": "中国人民",
+      "orgCnShort": null,
+      "orgNickname": null,
+      "orgEnName": null,
+      "orgMapEntity": null,
+      "fundInfo": null,
+      "investInfo": null,
+      "orgCnDesc": null
+    },
+    {
+      "orgId": 1214,
+      "orgCnName": "平安",
+      "orgCnShort": null,
+      "orgNickname": null,
+      "orgEnName": null,
+      "orgMapEntity": null,
+      "fundInfo": null,
+      "investInfo": null,
+      "orgCnDesc": null
+    },
+    {
+      "orgId": 9261,
+      "orgCnName": "广发",
+      "orgCnShort": null,
+      "orgNickname": null,
+      "orgEnName": null,
+      "orgMapEntity": null,
+      "fundInfo": null,
+      "investInfo": null,
+      "orgCnDesc": null
+    },
+    {
+      "orgId": 9744,
+      "orgCnName": "新疆",
+      "orgCnShort": null,
+      "orgNickname": null,
+      "orgEnName": null,
+      "orgMapEntity": null,
+      "fundInfo": null,
+      "investInfo": null,
+      "orgCnDesc": null
+    }
+  ]
+}

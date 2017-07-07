@@ -21,6 +21,11 @@ function initModelMaskVue(){
             showModal:false,
             information:"",
             header:""
+        },
+        methods:{
+            openurl:function (url) {
+                openUrl(url);
+            }
         }
     });
     //console.log("model: ",v_model_mask_info);
