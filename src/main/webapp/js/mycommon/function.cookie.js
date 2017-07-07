@@ -113,6 +113,9 @@ function checkEntIfInMonitor(id){
     var entMonitorStr=getCookie("entMonitor");
     console.log(id);
 console.log(entMonitorStr);
+if(!entMonitorStr){
+    return false;
+}
     var entList=entMonitorStr.split("|");
     for(var i=0;i<entList.length;i++){
         if(id==entList[i]){

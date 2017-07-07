@@ -174,18 +174,7 @@ var panelOrgOption = {
     xAxis: [
         {
             type: 'value',
-            show: false,
-            axisLine: {onZero: false},
-            splitLine: {
-                show: false
-            },
-            axisLabel: {
-                margin: 4,
-                show: false
-            },
-            axisTick: {
-                length: 3
-            }
+            show: false
         }
     ],
     yAxis: [
@@ -218,17 +207,11 @@ var panelOrgOption = {
             itemStyle: {
                 normal: {
                     color: '#fff',
-                    // color:'#32cd32',
-                    // color: '#0088aa',
-                    // color:'#78a487',
                     label: {
                         show: true,
                         position: 'right',
                         formatter: function (params) {
                             return params.name;
-                        },
-                        textStyle: {
-                            fontSize: 8
                         }
                     }
                 }

@@ -695,6 +695,8 @@ $(window).resize(function () {
     console.log("resize:", nw, nh);
     $('#calendar').calendar('autoResize', nw, nh);
     resizeDetailMask();
+
+    // getUserMonitorList();
 });
 
 function bindCalendarItem(){
