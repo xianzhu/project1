@@ -588,7 +588,7 @@
                             <div class="ibox-content">
                                 <div class="table-responsive" style="display: none;" v-show="isInvest">
                                     <table class="table table-striped table-bordered table-hover"
-                                           id="invest_data_table">
+                                           id="invest_data_table" style="width:calc(100% - 1px);">
                                         <thead>
                                         <tr>
                                             <th>机构名</th>
@@ -609,7 +609,8 @@
                                 </div>
 
                                 <div class="table-responsive" style="display: none;" v-show="isExit">
-                                    <table class="table table-striped table-bordered table-hover" id="exit_data_table">
+                                    <table class="table table-striped table-bordered table-hover"
+                                           id="exit_data_table" style="width:calc(100% - 1px);">
                                         <thead>
                                         <tr>
                                             <th>机构名</th>

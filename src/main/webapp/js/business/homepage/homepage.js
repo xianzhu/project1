@@ -275,7 +275,7 @@ function getRptData() {
                 goToNotlogon();
             } else if (res.status == 'success') {
                 var response = res;
-                showRptEcharts(response.tendsList, "orgInvestChart");
+                showRptEcharts(response.trend, "orgInvestChart");
             }
         },
         fail: function (status) {
