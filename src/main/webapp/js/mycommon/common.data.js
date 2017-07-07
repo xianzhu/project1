@@ -12,7 +12,7 @@ var commonUrls_real = {
     loginoutUrl: "logout", // 退出
 
     homeNewsUrl: "elasticsearch?mode=personal", // 首页--新闻
-    homepageRptDataUrl:"org/top", // 首页-- 一级市场信心指数
+    homepageRptDataUrl:"stat/overall", // 首页-- 一级市场信心指数
     homepagePanelDataUrl:"stat/trend", // 首页--右上角统计数据
     homepageBarDataUrl:"stat/event", // 首页--今日资本事件柱状图、饼图
     homeEventpageUrl:"top/dayevent", // 首页--今日资本事件列表
@@ -80,7 +80,7 @@ var commonUrls_real_local = {
     loginoutUrl: hostUrl+"logout", // 退出
 
     homeNewsUrl: hostUrl+"elasticsearch?mode=personal", // 首页--新闻
-    homepageRptDataUrl:hostUrl+"org/top", // 首页-- 一级市场信心指数
+    homepageRptDataUrl:hostUrl+"stat/overall", // 首页-- 一级市场信心指数
     homepagePanelDataUrl:hostUrl+"stat/trend", // 首页--右上角统计数据
     homepageBarDataUrl:hostUrl+"stat/event", // 首页--今日资本事件柱状图、饼图
     homeEventpageUrl:hostUrl+"top/dayevent", // 首页--今日资本事件列表
