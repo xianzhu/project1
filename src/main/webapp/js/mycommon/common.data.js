@@ -2,8 +2,8 @@
  * Created by a88u on 2016/11/2.
  */
 
-// var isTest = false; // 正式版
-var isTest = true; // 测试版
+var isTest = false; // 正式版
+// var isTest = true; // 测试版
 
 var hostUrl="http://116.62.52.41:17081/";
 

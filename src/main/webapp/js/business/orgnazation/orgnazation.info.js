@@ -109,7 +109,7 @@ var v_orgBasicModel=new Vue({
         }
     }
 });
-
+getUserMonitorList();
 getBasicInfo();
 getFundListInfo();
 
@@ -280,6 +280,6 @@ function refreshOrgMonitor(){
     v_orgBasicModel.$data.isInMonitor=!checkOrgIfInMonitor(orgId);
 }
 
-$(document).ready(function () {
-    getUserMonitorList();
-});
+// $(document).ready(function () {
+//     getUserMonitorList();
+// });

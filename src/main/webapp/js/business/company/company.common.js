@@ -156,7 +156,7 @@ var v_companyInfoModel=new Vue({
         }
     }
 });
-
+getUserMonitorList();
 getBasicInfo();
 
 function getBasicInfo(){
@@ -206,6 +206,6 @@ function refreshEntMonitor(){
     v_companyInfoModel.$data.isInMonitor=!checkEntIfInMonitor(cid);
 }
 
-$(document).ready(function () {
-    getUserMonitorList();
-});
+// $(document).ready(function () {
+//     getUserMonitorList();
+// });
