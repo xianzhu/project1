@@ -20,10 +20,10 @@ function sendMonitor(options){
     if(params.length>1){
         src=src+"?"+params.substr(1,params.length-1);
     }
-    img.src = src; // ´Ë´¦ÉèÖÃsrc
+    img.src = src; // æ­¤å¤„è®¾ç½®src
 }
 
-// »ñÈ¡ä¯ÀÀÆ÷ĞÅÏ¢
+// è·å–æµè§ˆå™¨ä¿¡æ¯
 function appInfo(){
     var agent = navigator.userAgent.toLowerCase() ;
     var browerInfo="";
@@ -65,7 +65,7 @@ function appInfo(){
     return browser;
 }
 
-//Ğ´cookies
+//å†™cookies
 
 function setCookie(name,value,days)
 {
@@ -75,7 +75,7 @@ function setCookie(name,value,days)
     document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
 }
 
-//¶ÁÈ¡cookies
+//è¯»å–cookies
 function getCookie(name)
 {
     var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
@@ -87,7 +87,7 @@ function getCookie(name)
         return null;
 }
 
-//É¾³ıcookies
+//åˆ é™¤cookies
 function delCookie(name)
 {
     var exp = new Date();
@@ -97,10 +97,10 @@ function delCookie(name)
         document.cookie= name + "="+cval+";expires="+exp.toGMTString();
 }
 
-// Ëæ»ú×Ö·û´®
+// éšæœºå­—ç¬¦ä¸²
 function randomString(len) {
     len = len || 32;
-    var $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345678';    /****Ä¬ÈÏÈ¥µôÁËÈİÒ×»ìÏıµÄ×Ö·ûoOLl,9gq,Vv,Uu,I1****/
+    var $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345678';    /****é»˜è®¤å»æ‰äº†å®¹æ˜“æ··æ·†çš„å­—ç¬¦oOLl,9gq,Vv,Uu,I1****/
     var maxPos = $chars.length;
     var pwd = '';
     for (i = 0; i < len; i++) {
@@ -109,7 +109,55 @@ function randomString(len) {
     return pwd;
 }
 
+function checkEntIfInMonitor(id){
+    var entMonitorStr=getCookie("entMonitor");
+    console.log(id);
+console.log(entMonitorStr);
+if(!entMonitorStr){
+    return false;
+}
+    var entList=entMonitorStr.split("|");
+    for(var i=0;i<entList.length;i++){
+        if(id==entList[i]){
+            return true;
+        }
+    }
+    return false;
+}
 
+function checkOrgIfInMonitor(id){
+    var orgMonitorStr=getCookie("orgMonitor");
+    console.log(id,orgMonitorStr);
+    if(orgMonitorStr) {
+        var orgList = orgMonitorStr.split("|");
+        for (var i = 0; i < orgList.length; i++) {
+            if (id == orgList[i]) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
+function getUserMonitorListByCookie(){
+    if(location.href.indexOf("homePage.html")<0){
+        var entMonitorStr=getCookie("entMonitor");
+        var orgMonitorStr=getCookie("orgMonitor");
 
+        var entList=entMonitorStr.split("|");
+        var orgList=orgMonitorStr.split("|");
+
+        v_navModel.$data.entMonitorList=entList;
+        v_navModel.$data.orgMonitorList=orgList;
+    }
+}
+
+function getUserMonitorCount(){
+    var entMonitorStr=getCookie("entMonitor");
+    var orgMonitorStr=getCookie("orgMonitor");
+
+    var entList=entMonitorStr.split("|");
+    var orgList=orgMonitorStr.split("|");
+    return entList.length+orgList.length;
+}
 

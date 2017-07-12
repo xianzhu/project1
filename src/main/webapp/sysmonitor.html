@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统监控</title>
+    <link rel="icon" href="img/logo-ico.png" type="image/png">
+    <link href="css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/jqDataTables/jquery.dataTables.css" rel="stylesheet">
+    <link href="css/plugins/jqDataTables/extensions/buttons/buttons.dataTables.css" rel="stylesheet">
+    <link href="css/common/modal-mask.css" rel="stylesheet">
+    <link href="css/mycommon/loading-animate.css" rel="stylesheet">
+    <link href="css/style.common.css" rel="stylesheet">
+    <link href="css/business/monitor/system.monitor.css" rel="stylesheet">
+    <script src="js/common/jquery-2.1.1.js"></script>
+    <script src="js/common/jquery.easing.1.3.js"></script>
+    <script src="js/common/bootstrap.min.js"></script>
+    <script src="js/common/vue.js"></script>
+    <style>
+        .ibox-title {
+            padding: 15px 15px 30px;
+        }
+
+        .ibox-title h5 {
+            margin-right: 15px;
+        }
+
+        #v-sysmonitorModel .show-rpt-pe-list h5.rpt-pe-fund-list,
+        #v-sysmonitorModel .show-company-merge-list h5.company-merge-list {
+            font-size: 18px;
+            color: #000000;
+        }
+
+        #v-sysmonitorModel .show-company-merge-list h5.rpt-pe-fund-list,
+        #v-sysmonitorModel .show-rpt-pe-list h5.company-merge-list {
+            font-size: 18px;
+            color: #8c8c8c;
+        }
+
+        #v-sysmonitorModel .show-rpt-pe-list > div.ibox-content .rpt-pe-fund-list,
+        #v-sysmonitorModel .show-company-merge-list > div.ibox-content .company-merge-list {
+            display: block;
+        }
+
+        #v-sysmonitorModel .show-company-merge-list > div.ibox-content .rpt-pe-fund-list,
+        #v-sysmonitorModel .show-rpt-pe-list > div.ibox-content .company-merge-list {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="header-wrapper">
+        <nav id="v-userModel" class="navbar" role="navigation" style="margin-bottom: 0">
+            <div class="user-logo"><img id="logo-img-bar" hidefocus="true" v-bind:src="logoPath"></div>
+            <div class="user-right">
+                <ul class="nav navbar-top-links navbar-right font-14">
+                    <li class="welcome-message">
+                        <span class="m-r text-welcome f-l">
+                            <strong class="font-bold m-r">欢迎你</strong>
+                            <span v-text="uname" style="color:green"></span>
+                            <strong class="font-bold">，</strong>
+                        </span>
+                        <span class="text-welcome text-xs m-r f-l m-l">
+                            <strong class="font-bold">当前积分：</strong>
+                            <span v-text="uscore" style="color:orangered"></span>
+                            <strong class="font-bold">分</strong>
+                        </span>
+                    </li>
+                    <li class="search-bar">
+                        <select class="search-type-select" v-on:change="changeSearchSelection()"
+                                v-model="currentSearchSelect" id="currentSearchSelect">
+                            <option v-for="item in searchList" value="{{item.value}}" v-text="item.text"></option>
+                        </select>
+                        <div class="input-group-addon">
+                            <span style="margin-right:5px;">
+                                <input type="checkbox" id="stockCompanyRadio">上市
+                            </span>
+                        </div>
+                        <input class="search-key-input form-control" onkeypress="searchBarPress(event,this.value)"
+                               type="text" placeholder="请输入查询条件 . . . " id="top-search">
+                        <i class="fa fa-search search-ico cursor-link" onclick="doHeaderSearch()"></i>
+                    </li>
+                    <li class="navbar-report-item">
+                        <a href="#" title="报告"><i class="fa fa-file-text-o"></i></a>
+                        <ul class="report-lists">
+                            <li><a v-on:click="gotoCvReport()">行业分析</a></li>
+                            <li><a v-on:click="gotoTraderReport()">研究报告</a></li>
+                        </ul>
+                    </li>
+                    <li class="tools-bar-item">
+                        <ul>
+                            <li>
+                                <a v-on:click="gotoProject()" title="项目"><i class="fa fa-list"></i> </a>
+                            </li>
+                            <li>
+                                <a v-on:click="gotoNews()" title="新闻"><i class="fa fa-newspaper-o"></i> </a>
+                            </li>
+                            <li>
+                                <a v-on:click="gotoSimulation()" title="模拟计算"><i class="fa fa-calculator"></i> </a>
+                            </li>
+                            <li>
+                                <a v-on:click="gotoCustomerSetting()" title="个人设置"><i class="fa fa-cog"></i> </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a onclick="loginOut()" title="退出"><i class="fa fa-sign-out"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div id="nav-wrapper">
+        <nav class="navbar-static-side" role="navigation" id="v-navModel">
+            <ul class="nav nav-first-level" id="side-menu">
+                <li v-bind:class="{'current active':item.isActive}" v-for="item in menuList">
+                    <a href="#" v-on:click="goto(item.pageurl,id)" v-bind:title="item.name">
+                        <!--<i class="fa fa-th-large"></i>-->
+                        <i v-bind:class="[item.ico? item.ico:'fa fa-th-large']" ></i>
+                        <span class="nav-label"
+                              v-text="item.text"></span>
+                        <span class="fa" v-bind:class="{'arrow':item.showChild}"></span></a>
+                    <ul class="nav nav-second-level menu-dropdown" v-if="item.showChild">
+                        <li v-bind:class="{'active':cItem.isActive}" v-for="cItem in item.childMenu">
+                            <a v-bind:title="cItem.name"
+                               v-on:click="goto(cItem.pageurl,id)">
+                                <i v-bind:class="[cItem.ico? cItem.ico:'fa fa-th-large']"></i>
+                                <span  v-text="cItem.text"></span>
+                            </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="page-wrapper">
+        <div class="wrapper wrapper-content" id="v-sysmonitorModel">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div v-bind:class="[rptModule?'tabs-container show-div':'hide-div']">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab-1">股权类投资基金监控</a> </li>
+                            <li><a data-toggle="tab" href="#tab-2">上市公司并购事件每日监控</a> </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab-1" class="tab-pane active">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="rpt_table">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:25%;">基金名称</th>
+                                                <th class="td-W95">注册时间</th>
+                                                <th style="width:25%;">基金管理机构</th>
+                                                <th>基金投资领域</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="ele in rptPeFundList">
+                                                <td style="width:25%;" v-text="ele.fundName"
+                                                    v-bind:class="[ele.fundUuid==null?'':'link-handle-pointer']"
+                                                    v-on:click="gotoCompany(ele.fundUuid)"></td>
+                                                <td class="td-W95" v-text="ele.regTime"></td>
+                                                <td style="width:25%;" v-text="ele.manager"
+                                                    v-bind:class="[ele.mUuid==null?'':'link-handle-pointer']"
+                                                    v-on:click="gotoCompany(ele.mUuid)"></td>
+                                                <td v-text="ele.domain"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-2" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover" id="company_merge_table">
+                                            <thead>
+                                            <tr>
+                                                <th>标的名称</th>
+                                                <th>买方名称</th>
+                                                <th>卖方名称</th>
+                                                <th class="td-W95">公告日期</th>
+                                                <th>最新进度</th>
+                                                <th class="td-W50">详情</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr role="row" v-for="item in companyMergeList">
+                                                <td v-bind:class="[item.targetUuid==null?'':'link-handle-pointer']"
+                                                    v-text="item.targetName"
+                                                    v-on:click="gotoCompany(item.targetUuid)"></td>
+                                                <td v-bind:class="[item.buyerToeUuid==null?'':'link-handle-pointer']"
+                                                    v-text="item.buyerName"
+                                                    v-on:click="gotoCompany(item.buyerToeUuid)"></td>
+                                                <td v-bind:class="[item.ownerToeUuid==null?'':'link-handle-pointer']"
+                                                    v-text="item.ownerName"
+                                                    v-on:click="gotoCompany(item.ownerToeUuid)"></td>
+                                                <td class="td-W95" v-text="item.happenDate"></td>
+                                                <td v-text="item.tips"></td>
+                                                <td class="td-W50 cursor-link" v-on:click="showMergeDetail(item)">详情</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="pull-right">
+                                            <button style="margin-right:10px;" v-if="pageControlFilter(0)"
+                                                    v-on:click="changeMergePage(0)">上页
+                                            </button>
+                                            <span v-text="mergePage|currentPageFilter"></span>
+                                            <button style="margin-left:10px;" v-if="pageControlFilter(1)"
+                                                    v-on:click="changeMergePage(1)">下页
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-wait-mask"
+                 v-bind:class="[showWaitDiv?'show-div':'hide-div']">
+                <img class="loading-animate" src="img/loading-gradient.png">
+            </div>
+        </div>
+    </div>
+
+    <!--信息提示框*******************info-->
+    <script type="x/template" id="modal-template">
+        <div class="modal-template-mask ibox" v-show="show" transition="modal">
+            <div class="modal-template-wrapper">
+                <div class="modal-template-container" id="modal_detail_container">
+                    <div class="modal-template-header" style="padding:15px 0px 0px 20px;">
+                        <button class="modal-info-close-button">
+                            <i class="fa fa-close" @click="show = false"></i>
+                        </button>
+                        <slot name="header"></slot>
+                    </div>
+
+                    <div class="modal-template-body" style="padding:0px 20px 10px 20px;">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 modal-md-left-side">
+                                <div class="ibox float-e-margins" style="margin-bottom:10px;">
+                                    <div class="ibox-title">
+                                        <h5>简介</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="row">
+                                            <div class="col-lg-12" style="height:125px;overflow:auto;">
+                                                <slot name="abst"></slot>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 modal-md-right-side">
+                                <div class="ibox float-e-margins" style="margin-bottom:10px;">
+                                    <div class="ibox-title">
+                                        <h5>基本信息</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <ul class="todo-list small-list modal-template-list">
+                                                    <li><strong>上市公司简称</strong>
+                                                        <slot name="toeName"></slot>
+                                                    </li>
+                                                    <li><strong>最新公告日期</strong>
+                                                        <slot name="happenDate"></slot>
+                                                    </li>
+                                                    <li><strong>首次公告日期</strong>
+                                                        <slot name="startDate"></slot>
+                                                    </li>
+                                                    <li><strong>最新进度</strong>
+                                                        <slot name="tips"></slot>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 modal-md-left-side">
+                                <div class="ibox float-e-margins" style="margin-bottom:10px;">
+                                    <div class="ibox-title">
+                                        <h5>买方详情</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="row">
+                                            <ul class="todo-list small-list modal-template-list">
+                                                <li><strong>企业名称</strong>
+                                                    <slot name="buyerName"></slot>
+                                                </li>
+                                                <li><strong>所属行业</strong>
+                                                    <slot name="buyerIndustry"></slot>
+                                                </li>
+                                                <li><strong>受让以后持股数（万股）</strong>
+                                                    <slot name="buyerStockNum"></slot>
+                                                </li>
+                                                <li><strong>受让以后持股比例（%）</strong>
+                                                    <slot name="buyerStockRate"></slot>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 modal-md-right-side">
+                                <div class="ibox float-e-margins" style="margin-bottom:10px;">
+                                    <div class="ibox-title">
+                                        <h5>卖方详情</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="row">
+                                            <ul class="todo-list small-list modal-template-list">
+                                                <li><strong>企业名称</strong>
+                                                    <slot name="ownerName"></slot>
+                                                </li>
+                                                <li><strong>所属行业</strong>
+                                                    <slot name="ownerIndustry"></slot>
+                                                </li>
+                                                <li><strong>受让以后持股数（万股）</strong>
+                                                    <slot name="ownerStockNum"></slot>
+                                                </li>
+                                                <li><strong>受让以后持股比例（%）</strong>
+                                                    <slot name="ownerStockRate"></slot>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="ibox float-e-margins" style="margin-bottom:10px;">
+                                    <div class="ibox-title">
+                                        <h5>并购详情</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <ul class="todo-list small-list modal-template-list">
+                                                    <li class="half-item"><strong>并购目的</strong>
+                                                        <slot name="maSeason"></slot>
+                                                    </li>
+                                                    <li class="half-item"><strong>并购方式</strong>
+                                                        <slot name="maType"></slot>
+                                                    </li>
+                                                    <li class="half-item"><strong>支付方式</strong>
+                                                        <slot name="payMode"></slot>
+                                                    </li>
+                                                    <li class="half-item"><strong>交易金额（万元）</strong>
+                                                        <slot name="pay"></slot>
+                                                    </li>
+                                                    <li class="half-item"><strong>支付金额的币种</strong>
+                                                        <slot name="payKind"></slot>
+                                                    </li>
+                                                    <li class="half-item"><strong>转让价格（元）</strong>
+                                                        <slot name="transPrice"></slot>
+                                                    </li>
+                                                    <li class="half-item"><strong>转让价格的币种</strong>
+                                                        <slot name="transKind"></slot>
+                                                    </li>
+                                                    <li class="half-item"><strong>标的-公司名称</strong>
+                                                        <slot name="targetName"></slot>
+                                                    </li>
+                                                    <li class="half-item"><strong>标的类型</strong>
+                                                        <slot name="targetType"></slot>
+                                                    </li>
+                                                    <li class="half-item"><strong>标的-所属行业</strong>
+                                                        <slot name="targetIndustry"></slot>
+                                                    </li>
+
+                                                    <li class="half-item"><strong>股权转让比例（%）</strong>
+                                                        <slot name="transStockRate"></slot>
+                                                    </li>
+                                                    <li class="half-item"><strong>控制权是否变更</strong>
+                                                        <slot name="ifChanged"></slot>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!-- 信息提示框 模态框 -->
+    <div id="v-model-mask-info">
+        <modal_mask :show.sync="showModal">
+            <h3 slot="header">上市公司并购事件--每日监控</h3>
+            <p slot="abst" v-text="information.abst"></p>
+
+            <span slot="toeName" v-text="information.toeName"></span>
+            <span slot="happenDate" v-text="information.happenDate"></span>
+            <span slot="startDate" v-text="information.startDate"></span>
+            <span slot="tips" v-text="information.tips"></span>
+
+            <span slot="targetName" v-text="information.targetName"></span>
+            <span slot="targetIndustry" v-text="information.targetIndustry"></span>
+            <span slot="buyerName" v-text="information.buyerName"></span>
+            <span slot="buyerIndustry" v-text="information.buyerIndustry"></span>
+            <span slot="buyerStockNum" v-text="information.buyerStockNum"></span>
+            <span slot="buyerStockRate" v-text="information.buyerStockRate"></span>
+            <span slot="ownerName" v-text="information.ownerName"></span>
+            <span slot="ownerIndustry" v-text="information.ownerIndustry"></span>
+            <span slot="ownerStockNum" v-text="information.ownerStockNum"></span>
+            <span slot="ownerStockRate" v-text="information.ownerStockRate"></span>
+            <span slot="maSeason" v-text="information.maSeason"></span>
+            <span slot="maType" v-text="information.maType"></span>
+            <span slot="payMode" v-text="information.payMode"></span>
+            <span slot="pay" v-text="information.pay"></span>
+            <span slot="payKind" v-text="information.payKind"></span>
+            <span slot="transPrice" v-text="information.transPrice"></span>
+            <span slot="transKind" v-text="information.transKind"></span>
+            <span slot="targetType" v-text="information.targetType"></span>
+            <span slot="transStockRate" v-text="information.transStockRate"></span>
+            <span slot="ifChanged" v-text="information.ifChanged"></span>
+
+        </modal_mask>
+    </div>
+</div>
+<!--查询结果显示-->
+<div style="display: none;" class="modal-mask" id="v-search-result-mask-info"
+     transition="modal" v-show="showMask">
+    <div v-bind:class="[showResult==1? 'modal-wrapper show-div':'modal-wrapper hide-div']">
+        <div class="modal-container">
+            <button class="modal-default-button" v-on:click="close()">
+                <i class="fa fa-close"></i>
+            </button>
+            <div class="no-border modal-header">
+                <h3 class="pull-left" v-text="title"></h3>
+            </div>
+            <div class="modal-body ibox no-border">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="no-m-b no-border ibox">
+                            <div class="ibox-content ibox-content-withpage">
+                                <div v-bind:class="[currentModule==1? 'table-responsive show-div':'table-responsive hide-div']">
+                                    <!--<div class="table-responsive" v-if="checkModule(1)">-->
+                                    <table class="table table-striped table-bordered table-hover"
+                                           id="personal_result_table">
+                                        <thead>
+                                        <tr>
+                                            <th>姓名</th>
+                                            <th class="td-W30">性别</th>
+                                            <th>职务</th>
+                                            <th>机构</th>
+                                            <th>关注领域</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="ele in pResult">
+                                            <td class="cursor-link-only" v-on:click="gotoPersonal(ele.userId)"
+                                                v-text="ele.userName"></td>
+                                            <td class="td-W30" v-text="ele.sex"></td>
+                                            <td v-text="ele.title"></td>
+                                            <td v-text="ele.organizeName"></td>
+                                            <td v-text="ele.focusDomain"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div v-bind:class="[currentModule==2? 'table-responsive show-div':'table-responsive hide-div']">
+                                    <table class="table table-striped table-bordered table-hover" id="org_result_table">
+                                        <thead>
+                                        <tr>
+                                            <th>机构名称</th>
+                                            <th>简称</th>
+                                            <th>对应实体</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr role="row" v-for="ele in oResult">
+                                            <td v-text="ele.orgCnName" style="cursor:pointer"
+                                                v-on:click="gotoOrg(ele.orgId)"></td>
+                                            <td v-text="ele.orgCnShort"></td>
+                                            <td v-text="ele.orgMapEntity|formatDataFilter"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div v-bind:class="[currentModule==3? 'table-responsive show-div':'table-responsive hide-div']">
+                                    <table class="table table-striped table-bordered table-hover"
+                                           id="company_result_table">
+                                        <thead>
+                                        <tr>
+                                            <th>名称</th>
+                                            <th>法人</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="ele in cResult">
+                                            <td v-on:click="gotoCompany(ele.ent_id,ele.is_stock,ele.stock_type,ele.stock_code)"
+                                                v-text="ele.ent_name" class="cursor-link"></td>
+                                            <td v-text="ele.legal_person"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div v-bind:class="[searchResultEmpty?'m-t hide-div':'m-t show-div']">
+                                    <div class="pull-right">
+                                        <button style="margin-right:10px;" v-if="pageControlShow(0)"
+                                                v-on:click="changeResultPage(0)">上页
+                                        </button>
+                                        <span v-text="currentPage|currentPageFilter"></span>
+                                        <button style="margin-left:10px;" v-if="pageControlShow(1)"
+                                                v-on:click="changeResultPage(1)">下页
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div v-bind:class="[showResult==0? 'search-result-waiting show-div':'search-result-waiting hide-div']">
+        <img class="loading-animate" src="img/loading-gradient.png">
+    </div>
+    <div v-bind:class="[showResult==2? 'search-result-fault show-div':'search-result-fault hide-div']">
+        <div class="search-fault-info">
+            <button class="modal-default-button" v-on:click="close()">
+                <i class="fa fa-close"></i>
+            </button>
+            <p>请求数据失败</p>
+        </div>
+    </div>
+</div>
+
+<script src="js/plugins/jqDataTables/jquery.dataTables.js"></script>
+<script src="js/plugins/jqDataTables/extensions/buttons/dataTables.buttons.js"></script>
+<script src="js/plugins/jqDataTables/extensions/buttons/buttons.print.js"></script>
+<script src="js/plugins/jqDataTables/extensions/buttons/buttons.html5.js"></script>
+
+<script src="js/mycommon/common.data.js"></script>
+<script src="data/menu/common.menu.js"></script>
+<script src="js/mycommon/function.common.js"></script>
+<script src="js/mycommon/menu.common.js"></script>
+<script src="js/mycommon/ibox.function.js"></script>
+
+<script src="js/business/monitor/system.monitor.js"></script>
+</body>
+</html>

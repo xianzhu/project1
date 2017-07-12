@@ -1,0 +1,216 @@
+.page-right-wrapper,.page-left-wrapper{
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+#event_bar_table{
+    margin-bottom:0px;
+}
+.statistic-panel{
+    color:#fff;
+    padding-left:10px;
+    padding-right:10px;
+}
+@media (min-width:1200px){
+    .page-left-wrapper{
+        height:100%;
+        width:80%;
+        float:left;
+        padding-right:5px;
+        padding-left:10px;
+    }
+    .page-right-wrapper{
+        height:100%;
+        width:20%;
+        float:left;
+        padding-left:10px;
+        padding-right:10px;
+    }
+}
+.statistic-panel{
+    margin-bottom:8px;
+}
+@media(min-width:768px){
+    .margin-sm-left{
+        padding-right:5px;
+    }
+    .margin-sm-right{
+        padding-left:5px;
+    }
+}
+@media(max-width:767px){
+    .statistic-panel,.homepage-calendar{
+        padding-left:0px;
+        padding-right:15px;
+    }
+    #homemodule_orgInvest_row,.dayevent-col,.statistic-dash,.homepage-news{
+        padding-left:0px;
+        padding-right:20px;
+    }
+}
+
+@media (min-width:1024px) and (max-width:1199px){
+    .col-item-lm-half{
+        width:50%;
+        float:left;
+    }
+}
+.feed-activity-list{
+    padding-bottom:5px;
+    font-size:12px;
+}
+.feed-activity-list .feed-element:first-child{
+    margin-top:0px;
+}
+.feed-activity-list .feed-element{
+    margin-top:5px;
+    padding-bottom:5px;
+}
+#orgInvestChart{
+     height:200px;
+ }
+
+#org_panel_Chart,#merge_panel_Chart,#fund_panel_Chart,#event_panel_Chart{
+    height:93px;
+}
+.panel-data{
+    position:relative;
+    height:100%;
+    padding-right:5px;
+    padding-bottom:1.5em;
+}
+
+.panel-title{
+    padding-top:3px;
+    padding-bottom:3px;
+    font-size:14px;
+}
+.panel-title h5{
+    /*color:black;*/
+    font-size:14px;
+    font-weight:600;
+    display: inline-block;
+    margin: 0 0 7px;
+    padding: 0;
+    text-overflow: ellipsis;
+}
+.panel-title .panel-data-today{
+    font-size:12px;
+    position:absolute;
+    top:8px;
+    right:20px;
+    display: inline-block;
+    /*background-color:#1b6d85;*/
+    /*color:#fff;*/
+    color:#333333;
+    /*color:#ff7f50;*/
+}
+.dash-data{
+    position:absolute;
+    right:20px;
+    top:5px;
+    padding-right:5px;
+}
+.dash-title{
+    padding-top:4px;
+    padding-bottom:0px;
+    height:25px;
+}
+.dash-title h5{
+    /*color:black;*/
+    font-size:14px;
+    font-weight:600;
+    display: inline-block;
+    margin: 0 0 7px;
+    padding: 0;
+    text-overflow: ellipsis;
+}
+
+#project_dashboard_chart,#company_dashboard_chart,
+#report_dashboard_chart,#elastic_dashboard_chart{
+    height:180px;
+}
+#event_bar_charts,#event_pie_charts,#event_mix_charts{
+    height:280px;
+}
+#homemodule_news_row{
+    height:70%;
+    overflow:auto;
+}
+#homemodule_calendar_row{
+    height:30%;
+    width:100%;
+}
+#calendar{
+    width:100%;
+    height:100%;
+}
+
+.modal-mask{
+    z-index:199;
+}
+.modal-container-info {
+    /*width: 480px;*/
+    /*max-width:98%;*/
+    width:55%;
+    max-width:768px;
+    min-width:400px;
+    margin: 100px auto 5px auto;
+    max-height: calc(100% - 70px);
+    overflow: auto;
+    padding: 0px 30px;
+    background-color: rgba(250, 250, 250, 0.9);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .8s ease;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.detail-close-button {
+    margin-right: 0px;
+    margin-top: -15px;
+}
+
+.modal-calendar-body{
+    margin:0;
+    color:#555;
+    position:relative;
+    padding:15px;
+}
+
+.modal-event-container{
+
+}
+
+table.table-single-line{
+    table-layout: fixed;
+}
+table.table-single-line .td-single{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+table.table-single-line .td-Wmin43 {
+    width:70px;
+    text-align:center;
+    padding:8px 4px;
+}
+.calendar-open-link{
+    cursor:pointer;
+}
+.calendar-open-link:hover{
+    color:#23527c;
+}
+
+.calendar-title-labels{
+    position:absolute;right:7px;top:10px;list-style: none;
+}
+.calendar-title-labels li{
+    float:right;
+    padding-right:3px;
+    padding-left:3px;
+    color:#373008;
+}
+
+
+

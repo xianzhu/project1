@@ -1,0 +1,24 @@
+.ibox-title .fund-name-title{
+    margin-left:15px;
+}
+.return-back-ico{
+    position:absolute;
+    color:#1d9ce5;
+    left:20px;
+    font-size:16px;
+    top:11px;
+}
+.return-back-ico:hover{
+    cursor:pointer;
+    font-size:18px;
+    text-shadow: 2px 2px 3px #204d74;
+}
+
+.modal-info-close-button {
+    margin-right: 0px;
+    margin-top:-15px;
+}
+
+.modal-event-container{
+
+}

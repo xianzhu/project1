@@ -1,0 +1,128 @@
+.no-padding {
+    padding: 0 !important;
+}
+
+.dataTables_wrapper {
+    padding-bottom: 3px;
+}
+.modal-setting-button {
+    float: right;
+    background: transparent;
+    border: none;
+}
+
+.wmonitor-div-l {
+    width: 120px;
+    vertical-align: middle;
+    display: inline-table;
+    margin-left: 15px;
+    float: left;
+}
+.wmonitor-div-r {
+    position:relative;
+    width: calc(100% - 155px);
+    margin-right:15px;
+    float: left;
+}
+.wmonitor-div-c {
+    width: calc(100% - 30px);
+    vertical-align: middle;
+    display: inline-table;
+    margin-left:15px;
+    margin-right:15px;
+}
+.wmonitor-div-table{
+    margin-left:15px;
+    margin-right:20px;
+    border-left:1px solid #ccc;
+    border-right:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+}
+
+.wmonitor-div-r input{
+    margin-right:3px;
+    width:100%;
+    position:relative;
+}
+.wmonitor-div-r > i{
+    position:absolute;
+    font-size:18px;
+    top:5px;
+    right:5px;
+}
+.form-group-m{
+    font-size:14px;
+    margin-left:10px;
+    margin-right:10px;
+}
+#monitor_result_table_wrapper .dataTables_paginate{
+    padding-right:10px;
+}
+select{
+    padding:2px;
+}
+.hr-line-content{
+    border-bottom: 1px solid rgba(139, 138, 139,0.3);
+    color: rgba(100, 100, 100,0.8);
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.modal-container-setting{
+    margin: 20px auto;
+    padding: 1px 15px 20px 15px;
+    background-color: rgba(250, 250, 250, 0.9);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .8s ease;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.modal-container-trader{
+    width: 380px;
+}
+.modal-container-cv{
+   width: 270px;
+}
+.modal-container-monitor{
+    width:480px;
+}
+
+.modal-monitor-close-button{
+    margin-right: -15px;
+    margin-top: 0px;
+    float: right;
+    background: transparent;
+    border: none;
+    position: relative;
+}
+.control-label-trader,.control-label-cv,.control-label-monitor{
+    width:60px;
+    padding-top:0px;
+}
+.control-select-trader,.control-select-cv,.control-select-monitor,.control-input-selected-monitor{
+    font-size: 14px;
+    width: calc(100% - 65px);
+    padding:3px 2px;
+}
+.modal-wrapper-lg{
+    /*display: table-cell;*/
+    vertical-align: middle;
+    margin-top:10%;
+    max-width:600px;
+}
+
+@media (min-width: 992px) {
+    .modal-wrapper-lg{
+        /*display: table-cell;*/
+        vertical-align: middle;
+        margin-top:4%;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-wrapper-lg{
+        vertical-align: middle;
+    }
+}
+

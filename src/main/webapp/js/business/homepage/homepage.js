@@ -1,504 +1,791 @@
 /**
- * Created by a88u on 2016/10/12.
+ * Created by a88u on 2017/6/19.
  */
-var v_homepageModel=new Vue({
-    el:"#v-homepageModel",
-    data:{
-        basicInfo:{}, // 基本信息
-        homeNews:[], // 新闻地图
-        feedbacks:[], // 咨询反馈
-        report:[], // 研究报告
-        //cvReport:[], // 行业分析
-        postProject:[], // 项目推荐
-        newsFilterKey:"", // 新闻搜索
-        newsPage:0,
-        newsEnd:false,
-        newsOrder:1,
-        reportFilterKey:"", // 报告搜索
-        reportPage:0,
-        reportEnd:false,
-        //cvReportPage:0,
-        //cvReportEnd:false,
-        currentRptSelect:1,
-        statData:{
-            report:{},
-            ent:{},
-            media:{},
-            event:{}
-        }, // 统计数据
-        monitorShow:false, // 暂时拿掉
-        monitorData:{}, // 监控数据
-        monitorFreq:1
+menuList.homepage.isActive = true;
+
+var EventType = {
+    invest: "invest",
+    exit: "exit"
+}
+
+var v_homepageModel = new Vue({
+    el: "#v-homepageModel",
+    data: {
+        statOrgData: {total: 12345, current: 345},
+        statEventData: {total: 23345, current: 645},
+        statMergeData: {total: 35345, current: 322},
+        statFundData: {total: 52345, current: 845},
+
+        projDashData: {total: 0, current: 0},
+        companyDashData: {total: 0, current: 0},
+        reportDashData: {total: 0, current: 0},
+        elasticDashData: {total: 0, current: 0},
+
+        newsList: [], // 新闻列表
+        eventPage: 0, // 事件页
+        eventEnd: false,
+        eventList: [] // 事件列表
     },
-    methods:{
-        openPdfOnline:function(path){
-            openFilesOnline(path);
+    methods: {
+        openNews: function (url) {
+            sendMonitor({url: url});
         },
-        openNews:function(url){
-            sendMonitor({url:url});
-        },
-        monitorChange:function(value){
-            //console.log(this.monitorFreq);
-            this.monitorFreq=value;
-            //console.log(this.monitorFreq);
-            refreshChart(value);
-        },
-        gotoEntCompany:function(id){ // 项目推荐跳转的一定是非上市公司
-            console.log(id);
-            gotoCompanyPage("companyBasic",id,2);
-        },
-        pageControlFilter:function(value,type){
-            //console.log(value,", ",this.newsPage,",",this.isEnd);
-            var page=0;
-            var isEnd=false;
-
-            if(type==1){
-                page=this.newsPage;
-                isEnd=this.newsEnd;
-                //console.log(isEnd);
-            }else if(type==2){
-                page=this.reportPage;
-                isEnd=this.reportEnd;
-            }
-            //else if(type==3){
-            //    //page=this.cvReportPage;
-            //    //isEnd=this.cvReportEnd;
-            //}
-
-            if(value==0){
-                //console.log('上:',type,page!=0);
-                return page!=0;
-            }else{
-                //console.log('下:',type,!isEnd);
-                return !isEnd;
+        eventPageControlFilter: function (value) {
+            if (value == 0) {
+                return this.$data.eventPage != 0;
+            } else {
+                return !this.$data.eventEnd;
             }
         },
-        changePage:function(value,type){
-            if(type==1){ // 新闻
-                if(value==0){
-                    this.newsPage--;
-                }else{
-                    this.newsPage++;
-                }
-                getSubNewsPage(this.newsFilterKey,this.newsPage,this.newsOrder);
-            }else if(type==2){ // 研究报告
-                if(value==0){
-                    this.reportPage--;
-                }else{
-                    this.reportPage++;
-                }
-                getSubReportPage(this.reportFilterKey,this.reportPage,this.currentRptSelect);
+        changeEventPage: function (value) {
+            if (value == 0) {
+                this.$data.eventPage--;
+            } else {
+                this.$data.eventPage++;
             }
-            //else if(type==3){ // 行业分析
-            //    if(value==0){
-            //        this.cvReportPage--;
-            //    }else{
-            //        this.cvReportPage++;
-            //    }
-            //    getSubReportPage(this.reportFilterKey,this.cvReportPage,2);
-            //}
-
         },
-        changeOrder:function(){
-            if(this.newsOrder==2){
-                this.newsOrder=1;
-            }else{
-                this.newsOrder=2;
-            }
-            this.newsPage=0;
-            getSubNewsPage(this.newsFilterKey,this.newsPage,this.newsOrder);
-        },
-        changeRptSelect:function(value){
-            this.currentRptSelect=value;
-            console.log("change: ",this.currentRptSelect);
-            this.reportPage=0;
-            //this.cvReportPage=0;
-            getSubReportPage(this.reportFilterKey,0,value);
+        getEventDetail: function (title, type,ptype) {
+            getEventByTitle(title, type,ptype);
         }
     },
-    filters:{
-        currentPageFilter:function(value){
-            var p=value+1;
-            return "第"+p+"页";
-        },
-        orderStringFilter:function(value){
-            //console.log("order:", value);
-            return value==1? "时间排序":"相关性排序";
-        },
-        reportUrlFilter:function(value){
-            return value;
-        },
-        formatFilter:function(value){
-            if(typeof value=="undefined"){
-                return '--';
+    filters: {
+        getNewsShortStrFilter: function (value) {
+            if (value && value.toLowerCase() != "null") {
+                return getSubString(value, 50);
+            } else {
+                return "";
             }
-            //return toRateFormat(value,2);
-            return value;
         },
-        amountFormatFilter:function(value) {
-            if(typeof value=="undefined"){
-                return '--';
-            }
-            return toAmountFormat(value, 0,'');
-        },
-        getShortStrFilter:function(value){
-            var result=value;
-          if(value&&value.length>100){
-              result=result.substr(0,100)+"...";
-          }
-            return result;
-        },
-        checkEmptyFilter:function(value){
-            var result=true;
-            if(value&&value.length>0){
-                result=false;
-            }
-            return result;
-        },
-        checkNotEmptyFilter:function(value){
-            var result=false;
-            if(value&&value.length>0){
-                result=true;
-            }
-            return result;
-        },
-        checkCrtRpFilter:function(value){
-            return value==this.currentRptSelect;
+        currentEventPageFilter: function (value) {
+            return '第' + (value + 1) + '页';
         }
+
     }
 });
 
-requestBasicInfo();
-getSubNewsPage("",0,0);
-getSubReportPage("",0,1);
+getNewsList();
+getRptData();
+getPanelData();
+getDashboardData();
+getEventBarData();
+getEventSubpage("");
 
-getStatData();
-requestProjectInfo();
-//refreshChart(1);  // 暂时拿掉
-
-//setInterval(getStatData,1000*60);
-
-//function changeRptSelect(value){
-//    console.log(v_homepageModel.$data.currentRptSelect);
-//    v_homepageModel.$data.currentRptSelect=value;
-//}
-
-// 综合查询
-function searchBarPress(event,value){
-    var event = event || window.event; // 为了兼容firefox没有全局event对象
-    if (event.keyCode == 13) { // 回车搜索
-        var key = value;
-        console.log("search key=#", key, "#");
-        if (key != "") {
-            //  执行搜索
-            gotoSearchPage('userSearch',key);
+var calendar;
+$(document).ready(function () {
+    setCalendar();
+});
+// 新闻
+function getNewsList() {
+    $.ajax({
+        url: commonUrls.homeNewsUrl,
+        type: "get",
+        data: {
+            from: 0,
+            count: commonPageNum.homeNewsList
+        },
+        dataType: "json",
+        success: function (res) {
+            if (res.status == "failure") {
+                console.log("failure:", res.message);
+            } else if (res.status == "timeout") {
+                console.log("timeout");
+            } else if (res.status == "success") {
+                var response = res;
+                v_homepageModel.$data.newsList = [];
+                // v_homepageModel.$data.newsList=response.list;
+                for (var i = 0; i < response.list.length && i < commonPageNum.homeNewsList; i++) {
+                    v_homepageModel.$data.newsList.push(response.list[i]);
+                }
+            }
+        },
+        fail: function (status) {
+            console.error("event id=", id, " error. status=", status);
+        },
+        statusCode: {
+            404: function () {
+                goTo404();
+            },
+            500: function () {
+                goTo500();
+            }
         }
-    }
+    });
 }
 
-// 请求项目推荐
-function requestProjectInfo(){
-    var url=commonUrls.homeProjectUrl;
-    v_homepageModel.$data.postProject=[];
+// 日历
+function setCalendar() {
+    var nw = $("#homemodule_news_ibox").width(), nh = getCalendarHeight(nw);
+    var date = new Date();
+    var y = date.getFullYear();
+    var m = date.getMonth();
+    // console.log(nw, nh);
     $.ajax({
-        url:url,
-        type:'post',
-        dataType:'json',
-        data:{},
+        url: commonUrls.homeCalendarUrl,
+        type: "get",
+        data: {},
+        dataType: "json",
         success: function (res) {
-            if(res.status=='failure'){
-                console.log("failure",res.message);
-            }else if(res.status=="timeout"){
+            if (res.status == "failure") {
+                console.log("failure:", res.message);
+            } else if (res.status == "timeout") {
                 console.log("timeout");
-                goToNotlogon();
-            }else if(res.status=='success') {
-                var response=res;
-                v_homepageModel.$data.postProject=response.projectList;
-                v_homepageModel.$nextTick(function(){
-                    initPopover();
+            } else if (res.status == "success") {
+                var response = res;
+                var calendarList = [],calendarobj={};
+
+for(var i=0;i<response.object.length;i++){
+    var item=response.object[i];
+    // console.log(item);
+    if(typeof calendarobj[item.time]=='undefined'){
+        calendarobj[item.time]={date:item.time,value:[{category:item.category,comment:item.comment,geo:item.geo,
+            name:item.name,orgCnShort:item.orgCnShort,type:item.type,url:item.url,domId:"accordion1"}]};
+    }else{
+        var domid="accordion"+calendarobj[item.time].value.length;
+        calendarobj[item.time].value.push({category:item.category,comment:item.comment,geo:item.geo,
+            name:item.name,orgCnShort:item.orgCnShort,type:item.type,url:item.url,domId:domid});
+    }
+}
+for(var key in calendarobj){
+    var citem=calendarobj[key];
+    calendarList.push({date:citem.date,value:citem.value});
+}
+
+                $('#calendar').calendar({
+                    width: nw,
+                    height: nh,
+                    data: calendarList,
+                    onSelected: function (view, date, data) {
+                        console.log(data);
+                        if (data) {
+                            showCalendarInfo(date.format('yyyy-mm-dd'), data);
+                        }
+                    }
                 });
             }
-        }
-    });
-}
-
-// 请求基本数据，项目推荐
-function requestBasicInfo(){
-    var url=commonUrls.homeBasicUrl;
-    $.ajax({
-        url:url,
-        type:'post',
-        dataType:'json',
-        data:{},
-        success: function (res) {
-            if(res.status=='failure'){
-                console.log("failure",res.message);
-            }else if(res.status=="timeout"){
-                console.log("timeout");
-                goToNotlogon();
-            }else if(res.status=='success') {
-                var response=res;
-
-                v_userModel.$data.organizeName=response.organizeName;
-                v_userModel.$data.newMessageNum=0;
+        },
+        fail: function (status) {
+            console.error("event id=", id, " error. status=", status);
+        },
+        statusCode: {
+            404: function () {
+                goTo404();
+            },
+            500: function () {
+                goTo500();
             }
         }
     });
 }
 
-// 监控数据--暂时不用 type=1:day  2:week  other:month
-function refreshChart(type){
-    $.ajax({
-        url: commonUrls.homeBasicMonitorUrl,              //请求地址
-        type: "POST",                            //请求方式
-        data: { //请求参数
-            type:type
+function showCalendarInfo(header,data) {
+    var cListData=[];
+    for(var key in data){
+        var kitem=data[key];
+        cListData.push({domId:"#"+kitem.domId,domid:kitem.domId,category:kitem.category,
+            comment:kitem.comment,geo:kitem.geo,name:kitem.name,orgCnShort:kitem.orgCnShort,
+            type:kitem.type,url:kitem.url});
+    }
+// console.log(cListData);
+    modal_mask_info.$data.header = header;
+    modal_mask_info.$data.showModal = true;
+    modal_mask_info.$data.information=cListData;
+    modal_mask_info.$nextTick(function () {
+        bindCalendarItem();
+    });
+}
+
+function showCalendarInfo_old(header, data) {
+    var dom = $("#mask_modal_body");
+    var DT_ELE_CLASS='class="accordion-title accordionTitle js-accordionTrigger" aria-expanded="false" ',
+        DD_ELE_CLASS='class="accordion-content accordionItem is-collapsed" aria-hidden="true"'
+    var DT_ELEMENT='<dt><a href="#{domId}" aria-controls="{domId}" '+DT_ELE_CLASS+'>{name}</a></dt>',
+        DD_ELEMENT='<dd '+DD_ELE_CLASS+' id="{domId}"><p>{comment}</p>';
+    var cdata = "<dl>";
+
+    for(var key in data){
+        var kitem=data[key];
+        var dt_element='<dt><a href="#'+kitem.domId+'" aria-controls="'+kitem.domId+'" '+DT_ELE_CLASS+'>'+kitem.name+'</a></dt>';
+        var dd_element='<dd '+DD_ELE_CLASS+' id="'+kitem.domId+'"><p>'+kitem.comment+'</p></dd>';
+        cdata=cdata+dt_element+dd_element;
+    }
+    var chtml=cdata+"</dl>"
+    dom.html(chtml);
+    bindCalendarItem();
+    modal_mask_info.$data.header = header;
+    modal_mask_info.$data.showModal = true;
+}
+
+var modal_event_info = initModelEventVue();
+
+function getCalendarHeight(value) {
+    var nh, vh = value * 0.618;
+    if (vh < 168) {
+        nh = 168;
+    } else if (vh < 200) {
+        nh = vh;
+    } else {
+        nh = 200;
+    }
+    return nh;
+}
+
+function initModelEventVue() {
+    v_model_event_info = new Vue({
+        el: "#v-model-event-info",
+        data: {
+            showModal: false,
+            isInvest: true,
+            isExit: false,
+            title: "", // 标题
+            entName: "", // 标的公司
+            type: "", // 类型（轮次）
+            desc: "", // 简介
+            iList: [], // 投资相关方信息
+            eList: [] // 退出相关方信息
         },
+        methods: {
+            closeEventDetail: function () {
+                this.$data.showModal = false;
+            }
+        },
+        filters: {
+            formatEmptyFilter: function (value) {
+                var result = "--";
+                if (value && value != "") {
+                    result = value;
+                }
+                return result;
+            }
+        }
+    });
+    return v_model_event_info;
+}
+// 一级市场投资者信心指数--
+function getRptData() {
+    $.ajax({
+        url: commonUrls.homepageRptDataUrl,              //请求地址
+        type: "POST",                            //请求方式
+        data: {},
         dataType: "json",
         success: function (res) {
-            if(res.status=='failure'){
-                //goToLoginout();
-                console.log("failure",res.message);
-            }else if(res.status=="timeout"){
+            if (res.status == 'failure') {
+                console.log("failure", res.message);
+            } else if (res.status == "timeout") {
                 console.log("timeout");
                 goToNotlogon();
-            }else if(res.status=='success') {
-                var response = res.charts;
-                var charts=[];
-                drawChart(type,charts);
+            } else if (res.status == 'success') {
+                var response = res;
+                showRptEcharts(response.trend, "orgInvestChart");
             }
         },
         fail: function (status) {
             console.error("event id=", id, " error. status=", status);
         },
         statusCode: {
-            404: function() {
+            404: function () {
                 goTo404();
             },
-            500:function(){
+            500: function () {
                 goTo500();
             }
         }
     });
 }
-
-// 搜索新闻
-function getSubNewsPage(key,page,order){
-    v_homepageModel.$data.homeNews=[];
-
-    var from=page*commonPageNum.userSearchNews;
-    v_homepageModel.$data.newsEnd=true;
-
-    $.ajax({
-        url: commonUrls.homeBasicNewsUrl,              //请求地址
-        type: "POST",                            //请求方式
-        data: { //请求参数
-            key:key,
-            order:order,
-            from:from
-        },
-        dataType: "json",
-        success: function (res) {
-            if(res.status=="failure"){
-                console.log("failure",res.message);
-            }else if(res.status=="timeout"){
-                console.log("timeout");
-                goToNotlogon();
-            }else if(res.status=="success") {
-                v_homepageModel.$data.homeNews = res.list;
-                if (v_homepageModel.$data.homeNews.length == 0) {
-                    v_homepageModel.$data.newsEnd = true;
-                } else {
-                    v_homepageModel.$data.newsEnd = false;
-                }
-            }
-        },
-        fail: function (status) {
-            console.error("error. status=", status);
-        },
-        statusCode: {
-/*            404: function() {
-                goTo404();
-            },
-            500:function(){
-                goTo500();
-            }*/
-        }
-    });
-}
-
-// 搜索报告
-function getSubReportPage(key,page,rtype){
-    var from=0;
-    var type="";
-    if(rtype==0){
-        type="all";
-        from=0;
-    }else if(rtype==1){
-        type="trader";
-        from=page*commonPageNum.homeReport;
-    }else if(rtype==2){
-        type="cv";
-        from=page*commonPageNum.homeCvReport;
-    }
-    v_homepageModel.$data.report=[];
-    $.ajax({
-        url: commonUrls.homeBasicReportUrl,              //请求地址
-        type: "POST",                            //请求方式
-        data: { //请求参数
-            key:key,
-            from:from,
-            type:type
-        },
-        dataType: "json",
-        success: function (res) {
-            if(res.status=='failure'){
-                //goToLoginout();
-                console.log("failure: ",res.message);
-            }else if(res.status=="timeout"){
-                console.log("timeout");
-                goToNotlogon();
-            }else if(res.status=='success') {
-                //console.log("send ajax success");
-                var response=res;
-                if(rtype==1){ // all 或 研究报告
-                    v_homepageModel.$data.report=response.trader_report_list;
-                    if(v_homepageModel.$data.report.length==0){
-                        v_homepageModel.$data.reportEnd=true;
-                    }else{
-                        v_homepageModel.$data.reportEnd=false;
-                    }
-                }
-                if(rtype==2){ // all 或 行业分析
-                    v_homepageModel.$data.report=response.cv_report_list;
-                    if(v_homepageModel.$data.report.length==0){
-                        v_homepageModel.$data.reportEnd=true;
-                    }else{
-                        v_homepageModel.$data.reportEnd=false;
-                    }
-                    console.log()
-                }
-            }
-        },
-        fail: function (status) {
-            console.error("error. status=", status);
-        },
-        statusCode: {
-            404: function() {
-                goTo404();
-            },
-            500:function(){
-                goTo500();
-            }
-        }
-    });
-}
-
-//// 统计数据
-function getStatData(){ // 暂时写死
-    var results = {
-        "media": {"itemName": "media", "total": 406650, "update": 1105},
-        "report": {"itemName": "report", "total": 15874, "update": 345},
-        "ent": {"itemName": "ent", "total": 1576206, "update": 373},
-        "event": {"itemName": "event", "total": 55872, "update": 130}
-    };
-    v_homepageModel.$data.statData=results;
-}
-
 // 统计数据
-function getStatData_ok(){
+function getPanelData() {
     $.ajax({
-        url: commonUrls.homeBasicStatUrl,              //请求地址
+        url: commonUrls.homepagePanelDataUrl,              //请求地址
         type: "POST",                            //请求方式
         data: {},
         dataType: "json",
         success: function (res) {
-            if(res.status=='failure'){
-                console.log("failure:",res.message);
-            }else if(res.status=="timeout"){
+            if (res.status == 'failure') {
+                console.log("failure", res.message);
+            } else if (res.status == "timeout") {
                 console.log("timeout");
-            }else if(res.status=='success') {
-                var response=res;
-                v_homepageModel.$data.statData=response.results;
+                goToNotlogon();
+            } else if (res.status == 'success') {
+                var response = res;
+                var orgPanelData={legendData:[],orgData:[]},
+                    eventPanelData={durData:[],exitData:[],investData:[],sum:0},
+                    mergePanelData={durData:[],proTransfer:[],sharePurchase:[],capIncrease:[],investment:[]},
+                    fundPanelData={durData:[],stockFund:[],startFund:[]};
+
+                for(var i=0;i<response.trend.length;i++){
+                    var item=response.trend[i];
+                    if(i==0){
+                        orgPanelData.legendData.push("私募");
+                        orgPanelData.legendData.push("券商");
+                        orgPanelData.legendData.push("资管");
+                        orgPanelData.legendData.push("信托");
+                        orgPanelData.legendData.push("银行");
+                        orgPanelData.legendData.push("保险");
+
+                        orgPanelData.orgData.push(item.pe);
+                        orgPanelData.orgData.push(item.broker);
+                        orgPanelData.orgData.push(item.am);
+                        orgPanelData.orgData.push(item.trust);
+                        orgPanelData.orgData.push(item.bank);
+                        orgPanelData.orgData.push(item.insurance);
+                    }
+
+                    eventPanelData.durData.unshift(item.statDate);
+                    eventPanelData.exitData.unshift(-item.exitEvents);
+                    eventPanelData.investData.unshift(item.investEvents);
+                    if(eventPanelData.sum<item.exitEvents+item.investEvents){
+                        eventPanelData.sum=item.exitEvents+item.investEvents;
+                    }
+
+                    mergePanelData.durData.unshift(item.statDate);
+                    mergePanelData.proTransfer.unshift(item.proTransfer);
+                    mergePanelData.sharePurchase.unshift(item.sharePurchase);
+                    mergePanelData.capIncrease.unshift(item.capIncrease);
+                    mergePanelData.investment.unshift(item.investment);
+
+                    fundPanelData.durData.unshift(item.statDate);
+                    fundPanelData.stockFund.unshift(item.stockFund);
+                    fundPanelData.startFund.unshift(item.startFund);
+                }
+
+                showOrgPanelEcharts(orgPanelData, "org_panel_Chart"); // 机构调研
+                showEventPanelEcharts(eventPanelData, "event_panel_Chart"); // 投退事件
+                showMergePanelEcharts(mergePanelData, "merge_panel_Chart"); // 并购事件
+                showFundPanelEcharts(fundPanelData, "fund_panel_Chart"); // 基金备案
             }
         },
         fail: function (status) {
             console.error("event id=", id, " error. status=", status);
         },
         statusCode: {
-            404: function() {
+            404: function () {
                 goTo404();
             },
-            500:function(){
+            500: function () {
                 goTo500();
             }
         }
     });
 }
-
-/*function getStatData(){
+// 仪表盘数据
+function getDashboardData() {
     $.ajax({
-        url: commonUrls.homeBasicStatUrl,              //请求地址
+        url: commonUrls.homepageDashDataUrl,              //请求地址
         type: "POST",                            //请求方式
         data: {},
         dataType: "json",
         success: function (res) {
-            if(res.status=='failure'){
-                console.log("failure:",res.message);
-            }else if(res.status=="timeout"){
+            if (res.status == 'failure') {
+                console.log("failure", res.message);
+            } else if (res.status == "timeout") {
                 console.log("timeout");
-            }else if(res.status=='success') {
-                var response=res;
-                v_homepageModel.$data.statData=response.results;
+                goToNotlogon();
+            } else if (res.status == 'success') {
+                var response = res;
+
+                var dashP={count:0,statMax:0,statMin:0,statMedia:0},
+                    dashC={count:0,statMax:0,statMin:0,statMedia:0},
+                    dashR={count:0,statMax:0,statMin:0,statMedia:0},
+                    dashE={count:0,statMax:0,statMin:0,statMedia:0};
+                for(var i=0;i<response.count.length;i++) {
+                    var item = response.count[i];
+                    if (item.name == "企业") {
+                        dashC = item;
+                        v_homepageModel.$data.companyDashData = {
+                            current: item.count, total: item.statMax
+                        };
+                    } else if (item.name == "报告") {
+                        dashR = item;
+                        v_homepageModel.$data.reportDashData = {
+                            current: item.count, total: item.statMax
+                        };
+                    } else if (item.name == "情报") {
+                        dashE = item;
+                        v_homepageModel.$data.elasticDashData = {
+                            current: item.count, total: item.statMax
+                        };
+                    } else if (item.name == "项目") {
+                        dashP = item;
+                        v_homepageModel.$data.projDashData = {
+                            current: item.count, total: item.statMax
+                        };
+                    }
+                }
+
+                showProjDashEcharts(dashP, "project_dashboard_chart");
+                showCompanyDashEcharts(dashC, "company_dashboard_chart");
+                showReportDashEcharts(dashR, "report_dashboard_chart");
+                showElasticDashEcharts(dashE, "elastic_dashboard_chart");
             }
         },
         fail: function (status) {
             console.error("event id=", id, " error. status=", status);
         },
         statusCode: {
-            404: function() {
+            404: function () {
                 goTo404();
             },
-            500:function(){
+            500: function () {
                 goTo500();
             }
         }
     });
-}*/
+}
+// 今日事件饼图、柱状图
+function getEventBarData() { // 今日资本事件柱状图、饼图
+    var colors=[
+        '#99cccc',
+        '#6699cc',
+        '#669999',
+        '#669966',
+        '#99cc99',
+        '#666699',
+        '#9966cc',
+        '#996699',
 
-function drawChart(type,data){
-    dataset1[0].data=data2;
-    dataset1[1].data=data3;
+        // 'rgba(141, 111, 108, 1)',  //  '#6f5553',
+        // 'rgba(246,165,81,1)',
+        // 'rgba(39, 114, 123, 1)', // '#27727B',
+        // 'rgba(82,142,149,1)' , //   '#7fafd4',
+        // 'rgba(127, 175, 212, 1)', // '#e2bbff',
+        // 'rgba(136, 166, 86, 1)', //  '#7eb00a',
+    ];
+    $.ajax({
+        url: commonUrls.homepageBarDataUrl,              //请求地址
+        type: "POST",                            //请求方式
+        data: {},
+        dataType: "json",
+        success: function (res) {
+            if (res.status == 'failure') {
+                console.log("failure", res.message);
+            } else if (res.status == "timeout") {
+                console.log("timeout");
+                goToNotlogon();
+            } else if (res.status == 'success') {
+                var response = res;
+                var pieData={eventOneData:[],eventTwoData:[],color:[]},
+                    barData={durData:[],invEarly:[],invMiddle:[],invLate:[],invOther:[],exitOne:[],exitTwo:[]};
+                for(var i=0;i<response.event1.length;i++){
+                    var item=response.event1[i];
+                    if(i==0){
+                        if(item.investEarly!=0){
+                            pieData.color.push('rgba(120,164,135,1)');
+                            pieData.eventOneData.push({name:"早期投资",value:item.investEarly,type:"invest",
+                                itemStyle:{normal:{color:'rgba(120,164,135,1)'}}
+                            });
+                        }
+                        if(item.investMiddle!=0){
+                            pieData.color.push('rgba(255,127,80,1)');
+                            pieData.eventOneData.push({name:"中期投资",value:item.investMiddle,type:"invest",
+                                itemStyle:{normal:{color:'rgba(255,127,80,1)'}}
+                            });
+                        }
+                        if(item.investLate!=0){
+                            pieData.color.push('rgba(135,206,250,1)');
+                            pieData.eventOneData.push({name:"后期投资",value:item.investLate,type:"invest",
+                                itemStyle:{normal:{color:'rgba(135,206,250,1)'}}
+                            });
+                        }
+                        if(item.investOther!=0){
+                            pieData.color.push('rgba(218,112,214,1)');
+                            pieData.eventOneData.push({name:"其他投资",value:item.investOther,type:"invest",
+                                itemStyle:{normal:{color:'rgba(218,112,214,1)'}}
+                            });
+                        }
+                        if(item.exitOne!=0){
+                            pieData.color.push('rgba(100,149,237,1)');
+                            pieData.eventOneData.push({name:"一级市场退出",value:item.exitOne,type:"exit",
+                                itemStyle:{normal:{color:'rgba(100,149,237,1)'}}
+                            });
+                        }
+                        if(item.exitTwo!=0){
+                            pieData.color.push('rgba(50,205,50,1)');
+                            pieData.eventOneData.push({name:"二级市场退出",value:item.exitTwo,type:"exit",
+                                itemStyle:{normal:{color:'rgba(50,205,50,1)'}}
+                            });
+                        }
+                    }
 
-    $.plot($("#monitor-chart-1"), dataset1, options1);
+                    barData.durData.unshift(item.countDate);
+                    barData.invEarly.unshift(item.investEarly);
+                    barData.invMiddle.unshift(item.investMiddle);
+                    barData.invLate.unshift(item.investLate);
+                    barData.invOther.unshift(item.investOther);
+                    barData.exitOne.unshift(item.exitOne);
+                    barData.exitTwo.unshift(item.exitTwo);
+                }
 
-    dataset2[0].data=data2;
-    dataset2[1].data=data3;
+                for(var j=0;j<response.event2.length;j++){
+                    var item=response.event2[j];
+                    pieData.eventTwoData.push({name:item.typeName,value:item.count,type:item.typeName,
+                        itemStyle:{normal:{
+                            color:colors[j],
+                            label:{textStyle:{color:colors[j]}},
+                            labelLine:{lineStyle:{color:colors[j]}}
+                        }}
+                    });
+                }
+                // showEventPieEcharts(pieData, "event_pie_charts");
+                // showEventBarEcharts(barData, "event_bar_charts");
+                showEventMixEcharts(pieData,barData,"event_mix_charts");
+            }
+        },
+        fail: function (status) {
+            console.error("event id=", id, " error. status=", status);
+        },
+        statusCode: {
+            404: function () {
+                goTo404();
+            },
+            500: function () {
+                goTo500();
+            }
+        }
+    });
+}
+// 今日事件列表
+function getEventSubpage(type) {
+    $.ajax({
+        url: commonUrls.homeEventpageUrl,              //请求地址
+        type: "POST",                            //请求方式
+        data: {
+            from: v_homepageModel.$data.eventPage * commonPageNum.homeEventList,
+            type: type,
+            count: commonPageNum.homeEventList
+        },
+        dataType: "json",
+        success: function (res) {
+            if (res.status == 'failure') {
+                console.log("failure", res.message);
+            } else if (res.status == "timeout") {
+                console.log("timeout");
+                goToNotlogon();
+            } else if (res.status == 'success') {
+                var response = res;
+                var elist = [];
+                if (response.investEventList) {
+                    console.log("get invest event list");
+                    if (response.investEventList && response.investEventList.length > 0) {
+                        for (var i = 0; i < response.investEventList.length && i < commonPageNum.homeEventList; i++) {
+                            var item = response.investEventList[i];
+                            elist.push({
+                                eventClass: item.investType,
+                                eventTitle: item.eventTitle,
+                                entCnName: item.entCnName,
+                                eventType:"invest"
+                            });
+                        }
+                    }
+                } else {
+                    console.log("get exit event list");
+                    if (response.exitEventList && response.exitEventList.length > 0) {
+                        for (var i = 0; i < response.exitEventList.length && i < commonPageNum.homeEventList; i++) {
+                            var item = response.exitEventList[i];
+                            elist.push({
+                                eventClass: item.exitType,
+                                eventTitle: item.eventTitle,
+                                entCnName: item.entCnName,
+                                eventType:"exit"
+                            });
+                        }
+                    }
+                }
 
-    $.plot($("#monitor-chart-2"), dataset2, options2);
+                v_homepageModel.$data.eventList = elist;
+                if (v_homepageModel.$data.eventList && v_homepageModel.$data.eventList.length == commonPageNum.homeEventList) {
+                    v_homepageModel.$data.eventEnd = false;
+                } else {
+                    v_homepageModel.$data.eventEnd = true;
+                }
+            }
+        },
+        fail: function (status) {
+            console.error("event id=", id, " error. status=", status);
+        },
+        statusCode: {
+            404: function () {
+                goTo404();
+            },
+            500: function () {
+                goTo500();
+            }
+        }
+    });
 }
 
-function doFilterSearch(event,type){
-    var event = event || window.event; // 为了兼容firefox没有全局event对象
-    if (event.keyCode == 13) { // 回车搜索
-        var key = "";
-
-        if(type==1){
-            key = v_homepageModel.$data.newsFilterKey;
-            console.log("search key=",key);
-            v_homepageModel.$data.newsPage=0;
-            v_homepageModel.$data.newsOrder=1;
-            getSubNewsPage(key,0,1);
-        }else if(type==2){
-            key = v_homepageModel.$data.reportFilterKey;
-            console.log("search key=",key);
-            v_homepageModel.$data.reportPage=0;
-            //this.cvReportPage=0;
-            v_homepageModel.$data.currentRptSelect=1;
-            getSubReportPage(key,0,1);
+// 查看今日资本事件详情
+function getEventByTitle(title, type,ptype) {
+    console.log(title, type);
+    title = "每日优鲜获注资"; // for test
+    $.ajax({
+        url: commonUrls.homeEventDetailUrl,              //请求地址
+        type: "POST",                            //请求方式
+        data: { //请求参数
+            event: title,
+            type: type // invest exit
+        },
+        dataType: "json",
+        success: function (res) {
+            if (res.status == "failure") {
+                console.log("failure", res.message);
+            } else if (res.status == "timeout") {
+                console.log("timeout");
+                goToNotlogon();
+            } else if (res.status == "success") {
+                if (res.eventsList.length > 0) {
+                    var eItem = res.eventsList[0];
+                    modal_event_info.$data.title = eItem.eventTitle; // 标题
+                    modal_event_info.$data.entName = eItem.entCnName; // 标的公司
+                    modal_event_info.$data.type = eItem.eventType; // 类型（轮次）
+                    modal_event_info.$data.desc = eItem.eventDesc; // 简介
+                } else { // 没有对应的内容，不显示（数据不同步或数据错误，暂定不显示）
+                    return;
+                }
+                if (ptype == EventType.invest) {
+                    modal_event_info.$data.isInvest = true;
+                    modal_event_info.$data.isExit = false;
+                    $("#invest_data_table").DataTable().destroy();
+                    modal_event_info.$data.iList = res.eventsList;
+                    modal_event_info.$nextTick(function () {
+                        bindSimpleDataTable("invest_data_table", commonPageNum.homepageInvest);
+                        $("#v-model-mask-info").css("display", "block");
+                    });
+                } else { // EventType.exit
+                    modal_event_info.$data.isInvest = false;
+                    modal_event_info.$data.isExit = true;
+                    $("#exit_data_table").DataTable().destroy();
+                    modal_event_info.$data.eList = res.eventsList;
+                    modal_event_info.$nextTick(function () {
+                        console.log(".......");
+                        bindSimpleDataTable("exit_data_table", commonPageNum.homepageExit);
+                        $("#v-model-mask-info").css("display", "block");
+                    });
+                }
+                modal_event_info.$data.showModal = true;
+            }
+        },
+        fail: function (status) {
+            console.error("error. status=", status);
+        },
+        statusCode: {
+            /*            404: function() {
+             goTo404();
+             },
+             500:function(){
+             goTo500();
+             }*/
         }
+    });
+
+}
+
+function resizeDetailMask() {
+    var height = $(window).height();
+    var mheight = height - 121;
+    // console.log(height, mheight);
+    $(".modal-event-body").css('maxHeight', mheight);
+}
+
+$(document).ready(function () {
+    resizeDetailMask();
+});
+
+$(window).resize(function () {
+    var nw = $("#homemodule_news_ibox").width();
+    var nh = getCalendarHeight(nw);
+    console.log("resize:", nw, nh);
+    $('#calendar').calendar('autoResize', nw, nh);
+    resizeDetailMask();
+
+    // getUserMonitorList();
+});
+
+function bindCalendarItem(){
+    var d = document,
+        accordionToggles = d.querySelectorAll('#mask_modal_body .js-accordionTrigger'),
+        setAria,
+        setAccordionAria,
+        switchAccordion,
+        touchSupported = ('ontouchstart' in window),
+        pointerSupported = ('pointerdown' in window);
+    console.log(accordionToggles);
+    skipClickDelay = function(e){
+        e.preventDefault();
+        e.target.click();
+    }
+
+    setAriaAttr = function(el, ariaType, newProperty){
+        el.setAttribute(ariaType, newProperty);
+    };
+    setAccordionAria = function(el1, el2, expanded){
+        switch(expanded) {
+            case "true":
+                setAriaAttr(el1, 'aria-expanded', 'true');
+                setAriaAttr(el2, 'aria-hidden', 'false');
+                break;
+            case "false":
+                setAriaAttr(el1, 'aria-expanded', 'false');
+                setAriaAttr(el2, 'aria-hidden', 'true');
+                break;
+            default:
+                break;
+        }
+    };
+//function
+    switchAccordion = function(e) {
+        console.log("triggered");
+        e.preventDefault();
+        closeAllAccordion(e);
+        var thisAnswer = e.target.parentNode.nextElementSibling;
+        var thisQuestion = e.target;
+        if(thisAnswer.classList.contains('is-collapsed')) {
+            setAccordionAria(thisQuestion, thisAnswer, 'true');
+        } else {
+            setAccordionAria(thisQuestion, thisAnswer, 'false');
+        }
+        thisQuestion.classList.toggle('is-collapsed');
+        thisQuestion.classList.toggle('is-expanded');
+        thisAnswer.classList.toggle('is-collapsed');
+        thisAnswer.classList.toggle('is-expanded');
+
+        thisAnswer.classList.toggle('animateIn');
+    };
+
+    closeAllAccordion=function(e){
+        var parent=e.target.parentNode.parentNode.parentNode;
+        var dtTargets=parent.querySelectorAll('dt a');
+        for(var i=0,len=dtTargets.length;i<len;i++){
+            var titem=dtTargets[i];
+            if(titem!=e.target){
+                var thisAnswer = titem.parentNode.nextElementSibling;
+                var thisQuestion = titem;
+                if(thisAnswer.classList.contains('is-collapsed')) {
+                    setAccordionAria(thisQuestion, thisAnswer, 'true');
+                } else {
+                    setAccordionAria(thisQuestion, thisAnswer, 'false');
+                }
+                thisQuestion.classList.add('is-collapsed');
+                thisQuestion.classList.remove('is-expanded');
+                thisAnswer.classList.add('is-collapsed');
+                thisAnswer.classList.remove('is-expanded');
+                thisAnswer.classList.remove('animateIn');
+            }
+        }
+    };
+    for (var i=0,len=accordionToggles.length; i<len; i++) {
+        if(touchSupported) {
+            accordionToggles[i].addEventListener('touchstart', skipClickDelay, false);
+        }
+        if(pointerSupported){
+            accordionToggles[i].addEventListener('pointerdown', skipClickDelay, false);
+        }
+        accordionToggles[i].addEventListener('click', switchAccordion, false);
     }
 }
+
+
+
+
+
 
 
 

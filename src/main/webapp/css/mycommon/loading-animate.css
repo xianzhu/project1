@@ -1,0 +1,30 @@
+.loading-animate{
+    position: absolute;
+    left: 50%;
+    top:35%;
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin: 0 0 0 -16px;
+    -webkit-animation: spin 0.75s infinite linear;
+    -moz-animation: spin 0.75s infinite linear;
+    -o-animation: spin 0.75s infinite linear;
+    animation: spin 0.75s infinite linear;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg);}
+    100% { -webkit-transform: rotate(360deg);}
+}
+@-moz-keyframes spin {
+    0% { -moz-transform: rotate(0deg);}
+    100% { -moz-transform: rotate(360deg);}
+}
+@-o-keyframes spin {
+    0% { -o-transform: rotate(0deg);}
+    100% { -o-transform: rotate(360deg);}
+}
+@keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}

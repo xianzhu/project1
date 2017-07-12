@@ -1,56 +1,16 @@
 /**
  * Created by a88u on 2016/10/23.
  */
-
-var v_companyDepthModel=new Vue({
-    el:"#v-companyDepthModel",
-    data: {
-        investCompany:[], // 投资企业
-        branchs:[], // 分支机构
-        //stockHolder:[],
-        perRelation:[], // 关联预测
-        //operaStat:[],
-
-        softCopyrightsList:[],// 软件著作权	ent_soft_copyrights
-        //copyrightsList:[], // 版权	ent_copyrights
-        patentList:[] // 专利 ent_patent
-    },
-    ready: function () {
-    },
-    methods: {
-        gotoCompany:function(id){
-            var params;
-            gotoCompanybyId(id);
-        }
-    },
-    filters: {
-    checkEmptyFilter:function(value){
-        //console.log(value);
-        var result=false;
-        if(value&&value!=null&&value.length>0){
-            result=true;
-        }
-        console.log(value,', ',result);
-        return result;
-    },
-        getShortStrFilter:function(value){
-            var result;
-            if(value&&value.length>60){
-                result=value.substr(0,60)+"...";
-            }
-            return result;
-        }
-    }
-});
-
 getDepthInfo();
+getReportInfo();
 
 function getDepthInfo(){
+    console.log("depth");
     $.ajax({
         url: commonUrls.companyDepthUrl,
         type: "POST",
         data: {
-            id:v_navModel.$data.id
+            id:cid
         },
         dataType: "json",
         success: function (res) {
@@ -68,22 +28,32 @@ function getDepthInfo(){
                 $("#softCopy_table").DataTable().destroy();
                 $("#patent_table").DataTable().destroy();
                 $("#relation_table").DataTable().destroy();
-                v_companyDepthModel.$data.investCompany=response.entInvestInfos; // Ͷ投资企业
-                v_companyDepthModel.$data.branchs=response.entBranchInfos; // 分支机构
-                //v_companyDepthModel.$data.stockHolder=response.entHolderInfos; // �ɶ�
-                v_companyDepthModel.$data.perRelation=response.entRelatedInfos; // 关联预测
-                //v_companyDepthModel.$data.operaStat=response.stock_onclick; // ��Ӫͳ��
+                v_companyInfoModel.$data.investCompany=response.entInvestInfos; // 投资企业
+                v_companyInfoModel.$data.branchs=response.entBranchInfos; // 分支机构
 
-                v_companyDepthModel.$data.softCopyrightsList=response.enSoftCopyrightsInfos; // 软件著作权
-                //v_companyDepthModel.$data.copyrightsList=response.entCopyrightsInfos; //
-                v_companyDepthModel.$data.patentList=response.entPatentInfos; // 专利
+                var relateList=[],flag=false;
+                if(response&&response.entRelatedInfos) {
+                    for (var i = 0; i < response.entRelatedInfos.length; i++) {
+                        var item = response.entRelatedInfos[i];
+                        if (flag) {
+                            relateList[relateList.length - 1].push(item);
+                        } else {
+                            relateList.push([item]);
+                        }
+                        flag = !flag;
+                    }
+                }
+                v_companyInfoModel.$data.perRelation=relateList;
+                v_companyInfoModel.$data.softCopyrightsList=response.enSoftCopyrightsInfos; // 软件著作权
+                v_companyInfoModel.$data.patentList=response.entPatentInfos; // 专利
 
-                v_companyDepthModel.$nextTick(function(){
-                    bindExportedDataTable("invest_table",10,"投资企业",{});
-                    bindExportedDataTable("branch_table",10,"分支机构",{});
-                    bindExportedDataTable("softCopy_table",10,"软件著作权",{});
-                    bindExportedDataTable("patent_table",10,"专利",{});
-                    bindExportedDataTable("relation_table",30,"关联预测",{});
+                v_companyInfoModel.$nextTick(function(){
+                    bindSimpleDataTable("invest_table",commonPageNum.companyInvest); // "投资企业",{});
+                    bindSimpleDataTable("branch_table",commonPageNum.companyBranch); // "分支机构",{});
+                    bindSimpleDataTable("softCopy_table",commonPageNum.companySoftCopy); // "软件著作权",{});
+                    bindSimpleDataTable("patent_table",commonPageNum.companyPatent); // "专利",{});
+                    bindSimpleDataTable("relation_table",commonPageNum.companyRelation); // "关联预测",{});
+                    v_companyInfoModel.$data.copyRightModule=1;
                 });
 
                 drawRadarChart(response.rptEntJudgeValue,"scoreSystem");
@@ -95,6 +65,55 @@ function getDepthInfo(){
         statusCode: {
             404: function() {
                 //goTo404();
+            },
+            500:function(){
+                goTo500();
+            }
+        }
+    });
+}
+
+function getReportInfo(){
+    $.ajax({
+        url: commonUrls.companyCreditUrl,
+        type: "POST",
+        data: {
+            id:cid
+        },
+        dataType: "json",
+        success: function (res) {
+            if(res.status=='failure'){
+                //goToLoginout();
+                console.log("failure",res.message);
+            }else if(res.status=="timeout"){
+                console.log("timeout");
+                goToNotlogon();
+            }else if(res.status=='success') {
+                var response = res;
+                console.log("response", response);
+                $("#law_table").DataTable().destroy();
+                $("#abnormal_table").DataTable().destroy();
+                $("#equity_table").DataTable().destroy();
+                $("#mortgages_table").DataTable().destroy();
+                v_companyInfoModel.$data.entLawList=response.entLawInfos;
+                v_companyInfoModel.$data.abnormalItemList=response.entAbnormalItemInfos;
+                v_companyInfoModel.$data.equityList=response.entEquityInfos;
+                v_companyInfoModel.$data.mortgagesList=response.entMortgagesInfos;
+                v_companyInfoModel.$nextTick(function () {
+                    bindSimpleDataTable("law_table",commonPageNum.companyLaw); // "法务",{});
+                    bindSimpleDataTable("abnormal_table",commonPageNum.companyAbnormal); // "经营异常",{});
+                    bindSimpleDataTable("equity_table",commonPageNum.companyEquity); // "股权质押",{});
+                    bindSimpleDataTable("mortgages_table",commonPageNum.companyMortgages); // "动产抵押",{});
+                    v_companyInfoModel.$data.lawModule=1;
+                });
+            }
+        },
+        fail: function (status) {
+            console.error("event id=", id, " error. status=", status);
+        },
+        statusCode: {
+            404: function() {
+                goTo404();
             },
             500:function(){
                 goTo500();

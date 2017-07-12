@@ -1,0 +1,2685 @@
+{
+  "stockXsbMatchInfo": null,
+  "searchResult": null,
+  "stockInstInvest": null,
+  "entMortgagesInfos": null,
+  "entBranchInfos": [
+    {
+      "bUuid": "-",
+      "bName": "平安银行股份有限公司信用卡中心（简称：平安银行信用卡中心）",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "曾宽扬"
+    },
+    {
+      "bUuid": "-",
+      "bName": "平安银行股份有限公司深圳人民桥支行（简称：平安银行深圳人民桥支行）",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "许治兰"
+    },
+    {
+      "bUuid": "-",
+      "bName": "平安银行股份有限公司深圳侨香支行（简称：平安银行深圳侨香支行）",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "曾丽丽"
+    },
+    {
+      "bUuid": "-",
+      "bName": "平安银行股份有限公司深圳华强支行（简称：平安银行深圳华强支行）",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "周密"
+    },
+    {
+      "bUuid": "-",
+      "bName": "平安银行股份有限公司深圳大冲支行（简称：平安银行深圳大冲支行）",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "王晓红"
+    },
+    {
+      "bUuid": "-",
+      "bName": "平安银行股份有限公司深圳德普沙井社区支行（简称：平安银行深圳德普沙井社区支行）",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "谢朝晖"
+    },
+    {
+      "bUuid": "-",
+      "bName": "平安银行股份有限公司深圳民乐支行（简称：平安银行深圳民乐支行）",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "朱胜杰"
+    },
+    {
+      "bUuid": "-",
+      "bName": "平安银行股份有限公司深圳江苏大厦支行（简称：平安银行深圳江苏大厦支行）",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "周安民"
+    },
+    {
+      "bUuid": "-",
+      "bName": "平安银行股份有限公司深圳田寮社区支行（简称：平安银行深圳田寮社区支行）",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "孙开兴"
+    },
+    {
+      "bUuid": "-",
+      "bName": "平安银行股份有限公司深圳科技园支行（简称：平安银行深圳科技园支行）",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "黄明富"
+    },
+    {
+      "bUuid": "-",
+      "bName": "平安银行股份有限公司深圳红树湾支行（简称：平安银行深圳红树湾支行）",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "杨涌杰"
+    },
+    {
+      "bUuid": "-",
+      "bName": "平安银行股份有限公司深圳鹭湖支行（简称：平安银行深圳鹭湖支行）",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "朱烈"
+    },
+    {
+      "bUuid": "02f0472e-fcc0-443e-b724-8b2dffdc403a",
+      "bName": "平安银行股份有限公司深圳福景支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "伍冬根"
+    },
+    {
+      "bUuid": "05866809-f5f0-403e-b1df-be2f085c0eeb",
+      "bName": "平安银行股份有限公司深圳岗厦支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "张新洁"
+    },
+    {
+      "bUuid": "0634ca9a-b9fa-487b-8b6d-7a1bb9b71746",
+      "bName": "深圳发展银行股份有限公司深圳华强支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "黄俊洪"
+    },
+    {
+      "bUuid": "07866663-95a6-4ae9-92ed-171fb78dd8e8",
+      "bName": "平安银行股份有限公司深圳平湖支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "邹振江"
+    },
+    {
+      "bUuid": "0a55fa1c-b826-434a-874d-eab753c52aa6",
+      "bName": "平安银行股份有限公司深圳龙岗义乌社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "陈平"
+    },
+    {
+      "bUuid": "0b228ced-a794-4de1-b046-ce06cff03eab",
+      "bName": "平安银行股份有限公司深圳海滨支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "张丽"
+    },
+    {
+      "bUuid": "0b28e21f-be1a-4096-addf-f47a141891e2",
+      "bName": "平安银行股份有限公司深圳蔚蓝海岸社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "王爱萍"
+    },
+    {
+      "bUuid": "0bd2a910-94d7-4aa4-8211-6e59c988ea6b",
+      "bName": "平安银行股份有限公司深圳蛇口支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "杨柳琴"
+    },
+    {
+      "bUuid": "0d4b4312-7bee-4bf6-a488-1a0f7326502c",
+      "bName": "平安银行股份有限公司深圳水贝支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "梅石"
+    },
+    {
+      "bUuid": "0d81277e-1135-4f55-aaf5-5eebc95a89be",
+      "bName": "平安银行股份有限公司深圳中心城支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "陈向红"
+    },
+    {
+      "bUuid": "0e2ad14a-b1ce-406c-9592-fd08c86cb1f1",
+      "bName": "平安银行股份有限公司深圳深职院支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "郭俊辰"
+    },
+    {
+      "bUuid": "0ff82b75-c851-4e27-ac36-6894a48815f5",
+      "bName": "平安银行股份有限公司深圳绿海湾支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "唐翔程"
+    },
+    {
+      "bUuid": "10091995-48f0-4d8f-8b27-eb40429598eb",
+      "bName": "平安银行股份有限公司深圳南海支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "邓清平"
+    },
+    {
+      "bUuid": "128c719d-0b1e-4441-9842-7e752497ede0",
+      "bName": "平安银行股份有限公司深圳西丽支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "郑志东"
+    },
+    {
+      "bUuid": "137a798a-7a03-482c-b074-e4025d939fa3",
+      "bName": "平安银行股份有限公司深圳白石洲支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "陈超"
+    },
+    {
+      "bUuid": "14930501-bf21-4e32-8bf1-f170f7f4401b",
+      "bName": "深圳发展银行股份有限公司深圳彩田支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "周萍"
+    },
+    {
+      "bUuid": "14f65e83-508e-4f81-894a-7dfc71a0f302",
+      "bName": "平安银行股份有限公司深圳龙华支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "海强"
+    },
+    {
+      "bUuid": "155af73e-2673-47da-9bf5-e85f57fcd177",
+      "bName": "平安银行股份有限公司深圳盐田支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "邹惠文"
+    },
+    {
+      "bUuid": "17616fe9-3f36-4f47-a4ee-bec94d970d73",
+      "bName": "平安银行股份有限公司深圳长城支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "巫海翔"
+    },
+    {
+      "bUuid": "1ab947bd-6d5f-4196-ba03-ad85044c51cc",
+      "bName": "深圳发展银行股份有限公司深圳景田支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "杨肃"
+    },
+    {
+      "bUuid": "1c2cb500-365a-4c81-adca-2fd4affadf92",
+      "bName": "平安银行股份有限公司深圳虹湾支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "皇甫庆军"
+    },
+    {
+      "bUuid": "1f437596-4727-4de9-bb5e-00d992d08b30",
+      "bName": "平安银行股份有限公司深圳南头支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "陈炜"
+    },
+    {
+      "bUuid": "21b2eaa0-98cb-42b8-87ed-4748dedd9b30",
+      "bName": "平安银行股份有限公司深圳中电支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "曾东萍"
+    },
+    {
+      "bUuid": "23e99a45-129f-4092-95eb-45665d665ea4",
+      "bName": "深圳发展银行股份有限公司总行营业部",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "杨志红"
+    },
+    {
+      "bUuid": "24a3b711-274f-46f4-a400-14c39abae55c",
+      "bName": "平安银行股份有限公司深圳富士康支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "朱胜杰"
+    },
+    {
+      "bUuid": "254c5e1c-d101-45a8-b9c0-07bec1160a0e",
+      "bName": "平安银行股份有限公司深圳梅龙支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "王琪"
+    },
+    {
+      "bUuid": "260b1667-6749-41ef-b452-def5c6c80f86",
+      "bName": "平安银行股份有限公司深圳大亚湾社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "李星翰"
+    },
+    {
+      "bUuid": "2889f9af-0e62-4957-8617-c73f74917d0a",
+      "bName": "平安银行股份有限公司深圳横岗支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "姆沙"
+    },
+    {
+      "bUuid": "293ee00a-4bc7-48d1-acfb-1708a3eb9a7e",
+      "bName": "平安银行股份有限公司深圳皇岗支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "陈晓施"
+    },
+    {
+      "bUuid": "2c3df470-3ba4-4653-82d3-2241312cb45d",
+      "bName": "深圳发展银行股份有限公司深圳华强南支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "梁萍"
+    },
+    {
+      "bUuid": "2d57a9de-d54e-45ba-ae16-a6c951223a19",
+      "bName": "平安银行股份有限公司深圳龙岗支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "万峰"
+    },
+    {
+      "bUuid": "2dff701d-57c8-4775-88c3-612762a89554",
+      "bName": "平安银行股份有限公司深圳华侨城支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "崔凯"
+    },
+    {
+      "bUuid": "2f4b84b9-90b5-4165-8be9-e305dae5ae3e",
+      "bName": "平安银行股份有限公司深圳车公庙支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "刘新宇"
+    },
+    {
+      "bUuid": "30dac890-9d6e-4c42-8387-dfcca54c6d34",
+      "bName": "平安银行股份有限公司深圳高新区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "曾伟基"
+    },
+    {
+      "bUuid": "324dfbba-816a-4a45-a48b-0ce138f7cf32",
+      "bName": "平安银行股份有限公司深圳桂园支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "魏岚"
+    },
+    {
+      "bUuid": "32513c04-9783-45b8-a850-f68de092c7a5",
+      "bName": "平安银行股份有限公司深圳宝安赛格社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "刘培东"
+    },
+    {
+      "bUuid": "32d1ecd6-cb81-4c92-99ee-0575e6cb4a94",
+      "bName": "平安银行股份有限公司深圳公明支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "孙开兴"
+    },
+    {
+      "bUuid": "376e0f77-9519-4dc7-9e6a-2e3b43d73124",
+      "bName": "平安银行股份有限公司深圳水围支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "张剑"
+    },
+    {
+      "bUuid": "37b1f0b1-3e03-42b4-b0e8-0bcc0666ffdc",
+      "bName": "平安银行股份有限公司深圳坪山新区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "叶玲"
+    },
+    {
+      "bUuid": "3c6baaaf-3b28-4c59-980d-1d32fd38e0cd",
+      "bName": "平安银行股份有限公司深圳大学城支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "郭土娟"
+    },
+    {
+      "bUuid": "411fe952-b287-42eb-bc4b-9440e2e3ea8d",
+      "bName": "深圳发展银行股份有限公司深圳站前支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "陈风华"
+    },
+    {
+      "bUuid": "41483982-9a79-4b9c-8170-5f5e40ab45e1",
+      "bName": "深圳发展银行股份有限公司深圳东园支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "林雁波"
+    },
+    {
+      "bUuid": "41ece628-289b-482f-8231-966e818e0d04",
+      "bName": "平安银行股份有限公司深圳卓越城支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "梅石"
+    },
+    {
+      "bUuid": "445bec06-2aa4-43aa-8300-0f1d13af53a0",
+      "bName": "平安银行股份有限公司深圳双龙支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "赵初阳"
+    },
+    {
+      "bUuid": "44b2f06d-f2db-41df-a482-42290b4afc16",
+      "bName": "平安银行股份有限公司深圳平安大厦支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "王浩"
+    },
+    {
+      "bUuid": "472c981e-0d7f-42ab-8794-7ce8aabc1152",
+      "bName": "平安银行股份有限公司深圳新世界支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "谭雯"
+    },
+    {
+      "bUuid": "475029e1-5c0f-4f4b-be1f-c13da4c3d17f",
+      "bName": "平安银行股份有限公司深圳时代金融支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "陈健华"
+    },
+    {
+      "bUuid": "47e18f07-b1d9-4a75-b72f-f41485394779",
+      "bName": "平安银行股份有限公司深圳布吉支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "廖平"
+    },
+    {
+      "bUuid": "483eba9a-32f0-447e-946c-a17ed10250ee",
+      "bName": "平安银行股份有限公司深圳碧海湾支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "刘培东"
+    },
+    {
+      "bUuid": "4e0ca2a1-f21c-45ea-85bd-508810663e95",
+      "bName": "平安银行股份有限公司深圳泰然支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "刘新宇"
+    },
+    {
+      "bUuid": "4ea48e52-47a6-43c5-9cd1-4df69af4fb1f",
+      "bName": "平安银行股份有限公司深圳南头城支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "李聪"
+    },
+    {
+      "bUuid": "4f7c1dc0-5b81-4712-80ea-d6cd84f8368c",
+      "bName": "平安银行股份有限公司深圳沙头角支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "吕畅超"
+    },
+    {
+      "bUuid": "5404e24a-d733-47c9-9237-59074df17edc",
+      "bName": "平安银行股份有限公司深圳蔡屋围支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "邓淑莹"
+    },
+    {
+      "bUuid": "56dcb1f2-7ebd-428c-bbd4-19cdc6b27bbc",
+      "bName": "平安银行股份有限公司深圳南山支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "汤涛"
+    },
+    {
+      "bUuid": "5726aede-2c66-43f0-b110-080a81628266",
+      "bName": "平安银行股份有限公司深圳水贝珠宝支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "荆莉"
+    },
+    {
+      "bUuid": "58268008-13b7-442b-b87d-104d46954e4a",
+      "bName": "平安银行股份有限公司深圳南岭社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "李恒"
+    },
+    {
+      "bUuid": "5ede8af7-0d2c-407f-a4cb-4fe0d35f62e9",
+      "bName": "平安银行股份有限公司深圳新洲支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "李晶"
+    },
+    {
+      "bUuid": "600337b0-7d1b-4f5e-a4d2-e5a33df01eb4",
+      "bName": "平安银行股份有限公司深圳华强北支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "程浩"
+    },
+    {
+      "bUuid": "6520d115-5b0d-4657-9cae-b4f348bef9f8",
+      "bName": "深圳发展银行深圳中心支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "熊元军"
+    },
+    {
+      "bUuid": "6537bacc-04a0-4b20-8a7c-559208d349db",
+      "bName": "平安银行股份有限公司深圳福田支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "项国庆"
+    },
+    {
+      "bUuid": "674f8d62-6ffe-432f-9b26-c0d39ac38980",
+      "bName": "平安银行股份有限公司深圳新桥支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "吴辽"
+    },
+    {
+      "bUuid": "68383813-d184-4d82-b748-eb3b041b6a1b",
+      "bName": "平安银行股份有限公司深圳科技支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "毛卫红"
+    },
+    {
+      "bUuid": "6891be8e-a385-4ad0-a8b1-0cdd31d8e64d",
+      "bName": "平安银行股份有限公司深圳东乐支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "潘春阳"
+    },
+    {
+      "bUuid": "6ba0e1ea-3696-46df-8924-bd15d5700f65",
+      "bName": "平安银行股份有限公司深圳中心区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "李文"
+    },
+    {
+      "bUuid": "6c8eeef0-60d6-47c5-9ccb-d2b3ccc6457d",
+      "bName": "平安银行股份有限公司深圳南新路支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "陈雯"
+    },
+    {
+      "bUuid": "6eea8b23-101e-48f8-aecb-b9075f323d63",
+      "bName": "平安银行股份有限公司深圳国贸支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "罗娟子"
+    },
+    {
+      "bUuid": "6f314d54-ef29-4889-b77f-9834e8832a2a",
+      "bName": "平安银行股份有限公司深圳佳和支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "朱华恩"
+    },
+    {
+      "bUuid": "70433aba-c7f1-4eac-9701-34eec31ad42f",
+      "bName": "平安银行股份有限公司深圳福星支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "张剑"
+    },
+    {
+      "bUuid": "70aa4027-b729-4e1c-b37d-fd32125579d7",
+      "bName": "平安银行股份有限公司深圳茭塘社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "李钢"
+    },
+    {
+      "bUuid": "73b80282-2bce-490b-8633-4d097e29a226",
+      "bName": "平安银行股份有限公司深圳金沙支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "李佩华"
+    },
+    {
+      "bUuid": "741b4317-725a-411a-ac4c-7c2ab0117904",
+      "bName": "平安银行股份有限公司深圳荔园支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "邓清平"
+    },
+    {
+      "bUuid": "758e122e-36ee-4091-9d49-124a3c605a0c",
+      "bName": "平安银行股份有限公司深圳东角头支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "杨柳琴"
+    },
+    {
+      "bUuid": "77b266bd-ddcf-4cd2-912d-7ebad0083bee",
+      "bName": "深圳发展银行股份有限公司深圳盐田港支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "彭按中"
+    },
+    {
+      "bUuid": "7945f7bc-922f-438d-810c-edae82effe09",
+      "bName": "平安银行股份有限公司深圳东门支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "赵勇"
+    },
+    {
+      "bUuid": "79901f08-5e0e-444c-a38a-8685f124c39e",
+      "bName": "平安银行股份有限公司深圳宝安支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "刘树礼"
+    },
+    {
+      "bUuid": "7ad0f943-2869-468b-8aa2-66621eef39d5",
+      "bName": "平安银行股份有限公司深圳金田支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "张焱"
+    },
+    {
+      "bUuid": "7de6d6eb-91c5-47ae-a22b-39c9392c65dd",
+      "bName": "平安银行股份有限公司深圳新沙支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "王文锋"
+    },
+    {
+      "bUuid": "8031c174-9472-40e2-a5ca-9d0579104778",
+      "bName": "平安银行股份有限公司深圳罗湖支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "曾海璇"
+    },
+    {
+      "bUuid": "81f1e14b-d573-40a3-8a0b-94f95983588f",
+      "bName": "深圳发展银行股份有限公司深圳福华支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "周镇彬"
+    },
+    {
+      "bUuid": "83b1ae08-5c07-49e0-8b65-c09c54f54e36",
+      "bName": "平安银行股份有限公司深圳香蜜湖支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "叶琳"
+    },
+    {
+      "bUuid": "8487ecc9-7a6d-4f30-b6ce-959ac2da3b5c",
+      "bName": "平安银行股份有限公司深圳宏发上域社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "郑志东"
+    },
+    {
+      "bUuid": "84c2a62f-cbb0-4e90-ae03-79514fc6fedd",
+      "bName": "平安银行股份有限公司深圳振华支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "胡合群"
+    },
+    {
+      "bUuid": "86a791d1-67f7-4bb4-826d-2085eac869ff",
+      "bName": "平安银行股份有限公司深圳五洲支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "黎鹏"
+    },
+    {
+      "bUuid": "8d3c81fe-4f40-4c11-9857-25044d1808f8",
+      "bName": "平安银行股份有限公司深圳上步支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "杨伟雄"
+    },
+    {
+      "bUuid": "8d4d2613-a3e5-4445-b7b8-f178b928c71f",
+      "bName": "平安银行股份有限公司深圳常兴支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "哈斯巴根"
+    },
+    {
+      "bUuid": "92c5f16c-608c-45e2-b85f-9666323794e2",
+      "bName": "平安银行股份有限公司深圳南山智园社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "郜树智"
+    },
+    {
+      "bUuid": "95a648f1-0176-4218-ab02-49d9070e570f",
+      "bName": "平安银行股份有限公司深圳笋岗工艺城社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "梅石"
+    },
+    {
+      "bUuid": "97532a7b-a5b5-4e1a-a0b3-982d0682dc45",
+      "bName": "平安银行股份有限公司深圳人民南支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "帖政"
+    },
+    {
+      "bUuid": "98c6a8af-b78f-4774-a889-86d4ed02fd72",
+      "bName": "平安银行股份有限公司深圳嘉里建设广场支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "梁艳艳"
+    },
+    {
+      "bUuid": "9a0a9b9e-68cf-4acf-91c3-b216958fbc07",
+      "bName": "平安银行股份有限公司深圳留仙支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "郭俊辰"
+    },
+    {
+      "bUuid": "9cdd92f4-efc4-40b9-a4c8-413edca6c59c",
+      "bName": "平安银行股份有限公司深圳莲塘支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "凌文金"
+    },
+    {
+      "bUuid": "9ce782c3-2ac4-43ea-bc08-52f7167d1458",
+      "bName": "平安银行股份有限公司深圳嘉汇新城支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "孙俊兰"
+    },
+    {
+      "bUuid": "9cf3ec56-86a3-4323-8bab-9ae31a101169",
+      "bName": "平安银行股份有限公司深圳湖润支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "苏毅镇"
+    },
+    {
+      "bUuid": "a312c44a-c3e5-4efc-9dad-f34875ff0676",
+      "bName": "平安银行股份有限公司深圳石厦支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "曾小鸥"
+    },
+    {
+      "bUuid": "a368c84f-199f-4a9a-b47a-600787115ef4",
+      "bName": "平安银行股份有限公司深圳俊峰丽舍社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "甘春华"
+    },
+    {
+      "bUuid": "a3d10190-2a17-4b31-af65-7fa45c3d1f01",
+      "bName": "平安银行股份有限公司深圳后海支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "汤捷刚"
+    },
+    {
+      "bUuid": "a67f00bb-ea82-4229-a49e-3219d69b556f",
+      "bName": "平安银行股份有限公司深圳康乐支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "黎鹏"
+    },
+    {
+      "bUuid": "a7d996c0-b970-4591-9123-2b4819787696",
+      "bName": "平安银行股份有限公司深圳观澜支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "丘红兵"
+    },
+    {
+      "bUuid": "aad0051f-da88-4875-9e1b-d03157f72378",
+      "bName": "平安银行股份有限公司深圳建设路支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "龚萍"
+    },
+    {
+      "bUuid": "ab8d0290-1e37-4bc9-a57c-8d38b38bb85f",
+      "bName": "平安银行股份有限公司深圳笋岗支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "陶欢"
+    },
+    {
+      "bUuid": "abbeff16-48b2-44da-b265-51750f67275d",
+      "bName": "平安银行股份有限公司深圳前海支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "曾志荣"
+    },
+    {
+      "bUuid": "ac18471b-1a9d-43c2-983a-2bf6dadeae9b",
+      "bName": "平安银行股份有限公司深圳创业路支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "赖勘宇"
+    },
+    {
+      "bUuid": "ac85b77d-8fde-4156-ac7e-5389480e84d2",
+      "bName": "平安银行股份有限公司深圳新秀支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "杨建华"
+    },
+    {
+      "bUuid": "acc3d9f6-f41b-44d6-b891-20a243fac692",
+      "bName": "平安银行股份有限公司深圳水榭春天支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "程浩"
+    },
+    {
+      "bUuid": "b059816f-4edb-4c4c-b9f8-73388c13f89b",
+      "bName": "平安银行股份有限公司深圳西丽湖社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "郭俊辰"
+    },
+    {
+      "bUuid": "b0ce6c9e-d59a-4acf-91f8-7beb434c6167",
+      "bName": "平安银行股份有限公司深圳东方茶都社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "陈向红"
+    },
+    {
+      "bUuid": "b2161d5b-b9a1-4363-adab-cc7aa830d1f1",
+      "bName": "平安银行股份有限公司深圳红宝支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "李凤"
+    },
+    {
+      "bUuid": "b47582f9-4a25-4233-97ca-88840103639f",
+      "bName": "平安银行股份有限公司深圳沙井支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "吴辽"
+    },
+    {
+      "bUuid": "b633466a-3b6e-44b9-ae34-4fbebb777ed8",
+      "bName": "平安银行股份有限公司深圳益田支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "巫旭华"
+    },
+    {
+      "bUuid": "b8067b99-b6fa-469a-b089-e90c652c9f5d",
+      "bName": "平安银行股份有限公司深圳桃源居社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "徐红蕾"
+    },
+    {
+      "bUuid": "b818dca3-4185-4d1a-85d5-8c63f2129b6d",
+      "bName": "平安银行股份有限公司深圳坂田支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "汤海清"
+    },
+    {
+      "bUuid": "b823def1-fff1-493a-bee9-a039a2599cdc",
+      "bName": "深圳发展银行股份有限公司深圳香蜜支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "温鹏飞"
+    },
+    {
+      "bUuid": "bbfaafab-83dc-4cc0-b469-36e06204a31a",
+      "bName": "平安银行股份有限公司深圳平湖华南城社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "杨涌杰"
+    },
+    {
+      "bUuid": "c0923b69-2ad0-4ef7-a221-78026cc92ae7",
+      "bName": "平安银行股份有限公司深圳梅沙支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "林海"
+    },
+    {
+      "bUuid": "c1fa3ab7-a1ef-4c38-a26b-1b9eb72ebd07",
+      "bName": "平安银行股份有限公司深圳益华电子社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "潘晓峰"
+    },
+    {
+      "bUuid": "c3a2b643-4e5f-4324-bc45-fae685cd6cc5",
+      "bName": "平安银行股份有限公司深圳福虹支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "孙俊兰"
+    },
+    {
+      "bUuid": "c93a98a7-af36-4629-b64b-9d175e8ba3d6",
+      "bName": "平安银行股份有限公司深圳龙翔支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "钱君"
+    },
+    {
+      "bUuid": "ca5b7702-e783-41fb-969c-4a31123b1745",
+      "bName": "平安银行股份有限公司深圳分行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "姚贵平"
+    },
+    {
+      "bUuid": "ca9ce293-f0b8-4ac5-9bd9-a31e075b84d4",
+      "bName": "平安银行股份有限公司深圳深圳湾支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "饶章彪"
+    },
+    {
+      "bUuid": "cd601579-03d8-4b4a-8bde-4ef7eba81add",
+      "bName": "平安银行股份有限公司深圳樟坑社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "罗功"
+    },
+    {
+      "bUuid": "cee32bc0-0d80-4c5f-9a91-109f1b088979",
+      "bName": "平安银行股份有限公司深圳南油支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "徐红蕾"
+    },
+    {
+      "bUuid": "d1a01995-052f-4da9-b12b-c2124ffc7ea5",
+      "bName": "平安银行股份有限公司深圳华新支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "饶章彪"
+    },
+    {
+      "bUuid": "d20b2498-2822-4d75-b170-92746686015f",
+      "bName": "深圳发展银行股份有限公司深圳科技园支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "熊元军"
+    },
+    {
+      "bUuid": "d3d941b0-cd5b-4598-a632-0acfa08e1408",
+      "bName": "平安银行股份有限公司深圳坪山支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "蔡宏林"
+    },
+    {
+      "bUuid": "d6377444-8c56-4fca-b493-6e261827e81e",
+      "bName": "平安银行股份有限公司深圳平湖海吉星社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "巫海翔"
+    },
+    {
+      "bUuid": "d6ded789-6d21-4f97-a682-6d7a3ab076b3",
+      "bName": "平安银行股份有限公司深圳鼎太风华社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "陈炜"
+    },
+    {
+      "bUuid": "da153d23-658c-4192-89ac-bc83543250f9",
+      "bName": "平安银行股份有限公司深圳沙井义乌社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "郜树智"
+    },
+    {
+      "bUuid": "da1f9279-acda-4183-b80e-e3acbded8b71",
+      "bName": "平安银行股份有限公司深圳福永支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "谢朝晖"
+    },
+    {
+      "bUuid": "dd696318-f0ff-4b35-970d-6af0a5b68f1a",
+      "bName": "平安银行股份有限公司深圳高新北支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "郜树智"
+    },
+    {
+      "bUuid": "de4114cc-af71-4401-ba4d-0ffec750d568",
+      "bName": "深圳发展银行股份有限公司深圳笋岗支行（深圳发展银行深圳笋岗支行）",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "钟广生"
+    },
+    {
+      "bUuid": "df15066c-5a0f-438b-916a-9c2e4bfca8d7",
+      "bName": "平安银行股份有限公司深圳葵涌社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "董晋华"
+    },
+    {
+      "bUuid": "e0c06f14-ce9e-437c-9893-9889785f5404",
+      "bName": "平安银行股份有限公司深圳罗岗支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "赖新田"
+    },
+    {
+      "bUuid": "e1abb29e-0453-40a7-aab3-89a2ae07d921",
+      "bName": "平安银行股份有限公司深圳松岗支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "官智凯"
+    },
+    {
+      "bUuid": "e3375dc6-b8ca-423c-82eb-0ac612ad4d5c",
+      "bName": "平安银行股份有限公司深圳景田支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "海强"
+    },
+    {
+      "bUuid": "e35a4cc8-6ae9-4b98-b4d6-47cce48b169f",
+      "bName": "平安银行股份有限公司深圳新闻路支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "黄明富"
+    },
+    {
+      "bUuid": "eb170dd5-1799-4e7f-84be-1f36bde452e8",
+      "bName": "平安银行股份有限公司深圳黄贝岭支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "卢丽珠"
+    },
+    {
+      "bUuid": "ed6644db-284d-41da-bae0-50528bb633f1",
+      "bName": "平安银行股份有限公司深圳新园支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "徐伟清"
+    },
+    {
+      "bUuid": "efae842f-a0b7-4d0d-ad4a-0c90643fdd7b",
+      "bName": "平安银行股份有限公司深圳大浪社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "朱烈"
+    },
+    {
+      "bUuid": "f09e4af6-8ddf-41a3-ab0e-06de349d27e4",
+      "bName": "平安银行股份有限公司深圳世界之窗支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "吴倩"
+    },
+    {
+      "bUuid": "f2c608bb-0c7b-47be-be1d-38b038d8b8e1",
+      "bName": "深圳发展银行深圳俊园支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "黎刚华"
+    },
+    {
+      "bUuid": "f6623f6a-272e-480f-a3ac-974ac6949383",
+      "bName": "平安银行股份有限公司深圳盐田港支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "董晋华"
+    },
+    {
+      "bUuid": "fa540db1-2b7a-4fde-91e2-92e6f67c6f89",
+      "bName": "平安银行股份有限公司深圳科技大厦支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "胡晓亮"
+    },
+    {
+      "bUuid": "fa770f47-35f6-469a-b314-8614f7f4aa33",
+      "bName": "平安银行股份有限公司深圳龙城支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "陈向红"
+    },
+    {
+      "bUuid": "fa8cadd4-e39e-4467-a4db-1585679e7948",
+      "bName": "平安银行股份有限公司深圳龙珠社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "郑志东"
+    },
+    {
+      "bUuid": "fad5c4a2-b319-46cb-b34e-c2a6fe39d3a2",
+      "bName": "平安银行股份有限公司深圳民治支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "陈风华"
+    },
+    {
+      "bUuid": "faf37e1d-9a6a-4284-80de-b68119a08d09",
+      "bName": "平安银行股份有限公司深圳中心商务支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "张薇"
+    },
+    {
+      "bUuid": "fbb76fc7-eaa2-4f93-8b81-28ba451085b6",
+      "bName": "平安银行股份有限公司深圳家之福社区支行",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "邱少辉"
+    },
+    {
+      "bUuid": "fd1edaa8-af9d-4357-a67c-0e0233e75bc3",
+      "bName": "平安银行股份有限公司中小企业金融事业部",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "bLegal": "黄承波"
+    }
+  ],
+  "stockHolder": null,
+  "ciSfSca": null,
+  "rptToMaList": null,
+  "entAbnormalItemInfos": null,
+  "entEquityInfos": null,
+  "entBasicInfo": null,
+  "rptEntJudgeValue": {
+    "crds": 5.6873995527361985E-5,
+    "ss": 1.0,
+    "avgCaps": 0.1543887738630039,
+    "bs": 0.9965523493307317,
+    "avgCrds": 0.891362565533405,
+    "avgSs": 0.8516126278714171,
+    "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+    "avgBs": 0.6001203217849094,
+    "ts": 0.7560410002228429,
+    "caps": 0.9560478310289579,
+    "avgTs": 0.0479585624653258
+  },
+  "entPatentInfos": [
+    {
+      "brief": "本发明公开一种通过手机实现支付转账和无卡取现的交易方法，其包括以下步骤：S10，开通移动认证，获取激活码；S20，将客户端下载至付款人手机，服务器将付款人手机与账户绑定后，输入激活码而完成认证；S30，登录客户端，进入业务选择界面，若选择手机转手机，则执行步骤S40，若选择ATM取款，则执行步骤S50；S40，进行手机向手机转账；S50，进行交易预约，预约内容包括收款人手机号码、取款金额及有效取款时间；S60，在ATM取款机上输入预约内容且进行取款。本发明公开的通过手机实现支付转账和无卡取现的交易方法，具有便携性好和实用性好的优点。",
+      "requestNum": "2013100478292",
+      "outhorDate": "2013.06.12",
+      "typeName": "发明公布",
+      "outhorNum": "CN103150649A",
+      "requestDate": "2013.02.06",
+      "patentName": "一种通过手机实现支付转账和无卡取现的交易方法"
+    },
+    {
+      "brief": "本发明公开一种安全认证方法，其包括以下步骤：S10.申请移动安全认证；S20.将移动通讯设备与账户绑定；S30.选择交易认证方式；S40.以动态密码方式进行交易认证；S50.以客户端复核方式进行交易认证；S60.交易完成。该安全认证方法中，由于用户在网上银行系统内提出交易请求，再在客户端上进行交易确认，因此，实现了双通道认证方式，提高了交易过程的安全性。",
+      "requestNum": "2013100478413",
+      "outhorDate": "2013.06.05",
+      "typeName": "发明公布",
+      "outhorNum": "CN103139210A",
+      "requestDate": "2013.02.06",
+      "patentName": "一种安全认证方法"
+    },
+    {
+      "brief": "本发明公开一种安全认证方法，其包括以下步骤：S10，申请移动安全认证；S20，将移动通讯设备与账户绑定；S30，选择交易认证方式；S40，以动态密码方式进行交易认证；S50，以客户端复核方式进行交易认证；S60，交易完成。该安全认证方法中，由于用户在网上银行系统内提出交易请求，再在客户端上进行交易确认，因此，实现了双通道认证方式，提高了交易过程的安全性。",
+      "requestNum": "2013100478413",
+      "outhorDate": "2016.09.14",
+      "typeName": "发明授权",
+      "outhorNum": "CN103139210B",
+      "requestDate": "2013.02.06同一申请的已公布的文献号",
+      "patentName": "一种安全认证方法"
+    }
+  ],
+  "stockPotentialMaInfo": null,
+  "entFinancalList": null,
+  "entExitEventList": null,
+  "teams": null,
+  "entLawInfos": null,
+  "entRelatedInfos": [
+    {
+      "entName": "沈阳安和物流有限公司",
+      "entId": "00690c86-6ee3-4ecf-9d65-0210a84b5574",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳平科信息咨询有限公司",
+      "entId": "01da7ce2-250a-4cf5-90ca-1cbf44419edd",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平万瑞新投资企业（有限合伙）",
+      "entId": "025f5cc0-ab23-4f93-8db1-8794448e5e0e",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳福景支行",
+      "entId": "02f0472e-fcc0-443e-b724-8b2dffdc403a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市盛锦投资管理有限公司",
+      "entId": "0325ec24-36ca-46fd-a775-d8da45efbeab",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳岗厦支行",
+      "entId": "05866809-f5f0-403e-b1df-be2f085c0eeb",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳平安综合金融服务有限公司",
+      "entId": "069bd8d6-eb67-4e50-b890-91eb6a70782b",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "中国平安财产保险股份有限公司阳江中心支公司三甲营销服务部",
+      "entId": "0746942c-2178-4309-811b-a9a9994dff14",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳平湖支行",
+      "entId": "07866663-95a6-4ae9-92ed-171fb78dd8e8",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海盛瑜投资合伙企业（有限合伙）",
+      "entId": "08b8ce7e-7d15-463c-bf30-8684f64db6fd",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市普惠众加科技有限公司",
+      "entId": "08f2aa6f-a43b-4e69-a70d-a09e9ad58de2",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "昆山盈丰投资中心（有限合伙）",
+      "entId": "0940908e-040d-4971-aebd-05665a707e3a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳平安天成股权投资基金合伙企业（有限合伙）",
+      "entId": "0a582396-9d21-4d4b-976e-b70b96e4ab67",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "苏州安和产业园开发有限公司",
+      "entId": "0a7c8d85-39db-420b-985f-cea0ef361c15",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳海滨支行",
+      "entId": "0b228ced-a794-4de1-b046-ce06cff03eab",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安保险代理有限公司深圳车公庙营业部",
+      "entId": "0bb91a6c-791a-48c3-bc04-a8fa5a3855c4",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳蛇口支行",
+      "entId": "0bd2a910-94d7-4aa4-8211-6e59c988ea6b",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安保险代理有限公司贵州分公司遵义香港路营业部",
+      "entId": "0d4fb385-3ebe-48ef-9fd7-37fcd6a800a8",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海平安付商务信息咨询有限公司",
+      "entId": "0d940e44-141c-48a0-866d-7ef6f4273c56",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "成都平安置业投资有限公司",
+      "entId": "0dac4392-e9d4-460b-910d-49b962d0c11c",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海创瑜投资合伙企业（有限合伙）",
+      "entId": "0e17c561-a419-446c-8756-0be79a3be864",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安融资担保（天津）有限公司",
+      "entId": "0e2e34c1-f5bc-4f65-9378-a8888c524372",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳南海支行",
+      "entId": "10091995-48f0-4d8f-8b27-eb40429598eb",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财富理财管理有限公司天津分公司",
+      "entId": "10a48c39-f37c-4121-bcef-c4a52d3c9ac4",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海裕清仁乐投资合伙企业（有限合伙）",
+      "entId": "1101d60a-fb01-4b28-9b85-6fefc8490ba3",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海鼎太投资合伙企业（有限合伙）",
+      "entId": "11114afe-af00-4a46-af05-4c19b862e34b",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳西丽支行",
+      "entId": "128c719d-0b1e-4441-9842-7e752497ede0",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "北京新时泰祥国际投资有限责任公司",
+      "entId": "12b3116f-579c-4ff1-957f-193185a5c47c",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳白石洲支行",
+      "entId": "137a798a-7a03-482c-b074-e4025d939fa3",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "北京易寰宇科技有限公司",
+      "entId": "13cce745-6f5c-444f-847a-0adb87f9079c",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市兴科融投资有限责任公司",
+      "entId": "14c65d21-77d1-411a-bdeb-a35ae03ee6b0",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳龙华支行",
+      "entId": "14f65e83-508e-4f81-894a-7dfc71a0f302",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳盐田支行",
+      "entId": "155af73e-2673-47da-9bf5-e85f57fcd177",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安网赢通信科技有限公司",
+      "entId": "15b53044-3fe3-466e-a0fb-0e160e14ef0a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市海富恒远股权投资合伙企业（有限合伙）",
+      "entId": "15de8059-dab2-47c8-895f-a7aae969b509",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海萃瑜投资合伙企业（有限合伙）",
+      "entId": "16d45f31-8f0b-4928-ad96-c15883751c49",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安商业保理有限公司",
+      "entId": "194903fe-6be7-46ed-852a-e2bdf84691f1",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安保险代理有限公司深圳罗湖营业部",
+      "entId": "1aa9bbb2-305f-40c7-b24f-0cfb083024f7",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海哲惠资产管理有限公司",
+      "entId": "1ccebb1a-ce61-4ead-b464-7229b128e1b3",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市安蓝一号投资合伙企业（有限合伙）",
+      "entId": "1d476b9b-e6c7-4dac-9a32-ec62793b48d7",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "中国平安财产保险股份有限公司海南分公司",
+      "entId": "1e4ec6c6-c618-4af1-ba54-f8821e258fe1",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳南头支行",
+      "entId": "1f437596-4727-4de9-bb5e-00d992d08b30",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "安亚常清股权投资基金（上海）合伙企业（有限合伙）",
+      "entId": "21a104e0-0296-46d4-8a9e-a51803e66a3c",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳中电支行",
+      "entId": "21b2eaa0-98cb-42b8-87ed-4748dedd9b30",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海鼎瑜车盈股权投资基金合伙企业（有限合伙）",
+      "entId": "246530e5-6ca0-4d1a-8cb6-0781f1c6c261",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳富士康支行",
+      "entId": "24a3b711-274f-46f4-a400-14c39abae55c",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平安赢致投资基金管理有限公司",
+      "entId": "24f3c217-bd3c-4dc4-a129-396cf286ee38",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳梅龙支行",
+      "entId": "254c5e1c-d101-45a8-b9c0-07bec1160a0e",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "苏州工业园区平安天元投资合伙企业（有限合伙）",
+      "entId": "2609c5cf-2918-4f4f-98bb-caaf06f500f1",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳大亚湾社区支行",
+      "entId": "260b1667-6749-41ef-b452-def5c6c80f86",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "成都新地兴华物流有限公司",
+      "entId": "268a0a5a-9a49-485b-ae26-10f049375b1a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "苏州工业园区平安天禾投资合伙企业（有限合伙）",
+      "entId": "27b1dea6-28de-4831-954a-08f3693c1463",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安壹钱包电子商务有限公司",
+      "entId": "2829091b-09e5-42c3-a801-fc0c8f53f908",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳横岗支行",
+      "entId": "2889f9af-0e62-4957-8617-c73f74917d0a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "南京平瑞供应链管理有限公司",
+      "entId": "2931f5b2-6517-4278-bbb5-816746a45510",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平万永定投资企业（有限合伙）",
+      "entId": "2960435d-cb17-4d69-97b2-14a73bddbf0c",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司北京分行",
+      "entId": "2d3180bf-7da9-4aee-914b-1ac602f1f5da",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安不动产有限公司",
+      "entId": "2e885b8a-50e8-484d-97fb-8df95a8d2a54",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳车公庙支行",
+      "entId": "2f4b84b9-90b5-4165-8be9-e305dae5ae3e",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳平安不动产工业物流有限公司",
+      "entId": "2f903d09-1f27-4a94-bc13-f6291d2c4d08",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安证券股份有限公司",
+      "entId": "3059e3bb-554c-47e4-becb-ba8a75060252",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海平安鼎创一期股权投资基金合伙企业（有限合伙）",
+      "entId": "30cb6ec2-df9b-4321-a78c-abac137affa4",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳高新区支行",
+      "entId": "30dac890-9d6e-4c42-8387-dfcca54c6d34",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳桂园支行",
+      "entId": "324dfbba-816a-4a45-a48b-0ce138f7cf32",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳宝安赛格社区支行",
+      "entId": "32513c04-9783-45b8-a850-f68de092c7a5",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市陆虹投资管理有限公司",
+      "entId": "33072c64-ef8f-4344-97bb-a7dc50dcdbce",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平嘉投资管理有限公司",
+      "entId": "3394d056-7498-4fff-830c-cd30deb43811",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "中国平安财产保险股份有限公司自贡中心支公司荣县营销服务部",
+      "entId": "33e3cf2f-72e4-488b-9357-198528e04493",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "中国平安人寿保险股份有限公司襄阳中心支公司二汽营销服务部",
+      "entId": "344bebef-7a12-4381-bf50-8146f835c1cd",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安保险代理有限公司深圳西乡营业部",
+      "entId": "34820f4e-22a7-4d2d-897c-24e5f6ee8577",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳水围支行",
+      "entId": "376e0f77-9519-4dc7-9e6a-2e3b43d73124",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安期货有限公司上海营业部",
+      "entId": "3a397979-bb1f-45c0-bc55-74b04f345385",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海鼎创智瑜投资合伙企业（有限合伙）",
+      "entId": "3a4e8ea1-3bfa-452c-96a6-67b740232575",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "合鑫显庆（天津）投资合伙企业（有限合伙）",
+      "entId": "3b06b393-6c3f-4bf8-9f09-ebc0cd6ec213",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市采鑫投资管理有限公司",
+      "entId": "3c3bb953-3acb-4289-9698-4c32029b8e6c",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市海富恒康股权投资合伙企业（有限合伙）",
+      "entId": "3c3f558b-ad3d-4bb0-a8e5-dc9913c5f0c6",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安好医（天津）医学影像有限公司",
+      "entId": "3cccdf08-e3ee-445d-a469-ebf8cb666f20",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安保险代理有限公司深圳鸿都营业部",
+      "entId": "3d8358f2-4b09-4f50-bcf3-16c61ac75e2e",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "合鑫贞观（天津）投资合伙企业（有限合伙）",
+      "entId": "3db59ddc-e953-452e-9bef-298529fafe76",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财富理财管理有限公司",
+      "entId": "3e9240a8-1ac7-4b20-8d22-c799c78f9531",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "中国平安人寿保险股份有限公司通辽中心支公司科左后旗金宝屯镇营销服务部",
+      "entId": "3f01c66a-903e-4006-8488-15232f797733",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海江安物业服务有限公司",
+      "entId": "41509179-c749-4265-a2a2-d8b2857cfc15",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市聚鑫联资产管理有限责任公司",
+      "entId": "43cf5b98-192f-4bd0-85c6-29cacb118144",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳双龙支行",
+      "entId": "445bec06-2aa4-43aa-8300-0f1d13af53a0",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "中国平安人寿保险股份有限公司孝昌支公司",
+      "entId": "447e04f8-f902-43b8-8796-150310501d13",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳平安大厦支行",
+      "entId": "44b2f06d-f2db-41df-a482-42290b4afc16",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳溜溜逗网络科技有限公司",
+      "entId": "454ec34d-e7cc-40d6-bf59-8e51ae704bb2",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳平安郑东金融大厦投资有限公司",
+      "entId": "45e11d9a-1028-42c6-864a-e71c06479e71",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳新世界支行",
+      "entId": "472c981e-0d7f-42ab-8794-7ce8aabc1152",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安普惠投资咨询有限公司南通如皋福寿路分公司",
+      "entId": "474949f3-3a84-421e-80c1-3b419c3b6605",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳布吉支行",
+      "entId": "47e18f07-b1d9-4a75-b72f-f41485394779",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "中国平安人寿保险股份有限公司张家口中心支公司宣化营销服务部",
+      "entId": "47e21d91-a2f6-40ea-a407-4b3537b26bca",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳前海普惠众筹交易股份有限公司",
+      "entId": "483f6509-2ad1-4025-bd48-306dc8d3f32f",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海建禄资产管理有限公司",
+      "entId": "492a540c-7137-4c27-9107-3fd0d7c941dd",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安保险代理有限公司深圳龙岗天安营业部",
+      "entId": "4965452b-a77c-4f94-a7ef-f90f275e966a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海平安拍卖有限公司",
+      "entId": "496a7d22-db57-4a17-8528-af45243c28fb",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "中国平安人寿保险股份有限公司黄石中心支公司铁山营销服务部",
+      "entId": "4bcf51fd-d01e-4c79-8436-dfdf592373fc",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安国际融资租赁有限公司",
+      "entId": "4dce3319-dd0a-44f5-89e7-ad9bbc0a10c2",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳泰然支行",
+      "entId": "4e0ca2a1-f21c-45ea-85bd-508810663e95",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳沙头角支行",
+      "entId": "4f7c1dc0-5b81-4712-80ea-d6cd84f8368c",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海晟锦投资合伙企业（有限合伙）",
+      "entId": "5489f7fa-f275-463f-8cce-17010a979dc0",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳平安大华汇通财富管理有限公司",
+      "entId": "55129255-9d47-4cd6-9036-a3040e774efa",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平裕投资管理有限公司",
+      "entId": "5569bba4-b51c-4c6a-acfe-a82c6ac5e1d7",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安普惠投资咨询有限公司南通人民东路分公司",
+      "entId": "556a0580-2320-465f-9444-593142776f95",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳南山支行",
+      "entId": "56dcb1f2-7ebd-428c-bbd4-19cdc6b27bbc",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳水贝珠宝支行",
+      "entId": "5726aede-2c66-43f0-b110-080a81628266",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "昆山联诚股权投资管理有限公司",
+      "entId": "58189304-6164-4edf-948b-b2d7c96719a4",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "天津市美银房地产开发有限公司",
+      "entId": "596c773f-e116-4385-8110-152b0a828deb",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海新晟乐创投资合伙企业（有限合伙）",
+      "entId": "5b13e187-b18d-437a-8548-04bc9d8ba8d2",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安普惠投资咨询有限公司南通通州世纪大道分公司",
+      "entId": "5b2c4671-11b4-4cac-928d-50e7c2ae9e5f",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海臻贸投资管理合伙企业（有限合伙）",
+      "entId": "5b3262a4-cc12-4d61-ac86-31d46bba447d",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳平安金融科技咨询有限公司上海分公司",
+      "entId": "5b3a61d6-e5b6-4b6f-b46a-0eeaa1d99e64",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市海富恒盈股权投资基金企业（有限合伙）",
+      "entId": "5e74f5fb-215c-43c9-ba98-82c826dacabc",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳新洲支行",
+      "entId": "5ede8af7-0d2c-407f-a4cb-4fe0d35f62e9",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳华强北支行",
+      "entId": "600337b0-7d1b-4f5e-a4d2-e5a33df01eb4",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "北京市平保物业管理有限公司",
+      "entId": "6032dccf-f4b7-4ab7-bc9e-1a788d18d9ca",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海陆金所资产管理有限公司",
+      "entId": "60577897-d5d3-4af6-be57-f7d98120497f",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "江西一脉阳光医学影像中心有限公司",
+      "entId": "60de6b02-e742-427a-b02b-fb99d7b2f6c4",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海轲旭投资合伙企业（有限合伙）",
+      "entId": "60fb7598-2f7a-4638-861f-b8f270fb9afa",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳平安金融中心建设发展有限公司",
+      "entId": "61b19145-a253-4d75-b286-ca89f50243bf",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海时鼎投资合伙企业（有限合伙）",
+      "entId": "61d0af03-ed40-4b22-bbe1-8b63a4fa5716",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海平安阖鼎投资管理有限责任公司",
+      "entId": "6338b0fc-d61f-43a8-964d-2cfab837d0ee",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安付电子支付有限公司",
+      "entId": "6367169b-5c43-455c-af86-ad59e27ea3f3",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财富理财管理有限公司郑州分公司",
+      "entId": "63e78aef-a82b-4124-aceb-3c1956bcc7b3",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安不动产有限公司深圳分公司",
+      "entId": "644cbefb-10e4-4ee5-aa3b-c0f862c78dbd",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "德安仓储（芜湖）有限公司",
+      "entId": "647beb01-b20a-486a-8666-aed3ec4ca4ea",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "中国平安人寿保险股份有限公司昌吉中心支公司五家渠营销服务部",
+      "entId": "650e83fb-1bdb-459c-a3d6-3ea9fc938a65",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安保险代理有限公司深圳南山区营业部",
+      "entId": "6711e026-5d8c-44c1-903a-fe6a27408d21",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安保险代理有限公司深圳竹子林营业部",
+      "entId": "67b02506-5af7-47f4-99f8-d6b9d51ef1c0",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳科技支行",
+      "entId": "68383813-d184-4d82-b748-eb3b041b6a1b",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳平安创科投资管理有限公司",
+      "entId": "688f98ca-c633-4743-9858-d2aa289694f6",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳东乐支行",
+      "entId": "6891be8e-a385-4ad0-a8b1-0cdd31d8e64d",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海岳鼎投资合伙企业（有限合伙）",
+      "entId": "694580e7-32f2-451d-be2e-e9aadebe8b31",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司",
+      "entId": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平礼投资管理有限公司",
+      "entId": "69ef7770-9358-449d-8e4e-1cfeaf273819",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳南新路支行",
+      "entId": "6c8eeef0-60d6-47c5-9ccb-d2b3ccc6457d",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳国贸支行",
+      "entId": "6eea8b23-101e-48f8-aecb-b9075f323d63",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳福星支行",
+      "entId": "70433aba-c7f1-4eac-9701-34eec31ad42f",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳金沙支行",
+      "entId": "73b80282-2bce-490b-8633-4d097e29a226",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳荔园支行",
+      "entId": "741b4317-725a-411a-ac4c-7c2ab0117904",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安保险代理有限公司深圳龙华营业部",
+      "entId": "746bbd7a-ef67-4abe-9cef-2b9a6ab8724e",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳东角头支行",
+      "entId": "758e122e-36ee-4091-9d49-124a3c605a0c",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海捷银电子商务有限公司",
+      "entId": "75ad7a26-c1e1-4ce2-a5db-ab7ce234ed75",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海新晟跃创投资合伙企业（有限合伙）",
+      "entId": "767e2e72-f750-4dc7-83fe-9e04fb85d062",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安商贸有限公司",
+      "entId": "77e5d8f7-5313-4782-a0e9-8dea5c18263e",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平嘉鑫元股权投资合伙企业（有限合伙）",
+      "entId": "7865df83-79f0-42a6-966b-59915a08d6a8",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳东门支行",
+      "entId": "7945f7bc-922f-438d-810c-edae82effe09",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海鼎盈股权投资管理合伙企业（有限合伙）",
+      "entId": "79cf5fce-04b1-4c22-849a-0100bd824726",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市城银实业有限公司",
+      "entId": "7bbec046-9841-4df1-a9d4-20335ba084f1",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安普惠投资咨询有限公司",
+      "entId": "7c03e4cf-e3e0-4341-90fd-2015239e209c",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安保险代理有限公司深圳南油营业部",
+      "entId": "7cf4f53d-70c1-4d42-8c9c-6fef97397d70",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安智汇投资管理（深圳）有限公司",
+      "entId": "7db4fe42-678f-48eb-a551-3f375459e4d0",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安保险代理有限公司深圳新闻大厦营业部",
+      "entId": "7dc6358e-ad1f-4990-807e-d6347e6e1418",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "常州平盛股权投资基金合伙企业（有限合伙）",
+      "entId": "7e3d9d88-3f35-4016-88b9-1dc7ada099d3",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳德诚物业服务有限公司",
+      "entId": "820fe88c-7dcd-4489-a694-c40197f389aa",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安国际融资租赁（深圳）有限公司",
+      "entId": "8452395a-3cea-473e-8ba4-34a199255e27",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳宏发上域社区支行",
+      "entId": "8487ecc9-7a6d-4f30-b6ce-959ac2da3b5c",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳振华支行",
+      "entId": "84c2a62f-cbb0-4e90-ae03-79514fc6fedd",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海新晟升创投资合伙企业（有限合伙）",
+      "entId": "84c990fb-aa51-443d-8ed2-e8c07dadee53",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海环博网盈股权投资管理合伙企业（有限合伙）",
+      "entId": "85095171-7e44-43a9-a6df-a09610417649",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海晟昀投资合伙企业（有限合伙）",
+      "entId": "85c1cdbe-93ab-4296-a5b8-238094d0c419",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳五洲支行",
+      "entId": "86a791d1-67f7-4bb4-826d-2085eac869ff",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "广州平安旧机动车鉴定评估有限公司",
+      "entId": "87fa05e7-ce52-4ed3-be92-1a3f1c989c6a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市安园白塔投资企业（有限合伙）",
+      "entId": "889d29cc-474d-42e2-95d7-90c464227879",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财智投资管理有限公司",
+      "entId": "8ae76f7b-5d5c-4a8d-adc4-cd2adf201d3a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海平浦投资有限公司",
+      "entId": "8b5f0aa5-c3d8-4b2a-ad75-4f647575da09",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "北京平安智慧投资管理有限公司",
+      "entId": "8d03ebe4-7cf4-441c-96e7-fdb468718e8f",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳上步支行",
+      "entId": "8d3c81fe-4f40-4c11-9857-25044d1808f8",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳常兴支行",
+      "entId": "8d4d2613-a3e5-4445-b7b8-f178b928c71f",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安鼎创股权投资管理（上海）有限公司",
+      "entId": "8d6e3e94-cd3c-4c7d-bde5-5d793ff27bd8",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平瑞投资管理有限公司",
+      "entId": "8d9908fa-fddb-43f7-8945-b0dd3fba5c54",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财富理财管理有限公司安徽分公司",
+      "entId": "8ea600b9-5790-491e-99ce-208aae5997a9",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财富理财管理有限公司佛山分公司",
+      "entId": "8f1c837e-c909-40c4-b470-5609a26a7380",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安大华基金管理有限公司",
+      "entId": "8f1d4c45-dec1-4e34-a44a-190669da4be3",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海璟创投资合伙企业（有限合伙）",
+      "entId": "8f7f1b23-7b3a-4370-acbc-d92b003829a3",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财富理财管理有限公司沈阳分公司",
+      "entId": "9056096d-8ecd-4c6e-af56-ab70dc0d972b",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海普安仓储有限公司",
+      "entId": "91602283-5ecd-4fd4-ae51-5b52a1af2292",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海平瑜投资合伙企业（有限合伙）",
+      "entId": "943e94d9-841e-496b-b2ce-4a68e64cf92a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安直通咨询有限公司",
+      "entId": "94ccfde2-52bb-4c4f-b4b6-2be71f0855cd",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海平安汽车电子商务有限公司",
+      "entId": "9746f719-5ae8-4c99-a2f7-49e802271f8a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳嘉里建设广场支行",
+      "entId": "98c6a8af-b78f-4774-a889-86d4ed02fd72",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财富理财管理有限公司苏州分公司",
+      "entId": "9a6791ac-0c78-4270-a639-0b54d67f5777",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司广州分行",
+      "entId": "9b8df1b1-48c5-48cf-899d-1b52290312f6",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海电萃投资合伙企业（有限合伙）",
+      "entId": "9c7d0eca-4cb4-488d-bf94-c157d9daaa94",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳嘉汇新城支行",
+      "entId": "9ce782c3-2ac4-43ea-bc08-52f7167d1458",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海鑫磬投资有限公司",
+      "entId": "9e016b4f-ef21-494a-9a54-b934903f2bc7",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳金星商旅服务有限公司",
+      "entId": "9e53e344-2ad3-424b-8855-5f9a2652205a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "中国平安财产保险股份有限公司张家港支公司乐余营销服务部",
+      "entId": "9f1cd5e8-fa5a-4a9f-9612-d9e75bf0aaae",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "中国平安人寿保险股份有限公司海南分公司",
+      "entId": "9fa55889-a16a-4635-8617-8caf68898a6e",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳前海金星商务科技有限公司",
+      "entId": "a0e83a56-c838-4fde-a034-feab21eb4ba7",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "沈阳安洪仓储有限公司",
+      "entId": "a12019af-7ebc-49aa-85a4-09014d08c185",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳石厦支行",
+      "entId": "a312c44a-c3e5-4efc-9dad-f34875ff0676",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳俊峰丽舍社区支行",
+      "entId": "a368c84f-199f-4a9a-b47a-600787115ef4",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安付科技服务有限公司服务中心",
+      "entId": "a3ca5465-2fa3-4228-b36a-ae6f9809a38c",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平万安泰投资企业（有限合伙）",
+      "entId": "a3d47f97-91e3-49c9-b543-6fba6856f141",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海岐支互联网金融信息服务有限公司",
+      "entId": "a4378b62-33bf-421e-b9f7-1bcb0b894212",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳观澜支行",
+      "entId": "a7d996c0-b970-4591-9123-2b4819787696",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳鑫橙投资管理有限公司",
+      "entId": "a8332644-e737-47c0-8bb2-39c083fc3028",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市原杉投资有限公司",
+      "entId": "a9f04a69-6e2a-41bb-9b8b-f8e88f4fccb6",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平保珠江投资企业（有限合伙）",
+      "entId": "aa2bbfd7-913c-4fa2-801c-f66428b9e1e0",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平川投资管理有限公司",
+      "entId": "aab9f1c5-1a53-4c3d-8b24-28f9976e5a7a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳笋岗支行",
+      "entId": "ab8d0290-1e37-4bc9-a57c-8d38b38bb85f",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳前海支行",
+      "entId": "abbeff16-48b2-44da-b265-51750f67275d",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳水榭春天支行",
+      "entId": "acc3d9f6-f41b-44d6-b891-20a243fac692",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳信益资产运营管理有限公司",
+      "entId": "adbc6927-b178-4fbc-aa6a-886536e62338",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安保险代理有限公司深圳蛇口营业部",
+      "entId": "aec84f1c-9071-4472-89f8-8cf95971a20c",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "常州健腾投资合伙企业（有限合伙）",
+      "entId": "af7ebcf0-e496-48da-9337-d78692d66f4b",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳恒创投资管理有限公司",
+      "entId": "aff0c2e3-2f41-4cd5-a713-eff96c8be240",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "沈阳中德产业投资合伙企业（有限合伙）",
+      "entId": "b11ed6b2-4a5e-49f7-8ece-00a871628320",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安磐海资本有限责任公司",
+      "entId": "b2a95f2f-5f39-40a7-8ed6-eb2da4e1dc44",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市海富恒安股权投资合伙企业（有限合伙）",
+      "entId": "b2d6f611-9293-4a6e-90be-ec4b56e41d0f",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳前海金融资产交易所有限公司（简称：深圳前海金融资产交易所）",
+      "entId": "b5254c54-34fa-4ebd-a2a3-621d849d3938",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳联盈投资管理有限公司",
+      "entId": "b5da5185-466d-463a-b422-918b31fb7be9",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳益田支行",
+      "entId": "b633466a-3b6e-44b9-ae34-4fbebb777ed8",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海晟鼎投资合伙企业（有限合伙）",
+      "entId": "b7a60f69-affc-4517-b555-4863b9f08d02",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳桃源居社区支行",
+      "entId": "b8067b99-b6fa-469a-b089-e90c652c9f5d",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳坂田支行",
+      "entId": "b818dca3-4185-4d1a-85d5-8c63f2129b6d",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安证券有限责任公司天津分公司",
+      "entId": "bad16a1a-7bf5-4bf9-b0ac-de93712a0146",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳平湖华南城社区支行",
+      "entId": "bbfaafab-83dc-4cc0-b469-36e06204a31a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财富理财管理有限公司东莞分公司",
+      "entId": "bccb816c-9b24-45d7-a265-a6e8b7218169",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海鼎音投资合伙企业（有限合伙）",
+      "entId": "be20c7f8-e13e-46d4-9918-be7e54e09e78",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海萃璟投资合伙企业（有限合伙）",
+      "entId": "be356e08-f87a-47f9-9d34-59c543772286",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安好房（上海）电子商务有限公司浦东分公司",
+      "entId": "be435348-d473-4bbc-b3e6-b4a1172f2a38",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安好医投资管理有限公司",
+      "entId": "bec39997-7e5c-4bc2-860c-bc05c26acf86",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "天津平安股权投资管理有限公司",
+      "entId": "beec005c-fec6-4144-8513-653df7755972",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安付电子支付有限公司深圳分公司",
+      "entId": "bfaac15f-1d88-424d-b893-e2eed43bc24e",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "广州平安好贷小额贷款有限公司",
+      "entId": "c08b52a0-cb63-4393-9775-861ef2a34c55",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "廊坊市高迪数码电子技术有限公司",
+      "entId": "c0f8fc5f-b768-48b3-8587-917370672950",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安付科技服务有限公司",
+      "entId": "c228e750-234d-4f79-8b81-71d110bb1881",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳万里通网络信息技术有限公司",
+      "entId": "c28b5c5c-a5ba-4897-9a15-05f117e8ec69",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平信黄浦投资企业（有限合伙）",
+      "entId": "c2b24c33-25d7-4e91-939f-8a015baf88ca",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳福虹支行",
+      "entId": "c3a2b643-4e5f-4324-bc45-fae685cd6cc5",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海财盾信息技术有限公司",
+      "entId": "c58b5aea-a6fa-45e8-a53a-3a24b6ffda57",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "中国平安人寿股份有限公司湖北省直属第十六营销服务部",
+      "entId": "c61c776d-d3f8-4373-8e70-35bf250588c2",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳安星驰投资管理有限公司",
+      "entId": "c65cd8f3-ec36-473a-82a3-11dace8457c1",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平安致信投资管理有限公司",
+      "entId": "c7180397-52b4-4ae6-89e4-b063a8419ab9",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "西藏安盈一号投资合伙企业（有限合伙）",
+      "entId": "c88e6ad8-d141-4712-a85e-5273fcf8ae94",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "中国平安财产保险股份有限公司张家港支公司塘桥营销服务部",
+      "entId": "c890e919-e6f4-4dcc-842d-7f8e1557e6a4",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平安置业投资有限公司",
+      "entId": "ca391d7d-f903-4d12-a1f5-ca9787190255",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳深圳湾支行",
+      "entId": "ca9ce293-f0b8-4ac5-9bd9-a31e075b84d4",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "新疆同君股权投资有限合伙企业",
+      "entId": "cc604778-c59a-4f95-a3ba-80f5f0640c2a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财富理财管理有限公司南京分公司",
+      "entId": "cd455145-25a2-4672-9406-4e065983aba7",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳樟坑社区支行",
+      "entId": "cd601579-03d8-4b4a-8bde-4ef7eba81add",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安保险代理有限公司深圳布吉营业部",
+      "entId": "ceb65fb0-7f91-477c-b07b-e243fdaa6d0b",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳南油支行",
+      "entId": "cee32bc0-0d80-4c5f-9a91-109f1b088979",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "林芝金生投资管理合伙企业（有限合伙）",
+      "entId": "cf33c557-6aa3-4dfe-917d-62307721294f",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳平安金融科技咨询有限公司",
+      "entId": "cff450a1-2234-4046-ad15-0e3204c681f8",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平安创新资本投资有限公司",
+      "entId": "d08ec777-4f67-4028-a078-2ec81b4cc3af",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "西藏安宁投资合伙企业（有限合伙）",
+      "entId": "d08fceae-9e91-42d5-83d3-c7897500ff69",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳前海联礼阳投资有限责任公司",
+      "entId": "d22f05f1-528d-4231-8c47-c705875cf22e",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财富理财管理有限公司宁波分公司",
+      "entId": "d332fd2a-69ae-41d5-9cbb-f7d85444163f",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "中国平安财产保险股份有限公司张家港支公司大新营销服务部",
+      "entId": "d3a2f96d-c979-4b9c-9456-27a18519d817",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安健康互联网股份有限公司",
+      "entId": "d4387c13-65b6-43d5-ad4c-dc2488fc6bfd",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "苏州仁安置业有限公司",
+      "entId": "d4d2527d-a996-4167-8523-81929894399b",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平万安佳投资企业（有限合伙）",
+      "entId": "d5bf54fd-6276-405d-b941-ae5c0f6570b3",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海新晟皓创投资合伙企业（有限合伙）",
+      "entId": "d640ba2c-1b94-4aee-a058-e3e623c1d122",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市海富恒泰股权投资基金企业（有限合伙）",
+      "entId": "d673c404-de25-4f6d-9b1b-aa55030c821b",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海瑜锦投资合伙企业（有限合伙）",
+      "entId": "d6d66b56-176b-463d-a78b-969b44f53514",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳鼎太风华社区支行",
+      "entId": "d6ded789-6d21-4f97-a682-6d7a3ab076b3",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财富理财管理有限公司北京分公司",
+      "entId": "d8db3f0a-7b55-435d-a8ed-752b49ecc229",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳联新投资管理有限公司",
+      "entId": "d9992469-75d7-4f49-bd9a-16d9d82cee67",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳沙井义乌社区支行",
+      "entId": "da153d23-658c-4192-89ac-bc83543250f9",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平煦投资管理有限公司",
+      "entId": "daa03d76-d558-48be-b4d8-5c083e61d56a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财富理财管理有限公司大连分公司",
+      "entId": "db17e4d8-d3af-45ef-ae72-070cb55f2087",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财富理财管理有限公司青岛分公司",
+      "entId": "dc28032e-4e35-4822-b44a-6b5519bfda26",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳平安通信科技有限公司",
+      "entId": "dc5b8dbc-616f-48b0-a611-750d19bbf761",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳高新北支行",
+      "entId": "dd696318-f0ff-4b35-970d-6af0a5b68f1a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市海富恒鸿股权投资合伙企业（有限合伙）",
+      "entId": "df7555d7-0c7f-43f8-ae0f-1f7abb0fdbe8",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳罗岗支行",
+      "entId": "e0c06f14-ce9e-437c-9893-9889785f5404",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市海富恒达股权投资合伙企业（有限合伙）",
+      "entId": "e0cbcb41-b979-4cca-9e14-3efe927c16b9",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳嘉新投资发展有限公司",
+      "entId": "e2746a30-04c9-4138-84c2-726c5a8dcecb",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海晟瑜投资合伙企业（有限合伙）",
+      "entId": "e3139f1f-399f-4468-9dbc-510922af664b",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳景田支行",
+      "entId": "e3375dc6-b8ca-423c-82eb-0ac612ad4d5c",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳新闻路支行",
+      "entId": "e35a4cc8-6ae9-4b98-b4d6-47cce48b169f",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市思道科投资有限公司",
+      "entId": "e4108c1b-0518-4f89-adf0-f80cb97d96e0",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平安德成投资有限公司",
+      "entId": "e4e3638a-15a1-46a3-8e07-583c9ec78c76",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海平腾铂创投资合伙企业（有限合伙）",
+      "entId": "e59b41bd-d8c2-4a7b-8ba6-ecccc793e60a",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海轲萃投资合伙企业（有限合伙）",
+      "entId": "e6106ac2-0e8c-4a59-8dda-0f8401718a02",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安财富理财管理有限公司石家庄分公司",
+      "entId": "e6d2e833-bfba-448b-a8f3-631fff4b406d",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳前海征信中心股份有限公司",
+      "entId": "e7417896-101f-4766-bc7f-b7fb5bcf91aa",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市安盈湘投资企业（有限合伙）",
+      "entId": "e76f76c9-3219-4371-897e-051d411af9e4",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安保险代理有限公司深圳南头营业部",
+      "entId": "e814f1aa-8c8d-47f4-8cc6-0033fed61b4b",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "苏州工业园区天惠食品产业投资合伙企业（有限合伙）",
+      "entId": "e894d70c-856a-4667-ae59-1c0366edafbb",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司天津分行",
+      "entId": "ea76129d-1e28-454e-8195-3b8d594d8792",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳平安汇通初创投资管理有限公司",
+      "entId": "eadd1155-523f-48a8-8ff1-cf02cb0e1edc",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳黄贝岭支行",
+      "entId": "eb170dd5-1799-4e7f-84be-1f36bde452e8",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳平安融汇股权投资基金管理有限公司",
+      "entId": "eb36ff99-e67a-4a7e-b38d-30459adab699",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海新晟迅创投资合伙企业（有限合伙）",
+      "entId": "ed2dc61f-4819-4c4e-8a91-b017a6e9f585",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安科技（深圳）有限公司",
+      "entId": "eddf6b90-e60f-440f-9b1c-1f86bb20aff2",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市海富恒和股权投资合伙企业（有限合伙）",
+      "entId": "ee38788b-85d5-4c22-9466-b7ea276e1ece",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "武汉平瑞安新投资管理有限公司",
+      "entId": "ef727b85-381f-4927-bee4-eb55c65eebe1",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳德诚投资发展有限公司",
+      "entId": "f018c28f-221f-452e-85fb-0bac3f5873ce",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳世界之窗支行",
+      "entId": "f09e4af6-8ddf-41a3-ab0e-06de349d27e4",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "河南好彩网络科技有限公司",
+      "entId": "f0fcfe59-ad27-4dd7-aaff-6e15c5fb58ac",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳葳尔科兴投资有限公司",
+      "entId": "f3fa4995-7716-4ca9-93f6-ffcd97f53641",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海萃鼎投资合伙企业（有限合伙）",
+      "entId": "f58e5e6b-2bd2-464a-9b33-5532657283fe",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳盐田港支行",
+      "entId": "f6623f6a-272e-480f-a3ac-974ac6949383",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安道远投资管理（上海）有限公司",
+      "entId": "f6ffc63a-53de-4fbf-8d83-9cf00afe09b2",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "北京绿城银石置业有限公司",
+      "entId": "f76a1601-df3d-47db-996e-d906681d6ac7",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平齐投资管理有限公司",
+      "entId": "f8a5ab76-c2d0-4f52-826f-58db85ec6b04",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海亿账通互联网科技有限公司",
+      "entId": "f8b5e0b9-3227-447f-bd94-212a3669a109",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市平泰投资管理有限公司",
+      "entId": "f8f2d499-b674-403f-a4fa-c7fbb7258a88",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海萃晟投资事务所",
+      "entId": "f91125e4-a6db-4f84-86ba-5fbf2137594d",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳科技大厦支行",
+      "entId": "fa540db1-2b7a-4fde-91e2-92e6f67c6f89",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳中心商务支行",
+      "entId": "faf37e1d-9a6a-4284-80de-b68119a08d09",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司深圳家之福社区支行",
+      "entId": "fbb76fc7-eaa2-4f93-8b81-28ba451085b6",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "上海鼎弢股权投资基金合伙企业（有限合伙）",
+      "entId": "fcc5b8c8-1be5-47c7-9be3-2e15da4aa1ee",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "平安银行股份有限公司中小企业金融事业部",
+      "entId": "fd1edaa8-af9d-4357-a67c-0e0233e75bc3",
+      "mailSuffix": "pingan.com.cn"
+    },
+    {
+      "entName": "深圳市鼎顺通投资有限责任公司",
+      "entId": "fe9c275a-21d0-43da-9286-7c761ad384eb",
+      "mailSuffix": "pingan.com.cn"
+    }
+  ],
+  "entChgRecordInfos": null,
+  "entCopyrightsInfos": null,
+  "enSoftCopyrightsInfos": [
+    {
+      "number": "2013SR078932",
+      "name": "信用卡备援集中辅助系统软件",
+      "appDate": "2013-08-01",
+      "shortName": "PACES-HIPS",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "version": "V1.0"
+    },
+    {
+      "number": "2013SR072343",
+      "name": "上海支付综合业务系统软件",
+      "appDate": "2013-07-24",
+      "shortName": "BPAY-CNAPS",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "version": "V1.6.0"
+    },
+    {
+      "number": "2013SR072188",
+      "name": "银行运营集中平台软件",
+      "appDate": "2013-07-24",
+      "shortName": "BOCP-CORE",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "version": "V1.16.0"
+    },
+    {
+      "number": "2013SR049685",
+      "name": "平安新支付平台软件",
+      "appDate": "2013-05-24",
+      "shortName": "BPAY-UPP",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "version": "V3.5"
+    },
+    {
+      "number": "2013SR049671",
+      "name": "平安行销支持管理银行查询子系统软件",
+      "appDate": "2013-05-24",
+      "shortName": "PSS-ESALES-BANK",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "version": "V3.0.2"
+    },
+    {
+      "number": "2013SR049665",
+      "name": "平安银行零售报表子系统软件",
+      "appDate": "2013-05-24",
+      "shortName": "MIS-BRRPS",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "version": "V2.5.1"
+    },
+    {
+      "number": "2013SR049694",
+      "name": "平安集中产品信息管理系统软件",
+      "appDate": "2013-05-24",
+      "shortName": "PIF-CORE",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "version": "V1.6.1"
+    },
+    {
+      "number": "2013SR049677",
+      "name": "平安零售业务管理系统应用核心子系统软件",
+      "appDate": "2013-05-24",
+      "shortName": "BRBMS-CORE",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "version": "V3.0.3"
+    },
+    {
+      "number": "2013SR044575",
+      "name": "信用卡业务操作历史查询系统软件",
+      "appDate": "2013-05-15",
+      "shortName": "PACES-OHQ",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "version": "V1.0.0"
+    },
+    {
+      "number": "2013SR023260",
+      "name": "平安MIT智慧软件",
+      "appDate": "2013-03-13",
+      "shortName": "PSS-ICS-CORE",
+      "uuid": "69c3a073-c32f-4e6a-ba5a-cc0fb3954b9f",
+      "version": "V1.0.0"
+    }
+  ],
+  "message": "success!",
+  "ciRcaPay": null,
+  "entHolderInfos": null,
+  "entInvestInfos": [
+    {
+      "iUuid": "7148ab1f-e962-4735-a37c-fce849749ee9",
+      "sDate": "1996-12-30",
+      "name": "成都工投资产经营有限公司",
+      "legal": "马仕兵"
+    },
+    {
+      "iUuid": "bd6e9eb3-ad76-49e8-99b1-11d89aeee212",
+      "sDate": "1993-12-06",
+      "name": "深圳长城证券部",
+      "legal": "任俊杰"
+    },
+    {
+      "iUuid": "6748803e-6433-4774-b139-9ddad112d99c",
+      "sDate": "1988-09-13",
+      "name": "深圳嘉丰纺织实业有限公司",
+      "legal": "郑宝伦"
+    },
+    {
+      "iUuid": "f1fcf8a2-c51d-43a9-a231-2c72ac85198d",
+      "sDate": "1983-04-22",
+      "name": "深圳市兆通投资股份有限公司",
+      "legal": "李美莲"
+    }
+  ],
+  "stockCharts": null,
+  "ciMoneySup": null,
+  "stockEquityCtrl": null,
+  "status": "success"
+}

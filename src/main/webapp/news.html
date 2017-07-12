@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新闻</title>
+    <link rel="icon" href="img/logo-ico.png" type="image/png">
+    <link href="css/common/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/jqDataTables/jquery.dataTables.css" rel="stylesheet">
+    <link href="css/plugins/jqDataTables/extensions/buttons/buttons.dataTables.css" rel="stylesheet">
+    <link href="css/common/modal-mask.css" rel="stylesheet">
+    <link href="css/mycommon/loading-animate.css" rel="stylesheet">
+    <link href="css/style.common.css" rel="stylesheet">
+    <link href="css/business/news.css" rel="stylesheet">
+    <script src="js/common/jquery-2.1.1.js"></script>
+    <script src="js/common/jquery.easing.1.3.js"></script>
+    <script src="js/common/bootstrap.min.js"></script>
+    <script src="js/common/vue.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="header-wrapper">
+        <nav id="v-userModel" class="navbar" role="navigation" style="margin-bottom: 0">
+            <div class="user-logo"><img id="logo-img-bar" hidefocus="true" v-bind:src="logoPath"></div>
+            <div class="user-right">
+                <ul class="nav navbar-top-links navbar-right font-14">
+                    <li class="welcome-message">
+                        <span class="m-r text-welcome f-l">
+                            <strong class="font-bold m-r">欢迎你</strong>
+                            <span v-text="uname" style="color:green"></span>
+                            <strong class="font-bold">，</strong>
+                        </span>
+                        <span class="text-welcome text-xs m-r f-l m-l">
+                            <strong class="font-bold">当前积分：</strong>
+                            <span v-text="uscore" style="color:orangered"></span>
+                            <strong class="font-bold">分</strong>
+                        </span>
+                    </li>
+                    <li class="search-bar">
+                        <select class="search-type-select" v-on:change="changeSearchSelection()"
+                                v-model="currentSearchSelect" id="currentSearchSelect">
+                            <option v-for="item in searchList" value="{{item.value}}" v-text="item.text"></option>
+                        </select>
+                        <div class="input-group-addon">
+                            <span style="margin-right:5px;">
+                                <input type="checkbox" id="stockCompanyRadio">上市
+                            </span>
+                        </div>
+                        <input class="search-key-input form-control" onkeypress="searchBarPress(event,this.value)"
+                               type="text" placeholder="请输入查询条件 . . . " id="top-search">
+                        <i class="fa fa-search search-ico cursor-link" onclick="doHeaderSearch()"></i>
+                    </li>
+                    <li class="navbar-report-item">
+                        <a href="#" title="报告"><i class="fa fa-file-text-o"></i></a>
+                        <ul class="report-lists">
+                            <li><a v-on:click="gotoCvReport()">行业分析</a></li>
+                            <li><a v-on:click="gotoTraderReport()">研究报告</a></li>
+                        </ul>
+                    </li>
+                    <li class="tools-bar-item">
+                        <ul>
+                            <li>
+                                <a v-on:click="gotoProject()" title="项目"><i class="fa fa-list"></i> </a>
+                            </li>
+                            <li>
+                                <a v-on:click="gotoNews()" title="新闻"><i class="fa fa-newspaper-o"></i> </a>
+                            </li>
+                            <li>
+                                <a v-on:click="gotoSimulation()" title="模拟计算"><i class="fa fa-calculator"></i> </a>
+                            </li>
+                            <li>
+                                <a v-on:click="gotoCustomerSetting()" title="个人设置"><i class="fa fa-cog"></i> </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a onclick="loginOut()" title="退出"><i class="fa fa-sign-out"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div id="nav-wrapper">
+        <nav class="navbar-static-side" role="navigation" id="v-navModel">
+            <ul class="nav nav-first-level" id="side-menu">
+                <li v-bind:class="{'current active':item.isActive}" v-for="item in menuList">
+                    <a href="#" v-on:click="goto(item.pageurl,id)" v-bind:title="item.name">
+                        <!--<i class="fa fa-th-large"></i>-->
+                        <i v-bind:class="[item.ico? item.ico:'fa fa-th-large']" ></i>
+                        <span class="nav-label"
+                              v-text="item.text"></span>
+                        <span class="fa" v-bind:class="{'arrow':item.showChild}"></span></a>
+                    <ul class="nav nav-second-level menu-dropdown" v-if="item.showChild">
+                        <li v-bind:class="{'active':cItem.isActive}" v-for="cItem in item.childMenu">
+                            <a v-bind:title="cItem.name"
+                               v-on:click="goto(cItem.pageurl,id)">
+                                <i v-bind:class="[cItem.ico? cItem.ico:'fa fa-th-large']"></i>
+                                <span  v-text="cItem.text"></span>
+                            </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="page-wrapper">
+        <div class="wrapper wrapper-content" id="v-newsModel">
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-xs-5 col-sm-5 col-lg-left-side"></div>
+                <div class="col-lg-5 col-md-5 col-xs-7 col-sm-7 col-lg-right-side">
+                    <div class="search-news-bar">
+                        <div v-bind:class="[keyType==0?'form-control-div show-div':'form-control-div hide-div']">
+                            <input v-model="filterKey" type="text" onkeypress="doInputSearch(event)"
+                                   placeholder="请输入关键字..." class="form-control">
+                            <i class="fa fa-search" onclick="doSearch(0)"></i>
+                        </div>
+                        <div v-bind:class="[keyType==1? 'form-control-div show-div':'form-control-div hide-div']"
+                             style="height:34px;">
+                            <label class="industry-filter-label" v-text="industryKey"
+                                   onclick="showIndustryKeyFunc()"></label>
+                            <div id="filter_input_div" style="display:none;">
+                                <input name="ifilterKey_input" id="ifilterKey_input" v-model="ifilterKey" type="text"
+                                       oninput="oninputIndustryKey(event,this.value)" onblur="hideIndustryList()"
+                                       placeholder="请选择行业(支持关键字过滤)..." class="form-control">
+                                <i class="fa fa-close clear-filter-ico" onclick="clearIndustryInput()"></i>
+                                <ul class="industry-list-group">
+                                    <li v-for="item in industry_list|filterBy ifilterKey in 'text'" class="industry-list-item">
+                                        <label v-on:click="selectedIndustryClass(item)"
+                                               v-text="item.text"></label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <select v-model="keyType" id="keyType" class="form-input-control pull-right" v-on:change="changeKeyType()">
+                            <option selected="selected" value="0">关键字</option>
+                            <option value="1">行业分类</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-7 col-lg-left-side">
+                    <!--推送新闻-->
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>新闻</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link pull-right">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <div class="pull-right btn-group" style="margin-top:-12px;margin-right:5px;">
+                                    <a class="btn btn-xs btn-order-correlation" title="相关性排序"
+                                            v-bind:class="[newsOrder==1?'btn-primary':'btn-trans']"
+                                            v-on:click="changeOrder(1)">
+                                    </a>
+                                    <a class="btn btn-xs btn-order-time" title="时间排序"
+                                            v-bind:class="[newsOrder==2?'btn-primary':'btn-trans']"
+                                            v-on:click="changeOrder(2)">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div style="padding:2px 5px;">
+                                <div class="feed-activity-list" style="padding-bottom:35px;">
+                                    <div class="feed-element" v-for="item in newsList" style="display:none;"
+                                         v-show="newsList|checkNotEmptyFilter">
+                                        <div>
+                                            <small class="pull-right text-navy" v-text="item.channel_name"></small>
+                                            <a v-bind:href="item.url" v-on:click="openNews(item.url)"
+                                               target="_blank"><strong v-text="item.title"></strong></a>
+
+                                            <div v-text="item.content|getNewsShortStrFilter"></div>
+                                            <small class="text-muted pull-right" v-text="item.time"></small>
+                                        </div>
+                                    </div>
+                                    <div style="display:none;" v-show="newsEnd">没有更多新闻</div>
+                                    <div class="pull-right" style="margin-top:13px;margin-bottom:2px;">
+                                        <button style="margin-right:10px;" v-if="pageControlFilter(0,1)"
+                                                v-on:click="changePage(0,1)">上页
+                                        </button>
+                                        <span v-text="newsPage|currentPageFilter"></span>
+                                        <button style="margin-left:10px;" v-if="pageControlFilter(1,1)"
+                                                v-on:click="changePage(1,1)">下页
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-lg-right-side">
+                    <!--推送报告-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <div class="ibox-tools">
+                                        <h5>研究报告</h5>
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <!--研究报告 行业分析-->
+                                    <div class="feed-activity-list report-lists" style="padding-bottom:35px;">
+                                        <div class="feed-element" v-for="item in report" style="display:none;"
+                                             v-show="report|checkNotEmptyFilter">
+                                            <div>
+                                                <strong style="cursor:pointer;"
+                                                        v-on:click="openPdfOnline(item.url)"
+                                                        v-text="item.report_name"></strong>
+                                                <small class="text-muted pull-right text-navy"
+                                                       v-text="item.time"></small>
+                                            </div>
+                                        </div>
+                                        <div style="display:none;" v-show="report|checkEmptyFilter">没有更多报告</div>
+                                        <div class="pull-right" style="margin-top:13px;margin-bottom:2px;">
+                                            <button style="margin-right:10px;" v-if="pageControlFilter(0,2)"
+                                                    v-on:click="changePage(0,2)">上页
+                                            </button>
+                                            <span v-text="reportPage|currentPageFilter"></span>
+                                            <button style="margin-left:10px;" v-if="pageControlFilter(1,2)"
+                                                    v-on:click="changePage(1,2)">下页
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--项目推荐-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>项目信息</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content" style="display:none;"
+                                     v-show="postProject|checkNotEmptyFilter">
+                                    <div class="feed-activity-list">
+                                        <div class="feed-element" v-for="item in postProject">
+                                            <div>
+                                                <small class="pull-right text-navy link-handle-pointer"
+                                                       v-text="item.entName|formatStringFilter"
+                                                       v-on:click="gotoEntCompany(item.uuid)"></small>
+                                                <strong v-text="item.brand" class="project-brand link-handle-pointer"
+                                                        data-container="body" data-toggle="popover"
+                                                        data-placement="right"
+                                                        v-bind:data-content="item.comments|formatCommentsFilter"></strong>
+                                                <div v-text="item.brief"></div>
+                                                <small class="text-muted pull-right" v-text="item.domain"></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--查询结果显示-->
+<div style="display: none;" class="modal-mask" id="v-search-result-mask-info"
+     transition="modal" v-show="showMask">
+    <div v-bind:class="[showResult==1? 'modal-wrapper show-div':'modal-wrapper hide-div']">
+        <div class="modal-container">
+            <button class="modal-default-button" v-on:click="close()">
+                <i class="fa fa-close"></i>
+            </button>
+            <div class="no-border modal-header">
+                <h3 class="pull-left" v-text="title"></h3>
+            </div>
+            <div class="modal-body ibox no-border">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="no-m-b no-border ibox">
+                            <div class="ibox-content ibox-content-withpage">
+                                <div v-bind:class="[currentModule==1? 'table-responsive show-div':'table-responsive hide-div']">
+                                <!--<div class="table-responsive" v-if="checkModule(1)">-->
+                                    <table class="table table-striped table-bordered table-hover"
+                                           id="personal_result_table">
+                                        <thead>
+                                        <tr>
+                                            <th>姓名</th>
+                                            <th class="td-W30">性别</th>
+                                            <th>职务</th>
+                                            <th>机构</th>
+                                            <th>关注领域</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="ele in pResult">
+                                            <td class="cursor-link-only" v-on:click="gotoPersonal(ele.userId)" v-text="ele.userName"></td>
+                                            <td class="td-W30" v-text="ele.sex"></td>
+                                            <td v-text="ele.title"></td>
+                                            <td v-text="ele.organizeName"></td>
+                                            <td v-text="ele.focusDomain"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div v-bind:class="[currentModule==2? 'table-responsive show-div':'table-responsive hide-div']">
+                                    <table class="table table-striped table-bordered table-hover" id="org_result_table">
+                                        <thead>
+                                        <tr>
+                                            <th>机构名称</th>
+                                            <th>简称</th>
+                                            <th>对应实体</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr role="row" v-for="ele in oResult">
+                                            <td v-text="ele.orgCnName" style="cursor:pointer" v-on:click="gotoOrg(ele.orgId)"></td>
+                                            <td v-text="ele.orgCnShort"></td>
+                                            <td v-text="ele.orgMapEntity|formatDataFilter"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div v-bind:class="[currentModule==3? 'table-responsive show-div':'table-responsive hide-div']">
+                                    <table class="table table-striped table-bordered table-hover"
+                                           id="company_result_table">
+                                        <thead>
+                                        <tr>
+                                            <th>名称</th>
+                                            <th>法人</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="ele in cResult">
+                                            <td v-on:click="gotoCompany(ele.ent_id,ele.is_stock,ele.stock_type,ele.stock_code)"
+                                                v-text="ele.ent_name" class="cursor-link"></td>
+                                            <td v-text="ele.legal_person"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div v-bind:class="[searchResultEmpty?'m-t hide-div':'m-t show-div']">
+                                    <div class="pull-right">
+                                        <button style="margin-right:10px;" v-if="pageControlShow(0)"
+                                                v-on:click="changeResultPage(0)">上页
+                                        </button>
+                                        <span v-text="currentPage|currentPageFilter"></span>
+                                        <button style="margin-left:10px;" v-if="pageControlShow(1)"
+                                                v-on:click="changeResultPage(1)">下页
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div v-bind:class="[showResult==0? 'search-result-waiting show-div':'search-result-waiting hide-div']">
+        <img class="loading-animate" src="img/loading-gradient.png">
+    </div>
+    <div v-bind:class="[showResult==2? 'search-result-fault show-div':'search-result-fault hide-div']">
+        <div class="search-fault-info">
+            <button class="modal-default-button" v-on:click="close()">
+                <i class="fa fa-close"></i>
+            </button>
+            <p>请求数据失败</p>
+        </div>
+    </div>
+</div>
+
+<script src="js/plugins/jqDataTables/jquery.dataTables.js"></script>
+<script src="js/plugins/jqDataTables/extensions/buttons/dataTables.buttons.js"></script>
+<script src="js/plugins/jqDataTables/extensions/buttons/buttons.print.js"></script>
+<script src="js/plugins/jqDataTables/extensions/buttons/buttons.html5.js"></script>
+
+<script src="js/mycommon/common.data.js"></script>
+<script src="data/menu/common.menu.js"></script>
+<script src="js/mycommon/function.common.js"></script>
+<script src="js/mycommon/menu.common.js"></script>
+<script src="js/mycommon/ibox.function.js"></script>
+<script src="data/typeSelected/industry.data.js"></script>
+<script src="js/business/news.js"></script>
+</body>
+</html>

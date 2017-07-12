@@ -1,0 +1,7731 @@
+{
+  "status": "success",
+  "message": "Get invest event success!",
+  "orgInfo": null,
+  "teams": null,
+  "orgList": null,
+  "inventList": [
+    {
+      "eventId": 29359,
+      "entCnName": "厦门服云信息科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "安全狗获得5000万元B轮融资",
+      "userName": "NULL",
+      "happenDate": "2015-06-18"
+    },
+    {
+      "eventId": 2936,
+      "entCnName": "中博传媒有限公司",
+      "investType": "B轮",
+      "eventTitle": "鼎晖创投联合IDG资本投资中博传媒",
+      "userName": "王功权",
+      "happenDate": "2006-06-01"
+    },
+    {
+      "eventId": 2937,
+      "entCnName": "广州市久邦数码科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "集富亚洲/中经合/IDGVC投资3G门户",
+      "userName": "杨飞",
+      "happenDate": "2006-06-01"
+    },
+    {
+      "eventId": 2938,
+      "entCnName": "广州市久邦数码科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "集富亚洲/中经合/IDGVC投资3G门户",
+      "userName": "熊晓鸽",
+      "happenDate": "2006-06-01"
+    },
+    {
+      "eventId": 38489,
+      "entCnName": "上海至本生物科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "至本医疗获IDG资本等1000万美元融资",
+      "userName": "NULL",
+      "happenDate": "2016-09-20"
+    },
+    {
+      "eventId": 19878,
+      "entCnName": "安徽三只松鼠电子商务有限公司",
+      "investType": "B轮",
+      "eventTitle": "三只松鼠获今日资本等B轮融资",
+      "userName": "NULL",
+      "happenDate": "2013-03-01"
+    },
+    {
+      "eventId": 2944,
+      "entCnName": "上海方泰电子科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "启明创投联合DFJ ePlanet等投资方泰电子",
+      "userName": "毛丞宇",
+      "happenDate": "2006-06-01"
+    },
+    {
+      "eventId": 19885,
+      "entCnName": "北京悦音经典网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "Jing.fm获得数百万元A轮投资",
+      "userName": "NULL",
+      "happenDate": "2013-03-01"
+    },
+    {
+      "eventId": 2945,
+      "entCnName": "深圳市光芒科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资光芒科技",
+      "userName": "NULL",
+      "happenDate": "2006-06-01"
+    },
+    {
+      "eventId": 19913,
+      "entCnName": "上海创言信息科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "动点科技TechNode获得戈壁等投资",
+      "userName": "NULL",
+      "happenDate": "2013-03-01"
+    },
+    {
+      "eventId": 19930,
+      "entCnName": "UNITEDSTACK（北京）科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "UnitedStack获得红杉资本中国等注资",
+      "userName": "NULL",
+      "happenDate": "2013-03-01"
+    },
+    {
+      "eventId": 29477,
+      "entCnName": "美通云动（北京）科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "美通云动获IDG资本等千万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-06-25"
+    },
+    {
+      "eventId": 19963,
+      "entCnName": "北京傲锐东源生物科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "傲锐东源获启明创投等注资",
+      "userName": "NULL",
+      "happenDate": "2013-03-07"
+    },
+    {
+      "eventId": 38583,
+      "entCnName": "深圳宇客电子科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "SKIIN获得320万元注资",
+      "userName": "NULL",
+      "happenDate": "2016-09-28"
+    },
+    {
+      "eventId": 29517,
+      "entCnName": "上海轻轻信息科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "轻轻家教获红杉中国等1亿美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-06-26"
+    },
+    {
+      "eventId": 200,
+      "entCnName": "速达软件技术（广州）有限公司",
+      "investType": "B轮",
+      "eventTitle": "英特尔投资/IDGVC投资速达软件",
+      "userName": "周全",
+      "happenDate": "1999-04-01"
+    },
+    {
+      "eventId": 2005,
+      "entCnName": "广州数联软件技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG出资1400万美元再投Poco.cn",
+      "userName": "杨飞",
+      "happenDate": "2005-02-01"
+    },
+    {
+      "eventId": 2006,
+      "entCnName": "广州数联软件技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG出资1400万美元再投Poco.cn",
+      "userName": "熊晓鸽",
+      "happenDate": "2005-02-01"
+    },
+    {
+      "eventId": 2955,
+      "entCnName": "真宽通信技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本联合凯风基金注资真宽通信",
+      "userName": "章苏阳",
+      "happenDate": "2006-06-01"
+    },
+    {
+      "eventId": 10014,
+      "entCnName": "奇虎360科技有限公司",
+      "investType": "D轮",
+      "eventTitle": "联创策源联合IDG入股奇虎",
+      "userName": "NULL",
+      "happenDate": "2010-04-26"
+    },
+    {
+      "eventId": 2958,
+      "entCnName": "北京赛尚智业文化传播有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资东尚科技",
+      "userName": "NULL",
+      "happenDate": "2006-06-01"
+    },
+    {
+      "eventId": 201,
+      "entCnName": "速达软件技术（广州）有限公司",
+      "investType": "B轮",
+      "eventTitle": "英特尔投资/IDGVC投资速达软件",
+      "userName": "林栋梁",
+      "happenDate": "1999-04-01"
+    },
+    {
+      "eventId": 10052,
+      "entCnName": "SOKOFitness&SpaGroupInc.",
+      "investType": "A轮",
+      "eventTitle": "IDG资本等投资SOKO",
+      "userName": "NULL",
+      "happenDate": "2010-04-30"
+    },
+    {
+      "eventId": 29606,
+      "entCnName": "上海兆言网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "声网获得2000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-06-30"
+    },
+    {
+      "eventId": 3870,
+      "entCnName": "伽玛星医疗集团",
+      "investType": "A轮",
+      "eventTitle": "启明联合IDGVC上海天使投资投资伽玛星",
+      "userName": "章苏阳",
+      "happenDate": "2007-01-29"
+    },
+    {
+      "eventId": 38709,
+      "entCnName": "北京桂花网科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "桂花网获得朗玛峰创投等1027万美元融资",
+      "userName": "NULL",
+      "happenDate": "2016-10-12"
+    },
+    {
+      "eventId": 2017,
+      "entCnName": "上海大承网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "住友商事/IDGVC投资腾仁信息",
+      "userName": "NULL",
+      "happenDate": "2005-03-01"
+    },
+    {
+      "eventId": 29639,
+      "entCnName": "北京易动纷享科技有限责任公司",
+      "investType": "D轮",
+      "eventTitle": "纷享科技获得1亿美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-07-01"
+    },
+    {
+      "eventId": 10113,
+      "entCnName": "华灿光电股份有限公司",
+      "investType": "D轮",
+      "eventTitle": "华灿光电获开投基金和IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2010-05-09"
+    },
+    {
+      "eventId": 20223,
+      "entCnName": "北京洋浦伟业科技发展有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG联合红点投资注资洋浦科技",
+      "userName": "NULL",
+      "happenDate": "2013-04-25"
+    },
+    {
+      "eventId": 29683,
+      "entCnName": "杭州乐刻网络技术有限公司",
+      "investType": "天使轮",
+      "eventTitle": "乐刻运动获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2015-07-01"
+    },
+    {
+      "eventId": 38825,
+      "entCnName": "上海微知软件科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "京东金融等注资微知软件",
+      "userName": "NULL",
+      "happenDate": "2016-10-25"
+    },
+    {
+      "eventId": 29691,
+      "entCnName": "上海流利说信息技术有限公司",
+      "investType": "C轮",
+      "eventTitle": "流利说获得纪源资本注资",
+      "userName": "NULL",
+      "happenDate": "2015-07-01"
+    },
+    {
+      "eventId": 2025,
+      "entCnName": "中国万网集团公司",
+      "investType": "B轮",
+      "eventTitle": "新桥资本/IDGVC投资万网",
+      "userName": "NULL",
+      "happenDate": "2005-03-01"
+    },
+    {
+      "eventId": 20265,
+      "entCnName": "苏州贝昂科技有限公司",
+      "investType": "Growth",
+      "eventTitle": "IDG资本注资贝昂科技",
+      "userName": "NULL",
+      "happenDate": "2013-05-01"
+    },
+    {
+      "eventId": 2974,
+      "entCnName": "广州市富年电子科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "上海联创/IDGVC再次投资富年科技",
+      "userName": "NULL",
+      "happenDate": "2006-06-01"
+    },
+    {
+      "eventId": 10191,
+      "entCnName": "广州易积网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资易积网",
+      "userName": "杨飞",
+      "happenDate": "2010-05-21"
+    },
+    {
+      "eventId": 10192,
+      "entCnName": "广州易积网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资易积网",
+      "userName": "高翔",
+      "happenDate": "2010-05-21"
+    },
+    {
+      "eventId": 20307,
+      "entCnName": "厦门服云信息科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "安全狗获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2013-05-01"
+    },
+    {
+      "eventId": 2033,
+      "entCnName": "北京易索得通信技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC/2b Holdings共同投资易索得",
+      "userName": "NULL",
+      "happenDate": "2005-03-01"
+    },
+    {
+      "eventId": 1029,
+      "entCnName": "北京书生电子技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资书生国际",
+      "userName": "李建光",
+      "happenDate": "2002-10-01"
+    },
+    {
+      "eventId": 3904,
+      "entCnName": "智迈微电子科技（上海）有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/德同/联创投资智迈微电子",
+      "userName": "NULL",
+      "happenDate": "2007-02-01"
+    },
+    {
+      "eventId": 2990,
+      "entCnName": "新雅迪（北京）传媒技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资新雅迪传媒",
+      "userName": "NULL",
+      "happenDate": "2006-06-01"
+    },
+    {
+      "eventId": 20433,
+      "entCnName": "深圳市柔宇科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "深创投等注资柔宇科技",
+      "userName": "NULL",
+      "happenDate": "2013-06-01"
+    },
+    {
+      "eventId": 3914,
+      "entCnName": "北京掌中米格信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC投资掌中米格",
+      "userName": "NULL",
+      "happenDate": "2007-02-01"
+    },
+    {
+      "eventId": 20502,
+      "entCnName": "上海流利说信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "流利说获数百万元投资",
+      "userName": "NULL",
+      "happenDate": "2013-06-01"
+    },
+    {
+      "eventId": 301,
+      "entCnName": "资和信控股集团有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资资和信",
+      "userName": "NULL",
+      "happenDate": "2000-01-01"
+    },
+    {
+      "eventId": 30108,
+      "entCnName": "猎上网络技术（上海）有限公司",
+      "investType": "C轮",
+      "eventTitle": "猎上网获IDG资本等2亿元投资",
+      "userName": "NULL",
+      "happenDate": "2015-07-14"
+    },
+    {
+      "eventId": 30118,
+      "entCnName": "杭州财米科技有限公司",
+      "investType": "E轮",
+      "eventTitle": "挖财获得8000万美元融资",
+      "userName": "NULL",
+      "happenDate": "2015-07-15"
+    },
+    {
+      "eventId": 2057,
+      "entCnName": "乐多数码科技（上海）有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资慧洋科技",
+      "userName": "NULL",
+      "happenDate": "2005-04-01"
+    },
+    {
+      "eventId": 206,
+      "entCnName": "上海索盛互联网信息服务有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资索易",
+      "userName": "NULL",
+      "happenDate": "1999-05-01"
+    },
+    {
+      "eventId": 30181,
+      "entCnName": "盈方体育传媒集团",
+      "investType": "Growth",
+      "eventTitle": "华人文化等投资入股盈方集团",
+      "userName": "NULL",
+      "happenDate": "2015-07-16"
+    },
+    {
+      "eventId": 10575,
+      "entCnName": "上海瑞慈健康体检管理股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资瑞慈体检3000多万元",
+      "userName": "余征坤",
+      "happenDate": "2010-07-01"
+    },
+    {
+      "eventId": 10600,
+      "entCnName": "上海全土豆网络科技有限公司",
+      "investType": "E轮",
+      "eventTitle": "土豆网第五次融资 涉及金额7500万美元",
+      "userName": "章苏阳",
+      "happenDate": "2010-07-05"
+    },
+    {
+      "eventId": 10603,
+      "entCnName": "广州市久邦数码科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "宽带产业基金 集富亚洲 中经合 IDGVC增资3G门户",
+      "userName": "杨飞",
+      "happenDate": "2010-07-06"
+    },
+    {
+      "eventId": 10604,
+      "entCnName": "广州市久邦数码科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "宽带产业基金 集富亚洲 中经合 IDGVC增资3G门户",
+      "userName": "熊晓鸽",
+      "happenDate": "2010-07-06"
+    },
+    {
+      "eventId": 302,
+      "entCnName": "MagnexInc.",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资Magnex",
+      "userName": "NULL",
+      "happenDate": "2000-01-01"
+    },
+    {
+      "eventId": 3020,
+      "entCnName": "上海迪岸广告有限公司",
+      "investType": "B轮",
+      "eventTitle": "英特尔投资/IDGVC/Farallon等投资迪岸传媒",
+      "userName": "章苏阳",
+      "happenDate": "2006-06-21"
+    },
+    {
+      "eventId": 30246,
+      "entCnName": "北京云测信息技术有限公司",
+      "investType": "D轮",
+      "eventTitle": "云测信息获得海银资本等注资",
+      "userName": "NULL",
+      "happenDate": "2015-07-20"
+    },
+    {
+      "eventId": 1073,
+      "entCnName": "硅谷数模半导体有限公司",
+      "investType": "A轮",
+      "eventTitle": "Woodside/DCM/IDGVC投资Analogix",
+      "userName": "金曦",
+      "happenDate": "2002-11-20"
+    },
+    {
+      "eventId": 20728,
+      "entCnName": "北京品致幻享科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "品致幻享获数百万元投资",
+      "userName": "NULL",
+      "happenDate": "2013-07-01"
+    },
+    {
+      "eventId": 30301,
+      "entCnName": "深圳市青葱传媒科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本天使投资青葱新媒体",
+      "userName": "NULL",
+      "happenDate": "2015-07-21"
+    },
+    {
+      "eventId": 10758,
+      "entCnName": "江苏科泰电商技术服务有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC4000万美元投资四海商舟",
+      "userName": "杨飞",
+      "happenDate": "2010-08-01"
+    },
+    {
+      "eventId": 10759,
+      "entCnName": "江苏科泰电商技术服务有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC4000万美元投资四海商舟",
+      "userName": "熊晓鸽",
+      "happenDate": "2010-08-01"
+    },
+    {
+      "eventId": 10827,
+      "entCnName": "北京洋浦伟业科技发展有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资洋浦科技",
+      "userName": "NULL",
+      "happenDate": "2010-08-01"
+    },
+    {
+      "eventId": 10838,
+      "entCnName": "上海途度二手车经营有限公司",
+      "investType": "C轮",
+      "eventTitle": "启明创投等注资二度车网",
+      "userName": "吴颖",
+      "happenDate": "2010-08-01"
+    },
+    {
+      "eventId": 3043,
+      "entCnName": "上海柯慧网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "红杉中国/IDGVC投资柯慧网络",
+      "userName": "NULL",
+      "happenDate": "2006-06-29"
+    },
+    {
+      "eventId": 30439,
+      "entCnName": "杭州迪尔西时尚科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "迪尔西时尚获IDG资本投资",
+      "userName": "NULL",
+      "happenDate": "2015-07-27"
+    },
+    {
+      "eventId": 30455,
+      "entCnName": "广州百塑电子商务有限公司",
+      "investType": "C轮",
+      "eventTitle": "找塑料网获得3600万美元融资",
+      "userName": "NULL",
+      "happenDate": "2015-07-28"
+    },
+    {
+      "eventId": 10839,
+      "entCnName": "上海途度二手车经营有限公司",
+      "investType": "C轮",
+      "eventTitle": "启明创投等注资二度车网",
+      "userName": "章苏阳",
+      "happenDate": "2010-08-01"
+    },
+    {
+      "eventId": 20842,
+      "entCnName": "北京贞观雨科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "经纬创投等投资贞观雨科技",
+      "userName": "NULL",
+      "happenDate": "2013-07-24"
+    },
+    {
+      "eventId": 20851,
+      "entCnName": "北京百分点信息科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "百分点获B轮融资 东方星空IDG资本参投",
+      "userName": "李丰",
+      "happenDate": "2013-07-25"
+    },
+    {
+      "eventId": 30506,
+      "entCnName": "北京严肃科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "严肃科技获得IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2015-07-29"
+    },
+    {
+      "eventId": 3952,
+      "entCnName": "北斗通信器材有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资北斗手机网",
+      "userName": "NULL",
+      "happenDate": "2007-02-14"
+    },
+    {
+      "eventId": 2087,
+      "entCnName": "北京网尚文化传播有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资网尚文化 占股22%",
+      "userName": "周全",
+      "happenDate": "2005-05-01"
+    },
+    {
+      "eventId": 30587,
+      "entCnName": "深圳鱼羊美厨网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "美厨获得IDG资本等数百万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-08-01"
+    },
+    {
+      "eventId": 10967,
+      "entCnName": "福建印象大红袍茶业有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资大红袍茶叶",
+      "userName": "李建光",
+      "happenDate": "2010-08-22"
+    },
+    {
+      "eventId": 2094,
+      "entCnName": "北京游龙网网络科技有限公司（本部）",
+      "investType": "B轮",
+      "eventTitle": "IDGVC第二轮投资游龙科技",
+      "userName": "NULL",
+      "happenDate": "2005-05-01"
+    },
+    {
+      "eventId": 30600,
+      "entCnName": "北京桂花网科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "桂花网获IDG数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2015-08-01"
+    },
+    {
+      "eventId": 2095,
+      "entCnName": "上海帖易文化传播有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资帖易30万美元",
+      "userName": "NULL",
+      "happenDate": "2005-05-01"
+    },
+    {
+      "eventId": 3062,
+      "entCnName": "康辉控股（中国）公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本/TDF投资康辉医疗",
+      "userName": "章苏阳",
+      "happenDate": "2006-07-01"
+    },
+    {
+      "eventId": 10999,
+      "entCnName": "海南双成药业股份有限公司",
+      "investType": "Growth",
+      "eventTitle": "IDG资本联合四维资本注资双成药业",
+      "userName": "杨飞",
+      "happenDate": "2010-08-26"
+    },
+    {
+      "eventId": 20964,
+      "entCnName": "北京寺库商贸有限公司",
+      "investType": "C轮",
+      "eventTitle": "寺库获盘古创富等数千万美元C轮投资",
+      "userName": "NULL",
+      "happenDate": "2013-08-06"
+    },
+    {
+      "eventId": 30633,
+      "entCnName": "斧子科技（深圳）有限公司",
+      "investType": "A轮",
+      "eventTitle": "斧子科技获得融资",
+      "userName": "NULL",
+      "happenDate": "2015-08-01"
+    },
+    {
+      "eventId": 30642,
+      "entCnName": "北京乐纯有限责任公司（暂定名）",
+      "investType": "A轮",
+      "eventTitle": "乐纯获数百万美元融资",
+      "userName": "NULL",
+      "happenDate": "2015-08-01"
+    },
+    {
+      "eventId": 11022,
+      "entCnName": "安徽艾可蓝节能环保科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "松禾资本/IDG等投资艾可蓝",
+      "userName": "NULL",
+      "happenDate": "2010-08-28"
+    },
+    {
+      "eventId": 21019,
+      "entCnName": "广州简悦信息科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG等投资简悦科技近亿元",
+      "userName": "NULL",
+      "happenDate": "2013-08-20"
+    },
+    {
+      "eventId": 30696,
+      "entCnName": "杭州彩家网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "彩家网络获得数百万元融资",
+      "userName": "NULL",
+      "happenDate": "2015-08-01"
+    },
+    {
+      "eventId": 2103,
+      "entCnName": "掘乐信息技术（上海）有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资ChinaY",
+      "userName": "NULL",
+      "happenDate": "2005-05-01"
+    },
+    {
+      "eventId": 30720,
+      "entCnName": "悦知行信息技术（北京）有限公司",
+      "investType": "A轮",
+      "eventTitle": "悦知行获得时尚传媒等投资",
+      "userName": "NULL",
+      "happenDate": "2015-08-02"
+    },
+    {
+      "eventId": 30743,
+      "entCnName": "北京第三石科技发展有限公司",
+      "investType": "B轮",
+      "eventTitle": "第三石科技获IDG资本等2000美万元注资",
+      "userName": "NULL",
+      "happenDate": "2015-08-04"
+    },
+    {
+      "eventId": 21085,
+      "entCnName": "App Annie Limited",
+      "investType": "C轮",
+      "eventTitle": "App Annie获IDG资本等1500万美元注资",
+      "userName": "NULL",
+      "happenDate": "2013-09-01"
+    },
+    {
+      "eventId": 3076,
+      "entCnName": "深圳市数字鱼通信信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "软银赛富联合IDGVC投资数字鱼",
+      "userName": "NULL",
+      "happenDate": "2006-07-01"
+    },
+    {
+      "eventId": 30799,
+      "entCnName": "深圳市众人在线网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "众人在线获得IDG资本数百万元投资",
+      "userName": "NULL",
+      "happenDate": "2015-08-07"
+    },
+    {
+      "eventId": 30822,
+      "entCnName": "广州市新娱加娱乐传媒文化有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本1000万元注资新娱加娱乐",
+      "userName": "NULL",
+      "happenDate": "2015-08-10"
+    },
+    {
+      "eventId": 30852,
+      "entCnName": "北京陪我科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "陪我科技获得6000万元注资",
+      "userName": "NULL",
+      "happenDate": "2015-08-11"
+    },
+    {
+      "eventId": 3975,
+      "entCnName": "中博传媒有限公司",
+      "investType": "C轮",
+      "eventTitle": "IDGVC等第三轮投资中博传媒",
+      "userName": "王功权",
+      "happenDate": "2007-03-01"
+    },
+    {
+      "eventId": 21120,
+      "entCnName": "友聚惠（北京）科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "币行获数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2013-09-01"
+    },
+    {
+      "eventId": 21130,
+      "entCnName": "南京洛哈网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "一起唱获IDG资本数百万元注资",
+      "userName": "NULL",
+      "happenDate": "2013-09-01"
+    },
+    {
+      "eventId": 3089,
+      "entCnName": "广州华康投资咨询有限公司",
+      "investType": "A轮",
+      "eventTitle": "华康获IDGVC注资",
+      "userName": "杨飞",
+      "happenDate": "2006-07-01"
+    },
+    {
+      "eventId": 3980,
+      "entCnName": "海蝶国际控股集团",
+      "investType": "B轮",
+      "eventTitle": "海纳亚洲/IDGVC等投资海蝶控股",
+      "userName": "NULL",
+      "happenDate": "2007-03-01"
+    },
+    {
+      "eventId": 30917,
+      "entCnName": "北京海博思创科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "海博思创获IDG等注资",
+      "userName": "NULL",
+      "happenDate": "2015-08-13"
+    },
+    {
+      "eventId": 39834,
+      "entCnName": "美新半导体有限公司",
+      "investType": "被收购",
+      "eventTitle": "IDG旗下基金投资美新半导体",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 39835,
+      "entCnName": "美新半导体有限公司",
+      "investType": "被收购",
+      "eventTitle": "IDG旗下基金投资美新半导体",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 39836,
+      "entCnName": "美新半导体有限公司",
+      "investType": "被收购",
+      "eventTitle": "IDG旗下基金投资美新半导体",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 39837,
+      "entCnName": "美新半导体有限公司",
+      "investType": "被收购",
+      "eventTitle": "IDG旗下基金投资美新半导体",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 11220,
+      "entCnName": "上海东方希杰商务有限公司",
+      "investType": "A轮",
+      "eventTitle": "软银中国等注资东方CJ",
+      "userName": "NULL",
+      "happenDate": "2010-09-20"
+    },
+    {
+      "eventId": 30987,
+      "entCnName": "上海医药大健康云商股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本入股大健康云商",
+      "userName": "NULL",
+      "happenDate": "2015-08-18"
+    },
+    {
+      "eventId": 30989,
+      "entCnName": "深圳市柔宇科技有限公司",
+      "investType": "Growth",
+      "eventTitle": "深柔宇科技获得深创投等注资",
+      "userName": "NULL",
+      "happenDate": "2015-08-18"
+    },
+    {
+      "eventId": 310,
+      "entCnName": "北京当当网信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG、软银中国等投资当当网",
+      "userName": "周全",
+      "happenDate": "2000-02-01"
+    },
+    {
+      "eventId": 11347,
+      "entCnName": "广州菲特网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本2000万元注资IWODE",
+      "userName": "NULL",
+      "happenDate": "2010-10-01"
+    },
+    {
+      "eventId": 2128,
+      "entCnName": "上海迪岸广告有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资迪岸传媒",
+      "userName": "章苏阳",
+      "happenDate": "2005-06-01"
+    },
+    {
+      "eventId": 1138,
+      "entCnName": "广州数联软件技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG600万元注资Poco.cn",
+      "userName": "杨飞",
+      "happenDate": "2003-01-01"
+    },
+    {
+      "eventId": 3998,
+      "entCnName": "广州启生信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC投资39健康网",
+      "userName": "杨飞",
+      "happenDate": "2007-03-01"
+    },
+    {
+      "eventId": 21296,
+      "entCnName": "杭州财米科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "挖财网获IDG千万美元投资",
+      "userName": "NULL",
+      "happenDate": "2013-09-23"
+    },
+    {
+      "eventId": 31059,
+      "entCnName": "北京优车诚品网络科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "优车诚品获银河创新资本等投资",
+      "userName": "NULL",
+      "happenDate": "2015-08-20"
+    },
+    {
+      "eventId": 21304,
+      "entCnName": "青岛风云互动网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "章鱼TV获IDG投资",
+      "userName": "NULL",
+      "happenDate": "2013-09-24"
+    },
+    {
+      "eventId": 2131,
+      "entCnName": "上海赢思软件技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC追加投资赢思软件",
+      "userName": "NULL",
+      "happenDate": "2005-06-01"
+    },
+    {
+      "eventId": 2137,
+      "entCnName": "上海宝酷网络技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "华登/IDGVC投资5173.com",
+      "userName": "NULL",
+      "happenDate": "2005-06-01"
+    },
+    {
+      "eventId": 21389,
+      "entCnName": "深圳市优米信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "优米科技获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2013-10-01"
+    },
+    {
+      "eventId": 4000,
+      "entCnName": "中国娱乐网",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资中国娱乐网",
+      "userName": "NULL",
+      "happenDate": "2007-03-01"
+    },
+    {
+      "eventId": 21417,
+      "entCnName": "中国全聚德（集团）股份有限公司",
+      "investType": "PIPE",
+      "eventTitle": "全聚德非公开发行股票 IDG资本参与认购",
+      "userName": "NULL",
+      "happenDate": "2013-10-09"
+    },
+    {
+      "eventId": 21442,
+      "entCnName": "杭州幻电科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "哔哩哔哩获IDG资本数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2013-10-17"
+    },
+    {
+      "eventId": 40031,
+      "entCnName": "聚众畅行（香港）国际旅游有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本和鼎晖投资注资五星汇",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 312,
+      "entCnName": "北京今点万维网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资雅宝",
+      "userName": "NULL",
+      "happenDate": "2000-02-01"
+    },
+    {
+      "eventId": 11534,
+      "entCnName": "北京畅行信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资嘀嗒拼车",
+      "userName": "熊晓鸽",
+      "happenDate": "2010-11-01"
+    },
+    {
+      "eventId": 11544,
+      "entCnName": "凡客诚品（北京）科技有限公司",
+      "investType": "E轮",
+      "eventTitle": "联创策源联合IDG等参与凡客诚品第五轮融资",
+      "userName": "林栋梁",
+      "happenDate": "2010-11-01"
+    },
+    {
+      "eventId": 215,
+      "entCnName": "中国万网集团公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资万网",
+      "userName": "王功权",
+      "happenDate": "1999-06-01"
+    },
+    {
+      "eventId": 31281,
+      "entCnName": "厦门创艺社科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "T社获得500万元投资",
+      "userName": "NULL",
+      "happenDate": "2015-08-30"
+    },
+    {
+      "eventId": 31295,
+      "entCnName": "上海邻趣网络科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "邻趣获得启明创投等注资",
+      "userName": "NULL",
+      "happenDate": "2015-08-31"
+    },
+    {
+      "eventId": 21538,
+      "entCnName": "杭州同盾科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "同盾科技获1000万元投资",
+      "userName": "NULL",
+      "happenDate": "2013-11-01"
+    },
+    {
+      "eventId": 1166,
+      "entCnName": "上海如家酒店管理公司",
+      "investType": "A轮",
+      "eventTitle": "携程网/首都旅游集团/IDGVC/海纳亚州/梧桐共同投资如家",
+      "userName": "章苏阳",
+      "happenDate": "2003-02-01"
+    },
+    {
+      "eventId": 4019,
+      "entCnName": "上海智臻智能网络科技股份有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本等共同注资智臻网络",
+      "userName": "NULL",
+      "happenDate": "2007-03-01"
+    },
+    {
+      "eventId": 21548,
+      "entCnName": "杭州铜板街网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本领投铜板街 金额逾千万美元",
+      "userName": "NULL",
+      "happenDate": "2013-11-01"
+    },
+    {
+      "eventId": 11688,
+      "entCnName": "北京今日都市信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资嘀嗒团",
+      "userName": "NULL",
+      "happenDate": "2010-11-16"
+    },
+    {
+      "eventId": 31384,
+      "entCnName": "成都尚医信息科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "尚医科技获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2015-09-01"
+    },
+    {
+      "eventId": 31392,
+      "entCnName": "我要游学（北京）科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "HIVE获得300万美元融资",
+      "userName": "NULL",
+      "happenDate": "2015-09-01"
+    },
+    {
+      "eventId": 3140,
+      "entCnName": "北京凯铭风尚网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资YOKA",
+      "userName": "熊晓鸽",
+      "happenDate": "2006-08-01"
+    },
+    {
+      "eventId": 21589,
+      "entCnName": "天华阳光控股有限公司",
+      "investType": "C轮",
+      "eventTitle": "IDG资本注资天华阳光",
+      "userName": "何志成",
+      "happenDate": "2013-11-01"
+    },
+    {
+      "eventId": 21590,
+      "entCnName": "天华阳光控股有限公司",
+      "investType": "C轮",
+      "eventTitle": "IDG资本注资天华阳光",
+      "userName": "周全",
+      "happenDate": "2013-11-01"
+    },
+    {
+      "eventId": 216,
+      "entCnName": "搜房控股有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资搜房",
+      "userName": "周全",
+      "happenDate": "1999-06-01"
+    },
+    {
+      "eventId": 21631,
+      "entCnName": "深圳市递四方速递有限公司",
+      "investType": "C轮",
+      "eventTitle": "IDG资本5000万美元投资递四方速递",
+      "userName": "NULL",
+      "happenDate": "2013-11-06"
+    },
+    {
+      "eventId": 21643,
+      "entCnName": "凤凰新媒体有限公司",
+      "investType": "PIPE",
+      "eventTitle": "凤凰新媒体（NYSE.FENG）获IDG数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2013-11-11"
+    },
+    {
+      "eventId": 21644,
+      "entCnName": "凤凰新媒体有限公司",
+      "investType": "PIPE",
+      "eventTitle": "凤凰新媒体（NYSE.FENG）获IDG数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2013-11-11"
+    },
+    {
+      "eventId": 1178,
+      "entCnName": "中博传媒有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资中博传媒",
+      "userName": "王功权",
+      "happenDate": "2003-03-01"
+    },
+    {
+      "eventId": 118,
+      "entCnName": "时尚传媒有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资时尚传媒",
+      "userName": "NULL",
+      "happenDate": "1997-09-01"
+    },
+    {
+      "eventId": 11807,
+      "entCnName": "易美芯光（北京）科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "易美芯光获金沙江创投等5150万美元注资",
+      "userName": "NULL",
+      "happenDate": "2010-12-01"
+    },
+    {
+      "eventId": 11814,
+      "entCnName": "久奈（天津）健康用品有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资久奈 风投看上安全套市场",
+      "userName": "周全",
+      "happenDate": "2010-12-01"
+    },
+    {
+      "eventId": 11818,
+      "entCnName": "北京网优聚众网络科技有限责任公司",
+      "investType": "A轮",
+      "eventTitle": "光速创投联合IDG资本注资网优聚众",
+      "userName": "NULL",
+      "happenDate": "2010-12-01"
+    },
+    {
+      "eventId": 1182,
+      "entCnName": "芯原股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/iGlobe/中经合/Harbinger投资芯原",
+      "userName": "金曦",
+      "happenDate": "2003-03-01"
+    },
+    {
+      "eventId": 31514,
+      "entCnName": "上海链展国际贸易有限公司",
+      "investType": "A轮",
+      "eventTitle": "链尚网获得IDG资本投资",
+      "userName": "NULL",
+      "happenDate": "2015-09-05"
+    },
+    {
+      "eventId": 2173,
+      "entCnName": "硅谷数模半导体有限公司",
+      "investType": "A轮",
+      "eventTitle": "盈富泰克等投资硅谷数模1540万美元",
+      "userName": "金曦",
+      "happenDate": "2005-06-23"
+    },
+    {
+      "eventId": 3158,
+      "entCnName": "上海途度二手车经营有限公司",
+      "investType": "A轮",
+      "eventTitle": "启明创投联合IDG等投资二度车网",
+      "userName": "周全",
+      "happenDate": "2006-08-01"
+    },
+    {
+      "eventId": 3159,
+      "entCnName": "上海途度二手车经营有限公司",
+      "investType": "A轮",
+      "eventTitle": "启明创投联合IDG等投资二度车网",
+      "userName": "章苏阳",
+      "happenDate": "2006-08-01"
+    },
+    {
+      "eventId": 3168,
+      "entCnName": "迈德医疗科技（上海）有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/联讯投资迈德医疗",
+      "userName": "金曦",
+      "happenDate": "2006-08-01"
+    },
+    {
+      "eventId": 12018,
+      "entCnName": "新光国际百货",
+      "investType": "A轮",
+      "eventTitle": "IDG资本参与投资成立新光国际百货",
+      "userName": "NULL",
+      "happenDate": "2010-12-08"
+    },
+    {
+      "eventId": 2185,
+      "entCnName": "上海新浩艺软件有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资新浩艺",
+      "userName": "NULL",
+      "happenDate": "2005-07-01"
+    },
+    {
+      "eventId": 3176,
+      "entCnName": "海南动网先锋网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本投资动网先锋",
+      "userName": "高翔",
+      "happenDate": "2006-08-01"
+    },
+    {
+      "eventId": 31789,
+      "entCnName": "搜房控股有限公司",
+      "investType": "PIPE",
+      "eventTitle": "搜房网获数亿美元融资",
+      "userName": "NULL",
+      "happenDate": "2015-09-18"
+    },
+    {
+      "eventId": 40627,
+      "entCnName": "上海美华丁香妇科门诊部有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资美华妇科",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 12115,
+      "entCnName": "云南蓝晶科技股份有限公司",
+      "investType": "Growth",
+      "eventTitle": "IDG资本3021万美元注资蓝晶科技",
+      "userName": "NULL",
+      "happenDate": "2010-12-16"
+    },
+    {
+      "eventId": 31843,
+      "entCnName": "上海汇翼信息科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "汇翼信息科技获得1200万美元投资",
+      "userName": "NULL",
+      "happenDate": "2015-09-21"
+    },
+    {
+      "eventId": 21951,
+      "entCnName": "北京凯铭风尚网络技术有限公司",
+      "investType": "C轮",
+      "eventTitle": "百度领投YOKA时尚网 金额1500万美元",
+      "userName": "NULL",
+      "happenDate": "2013-12-24"
+    },
+    {
+      "eventId": 12160,
+      "entCnName": "天福（开曼）控股有限公司",
+      "investType": "Growth",
+      "eventTitle": "CICC联合红杉中国等投资天福",
+      "userName": "NULL",
+      "happenDate": "2010-12-20"
+    },
+    {
+      "eventId": 2196,
+      "entCnName": "北京益华明健康科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资益华明（健康中国网）",
+      "userName": "NULL",
+      "happenDate": "2005-07-01"
+    },
+    {
+      "eventId": 31959,
+      "entCnName": "深圳矽递科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "矽递科技获得1亿元B轮融资",
+      "userName": "NULL",
+      "happenDate": "2015-09-25"
+    },
+    {
+      "eventId": 22046,
+      "entCnName": "福亿国际投资有限公司",
+      "investType": "A轮",
+      "eventTitle": "福亿获IDG资本等数千万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-01-01"
+    },
+    {
+      "eventId": 2205,
+      "entCnName": "桑迪亚医药技术（上海）有限责任公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资桑迪亚",
+      "userName": "章苏阳",
+      "happenDate": "2005-07-05"
+    },
+    {
+      "eventId": 12349,
+      "entCnName": "中国服饰控股有限公司",
+      "investType": "Growth",
+      "eventTitle": "IDG资本等投资中国服饰控股",
+      "userName": "NULL",
+      "happenDate": "2010-12-31"
+    },
+    {
+      "eventId": 40788,
+      "entCnName": "龙旗控股有限公司",
+      "investType": "天使轮",
+      "eventTitle": "IDG资本入股龙旗控股",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 40794,
+      "entCnName": "昆山梦世界商业管理有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资梦世界",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 22086,
+      "entCnName": "北京掌上汇通科技发展有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本等投资PP钱包",
+      "userName": "NULL",
+      "happenDate": "2014-01-01"
+    },
+    {
+      "eventId": 22089,
+      "entCnName": "北京优车诚品网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "优车诚品获IDG资本千万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-01-01"
+    },
+    {
+      "eventId": 22095,
+      "entCnName": "深圳市脸萌科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG注资MYOTee脸萌",
+      "userName": "李丰",
+      "happenDate": "2014-01-01"
+    },
+    {
+      "eventId": 32055,
+      "entCnName": "北京河狸家信息技术有限公司",
+      "investType": "C轮",
+      "eventTitle": "河狸家宣布融资近5000万美元",
+      "userName": "NULL",
+      "happenDate": "2015-10-01"
+    },
+    {
+      "eventId": 22102,
+      "entCnName": "深圳市品汇科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "品汇科技获IDG资本数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-01-01"
+    },
+    {
+      "eventId": 22114,
+      "entCnName": "南京洛哈网络科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "一起唱获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2014-01-01"
+    },
+    {
+      "eventId": 22119,
+      "entCnName": "淮北市耀鹏商贸有限公司",
+      "investType": "A轮",
+      "eventTitle": "团若网获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2014-01-01"
+    },
+    {
+      "eventId": 1241,
+      "entCnName": "中国金融在线有限公司",
+      "investType": "B轮",
+      "eventTitle": "祥峰集团联合IDGVC投资金融界",
+      "userName": "熊晓鸽",
+      "happenDate": "2003-05-07"
+    },
+    {
+      "eventId": 1242,
+      "entCnName": "中国金融在线有限公司",
+      "investType": "B轮",
+      "eventTitle": "祥峰集团联合IDGVC投资金融界",
+      "userName": "王功权",
+      "happenDate": "2003-05-07"
+    },
+    {
+      "eventId": 3208,
+      "entCnName": "快乐米（中国）信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资快乐米",
+      "userName": "过以宏",
+      "happenDate": "2006-08-16"
+    },
+    {
+      "eventId": 12449,
+      "entCnName": "上海耶客网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "耶客获A轮投资",
+      "userName": "NULL",
+      "happenDate": "2011-01-01"
+    },
+    {
+      "eventId": 22163,
+      "entCnName": "深圳福迈斯科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "金融圈获IDG资本等数百万美元注资",
+      "userName": "NULL",
+      "happenDate": "2014-01-01"
+    },
+    {
+      "eventId": 22173,
+      "entCnName": "南京贝湾教育科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "扇贝网获IDG资本数百万美元注资",
+      "userName": "NULL",
+      "happenDate": "2014-01-01"
+    },
+    {
+      "eventId": 12459,
+      "entCnName": "上海宝钢包装股份有限公司",
+      "investType": "Growth",
+      "eventTitle": "IDG资本等机构联合投资宝钢包装 占股20%",
+      "userName": "NULL",
+      "happenDate": "2011-01-01"
+    },
+    {
+      "eventId": 40893,
+      "entCnName": "Lenskart",
+      "investType": "天使轮",
+      "eventTitle": "Lenskart获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 22191,
+      "entCnName": "杭州群核信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "群核信息获IDG资本数百万美元注资",
+      "userName": "NULL",
+      "happenDate": "2014-01-01"
+    },
+    {
+      "eventId": 222,
+      "entCnName": "广州市正泰商业数据有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资正泰数据",
+      "userName": "侯朗基",
+      "happenDate": "1999-07-01"
+    },
+    {
+      "eventId": 22219,
+      "entCnName": "深圳市亚巴顿科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "Pipe of Insight获得IDG注资",
+      "userName": "NULL",
+      "happenDate": "2014-01-01"
+    },
+    {
+      "eventId": 22225,
+      "entCnName": "苏州叠纸网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "苏州叠纸网络获IDG资本数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-01-01"
+    },
+    {
+      "eventId": 22232,
+      "entCnName": "海致网聚网络技术（北京）有限公司",
+      "investType": "B轮",
+      "eventTitle": "海致网聚获得高瓴资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-01-01"
+    },
+    {
+      "eventId": 32196,
+      "entCnName": "深圳碳原子科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "See获IDG资本数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2015-10-12"
+    },
+    {
+      "eventId": 32199,
+      "entCnName": "杭州康晟健康管理咨询有限公司",
+      "investType": "B轮",
+      "eventTitle": "掌上糖医获得IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2015-10-12"
+    },
+    {
+      "eventId": 322,
+      "entCnName": "上海好耶广告有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资好耶",
+      "userName": "章苏阳",
+      "happenDate": "2000-03-01"
+    },
+    {
+      "eventId": 32242,
+      "entCnName": "宁波私银家投资管理有限公司",
+      "investType": "C轮",
+      "eventTitle": "私银家获IDG资本数亿元投资",
+      "userName": "NULL",
+      "happenDate": "2015-10-13"
+    },
+    {
+      "eventId": 12564,
+      "entCnName": "上海美华医疗器具股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资美华医疗器具",
+      "userName": "NULL",
+      "happenDate": "2011-01-01"
+    },
+    {
+      "eventId": 12565,
+      "entCnName": "北京昆兰新能源技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资昆兰",
+      "userName": "NULL",
+      "happenDate": "2011-01-01"
+    },
+    {
+      "eventId": 12566,
+      "entCnName": "云南绿A生物工程有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本投资绿A",
+      "userName": "NULL",
+      "happenDate": "2011-01-01"
+    },
+    {
+      "eventId": 2225,
+      "entCnName": "北京三代动力软件技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资3GV8",
+      "userName": "张震",
+      "happenDate": "2005-08-01"
+    },
+    {
+      "eventId": 22255,
+      "entCnName": "南京五十岚数字科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "五十岚获得IDG资本投资",
+      "userName": "NULL",
+      "happenDate": "2014-01-01"
+    },
+    {
+      "eventId": 32266,
+      "entCnName": "EverString Technology Inc.",
+      "investType": "C轮",
+      "eventTitle": "EverString获得6500万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-10-14"
+    },
+    {
+      "eventId": 126,
+      "entCnName": "武汉适普软件有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资适普软件",
+      "userName": "NULL",
+      "happenDate": "1997-12-25"
+    },
+    {
+      "eventId": 32329,
+      "entCnName": "深圳八零赞电子商务有限公司",
+      "investType": "B轮",
+      "eventTitle": "八零赞电商获得500万元投资",
+      "userName": "NULL",
+      "happenDate": "2015-10-15"
+    },
+    {
+      "eventId": 12646,
+      "entCnName": "时代（香港）手袋厂有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资时代手袋",
+      "userName": "NULL",
+      "happenDate": "2011-01-01"
+    },
+    {
+      "eventId": 12647,
+      "entCnName": "上海海湃计算机科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资海湃科技",
+      "userName": "NULL",
+      "happenDate": "2011-01-01"
+    },
+    {
+      "eventId": 12648,
+      "entCnName": "上海瑞慈健康体检管理股份有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本注资瑞慈体检",
+      "userName": "NULL",
+      "happenDate": "2011-01-01"
+    },
+    {
+      "eventId": 12649,
+      "entCnName": "创新工场",
+      "investType": "B轮",
+      "eventTitle": "IDG注资创新工场",
+      "userName": "NULL",
+      "happenDate": "2011-01-01"
+    },
+    {
+      "eventId": 12676,
+      "entCnName": "Moncler",
+      "investType": "A轮",
+      "eventTitle": "Moncler获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2011-01-01"
+    },
+    {
+      "eventId": 12677,
+      "entCnName": "疯果（北京）科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "疯果盒子获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2011-01-01"
+    },
+    {
+      "eventId": 22360,
+      "entCnName": "重庆江小白酒业有限公司",
+      "investType": "A轮",
+      "eventTitle": "江小白酒业获得IDG资本",
+      "userName": "NULL",
+      "happenDate": "2014-01-22"
+    },
+    {
+      "eventId": 224,
+      "entCnName": "北京东方通科技股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资东方通 占股15%",
+      "userName": "NULL",
+      "happenDate": "1999-07-20"
+    },
+    {
+      "eventId": 22409,
+      "entCnName": "上海墨果资产管理有限公司",
+      "investType": "A轮",
+      "eventTitle": "蘑菇公寓获得IDG资本等投资",
+      "userName": "NULL",
+      "happenDate": "2014-02-01"
+    },
+    {
+      "eventId": 2242,
+      "entCnName": "上海摩波彼克半导体有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/DCM投资摩波彼克",
+      "userName": "金曦",
+      "happenDate": "2005-08-01"
+    },
+    {
+      "eventId": 22451,
+      "entCnName": "广州市汇美时尚集团股份有限公司",
+      "investType": "B轮",
+      "eventTitle": "茵曼完成首轮融资",
+      "userName": "NULL",
+      "happenDate": "2014-02-10"
+    },
+    {
+      "eventId": 22474,
+      "entCnName": "凡客诚品（北京）科技有限公司",
+      "investType": "Growth",
+      "eventTitle": "凡客诚品获超1亿美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-02-14"
+    },
+    {
+      "eventId": 41205,
+      "entCnName": "海致网聚网络技术（北京）有限公司",
+      "investType": "A轮",
+      "eventTitle": "海致网聚获得贝塔斯曼等注资",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 12881,
+      "entCnName": "北京亿玛联盟传媒广告有限公司",
+      "investType": "A轮",
+      "eventTitle": "优雅100获IDG资本和DCM千万美元投资",
+      "userName": "NULL",
+      "happenDate": "2011-02-01"
+    },
+    {
+      "eventId": 1294,
+      "entCnName": "深圳日海通讯技术股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资日海通讯",
+      "userName": "杨飞",
+      "happenDate": "2003-07-26"
+    },
+    {
+      "eventId": 1295,
+      "entCnName": "深圳日海通讯技术股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资日海通讯",
+      "userName": "杨飞",
+      "happenDate": "2003-07-26"
+    },
+    {
+      "eventId": 22535,
+      "entCnName": "杭州财米科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "挖财网获约1500万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-02-28"
+    },
+    {
+      "eventId": 32537,
+      "entCnName": "杭州堆栈科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "堆栈科技获赛富、IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2015-10-26"
+    },
+    {
+      "eventId": 22556,
+      "entCnName": "北京好巧科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "好巧网获IDG资本数百万投资",
+      "userName": "NULL",
+      "happenDate": "2014-03-01"
+    },
+    {
+      "eventId": 41259,
+      "entCnName": "北京创艺和弦科贸有限公司",
+      "investType": "A轮",
+      "eventTitle": "创艺和弦获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 41260,
+      "entCnName": "北京亮点时间科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "亮点科技获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 41261,
+      "entCnName": "上海天才网络有限公司",
+      "investType": "A轮",
+      "eventTitle": "思强人才网获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 41262,
+      "entCnName": "北京冠游时空数码技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "17173获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 41263,
+      "entCnName": "上海博恩登特科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "博恩登特获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 22583,
+      "entCnName": "上海侠特网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "侠特科技获IDG资本等数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-03-01"
+    },
+    {
+      "eventId": 4127,
+      "entCnName": "上海全土豆网络科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "土豆网获第三轮融资 涉及金额1900万美元",
+      "userName": "章苏阳",
+      "happenDate": "2007-04-01"
+    },
+    {
+      "eventId": 22589,
+      "entCnName": "北京普缇客科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "达令礼物店获IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-03-01"
+    },
+    {
+      "eventId": 226,
+      "entCnName": "北京珠穆朗玛电子商务网络服务有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC等投资8848",
+      "userName": "林栋梁",
+      "happenDate": "1999-08-01"
+    },
+    {
+      "eventId": 41287,
+      "entCnName": "北京软告科技股份有限公司",
+      "investType": "天使轮",
+      "eventTitle": "软告科技获得注资",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 32586,
+      "entCnName": "北京客脉通科技有限责任公司",
+      "investType": "A轮",
+      "eventTitle": "客脉获得IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2015-10-28"
+    },
+    {
+      "eventId": 326,
+      "entCnName": "携程国际有限公司",
+      "investType": "A轮",
+      "eventTitle": "兰馨亚洲等投资携程",
+      "userName": "章苏阳",
+      "happenDate": "2000-03-01"
+    },
+    {
+      "eventId": 13045,
+      "entCnName": "意马国际控股有限公司",
+      "investType": "PIPE",
+      "eventTitle": "IDG等参与认购意马国际增发股份",
+      "userName": "杨飞",
+      "happenDate": "2011-02-18"
+    },
+    {
+      "eventId": 32619,
+      "entCnName": "北京昆尚文化传媒有限责任公司",
+      "investType": "C轮",
+      "eventTitle": "昆仑决获IDG资本等1000万美元融资",
+      "userName": "NULL",
+      "happenDate": "2015-10-29"
+    },
+    {
+      "eventId": 22644,
+      "entCnName": "北京严肃科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "严肃科技获得联创策源等注资",
+      "userName": "NULL",
+      "happenDate": "2014-03-01"
+    },
+    {
+      "eventId": 227,
+      "entCnName": "金蝶国际软件集团有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC第二轮投资金蝶",
+      "userName": "王树",
+      "happenDate": "1999-08-01"
+    },
+    {
+      "eventId": 2270,
+      "entCnName": "芯原股份有限公司",
+      "investType": "B轮",
+      "eventTitle": "华威/IFC等投资芯原",
+      "userName": "金曦",
+      "happenDate": "2005-08-22"
+    },
+    {
+      "eventId": 13189,
+      "entCnName": "广州爱购网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "清科创投等投资爱购网500万美元",
+      "userName": "高翔",
+      "happenDate": "2011-03-01"
+    },
+    {
+      "eventId": 13208,
+      "entCnName": "厦门美图网科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "新浪等战略注资美图网",
+      "userName": "NULL",
+      "happenDate": "2011-03-01"
+    },
+    {
+      "eventId": 2276,
+      "entCnName": "北京中搜在线软件有限公司",
+      "investType": "B轮",
+      "eventTitle": "富达联合IDGVC等投资投资中搜",
+      "userName": "李建光",
+      "happenDate": "2005-08-22"
+    },
+    {
+      "eventId": 3274,
+      "entCnName": "晶晨半导体（上海）有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/汉世纪/张江创投投资晶晨半导体",
+      "userName": "NULL",
+      "happenDate": "2006-09-01"
+    },
+    {
+      "eventId": 2277,
+      "entCnName": "北京中搜在线软件有限公司",
+      "investType": "B轮",
+      "eventTitle": "富达联合IDGVC等投资投资中搜",
+      "userName": "熊晓鸽",
+      "happenDate": "2005-08-22"
+    },
+    {
+      "eventId": 32763,
+      "entCnName": "上海墨果资产管理有限公司",
+      "investType": "C轮",
+      "eventTitle": "蘑菇公寓获得KTB等3000万美元投资",
+      "userName": "NULL",
+      "happenDate": "2015-11-04"
+    },
+    {
+      "eventId": 133,
+      "entCnName": "上海博达数据通信有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资博达数据",
+      "userName": "章苏阳",
+      "happenDate": "1998-03-01"
+    },
+    {
+      "eventId": 22819,
+      "entCnName": "锐博汇通（北京）科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG注资汇通锐博",
+      "userName": "NULL",
+      "happenDate": "2014-04-01"
+    },
+    {
+      "eventId": 22833,
+      "entCnName": "北京网利科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资网利科技1000万美元",
+      "userName": "NULL",
+      "happenDate": "2014-04-01"
+    },
+    {
+      "eventId": 32840,
+      "entCnName": "北京汉银创新科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "汉银科技获得IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2015-11-09"
+    },
+    {
+      "eventId": 32850,
+      "entCnName": "深圳市即构科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "即构科技获数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2015-11-10"
+    },
+    {
+      "eventId": 22859,
+      "entCnName": "北京河狸家信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "河狸家获IDG资本数百万元注资",
+      "userName": "NULL",
+      "happenDate": "2014-04-01"
+    },
+    {
+      "eventId": 13449,
+      "entCnName": "爱狗网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "宠物网站爱狗网完成第二轮千万美元融资",
+      "userName": "NULL",
+      "happenDate": "2011-03-28"
+    },
+    {
+      "eventId": 22905,
+      "entCnName": "深圳市豆子科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本数百万元注资豆子科技",
+      "userName": "NULL",
+      "happenDate": "2014-04-01"
+    },
+    {
+      "eventId": 32932,
+      "entCnName": "珠海市小源科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "小源科技获A轮融资",
+      "userName": "NULL",
+      "happenDate": "2015-11-13"
+    },
+    {
+      "eventId": 22926,
+      "entCnName": "深圳市迅雷网络技术有限公司",
+      "investType": "E轮",
+      "eventTitle": "IDG资本/晨兴创投注资迅雷",
+      "userName": "NULL",
+      "happenDate": "2014-04-04"
+    },
+    {
+      "eventId": 22928,
+      "entCnName": "猎上网络技术（上海）有限公司",
+      "investType": "A轮",
+      "eventTitle": "猎上网获1000万美元融资",
+      "userName": "NULL",
+      "happenDate": "2014-04-08"
+    },
+    {
+      "eventId": 32985,
+      "entCnName": "我要游学（北京）科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "HIVE获得650万美元投资",
+      "userName": "NULL",
+      "happenDate": "2015-11-17"
+    },
+    {
+      "eventId": 22982,
+      "entCnName": "安徽三只松鼠电子商务有限公司",
+      "investType": "C轮",
+      "eventTitle": "三只松鼠获今日资本等1627万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-04-17"
+    },
+    {
+      "eventId": 13488,
+      "entCnName": "大连理想食品有限公司",
+      "investType": "A轮",
+      "eventTitle": "林家铺子获IDG投资",
+      "userName": "熊晓鸽",
+      "happenDate": "2011-03-30"
+    },
+    {
+      "eventId": 135,
+      "entCnName": "搜狐公司",
+      "investType": "A轮",
+      "eventTitle": "英特尔联合晨兴等投资搜狐",
+      "userName": "NULL",
+      "happenDate": "1998-04-01"
+    },
+    {
+      "eventId": 23024,
+      "entCnName": "苏州思必驰信息科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "思必驰获DCM等数亿元投资",
+      "userName": "NULL",
+      "happenDate": "2014-04-24"
+    },
+    {
+      "eventId": 23068,
+      "entCnName": "北京昆尚文化传媒有限责任公司",
+      "investType": "B轮",
+      "eventTitle": "昆仑决获IDG资本1000万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-05-01"
+    },
+    {
+      "eventId": 33,
+      "entCnName": "广东风华高新科技股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资风华高科",
+      "userName": "NULL",
+      "happenDate": "1994-03-01"
+    },
+    {
+      "eventId": 417,
+      "entCnName": "弘成教育集团",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资弘成科技",
+      "userName": "王功权",
+      "happenDate": "2000-08-01"
+    },
+    {
+      "eventId": 4194,
+      "entCnName": "上海英科实业有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/分众投资英科",
+      "userName": "NULL",
+      "happenDate": "2007-04-10"
+    },
+    {
+      "eventId": 42,
+      "entCnName": "北京前导软件有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本100万元投资前导软件",
+      "userName": "周全",
+      "happenDate": "1994-08-01"
+    },
+    {
+      "eventId": 420,
+      "entCnName": "北京方正连宇通信有限公司",
+      "investType": "B轮",
+      "eventTitle": "凯雷/IDGVC/英特尔投资/新世界投资连宇通信",
+      "userName": "周全",
+      "happenDate": "2000-08-01"
+    },
+    {
+      "eventId": 13601,
+      "entCnName": "成都奥毕信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资成都奥毕",
+      "userName": "NULL",
+      "happenDate": "2011-04-01"
+    },
+    {
+      "eventId": 4208,
+      "entCnName": "广州启生信息技术有限公司",
+      "investType": "被收购",
+      "eventTitle": "IDG资本投资39健康网",
+      "userName": "杨飞",
+      "happenDate": "2007-04-18"
+    },
+    {
+      "eventId": 4209,
+      "entCnName": "广州启生信息技术有限公司",
+      "investType": "被收购",
+      "eventTitle": "IDG资本投资39健康网",
+      "userName": "王树",
+      "happenDate": "2007-04-18"
+    },
+    {
+      "eventId": 4225,
+      "entCnName": "大旗网",
+      "investType": "B轮",
+      "eventTitle": "中经合/IDGVC投资大旗网",
+      "userName": "林栋梁",
+      "happenDate": "2007-04-25"
+    },
+    {
+      "eventId": 4226,
+      "entCnName": "大旗网",
+      "investType": "B轮",
+      "eventTitle": "中经合/IDGVC投资大旗网",
+      "userName": "过以宏",
+      "happenDate": "2007-04-25"
+    },
+    {
+      "eventId": 13632,
+      "entCnName": "重庆猪八戒网络有限公司",
+      "investType": "B轮",
+      "eventTitle": "威客网站猪八戒网获IDG资本1000万美元投资",
+      "userName": "熊晓鸽",
+      "happenDate": "2011-04-07"
+    },
+    {
+      "eventId": 33077,
+      "entCnName": "九次方财富资讯（北京）有限责任公司",
+      "investType": "C轮",
+      "eventTitle": "九次方大数据获得5亿元融资",
+      "userName": "NULL",
+      "happenDate": "2015-11-22"
+    },
+    {
+      "eventId": 13641,
+      "entCnName": "北京珅奥基医药科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "中海创投联合IDG等注资珅奥基医药",
+      "userName": "NULL",
+      "happenDate": "2011-04-08"
+    },
+    {
+      "eventId": 23084,
+      "entCnName": "AfterShip",
+      "investType": "A轮",
+      "eventTitle": "AfterShip获IDG资本100万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-05-01"
+    },
+    {
+      "eventId": 23085,
+      "entCnName": "北京知学友邦科技有限责任公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本千万注资爱考拉",
+      "userName": "NULL",
+      "happenDate": "2014-05-01"
+    },
+    {
+      "eventId": 23099,
+      "entCnName": "App Annie Limited",
+      "investType": "D轮",
+      "eventTitle": "App Annie获IDG资本等1700万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-05-01"
+    },
+    {
+      "eventId": 23110,
+      "entCnName": "上海富捷信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "维金VFinance获IDG资本千万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-05-01"
+    },
+    {
+      "eventId": 23130,
+      "entCnName": "北京欢途智行信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "玩途获IDG资本数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-05-01"
+    },
+    {
+      "eventId": 331,
+      "entCnName": "鲨威亚太有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/Intel/软库投资鲨威体坛",
+      "userName": "NULL",
+      "happenDate": "2000-03-01"
+    },
+    {
+      "eventId": 4258,
+      "entCnName": "天盛（上海）数字电视发展有限公司",
+      "investType": "B轮",
+      "eventTitle": "海纳亚洲/高盛等投资天盛传媒",
+      "userName": "李建光",
+      "happenDate": "2007-05-01"
+    },
+    {
+      "eventId": 13669,
+      "entCnName": "济南万维嘉信网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "韩都衣舍获IDG资本千万美元投资",
+      "userName": "杨飞",
+      "happenDate": "2011-04-12"
+    },
+    {
+      "eventId": 4260,
+      "entCnName": "上海诚海电子科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资诚海电子",
+      "userName": "NULL",
+      "happenDate": "2007-05-01"
+    },
+    {
+      "eventId": 4266,
+      "entCnName": "广东天农食品有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资天农食品",
+      "userName": "NULL",
+      "happenDate": "2007-05-01"
+    },
+    {
+      "eventId": 23182,
+      "entCnName": "奥林网络科技（宁波）有限公司",
+      "investType": "C轮",
+      "eventTitle": "奥林科技获得经纬中国等注资",
+      "userName": "NULL",
+      "happenDate": "2014-05-01"
+    },
+    {
+      "eventId": 43,
+      "entCnName": "北京拓普丰联信息工程有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资拓普网络",
+      "userName": "NULL",
+      "happenDate": "1994-08-01"
+    },
+    {
+      "eventId": 232,
+      "entCnName": "北京三七二一科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资3721",
+      "userName": "王功权",
+      "happenDate": "1999-09-01"
+    },
+    {
+      "eventId": 4315,
+      "entCnName": "广州天客信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资天下门票",
+      "userName": "杨飞",
+      "happenDate": "2007-05-20"
+    },
+    {
+      "eventId": 23207,
+      "entCnName": "北京智德创辉网络科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "Roseonly获IDG和ACCEL超千万美元融资",
+      "userName": "NULL",
+      "happenDate": "2014-05-05"
+    },
+    {
+      "eventId": 13728,
+      "entCnName": "聚尚电子商务（上海）有限公司",
+      "investType": "A轮",
+      "eventTitle": "聚尚网获IDG资本等千万美元级投资",
+      "userName": "毛丞宇",
+      "happenDate": "2011-04-19"
+    },
+    {
+      "eventId": 23233,
+      "entCnName": "武汉极意网络科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "极验获得数百万美元C轮投资",
+      "userName": "NULL",
+      "happenDate": "2014-05-12"
+    },
+    {
+      "eventId": 4347,
+      "entCnName": "观印象艺术发展有限公司",
+      "investType": "B轮",
+      "eventTitle": "海纳亚洲等投资印象创新",
+      "userName": "李建光",
+      "happenDate": "2007-06-01"
+    },
+    {
+      "eventId": 4348,
+      "entCnName": "观印象艺术发展有限公司",
+      "investType": "B轮",
+      "eventTitle": "海纳亚洲等投资印象创新",
+      "userName": "熊晓鸽",
+      "happenDate": "2007-06-01"
+    },
+    {
+      "eventId": 13786,
+      "entCnName": "诚迈科技（南京）股份有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本投资诚迈科技",
+      "userName": "NULL",
+      "happenDate": "2011-04-26"
+    },
+    {
+      "eventId": 4370,
+      "entCnName": "北京顶点唯峰科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资顶点唯峰",
+      "userName": "NULL",
+      "happenDate": "2007-06-01"
+    },
+    {
+      "eventId": 1379,
+      "entCnName": "上海如家酒店管理公司",
+      "investType": "B轮",
+      "eventTitle": "梧桐/IDGVC第二轮投资如家",
+      "userName": "章苏阳",
+      "happenDate": "2003-11-01"
+    },
+    {
+      "eventId": 4379,
+      "entCnName": "精实万维软件（北京）有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资开眼数据",
+      "userName": "NULL",
+      "happenDate": "2007-06-01"
+    },
+    {
+      "eventId": 4390,
+      "entCnName": "凯安斯中国服饰有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资凯安斯服饰",
+      "userName": "NULL",
+      "happenDate": "2007-06-01"
+    },
+    {
+      "eventId": 3320,
+      "entCnName": "深圳聚信广告有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资聚信广告",
+      "userName": "NULL",
+      "happenDate": "2006-09-11"
+    },
+    {
+      "eventId": 3321,
+      "entCnName": "北京图为先科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "中经合/IDGVC投资Mapbar",
+      "userName": "NULL",
+      "happenDate": "2006-09-11"
+    },
+    {
+      "eventId": 2330,
+      "entCnName": "上海好耶广告有限公司",
+      "investType": "B轮",
+      "eventTitle": "OAK/IDGVC投资好耶",
+      "userName": "章苏阳",
+      "happenDate": "2005-09-08"
+    },
+    {
+      "eventId": 443,
+      "entCnName": "百度在线网络技术（北京）有限公司",
+      "investType": "B轮",
+      "eventTitle": "ePlanet联合IDGVC等投资百度",
+      "userName": "周全",
+      "happenDate": "2000-09-01"
+    },
+    {
+      "eventId": 23355,
+      "entCnName": "上海流利说信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "流利说获纪源资本等数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-06-01"
+    },
+    {
+      "eventId": 444,
+      "entCnName": "百度在线网络技术（北京）有限公司",
+      "investType": "B轮",
+      "eventTitle": "ePlanet联合IDGVC等投资百度",
+      "userName": "杨飞",
+      "happenDate": "2000-09-01"
+    },
+    {
+      "eventId": 23381,
+      "entCnName": "深圳市和讯华谷信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "极光推送获IDG资本投资",
+      "userName": "NULL",
+      "happenDate": "2014-06-01"
+    },
+    {
+      "eventId": 23383,
+      "entCnName": "广州喜淘信息科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "淘喜猫获IDG资本投资",
+      "userName": "NULL",
+      "happenDate": "2014-06-01"
+    },
+    {
+      "eventId": 23386,
+      "entCnName": "吉石卉（北京）文化发展有限公司",
+      "investType": "A轮",
+      "eventTitle": "易结网获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2014-06-01"
+    },
+    {
+      "eventId": 33302,
+      "entCnName": "北京火花航程科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "火花航程获得数百万元融资",
+      "userName": "NULL",
+      "happenDate": "2015-12-01"
+    },
+    {
+      "eventId": 1388,
+      "entCnName": "深圳市迅雷网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC等投资迅雷",
+      "userName": "周全",
+      "happenDate": "2003-12-01"
+    },
+    {
+      "eventId": 1389,
+      "entCnName": "深圳市迅雷网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC等投资迅雷",
+      "userName": "杨飞",
+      "happenDate": "2003-12-01"
+    },
+    {
+      "eventId": 450,
+      "entCnName": "北京游龙网网络科技有限公司（本部）",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资游龙科技",
+      "userName": "NULL",
+      "happenDate": "2000-09-01"
+    },
+    {
+      "eventId": 23429,
+      "entCnName": "北京市商汤科技开发有限公司",
+      "investType": "A轮",
+      "eventTitle": "商汤科技获IDG资本1000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2014-06-01"
+    },
+    {
+      "eventId": 1390,
+      "entCnName": "深圳市迅雷网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC等投资迅雷",
+      "userName": "周全",
+      "happenDate": "2003-12-01"
+    },
+    {
+      "eventId": 1391,
+      "entCnName": "深圳市迅雷网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC等投资迅雷",
+      "userName": "杨飞",
+      "happenDate": "2003-12-01"
+    },
+    {
+      "eventId": 452,
+      "entCnName": "广州邦讯科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资邦讯科技",
+      "userName": "王树",
+      "happenDate": "2000-09-01"
+    },
+    {
+      "eventId": 33366,
+      "entCnName": "北京轻松筹网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "轻松筹获得数千万美元融资",
+      "userName": "NULL",
+      "happenDate": "2015-12-02"
+    },
+    {
+      "eventId": 1392,
+      "entCnName": "北京达内科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资达内科技",
+      "userName": "李建光",
+      "happenDate": "2003-12-01"
+    },
+    {
+      "eventId": 13927,
+      "entCnName": "宜信汇才商务顾问（北京）有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本联合摩根士丹利注资宜信",
+      "userName": "NULL",
+      "happenDate": "2011-05-01"
+    },
+    {
+      "eventId": 1393,
+      "entCnName": "北京达内科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资达内科技",
+      "userName": "熊晓鸽",
+      "happenDate": "2003-12-01"
+    },
+    {
+      "eventId": 23459,
+      "entCnName": "北京易达小鸟科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "物流小秘获数百万元注资",
+      "userName": "NULL",
+      "happenDate": "2014-06-01"
+    },
+    {
+      "eventId": 33383,
+      "entCnName": "北京智齿数汇科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "智齿科技获得500万美元投资",
+      "userName": "NULL",
+      "happenDate": "2015-12-03"
+    },
+    {
+      "eventId": 13967,
+      "entCnName": "武汉我的百家电子商务有限责任公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资我的百分之一",
+      "userName": "NULL",
+      "happenDate": "2011-05-02"
+    },
+    {
+      "eventId": 140,
+      "entCnName": "金蝶国际软件集团有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资金蝶",
+      "userName": "王树",
+      "happenDate": "1998-05-01"
+    },
+    {
+      "eventId": 23493,
+      "entCnName": "UNITEDSTACK（北京）科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "UnitedStack获得华岩资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-06-01"
+    },
+    {
+      "eventId": 4584,
+      "entCnName": "华住酒店管理有限公司",
+      "investType": "A轮",
+      "eventTitle": "鼎晖创投/成为/北极光等投资汉庭酒店",
+      "userName": "章苏阳",
+      "happenDate": "2007-07-09"
+    },
+    {
+      "eventId": 23502,
+      "entCnName": "杭州互秀电子商务有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本等投资米折网",
+      "userName": "NULL",
+      "happenDate": "2014-06-03"
+    },
+    {
+      "eventId": 23509,
+      "entCnName": "邻动网络科技（北京）有限公司",
+      "investType": "D轮",
+      "eventTitle": "快牙获IDG资本等2000万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-06-03"
+    },
+    {
+      "eventId": 23525,
+      "entCnName": "爱车汇（北京）科技有限责任公司",
+      "investType": "A轮",
+      "eventTitle": "PP租车获红杉中国等注资",
+      "userName": "NULL",
+      "happenDate": "2014-06-06"
+    },
+    {
+      "eventId": 4609,
+      "entCnName": "上海迪岸广告有限公司",
+      "investType": "C轮",
+      "eventTitle": "永威等投资迪岸传媒",
+      "userName": "章苏阳",
+      "happenDate": "2007-07-17"
+    },
+    {
+      "eventId": 23530,
+      "entCnName": "杭州卷瓜网络有限公司",
+      "investType": "D轮",
+      "eventTitle": "蘑菇街获厚朴投资等2亿美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-06-06"
+    },
+    {
+      "eventId": 33506,
+      "entCnName": "北京爱邻如己科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资佐佑",
+      "userName": "NULL",
+      "happenDate": "2015-12-10"
+    },
+    {
+      "eventId": 14028,
+      "entCnName": "Funzio",
+      "investType": "A轮",
+      "eventTitle": "Funzio获得注资",
+      "userName": "NULL",
+      "happenDate": "2011-05-10"
+    },
+    {
+      "eventId": 23615,
+      "entCnName": "追光人动画设计（北京）有限公司",
+      "investType": "B轮",
+      "eventTitle": "追光动画获2000万美元融资",
+      "userName": "NULL",
+      "happenDate": "2014-06-19"
+    },
+    {
+      "eventId": 4651,
+      "entCnName": "暴风集团股份有限公司",
+      "investType": "B轮",
+      "eventTitle": "暴风影音获B轮融资 IDG资本注资500万美元",
+      "userName": "NULL",
+      "happenDate": "2007-07-26"
+    },
+    {
+      "eventId": 4652,
+      "entCnName": "天津九安医疗电子股份有限公司",
+      "investType": "天使轮",
+      "eventTitle": "IDGVC/同盛卓越投资九安医疗",
+      "userName": "章苏阳",
+      "happenDate": "2007-07-27"
+    },
+    {
+      "eventId": 4664,
+      "entCnName": "凡客诚品（北京）科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/策源投资Vancl",
+      "userName": "林栋梁",
+      "happenDate": "2007-07-31"
+    },
+    {
+      "eventId": 468,
+      "entCnName": "远光软件股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资远光软件",
+      "userName": "周全",
+      "happenDate": "2000-09-28"
+    },
+    {
+      "eventId": 469,
+      "entCnName": "远光软件股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资远光软件",
+      "userName": "杨飞",
+      "happenDate": "2000-09-28"
+    },
+    {
+      "eventId": 4696,
+      "entCnName": "北京益生康健电子商务有限公司（本部）",
+      "investType": "B轮",
+      "eventTitle": "IDGVC投资益生康健",
+      "userName": "NULL",
+      "happenDate": "2007-08-01"
+    },
+    {
+      "eventId": 470,
+      "entCnName": "远光软件股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资远光软件",
+      "userName": "王树",
+      "happenDate": "2000-09-28"
+    },
+    {
+      "eventId": 14200,
+      "entCnName": "智途控股有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资网龙旗下公司",
+      "userName": "NULL",
+      "happenDate": "2011-05-30"
+    },
+    {
+      "eventId": 14204,
+      "entCnName": "福州博远无线网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG对91无线注资约400万美元",
+      "userName": "NULL",
+      "happenDate": "2011-05-30"
+    },
+    {
+      "eventId": 23686,
+      "entCnName": "云南蓝晶科技股份有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本增资蓝晶科技",
+      "userName": "NULL",
+      "happenDate": "2014-06-30"
+    },
+    {
+      "eventId": 23687,
+      "entCnName": "云南蓝晶科技股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本入股蓝晶科技",
+      "userName": "NULL",
+      "happenDate": "2014-06-30"
+    },
+    {
+      "eventId": 237,
+      "entCnName": "腾讯控股有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/盈科数码投资腾讯",
+      "userName": "李建光",
+      "happenDate": "1999-10-01"
+    },
+    {
+      "eventId": 23703,
+      "entCnName": "北京易动纷享科技有限责任公司",
+      "investType": "B轮",
+      "eventTitle": "北极光创投等注资纷享科技",
+      "userName": "NULL",
+      "happenDate": "2014-07-01"
+    },
+    {
+      "eventId": 23720,
+      "entCnName": "深圳市希云科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "扣钉网络获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2014-07-01"
+    },
+    {
+      "eventId": 23730,
+      "entCnName": "北京站酷网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "站酷获IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-07-01"
+    },
+    {
+      "eventId": 23745,
+      "entCnName": "江苏众筹网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资众筹空间",
+      "userName": "NULL",
+      "happenDate": "2014-07-01"
+    },
+    {
+      "eventId": 23748,
+      "entCnName": "上海旗禾科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资旗禾科技",
+      "userName": "NULL",
+      "happenDate": "2014-07-01"
+    },
+    {
+      "eventId": 4727,
+      "entCnName": "神州数码控股有限公司",
+      "investType": "被收购",
+      "eventTitle": "赛富联合弘毅及IDG收购神州数码",
+      "userName": "周全",
+      "happenDate": "2007-08-08"
+    },
+    {
+      "eventId": 1422,
+      "entCnName": "上海迅时通信设备有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资迅时通信",
+      "userName": "章苏阳",
+      "happenDate": "2004-01-01"
+    },
+    {
+      "eventId": 14221,
+      "entCnName": "广州天创时尚鞋业股份有限公司",
+      "investType": "Growth",
+      "eventTitle": "天创时尚获超亿元投资",
+      "userName": "NULL",
+      "happenDate": "2011-05-31"
+    },
+    {
+      "eventId": 14262,
+      "entCnName": "星空大地文化传媒有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本等投资星空大地",
+      "userName": "NULL",
+      "happenDate": "2011-06-01"
+    },
+    {
+      "eventId": 23750,
+      "entCnName": "北京闪银奇异科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "闪银奇异科技获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2014-07-01"
+    },
+    {
+      "eventId": 238,
+      "entCnName": "腾讯控股有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/盈科数码投资腾讯",
+      "userName": "王树",
+      "happenDate": "1999-10-01"
+    },
+    {
+      "eventId": 4868,
+      "entCnName": "上海唐颂信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG投资唐颂互动",
+      "userName": "NULL",
+      "happenDate": "2007-09-07"
+    },
+    {
+      "eventId": 4898,
+      "entCnName": "大商圈（广州）网络技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC等投资大商圈网",
+      "userName": "NULL",
+      "happenDate": "2007-09-19"
+    },
+    {
+      "eventId": 4906,
+      "entCnName": "深圳市易讯天空网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本联合海纳亚洲等投资500彩票",
+      "userName": "杨飞",
+      "happenDate": "2007-09-20"
+    },
+    {
+      "eventId": 14312,
+      "entCnName": "西安联客信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资联客信息技术",
+      "userName": "NULL",
+      "happenDate": "2011-06-01"
+    },
+    {
+      "eventId": 14324,
+      "entCnName": "NBA体育文化发展（北京）有限责任公司",
+      "investType": "A轮",
+      "eventTitle": "清科创投/IDG资本投资NBA",
+      "userName": "NULL",
+      "happenDate": "2011-06-01"
+    },
+    {
+      "eventId": 33761,
+      "entCnName": "杭州埃米网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "拼好货获得5000万美元投资",
+      "userName": "NULL",
+      "happenDate": "2015-12-23"
+    },
+    {
+      "eventId": 3381,
+      "entCnName": "上海秀派电子科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资秀派电子",
+      "userName": "NULL",
+      "happenDate": "2006-10-01"
+    },
+    {
+      "eventId": 23897,
+      "entCnName": "深圳市脸萌科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本等注资MYOTee脸萌",
+      "userName": "NULL",
+      "happenDate": "2014-07-10"
+    },
+    {
+      "eventId": 23904,
+      "entCnName": "北京好巧科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "好巧网获IDG资本数百万美元融资",
+      "userName": "NULL",
+      "happenDate": "2014-07-10"
+    },
+    {
+      "eventId": 23926,
+      "entCnName": "北京哲彦网络信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "野糖网获IDG资本投资",
+      "userName": "NULL",
+      "happenDate": "2014-07-15"
+    },
+    {
+      "eventId": 4914,
+      "entCnName": "厦门市吉比特网络技术股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资吉比特",
+      "userName": "NULL",
+      "happenDate": "2007-09-24"
+    },
+    {
+      "eventId": 144,
+      "entCnName": "世纪互联集团有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资世纪互联",
+      "userName": "林栋梁",
+      "happenDate": "1998-06-01"
+    },
+    {
+      "eventId": 1441,
+      "entCnName": "北京休曼互动数据分析有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资中国爱线",
+      "userName": "NULL",
+      "happenDate": "2004-01-01"
+    },
+    {
+      "eventId": 5018,
+      "entCnName": "MOBIVOX",
+      "investType": "A轮",
+      "eventTitle": "IDGVC等投资MOBIVOX",
+      "userName": "金曦",
+      "happenDate": "2007-10-12"
+    },
+    {
+      "eventId": 5026,
+      "entCnName": "重庆家富健康产业有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资家富富侨（被否认）",
+      "userName": "NULL",
+      "happenDate": "2007-10-15"
+    },
+    {
+      "eventId": 23984,
+      "entCnName": "北京寺库商贸有限公司",
+      "investType": "D轮",
+      "eventTitle": "寺库获华人文化投资等注资",
+      "userName": "NULL",
+      "happenDate": "2014-07-21"
+    },
+    {
+      "eventId": 504,
+      "entCnName": "携程国际有限公司",
+      "investType": "B轮",
+      "eventTitle": "凯雷集团等投资携程",
+      "userName": "章苏阳",
+      "happenDate": "2000-11-01"
+    },
+    {
+      "eventId": 5040,
+      "entCnName": "深圳市派瑞安擎科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资派瑞安擎",
+      "userName": "NULL",
+      "happenDate": "2007-10-18"
+    },
+    {
+      "eventId": 24001,
+      "entCnName": "北京贞观雨科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "贞观雨科技获经纬中国等注资",
+      "userName": "NULL",
+      "happenDate": "2014-07-22"
+    },
+    {
+      "eventId": 24006,
+      "entCnName": "北京河狸家信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "河狸家获IDG资本3000万元注资",
+      "userName": "李丰",
+      "happenDate": "2014-07-22"
+    },
+    {
+      "eventId": 5104,
+      "entCnName": "美国达锐技术公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资Doublebridge",
+      "userName": "NULL",
+      "happenDate": "2007-10-27"
+    },
+    {
+      "eventId": 14524,
+      "entCnName": "《雪花秘扇》",
+      "investType": "A轮",
+      "eventTitle": "IDG投资电影《雪花秘扇》",
+      "userName": "熊晓鸽",
+      "happenDate": "2011-06-24"
+    },
+    {
+      "eventId": 5124,
+      "entCnName": "上海新浩艺软件有限公司",
+      "investType": "B轮",
+      "eventTitle": "红杉等投资新浩艺",
+      "userName": "NULL",
+      "happenDate": "2007-11-01"
+    },
+    {
+      "eventId": 5131,
+      "entCnName": "上海安美途汽车技术咨询有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/海纳亚洲投资安美途",
+      "userName": "NULL",
+      "happenDate": "2007-11-01"
+    },
+    {
+      "eventId": 14539,
+      "entCnName": "深圳市万兴软件有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本等逾千万美金战略投资万兴软件",
+      "userName": "NULL",
+      "happenDate": "2011-06-27"
+    },
+    {
+      "eventId": 33992,
+      "entCnName": "深圳市网星互联网金融服务有限公司",
+      "investType": "A轮",
+      "eventTitle": "犀牛之星获得1380万元注资",
+      "userName": "NULL",
+      "happenDate": "2016-01-01"
+    },
+    {
+      "eventId": 340,
+      "entCnName": "快步易捷信息服务有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资快步易捷",
+      "userName": "周全",
+      "happenDate": "2000-04-01"
+    },
+    {
+      "eventId": 24125,
+      "entCnName": "量视（上海）网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "量子频道获得IDG资本投资",
+      "userName": "NULL",
+      "happenDate": "2014-08-01"
+    },
+    {
+      "eventId": 24145,
+      "entCnName": "北京圈圈移动科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "零零无限科技获得IDG资本等数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-08-01"
+    },
+    {
+      "eventId": 14671,
+      "entCnName": "上海安美途汽车技术咨询有限公司",
+      "investType": "B轮",
+      "eventTitle": "海纳亚洲投资安美途",
+      "userName": "NULL",
+      "happenDate": "2011-07-01"
+    },
+    {
+      "eventId": 24172,
+      "entCnName": "北京造化科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "造作获得1500万元注资",
+      "userName": "NULL",
+      "happenDate": "2014-08-01"
+    },
+    {
+      "eventId": 341,
+      "entCnName": "快步易捷信息服务有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资快步易捷",
+      "userName": "王树",
+      "happenDate": "2000-04-01"
+    },
+    {
+      "eventId": 24209,
+      "entCnName": "福州车友网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本等注资273二手车",
+      "userName": "NULL",
+      "happenDate": "2014-08-01"
+    },
+    {
+      "eventId": 147,
+      "entCnName": "深圳市科健信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资科健信息",
+      "userName": "刘中青",
+      "happenDate": "1998-08-01"
+    },
+    {
+      "eventId": 14733,
+      "entCnName": "凡客诚品（北京）科技有限公司",
+      "investType": "Growth",
+      "eventTitle": "淡马锡等2.3亿美元注资凡客诚品",
+      "userName": "NULL",
+      "happenDate": "2011-07-05"
+    },
+    {
+      "eventId": 14741,
+      "entCnName": "北京力美传媒科技股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "力美传媒获1000万美元融资",
+      "userName": "NULL",
+      "happenDate": "2011-07-05"
+    },
+    {
+      "eventId": 14743,
+      "entCnName": "App Annie Limited",
+      "investType": "A轮",
+      "eventTitle": "App Annie获IDG资本注资",
+      "userName": "李骁军",
+      "happenDate": "2011-07-05"
+    },
+    {
+      "eventId": 5338,
+      "entCnName": "豪思国际（集团）公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资豪思国际",
+      "userName": "熊晓鸽",
+      "happenDate": "2007-12-01"
+    },
+    {
+      "eventId": 1475,
+      "entCnName": "网龙网络控股有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG投资网龙",
+      "userName": "林栋梁",
+      "happenDate": "2004-01-30"
+    },
+    {
+      "eventId": 24235,
+      "entCnName": "中粮海优（北京）有限公司",
+      "investType": "B轮",
+      "eventTitle": "我买网获IDG资本和赛富基金注资",
+      "userName": "NULL",
+      "happenDate": "2014-08-04"
+    },
+    {
+      "eventId": 24280,
+      "entCnName": "杭州同盾科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "同盾科技再获千万美元级融资",
+      "userName": "NULL",
+      "happenDate": "2014-08-12"
+    },
+    {
+      "eventId": 24293,
+      "entCnName": "南京易米云通网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "易米云通获IDG资本等500万美元融资",
+      "userName": "NULL",
+      "happenDate": "2014-08-12"
+    },
+    {
+      "eventId": 24294,
+      "entCnName": "北京淘友天下科技发展有限公司",
+      "investType": "B轮",
+      "eventTitle": "脉脉获IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-08-13"
+    },
+    {
+      "eventId": 24296,
+      "entCnName": "EverString Technology Inc.",
+      "investType": "B轮",
+      "eventTitle": "EverString获光速创投等注资",
+      "userName": "NULL",
+      "happenDate": "2014-08-13"
+    },
+    {
+      "eventId": 24309,
+      "entCnName": "橄榄公社",
+      "investType": "A轮",
+      "eventTitle": "橄榄公社获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2014-08-14"
+    },
+    {
+      "eventId": 24315,
+      "entCnName": "杭州贝购科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "贝贝网获IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-08-14"
+    },
+    {
+      "eventId": 1478,
+      "entCnName": "新热力科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资新热力",
+      "userName": "NULL",
+      "happenDate": "2004-02-01"
+    },
+    {
+      "eventId": 14794,
+      "entCnName": "小米科技有限责任公司",
+      "investType": "B轮",
+      "eventTitle": "晨兴创投等注资小米科技4,100万美元",
+      "userName": "NULL",
+      "happenDate": "2011-07-12"
+    },
+    {
+      "eventId": 1480,
+      "entCnName": "深圳市数字鱼通信信息技术有限公司（本部）",
+      "investType": "A轮",
+      "eventTitle": "软银赛富联合IDGVC投资数字鱼",
+      "userName": "NULL",
+      "happenDate": "2004-02-01"
+    },
+    {
+      "eventId": 14833,
+      "entCnName": "北京寺库商贸有限公司",
+      "investType": "A轮",
+      "eventTitle": "奢侈品交易平台寺库获IDG资本注资",
+      "userName": "熊晓鸽",
+      "happenDate": "2011-07-19"
+    },
+    {
+      "eventId": 5418,
+      "entCnName": "慧聪网有限公司",
+      "investType": "PIPE",
+      "eventTitle": "IDGVC收购慧聪网部分股权",
+      "userName": "李建光",
+      "happenDate": "2007-12-10"
+    },
+    {
+      "eventId": 5419,
+      "entCnName": "慧聪网有限公司",
+      "investType": "PIPE",
+      "eventTitle": "IDGVC收购慧聪网部分股权",
+      "userName": "杨飞",
+      "happenDate": "2007-12-10"
+    },
+    {
+      "eventId": 5426,
+      "entCnName": "北京数码大方科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资CAXA",
+      "userName": "李骁军",
+      "happenDate": "2007-12-12"
+    },
+    {
+      "eventId": 2438,
+      "entCnName": "杭州博客信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC/GGV/DFJ ePlanet投资中国博客网",
+      "userName": "NULL",
+      "happenDate": "2005-11-01"
+    },
+    {
+      "eventId": 24388,
+      "entCnName": "北京云动数字媒体技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "会小二获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2014-08-21"
+    },
+    {
+      "eventId": 24389,
+      "entCnName": "北京云测信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "云测信息获IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-08-21"
+    },
+    {
+      "eventId": 14863,
+      "entCnName": "北京百分点信息科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "百分点获IDG资本等720万美元注资",
+      "userName": "熊晓鸽",
+      "happenDate": "2011-07-25"
+    },
+    {
+      "eventId": 14947,
+      "entCnName": "北京梦之窗数码科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "Bokecc获投2000万美元 思伟投资领投",
+      "userName": "NULL",
+      "happenDate": "2011-08-01"
+    },
+    {
+      "eventId": 34311,
+      "entCnName": "杭州小农网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "小农网络获数千万元A轮融资",
+      "userName": "NULL",
+      "happenDate": "2016-01-18"
+    },
+    {
+      "eventId": 24424,
+      "entCnName": "深圳市品汇科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "品汇科技获晨兴创投等注资",
+      "userName": "NULL",
+      "happenDate": "2014-08-23"
+    },
+    {
+      "eventId": 24432,
+      "entCnName": "淮北市耀鹏商贸有限公司",
+      "investType": "B轮",
+      "eventTitle": "团若网获IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-08-25"
+    },
+    {
+      "eventId": 5491,
+      "entCnName": "北京华铁世纪广告有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资华铁传媒",
+      "userName": "张震",
+      "happenDate": "2007-12-19"
+    },
+    {
+      "eventId": 5505,
+      "entCnName": "北京梦之窗数码科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资Bokecc",
+      "userName": "NULL",
+      "happenDate": "2007-12-20"
+    },
+    {
+      "eventId": 553,
+      "entCnName": "天极传媒集团",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资天极网500万美元",
+      "userName": "NULL",
+      "happenDate": "2000-12-31"
+    },
+    {
+      "eventId": 1498,
+      "entCnName": "北京中搜在线软件有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资中搜",
+      "userName": "李建光",
+      "happenDate": "2004-02-26"
+    },
+    {
+      "eventId": 1499,
+      "entCnName": "北京中搜在线软件有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资中搜",
+      "userName": "熊晓鸽",
+      "happenDate": "2004-02-26"
+    },
+    {
+      "eventId": 150,
+      "entCnName": "速达软件技术（广州）有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资速达软件",
+      "userName": "周全",
+      "happenDate": "1998-08-19"
+    },
+    {
+      "eventId": 15015,
+      "entCnName": "上海梦之队国际贸易有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本联合清科创投注资梦之队贸易约500万美元",
+      "userName": "NULL",
+      "happenDate": "2011-08-01"
+    },
+    {
+      "eventId": 24518,
+      "entCnName": "品悦创智（北京）技术咨询有限公司",
+      "investType": "B轮",
+      "eventTitle": "品悦创智获得IDG资本数千万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-09-01"
+    },
+    {
+      "eventId": 24550,
+      "entCnName": "北京玩兔科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "玩兔科技获IDG资本数百万元注资",
+      "userName": "NULL",
+      "happenDate": "2014-09-01"
+    },
+    {
+      "eventId": 24552,
+      "entCnName": "上海轻轻信息科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "轻轻家教获IDG资本数百万美元注资",
+      "userName": "NULL",
+      "happenDate": "2014-09-01"
+    },
+    {
+      "eventId": 24558,
+      "entCnName": "杭州来了网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "老师来了获得IDG资本数百万元投资",
+      "userName": "NULL",
+      "happenDate": "2014-09-01"
+    },
+    {
+      "eventId": 2456,
+      "entCnName": "上海一茶一坐餐饮有限公司（本部）",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/海纳亚洲等投资一茶一坐",
+      "userName": "熊晓鸽",
+      "happenDate": "2005-11-10"
+    },
+    {
+      "eventId": 2457,
+      "entCnName": "上海一茶一坐餐饮有限公司（本部）",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/海纳亚洲等投资一茶一坐",
+      "userName": "章苏阳",
+      "happenDate": "2005-11-10"
+    },
+    {
+      "eventId": 5599,
+      "entCnName": "凡客诚品（北京）科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "SAIF等第二轮投资Vancl",
+      "userName": "林栋梁",
+      "happenDate": "2007-12-31"
+    },
+    {
+      "eventId": 1509,
+      "entCnName": "上海赢思软件技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资赢思软件",
+      "userName": "NULL",
+      "happenDate": "2004-03-01"
+    },
+    {
+      "eventId": 151,
+      "entCnName": "速达软件技术（广州）有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资速达软件",
+      "userName": "林栋梁",
+      "happenDate": "1998-08-19"
+    },
+    {
+      "eventId": 3455,
+      "entCnName": "奇虎360科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "奇虎360获第二轮融资 募集金额2500万美元",
+      "userName": "NULL",
+      "happenDate": "2006-11-01"
+    },
+    {
+      "eventId": 24672,
+      "entCnName": "深圳岚锋创视网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "Insta360获得100万美元融资",
+      "userName": "NULL",
+      "happenDate": "2014-09-04"
+    },
+    {
+      "eventId": 24685,
+      "entCnName": "上海霜狼信息科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "霜狼游戏获得IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-09-05"
+    },
+    {
+      "eventId": 24686,
+      "entCnName": "重庆猪八戒网络有限公司",
+      "investType": "C轮",
+      "eventTitle": "猪八戒网获得IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-09-05"
+    },
+    {
+      "eventId": 5665,
+      "entCnName": "重庆奇火哥快乐餐饮有限公司",
+      "investType": "A轮",
+      "eventTitle": "赛富基金等注资奇火锅1000万元",
+      "userName": "熊晓鸽",
+      "happenDate": "2008-01-01"
+    },
+    {
+      "eventId": 5669,
+      "entCnName": "北京健途在线电子商务有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG注资健途在线",
+      "userName": "熊晓鸽",
+      "happenDate": "2008-01-01"
+    },
+    {
+      "eventId": 5671,
+      "entCnName": "五匹马（上海）网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资Hook Mobile",
+      "userName": "NULL",
+      "happenDate": "2008-01-01"
+    },
+    {
+      "eventId": 5672,
+      "entCnName": "瑞祥资源有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资瑞祥资源",
+      "userName": "NULL",
+      "happenDate": "2008-01-01"
+    },
+    {
+      "eventId": 5693,
+      "entCnName": "天格科技（杭州）有限公司",
+      "investType": "B轮",
+      "eventTitle": "聚乐网获得IDG资本2000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2008-01-01"
+    },
+    {
+      "eventId": 5694,
+      "entCnName": "福州天盟数码有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资IGG",
+      "userName": "NULL",
+      "happenDate": "2008-01-02"
+    },
+    {
+      "eventId": 5696,
+      "entCnName": "桑迪亚医药技术（上海）有限责任公司",
+      "investType": "B轮",
+      "eventTitle": "永威/IDGVC/JAIC等第二轮投资桑迪亚",
+      "userName": "章苏阳",
+      "happenDate": "2008-01-02"
+    },
+    {
+      "eventId": 5711,
+      "entCnName": "北京掌中无限信息技术有限公司",
+      "investType": "C轮",
+      "eventTitle": "Crosslink/IDGVC/BlueRun投资掌中无限",
+      "userName": "林栋梁",
+      "happenDate": "2008-01-07"
+    },
+    {
+      "eventId": 5722,
+      "entCnName": "康辉控股（中国）公司",
+      "investType": "B轮",
+      "eventTitle": "鼎晖创投联合海纳亚洲等投资康辉医疗",
+      "userName": "章苏阳",
+      "happenDate": "2008-01-08"
+    },
+    {
+      "eventId": 5746,
+      "entCnName": "亿聚网络有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资亿聚网（不能证实，可能有问题）",
+      "userName": "NULL",
+      "happenDate": "2008-01-10"
+    },
+    {
+      "eventId": 34602,
+      "entCnName": "北京第三石科技发展有限公司",
+      "investType": "C轮",
+      "eventTitle": "第三石科技获得3000万美元投资",
+      "userName": "NULL",
+      "happenDate": "2016-02-01"
+    },
+    {
+      "eventId": 34615,
+      "entCnName": "深圳维拉假日科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "维拉度假获数千万元投资",
+      "userName": "NULL",
+      "happenDate": "2016-02-01"
+    },
+    {
+      "eventId": 34651,
+      "entCnName": "上海煦逸电子商务有限公司",
+      "investType": "B轮",
+      "eventTitle": "65代购获得数千万美元注资",
+      "userName": "NULL",
+      "happenDate": "2016-02-01"
+    },
+    {
+      "eventId": 5767,
+      "entCnName": "杭州汉草生物技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC等投资汉草生物",
+      "userName": "熊晓鸽",
+      "happenDate": "2008-01-15"
+    },
+    {
+      "eventId": 5781,
+      "entCnName": "上海宝酷网络技术有限公司",
+      "investType": "C轮",
+      "eventTitle": "IDG资本等注资5173.com",
+      "userName": "NULL",
+      "happenDate": "2008-01-16"
+    },
+    {
+      "eventId": 5809,
+      "entCnName": "北京蓝海通路广告有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC投资易取传媒",
+      "userName": "NULL",
+      "happenDate": "2008-01-22"
+    },
+    {
+      "eventId": 153,
+      "entCnName": "美商网有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/软银投资美商网",
+      "userName": "NULL",
+      "happenDate": "1998-09-01"
+    },
+    {
+      "eventId": 1530,
+      "entCnName": "金华比奇网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "金华比奇获IDG资本300万美元投资",
+      "userName": "NULL",
+      "happenDate": "2004-03-01"
+    },
+    {
+      "eventId": 2481,
+      "entCnName": "上海全土豆网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "土豆网获首轮融资 投资方为IDG资本",
+      "userName": "章苏阳",
+      "happenDate": "2005-12-01"
+    },
+    {
+      "eventId": 34730,
+      "entCnName": "北京金山云网络技术有限公司",
+      "investType": "C轮",
+      "eventTitle": "金山云获得融资",
+      "userName": "NULL",
+      "happenDate": "2016-02-05"
+    },
+    {
+      "eventId": 5879,
+      "entCnName": "上海伊芙心悦服饰有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资伊芙心悦",
+      "userName": "NULL",
+      "happenDate": "2008-02-01"
+    },
+    {
+      "eventId": 5917,
+      "entCnName": "深圳市派瑞安擎科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本联合德迅投资投资派瑞安擎",
+      "userName": "NULL",
+      "happenDate": "2008-02-14"
+    },
+    {
+      "eventId": 5926,
+      "entCnName": "广东宾宝服饰有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资宾宝服饰",
+      "userName": "NULL",
+      "happenDate": "2008-02-20"
+    },
+    {
+      "eventId": 24903,
+      "entCnName": "杭州蚯蚓网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "想去网获得晨兴创投等投资",
+      "userName": "NULL",
+      "happenDate": "2014-10-01"
+    },
+    {
+      "eventId": 24927,
+      "entCnName": "无锡路大在线科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "Eput获IDG资本300万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-10-01"
+    },
+    {
+      "eventId": 24940,
+      "entCnName": "香港街角电子商务有限公司",
+      "investType": "A轮",
+      "eventTitle": "面兑获IDG资本数百万元注资",
+      "userName": "NULL",
+      "happenDate": "2014-10-01"
+    },
+    {
+      "eventId": 24949,
+      "entCnName": "北京岁月桔子科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IT桔子获得IDG等200万美元A轮投资",
+      "userName": "NULL",
+      "happenDate": "2014-10-01"
+    },
+    {
+      "eventId": 5957,
+      "entCnName": "北京亿美软通科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC再次投资亿美软通",
+      "userName": "NULL",
+      "happenDate": "2008-03-01"
+    },
+    {
+      "eventId": 5958,
+      "entCnName": "北京亿美软通科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC再次投资亿美软通",
+      "userName": "NULL",
+      "happenDate": "2008-03-01"
+    },
+    {
+      "eventId": 5989,
+      "entCnName": "精实万维软件（北京）有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC增资开眼数据",
+      "userName": "NULL",
+      "happenDate": "2008-03-01"
+    },
+    {
+      "eventId": 15463,
+      "entCnName": "福州博远无线网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG对91无线投资500万美元",
+      "userName": "NULL",
+      "happenDate": "2011-09-14"
+    },
+    {
+      "eventId": 15498,
+      "entCnName": "广州易积网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "挚信资本等2000万美元注资易积网络",
+      "userName": "杨飞",
+      "happenDate": "2011-09-19"
+    },
+    {
+      "eventId": 15499,
+      "entCnName": "广州易积网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "挚信资本等2000万美元注资易积网络",
+      "userName": "高翔",
+      "happenDate": "2011-09-19"
+    },
+    {
+      "eventId": 24983,
+      "entCnName": "北京伏牛堂餐饮文化有限公司",
+      "investType": "B轮",
+      "eventTitle": "伏牛堂获IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-10-01"
+    },
+    {
+      "eventId": 250,
+      "entCnName": "冠日通讯科技（深圳）有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资冠日通讯",
+      "userName": "杨飞",
+      "happenDate": "1999-11-01"
+    },
+    {
+      "eventId": 25010,
+      "entCnName": "北京丸秀科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "制图工坊获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2014-10-01"
+    },
+    {
+      "eventId": 25015,
+      "entCnName": "北京干大事网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "干大事网络获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2014-10-01"
+    },
+    {
+      "eventId": 25054,
+      "entCnName": "Cloudcade",
+      "investType": "A轮",
+      "eventTitle": "Cloudcade获IDG资本155万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-10-13"
+    },
+    {
+      "eventId": 25057,
+      "entCnName": "杭州幻电科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "哔哩哔哩获得数千万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-10-14"
+    },
+    {
+      "eventId": 25061,
+      "entCnName": "上海保橙网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "OK车险获得500万元融资",
+      "userName": "NULL",
+      "happenDate": "2014-10-14"
+    },
+    {
+      "eventId": 15527,
+      "entCnName": "西西环保股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "西西环保获得数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2011-09-22"
+    },
+    {
+      "eventId": 156,
+      "entCnName": "北京优联思特技术有限责任公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资优联思特",
+      "userName": "周全",
+      "happenDate": "1998-10-01"
+    },
+    {
+      "eventId": 605,
+      "entCnName": "贵阳朗玛信息技术股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG1531.48万元投资朗玛信息",
+      "userName": "杨飞",
+      "happenDate": "2001-02-12"
+    },
+    {
+      "eventId": 350,
+      "entCnName": "北京益生康健电子商务有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资益生康健",
+      "userName": "NULL",
+      "happenDate": "2000-04-01"
+    },
+    {
+      "eventId": 6193,
+      "entCnName": "《红河》",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资《红河》",
+      "userName": "熊晓鸽",
+      "happenDate": "2008-04-01"
+    },
+    {
+      "eventId": 6226,
+      "entCnName": "华灿光电股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本100万美元投资华灿光电",
+      "userName": "章苏阳",
+      "happenDate": "2008-04-07"
+    },
+    {
+      "eventId": 25188,
+      "entCnName": "Bloomsky Inc",
+      "investType": "A轮",
+      "eventTitle": "IDG基金300万美元注资Bloomsky",
+      "userName": "NULL",
+      "happenDate": "2014-10-28"
+    },
+    {
+      "eventId": 2520,
+      "entCnName": "北京朗新信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本投资朗新",
+      "userName": "NULL",
+      "happenDate": "2005-12-01"
+    },
+    {
+      "eventId": 2521,
+      "entCnName": "上海智臻智能网络科技股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG注资智臻网络",
+      "userName": "NULL",
+      "happenDate": "2005-12-01"
+    },
+    {
+      "eventId": 25234,
+      "entCnName": "北京运科网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "骡迹智慧物流获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2014-11-01"
+    },
+    {
+      "eventId": 25236,
+      "entCnName": "深圳市木浪科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "多备份获IDG资本等1000万元注资",
+      "userName": "NULL",
+      "happenDate": "2014-11-01"
+    },
+    {
+      "eventId": 2525,
+      "entCnName": "深圳市华动飞天网络技术开发有限公司",
+      "investType": "E轮",
+      "eventTitle": "IDGVC再次投资A8",
+      "userName": "王树",
+      "happenDate": "2005-12-05"
+    },
+    {
+      "eventId": 35088,
+      "entCnName": "海致网聚网络技术（北京）有限公司",
+      "investType": "C轮",
+      "eventTitle": "海致网聚获得君联资本等注资",
+      "userName": "NULL",
+      "happenDate": "2016-03-02"
+    },
+    {
+      "eventId": 6271,
+      "entCnName": "上海全土豆网络科技有限公司",
+      "investType": "D轮",
+      "eventTitle": "土豆网第四轮融资 涉及金额5678万美元",
+      "userName": "章苏阳",
+      "happenDate": "2008-04-21"
+    },
+    {
+      "eventId": 6283,
+      "entCnName": "北京昆天科微电子技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "华登国际/IDGVC/Tallwood/联讯创投等投资昆天科",
+      "userName": "NULL",
+      "happenDate": "2008-04-25"
+    },
+    {
+      "eventId": 6285,
+      "entCnName": "蓝港互动集团有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资蓝港在线200万美元",
+      "userName": "NULL",
+      "happenDate": "2008-04-25"
+    },
+    {
+      "eventId": 25271,
+      "entCnName": "六月花兄弟软件技术（北京）有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG注资拓词",
+      "userName": "NULL",
+      "happenDate": "2014-11-01"
+    },
+    {
+      "eventId": 25310,
+      "entCnName": "上海蓝磁电子科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资Stary",
+      "userName": "NULL",
+      "happenDate": "2014-11-01"
+    },
+    {
+      "eventId": 25330,
+      "entCnName": "爱车汇（北京）科技有限责任公司",
+      "investType": "B轮",
+      "eventTitle": "PP租车获IDG资本等6000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2014-11-04"
+    },
+    {
+      "eventId": 6350,
+      "entCnName": "《胡同里的阳光》",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资《胡同里的阳光》",
+      "userName": "熊晓鸽",
+      "happenDate": "2008-05-01"
+    },
+    {
+      "eventId": 254,
+      "entCnName": "西安三元数码软件公司",
+      "investType": "A轮",
+      "eventTitle": "IDG投资三元数码软件",
+      "userName": "NULL",
+      "happenDate": "1999-11-01"
+    },
+    {
+      "eventId": 35155,
+      "entCnName": "北京易动纷享科技有限责任公司",
+      "investType": "E轮",
+      "eventTitle": "纷享科技获得E轮融资",
+      "userName": "NULL",
+      "happenDate": "2016-03-07"
+    },
+    {
+      "eventId": 25413,
+      "entCnName": "Course Hero",
+      "investType": "B轮",
+      "eventTitle": "Course Hero获IDG资本等1500万美元注资",
+      "userName": "NULL",
+      "happenDate": "2014-11-12"
+    },
+    {
+      "eventId": 2542,
+      "entCnName": "北京掌中无限信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "BlueRun/IDGVC投资掌中无限",
+      "userName": "林栋梁",
+      "happenDate": "2005-12-14"
+    },
+    {
+      "eventId": 25437,
+      "entCnName": "天华阳光控股有限公司",
+      "investType": "PIPE",
+      "eventTitle": "IDG资本认购天华阳光股份 耗资2000万美元",
+      "userName": "NULL",
+      "happenDate": "2014-11-14"
+    },
+    {
+      "eventId": 35227,
+      "entCnName": "江苏金刚文化科技集团股份有限公司",
+      "investType": "C轮",
+      "eventTitle": "金刚文化获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2016-03-10"
+    },
+    {
+      "eventId": 15927,
+      "entCnName": "北京云测信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本990万美元注资云测信息",
+      "userName": "NULL",
+      "happenDate": "2011-11-01"
+    },
+    {
+      "eventId": 25484,
+      "entCnName": "猎上网络技术（上海）有限公司",
+      "investType": "B轮",
+      "eventTitle": "猎上网获红杉中国等2000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2014-11-20"
+    },
+    {
+      "eventId": 25487,
+      "entCnName": "北京畅行信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "嘀嗒拼车获IDG资本1000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2014-11-20"
+    },
+    {
+      "eventId": 25499,
+      "entCnName": "Ivy Gallery相片管家",
+      "investType": "A轮",
+      "eventTitle": "Ivy Gallery获得数百万元A轮投资",
+      "userName": "NULL",
+      "happenDate": "2014-11-21"
+    },
+    {
+      "eventId": 25528,
+      "entCnName": "钱袋网（北京）信息技术有限公司",
+      "investType": "Growth",
+      "eventTitle": "钱袋宝获IDG资本等投资",
+      "userName": "NULL",
+      "happenDate": "2014-11-26"
+    },
+    {
+      "eventId": 35293,
+      "entCnName": "北京博尔德互动文化传媒有限公司",
+      "investType": "A轮",
+      "eventTitle": "博尔德获得晨兴资本等注资",
+      "userName": "NULL",
+      "happenDate": "2016-03-14"
+    },
+    {
+      "eventId": 65583,
+      "entCnName": "氪空间（北京）信息技术有限公司",
+      "investType": "A+轮",
+      "eventTitle": "氪空间获得普思资本及IDG注资",
+      "userName": "NULL",
+      "happenDate": "2016-11-01"
+    },
+    {
+      "eventId": 65587,
+      "entCnName": "广州爆款易网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "爆款易获数千万元A轮融资",
+      "userName": "NULL",
+      "happenDate": "2016-11-02"
+    },
+    {
+      "eventId": 16049,
+      "entCnName": "北京图为先科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "IDG资本等注资图吧",
+      "userName": "NULL",
+      "happenDate": "2011-11-14"
+    },
+    {
+      "eventId": 1606,
+      "entCnName": "天天在线有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资天天在线",
+      "userName": "NULL",
+      "happenDate": "2004-05-01"
+    },
+    {
+      "eventId": 16067,
+      "entCnName": "Outblaze Venture Holdings Ltd.",
+      "investType": "A轮",
+      "eventTitle": "IDGVC联合Intel投资注资Animoca",
+      "userName": "NULL",
+      "happenDate": "2011-11-15"
+    },
+    {
+      "eventId": 25567,
+      "entCnName": "杭州财米科技有限公司",
+      "investType": "D轮",
+      "eventTitle": "挖财网获宽带资本等5000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2014-11-30"
+    },
+    {
+      "eventId": 25576,
+      "entCnName": "敢玩（北京）科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "敢玩获得IDG资本数百万元融资",
+      "userName": "NULL",
+      "happenDate": "2014-11-30"
+    },
+    {
+      "eventId": 25577,
+      "entCnName": "上海汇翼信息科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本等注资Teambition500万美元",
+      "userName": "NULL",
+      "happenDate": "2014-12-01"
+    },
+    {
+      "eventId": 35358,
+      "entCnName": "北京昆尚文化传媒有限责任公司",
+      "investType": "D轮",
+      "eventTitle": "昆仑决获IDG资本等2亿元融资",
+      "userName": "NULL",
+      "happenDate": "2016-03-16"
+    },
+    {
+      "eventId": 16083,
+      "entCnName": "北京数字顽石无线科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "挚信资本等注资顽石",
+      "userName": "NULL",
+      "happenDate": "2011-11-16"
+    },
+    {
+      "eventId": 35446,
+      "entCnName": "广州绽放信息科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "美黛拉获得IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2016-03-21"
+    },
+    {
+      "eventId": 35473,
+      "entCnName": "北京云动数字媒体技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "会小二获得数千万元B轮融资",
+      "userName": "NULL",
+      "happenDate": "2016-03-22"
+    },
+    {
+      "eventId": 35475,
+      "entCnName": "武汉极意网络科技有限公司",
+      "investType": "D轮",
+      "eventTitle": "极验获2400万美元D轮融资",
+      "userName": "NULL",
+      "happenDate": "2016-03-22"
+    },
+    {
+      "eventId": 16201,
+      "entCnName": "北京古北水镇旅游有限公司",
+      "investType": "Growth",
+      "eventTitle": "IDG资本注资古北水镇 占股40%",
+      "userName": "NULL",
+      "happenDate": "2011-11-29"
+    },
+    {
+      "eventId": 16224,
+      "entCnName": "北京百度网讯科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本和启明创投4,500万美元注资百度有啊",
+      "userName": "NULL",
+      "happenDate": "2011-12-01"
+    },
+    {
+      "eventId": 2566,
+      "entCnName": "北京网赢天地科技文化传播有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资精品学习网",
+      "userName": "林栋梁",
+      "happenDate": "2005-12-30"
+    },
+    {
+      "eventId": 25664,
+      "entCnName": "深圳福迈斯科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "金融圈获昆仲资本等1000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2014-12-01"
+    },
+    {
+      "eventId": 25700,
+      "entCnName": "上海耶客网络科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "耶客获IDG资本等150万美元注资",
+      "userName": "NULL",
+      "happenDate": "2014-12-01"
+    },
+    {
+      "eventId": 25744,
+      "entCnName": "北京优助科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "008同城批发获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2014-12-01"
+    },
+    {
+      "eventId": 65992,
+      "entCnName": "科技众创（北京）网络股份有限公司",
+      "investType": "Growth",
+      "eventTitle": "科技众创获得IDG等注资",
+      "userName": "NULL",
+      "happenDate": "2016-11-11"
+    },
+    {
+      "eventId": 16364,
+      "entCnName": "上海渐石网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "立体时代获得IDG资本数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2011-12-01"
+    },
+    {
+      "eventId": 16381,
+      "entCnName": "福建博瑞网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "博瑞网络获IDG资本等3000万美元投资",
+      "userName": "NULL",
+      "happenDate": "2011-12-01"
+    },
+    {
+      "eventId": 16389,
+      "entCnName": "般若天成（北京）科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "百度等注资知我网千万美元",
+      "userName": "NULL",
+      "happenDate": "2011-12-05"
+    },
+    {
+      "eventId": 16396,
+      "entCnName": "时代集团控股有限公司",
+      "investType": "PIPE",
+      "eventTitle": "IDG资本1.62亿元投资时代集团控股",
+      "userName": "NULL",
+      "happenDate": "2011-12-06"
+    },
+    {
+      "eventId": 16462,
+      "entCnName": "精准沟通（北京）商务服务有限公司",
+      "investType": "A轮",
+      "eventTitle": "摩卡中国网获IDG等多家机构注资",
+      "userName": "NULL",
+      "happenDate": "2011-12-14"
+    },
+    {
+      "eventId": 16497,
+      "entCnName": "北京百雅轩文化艺术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG6000万元购百雅轩20%股份 熊晓鸽入董事会",
+      "userName": "李建光",
+      "happenDate": "2011-12-18"
+    },
+    {
+      "eventId": 16498,
+      "entCnName": "北京百雅轩文化艺术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG6000万元购百雅轩20%股份 熊晓鸽入董事会",
+      "userName": "熊晓鸽",
+      "happenDate": "2011-12-18"
+    },
+    {
+      "eventId": 16518,
+      "entCnName": "小米科技有限责任公司",
+      "investType": "C轮",
+      "eventTitle": "小米科技获9,000万美元投资 启明创投IDG等5机构联投",
+      "userName": "NULL",
+      "happenDate": "2011-12-20"
+    },
+    {
+      "eventId": 16526,
+      "entCnName": "雷蛇",
+      "investType": "A轮",
+      "eventTitle": "雷蛇首轮获IDG5000万美元风险投资",
+      "userName": "NULL",
+      "happenDate": "2011-12-20"
+    },
+    {
+      "eventId": 25859,
+      "entCnName": "南京洛哈网络科技有限公司",
+      "investType": "D轮",
+      "eventTitle": "一起唱获IDG资本等1200万美元注资",
+      "userName": "NULL",
+      "happenDate": "2014-12-10"
+    },
+    {
+      "eventId": 25874,
+      "entCnName": "北京普缇客科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "达令礼物店获今日资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-12-11"
+    },
+    {
+      "eventId": 25899,
+      "entCnName": "上海微知软件科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "微知软件获得华创资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-12-12"
+    },
+    {
+      "eventId": 16594,
+      "entCnName": "聚划算",
+      "investType": "A轮",
+      "eventTitle": "聚划算获6亿元风险投资",
+      "userName": "NULL",
+      "happenDate": "2011-12-28"
+    },
+    {
+      "eventId": 16677,
+      "entCnName": "精实万维软件（北京）有限公司",
+      "investType": "C轮",
+      "eventTitle": "IDG和英飞尼迪注资开眼数据",
+      "userName": "NULL",
+      "happenDate": "2012-01-01"
+    },
+    {
+      "eventId": 66406,
+      "entCnName": "美通云动（北京）科技有限公司",
+      "investType": "B+轮",
+      "eventTitle": "云适配完成1亿元B+轮融资",
+      "userName": "NULL",
+      "happenDate": "2016-11-17"
+    },
+    {
+      "eventId": 25937,
+      "entCnName": "北京洋浦伟业科技发展有限公司",
+      "investType": "C轮",
+      "eventTitle": "洋浦科技获IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-12-16"
+    },
+    {
+      "eventId": 25957,
+      "entCnName": "上海墨果资产管理有限公司",
+      "investType": "B轮",
+      "eventTitle": "蘑菇公寓获得海通开元等2500万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-12-17"
+    },
+    {
+      "eventId": 25960,
+      "entCnName": "北京轻松筹网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "轻松筹获IDG数百万美元A轮投资",
+      "userName": "NULL",
+      "happenDate": "2014-12-17"
+    },
+    {
+      "eventId": 2599,
+      "entCnName": "新航道国际教育集团有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资新航道",
+      "userName": "NULL",
+      "happenDate": "2006-01-01"
+    },
+    {
+      "eventId": 26008,
+      "entCnName": "青岛风云互动网络技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "章鱼TV获晨兴资本等投资",
+      "userName": "NULL",
+      "happenDate": "2014-12-21"
+    },
+    {
+      "eventId": 26011,
+      "entCnName": "北京果壳互动科技传媒有限公司",
+      "investType": "D轮",
+      "eventTitle": "果壳传媒获IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-12-22"
+    },
+    {
+      "eventId": 6651,
+      "entCnName": "华灿光电股份有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本300万美元注资华灿光电",
+      "userName": "NULL",
+      "happenDate": "2008-06-20"
+    },
+    {
+      "eventId": 35915,
+      "entCnName": "南京易米云通网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "易米云通获骊悦投资等2000万美元融资",
+      "userName": "NULL",
+      "happenDate": "2016-04-12"
+    },
+    {
+      "eventId": 35923,
+      "entCnName": "深圳岚锋创视网络科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "Insta360获得数亿元融资",
+      "userName": "NULL",
+      "happenDate": "2016-04-13"
+    },
+    {
+      "eventId": 35926,
+      "entCnName": "杭州同盾科技有限公司",
+      "investType": "D轮",
+      "eventTitle": "同盾科技获得3200万美元融资",
+      "userName": "NULL",
+      "happenDate": "2016-04-13"
+    },
+    {
+      "eventId": 3595,
+      "entCnName": "北京麦斯贝信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "CBC/IDGVC投资Myspace.cn",
+      "userName": "NULL",
+      "happenDate": "2006-12-07"
+    },
+    {
+      "eventId": 35954,
+      "entCnName": "上海链展国际贸易有限公司",
+      "investType": "B轮",
+      "eventTitle": "链尚网获1500万美元融资",
+      "userName": "NULL",
+      "happenDate": "2016-04-14"
+    },
+    {
+      "eventId": 26019,
+      "entCnName": "北京楚枫网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "楚枫网络获IDG资本1000万美元投资",
+      "userName": "NULL",
+      "happenDate": "2014-12-22"
+    },
+    {
+      "eventId": 26027,
+      "entCnName": "深圳市火乐科技发展有限公司",
+      "investType": "A轮",
+      "eventTitle": "火乐科技获6000万元注资",
+      "userName": "NULL",
+      "happenDate": "2014-12-23"
+    },
+    {
+      "eventId": 26036,
+      "entCnName": "北京易动纷享科技有限责任公司",
+      "investType": "C轮",
+      "eventTitle": "纷享科技获DCM等5000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2014-12-23"
+    },
+    {
+      "eventId": 26070,
+      "entCnName": "深圳市前海九通金融服务有限公司",
+      "investType": "A轮",
+      "eventTitle": "摇财树获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2014-12-25"
+    },
+    {
+      "eventId": 26075,
+      "entCnName": "北京为艺科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "为艺获得IDG资本投资",
+      "userName": "NULL",
+      "happenDate": "2014-12-26"
+    },
+    {
+      "eventId": 261,
+      "entCnName": "上海盈实信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "JH Whitney等第一轮投资易趣",
+      "userName": "王功权",
+      "happenDate": "1999-11-24"
+    },
+    {
+      "eventId": 1683,
+      "entCnName": "杭州博客信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资中国博客网",
+      "userName": "NULL",
+      "happenDate": "2004-07-01"
+    },
+    {
+      "eventId": 16859,
+      "entCnName": "天华阳光控股有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本注资天华阳光",
+      "userName": "何志成",
+      "happenDate": "2012-01-01"
+    },
+    {
+      "eventId": 16860,
+      "entCnName": "天华阳光控股有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本注资天华阳光",
+      "userName": "周全",
+      "happenDate": "2012-01-01"
+    },
+    {
+      "eventId": 16890,
+      "entCnName": "奥林网络科技（宁波）有限公司",
+      "investType": "B轮",
+      "eventTitle": "奥林科技获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2012-01-01"
+    },
+    {
+      "eventId": 66581,
+      "entCnName": "北京质本文化传播有限公司",
+      "investType": "Pre-A轮",
+      "eventTitle": "名堂获得A轮注资",
+      "userName": "NULL",
+      "happenDate": "NULL"
+    },
+    {
+      "eventId": 66585,
+      "entCnName": "北京质本文化传播有限公司",
+      "investType": "A+轮",
+      "eventTitle": "名堂获得Ventech China等注资",
+      "userName": "NULL",
+      "happenDate": "2016-11-19"
+    },
+    {
+      "eventId": 3602,
+      "entCnName": "中国通信服务股份有限公司",
+      "investType": "PIPE",
+      "eventTitle": "思科/IDG购入中通服股票",
+      "userName": "NULL",
+      "happenDate": "2006-12-08"
+    },
+    {
+      "eventId": 26129,
+      "entCnName": "海南乐昕网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "捞月狗获得IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2014-12-30"
+    },
+    {
+      "eventId": 2613,
+      "entCnName": "G10 Entertainment Korea Corp.",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资G10",
+      "userName": "NULL",
+      "happenDate": "2006-01-01"
+    },
+    {
+      "eventId": 2614,
+      "entCnName": "巴士在线传媒有限公司",
+      "investType": "B轮",
+      "eventTitle": "巴士在线千万级别美元融资 IDG资本等投资",
+      "userName": "NULL",
+      "happenDate": "2006-01-01"
+    },
+    {
+      "eventId": 2615,
+      "entCnName": "合浦沪天高岭土有限责任公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资合浦沪天",
+      "userName": "NULL",
+      "happenDate": "2006-01-01"
+    },
+    {
+      "eventId": 26196,
+      "entCnName": "九次方财富资讯（北京）有限责任公司",
+      "investType": "B轮",
+      "eventTitle": "九次方大数据获IDG资本等2亿元注资",
+      "userName": "NULL",
+      "happenDate": "2015-01-01"
+    },
+    {
+      "eventId": 1697,
+      "entCnName": "广州市富年电子科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "上海联创/IDGVC投资富年科技",
+      "userName": "NULL",
+      "happenDate": "2004-07-13"
+    },
+    {
+      "eventId": 1700,
+      "entCnName": "北京龙迹天地科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资魔龙",
+      "userName": "李建光",
+      "happenDate": "2004-07-16"
+    },
+    {
+      "eventId": 36162,
+      "entCnName": "北京尚世骁众科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "衣二三获得真格基金等注资",
+      "userName": "NULL",
+      "happenDate": "2016-04-25"
+    },
+    {
+      "eventId": 36166,
+      "entCnName": "北京易思汇商务服务有限公司",
+      "investType": "B轮",
+      "eventTitle": "易思汇获得数千万元注资",
+      "userName": "NULL",
+      "happenDate": "2016-04-25"
+    },
+    {
+      "eventId": 17053,
+      "entCnName": "北京网优聚众网络科技有限责任公司",
+      "investType": "B轮",
+      "eventTitle": "优众网完成4000万美元B轮融资",
+      "userName": "NULL",
+      "happenDate": "2012-02-06"
+    },
+    {
+      "eventId": 1707,
+      "entCnName": "深圳市华动飞天网络技术开发有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资A8",
+      "userName": "王树",
+      "happenDate": "2004-07-30"
+    },
+    {
+      "eventId": 17103,
+      "entCnName": "爱威白亚洲",
+      "investType": "A轮",
+      "eventTitle": "IDG700万美元注资爱威白 占股31.4%",
+      "userName": "熊晓鸽",
+      "happenDate": "2012-02-15"
+    },
+    {
+      "eventId": 26214,
+      "entCnName": "福建一零一教育科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "101同学派获IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2015-01-01"
+    },
+    {
+      "eventId": 26239,
+      "entCnName": "厦门花开网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "花开网络获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2015-01-01"
+    },
+    {
+      "eventId": 26293,
+      "entCnName": "上海班砖网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "萌萌搭获得IDG资本数百万元注资",
+      "userName": "NULL",
+      "happenDate": "2015-01-01"
+    },
+    {
+      "eventId": 66947,
+      "entCnName": "Royole Corporation",
+      "investType": "C轮",
+      "eventTitle": "Royole Corporation获得C轮注资",
+      "userName": "NULL",
+      "happenDate": "2015-08-18"
+    },
+    {
+      "eventId": 36205,
+      "entCnName": "北京圈圈移动科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "零零无限获2300万美元融资",
+      "userName": "NULL",
+      "happenDate": "2016-04-27"
+    },
+    {
+      "eventId": 17150,
+      "entCnName": "上海耶客网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "耶客获B轮投资 顺为基金领投",
+      "userName": "NULL",
+      "happenDate": "2012-02-28"
+    },
+    {
+      "eventId": 26300,
+      "entCnName": "丫米厨房",
+      "investType": "A轮",
+      "eventTitle": "丫米厨房获IDG千万元融资",
+      "userName": "NULL",
+      "happenDate": "2015-01-01"
+    },
+    {
+      "eventId": 26336,
+      "entCnName": "北京亦风科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "亦风科技获得1000万美元A轮投资",
+      "userName": "NULL",
+      "happenDate": "2015-01-01"
+    },
+    {
+      "eventId": 1726,
+      "entCnName": "四川长城软件科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "高通联合IDGVC投资四川长城",
+      "userName": "NULL",
+      "happenDate": "2004-08-01"
+    },
+    {
+      "eventId": 36337,
+      "entCnName": "杭州小农网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "小农网络获得8515万元融资",
+      "userName": "NULL",
+      "happenDate": "2016-05-03"
+    },
+    {
+      "eventId": 17278,
+      "entCnName": "鹏爱美容医院集团",
+      "investType": "A轮",
+      "eventTitle": "招商和腾创投等注资鹏爱医院集团",
+      "userName": "NULL",
+      "happenDate": "2012-03-09"
+    },
+    {
+      "eventId": 6711,
+      "entCnName": "《高考1977》",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资《高考1977》",
+      "userName": "熊晓鸽",
+      "happenDate": "2008-07-01"
+    },
+    {
+      "eventId": 67118,
+      "entCnName": "北京小糖科技有限责任公司",
+      "investType": "B+轮",
+      "eventTitle": "糖豆广场舞获得500万美元B+轮投资",
+      "userName": "NULL",
+      "happenDate": "2016-11-24"
+    },
+    {
+      "eventId": 36413,
+      "entCnName": "特斯联（北京）科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "特斯联科技获得A轮融资",
+      "userName": "NULL",
+      "happenDate": "2016-05-09"
+    },
+    {
+      "eventId": 36418,
+      "entCnName": "北京纵情向前科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "水滴互助获5000万元融资",
+      "userName": "NULL",
+      "happenDate": "2016-05-09"
+    },
+    {
+      "eventId": 1737,
+      "entCnName": "上海宝酷网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资5173.com",
+      "userName": "NULL",
+      "happenDate": "2004-08-11"
+    },
+    {
+      "eventId": 67329,
+      "entCnName": "InfiSecure Technologies Inc",
+      "investType": "种子轮",
+      "eventTitle": "InfiSecure获得种子轮注资",
+      "userName": "NULL",
+      "happenDate": "2016-11-23"
+    },
+    {
+      "eventId": 26529,
+      "entCnName": "福州贝斯特教育咨询有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本等联合注资贝斯特教育",
+      "userName": "NULL",
+      "happenDate": "2015-01-06"
+    },
+    {
+      "eventId": 17469,
+      "entCnName": "加拿大明科矿业集团",
+      "investType": "Growth",
+      "eventTitle": "IDG资本投资明科矿业",
+      "userName": "NULL",
+      "happenDate": "2012-04-01"
+    },
+    {
+      "eventId": 17476,
+      "entCnName": "聚尚电子商务（上海）有限公司",
+      "investType": "B轮",
+      "eventTitle": "银瑞达创投等注资聚尚网",
+      "userName": "NULL",
+      "happenDate": "2012-04-01"
+    },
+    {
+      "eventId": 3652,
+      "entCnName": "暴风集团股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "暴风影音获A轮融资 IDG资本投资300万美元",
+      "userName": "NULL",
+      "happenDate": "2006-12-20"
+    },
+    {
+      "eventId": 67373,
+      "entCnName": "广东因特利信息科技有限公司",
+      "investType": "Pre-IPO轮",
+      "eventTitle": "因特利获得IDG等注资",
+      "userName": "NULL",
+      "happenDate": "2016-10"
+    },
+    {
+      "eventId": 6744,
+      "entCnName": "华住酒店管理有限公司",
+      "investType": "B轮",
+      "eventTitle": "汉庭酒店获第二轮融资",
+      "userName": "章苏阳",
+      "happenDate": "2008-07-04"
+    },
+    {
+      "eventId": 26590,
+      "entCnName": "App Annie Limited",
+      "investType": "E轮",
+      "eventTitle": "App Annie获IVP等5500万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-01-14"
+    },
+    {
+      "eventId": 2661,
+      "entCnName": "海蝶国际控股集团",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资海蝶控股",
+      "userName": "NULL",
+      "happenDate": "2006-02-01"
+    },
+    {
+      "eventId": 6771,
+      "entCnName": "广州华康投资咨询有限公司",
+      "investType": "B轮",
+      "eventTitle": "经纬创投/IDGVC投资华康保险",
+      "userName": "杨飞",
+      "happenDate": "2008-07-10"
+    },
+    {
+      "eventId": 6829,
+      "entCnName": "神州数字销售技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资神州数字",
+      "userName": "NULL",
+      "happenDate": "2008-07-18"
+    },
+    {
+      "eventId": 26687,
+      "entCnName": "上海找钢网信息科技股份有限公司",
+      "investType": "D轮",
+      "eventTitle": "找钢网获1亿美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-01-21"
+    },
+    {
+      "eventId": 2670,
+      "entCnName": "北京畅讯信通科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/三井创投/NTT投资畅讯科技",
+      "userName": "NULL",
+      "happenDate": "2006-02-01"
+    },
+    {
+      "eventId": 26705,
+      "entCnName": "杭州贝购科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "贝贝网获今日资本等1亿美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-01-22"
+    },
+    {
+      "eventId": 26757,
+      "entCnName": "Car+",
+      "investType": "A轮",
+      "eventTitle": "Car+获得750万元投资",
+      "userName": "NULL",
+      "happenDate": "2015-01-26"
+    },
+    {
+      "eventId": 17737,
+      "entCnName": "北京惟知广聚科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资Ztelic",
+      "userName": "NULL",
+      "happenDate": "2012-05-01"
+    },
+    {
+      "eventId": 6863,
+      "entCnName": "上海唐颂信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG/凯鹏华盈投资唐颂互动",
+      "userName": "NULL",
+      "happenDate": "2008-07-31"
+    },
+    {
+      "eventId": 6869,
+      "entCnName": "凡客诚品（北京）科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "Vancl 第三轮融资",
+      "userName": "林栋梁",
+      "happenDate": "2008-08-01"
+    },
+    {
+      "eventId": 6893,
+      "entCnName": "福建钧石能源有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资钧石能源",
+      "userName": "林栋梁",
+      "happenDate": "2008-08-01"
+    },
+    {
+      "eventId": 3681,
+      "entCnName": "北京三代动力软件技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC/成为基金投资3GV8",
+      "userName": "张震",
+      "happenDate": "2006-12-31"
+    },
+    {
+      "eventId": 26787,
+      "entCnName": "南京五十岚数字科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "五十岚获得启明创投等注资",
+      "userName": "NULL",
+      "happenDate": "2015-01-28"
+    },
+    {
+      "eventId": 26792,
+      "entCnName": "广州百塑电子商务有限公司",
+      "investType": "B轮",
+      "eventTitle": "找塑料网获启明创投等2000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-01-29"
+    },
+    {
+      "eventId": 26840,
+      "entCnName": "拍信",
+      "investType": "A轮",
+      "eventTitle": "IDG注资拍信300万美元",
+      "userName": "NULL",
+      "happenDate": "2015-02-01"
+    },
+    {
+      "eventId": 26841,
+      "entCnName": "上海政凯信息科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "自媒体管家获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2015-02-01"
+    },
+    {
+      "eventId": 26847,
+      "entCnName": "云景智维",
+      "investType": "A轮",
+      "eventTitle": "云景智维获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2015-02-01"
+    },
+    {
+      "eventId": 26851,
+      "entCnName": "上海西域机电系统有限公司",
+      "investType": "C轮",
+      "eventTitle": "西域机电获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2015-02-01"
+    },
+    {
+      "eventId": 17770,
+      "entCnName": "北京寺库商贸有限公司",
+      "investType": "B轮",
+      "eventTitle": "寺库获得第二轮3000万美元投资",
+      "userName": "熊晓鸽",
+      "happenDate": "2012-05-08"
+    },
+    {
+      "eventId": 1782,
+      "entCnName": "北京亿美软通科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资亿美软通",
+      "userName": "NULL",
+      "happenDate": "2004-10-01"
+    },
+    {
+      "eventId": 1783,
+      "entCnName": "北京掌中无限信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资掌中无限",
+      "userName": "林栋梁",
+      "happenDate": "2004-10-01"
+    },
+    {
+      "eventId": 36883,
+      "entCnName": "北京轻松筹网络科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "轻松筹获得2000万美元融资",
+      "userName": "NULL",
+      "happenDate": "2016-06-02"
+    },
+    {
+      "eventId": 694,
+      "entCnName": "中国创联教育集团有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资直真节点",
+      "userName": "周全",
+      "happenDate": "2001-07-01"
+    },
+    {
+      "eventId": 695,
+      "entCnName": "中国创联教育集团有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资直真节点",
+      "userName": "章苏阳",
+      "happenDate": "2001-07-01"
+    },
+    {
+      "eventId": 6952,
+      "entCnName": "盛源创新（北京）科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资九鼎中国",
+      "userName": "宁君",
+      "happenDate": "2008-08-12"
+    },
+    {
+      "eventId": 70,
+      "entCnName": "深圳市华生元基因工程发展有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本450万元投资华生元",
+      "userName": "NULL",
+      "happenDate": "1996-01-01"
+    },
+    {
+      "eventId": 7003,
+      "entCnName": "北京神州付科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资神州付",
+      "userName": "张震",
+      "happenDate": "2008-08-27"
+    },
+    {
+      "eventId": 26856,
+      "entCnName": "杭州易路营电子商务有限公司",
+      "investType": "A轮",
+      "eventTitle": "易路营获得IDG资本等数百万元注资",
+      "userName": "NULL",
+      "happenDate": "2015-02-01"
+    },
+    {
+      "eventId": 17862,
+      "entCnName": "青岛云成互动网络有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本200万美元注资云成互动",
+      "userName": "NULL",
+      "happenDate": "2012-05-30"
+    },
+    {
+      "eventId": 1795,
+      "entCnName": "上海框架广告发展有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC/汉能投资框架传媒",
+      "userName": "周全",
+      "happenDate": "2004-10-05"
+    },
+    {
+      "eventId": 36936,
+      "entCnName": "北京中搜网络技术股份有限公司",
+      "investType": "C轮",
+      "eventTitle": "中搜网络获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2016-06-06"
+    },
+    {
+      "eventId": 36991,
+      "entCnName": "上海香蕉计划电子游戏有限公司",
+      "investType": "A轮",
+      "eventTitle": "香蕉计划游戏获得1.5亿元融资",
+      "userName": "NULL",
+      "happenDate": "2016-06-12"
+    },
+    {
+      "eventId": 3700,
+      "entCnName": "上海赢思软件技术有限公司",
+      "investType": "C轮",
+      "eventTitle": "集富亚洲/DFJ ePlanet/Intel Capital/IDGVC/清科投资赢思软件",
+      "userName": "NULL",
+      "happenDate": "2007-01-01"
+    },
+    {
+      "eventId": 7062,
+      "entCnName": "重庆山外山科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG/湘投高创投投资山外山科技",
+      "userName": "NULL",
+      "happenDate": "2008-09-01"
+    },
+    {
+      "eventId": 2695,
+      "entCnName": "奇虎360科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "奇虎360获首轮融资 募集金额1630万美元",
+      "userName": "NULL",
+      "happenDate": "2006-03-01"
+    },
+    {
+      "eventId": 26992,
+      "entCnName": "Lenskart",
+      "investType": "C轮",
+      "eventTitle": "Lenskart获TR Capital等注资",
+      "userName": "NULL",
+      "happenDate": "2015-02-10"
+    },
+    {
+      "eventId": 1796,
+      "entCnName": "上海框架广告发展有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC/汉能投资框架传媒",
+      "userName": "王功权",
+      "happenDate": "2004-10-05"
+    },
+    {
+      "eventId": 1797,
+      "entCnName": "访问科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资163888.net",
+      "userName": "王树",
+      "happenDate": "2004-10-12"
+    },
+    {
+      "eventId": 17983,
+      "entCnName": "小米科技有限责任公司",
+      "investType": "D轮",
+      "eventTitle": "小米科技完成2.16亿美元融资",
+      "userName": "NULL",
+      "happenDate": "2012-06-05"
+    },
+    {
+      "eventId": 7135,
+      "entCnName": "深圳日海通讯技术股份有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本收购日海通讯15%股份",
+      "userName": "杨飞",
+      "happenDate": "2008-09-18"
+    },
+    {
+      "eventId": 7136,
+      "entCnName": "深圳日海通讯技术股份有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本收购日海通讯15%股份",
+      "userName": "杨飞",
+      "happenDate": "2008-09-18"
+    },
+    {
+      "eventId": 7190,
+      "entCnName": "首席公馆酒店集团有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资首席公馆",
+      "userName": "侯朗基",
+      "happenDate": "2008-10-01"
+    },
+    {
+      "eventId": 18053,
+      "entCnName": "上海东方希杰商务有限公司",
+      "investType": "B轮",
+      "eventTitle": "华人文化基金等投资东方CJ",
+      "userName": "NULL",
+      "happenDate": "2012-06-20"
+    },
+    {
+      "eventId": 18134,
+      "entCnName": "安徽三只松鼠电子商务有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG150万美元注资三只松鼠",
+      "userName": "NULL",
+      "happenDate": "2012-07-01"
+    },
+    {
+      "eventId": 37131,
+      "entCnName": "深圳市前海思微投资管理有限公司",
+      "investType": "B轮",
+      "eventTitle": "思微投资获得3000万元融资",
+      "userName": "NULL",
+      "happenDate": "2016-06-20"
+    },
+    {
+      "eventId": 2714,
+      "entCnName": "共业电信技术（北京）有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资共业电信",
+      "userName": "NULL",
+      "happenDate": "2006-03-01"
+    },
+    {
+      "eventId": 27144,
+      "entCnName": "北京到达科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "赞赏获IDG资本数百万元注资",
+      "userName": "NULL",
+      "happenDate": "2015-02-28"
+    },
+    {
+      "eventId": 7302,
+      "entCnName": "北京达内科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "达内科技获IDG资本等注资",
+      "userName": "李建光",
+      "happenDate": "2008-11-01"
+    },
+    {
+      "eventId": 7303,
+      "entCnName": "北京达内科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "达内科技获IDG资本等注资",
+      "userName": "熊晓鸽",
+      "happenDate": "2008-11-01"
+    },
+    {
+      "eventId": 27173,
+      "entCnName": "广州柯玛妮克鞋业有限公司",
+      "investType": "A轮",
+      "eventTitle": "柯玛妮克获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2015-03-01"
+    },
+    {
+      "eventId": 7309,
+      "entCnName": "联网时代（北京）科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/谷歌公司投资CNZZ",
+      "userName": "NULL",
+      "happenDate": "2008-11-01"
+    },
+    {
+      "eventId": 27221,
+      "entCnName": "杭州嘉云数据科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "预测易获得数百万元投资",
+      "userName": "NULL",
+      "happenDate": "2015-03-01"
+    },
+    {
+      "eventId": 18205,
+      "entCnName": "北京力美传媒科技股份有限公司",
+      "investType": "B轮",
+      "eventTitle": "力美传媒获2000万美元B轮融资 凯鹏华盈领投",
+      "userName": "NULL",
+      "happenDate": "2012-07-09"
+    },
+    {
+      "eventId": 37202,
+      "entCnName": "Circle Internet Financial Limited",
+      "investType": "D轮",
+      "eventTitle": "Circle Internet获得6000万美元融资",
+      "userName": "NULL",
+      "happenDate": "2016-06-23"
+    },
+    {
+      "eventId": 27246,
+      "entCnName": "深圳岚锋创视网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "Insta360获得800万美元融资",
+      "userName": "NULL",
+      "happenDate": "2015-03-01"
+    },
+    {
+      "eventId": 27303,
+      "entCnName": "北京万物花开网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "万物花开获晨兴创投等注资",
+      "userName": "NULL",
+      "happenDate": "2015-03-06"
+    },
+    {
+      "eventId": 732,
+      "entCnName": "广东创我科技发展有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资创我科技",
+      "userName": "杨飞",
+      "happenDate": "2001-09-01"
+    },
+    {
+      "eventId": 7392,
+      "entCnName": "上海迪岸广告有限公司",
+      "investType": "D轮",
+      "eventTitle": "IDGVC等投资迪岸传媒",
+      "userName": "章苏阳",
+      "happenDate": "2008-11-17"
+    },
+    {
+      "eventId": 7394,
+      "entCnName": "暴风集团股份有限公司",
+      "investType": "C轮",
+      "eventTitle": "暴风影音C轮融资 经纬创投/IDG资本投资600万美元",
+      "userName": "张震",
+      "happenDate": "2008-11-18"
+    },
+    {
+      "eventId": 18279,
+      "entCnName": "湖北周黑鸭食品有限公司",
+      "investType": "Growth",
+      "eventTitle": "IDG资本联合天图投资1.5亿元注资周黑鸭",
+      "userName": "NULL",
+      "happenDate": "2012-07-18"
+    },
+    {
+      "eventId": 27328,
+      "entCnName": "杭州街蜜网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "街蜜获得IDG资本100万元注资",
+      "userName": "NULL",
+      "happenDate": "2015-03-09"
+    },
+    {
+      "eventId": 27359,
+      "entCnName": "北京科玲文化科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "科玲文化获IDG资本等数百万元注资",
+      "userName": "NULL",
+      "happenDate": "2015-03-11"
+    },
+    {
+      "eventId": 7415,
+      "entCnName": "福州天盟数码有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC/Vertex/Hearst等投资IGG",
+      "userName": "NULL",
+      "happenDate": "2008-11-25"
+    },
+    {
+      "eventId": 7451,
+      "entCnName": "山东英科环保再生资源股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本等投资英科环保",
+      "userName": "NULL",
+      "happenDate": "2008-12-01"
+    },
+    {
+      "eventId": 7455,
+      "entCnName": "金华比奇网络技术有限公司",
+      "investType": "C轮",
+      "eventTitle": "金华比奇再次获IDG资本等投资",
+      "userName": "NULL",
+      "happenDate": "2008-12-01"
+    },
+    {
+      "eventId": 7464,
+      "entCnName": "新邦传媒有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资新邦传媒",
+      "userName": "NULL",
+      "happenDate": "2008-12-08"
+    },
+    {
+      "eventId": 18402,
+      "entCnName": "北京贞观雨科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG220万美元投资贞观雨科技",
+      "userName": "NULL",
+      "happenDate": "2012-08-01"
+    },
+    {
+      "eventId": 7513,
+      "entCnName": "北京空中信使信息技术有限公司",
+      "investType": "PIPE",
+      "eventTitle": "IDG资本入股空中网",
+      "userName": "NULL",
+      "happenDate": "2008-12-30"
+    },
+    {
+      "eventId": 27474,
+      "entCnName": "广州唯彩会网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "唯彩会获IDG资本等600万元注资",
+      "userName": "NULL",
+      "happenDate": "2015-03-20"
+    },
+    {
+      "eventId": 1846,
+      "entCnName": "广州市久邦数码科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资3G门户",
+      "userName": "杨飞",
+      "happenDate": "2004-12-01"
+    },
+    {
+      "eventId": 18469,
+      "entCnName": "App Annie Limited",
+      "investType": "B轮",
+      "eventTitle": "IDG资本入股App Annie",
+      "userName": "NULL",
+      "happenDate": "2012-08-15"
+    },
+    {
+      "eventId": 1847,
+      "entCnName": "广州市久邦数码科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资3G门户",
+      "userName": "熊晓鸽",
+      "happenDate": "2004-12-01"
+    },
+    {
+      "eventId": 2749,
+      "entCnName": "观印象艺术发展有限公司",
+      "investType": "A轮",
+      "eventTitle": "印象创新获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2006-03-10"
+    },
+    {
+      "eventId": 37472,
+      "entCnName": "贵阳叁玖互联网医院有限公司",
+      "investType": "A轮",
+      "eventTitle": "叁玖互联网医院获得5000万元融资",
+      "userName": "NULL",
+      "happenDate": "2016-07-09"
+    },
+    {
+      "eventId": 27493,
+      "entCnName": "深圳市希云科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "扣钉网络获千万美元融资",
+      "userName": "NULL",
+      "happenDate": "2015-03-23"
+    },
+    {
+      "eventId": 27514,
+      "entCnName": "北京骑摆客科技发展有限公司",
+      "investType": "A轮",
+      "eventTitle": "骑摆客获1500万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-03-24"
+    },
+    {
+      "eventId": 7574,
+      "entCnName": "苏州驶安特汽车电子有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本投资驶安特",
+      "userName": "NULL",
+      "happenDate": "2009-01-01"
+    },
+    {
+      "eventId": 7575,
+      "entCnName": "精英教育传媒集团",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资精英集团",
+      "userName": "NULL",
+      "happenDate": "2009-01-01"
+    },
+    {
+      "eventId": 1851,
+      "entCnName": "二六五网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资265上网导航",
+      "userName": "NULL",
+      "happenDate": "2004-12-01"
+    },
+    {
+      "eventId": 37520,
+      "entCnName": "深圳市找库科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "找库科技获得IDG资本等融资",
+      "userName": "NULL",
+      "happenDate": "2016-07-12"
+    },
+    {
+      "eventId": 37555,
+      "entCnName": "上海保橙网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "OK车险获得8000万元融资",
+      "userName": "NULL",
+      "happenDate": "2016-07-14"
+    },
+    {
+      "eventId": 7608,
+      "entCnName": "深圳市帝科思贸易有限公司",
+      "investType": "A轮",
+      "eventTitle": "帝科思获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2009-01-01"
+    },
+    {
+      "eventId": 27519,
+      "entCnName": "广州美读信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "美丽阅读获数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2015-03-24"
+    },
+    {
+      "eventId": 27525,
+      "entCnName": "北京易达小鸟科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "物流小秘获IDG资本等1000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-03-25"
+    },
+    {
+      "eventId": 27534,
+      "entCnName": "加一联创电子科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "加一联创获纪源资本等联合注资",
+      "userName": "NULL",
+      "happenDate": "2015-03-25"
+    },
+    {
+      "eventId": 7665,
+      "entCnName": "广州市久邦数码科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "集富亚洲/中经合/IDGVC再次投资3G门户",
+      "userName": "杨飞",
+      "happenDate": "2009-01-23"
+    },
+    {
+      "eventId": 7666,
+      "entCnName": "广州市久邦数码科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "集富亚洲/中经合/IDGVC再次投资3G门户",
+      "userName": "熊晓鸽",
+      "happenDate": "2009-01-23"
+    },
+    {
+      "eventId": 27564,
+      "entCnName": "闻泰医疗科技（上海）有限公司",
+      "investType": "Growth",
+      "eventTitle": "闻泰医疗获弘晖资本等2.1亿元注资",
+      "userName": "NULL",
+      "happenDate": "2015-03-27"
+    },
+    {
+      "eventId": 27566,
+      "entCnName": "北京金山云网络技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "金山云获IDG资本等5266万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-03-27"
+    },
+    {
+      "eventId": 2758,
+      "entCnName": "美亚娱乐资讯集团有限公司",
+      "investType": "PIPE",
+      "eventTitle": "IDG资本投资美亚娱乐",
+      "userName": "NULL",
+      "happenDate": "2006-03-21"
+    },
+    {
+      "eventId": 27595,
+      "entCnName": "北京贞观雨科技有限公司",
+      "investType": "D轮",
+      "eventTitle": "贞观雨科技获6000万美元融资",
+      "userName": "NULL",
+      "happenDate": "2015-03-30"
+    },
+    {
+      "eventId": 37621,
+      "entCnName": "上海音晨教育科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "音晨教育获300万元融资",
+      "userName": "NULL",
+      "happenDate": "2016-07-16"
+    },
+    {
+      "eventId": 18608,
+      "entCnName": "北京易动纷享科技有限责任公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资纷享科技",
+      "userName": "牛奎光",
+      "happenDate": "2012-09-01"
+    },
+    {
+      "eventId": 7736,
+      "entCnName": "爱狗网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "软银联合阿里巴巴等投资爱狗网",
+      "userName": "NULL",
+      "happenDate": "2009-03-01"
+    },
+    {
+      "eventId": 27658,
+      "entCnName": "上海轻轻信息科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "轻轻家教获红杉中国等1500万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-04-01"
+    },
+    {
+      "eventId": 27661,
+      "entCnName": "北京牛电科技有限责任公司",
+      "investType": "A轮",
+      "eventTitle": "牛电科技获5000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-04-01"
+    },
+    {
+      "eventId": 27666,
+      "entCnName": "友聚惠（北京）科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "币行再获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2015-04-01"
+    },
+    {
+      "eventId": 27686,
+      "entCnName": "北京停简单信息技术有限公司",
+      "investType": "天使轮",
+      "eventTitle": "停简单获得IDG资本数百万元注资",
+      "userName": "NULL",
+      "happenDate": "2015-04-01"
+    },
+    {
+      "eventId": 27690,
+      "entCnName": "上海苍豆网络技术有限公司",
+      "investType": "种子轮",
+      "eventTitle": "南瓜车获得IDG资本数百万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-04-01"
+    },
+    {
+      "eventId": 27701,
+      "entCnName": "丝云软件（上海）有限公司",
+      "investType": "A轮",
+      "eventTitle": "丝云软件获IDG资本数百万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-04-01"
+    },
+    {
+      "eventId": 7796,
+      "entCnName": "厦门市吉比特网络技术股份有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本增资吉比特",
+      "userName": "NULL",
+      "happenDate": "2009-03-19"
+    },
+    {
+      "eventId": 7808,
+      "entCnName": "北京数字顽石无线科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG等投资数字顽石",
+      "userName": "NULL",
+      "happenDate": "2009-03-27"
+    },
+    {
+      "eventId": 7830,
+      "entCnName": "北京金万维科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "金万维获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2009-04-01"
+    },
+    {
+      "eventId": 188,
+      "entCnName": "深圳市经天通信股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG等投资经天通信242万美元",
+      "userName": "NULL",
+      "happenDate": "1999-01-01"
+    },
+    {
+      "eventId": 27710,
+      "entCnName": "芋头科技（杭州）有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资芋头科技",
+      "userName": "NULL",
+      "happenDate": "2015-04-01"
+    },
+    {
+      "eventId": 2777,
+      "entCnName": "爱试网（北京）科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资试用网",
+      "userName": "NULL",
+      "happenDate": "2006-04-01"
+    },
+    {
+      "eventId": 793,
+      "entCnName": "江苏一德企业集团有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC与联和运通投资一德企业",
+      "userName": "王功权",
+      "happenDate": "2001-11-16"
+    },
+    {
+      "eventId": 2778,
+      "entCnName": "深圳傲志技术开发有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资主流网",
+      "userName": "张震",
+      "happenDate": "2006-04-01"
+    },
+    {
+      "eventId": 7953,
+      "entCnName": "中国德信无线通讯科技有限公司",
+      "investType": "Growth",
+      "eventTitle": "德信无线获得IDG资本等投资",
+      "userName": "NULL",
+      "happenDate": "2009-05-18"
+    },
+    {
+      "eventId": 7956,
+      "entCnName": "北京德信互动网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/Infiniti Capitali投资798Game",
+      "userName": "NULL",
+      "happenDate": "2009-05-19"
+    },
+    {
+      "eventId": 18842,
+      "entCnName": "九次方财富资讯（北京）有限责任公司",
+      "investType": "A轮",
+      "eventTitle": "九次方大数据获博信资本等数千万元注资",
+      "userName": "NULL",
+      "happenDate": "2012-10-01"
+    },
+    {
+      "eventId": 37906,
+      "entCnName": "北京明通四季科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "音米眼镜获得数千万美元融资",
+      "userName": "NULL",
+      "happenDate": "2016-08-05"
+    },
+    {
+      "eventId": 18930,
+      "entCnName": "杭州卷瓜网络有限公司",
+      "investType": "C轮",
+      "eventTitle": "蘑菇街获得数千万美元融资",
+      "userName": "NULL",
+      "happenDate": "2012-10-31"
+    },
+    {
+      "eventId": 18954,
+      "entCnName": "深圳市八马茶业连锁有限公司",
+      "investType": "A轮",
+      "eventTitle": "天图资本等投资八马茶业",
+      "userName": "NULL",
+      "happenDate": "2012-11-01"
+    },
+    {
+      "eventId": 38015,
+      "entCnName": "Olympique Lyonnais Group",
+      "investType": "A轮",
+      "eventTitle": "OL Group获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2016-08-12"
+    },
+    {
+      "eventId": 38018,
+      "entCnName": "广州市新娱加娱乐传媒文化有限公司",
+      "investType": "B轮",
+      "eventTitle": "新娱加娱乐获一亿元融资",
+      "userName": "NULL",
+      "happenDate": "2016-08-14"
+    },
+    {
+      "eventId": 81,
+      "entCnName": "北京前导软件有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本100万元追加投资前导软件",
+      "userName": "周全",
+      "happenDate": "1996-08-01"
+    },
+    {
+      "eventId": 8113,
+      "entCnName": "神州数字销售技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本等注资神州数字",
+      "userName": "NULL",
+      "happenDate": "2009-06-25"
+    },
+    {
+      "eventId": 8115,
+      "entCnName": "神州数字销售技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本等注资神州数字",
+      "userName": "NULL",
+      "happenDate": "2009-06-25"
+    },
+    {
+      "eventId": 8136,
+      "entCnName": "乌镇旅游股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资乌镇旅游",
+      "userName": "NULL",
+      "happenDate": "2009-06-30"
+    },
+    {
+      "eventId": 8137,
+      "entCnName": "乌镇旅游股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资乌镇旅游",
+      "userName": "NULL",
+      "happenDate": "2009-06-30"
+    },
+    {
+      "eventId": 8154,
+      "entCnName": "北京神州付科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "Ventech/IDG投资神州付",
+      "userName": "张震",
+      "happenDate": "2009-07-01"
+    },
+    {
+      "eventId": 19077,
+      "entCnName": "美新半导体有限公司",
+      "investType": "被收购",
+      "eventTitle": "IDG投资美新半导体",
+      "userName": "NULL",
+      "happenDate": "2012-11-21"
+    },
+    {
+      "eventId": 38040,
+      "entCnName": "深圳市前海九通金融控股有限公司",
+      "investType": "A轮",
+      "eventTitle": "摇财树获IDG等投资",
+      "userName": "NULL",
+      "happenDate": "2016-08-15"
+    },
+    {
+      "eventId": 27894,
+      "entCnName": "杭州群核信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "群核信息获纪源资本等1000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-04-13"
+    },
+    {
+      "eventId": 27898,
+      "entCnName": "北京摩比云科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "优乐养车获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2015-04-13"
+    },
+    {
+      "eventId": 3813,
+      "entCnName": "深圳市迅雷网络技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "策源联合等3000万美元投资迅雷",
+      "userName": "周全",
+      "happenDate": "2007-01-05"
+    },
+    {
+      "eventId": 8263,
+      "entCnName": "百世物流科技（中国）有限公司",
+      "investType": "B轮",
+      "eventTitle": "百世物流获IDG资本等投资",
+      "userName": "NULL",
+      "happenDate": "2009-07-25"
+    },
+    {
+      "eventId": 3814,
+      "entCnName": "深圳市迅雷网络技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "策源联合等3000万美元投资迅雷",
+      "userName": "杨飞",
+      "happenDate": "2007-01-05"
+    },
+    {
+      "eventId": 38143,
+      "entCnName": "北京普缇客科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "达令礼物店获红杉中国等3亿元投资",
+      "userName": "NULL",
+      "happenDate": "2016-08-22"
+    },
+    {
+      "eventId": 38151,
+      "entCnName": "深圳喜茶投资有限公司",
+      "investType": "A轮",
+      "eventTitle": "喜茶获超一亿元融资",
+      "userName": "NULL",
+      "happenDate": "2016-08-22"
+    },
+    {
+      "eventId": 3819,
+      "entCnName": "影像国际集团",
+      "investType": "A轮",
+      "eventTitle": "海纳亚洲/IDGVC投资影像国际",
+      "userName": "李建光",
+      "happenDate": "2007-01-09"
+    },
+    {
+      "eventId": 28041,
+      "entCnName": "北京天奈科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "天奈科技获得1500万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-04-21"
+    },
+    {
+      "eventId": 8284,
+      "entCnName": "天鸽互动控股有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本注资天鸽互动",
+      "userName": "NULL",
+      "happenDate": "2009-07-30"
+    },
+    {
+      "eventId": 8285,
+      "entCnName": "天鸽互动控股有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本注资天鸽互动",
+      "userName": "NULL",
+      "happenDate": "2009-07-30"
+    },
+    {
+      "eventId": 8289,
+      "entCnName": "硅谷数模半导体有限公司",
+      "investType": "C轮",
+      "eventTitle": "凯旋创投等投资硅谷数模",
+      "userName": "金曦",
+      "happenDate": "2009-07-31"
+    },
+    {
+      "eventId": 83,
+      "entCnName": "上海万申信息产业股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资上海万申",
+      "userName": "章苏阳",
+      "happenDate": "1996-09-01"
+    },
+    {
+      "eventId": 8344,
+      "entCnName": "泰邦生物集团公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资中国生物制品",
+      "userName": "章苏阳",
+      "happenDate": "2009-08-10"
+    },
+    {
+      "eventId": 8345,
+      "entCnName": "华灿光电股份有限公司",
+      "investType": "C轮",
+      "eventTitle": "IDG资本600万美元注资华灿光电",
+      "userName": "NULL",
+      "happenDate": "2009-08-10"
+    },
+    {
+      "eventId": 192,
+      "entCnName": "慧聪网有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资慧聪",
+      "userName": "李建光",
+      "happenDate": "1999-02-19"
+    },
+    {
+      "eventId": 3826,
+      "entCnName": "网龙网络控股有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG等第二轮投资网龙",
+      "userName": "林栋梁",
+      "happenDate": "2007-01-10"
+    },
+    {
+      "eventId": 3829,
+      "entCnName": "上海一茶一坐餐饮有限公司（本部）",
+      "investType": "B轮",
+      "eventTitle": "GGV/IDGVC/海纳亚洲等投资一茶一坐",
+      "userName": "熊晓鸽",
+      "happenDate": "2007-01-11"
+    },
+    {
+      "eventId": 3830,
+      "entCnName": "上海一茶一坐餐饮有限公司（本部）",
+      "investType": "B轮",
+      "eventTitle": "GGV/IDGVC/海纳亚洲等投资一茶一坐",
+      "userName": "章苏阳",
+      "happenDate": "2007-01-11"
+    },
+    {
+      "eventId": 2817,
+      "entCnName": "巴士在线科技有限公司",
+      "investType": "Growth",
+      "eventTitle": "IDG资本注资巴士在线",
+      "userName": "NULL",
+      "happenDate": "2006-04-01"
+    },
+    {
+      "eventId": 840,
+      "entCnName": "路般信息技术（上海）有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资鲁班信息",
+      "userName": "NULL",
+      "happenDate": "2002-01-01"
+    },
+    {
+      "eventId": 841,
+      "entCnName": "北京易索得通信技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资易索得",
+      "userName": "章苏阳",
+      "happenDate": "2002-01-01"
+    },
+    {
+      "eventId": 193,
+      "entCnName": "慧聪网有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资慧聪",
+      "userName": "杨飞",
+      "happenDate": "1999-02-19"
+    },
+    {
+      "eventId": 1930,
+      "entCnName": "大旗网",
+      "investType": "A轮",
+      "eventTitle": "IDG投资ChinaBBS",
+      "userName": "林栋梁",
+      "happenDate": "2005-01-01"
+    },
+    {
+      "eventId": 1931,
+      "entCnName": "大旗网",
+      "investType": "A轮",
+      "eventTitle": "IDG投资ChinaBBS",
+      "userName": "过以宏",
+      "happenDate": "2005-01-01"
+    },
+    {
+      "eventId": 2818,
+      "entCnName": "巴士在线科技有限公司",
+      "investType": "Growth",
+      "eventTitle": "IDG资本注资巴士在线",
+      "userName": "NULL",
+      "happenDate": "2006-04-01"
+    },
+    {
+      "eventId": 282,
+      "entCnName": "北京方正连宇通信有限公司",
+      "investType": "A轮",
+      "eventTitle": "英特尔投资/IDGVC/新世界发展投资连宇通信",
+      "userName": "周全",
+      "happenDate": "2000-01-01"
+    },
+    {
+      "eventId": 2820,
+      "entCnName": "天盛（上海）数字电视发展有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资天盛传媒",
+      "userName": "李建光",
+      "happenDate": "2006-04-03"
+    },
+    {
+      "eventId": 28207,
+      "entCnName": "Dmall",
+      "investType": "A轮",
+      "eventTitle": "Dmall获IDG资本等1亿美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-04-29"
+    },
+    {
+      "eventId": 3837,
+      "entCnName": "锐迪科微电子有限公司",
+      "investType": "Growth",
+      "eventTitle": "华平与IDGVC联合投资锐迪科",
+      "userName": "周全",
+      "happenDate": "2007-01-15"
+    },
+    {
+      "eventId": 384,
+      "entCnName": "世纪互联集团有限公司",
+      "investType": "B轮",
+      "eventTitle": "AIG亚洲基建基金二期/IDGVC等投资世纪互联",
+      "userName": "NULL",
+      "happenDate": "2000-07-01"
+    },
+    {
+      "eventId": 28250,
+      "entCnName": "北京畅行信息技术有限公司",
+      "investType": "C轮",
+      "eventTitle": "嘀嗒拼车获挚信资本等1亿美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-05-01"
+    },
+    {
+      "eventId": 38414,
+      "entCnName": "广东万丈金数信息技术股份有限公司",
+      "investType": "B轮",
+      "eventTitle": "万丈金数完成B轮融资",
+      "userName": "NULL",
+      "happenDate": "2016-09-11"
+    },
+    {
+      "eventId": 28258,
+      "entCnName": "深圳市和讯华谷信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "极光推送获昆仲资本等1000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-05-01"
+    },
+    {
+      "eventId": 28265,
+      "entCnName": "广州菲特网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "菲特网络获得1.5亿元融资",
+      "userName": "NULL",
+      "happenDate": "2015-05-01"
+    },
+    {
+      "eventId": 19398,
+      "entCnName": "北京微智全景信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本400万美元投资微智全景",
+      "userName": "NULL",
+      "happenDate": "2012-12-31"
+    },
+    {
+      "eventId": 19401,
+      "entCnName": "北京必鼎科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "师兄帮帮忙获IDG资本等投资",
+      "userName": "NULL",
+      "happenDate": "2012-12-31"
+    },
+    {
+      "eventId": 19434,
+      "entCnName": "EverString Technology Inc.",
+      "investType": "A轮",
+      "eventTitle": "Everstring获真格基金等天使投资",
+      "userName": "NULL",
+      "happenDate": "2013-01-01"
+    },
+    {
+      "eventId": 19438,
+      "entCnName": "南京洛哈网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "一起唱获得500万元A轮投资",
+      "userName": "NULL",
+      "happenDate": "2013-01-01"
+    },
+    {
+      "eventId": 8581,
+      "entCnName": "波司登国际控股有限公司",
+      "investType": "PIPE",
+      "eventTitle": "IDG资本投资波司登",
+      "userName": "周全",
+      "happenDate": "2009-09-21"
+    },
+    {
+      "eventId": 1947,
+      "entCnName": "二六五网络技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "Google等1000万美元投资265上网导航",
+      "userName": "NULL",
+      "happenDate": "2005-01-01"
+    },
+    {
+      "eventId": 19477,
+      "entCnName": "杭州堆栈科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "堆栈科技获传媒梦工厂等投资",
+      "userName": "NULL",
+      "happenDate": "2013-01-01"
+    },
+    {
+      "eventId": 19494,
+      "entCnName": "上海逸思医疗科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资逸思医疗",
+      "userName": "NULL",
+      "happenDate": "2013-01-01"
+    },
+    {
+      "eventId": 19495,
+      "entCnName": "科沃斯电器有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资科沃斯",
+      "userName": "NULL",
+      "happenDate": "2013-01-01"
+    },
+    {
+      "eventId": 19496,
+      "entCnName": "广州市汇美时尚集团股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资茵曼",
+      "userName": "NULL",
+      "happenDate": "2013-01-01"
+    },
+    {
+      "eventId": 19497,
+      "entCnName": "北京果壳互动科技传媒有限公司",
+      "investType": "C轮",
+      "eventTitle": "IDG资本投资果壳网",
+      "userName": "NULL",
+      "happenDate": "2013-01-01"
+    },
+    {
+      "eventId": 28315,
+      "entCnName": "Circle Internet Financial Limited",
+      "investType": "A轮",
+      "eventTitle": "Circle Internet获得IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2015-05-01"
+    },
+    {
+      "eventId": 8682,
+      "entCnName": "天格科技（杭州）有限公司",
+      "investType": "C轮",
+      "eventTitle": "IDG资本数百万美元注资聚乐网",
+      "userName": "NULL",
+      "happenDate": "2009-09-30"
+    },
+    {
+      "eventId": 2842,
+      "entCnName": "广州启生信息技术有限公司",
+      "investType": "被收购",
+      "eventTitle": "IDGVC收购39健康网",
+      "userName": "杨飞",
+      "happenDate": "2006-04-28"
+    },
+    {
+      "eventId": 28448,
+      "entCnName": "杭州埃米网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "拼好货获得数百万美元投资",
+      "userName": "NULL",
+      "happenDate": "2015-05-07"
+    },
+    {
+      "eventId": 19595,
+      "entCnName": "成都槟果科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "槟果科技获IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2013-01-01"
+    },
+    {
+      "eventId": 19607,
+      "entCnName": "深圳矽递科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "矽递科技获得A轮融资",
+      "userName": "NULL",
+      "happenDate": "2013-01-01"
+    },
+    {
+      "eventId": 19637,
+      "entCnName": "杭州互秀电子商务有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本注资米折网",
+      "userName": "NULL",
+      "happenDate": "2013-01-06"
+    },
+    {
+      "eventId": 1965,
+      "entCnName": "金华比奇网络技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "金华比奇获IDG资本等数千万美元投资",
+      "userName": "NULL",
+      "happenDate": "2005-01-01"
+    },
+    {
+      "eventId": 88,
+      "entCnName": "重庆苦丁香软件有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资苦丁香软件",
+      "userName": "NULL",
+      "happenDate": "1996-12-01"
+    },
+    {
+      "eventId": 2847,
+      "entCnName": "北京龙迹天地科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC/索尼基金投资魔龙",
+      "userName": "李建光",
+      "happenDate": "2006-04-30"
+    },
+    {
+      "eventId": 28475,
+      "entCnName": "北京到达科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "赞赏获得IDG资本900万元注资",
+      "userName": "NULL",
+      "happenDate": "2015-05-11"
+    },
+    {
+      "eventId": 2849,
+      "entCnName": "广州启生信息技术有限公司",
+      "investType": "被收购",
+      "eventTitle": "IDG资本收购39健康网",
+      "userName": "杨飞",
+      "happenDate": "2006-04-30"
+    },
+    {
+      "eventId": 2850,
+      "entCnName": "广州启生信息技术有限公司",
+      "investType": "被收购",
+      "eventTitle": "IDG资本收购39健康网",
+      "userName": "王树",
+      "happenDate": "2006-04-30"
+    },
+    {
+      "eventId": 19668,
+      "entCnName": "九玉（北京）科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "极邮获得数百万元注资",
+      "userName": "NULL",
+      "happenDate": "2013-01-14"
+    },
+    {
+      "eventId": 892,
+      "entCnName": "北京物美商业集团股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资物美",
+      "userName": "王功权",
+      "happenDate": "2002-02-08"
+    },
+    {
+      "eventId": 28600,
+      "entCnName": "广州妮趣化妆品有限公司",
+      "investType": "A轮",
+      "eventTitle": "妮趣化妆品获1000万投资",
+      "userName": "李丰",
+      "happenDate": "2015-05-17"
+    },
+    {
+      "eventId": 28607,
+      "entCnName": "上海邻趣网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "邻趣获得IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2015-05-18"
+    },
+    {
+      "eventId": 8928,
+      "entCnName": "深圳通银担保投资有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资通银担保",
+      "userName": "NULL",
+      "happenDate": "2009-11-19"
+    },
+    {
+      "eventId": 8998,
+      "entCnName": "《未来警察》",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资《未来警察》",
+      "userName": "熊晓鸽",
+      "happenDate": "2009-12-01"
+    },
+    {
+      "eventId": 28653,
+      "entCnName": "杭州同盾科技有限公司",
+      "investType": "C轮",
+      "eventTitle": "同盾科技获启明创投等3000万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-05-20"
+    },
+    {
+      "eventId": 28689,
+      "entCnName": "北京微智全景信息技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "微智全景获IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2015-05-22"
+    },
+    {
+      "eventId": 28699,
+      "entCnName": "Ripple Labs",
+      "investType": "A轮",
+      "eventTitle": "Ripple获IDG资本等2800万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-05-23"
+    },
+    {
+      "eventId": 9058,
+      "entCnName": "北京天奈科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本投资天奈科技",
+      "userName": "牛奎光",
+      "happenDate": "2009-12-01"
+    },
+    {
+      "eventId": 1975,
+      "entCnName": "北京图为先科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资Mapbar",
+      "userName": "NULL",
+      "happenDate": "2005-01-13"
+    },
+    {
+      "eventId": 2879,
+      "entCnName": "辐技威（上海）信息技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVCBVP投资辐技威",
+      "userName": "林栋梁",
+      "happenDate": "2006-05-01"
+    },
+    {
+      "eventId": 9117,
+      "entCnName": "茂硕电源科技股份有限公司",
+      "investType": "B轮",
+      "eventTitle": "同创伟业联合融创创投等投资茂硕电源",
+      "userName": "杨飞",
+      "happenDate": "2009-12-11"
+    },
+    {
+      "eventId": 917,
+      "entCnName": "邦永科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/IntelVC/摩根士丹利共同投资邦永科技",
+      "userName": "NULL",
+      "happenDate": "2002-04-01"
+    },
+    {
+      "eventId": 28838,
+      "entCnName": "宁波私银家投资管理有限公司",
+      "investType": "B轮",
+      "eventTitle": "私银家获得1000万美元投资",
+      "userName": "NULL",
+      "happenDate": "2015-05-30"
+    },
+    {
+      "eventId": 289,
+      "entCnName": "北京商旅假日网络技术有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC/财富/新世界/中旅投资中华假日旅游网",
+      "userName": "NULL",
+      "happenDate": "2000-01-01"
+    },
+    {
+      "eventId": 28916,
+      "entCnName": "广州吖咪网络科技有限公司",
+      "investType": "天使轮",
+      "eventTitle": "吖咪获得IDG资本等天使轮注资",
+      "userName": "NULL",
+      "happenDate": "2015-06-01"
+    },
+    {
+      "eventId": 9226,
+      "entCnName": "华谊腾讯娱乐有限公司",
+      "investType": "PIPE",
+      "eventTitle": "IDG资本9696万港元入股华亿传媒",
+      "userName": "熊晓鸽",
+      "happenDate": "2009-12-26"
+    },
+    {
+      "eventId": 28959,
+      "entCnName": "北京银承库网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "银承库获得1500万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-06-01"
+    },
+    {
+      "eventId": 9339,
+      "entCnName": "北京凯铭风尚网络技术有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本投资YOKA时尚网",
+      "userName": "熊晓鸽",
+      "happenDate": "2010-01-01"
+    },
+    {
+      "eventId": 9345,
+      "entCnName": "时空创展（北京）投资发展有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本等注资立方网",
+      "userName": "NULL",
+      "happenDate": "2010-01-01"
+    },
+    {
+      "eventId": 2901,
+      "entCnName": "博拉网络股份有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资博啦",
+      "userName": "NULL",
+      "happenDate": "2006-05-13"
+    },
+    {
+      "eventId": 9398,
+      "entCnName": "天华阳光控股有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG联合金茂资本等注资天华阳光",
+      "userName": "何志成",
+      "happenDate": "2010-01-01"
+    },
+    {
+      "eventId": 9399,
+      "entCnName": "天华阳光控股有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG联合金茂资本等注资天华阳光",
+      "userName": "周全",
+      "happenDate": "2010-01-01"
+    },
+    {
+      "eventId": 94,
+      "entCnName": "北京国创科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDGVC投资国创科技",
+      "userName": "NULL",
+      "happenDate": "1997-01-01"
+    },
+    {
+      "eventId": 9433,
+      "entCnName": "朗新科技（中国）有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDG资本投资朗新科技",
+      "userName": "NULL",
+      "happenDate": "2010-01-01"
+    },
+    {
+      "eventId": 29035,
+      "entCnName": "Propel（x）",
+      "investType": "A轮",
+      "eventTitle": "Propel(x)获IDG资本等150万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-06-03"
+    },
+    {
+      "eventId": 2906,
+      "entCnName": "上海全土豆网络科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "土豆网获第二轮融资 涉及金额850万美元",
+      "userName": "章苏阳",
+      "happenDate": "2006-05-15"
+    },
+    {
+      "eventId": 29099,
+      "entCnName": "北京东方人力科贸发展有限公司",
+      "investType": "A轮",
+      "eventTitle": "顺顺留学获得IDG资本注资",
+      "userName": "NULL",
+      "happenDate": "2015-06-07"
+    },
+    {
+      "eventId": 952,
+      "entCnName": "速达软件技术（广州）有限公司",
+      "investType": "C轮",
+      "eventTitle": "IDGVC/英特尔投资/鼎晖投资速达软件",
+      "userName": "周全",
+      "happenDate": "2002-05-27"
+    },
+    {
+      "eventId": 953,
+      "entCnName": "速达软件技术（广州）有限公司",
+      "investType": "C轮",
+      "eventTitle": "IDGVC/英特尔投资/鼎晖投资速达软件",
+      "userName": "林栋梁",
+      "happenDate": "2002-05-27"
+    },
+    {
+      "eventId": 29266,
+      "entCnName": "普信恒业科技发展（北京）有限公司",
+      "investType": "A轮",
+      "eventTitle": "普信恒业科技获IDG资本等注资",
+      "userName": "NULL",
+      "happenDate": "2015-06-15"
+    },
+    {
+      "eventId": 9753,
+      "entCnName": "北京傲锐东源生物科技有限公司",
+      "investType": "B轮",
+      "eventTitle": "傲锐东源完成B轮融资",
+      "userName": "NULL",
+      "happenDate": "2010-03-18"
+    },
+    {
+      "eventId": 983,
+      "entCnName": "慧聪网有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC第二轮投资慧聪网",
+      "userName": "李建光",
+      "happenDate": "2002-07-24"
+    },
+    {
+      "eventId": 984,
+      "entCnName": "慧聪网有限公司",
+      "investType": "B轮",
+      "eventTitle": "IDGVC第二轮投资慧聪网",
+      "userName": "杨飞",
+      "happenDate": "2002-07-24"
+    },
+    {
+      "eventId": 9886,
+      "entCnName": "《山楂树之恋》",
+      "investType": "A轮",
+      "eventTitle": "IDG资本投资《山楂树之恋》",
+      "userName": "熊晓鸽",
+      "happenDate": "2010-04-01"
+    },
+    {
+      "eventId": 9917,
+      "entCnName": "福州博远无线网络科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "IDG资本和经纬创投800万美元注资91无线",
+      "userName": "NULL",
+      "happenDate": "2010-04-06"
+    },
+    {
+      "eventId": 29294,
+      "entCnName": "北京明通四季科技有限公司",
+      "investType": "A轮",
+      "eventTitle": "音米眼镜获得700万美元注资",
+      "userName": "NULL",
+      "happenDate": "2015-06-16"
+    }
+  ],
+  "exitList": [
+    {
+      "eventId": 5231,
+      "entCnName": "天津九安医疗电子股份有限公司",
+      "exitType": "减持",
+      "eventTitle": "IDG资本减持九安医疗235.6万股 实现退出",
+      "userName": "章苏阳",
+      "happenDate": "2011-12-31"
+    },
+    {
+      "eventId": 5334,
+      "entCnName": "中国服饰控股有限公司",
+      "exitType": "上市",
+      "eventTitle": "中国服饰控股港交所主板上市 IDG资本实现退出",
+      "userName": "-",
+      "happenDate": "2011-12-09"
+    },
+    {
+      "eventId": 5587,
+      "entCnName": "天津九安医疗电子股份有限公司",
+      "exitType": "减持",
+      "eventTitle": "IDG资本减持九安医疗97.66万股 实现退出",
+      "userName": "章苏阳",
+      "happenDate": "2011-10-17"
+    },
+    {
+      "eventId": 5719,
+      "entCnName": "天福(开曼)控股有限公司",
+      "exitType": "上市",
+      "eventTitle": "天福港交所上市 IDG资本实现退出",
+      "userName": "-",
+      "happenDate": "2011-09-26"
+    },
+    {
+      "eventId": 5722,
+      "entCnName": "天津九安医疗电子股份有限公司",
+      "exitType": "减持",
+      "eventTitle": "IDG资本减持九安医疗235.42万股 实现退出",
+      "userName": "章苏阳",
+      "happenDate": "2011-09-23"
+    },
+    {
+      "eventId": 2846,
+      "entCnName": "天鸽互动控股有限公司",
+      "exitType": "上市",
+      "eventTitle": "天鸽互动上市 IDG资本退出",
+      "userName": "-",
+      "happenDate": "2014-07-09"
+    },
+    {
+      "eventId": 2847,
+      "entCnName": "天鸽互动控股有限公司",
+      "exitType": "上市",
+      "eventTitle": "天鸽互动上市 IDG资本退出",
+      "userName": "-",
+      "happenDate": "2014-07-09"
+    },
+    {
+      "eventId": 5889,
+      "entCnName": "天津九安医疗电子股份有限公司",
+      "exitType": "减持",
+      "eventTitle": "IDG资本减持九安医疗235.59万元 实现退出",
+      "userName": "章苏阳",
+      "happenDate": "2011-08-22"
+    },
+    {
+      "eventId": 5924,
+      "entCnName": "上海全土豆网络科技有限公司",
+      "exitType": "上市",
+      "eventTitle": "土豆网纳斯达克上市 IDG资本实现退出",
+      "userName": "章苏阳",
+      "happenDate": "2011-08-17"
+    },
+    {
+      "eventId": 5925,
+      "entCnName": "上海全土豆网络科技有限公司",
+      "exitType": "上市",
+      "eventTitle": "土豆网纳斯达克上市 IDG资本实现退出",
+      "userName": "章苏阳",
+      "happenDate": "2011-08-17"
+    },
+    {
+      "eventId": 2902,
+      "entCnName": "深圳市迅雷网络技术有限公司",
+      "exitType": "上市",
+      "eventTitle": "迅雷上市 IDG资本退出",
+      "userName": "-",
+      "happenDate": "2014-06-24"
+    },
+    {
+      "eventId": 2903,
+      "entCnName": "深圳市迅雷网络技术有限公司",
+      "exitType": "上市",
+      "eventTitle": "迅雷上市 IDG资本退出",
+      "userName": "-",
+      "happenDate": "2014-06-24"
+    },
+    {
+      "eventId": 2904,
+      "entCnName": "深圳市迅雷网络技术有限公司",
+      "exitType": "上市",
+      "eventTitle": "迅雷上市 IDG资本退出",
+      "userName": "-",
+      "happenDate": "2014-06-24"
+    },
+    {
+      "eventId": 2931,
+      "entCnName": "广州启生信息技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "自然人收购39健康网25.5%股权 IDG资本部分退出",
+      "userName": "-",
+      "happenDate": "2014-06-19"
+    },
+    {
+      "eventId": 2973,
+      "entCnName": "乌镇旅游股份有限公司",
+      "exitType": "收购",
+      "eventTitle": "中青旅拟收购乌镇旅游部分股权 IDG资本实现退出",
+      "userName": "-",
+      "happenDate": "2014-05-27"
+    },
+    {
+      "eventId": 2974,
+      "entCnName": "乌镇旅游股份有限公司",
+      "exitType": "收购",
+      "eventTitle": "中青旅收购乌镇旅游部分股权 IDG资本实现退出",
+      "userName": "-",
+      "happenDate": "2014-05-27"
+    },
+    {
+      "eventId": 7503,
+      "entCnName": "锐迪科微电子有限公司",
+      "exitType": "上市",
+      "eventTitle": "锐迪科纳斯达克上市 IDG实现退出",
+      "userName": "周全",
+      "happenDate": "2010-11-10"
+    },
+    {
+      "eventId": 6041,
+      "entCnName": "天津九安医疗电子股份有限公司",
+      "exitType": "减持",
+      "eventTitle": "IDG资本减持九安医疗63.76万股 实现退出",
+      "userName": "章苏阳",
+      "happenDate": "2011-07-19"
+    },
+    {
+      "eventId": 3080,
+      "entCnName": "北京达内科技有限公司",
+      "exitType": "上市",
+      "eventTitle": "达内科技纳斯达克上市 IDG资本退出",
+      "userName": "李建光",
+      "happenDate": "2014-04-03"
+    },
+    {
+      "eventId": 3081,
+      "entCnName": "北京达内科技有限公司",
+      "exitType": "上市",
+      "eventTitle": "达内科技纳斯达克上市 IDG资本退出",
+      "userName": "熊晓鸽",
+      "happenDate": "2014-04-03"
+    },
+    {
+      "eventId": 6088,
+      "entCnName": "暴风集团股份有限公司",
+      "exitType": "清算",
+      "eventTitle": "暴风影音回购股权 IDG资本退出",
+      "userName": "-",
+      "happenDate": "2011-07-14"
+    },
+    {
+      "eventId": 3215,
+      "entCnName": "蓝港互动集团有限公司",
+      "exitType": "转让",
+      "eventTitle": "蓝港在线三轮融资 IDG资本退出",
+      "userName": "-",
+      "happenDate": "2014-01-27"
+    },
+    {
+      "eventId": 3218,
+      "entCnName": "蓝港互动集团有限公司",
+      "exitType": "收购",
+      "eventTitle": "自然人收购蓝港在线 IDG资本退出",
+      "userName": "-",
+      "happenDate": "2014-01-27"
+    },
+    {
+      "eventId": 6193,
+      "entCnName": "天津九安医疗电子股份有限公司",
+      "exitType": "减持",
+      "eventTitle": "IDG资本减持九安医疗170.00万股 实现退出",
+      "userName": "章苏阳",
+      "happenDate": "2011-06-30"
+    },
+    {
+      "eventId": 3355,
+      "entCnName": "神州数字销售技术有限公司",
+      "exitType": "上市",
+      "eventTitle": "神州数字港交所创业板上市 IDG资本实现退出",
+      "userName": "-",
+      "happenDate": "2013-12-04"
+    },
+    {
+      "eventId": 3376,
+      "entCnName": "广州市久邦数码科技有限公司",
+      "exitType": "上市",
+      "eventTitle": "3G门户纳斯达克上市 IDG资本实现退出",
+      "userName": "-",
+      "happenDate": "2013-11-25"
+    },
+    {
+      "eventId": 7708,
+      "entCnName": "北京掌中无限信息技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG退出掌中无限",
+      "userName": "林栋梁",
+      "happenDate": "2010-09-22"
+    },
+    {
+      "eventId": 7720,
+      "entCnName": "搜房控股有限公司",
+      "exitType": "上市",
+      "eventTitle": "搜房网纽交所上市 IDG实现退出",
+      "userName": "周全",
+      "happenDate": "2010-09-18"
+    },
+    {
+      "eventId": 1270,
+      "entCnName": "云南蓝晶科技股份有限公司",
+      "exitType": "收购",
+      "eventTitle": "华灿光电拟收购蓝晶科技100%股权 IDG资本实现完全退出",
+      "userName": "-",
+      "happenDate": "2015-08-11"
+    },
+    {
+      "eventId": 3404,
+      "entCnName": "91无线网络有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG转让91无线10.39%股份 实现退出",
+      "userName": "-",
+      "happenDate": "2013-11-01"
+    },
+    {
+      "eventId": 639,
+      "entCnName": "上海东革志信息科技有限公司",
+      "exitType": "收购",
+      "eventTitle": "Coding收购GitCafe IDG资本实现全部退出",
+      "userName": "-",
+      "happenDate": "2016-03-02"
+    },
+    {
+      "eventId": 7798,
+      "entCnName": "康辉控股(中国)公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出康辉医疗",
+      "userName": "章苏阳",
+      "happenDate": "2010-08-11"
+    },
+    {
+      "eventId": 6467,
+      "entCnName": "厦门市吉比特网络技术股份有限公司",
+      "exitType": "转让",
+      "eventTitle": "IDG资本通过股权转让退出吉比特",
+      "userName": "-",
+      "happenDate": "2011-05-31"
+    },
+    {
+      "eventId": 6474,
+      "entCnName": "广州启生信息技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本部分退出39健康网",
+      "userName": "王树",
+      "happenDate": "2011-05-30"
+    },
+    {
+      "eventId": 6475,
+      "entCnName": "广州启生信息技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本部分退出39健康网",
+      "userName": "杨飞",
+      "happenDate": "2011-05-30"
+    },
+    {
+      "eventId": 6481,
+      "entCnName": "天津九安医疗电子股份有限公司",
+      "exitType": "分红",
+      "eventTitle": "九安医疗2010年分红 IDG资本获利183.64万元",
+      "userName": "章苏阳",
+      "happenDate": "2011-05-27"
+    },
+    {
+      "eventId": 3553,
+      "entCnName": "北京惟知广聚科技有限公司",
+      "exitType": "收购",
+      "eventTitle": "雅虎收购智拓通达 IDG资本实现退出",
+      "userName": "-",
+      "happenDate": "2013-07-18"
+    },
+    {
+      "eventId": 7927,
+      "entCnName": "天津九安医疗电子股份有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出九安医疗",
+      "userName": "章苏阳",
+      "happenDate": "2010-06-23"
+    },
+    {
+      "eventId": 6559,
+      "entCnName": "华谊腾讯娱乐有限公司",
+      "exitType": "收购",
+      "eventTitle": "自然人收购华亿传媒 IDG资本实现退出",
+      "userName": "熊晓鸽",
+      "happenDate": "2011-05-23"
+    },
+    {
+      "eventId": 1510,
+      "entCnName": "上海宝钢包装股份有限公司",
+      "exitType": "上市",
+      "eventTitle": "宝钢包装上交所上市 IDG资本退出",
+      "userName": "-",
+      "happenDate": "2015-06-11"
+    },
+    {
+      "eventId": 6567,
+      "entCnName": "广州市香雪制药股份有限公司",
+      "exitType": "分红",
+      "eventTitle": "香雪制药2010年分红 IDG资本获利87.48万元",
+      "userName": "杨飞",
+      "happenDate": "2011-05-23"
+    },
+    {
+      "eventId": 657,
+      "entCnName": "广州天创时尚鞋业股份有限公司",
+      "exitType": "上市",
+      "eventTitle": "天创时尚上交所上市 IDG资本全部退出",
+      "userName": "-",
+      "happenDate": "2016-02-18"
+    },
+    {
+      "eventId": 6689,
+      "entCnName": "深圳日海通讯技术股份有限公司",
+      "exitType": "分红",
+      "eventTitle": "日海通讯2010年分红 IDG资本获利202.51万元",
+      "userName": "杨飞",
+      "happenDate": "2011-05-12"
+    },
+    {
+      "eventId": 6690,
+      "entCnName": "深圳日海通讯技术股份有限公司",
+      "exitType": "分红",
+      "eventTitle": "日海通讯2010年分红 IDG资本获利101.24万元",
+      "userName": "杨飞",
+      "happenDate": "2011-05-12"
+    },
+    {
+      "eventId": 3759,
+      "entCnName": "北京今日都市信息技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本转让嘀嗒团股份 实现退出",
+      "userName": "-",
+      "happenDate": "2013-02-01"
+    },
+    {
+      "eventId": 6783,
+      "entCnName": "联网时代(北京)科技有限公司",
+      "exitType": "收购",
+      "eventTitle": "阿里巴巴集团全资收购CNZZ IDG资本实现退出",
+      "userName": "-",
+      "happenDate": "2011-05-04"
+    },
+    {
+      "eventId": 6794,
+      "entCnName": "上海大承网络技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出大承网络",
+      "userName": "-",
+      "happenDate": "2011-05-04"
+    },
+    {
+      "eventId": 8148,
+      "entCnName": "深圳日海通讯技术股份有限公司",
+      "exitType": "分红",
+      "eventTitle": "日海通讯2009年分红 IDG资本获利67.5万元",
+      "userName": "杨飞",
+      "happenDate": "2010-04-30"
+    },
+    {
+      "eventId": 8149,
+      "entCnName": "深圳日海通讯技术股份有限公司",
+      "exitType": "分红",
+      "eventTitle": "日海通讯2009年分红 IDG资本获利33.75万元",
+      "userName": "杨飞",
+      "happenDate": "2010-04-30"
+    },
+    {
+      "eventId": 3820,
+      "entCnName": "北京达内科技有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本出售达内科技部分股权 实现退出",
+      "userName": "-",
+      "happenDate": "2013-01-01"
+    },
+    {
+      "eventId": 3821,
+      "entCnName": "成都奥毕信息技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本出售成都奥毕部分股权 实现退出",
+      "userName": "-",
+      "happenDate": "2013-01-01"
+    },
+    {
+      "eventId": 3822,
+      "entCnName": "朗新科技(中国)有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本转让朗新科技部分股权 实现退出",
+      "userName": "-",
+      "happenDate": "2013-01-01"
+    },
+    {
+      "eventId": 8203,
+      "entCnName": "贵阳朗玛信息技术股份有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG转让朗玛信息股份 实现退出",
+      "userName": "杨飞",
+      "happenDate": "2010-04-12"
+    },
+    {
+      "eventId": 8213,
+      "entCnName": "深圳市帝科思贸易有限公司",
+      "exitType": "收购",
+      "eventTitle": "帝科思借壳上市 IDG资本实现全部退出",
+      "userName": "-",
+      "happenDate": "2010-04-01"
+    },
+    {
+      "eventId": 16548,
+      "entCnName": "周黑鸭国际控股有限公司",
+      "exitType": "上市",
+      "eventTitle": "周黑鸭港交所主板上市 IDG资本实现退出",
+      "userName": "-",
+      "happenDate": "2016-11-11"
+    },
+    {
+      "eventId": 8237,
+      "entCnName": "华住酒店管理有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出汉庭连锁酒店集团",
+      "userName": "章苏阳",
+      "happenDate": "2010-03-26"
+    },
+    {
+      "eventId": 8275,
+      "entCnName": "深圳市易讯天空网络技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出500彩票网",
+      "userName": "-",
+      "happenDate": "2010-03-01"
+    },
+    {
+      "eventId": 16667,
+      "entCnName": "厦门美图网科技有限公司",
+      "exitType": "上市",
+      "eventTitle": "美图公司港交所主板上市 IDG资本实现退出",
+      "userName": "NULL",
+      "happenDate": "2016-12-15"
+    },
+    {
+      "eventId": 7003,
+      "entCnName": "奇虎360科技有限公司",
+      "exitType": "上市",
+      "eventTitle": "奇虎360纽交所上市 IDG资本实现退出",
+      "userName": "-",
+      "happenDate": "2011-03-30"
+    },
+    {
+      "eventId": 398,
+      "entCnName": "观印象艺术发展有限公司",
+      "exitType": "收购",
+      "eventTitle": "三湘股份收购观印象 IDG资本实现全部退出",
+      "userName": "李建光",
+      "happenDate": "2016-05-26"
+    },
+    {
+      "eventId": 399,
+      "entCnName": "观印象艺术发展有限公司",
+      "exitType": "收购",
+      "eventTitle": "三湘股份收购观印象 IDG资本实现全部退出",
+      "userName": "熊晓鸽",
+      "happenDate": "2016-05-26"
+    },
+    {
+      "eventId": 8373,
+      "entCnName": "厦门市吉比特网络技术股份有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本部分退出吉比特",
+      "userName": "-",
+      "happenDate": "2009-12-22"
+    },
+    {
+      "eventId": 400,
+      "entCnName": "观印象艺术发展有限公司",
+      "exitType": "收购",
+      "eventTitle": "三湘股份收购观印象 IDG资本实现全部退出",
+      "userName": "-",
+      "happenDate": "2016-05-26"
+    },
+    {
+      "eventId": 4044,
+      "entCnName": "海南双成药业股份有限公司",
+      "exitType": "上市",
+      "eventTitle": "双成药业深交所中小板上市 IDG投资实现退出",
+      "userName": "-",
+      "happenDate": "2012-08-08"
+    },
+    {
+      "eventId": 8406,
+      "entCnName": "深圳日海通讯技术股份有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出深圳日海通讯技术股份有限公司",
+      "userName": "杨飞",
+      "happenDate": "2009-12-03"
+    },
+    {
+      "eventId": 4051,
+      "entCnName": "上海宝酷网络技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出5173.com",
+      "userName": "-",
+      "happenDate": "2012-08-08"
+    },
+    {
+      "eventId": 4052,
+      "entCnName": "上海宝酷网络技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出5173.com",
+      "userName": "-",
+      "happenDate": "2012-08-08"
+    },
+    {
+      "eventId": 4176,
+      "entCnName": "茂硕电源科技股份有限公司",
+      "exitType": "分红",
+      "eventTitle": "茂硕电源2011年分红 IDG资本获利46.8万元",
+      "userName": "杨飞",
+      "happenDate": "2012-07-10"
+    },
+    {
+      "eventId": 7359,
+      "entCnName": "广州市香雪制药股份有限公司",
+      "exitType": "上市",
+      "eventTitle": "香雪制药深交所创业板上市 IDG实现退出",
+      "userName": "杨飞",
+      "happenDate": "2010-12-15"
+    },
+    {
+      "eventId": 7400,
+      "entCnName": "北京当当网信息技术有限公司",
+      "exitType": "上市",
+      "eventTitle": "当当网纽交所上市 IDG实现退出",
+      "userName": "周全",
+      "happenDate": "2010-12-08"
+    },
+    {
+      "eventId": 7437,
+      "entCnName": "北京亿美软通科技有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG退出亿美软通",
+      "userName": "-",
+      "happenDate": "2010-12-01"
+    },
+    {
+      "eventId": 7438,
+      "entCnName": "北京亿美软通科技有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG退出亿美软通",
+      "userName": "-",
+      "happenDate": "2010-12-01"
+    },
+    {
+      "eventId": 8554,
+      "entCnName": "福建钧石能源有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出福建钧石能源有限公司",
+      "userName": "林栋梁",
+      "happenDate": "2009-10-01"
+    },
+    {
+      "eventId": 8660,
+      "entCnName": "新热力科技有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出新热力",
+      "userName": "-",
+      "happenDate": "2009-06-23"
+    },
+    {
+      "eventId": 4442,
+      "entCnName": "华灿光电股份有限公司",
+      "exitType": "上市",
+      "eventTitle": "华灿光电深交所创业板上市 IDG实现退出",
+      "userName": "-",
+      "happenDate": "2012-06-01"
+    },
+    {
+      "eventId": 4546,
+      "entCnName": "天津九安医疗电子股份有限公司",
+      "exitType": "分红",
+      "eventTitle": "九安医疗2011年分红 IDG资本获利90.22万元",
+      "userName": "章苏阳",
+      "happenDate": "2012-05-23"
+    },
+    {
+      "eventId": 8841,
+      "entCnName": "A8新媒体集团有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出A8电媒音乐控股有限公司",
+      "userName": "王树",
+      "happenDate": "2008-06-12"
+    },
+    {
+      "eventId": 4746,
+      "entCnName": "广州市香雪制药股份有限公司",
+      "exitType": "分红",
+      "eventTitle": "香雪制药2011年分红 IDG资本获利116.64万元",
+      "userName": "杨飞",
+      "happenDate": "2012-04-27"
+    },
+    {
+      "eventId": 8878,
+      "entCnName": "二六五网络技术有限公司",
+      "exitType": "转让",
+      "eventTitle": "IDG资本退出二六五网络技术有限公司",
+      "userName": "陈洪武",
+      "happenDate": "2008-05-03"
+    },
+    {
+      "eventId": 2316,
+      "entCnName": "蓝港互动集团有限公司",
+      "exitType": "上市",
+      "eventTitle": "蓝港互动上市 IDG资本退出",
+      "userName": "-",
+      "happenDate": "2014-12-30"
+    },
+    {
+      "eventId": 4809,
+      "entCnName": "深圳日海通讯技术股份有限公司",
+      "exitType": "分红",
+      "eventTitle": "日海通讯2011年分红 IDG资本获利101.24万元",
+      "userName": "杨飞",
+      "happenDate": "2012-04-17"
+    },
+    {
+      "eventId": 4810,
+      "entCnName": "深圳日海通讯技术股份有限公司",
+      "exitType": "分红",
+      "eventTitle": "日海通讯2011年分红 IDG资本获利202.51万元",
+      "userName": "杨飞",
+      "happenDate": "2012-04-17"
+    },
+    {
+      "eventId": 8972,
+      "entCnName": "弘成教育集团",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出弘成教育公司",
+      "userName": "-",
+      "happenDate": "2007-12-11"
+    },
+    {
+      "eventId": 9002,
+      "entCnName": "北京掌中米格信息技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "GLU全资收购MIG IDG资本实现退出",
+      "userName": "-",
+      "happenDate": "2007-11-28"
+    },
+    {
+      "eventId": 9031,
+      "entCnName": "网龙网络控股有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出网龙公司",
+      "userName": "-",
+      "happenDate": "2007-11-02"
+    },
+    {
+      "eventId": 9032,
+      "entCnName": "网龙网络控股有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出网龙公司",
+      "userName": "林栋梁",
+      "happenDate": "2007-11-02"
+    },
+    {
+      "eventId": 2373,
+      "entCnName": "广州启生信息技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出39健康网",
+      "userName": "侯朗基",
+      "happenDate": "2014-12-12"
+    },
+    {
+      "eventId": 2374,
+      "entCnName": "广州启生信息技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出39健康网",
+      "userName": "杨飞",
+      "happenDate": "2014-12-12"
+    },
+    {
+      "eventId": 4890,
+      "entCnName": "深圳市易讯天空网络技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出500彩票",
+      "userName": "-",
+      "happenDate": "2012-04-01"
+    },
+    {
+      "eventId": 9108,
+      "entCnName": "北京益华明健康科技有限公司",
+      "exitType": "清算",
+      "eventTitle": "IDG资本退出健康中国网",
+      "userName": "-",
+      "happenDate": "2007-08-12"
+    },
+    {
+      "eventId": 2480,
+      "entCnName": "天华阳光控股有限公司",
+      "exitType": "上市",
+      "eventTitle": "天华阳光纳斯达克上市 IDG资本退出",
+      "userName": "何志成",
+      "happenDate": "2014-11-14"
+    },
+    {
+      "eventId": 2481,
+      "entCnName": "天华阳光控股有限公司",
+      "exitType": "上市",
+      "eventTitle": "天华阳光纳斯达克上市 IDG资本退出",
+      "userName": "周全",
+      "happenDate": "2014-11-14"
+    },
+    {
+      "eventId": 9229,
+      "entCnName": "深圳傲志技术开发有限公司",
+      "exitType": "清算",
+      "eventTitle": "IDG资本退出主流网",
+      "userName": "张震",
+      "happenDate": "2007-05-10"
+    },
+    {
+      "eventId": 5038,
+      "entCnName": "茂硕电源科技股份有限公司",
+      "exitType": "上市",
+      "eventTitle": "茂硕电源深交所中小板上市 IDG资本实现退出",
+      "userName": "杨飞",
+      "happenDate": "2012-03-16"
+    },
+    {
+      "eventId": 9243,
+      "entCnName": "中国万网集团公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出中国万网集团公司",
+      "userName": "-",
+      "happenDate": "2007-04-06"
+    },
+    {
+      "eventId": 9267,
+      "entCnName": "上海好耶广告有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出好耶信息技术有限公司",
+      "userName": "章苏阳",
+      "happenDate": "2007-03-01"
+    },
+    {
+      "eventId": 9334,
+      "entCnName": "爱试网(北京)科技有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出爱试网（北京）科技有限公司",
+      "userName": "-",
+      "happenDate": "2006-12-19"
+    },
+    {
+      "eventId": 9357,
+      "entCnName": "上海如家酒店管理公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出如家快捷酒店管理公司",
+      "userName": "章苏阳",
+      "happenDate": "2006-10-26"
+    },
+    {
+      "eventId": 9371,
+      "entCnName": "美商网有限公司",
+      "exitType": "清算",
+      "eventTitle": "IDG资本退出美商网",
+      "userName": "-",
+      "happenDate": "2006-10-12"
+    },
+    {
+      "eventId": 9402,
+      "entCnName": "搜房控股有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出搜房控股有限公司",
+      "userName": "周全",
+      "happenDate": "2006-09-04"
+    },
+    {
+      "eventId": 9409,
+      "entCnName": "远光软件股份有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出远光软件",
+      "userName": "王树",
+      "happenDate": "2006-08-07"
+    },
+    {
+      "eventId": 9410,
+      "entCnName": "远光软件股份有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出远光软件",
+      "userName": "杨飞",
+      "happenDate": "2006-08-07"
+    },
+    {
+      "eventId": 9411,
+      "entCnName": "远光软件股份有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出远光软件",
+      "userName": "周全",
+      "happenDate": "2006-08-07"
+    },
+    {
+      "eventId": 9442,
+      "entCnName": "慧聪网有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出北京慧聪国际资讯有限公司",
+      "userName": "李建光",
+      "happenDate": "2006-05-26"
+    },
+    {
+      "eventId": 9443,
+      "entCnName": "慧聪网有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出北京慧聪国际资讯有限公司",
+      "userName": "杨飞",
+      "happenDate": "2006-05-26"
+    },
+    {
+      "eventId": 9518,
+      "entCnName": "上海框架广告发展有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出上海框架广告发展有限公司",
+      "userName": "王功权",
+      "happenDate": "2005-10-17"
+    },
+    {
+      "eventId": 9519,
+      "entCnName": "上海框架广告发展有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出上海框架广告发展有限公司",
+      "userName": "周全",
+      "happenDate": "2005-10-17"
+    },
+    {
+      "eventId": 9527,
+      "entCnName": "快步易捷信息服务有限公司",
+      "exitType": "清算",
+      "eventTitle": "IDG资本退出快步易捷",
+      "userName": "王树",
+      "happenDate": "2005-09-12"
+    },
+    {
+      "eventId": 9528,
+      "entCnName": "快步易捷信息服务有限公司",
+      "exitType": "清算",
+      "eventTitle": "IDG资本退出快步易捷",
+      "userName": "周全",
+      "happenDate": "2005-09-12"
+    },
+    {
+      "eventId": 9542,
+      "entCnName": "百度在线网络技术(北京)有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出百度在线网络技术（北京）有限公司",
+      "userName": "杨飞",
+      "happenDate": "2005-08-05"
+    },
+    {
+      "eventId": 9543,
+      "entCnName": "百度在线网络技术(北京)有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出百度在线网络技术（北京）有限公司",
+      "userName": "周全",
+      "happenDate": "2005-08-05"
+    },
+    {
+      "eventId": 9639,
+      "entCnName": "中国创联教育集团有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出直真节点控股有限公司",
+      "userName": "章苏阳",
+      "happenDate": "2004-11-18"
+    },
+    {
+      "eventId": 9640,
+      "entCnName": "中国创联教育集团有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出直真节点控股有限公司",
+      "userName": "周全",
+      "happenDate": "2004-11-18"
+    },
+    {
+      "eventId": 9647,
+      "entCnName": "中国金融在线有限公司",
+      "exitType": "上市",
+      "eventTitle": "金融界纳斯达克上市 IDG资本实现退出",
+      "userName": "王功权",
+      "happenDate": "2004-10-15"
+    },
+    {
+      "eventId": 9648,
+      "entCnName": "中国金融在线有限公司",
+      "exitType": "上市",
+      "eventTitle": "金融界纳斯达克上市 IDG资本实现退出",
+      "userName": "熊晓鸽",
+      "happenDate": "2004-10-15"
+    },
+    {
+      "eventId": 9708,
+      "entCnName": "北京方正连宇通信有限公司",
+      "exitType": "清算",
+      "eventTitle": "IDG资本退出连宇通信",
+      "userName": "周全",
+      "happenDate": "2004-03-12"
+    },
+    {
+      "eventId": 9718,
+      "entCnName": "北京当当网信息技术有限公司",
+      "exitType": "转让",
+      "eventTitle": "IDG资本退出北京科文书业信息技术有限公司",
+      "userName": "-",
+      "happenDate": "2004-02-01"
+    },
+    {
+      "eventId": 9728,
+      "entCnName": "慧聪网有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出慧聪网",
+      "userName": "李建光",
+      "happenDate": "2003-12-17"
+    },
+    {
+      "eventId": 9729,
+      "entCnName": "慧聪网有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出慧聪网",
+      "userName": "杨飞",
+      "happenDate": "2003-12-17"
+    },
+    {
+      "eventId": 9730,
+      "entCnName": "携程国际有限公司",
+      "exitType": "上市",
+      "eventTitle": "携程纳斯达克上市 IDG投资实现退出",
+      "userName": "章苏阳",
+      "happenDate": "2003-12-09"
+    },
+    {
+      "eventId": 9738,
+      "entCnName": "17173.com",
+      "exitType": "收购",
+      "eventTitle": "搜狐2050万美元入股17173 IDG资本实现全部退出",
+      "userName": "-",
+      "happenDate": "2003-11-25"
+    },
+    {
+      "eventId": 9739,
+      "entCnName": "北京物美商业集团股份有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出北京物美商业集团股份有限公司",
+      "userName": "王功权",
+      "happenDate": "2003-11-21"
+    },
+    {
+      "eventId": 9747,
+      "entCnName": "腾讯控股有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出腾讯控股有限公司",
+      "userName": "李建光",
+      "happenDate": "2003-08-01"
+    },
+    {
+      "eventId": 9758,
+      "entCnName": "上海盈实信息技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出北京易联通合信息技术有限公司",
+      "userName": "王功权",
+      "happenDate": "2003-06-12"
+    },
+    {
+      "eventId": 9776,
+      "entCnName": "上海索盛互联网信息服务有限公司",
+      "exitType": "清算",
+      "eventTitle": "IDG资本退出索易",
+      "userName": "-",
+      "happenDate": "2002-08-12"
+    },
+    {
+      "eventId": 9777,
+      "entCnName": "重庆苦丁香软件有限公司",
+      "exitType": "清算",
+      "eventTitle": "IDG资本退出苦丁香",
+      "userName": "-",
+      "happenDate": "2002-08-12"
+    },
+    {
+      "eventId": 9790,
+      "entCnName": "广州邦讯科技有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出广州邦讯科技有限公司",
+      "userName": "王树",
+      "happenDate": "2002-01-01"
+    },
+    {
+      "eventId": 9796,
+      "entCnName": "武汉适普软件有限公司",
+      "exitType": "转让",
+      "eventTitle": "IDG资本退出适普软件有限公司",
+      "userName": "-",
+      "happenDate": "2001-07-12"
+    },
+    {
+      "eventId": 9797,
+      "entCnName": "腾讯控股有限公司",
+      "exitType": "转让",
+      "eventTitle": "IDG资本退出腾讯控股有限公司",
+      "userName": "-",
+      "happenDate": "2001-06-01"
+    },
+    {
+      "eventId": 9801,
+      "entCnName": "北京今点万维网络技术有限公司",
+      "exitType": "清算",
+      "eventTitle": "IDG资本退出雅宝竞价交易网",
+      "userName": "-",
+      "happenDate": "2001-03-12"
+    },
+    {
+      "eventId": 9802,
+      "entCnName": "金蝶国际软件集团有限公司",
+      "exitType": "上市",
+      "eventTitle": "IDG资本退出金蝶国际软件集团有限公司",
+      "userName": "王树",
+      "happenDate": "2001-02-15"
+    },
+    {
+      "eventId": 9808,
+      "entCnName": "鲨威亚太有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出鲨威亚太有限公司",
+      "userName": "-",
+      "happenDate": "2000-09-01"
+    },
+    {
+      "eventId": 9813,
+      "entCnName": "北京东方通科技股份有限公司",
+      "exitType": "转让",
+      "eventTitle": "IDG资本退出东方通科技公司",
+      "userName": "-",
+      "happenDate": "2000-07-01"
+    },
+    {
+      "eventId": 9826,
+      "entCnName": "深圳市科健信息技术有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出深圳市科健信息技术有限公司",
+      "userName": "-",
+      "happenDate": "1999-08-11"
+    },
+    {
+      "eventId": 9834,
+      "entCnName": "北京前导软件有限公司",
+      "exitType": "清算",
+      "eventTitle": "IDG资本退出前导软件",
+      "userName": "周全",
+      "happenDate": "1998-06-25"
+    },
+    {
+      "eventId": 9836,
+      "entCnName": "深圳市华生元基因工程发展有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出深圳市华生元基因工程发展有限公司",
+      "userName": "-",
+      "happenDate": "1998-01-01"
+    },
+    {
+      "eventId": 9838,
+      "entCnName": "广东风华高新科技股份有限公司",
+      "exitType": "收购",
+      "eventTitle": "IDG资本退出广东风华高新科技股份有限公司",
+      "userName": "-",
+      "happenDate": "1996-01-01"
+    }
+  ],
+  "inventEvent": null,
+  "exitEvent": null,
+  "fundList": null,
+  "projectList": null,
+  "focusList": null,
+  "tendsList": null,
+  "rptPeFundList": null,
+  "extendList": null
+}
