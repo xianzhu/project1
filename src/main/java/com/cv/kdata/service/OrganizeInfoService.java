@@ -36,7 +36,6 @@ import com.cv.kdata.model.PMOrgExtendEntity;
 import com.cv.kdata.model.PMOrgInfo;
 import com.cv.kdata.model.PMStartupInfo;
 import com.cv.kdata.model.PMUserInfo;
-import com.cv.kdata.model.RedisMybatisModel;
 import com.cv.kdata.model.RptOrgForcusEnt;
 import com.cv.kdata.model.RptOrgOverallTrends;
 import com.cv.kdata.model.RptPeFund;
@@ -309,14 +308,6 @@ public class OrganizeInfoService {
 	 */
 	public void getRptPeList(HttpServletRequest req, OrganizeResponse response) {
 		if (RDDWebConst.FAILURE.equals(response.getStatus())) {
-			return;
-		}
-
-		List<RptPeFund> list = RedisMybatisModel.getRptPeFundList();
-		if (list != null && !list.isEmpty()) {
-			response.setStatus(RDDWebConst.SUCCESS);
-			response.setMessage("success!");
-			response.setRptPeFundList(list);
 			return;
 		}
 
