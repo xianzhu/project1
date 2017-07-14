@@ -4848,11 +4848,6 @@ define('zrender/zrender', [
         self._onmousemove = function (param) {
             return self.__onmousemove(param);
         };
-        ///////////////modify by zl /////////////////////////////////////////////////
-        self.dom.onmouseout = function (param) {
-            return self.__hideTooltip(param);
-        };
-        /////////////////////////////////////////////////////////////////////////////
         self._onglobalout = function (param) {
             return self.__onglobalout(param);
         };
@@ -5739,19 +5734,11 @@ define('zrender/zrender', [
                 this._showingTicket = setTimeout(this._tryShow, this._showDelay);
             }
         },
-        ////////////////modify by zl///////////////////////////////////////////////////////
         __onglobalout: function () {
-            // clearTimeout(this._hidingTicket);
-            // clearTimeout(this._showingTicket);
-            // this._hidingTicket = setTimeout(this._hide, this._hideDelay);
-            this.__hideTooltip();
-        },
-        __hideTooltip: function () {
             clearTimeout(this._hidingTicket);
             clearTimeout(this._showingTicket);
             this._hidingTicket = setTimeout(this._hide, this._hideDelay);
         },
-        //////////////////////////////////////////////////////////////////////////////
         __setContent: function (ticket, content) {
             if (!this._tDom) {
                 return;

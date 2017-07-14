@@ -102,7 +102,7 @@ function bindExportedDataTable(domId, perLength, exportTitle, customOptions) {
         tableOptions.paginate = false; // 不分页
     }
     if (typeof customOptions != 'undefined') {
-        console.log("do custom options");
+        // console.log("do custom options");
         tableOptions = joinJsonObject(tableOptions, customOptions);
     }
 

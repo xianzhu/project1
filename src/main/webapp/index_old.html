@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>新闻首页</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="img/logo-ico.png" type="image/png">
+    <link href="css/mycommon/loading-animate.css" rel="stylesheet">
+    <script src="js/common/jquery-2.1.1.js"></script>
+    <script src="js/common/md5.js"></script>
+</head>
+<body>
+<div>
+<img class="loading-animate" src="img/loading-gradient.png">
+</div>
+
+<script>
+    var name="test1";
+    var password="test1";
+//    var url="login";
+    var url="http://116.62.52.41:17081/login";
+
+    var pwd=hex_md5(password);
+    console.log("login:",name,', ',pwd);
+    $.ajax({
+        "url":url,
+        type:'POST',
+        dataType:'json',
+        data:{
+            user_name:name,
+            password:pwd
+        },
+        success:function(res){
+            console.log(res);
+            if (res.status=="failure") {
+                 console.log("login failure");
+            } else {
+                var response=res;
+                console.log("login success:",response);
+                window.location.href="homePage.html?uname="+name+"&score=0";
+            }
+        },
+        fail:function(res){
+            console.log("fail:",res);
+        }
+    });
+
+//    setTimeout(function(){
+//        window.location.href="homePage.html?uname="+name;
+//    },3*1000);
+</script>
+
+</body>
+</html>

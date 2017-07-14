@@ -12,7 +12,8 @@ var v_industryToolsModel=new Vue({
         filterKey:"pleaseSearch",
         tableSelections:selectedTables,
         result:[],
-        hasRecords:false,
+        hasRecords:true,
+        hasSearch:false,
         tableColumns:[]
     },
     methods:{
@@ -34,16 +35,24 @@ var v_industryToolsModel=new Vue({
 function filterKeyPress(event,value){
     var event = window.event||event; // 为了兼容firefox没有全局event对象
     if(event.keyCode==13) {
-        if (value != "") {
-            v_industryToolsModel.$data.filterKey = value;
-        } else {
-            v_industryToolsModel.$data.filterKey = "pleaseSearch";
-        }
+        doTableFilter(value);
     }
 }
+function beginFilter() {
+    var value=$("#table_filter_input").val();
+    doTableFilter(value);
+}
 
+function doTableFilter(value) {
+    if (value != "") {
+        v_industryToolsModel.$data.filterKey = value;
+    } else {
+        v_industryToolsModel.$data.filterKey = "pleaseSearch";
+    }
+}
 function getDataList(value,title){
     v_industryToolsModel.$data.showWait=true;
+    v_industryToolsModel.$data.hasSearch=true;
     $.ajax({
         url: commonUrls.industryToolsUrl,              //请求地址
         type: "POST",                            //请求方式

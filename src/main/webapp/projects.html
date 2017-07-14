@@ -29,7 +29,7 @@
                     <li class="welcome-message">
                         <span class="m-r text-welcome f-l">
                             <strong class="font-bold m-r">欢迎你</strong>
-                            <span v-text="uname" style="color:green"></span>
+                            <span v-text="uname" class="welcome-name"></span>
                             <strong class="font-bold">，</strong>
                         </span>
                         <span class="text-welcome text-xs m-r f-l m-l">
@@ -112,7 +112,7 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>查询参数</h5>
+                            <h5>项目查询条件</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -141,7 +141,7 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>项目</h5>
+                            <h5>项目查询结果</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -292,7 +292,7 @@
             <div class="modal-wrapper-lg">
                 <div class="modal-container-lg form-horizontal">
                     <div class="hr-line-title">
-                        <span style="font-size:18px;">查询参数设置</span>
+                        <span style="font-size:18px;">项目查询条件设置</span>
                         <button class="modal-close-button" v-on:click="cancelProjparam()"><i class="fa fa-close"></i> </button>
                     </div>
                     <div class="form-group-m">
@@ -300,10 +300,10 @@
                             <!--关键字-->
                             <div class="proj-param-div param-line-key key-param-group">
                                 <label class="control-label label-overflow">关键字</label>
-                                <select v-model="keyType" id="keyType" class="form-input-control" style="display:none;">
-                                    <option selected="selected" value="0">公司名</option>
-                                    <option value="1">品牌</option>
-                                </select>
+                                <!--<select v-model="keyType" id="keyType" class="form-input-control" style="display:none;">-->
+                                    <!--<option selected="selected" value="0">公司名</option>-->
+                                    <!--<option value="1">品牌</option>-->
+                                <!--</select>-->
                                 <input class="form-input-control" v-model="key_content">
                             </div>
                             <!--行业分类-->
@@ -324,24 +324,19 @@
                                 </ul>
                                 </div>
                             </div>
-                            <!--项目阶段-->
-                            <div class="proj-param-div param-line-state" style="display:none;">
-                                <label class="control-label label-overflow">项目阶段</label>
-                                <select v-model="proj_stage" id="proj_stage" class="form-input-control">
-                                    <option selected="selected" value="">未知</option>
-                                    <option value="0">前期</option>
-                                    <option value="1">中期</option>
-                                    <option value="2">后期</option>
-                                </select>
-                                <!--<ul class="state-project-param-group" style="list-style: none;">-->
-                                    <!--<li><label><input type="radio" value="" name="stateProjectRadios">不限</label></li>-->
-                                    <!--<li><label><input type="radio" value="1" name="stateProjectRadios">是</label></li>-->
-                                    <!--<li><label><input type="radio" value="0" name="stateProjectRadios">否</label></li>-->
-                                <!--</ul>-->
-                            </div>
+                            <!--&lt;!&ndash;项目阶段 不用&ndash;&gt;-->
+                            <!--<div class="proj-param-div param-line-state" style="display:none;">-->
+                                <!--<label class="control-label label-overflow">项目阶段</label>-->
+                                <!--<select v-model="proj_stage" id="proj_stage" class="form-input-control">-->
+                                    <!--<option selected="selected" value="">未知</option>-->
+                                    <!--<option value="0">前期</option>-->
+                                    <!--<option value="1">中期</option>-->
+                                    <!--<option value="2">后期</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
                         </div>
                     </div>
-                    <div class="hr-line-title"></div>
+                    <!--<div class="hr-line-title"></div>-->
                     <div style="margin-bottom:15px;">
                         <button class="modal-setting-button" v-on:click="cancelProjparam()">取 消</button>
                         <button class="modal-setting-button" v-on:click="beginProjsearch()">确 定</button>

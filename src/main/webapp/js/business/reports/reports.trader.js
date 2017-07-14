@@ -38,9 +38,6 @@ var v_traderReportModel=new Vue({
         openPdfOnline:function(path){
             openFilesOnline(path);
         },
-        openNews:function(url){
-            sendMonitor({url:url});
-        },
         pageControlFilter:function(value){
             console.log(value,this.traderResultPage);
             if(value==0){

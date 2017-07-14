@@ -8,11 +8,11 @@ menuList.monitor.childMenu.cusMonitor.isActive=true;
 resize();
 
 function resize() {
-    var cheight = $(window).height() - 200;
+    var cheight = $("#page-wrapper").height()+7;
     if (cheight < 100) {
         cheight = 100;
     }
-    //console.log(cheight);
+    console.log(cheight);
     $("#inventForceChart").css("height", cheight + "px");
 }
 
@@ -194,6 +194,7 @@ function focus(param) {
 }
 
 function getMonitorList() {
+    console.log(v_userModel.$data.uname);
     $.ajax({
         url: commonUrls.custMonitorUrl,              //请求地址
         type: "POST",                            //请求方式

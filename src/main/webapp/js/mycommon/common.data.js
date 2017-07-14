@@ -18,8 +18,7 @@ var commonUrls_real = {
     homeEventpageUrl:"top/dayevent", // 首页--今日资本事件列表
     homeEventDetailUrl:"top/daydetail", // 首页--今日资本事件详情
     homepageDashDataUrl:"stat/dashboard", // 首页--仪表盘数据
-    // homeCalendarUrl:"top/schedule", // 首页 -- 日历接口数据
-    homeCalendarUrl:"testData/rpt.schedule.json",
+    homeCalendarUrl:"top/schedule", // 首页 -- 日历接口数据
 
     mutiSearchUrl: "topsearch", // 综合查询--基本查询
     mutiSearchNewsUrl: "elasticsearch", // 综合查询--新闻(key)
@@ -86,8 +85,8 @@ var commonUrls_real_local = {
     homeEventpageUrl:hostUrl+"top/dayevent", // 首页--今日资本事件列表
     homeEventDetailUrl:hostUrl+"top/daydetail", // 首页--今日资本事件详情
     homepageDashDataUrl:hostUrl+"stat/dashboard", // 首页--仪表盘数据
-    // homeCalendarUrl:hostUrl+"top/schedule", // 首页 -- 日历接口数据
-    homeCalendarUrl:"testData/rpt.schedule.json",
+    homeCalendarUrl:hostUrl+"top/schedule", // 首页 -- 日历接口数据
+    // homeCalendarUrl:"testData/rpt.schedule.json",
 
     mutiSearchUrl: hostUrl+"topsearch", // 综合查询--基本查询
     mutiSearchNewsUrl: hostUrl+"elasticsearch", // 综合查询--新闻(key)
@@ -147,7 +146,6 @@ var commonUrls_real_local = {
 
     industryToolsUrl:hostUrl+"tools/ciassociated", // 行业统计
     simulationUrl:hostUrl+"tools/xsblistmatching", // 模拟计算
-
 };
 
 var commonUrls = commonUrls_real;

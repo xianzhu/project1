@@ -731,7 +731,7 @@
             }
             var w = this.width,
                 h = this.height,
-                hdH = this.$element.find('.calendar-hd').outerHeight();
+                hdH = this.$element.find('.calendar-hd').outerHeight()+18;
             this.$element.width(w).height(h + hdH)
                 .find('.calendar-inner, .view')
                 .css('width', w + 'px');

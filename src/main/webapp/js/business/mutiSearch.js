@@ -3,6 +3,8 @@
  */
 var key=getUrlQueryStr("key",location.href);
 
+console.log(key);
+
 var v_mutiSearchModel=new Vue({
     el:"#v-mutiSearchModel",
     data:{

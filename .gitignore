@@ -9,4 +9,5 @@ src/main/webapp/.idea
 .project
 target
 .settings
+/src/main/webapp/WEB-INF/
 

@@ -30,7 +30,7 @@
                     <li class="welcome-message">
                         <span class="m-r text-welcome f-l">
                             <strong class="font-bold m-r">欢迎你</strong>
-                            <span v-text="uname" style="color:green"></span>
+                            <span v-text="uname" class="welcome-name"></span>
                             <strong class="font-bold">，</strong>
                         </span>
                         <span class="text-welcome text-xs m-r f-l m-l">
@@ -838,8 +838,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr style="cursor:pointer;" v-on:click="gotoCompany(item.stockCode,item.stockType)" v-for="item in firstModel">
-                                        <td v-text="item.cnName"></td>
+                                    <tr v-on:click="gotoCompany(item.stockCode,item.stockType)" v-for="item in firstModel">
+                                        <td v-text="item.cnName" class="link-handle-pointer"></td>
                                         <td v-text="item.isStateHold|stateHoldFilter"></td>
                                         <td v-text="item.totalAsset"></td>
                                         <td v-text="item.optIncome"></td>
@@ -882,8 +882,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr style="cursor:pointer;" v-on:click="gotoCompany(item.stockCode,item.stockType)" v-for="item in secondModel">
-                                        <td v-text="item.cnName"></td>
+                                    <tr v-on:click="gotoCompany(item.stockCode,item.stockType)" v-for="item in secondModel">
+                                        <td v-text="item.cnName" class="link-handle-pointer"></td>
                                         <td v-text="item.isStateHold|stateHoldFilter"></td>
                                         <td v-text="item.totalAsset"></td>
                                         <td v-text="item.optIncome"></td>

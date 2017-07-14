@@ -12,7 +12,7 @@
     <link href="css/common/modal-mask.css" rel="stylesheet">
     <link href="css/mycommon/loading-animate.css" rel="stylesheet">
     <link href="css/style.common.css" rel="stylesheet">
-
+    <link href="css/business/ciassociated.css" rel="stylesheet">
     <script src="js/common/jquery-2.1.1.js"></script>
     <script src="js/common/jquery.easing.1.3.js"></script>
     <script src="js/common/bootstrap.min.js"></script>
@@ -29,7 +29,7 @@
                     <li class="welcome-message">
                         <span class="m-r text-welcome f-l">
                             <strong class="font-bold m-r">欢迎你</strong>
-                            <span v-text="uname" style="color:green"></span>
+                            <span v-text="uname" class="welcome-name"></span>
                             <strong class="font-bold">，</strong>
                         </span>
                         <span class="text-welcome text-xs m-r f-l m-l">
@@ -116,15 +116,16 @@
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>统计表</h5>
-                            <div class="ibox-tools">
+                            <div class="ibox-tools table-filter">
                                 <a class="collapse-link pull-right">
                                     <i class="fa fa-chevron-up"></i>
                                 </a>
                                 <input placeholder="请输入过滤关键字(如消费)..." class="pull-right m-r" onkeypress="filterKeyPress(event,this.value)"
-                                       style="width:calc(95% - 50px);max-width:400px;font-size:14px;padding:2px;margin-top:-5px;">
+                                       style="width:calc(95% - 50px);max-width:400px;font-size:14px;padding:2px;margin-top:-5px;" id="table_filter_input">
+                                <i class="fa fa-search search-ico" onclick="beginFilter()"></i>
                             </div>
                         </div>
-                        <div class="ibox-content">
+                        <div class="ibox-content" style="max-height:200px;overflow-y:auto;">
                             <div class="row">
                                 <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6" style="padding:3px 1px;" v-for="item in tableSelections|filterBy filterKey in 'tName'">
                                     <a style="font-size:14px;" v-text="item.tName" class="link-handle-pointer"
@@ -163,7 +164,10 @@
                                     </tbody>
                                 </table>
                                 <div v-bind:class="[hasRecords? 'hide-div':'show-div']">
-                                    <p style="text-align:center;">暂时没有数据</p>
+                                    <p style="text-align:center;">暂无数据</p>
+                                </div>
+                                <div v-bind:class="[hasSearch? 'hide-div':'show-div']">
+                                    <p style="text-align:center;">您还没有选择统计表，请在右上方输入关键字查询您想查看的内容</p>
                                 </div>
                             </div>
                         </div>

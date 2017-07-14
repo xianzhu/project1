@@ -3,54 +3,88 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>新闻首页</title>
+    <title>登录</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <link rel="icon" href="img/logo_tree.jpg" type="image/png">
-    <link href="css/mycommon/loading-animate.css" rel="stylesheet">
+    <link rel="icon" href="img/logo-ico.png" type="image/png">
+    <link rel="stylesheet" href="css/mycommon/loading-animate.css">
+    <link rel="stylesheet" href="css/common/bootstrap.min.css">
+    <link href="css/mycommon/common-animate.css" rel="stylesheet">
+    <link href="css/business/index.css" rel="stylesheet">
+    <link href="css/style.common.css" rel="stylesheet">
     <script src="js/common/jquery-2.1.1.js"></script>
     <script src="js/common/md5.js"></script>
+    <script src="js/mycommon/common.data.js"></script>
+    <script src="js/business/index.js"></script>
 </head>
 <body>
 <div>
-<img class="loading-animate" src="img/loading-gradient.png">
+    <div class="nav-header">
+        <a class="brand pull-left" href="#">
+            <img src="img/logo_src_ico.png">
+        </a>
+
+    </div>
+    <div class="loginColumns text-center loginscreen animated fadeInDown">
+        <div class="row">
+            <div class="logo-name col-md-8">
+                <img hidefocus="true" src="img/logo_src_02.png">
+                <h3>遇见可桉，预见你的世界</h3>
+            </div>
+            <div class="input-side col-md-4">
+                <div class="form-group">
+                    <label class="form-control form-control-info">欢迎使用，请登录</label>
+                </div>
+                <div class="form-group">
+                    <div class="form-input-line">
+                        <!--<label class="form-label">用户名</label>-->
+                        <input type="email" id="unameIpt" class="form-control" placeholder="用户名" required="">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:15px;">
+                    <div class="form-input-line">
+                        <!--<label class="form-label">密码</label>-->
+                        <input type="password" id="pwdIpt" class="form-control" placeholder="密码" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label id="warning" class="form-control form-control-warning" style="display:none;">请输入用户名密码</label>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary block full-width m-b" onclick="login()">Login</button>
+                </div>
+
+                <!--<a href="login.html#"><small>Forgot password?</small></a>-->
+                <!--<p class="text-muted text-center"><small>Do not have an account?</small></p>-->
+                <!--<a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>-->
+            </div>
+            <!--<p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>-->
+        </div>
+
+        <!--<div>-->
+        <!--<div class="logo-name">-->
+        <!--<img hidefocus="true" src="img/logo_src_02.png">-->
+        <!--<h3>遇见可桉，预见你的世界</h3>-->
+        <!--</div>-->
+        <!--<div class="m-t">-->
+        <!--<div class="form-group">-->
+        <!--<input type="email" id="unameIpt" class="form-control" placeholder="Username" required="">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<input type="password" id="pwdIpt" class="form-control" placeholder="Password" required="">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<label id="warning" class="form-control form-control-warning" style="display:none;"></label>-->
+        <!--</div>-->
+        <!--<button class="btn btn-primary block full-width m-b" onclick="login()">Login</button>-->
+
+        <!--&lt;!&ndash;<a href="login.html#"><small>Forgot password?</small></a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p class="text-muted text-center"><small>Do not have an account?</small></p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>&ndash;&gt;-->
+        <!--</div>-->
+        <!--&lt;!&ndash;<p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>&ndash;&gt;-->
+        <!--</div>-->
+    </div>
 </div>
-
-<script>
-    var name="test1";
-    var password="test1";
-//    var url="login";
-    var url="http://116.62.52.41:17081/login";
-
-    var pwd=hex_md5(password);
-    console.log("login:",name,', ',pwd);
-    $.ajax({
-        "url":url,
-        type:'POST',
-        dataType:'json',
-        data:{
-            user_name:name,
-            password:pwd
-        },
-        success:function(res){
-            console.log(res);
-            if (res.status=="failure") {
-                 console.log("login failure");
-            } else {
-                var response=res;
-                console.log("login success:",response);
-                window.location.href="homePage.html?uname="+name+"&score=0";
-            }
-        },
-        fail:function(res){
-            console.log("fail:",res);
-        }
-    });
-
-//    setTimeout(function(){
-//        window.location.href="homePage.html?uname="+name;
-//    },3*1000);
-</script>
-
 </body>
 </html>

@@ -7,9 +7,10 @@
     <title>CSS3响应式垂直手风琴菜单DEMO演示</title>
 
     <link rel="stylesheet" type="text/css" href="css/plugins/accordion.menu.css">
-
+    <script src="js/common/jquery-2.1.1.js"></script>
+<script src="js/navigator.info.js"></script>
 </head>
-<body>
+<body onbeforeunload="closeView()" onload="openView()">
 
 <div class="container" id="containerModule">
 <div><button v-on:click="changeData()">change</button></div>
@@ -26,13 +27,47 @@
         </dl>
     </div>
 
+    <div>
+        <button onclick="allinfo()">getNavInfo</button>
+        <div id="windowInfo"></div>
+        <div>--------------------------------</div>
+        <div id="navInfo"></div>
+    </div>
+<div>
+    <button onclick="pcInfo()">allPCInfo</button>
+    <button id="ipbtn">ipInfo</button>
+    <div id="allPCInfo"></div>
+</div>
+    <div>
+        <button onclick="getReferrer()" title="上级url">getReferrer</button>
+    </div>
+
+
 </div>
 <script src="js/common/vue.js"></script>
+<script src="js/mycommon/function.common.js"></script>
 <script src="js/testNews.js"></script>
 <script type="text/javascript">
-    //uses classList, setAttribute, and querySelectorAll
-    //if you want this to work in IE8/9 youll need to polyfill these
+    function openView() {
+//        alert("openView");
+        console.log("openView");
+    }
+   function closeView() {
+//       alert("closeView");
+       console.log("closeView");
+//       window.open("http://www.baidu.com","_blank");
+   }
+</script>
 
+<script language="javascript" type="text/javascript">
+    $(document).ready(function(){
+        $("#ipbtn").click(function(){
+            var url = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_='+Math.random();
+            $.getJSON(url, function(data){
+                $("#allPCInfo").html("显示：IP【"+data.Ip+"】 地址【"+data.Isp+"】 浏览器【"+data.Browser+"】 系统【"+data.OS+"】");
+            });
+        });
+    });
 </script>
 
 </body>

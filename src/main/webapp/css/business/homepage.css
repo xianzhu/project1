@@ -9,9 +9,8 @@
 }
 .statistic-panel{
     color:#fff;
-    padding-left:10px;
-    padding-right:10px;
 }
+
 @media (min-width:1200px){
     .page-left-wrapper{
         height:100%;
@@ -51,7 +50,7 @@
 }
 
 @media (min-width:1024px) and (max-width:1199px){
-    .col-item-lm-half{
+    .col-item-lm-half-pie,.col-item-lm-half-bar{
         width:50%;
         float:left;
     }
@@ -72,7 +71,7 @@
  }
 
 #org_panel_Chart,#merge_panel_Chart,#fund_panel_Chart,#event_panel_Chart{
-    height:93px;
+    height:98px;
 }
 .panel-data{
     position:relative;
@@ -82,16 +81,15 @@
 }
 
 .panel-title{
-    padding-top:3px;
-    padding-bottom:3px;
+    padding-top:6px;
+    padding-bottom:0px;
     font-size:14px;
 }
 .panel-title h5{
-    /*color:black;*/
     font-size:14px;
     font-weight:600;
-    display: inline-block;
-    margin: 0 0 7px;
+    line-height:1;
+    margin:0 5px;
     padding: 0;
     text-overflow: ellipsis;
 }
@@ -106,6 +104,10 @@
     color:#333333;
     /*color:#ff7f50;*/
 }
+.panel-content{
+    margin-top:-17px;
+    margin-bottom:-7px;
+}
 .dash-data{
     position:absolute;
     right:20px;
@@ -113,18 +115,10 @@
     padding-right:5px;
 }
 .dash-title{
-    padding-top:4px;
-    padding-bottom:0px;
-    height:25px;
-}
-.dash-title h5{
-    /*color:black;*/
-    font-size:14px;
-    font-weight:600;
-    display: inline-block;
-    margin: 0 0 7px;
-    padding: 0;
-    text-overflow: ellipsis;
+    height: 28px;
+    line-height: 28px;
+    padding: 6px 15px 0px 6px;
+    font-size: 16px;
 }
 
 #project_dashboard_chart,#company_dashboard_chart,
@@ -212,5 +206,36 @@ table.table-single-line .td-Wmin43 {
     color:#373008;
 }
 
+@media (min-width:1500px){
+    .col-xlg-4{
+        width: 33.33333333%;
+    }
+    .col-xlg-8{
+        width: 66.66666667%;
+    }
+    .col-item-lm-half-pie,.col-item-lm-half-bar{
+        /*height:0;*/
+    }
+}
+@media (min-width:1024px) and (max-width:1499px){
+    .col-xlg-4{
+        width:60%;
+        float:left;
+    }
+    .col-xlg-8{
+        /*height:0;*/
+    }
+    .col-item-lm-half-pie{
+        width:40%;
+        float:left;
+    }
+    .col-item-lm-half-bar{
+        width:100%;
+    }
+}
 
-
+@media (max-width:1023px){
+    .col-xlg-8{
+        /*height:0;*/
+    }
+}

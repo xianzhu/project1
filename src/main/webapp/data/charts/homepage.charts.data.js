@@ -19,6 +19,8 @@ var orgTrendsOption = {
     },
     tooltip: {
         trigger: 'axis',
+        // showDelay: 500,
+        hideDelay:50,
         //backgroundColor:'rgba(0,0,250,0.4)',
         formatter: function (params) {
             // console.log(params);
@@ -34,8 +36,8 @@ var orgTrendsOption = {
     grid: {
         borderWidth: 0,
         x: 25,
-        x2: 5,
-        y: 30,
+        x2: 25,
+        y: 10,
         y2: 20
     },
     // calculable: true,
@@ -124,11 +126,9 @@ var orgTrendsOption = {
                     }
                 },
                 data: [
-                    {type: 'average', name: '平均值'},
+                    {type: 'average', name: '平均值',tooltip:{show:false}},
                     [
-                        // {name:'参考值',value:0.8,coord:['200402','0.8']},
-                        // {coord:['201510','0.8']}
-                        {name: '参考值', value: 0.4, x: 25, y: 50},
+                        {name: '参考值', value: 0.4, x: 25, y: 50,tooltip:{show:false}},
                         {x: 1000, y: 50}
                     ]
                 ]
@@ -147,7 +147,7 @@ var panelOrgOption = {
     },
     tooltip: {
         trigger: 'item',
-        hideDelay: 500,
+        hideDelay: 50,
         formatter: function (params) {
             var result = params.seriesName + "<br/>" + params.name + ":" + params.data;
             return result;
@@ -166,10 +166,10 @@ var panelOrgOption = {
     // calculable : true,
     grid: {
         borderWidth: 0,
-        x: 2,
-        x2: 10,
-        y: 10,
-        y2: 10
+        x: 12,
+        x2: 12,
+        y: 28,
+        y2: 15
     },
     xAxis: [
         {
@@ -228,7 +228,8 @@ var panelEventOption = {
     },
     tooltip: {
         trigger: 'axis',
-        hideDelay: 500,
+        hideDelay:50,
+        transitionDuration:0,
         formatter: function (params) {
             return params[0].name + '<br/>'
                 + params[0].seriesName + ' : ' + (-params[0].value) + '<br/>'
@@ -244,10 +245,10 @@ var panelEventOption = {
     },
     grid: {
         borderWidth: 0,
-        x: 2,
-        x2: 2,
-        y: 2,
-        y2: 10
+        x: 12,
+        x2: 12,
+        y: 25,
+        y2: 18
     },
     xAxis: [
         {
@@ -373,14 +374,10 @@ var panelMergeOption = {
     },
     tooltip: {
         trigger: 'axis',
-        hideDelay: 500,
-        formatter: function (params) {
-            console.log(params);
-            var result = params[0].name+"<br/>"+params[0].seriesName + ":" + params[0].value + "<br/>"
-                + params[1].seriesName + ":" + params[1].value + "<br/>"
-                + params[2].seriesName + ":" + params[2].value + "<br/>"
-                + params[3].seriesName + ":" + params[3].value;
-            return result;
+        hideDelay: 50,
+        transitionDuration:0,
+        position:function(x){
+            return [0,0];
         },
         textStyle: {
             fontSize: 8
@@ -396,10 +393,10 @@ var panelMergeOption = {
     // calculable : true,
     grid: {
         borderWidth: 0,
-        x: 2,
-        x2: 2,
-        y: 2,
-        y2: 10
+        x: 16,
+        x2: 16,
+        y: 35,
+        y2: 20
     },
     xAxis: [
         {
@@ -495,8 +492,7 @@ var panelFundOption = {
     },
     tooltip: {
         trigger: 'item',
-        // showDelay:0,
-        hideDelay: 500,
+        hideDelay: 50,
         axisPointer: {
             type: 'none'
         },
@@ -515,10 +511,10 @@ var panelFundOption = {
     // calculable : true,
     grid: {
         borderWidth: 0,
-        x: 2,
-        x2: 2,
-        y: 2,
-        y2: 10
+        x: 12,
+        x2: 12,
+        y: 25,
+        y2: 18
     },
     xAxis: [
         {
@@ -599,8 +595,9 @@ var dashProjOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['35%', '55%'],    // 默认全局居中
-            radius: '75%',
+            center: ['40%', '55%'],    // 默认全局居中
+            // radius: '75%',
+            radius: '95%',
             min: 0,
             max: 100,
             endAngle: 0,
@@ -683,8 +680,9 @@ var dashCompanyOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['35%', '55%'],    // 默认全局居中
-            radius: '75%',
+            center: ['40%', '55%'],    // 默认全局居中
+            // radius: '75%',
+            radius: '95%',
             min: 0,
             max: 20000,
             endAngle: 0,
@@ -767,8 +765,9 @@ var dashReportOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['35%', '55%'],    // 默认全局居中
-            radius: '75%',
+            center: ['40%', '55%'],    // 默认全局居中
+            // radius: '75%',
+            radius: '95%',
             min: 0,
             max: 700,
             endAngle: 0,
@@ -851,8 +850,8 @@ var dashElasticOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['35%', '55%'],    // 默认全局居中
-            radius: '75%',
+            center: ['40%', '55%'],    // 默认全局居中
+            radius: '95%',
             min: 0,
             max: 1200,
             endAngle: 0,
@@ -927,13 +926,13 @@ var eventPieOption = {
     tooltip: {
         trigger: 'item',
         showDelay: 500,
+        hideDelay:10,
         formatter: "{b}<br>{c}<br>{d}%"
     },
     legend: {
-        show: false,
         orient: 'vertical',
-        x: 'left',
-        data: []
+        x: 'right',
+        data: ['一级市场退出', '二级市场退出','早期投资', '中期投资', '后期投资', '其他投资']
     },
     calculable: false,
     // color:[
@@ -953,7 +952,7 @@ var eventPieOption = {
             name: '资本事件',
             type: 'pie',
             radius: [0, '60%'],
-            center: ['50%', '50%'],
+            center: ['45%', '50%'],
             itemStyle: {
                 normal: {
                     label: {
@@ -978,6 +977,7 @@ var eventPieOption = {
             type: 'pie',
             selectedMode: 'single',
             radius: ['70%', '85%'],
+            center: ['45%', '50%'],
             itemStyle: {
                 normal: {
                     labelLine: {
@@ -998,6 +998,7 @@ var eventBarOption = {
         }
     },
     legend: {
+        show:false,
         data: ['早期投资', '中期投资', '后期投资', '其他投资','一级市场退出', '二级市场退出']
     },
     toolbox: {
@@ -1028,7 +1029,7 @@ var eventBarOption = {
     ],
     grid: {
         x: 40,
-        y: 50,
+        y: 25,
         x2: 25,
         y2: 20
     },

@@ -8,7 +8,7 @@ setTimeout(logcount,1000);
 
 function logcount(){
     count--;
-    console.log(count);
+    // console.log(count);
     $("#second_count").html(count);
     if(count==0){
         gotoIndex();
