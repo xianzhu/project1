@@ -24,7 +24,7 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<!-- <mvc:interceptors>
+	<mvc:interceptors>
     	<mvc:interceptor>
     	<mvc:mapping path="/**"/>
     	<mvc:exclude-mapping path="/login"/>
@@ -45,12 +45,12 @@
     	<mvc:exclude-mapping path="/fonts/**"/>
     	<mvc:exclude-mapping path="/img/**"/>
     	<mvc:exclude-mapping path="/testData/**"/>
-    	<mvc:exclude-mapping path="/peseer/*html"/>
-    	<mvc:exclude-mapping path="/*html"/>
+    	<!-- <mvc:exclude-mapping path="/peseer/*html"/>
+    	<mvc:exclude-mapping path="/*html"/> -->
     	
     	<bean class="com.cv.kdata.interceptor.LoginValidation"></bean>
     	</mvc:interceptor>
-   </mvc:interceptors> -->
+   </mvc:interceptors>
    
    <mvc:default-servlet-handler />
 
