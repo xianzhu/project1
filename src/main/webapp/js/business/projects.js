@@ -2,6 +2,7 @@
  * Created by a88u on 2016/10/23.
  */
 menuList.project.isActive=true;
+var iscurrent=getUrlQueryStr("cur",location.href);
 
 var v_projParamModel = new Vue({
     el: "#v-projParamModel",
@@ -11,9 +12,7 @@ var v_projParamModel = new Vue({
         keyType: "", // 关键字类型
         industry_class: "", // 行业分类
         industry_class_filter:"", // 行业分类过滤
-
         ifilterKey:"",
-
         industry_list:clone(industrySelectionList),
 
         showInputWarning: false, // 显示输入提示
@@ -90,6 +89,14 @@ var v_projectsModel = new Vue({
         }
     }
 });
+
+if(iscurrent=="true"){
+    v_projParamModel.$data.showProjParamDiv=false;
+    doProjSearch();
+}else{
+    v_projParamModel.$data.showProjParamDiv=true;
+}
+
 
 function doProjSearch() {
     console.log("doproject search");

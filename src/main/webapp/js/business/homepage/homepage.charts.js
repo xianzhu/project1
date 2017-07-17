@@ -199,6 +199,10 @@ function showProjDashEcharts(srcdata, id) {
             echarts = ec;
             var dom = document.getElementById(id);
             projDashChart = echarts.init(dom);
+            var ecConfig = require('echarts/config');
+            projDashChart.on(ecConfig.EVENT.GAUGE_CLICKED,function(param){
+                gotoCurrentProjectPage();
+            });
             projDashChart.setOption(moption, true);
 
             window.addEventListener('resize', function () {
@@ -223,6 +227,10 @@ function showCompanyDashEcharts(srcdata, id) {
             echarts = ec;
             var dom = document.getElementById(id);
             companyDashChart = echarts.init(dom);
+            var ecConfig = require('echarts/config');
+            companyDashChart.on(ecConfig.EVENT.GAUGE_CLICKED,function(param){
+                // gotoTraderReportPage();
+            });
             companyDashChart.setOption(moption, true);
             window.addEventListener('resize', function () {
                 companyDashChart.resize && companyDashChart.resize();
@@ -246,6 +254,10 @@ function showReportDashEcharts(srcdata, id) {
             echarts = ec;
             var dom = document.getElementById(id);
             reportDashChart = echarts.init(dom);
+            var ecConfig = require('echarts/config');
+            reportDashChart.on(ecConfig.EVENT.GAUGE_CLICKED,function(param){
+                gotoTraderReportPage(); // 哪个report？
+            });
             reportDashChart.setOption(moption, true);
             window.addEventListener('resize', function () {
                 reportDashChart.resize && reportDashChart.resize();
@@ -270,6 +282,10 @@ function showElasticDashEcharts(srcdata, id) {
             echarts = ec;
             var dom = document.getElementById(id);
             elasticDashChart = echarts.init(dom);
+            var ecConfig = require('echarts/config');
+            elasticDashChart.on(ecConfig.EVENT.GAUGE_CLICKED,function(param){
+                gotoNewsPage();
+            });
             elasticDashChart.setOption(moption, true);
             window.addEventListener('resize', function () {
                 elasticDashChart.resize && elasticDashChart.resize();
@@ -314,7 +330,6 @@ function showEventMixEcharts(piedata,bardata, id) {
                 var hasselect=false;
                 for (var idx in selected) {
                     serie = moption.series[idx];
-                    // console.log(serie);
                     for (var i = 0, l = serie.data.length; i < l; i++) {
                         if (selected[idx][i]) {
                             str += '【系列' + idx + '】' + serie.name + ' : ' +
@@ -328,23 +343,18 @@ function showEventMixEcharts(piedata,bardata, id) {
                     }
                 }
                 if(!hasselect){
-                    console.log("not select");
                     v_homepageModel.$data.eventType='';
                     v_homepageModel.$data.eventPage=0;
                     getEventSubpage('');
                 }
-                // console.log(str);
             })
-            console.log("show eventMixChart",dom.height);
             eventMixChart.setOption(moption, true);
             window.addEventListener('resize', function () {
-                console.log("eventMixChart resize",$("#"+id).css('height'),$("#"+id).height());
                 eventMixChart.resize && eventMixChart.resize();
             });
         });
     } else {
         eventMixChart.setOption(moption, true);
-        console.log("reshow eventMixChart");
     }
 }
 
@@ -381,7 +391,6 @@ function showEventMixMinEcharts(piedata,bardata, id) {
                 var str = '当前选择： ';
                 for (var idx in selected) {
                     serie = moption.series[idx];
-                    // console.log(serie);
                     for (var i = 0, l = serie.data.length; i < l; i++) {
                         if (selected[idx][i]) {
                             str += '【系列' + idx + '】' + serie.name + ' : ' +
@@ -392,53 +401,41 @@ function showEventMixMinEcharts(piedata,bardata, id) {
                     }
 
                 }
-                // console.log(str);
             })
-            console.log("show eventMixMinChart",dom.height);
             eventMixMinChart.setOption(moption, true);
             window.addEventListener('resize', function () {
-                console.log("eventMixMinChart resize",$("#"+id).css('height'),$("#"+id).height());
                 eventMixMinChart.resize && eventMixMinChart.resize();
             });
         });
     } else {
         eventMixMinChart.setOption(moption, true);
-        console.log("reshow eventMixMinChart");
     }
 }
 
 
 function allChartResize() {
     if(typeof rptChart!='undefined') {
-        console.log("rptChart resize");
         rptChart.resize && rptChart.resize();
     }
     if(typeof orgPanelChart!='undefined') {
-        console.log("orgPanelChart resize");
         orgPanelChart.resize && orgPanelChart.resize();
     }
     if(typeof eventPanelChart!='undefined') {
-        console.log("eventPanelChart resize");
         eventPanelChart.resize && eventPanelChart.resize();
     }
     if(typeof mergePanelChart!='undefined') {
-        console.log("MergePanelChart resize");
         mergePanelChart.resize && mergePanelChart.resize();
     }
     if(typeof fundPanelChart!='undefined') {
-        console.log("fundPanelChart resize");
         fundPanelChart.resize && fundPanelChart.resize();
     }
     if(typeof eventBarChart!='undefined') {
-        console.log("eventBarChart resize");
         eventBarChart.resize && eventBarChart.resize();
     }
     if(typeof eventPieChart!='undefined') {
-        console.log("eventPieChart resize");
         eventPieChart.resize && eventPieChart.resize();
     }
     if(typeof eventMixChart!='undefined') {
-        console.log("eventMixChart resize");
         eventMixChart.resize && eventMixChart.resize();
     }
 

@@ -833,7 +833,7 @@ var dashReportOption = {
                     color: '#333'
                 }
             },
-            data: [{value: 1005, name: '报告'}]
+            data: [{value: 1005, name: '研报'}]
         }
     ]
 };
@@ -853,9 +853,10 @@ var dashElasticOption = {
             center: ['40%', '55%'],    // 默认全局居中
             radius: '95%',
             min: 0,
-            max: 1200,
+            max: 5000,
             endAngle: 0,
             splitNumber: 12,
+            clickable:false,
             axisLine: {            // 坐标轴线
                 lineStyle: {       // 属性lineStyle控制线条样式
                     color: [[1 / 4, 'lime'], [5 / 6, '#1e90ff'], [1, '#ff4500']],
@@ -1114,18 +1115,20 @@ var eventMixOption = {
     tooltip: {
         trigger: 'axis',
         axisPointer: {
-            type: 'shadow'
+            type: 'none'
         }
     },
     legend: {
         show: true,
-        x: 'center',
+        x: 'right',
+        padding:[5,40,5,5],
         data: ['早期投资', '中期投资', '后期投资', '其他投资','一级市场退出', '二级市场退出']
     },
     toolbox: {
         show: true,
         orient: 'vertical',
-        y: 'center',
+        y: 'bottom',
+        padding:[5,15,30,1],
         feature: {
             mark: {show: false},
             magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
@@ -1153,7 +1156,7 @@ var eventMixOption = {
     grid: {
         x: '48%',
         y: 40,
-        x2: 35,
+        x2: 40,
         y2: 30
     },
 
@@ -1302,13 +1305,14 @@ var eventMixOption = {
         {
             name: '资本事件',
             type: 'pie',
-            radius: [0, '28%'],
-            center: ['23%', '55%'],
+            radius: [0, '45%'],
+            center: ['23%', '50%'],
             tooltip: {
                 trigger: 'item',
                 showDelay: 500,
                 formatter: "{b}<br>{c}({d}%)"
             },
+            clickable:false,
             itemStyle: {
                 normal: {
                     label: {
@@ -1339,8 +1343,8 @@ var eventMixOption = {
             name: '二级分类',
             type: 'pie',
             selectedMode: 'single',
-            radius: ['31%', '50%'],
-            center:['23%','55%'],
+            radius: ['55%', '75%'],
+            center:['23%','50%'],
             tooltip: {
                 trigger: 'item',
                 showDelay: 500,

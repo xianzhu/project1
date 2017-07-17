@@ -853,7 +853,7 @@ function resizeLeftSide(isLoad) {
         }
     }
 
-    var topH = Math.floor(pheight * 0.4), midH = Math.floor(pheight * 0.6) - 50;
+    var topH = Math.floor(pheight * 0.4)-30, midH = Math.floor(pheight * 0.6) - 20;
     console.log("ResizeLeftSide", $("#homemodule_news_row").height(), pheight, topH, midH);
     if (bwidth > 1194) {
         $("#orgInvestChart").css('height', topH - 72);
