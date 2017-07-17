@@ -1144,13 +1144,10 @@ html, body {
     position: absolute;
     width: 100%;
     z-index: 9;
-    /*padding:15px 0px;*/
     margin-top: 10px;
-    /*left:20px;*/
-    /*width:calc(100% - 10px);*/
-    box-shadow: 0 0 10px #BDBDBD;
+    box-shadow: 0 0 0 #BDBDBD;
     border-radius: 5px;
-    height: calc(100% - 25px);
+    height: calc(100% - 10px);
 }
 
 @media (min-width: 768px) {

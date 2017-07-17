@@ -1237,10 +1237,72 @@ var eventMixOption = {
             data: []
         },
 
+        // {
+        //     name: '资本事件',
+        //     type: 'pie',
+        //     radius: [0, '55%'],
+        //     center: ['23%', '55%'],
+        //     tooltip: {
+        //         trigger: 'item',
+        //         showDelay: 500,
+        //         formatter: "{b}<br>{c}({d}%)"
+        //     },
+        //     itemStyle: {
+        //         normal: {
+        //             label: {
+        //                 position: 'inner',
+        //                 textStyle:{
+        //                     color:'#fff'
+        //                 },
+        //                 formatter:function (params) {
+        //                     var result=params.percent+"%";
+        //                     if(params.percent<15){ // 如果饼图值过小，不显示
+        //                         result="";
+        //                     }
+        //                     return result;
+        //                 }
+        //             },
+        //             labelLine: {
+        //                 show: false,
+        //                 length:20,
+        //                 lineStyle:{
+        //                     color:'#333'
+        //                 }
+        //             }
+        //         }
+        //     },
+        //     data: []
+        // },
+        // {
+        //     name: '二级分类',
+        //     type: 'pie',
+        //     selectedMode: 'single',
+        //     radius: ['62%', '75%'],
+        //     center:['23%','55%'],
+        //     tooltip: {
+        //         trigger: 'item',
+        //         showDelay: 500,
+        //         formatter: "{b}<br>{c}({d}%)"
+        //     },
+        //     itemStyle: {
+        //         normal: {
+        //             // label:{
+        //             //     position: 'outer',
+        //             //     textStyle:{
+        //             //         color:'#000'
+        //             //     },
+        //             // },
+        //             labelLine: {
+        //                 length: 1
+        //             }
+        //         }
+        //     },
+        //     data: []
+        // }
         {
             name: '资本事件',
             type: 'pie',
-            radius: [0, '55%'],
+            radius: [0, '28%'],
             center: ['23%', '55%'],
             tooltip: {
                 trigger: 'item',
@@ -1277,7 +1339,7 @@ var eventMixOption = {
             name: '二级分类',
             type: 'pie',
             selectedMode: 'single',
-            radius: ['62%', '75%'],
+            radius: ['31%', '50%'],
             center:['23%','55%'],
             tooltip: {
                 trigger: 'item',
@@ -1314,6 +1376,7 @@ var eventMixMinOption = {
         show: true,
         orient: 'vertical',
         x: 'right',
+        padding:[25,5,5,5],
         data: ['早期投资', '中期投资', '后期投资', '其他投资','一级市场退出', '二级市场退出']
     },
     toolbox: {

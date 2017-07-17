@@ -850,27 +850,25 @@ function resizeLeftSide(isLoad) {
     var topH = Math.floor(pheight * 0.4), midH = Math.floor(pheight * 0.6) - 50;
     console.log("ResizeLeftSide", $("#homemodule_news_row").height(), pheight, topH, midH);
     if (bwidth > 1194) {
-        console.log(bwidth);
-        // console.log(isLoad,pheight,topH,midH,btmH);
         $("#orgInvestChart").css('height', topH - 72);
         $("#org_panel_Chart").css('height', topH / 2 - 8);
         $("#merge_panel_Chart").css('height', topH / 2 - 8);
         $("#fund_panel_Chart").css('height', topH / 2 - 8);
         $("#event_panel_Chart").css('height', topH / 2 - 8);
-        if (bwidth > 1494) { // 显示table、mix >1500
+        if (bwidth > 1194) { // 显示table、mix >1500
             $("#event_mix_charts").css('height', midH - 20);
             $("#event_mixmin_charts").css('height', 0);
             var num=Math.floor((midH-56)/35), tableH=num*35+37;
-            console.log("显示table、mix", midH,num,tableH);
+            // console.log("显示table、mix", midH,num,tableH);
             v_homepageModel.$data.eventNum=num;
             $(".event_table_responsive").css('height', tableH);
         } else { // 折半 显示table、pie、bar (1200-1500)
-            console.log("折半显示", midH);
+            // console.log("折半显示", midH);
             $("#event_mix_charts").css('height', 0);
             $("#event_mixmin_charts").css('height', midH-20);
 
             var num=Math.floor((Math.floor(midH / 2) - 37)/35), tableH=num*35+37;
-            console.log("显示table、mix", midH,num,tableH);
+            // console.log("显示table、mix", midH,num,tableH);
             v_homepageModel.$data.eventNum=num;
             $(".event_table_responsive").css('height', tableH);
         }
@@ -888,14 +886,14 @@ function resizeLeftSide(isLoad) {
             $("#event_mix_charts").css('height', 0);
             $("#event_mixmin_charts").css('height', 360);
             var num=Math.floor(143/35), tableH=num*35+37;
-            console.log("显示table、mix", midH,num,tableH);
+            // console.log("显示table、mix", midH,num,tableH);
             v_homepageModel.$data.eventNum=num;
             $(".event_table_responsive").css('height', tableH);
         } else { // table、mix(<1024)
             $("#event_mixmin_charts").css('height', 0);
             $("#event_mix_charts").css('height', 280);
             var num=7, tableH=num*35+37;
-            console.log("显示table、mix", midH,num,tableH);
+            // console.log("显示table、mix", midH,num,tableH);
             v_homepageModel.$data.eventNum=num;
             $(".event_table_responsive").css('height', tableH);
         }
