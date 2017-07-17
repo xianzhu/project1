@@ -42,8 +42,8 @@ var v_homepageModel = new Vue({
             }
             getEventSubpage(this.$data.eventType);
         },
-        getEventDetail: function (title, type, ptype) {
-            getEventByTitle(title, type, ptype);
+        getEventDetail: function (element) {
+            getEventByTitle(element);
         }
     },
     filters: {
@@ -666,9 +666,9 @@ function getEventSubpage(type) {
 }
 
 // 查看今日资本事件详情
-function getEventByTitle(title, type, ptype) {
-    console.log(title, type);
-    title = "每日优鲜获注资"; // for test
+function getEventByTitle(element) {
+    var title=element.eventTitle,type=element.eventClass,ptype=element.eventType;
+    console.log(element);
     $.ajax({
         url: commonUrls.homeEventDetailUrl,              //请求地址
         type: "POST",                            //请求方式
@@ -691,7 +691,10 @@ function getEventByTitle(title, type, ptype) {
                     modal_event_info.$data.type = eItem.eventType; // 类型（轮次）
                     modal_event_info.$data.desc = eItem.eventDesc; // 简介
                 } else { // 没有对应的内容，不显示（数据不同步或数据错误，暂定不显示）
-                    return;
+                    modal_event_info.$data.title = element.eventTitle; // 标题
+                    modal_event_info.$data.entName = element.entCnName; // 标的公司
+                    modal_event_info.$data.type = element.eventType; // 类型（轮次）
+                    modal_event_info.$data.desc = "--"; // 简介
                 }
                 if (ptype == EventType.invest) {
                     modal_event_info.$data.isInvest = true;

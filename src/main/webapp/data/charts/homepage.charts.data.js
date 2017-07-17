@@ -1153,7 +1153,7 @@ var eventMixOption = {
     grid: {
         x: '48%',
         y: 40,
-        x2: 30,
+        x2: 35,
         y2: 30
     },
 
