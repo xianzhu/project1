@@ -1119,7 +1119,7 @@ var eventMixOption = {
     },
     legend: {
         show: true,
-        x: 'center',
+        x: 'right',
         data: ['早期投资', '中期投资', '后期投资', '其他投资','一级市场退出', '二级市场退出']
     },
     toolbox: {
@@ -1153,7 +1153,7 @@ var eventMixOption = {
     grid: {
         x: '48%',
         y: 40,
-        x2: 30,
+        x2: 25,
         y2: 30
     },
 
@@ -1410,9 +1410,9 @@ var eventMixMinOption = {
     ],
     grid: {
         x: 25,
-        y: '51%',
+        y: '53%',
         x2: 25,
-        y2: 30
+        y2: 20
     },
 
     series: [

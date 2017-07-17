@@ -19,7 +19,6 @@ var v_homepageModel = new Vue({
         newsList: [], // 新闻列表
         eventPage: 0, // 事件页
         eventEnd: false,
-        eventType:'', // 当前选中事件类型
         eventNum:7, // 显示的今日事件数目
         eventList: [] // 事件列表
     },
@@ -40,7 +39,6 @@ var v_homepageModel = new Vue({
             } else {
                 this.$data.eventPage++;
             }
-            getEventSubpage(this.$data.eventType);
         },
         getEventDetail: function (title, type, ptype) {
             getEventByTitle(title, type, ptype);
@@ -58,19 +56,15 @@ var v_homepageModel = new Vue({
             return '第' + (value + 1) + '页';
         },
         numResetFilter:function(value){
-            var result=[],eventnum=this.$data.eventNum,
+            var result=[],eventnum=this.eventNum,
                 pnum=commonPageNum.homeEventList,
-                lnum=this.$data.eventList.length;
-
+                lnum=this.eventList.length;
+            console.log(eventnum,pnum,lnum);
             for(var i=0;i<eventnum&&i<pnum&&i<lnum;i++){
                 var item=value[i];
                 result.push(item);
             }
-            if (result.length == this.$data.eventNum) {
-                this.$data.eventEnd = false;
-            } else {
-                this.$data.eventEnd = true;
-            }
+            console.log(result);
             return result;
         }
     }
@@ -582,7 +576,7 @@ function getEventBarData() { // 今日资本事件柱状图、饼图
                     });
                 }
                 showEventMixEcharts(pieData, barData, "event_mix_charts");
-                // showEventMixMinEcharts(pieData, barData, "event_mixmin_charts");
+                showEventMixMinEcharts(pieData, barData, "event_mixmin_charts");
             }
         },
         fail: function (status) {
@@ -600,15 +594,13 @@ function getEventBarData() { // 今日资本事件柱状图、饼图
 }
 // 今日事件列表
 function getEventSubpage(type) {
-    var num=v_homepageModel.$data.eventNum;
     $.ajax({
         url: commonUrls.homeEventpageUrl,              //请求地址
         type: "POST",                            //请求方式
         data: {
-            from: v_homepageModel.$data.eventPage * num,
+            from: v_homepageModel.$data.eventPage * commonPageNum.homeEventList,
             type: type,
-            // count: commonPageNum.homeEventList
-            count:num
+            count: commonPageNum.homeEventList
         },
         dataType: "json",
         success: function (res) {
@@ -649,6 +641,11 @@ function getEventSubpage(type) {
                 }
 
                 v_homepageModel.$data.eventList = elist;
+                if (v_homepageModel.$data.eventList && v_homepageModel.$data.eventList.length == commonPageNum.homeEventList) {
+                    v_homepageModel.$data.eventEnd = false;
+                } else {
+                    v_homepageModel.$data.eventEnd = true;
+                }
             }
         },
         fail: function (status) {
@@ -852,20 +849,29 @@ function resizeLeftSide(isLoad) {
 
     var topH = Math.floor(pheight * 0.4), midH = Math.floor(pheight * 0.6) - 50;
     console.log("ResizeLeftSide", $("#homemodule_news_row").height(), pheight, topH, midH);
-    if (bwidth > 1194) {
+    if (bwidth > 1020) {
         $("#orgInvestChart").css('height', topH - 72);
         $("#org_panel_Chart").css('height', topH / 2 - 8);
         $("#merge_panel_Chart").css('height', topH / 2 - 8);
         $("#fund_panel_Chart").css('height', topH / 2 - 8);
         $("#event_panel_Chart").css('height', topH / 2 - 8);
+        if (bwidth > 1194) { // 显示table、mix >1200
+            $("#event_mix_charts").css('height', midH - 20);
+            $("#event_mixmin_charts").css('height', 0);
+            var num=Math.floor((midH-56)/35), tableH=num*35+37;
+            console.log("显示table、mix", midH,num,tableH);
+            v_homepageModel.$data.eventNum=num;
+            $(".event_table_responsive").css('height', tableH);
+        } else { // 折半 显示table、pie、bar (1024-1200)
+            // console.log("折半显示", midH);
+            $("#event_mix_charts").css('height', 0);
+            $("#event_mixmin_charts").css('height', 360);
 
-        // $("#event_mix_charts").css('height', midH/2-20);
-        var num=Math.floor((midH/2-61)/36), tableH=num*36+61;
-        $("#event_mix_charts").css('height', midH-tableH-20);
-        console.log("显示table、mix", midH,num,tableH);
-        v_homepageModel.$data.eventNum=num;
-        $(".event_table_responsive").css('height', tableH);
-
+            var num=Math.floor(143/35), tableH=num*35+37;
+            console.log("显示table、mix", midH,num,tableH);
+            v_homepageModel.$data.eventNum=num;
+            $(".event_table_responsive").css('height', tableH);
+        }
         $("#project_dashboard_chart").css('height', btmH);
         $("#company_dashboard_chart").css('height', btmH);
         $("#report_dashboard_chart").css('height', btmH);
@@ -876,11 +882,21 @@ function resizeLeftSide(isLoad) {
         $("#merge_panel_Chart").css('height', 128);
         $("#fund_panel_Chart").css('height', 128);
         $("#event_panel_Chart").css('height', 128);
-        $("#event_mix_charts").css('height', 300);
-        var num=7, tableH=num*36+61;
-        console.log("显示table、mix", midH,num,tableH);
-        v_homepageModel.$data.eventNum=num;
-        $(".event_table_responsive").css('height', tableH);
+        if (bwidth > 1018) { // table、bar、pie(1024---1200)
+            $("#event_mix_charts").css('height', 0);
+            $("#event_mixmin_charts").css('height', 360);
+            var num=Math.floor(323/35), tableH=num*35+37;
+            console.log("显示table、mix", midH,num,tableH);
+            v_homepageModel.$data.eventNum=num;
+            $(".event_table_responsive").css('height', tableH);
+        } else { // table、mix(<1024)
+            $("#event_mixmin_charts").css('height', 0);
+            $("#event_mix_charts").css('height', 280);
+            var num=7, tableH=num*35+37;
+            console.log("显示table、mix", midH,num,tableH);
+            v_homepageModel.$data.eventNum=num;
+            $(".event_table_responsive").css('height', tableH);
+        }
 
         $("#project_dashboard_chart").css('height', 180);
         $("#company_dashboard_chart").css('height', 180);

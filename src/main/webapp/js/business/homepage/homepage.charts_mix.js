@@ -280,6 +280,94 @@ function showElasticDashEcharts(srcdata, id) {
     }
 }
 
+// 今日资本事件 - 饼图
+function showEventPieEcharts1(srcdata, id) {
+    if (!srcdata) {
+        console.log("data is undefined.");
+        return;
+    }
+    var echarts;
+    var moption = clone(eventPieOption);
+
+    // for(var i=srcdata.color.length-1;i>=0;i--){
+    //     moption.color.unshift(srcdata.color[i]);
+    // }
+    // console.log(moption.color);
+    moption.series[0].data=srcdata.eventOneData;
+    moption.series[1].data=srcdata.eventTwoData;
+
+    if (typeof eventPieChart == 'undefined') {
+        require(['echarts', 'echarts/chart/pie'], function (ec) {
+            echarts = ec;
+            var dom = document.getElementById(id);
+            eventPieChart = echarts.init(dom);
+            var ecConfig = require('echarts/config');
+
+            eventPieChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = moption.series[idx];
+                    // console.log(serie);
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                            var type = serie.data[i].name,ptype=serie.data[i].type;
+                            getEventSubpage(type,ptype);
+                        }
+                    }
+
+                }
+                // console.log(str);
+            })
+            console.log("show eventPieChart",dom.height);
+            eventPieChart.setOption(moption, true);
+            window.addEventListener('resize', function () {
+                console.log("eventPieChart resize",$("#"+id).css('height'),$("#"+id).height());
+                eventPieChart.resize && eventPieChart.resize();
+            });
+        });
+    } else {
+        eventPieChart.setOption(moption, true);
+        console.log("reshow eventPieChart");
+    }
+}
+// 今日资本事件 - 柱状图
+function showEventBarEcharts1(srcdata, id) {
+    if (!srcdata) {
+        console.log("data is undefined.");
+        return;
+    }
+    var echarts;
+    var moption = clone(eventBarOption);
+    moption.xAxis[0].data=srcdata.durData;
+    moption.series[0].data=srcdata.invEarly; // 早期投资
+    moption.series[1].data=srcdata.invMiddle; // 中期投资
+    moption.series[2].data=srcdata.invLate; // 后期投资
+    moption.series[3].data=srcdata.invOther; // 其他投资
+    moption.series[4].data=srcdata.exitOne; // 一级市场退出
+    moption.series[5].data=srcdata.exitTwo; // 二级市场退出
+
+    if (typeof eventBarChart == 'undefined') {
+        require(['echarts', 'echarts/chart/bar'], function (ec) {
+            echarts = ec;
+            var dom = document.getElementById(id);
+            eventBarChart = echarts.init(dom);
+            var ecConfig = require('echarts/config');
+console.log("show eventBarChart",dom.height);
+            eventBarChart.setOption(moption, true);
+            window.addEventListener('resize', function () {
+                console.log("eventBarChart resize",$("#"+id).css('height'),$("#"+id).height());
+                eventBarChart.resize && eventBarChart.resize();
+            });
+        });
+    } else {
+        eventBarChart.setOption(moption, true);
+        console.log("reshow eventBarChart");
+    }
+}
 // 今日资本事件 - 饼图、柱状图
 function showEventMixEcharts(piedata,bardata, id) {
     if (!bardata||!piedata) {
@@ -311,7 +399,6 @@ function showEventMixEcharts(piedata,bardata, id) {
                 var selected = param.selected;
                 var serie;
                 var str = '当前选择： ';
-                var hasselect=false;
                 for (var idx in selected) {
                     serie = moption.series[idx];
                     // console.log(serie);
@@ -319,19 +406,11 @@ function showEventMixEcharts(piedata,bardata, id) {
                         if (selected[idx][i]) {
                             str += '【系列' + idx + '】' + serie.name + ' : ' +
                                 '【数据' + i + '】' + serie.data[i].name + ' ';
-                            var type = serie.data[i].name;
-                            v_homepageModel.$data.eventType=type;
-                            v_homepageModel.$data.eventPage=0;
-                            getEventSubpage(type);
-                            hasselect=true;
+                            var type = serie.data[i].name,ptype=serie.data[i].type;
+                            getEventSubpage(type,ptype);
                         }
                     }
-                }
-                if(!hasselect){
-                    console.log("not select");
-                    v_homepageModel.$data.eventType='';
-                    v_homepageModel.$data.eventPage=0;
-                    getEventSubpage('');
+
                 }
                 // console.log(str);
             })
@@ -386,8 +465,8 @@ function showEventMixMinEcharts(piedata,bardata, id) {
                         if (selected[idx][i]) {
                             str += '【系列' + idx + '】' + serie.name + ' : ' +
                                 '【数据' + i + '】' + serie.data[i].name + ' ';
-                            var type = serie.data[i].name;
-                            getEventSubpage(type);
+                            var type = serie.data[i].name,ptype=serie.data[i].type;
+                            getEventSubpage(type,ptype);
                         }
                     }
 
