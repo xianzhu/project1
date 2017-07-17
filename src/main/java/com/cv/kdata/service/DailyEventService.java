@@ -141,8 +141,8 @@ public class DailyEventService {
 	 * @return
 	 */
 	public List<PMInvestEvent> getCurrentDateInvestEvents(String type, int from, int count) {
-//		String date = TimeUtil.getCurrentTime("yyyy-MM-dd");
-		String date = "2017-04-13"; //测试时间
+		String date = TimeUtil.getCurrentTime("yyyy-MM-dd");
+//		String date = "2017-04-13"; //测试时间
 
 		List<PMInvestEvent> objectList = new ArrayList<>();
 		List<Object> para = new ArrayList<>();
@@ -194,8 +194,8 @@ public class DailyEventService {
 	 * @return
 	 */
 	public List<PMExitEvent> getCurrentDateExitEvents(String type, int from, int count){
-//		String date = TimeUtil.getCurrentTime("yyyy-MM-dd");
-		String date = "2017-04-13"; //测试时间
+		String date = TimeUtil.getCurrentTime("yyyy-MM-dd");
+//		String date = "2017-04-13"; //测试时间
 
 		List<PMExitEvent> objectList = new ArrayList<>();
 		List<Object> para = new ArrayList<>();
