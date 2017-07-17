@@ -11,11 +11,6 @@ var EventType = {
 var v_homepageModel = new Vue({
     el: "#v-homepageModel",
     data: {
-        statOrgData: {total: 12345, current: 345},
-        statEventData: {total: 23345, current: 645},
-        statMergeData: {total: 35345, current: 322},
-        statFundData: {total: 52345, current: 845},
-
         projDashData: {total: 0, current: 0},
         companyDashData: {total: 0, current: 0},
         reportDashData: {total: 0, current: 0},
@@ -24,6 +19,7 @@ var v_homepageModel = new Vue({
         newsList: [], // 新闻列表
         eventPage: 0, // 事件页
         eventEnd: false,
+        eventNum:7, // 显示的今日事件数目
         eventList: [] // 事件列表
     },
     methods: {
@@ -44,8 +40,8 @@ var v_homepageModel = new Vue({
                 this.$data.eventPage++;
             }
         },
-        getEventDetail: function (title, type,ptype) {
-            getEventByTitle(title, type,ptype);
+        getEventDetail: function (title, type, ptype) {
+            getEventByTitle(title, type, ptype);
         }
     },
     filters: {
@@ -58,10 +54,22 @@ var v_homepageModel = new Vue({
         },
         currentEventPageFilter: function (value) {
             return '第' + (value + 1) + '页';
+        },
+        numResetFilter:function(value){
+            var result=[],eventnum=this.eventNum,
+                pnum=commonPageNum.homeEventList,
+                lnum=this.eventList.length;
+            console.log(eventnum,pnum,lnum);
+            for(var i=0;i<eventnum&&i<pnum&&i<lnum;i++){
+                var item=value[i];
+                result.push(item);
+            }
+            console.log(result);
+            return result;
         }
-
     }
 });
+
 
 getNewsList();
 getRptData();
@@ -73,6 +81,8 @@ getEventSubpage("");
 var calendar;
 $(document).ready(function () {
     setCalendar();
+    resizeDetailMask();
+    resizeLeftSide(true);
 });
 // 新闻
 function getNewsList() {
@@ -89,6 +99,7 @@ function getNewsList() {
                 console.log("failure:", res.message);
             } else if (res.status == "timeout") {
                 console.log("timeout");
+                goToNotlogon();
             } else if (res.status == "success") {
                 var response = res;
                 v_homepageModel.$data.newsList = [];
@@ -96,6 +107,12 @@ function getNewsList() {
                 for (var i = 0; i < response.list.length && i < commonPageNum.homeNewsList; i++) {
                     v_homepageModel.$data.newsList.push(response.list[i]);
                 }
+                v_homepageModel.$nextTick(function () {
+                    resizeLeftSide(false);
+                    setTimeout(function () {
+                        allChartResize();
+                    }, 1000);
+                });
             }
         },
         fail: function (status) {
@@ -114,15 +131,19 @@ function getNewsList() {
 
 // 日历
 function setCalendar() {
-    var nw = $("#homemodule_news_ibox").width(), nh = getCalendarHeight(nw);
+    var nw = $("#homemodule_news_ibox").width(), nh = getCalendarHeight(nw),
+        winheight = $('body').height() - 60;
     var date = new Date();
     var y = date.getFullYear();
     var m = date.getMonth();
-    // console.log(nw, nh);
+    console.log("setCalendar", nw, nh, winheight);
     $.ajax({
         url: commonUrls.homeCalendarUrl,
         type: "get",
-        data: {},
+        data: {
+            date: '2017-01-01',
+            to: '2017-12-31'
+        },
         dataType: "json",
         success: function (res) {
             if (res.status == "failure") {
@@ -131,25 +152,36 @@ function setCalendar() {
                 console.log("timeout");
             } else if (res.status == "success") {
                 var response = res;
-                var calendarList = [],calendarobj={};
+                var calendarList = [], calendarobj = {};
 
-for(var i=0;i<response.object.length;i++){
-    var item=response.object[i];
-    console.log(item);
-    if(typeof calendarobj[item.time]=='undefined'){
-        calendarobj[item.time]={date:item.time,value:[{category:item.category,comment:item.comment,geo:item.geo,
-            name:item.name,orgCnShort:item.orgCnShort,type:item.type,url:item.url,domId:"accordion1"}]};
-    }else{
-        var domid="accordion"+calendarobj[item.time].value.length;
-        calendarobj[item.time].value.push({category:item.category,comment:item.comment,geo:item.geo,
-            name:item.name,orgCnShort:item.orgCnShort,type:item.type,url:item.url,domId:domid});
-    }
-}
-for(var key in calendarobj){
-    var citem=calendarobj[key];
-    calendarList.push({date:citem.date,value:citem.value});
-}
-
+                for (var i = 0; i < response.object.length; i++) {
+                    var item = response.object[i];
+                    // console.log(item);
+                    if (typeof calendarobj[item.time] == 'undefined') {
+                        calendarobj[item.time] = {
+                            date: item.time, value: [{
+                                category: item.category,
+                                comment: item.comment,
+                                geo: item.geo,
+                                name: item.name,
+                                orgCnShort: item.orgCnShort,
+                                type: item.type,
+                                url: item.url,
+                                domId: "accordion1"
+                            }]
+                        };
+                    } else {
+                        var domid = "accordion" + calendarobj[item.time].value.length;
+                        calendarobj[item.time].value.push({
+                            category: item.category, comment: item.comment, geo: item.geo,
+                            name: item.name, orgCnShort: item.orgCnShort, type: item.type, url: item.url, domId: domid
+                        });
+                    }
+                }
+                for (var key in calendarobj) {
+                    var citem = calendarobj[key];
+                    calendarList.push({date: citem.date, value: citem.value});
+                }
                 $('#calendar').calendar({
                     width: nw,
                     height: nh,
@@ -178,20 +210,39 @@ for(var key in calendarobj){
 }
 
 function showCalendarInfo(header, data) {
+    var cListData = [];
+    for (var key in data) {
+        var kitem = data[key];
+        cListData.push({
+            domId: "#" + kitem.domId, domid: kitem.domId, category: kitem.category,
+            comment: kitem.comment, geo: kitem.geo, name: kitem.name, orgCnShort: kitem.orgCnShort,
+            type: kitem.type, url: kitem.url
+        });
+    }
+// console.log(cListData);
+    modal_mask_info.$data.header = header;
+    modal_mask_info.$data.showModal = true;
+    modal_mask_info.$data.information = cListData;
+    modal_mask_info.$nextTick(function () {
+        bindCalendarItem();
+    });
+}
+
+function showCalendarInfo_old(header, data) {
     var dom = $("#mask_modal_body");
-    var DT_ELE_CLASS='class="accordion-title accordionTitle js-accordionTrigger" aria-expanded="false" ',
-        DD_ELE_CLASS='class="accordion-content accordionItem is-collapsed" aria-hidden="true"'
-    var DT_ELEMENT='<dt><a href="#{domId}" aria-controls="{domId}" '+DT_ELE_CLASS+'>{name}</a></dt>',
-        DD_ELEMENT='<dd '+DD_ELE_CLASS+' id="{domId}"><p>{comment}</p>';
+    var DT_ELE_CLASS = 'class="accordion-title accordionTitle js-accordionTrigger" aria-expanded="false" ',
+        DD_ELE_CLASS = 'class="accordion-content accordionItem is-collapsed" aria-hidden="true"'
+    var DT_ELEMENT = '<dt><a href="#{domId}" aria-controls="{domId}" ' + DT_ELE_CLASS + '>{name}</a></dt>',
+        DD_ELEMENT = '<dd ' + DD_ELE_CLASS + ' id="{domId}"><p>{comment}</p>';
     var cdata = "<dl>";
 
-    for(var key in data){
-        var kitem=data[key];
-        var dt_element='<dt><a href="#'+kitem.domId+'" aria-controls="'+kitem.domId+'" '+DT_ELE_CLASS+'>'+kitem.name+'</a></dt>';
-        var dd_element='<dd '+DD_ELE_CLASS+' id="'+kitem.domId+'"><p>'+kitem.comment+'</p></dd>';
-        cdata=cdata+dt_element+dd_element;
+    for (var key in data) {
+        var kitem = data[key];
+        var dt_element = '<dt><a href="#' + kitem.domId + '" aria-controls="' + kitem.domId + '" ' + DT_ELE_CLASS + '>' + kitem.name + '</a></dt>';
+        var dd_element = '<dd ' + DD_ELE_CLASS + ' id="' + kitem.domId + '"><p>' + kitem.comment + '</p></dd>';
+        cdata = cdata + dt_element + dd_element;
     }
-    var chtml=cdata+"</dl>"
+    var chtml = cdata + "</dl>"
     dom.html(chtml);
     bindCalendarItem();
     modal_mask_info.$data.header = header;
@@ -258,7 +309,7 @@ function getRptData() {
                 goToNotlogon();
             } else if (res.status == 'success') {
                 var response = res;
-                showRptEcharts(response.tendsList, "orgInvestChart");
+                showRptEcharts(response.trend, "orgInvestChart");
             }
         },
         fail: function (status) {
@@ -289,14 +340,14 @@ function getPanelData() {
                 goToNotlogon();
             } else if (res.status == 'success') {
                 var response = res;
-                var orgPanelData={legendData:[],orgData:[]},
-                    eventPanelData={durData:[],exitData:[],investData:[],sum:0},
-                    mergePanelData={durData:[],proTransfer:[],sharePurchase:[],capIncrease:[],investment:[]},
-                    fundPanelData={durData:[],stockFund:[],startFund:[]};
+                var orgPanelData = {legendData: [], orgData: []},
+                    eventPanelData = {durData: [], exitData: [], investData: [], sum: 0},
+                    mergePanelData = {durData: [], proTransfer: [], sharePurchase: [], capIncrease: [], investment: []},
+                    fundPanelData = {durData: [], stockFund: [], startFund: []};
 
-                for(var i=0;i<response.trend.length;i++){
-                    var item=response.trend[i];
-                    if(i==0){
+                for (var i = 0; i < response.trend.length; i++) {
+                    var item = response.trend[i];
+                    if (i == 0) {
                         orgPanelData.legendData.push("私募");
                         orgPanelData.legendData.push("券商");
                         orgPanelData.legendData.push("资管");
@@ -315,8 +366,8 @@ function getPanelData() {
                     eventPanelData.durData.unshift(item.statDate);
                     eventPanelData.exitData.unshift(-item.exitEvents);
                     eventPanelData.investData.unshift(item.investEvents);
-                    if(eventPanelData.sum<item.exitEvents+item.investEvents){
-                        eventPanelData.sum=item.exitEvents+item.investEvents;
+                    if (eventPanelData.sum < item.exitEvents + item.investEvents) {
+                        eventPanelData.sum = item.exitEvents + item.investEvents;
                     }
 
                     mergePanelData.durData.unshift(item.statDate);
@@ -365,11 +416,11 @@ function getDashboardData() {
             } else if (res.status == 'success') {
                 var response = res;
 
-                var dashP={count:0,statMax:0,statMin:0,statMedia:0},
-                    dashC={count:0,statMax:0,statMin:0,statMedia:0},
-                    dashR={count:0,statMax:0,statMin:0,statMedia:0},
-                    dashE={count:0,statMax:0,statMin:0,statMedia:0};
-                for(var i=0;i<response.count.length;i++) {
+                var dashP = {count: 0, statMax: 0, statMin: 0, statMedia: 0},
+                    dashC = {count: 0, statMax: 0, statMin: 0, statMedia: 0},
+                    dashR = {count: 0, statMax: 0, statMin: 0, statMedia: 0},
+                    dashE = {count: 0, statMax: 0, statMin: 0, statMedia: 0};
+                for (var i = 0; i < response.count.length; i++) {
                     var item = response.count[i];
                     if (item.name == "企业") {
                         dashC = item;
@@ -415,7 +466,7 @@ function getDashboardData() {
 }
 // 今日事件饼图、柱状图
 function getEventBarData() { // 今日资本事件柱状图、饼图
-    var colors=[
+    var colors = [
         '#99cccc',
         '#6699cc',
         '#669999',
@@ -445,45 +496,59 @@ function getEventBarData() { // 今日资本事件柱状图、饼图
                 goToNotlogon();
             } else if (res.status == 'success') {
                 var response = res;
-                var pieData={eventOneData:[],eventTwoData:[],color:[]},
-                    barData={durData:[],invEarly:[],invMiddle:[],invLate:[],invOther:[],exitOne:[],exitTwo:[]};
-                for(var i=0;i<response.event1.length;i++){
-                    var item=response.event1[i];
-                    if(i==0){
-                        if(item.investEarly!=0){
+                var pieData = {eventOneData: [], eventTwoData: [], color: []},
+                    barData = {
+                        durData: [],
+                        invEarly: [],
+                        invMiddle: [],
+                        invLate: [],
+                        invOther: [],
+                        exitOne: [],
+                        exitTwo: []
+                    };
+                for (var i = 0; i < response.event1.length; i++) {
+                    var item = response.event1[i];
+                    if (i == 0) {
+                        if (item.investEarly != 0) {
                             pieData.color.push('rgba(120,164,135,1)');
-                            pieData.eventOneData.push({name:"早期投资",value:item.investEarly,type:"invest",
-                                itemStyle:{normal:{color:'rgba(120,164,135,1)'}}
+                            pieData.eventOneData.push({
+                                name: "早期投资", value: item.investEarly, type: "invest",
+                                itemStyle: {normal: {color: 'rgba(120,164,135,1)'}}
                             });
                         }
-                        if(item.investMiddle!=0){
+                        if (item.investMiddle != 0) {
                             pieData.color.push('rgba(255,127,80,1)');
-                            pieData.eventOneData.push({name:"中期投资",value:item.investMiddle,type:"invest",
-                                itemStyle:{normal:{color:'rgba(255,127,80,1)'}}
+                            pieData.eventOneData.push({
+                                name: "中期投资", value: item.investMiddle, type: "invest",
+                                itemStyle: {normal: {color: 'rgba(255,127,80,1)'}}
                             });
                         }
-                        if(item.investLate!=0){
+                        if (item.investLate != 0) {
                             pieData.color.push('rgba(135,206,250,1)');
-                            pieData.eventOneData.push({name:"后期投资",value:item.investLate,type:"invest",
-                                itemStyle:{normal:{color:'rgba(135,206,250,1)'}}
+                            pieData.eventOneData.push({
+                                name: "后期投资", value: item.investLate, type: "invest",
+                                itemStyle: {normal: {color: 'rgba(135,206,250,1)'}}
                             });
                         }
-                        if(item.investOther!=0){
+                        if (item.investOther != 0) {
                             pieData.color.push('rgba(218,112,214,1)');
-                            pieData.eventOneData.push({name:"其他投资",value:item.investOther,type:"invest",
-                                itemStyle:{normal:{color:'rgba(218,112,214,1)'}}
+                            pieData.eventOneData.push({
+                                name: "其他投资", value: item.investOther, type: "invest",
+                                itemStyle: {normal: {color: 'rgba(218,112,214,1)'}}
                             });
                         }
-                        if(item.exitOne!=0){
+                        if (item.exitOne != 0) {
                             pieData.color.push('rgba(100,149,237,1)');
-                            pieData.eventOneData.push({name:"一级市场退出",value:item.exitOne,type:"exit",
-                                itemStyle:{normal:{color:'rgba(100,149,237,1)'}}
+                            pieData.eventOneData.push({
+                                name: "一级市场退出", value: item.exitOne, type: "exit",
+                                itemStyle: {normal: {color: 'rgba(100,149,237,1)'}}
                             });
                         }
-                        if(item.exitTwo!=0){
+                        if (item.exitTwo != 0) {
                             pieData.color.push('rgba(50,205,50,1)');
-                            pieData.eventOneData.push({name:"二级市场退出",value:item.exitTwo,type:"exit",
-                                itemStyle:{normal:{color:'rgba(50,205,50,1)'}}
+                            pieData.eventOneData.push({
+                                name: "二级市场退出", value: item.exitTwo, type: "exit",
+                                itemStyle: {normal: {color: 'rgba(50,205,50,1)'}}
                             });
                         }
                     }
@@ -497,19 +562,22 @@ function getEventBarData() { // 今日资本事件柱状图、饼图
                     barData.exitTwo.unshift(item.exitTwo);
                 }
 
-                for(var j=0;j<response.event2.length;j++){
-                    var item=response.event2[j];
-                    pieData.eventTwoData.push({name:item.typeName,value:item.count,type:item.typeName,
-                        itemStyle:{normal:{
-                            color:colors[j],
-                            label:{textStyle:{color:colors[j]}},
-                            labelLine:{lineStyle:{color:colors[j]}}
-                        }}
+                for (var j = 0; j < response.event2.length; j++) {
+                    var item = response.event2[j];
+                    pieData.eventTwoData.push({
+                        name: item.typeName, value: item.count, type: item.typeName,
+                        itemStyle: {
+                            normal: {
+                                color: colors[j],
+                                label: {textStyle: {color: colors[j]}},
+                                labelLine: {lineStyle: {color: colors[j]}}
+                            }
+                        }
                     });
                 }
-                // showEventPieEcharts(pieData, "event_pie_charts");
-                // showEventBarEcharts(barData, "event_bar_charts");
-                showEventMixEcharts(pieData,barData,"event_mix_charts");
+                showEventPieEcharts(pieData, "event_pie_charts");
+                showEventBarEcharts(barData, "event_bar_charts");
+                showEventMixEcharts(pieData, barData, "event_mix_charts");
             }
         },
         fail: function (status) {
@@ -554,7 +622,7 @@ function getEventSubpage(type) {
                                 eventClass: item.investType,
                                 eventTitle: item.eventTitle,
                                 entCnName: item.entCnName,
-                                eventType:"invest"
+                                eventType: "invest"
                             });
                         }
                     }
@@ -567,7 +635,7 @@ function getEventSubpage(type) {
                                 eventClass: item.exitType,
                                 eventTitle: item.eventTitle,
                                 entCnName: item.entCnName,
-                                eventType:"exit"
+                                eventType: "exit"
                             });
                         }
                     }
@@ -596,7 +664,7 @@ function getEventSubpage(type) {
 }
 
 // 查看今日资本事件详情
-function getEventByTitle(title, type,ptype) {
+function getEventByTitle(title, type, ptype) {
     console.log(title, type);
     title = "每日优鲜获注资"; // for test
     $.ajax({
@@ -668,19 +736,18 @@ function resizeDetailMask() {
     $(".modal-event-body").css('maxHeight', mheight);
 }
 
-$(document).ready(function () {
-    resizeDetailMask();
-});
-
 $(window).resize(function () {
-    var nw = $("#homemodule_news_ibox").width();
+    var nw = $("#homemodule_news_ibox").width(), newH = $("#homemodule_news_row").height();//,
+    winheight = $('body').height() - 60;
     var nh = getCalendarHeight(nw);
-    console.log("resize:", nw, nh);
+    // console.log("resize:", nw, nh,winheight);
     $('#calendar').calendar('autoResize', nw, nh);
     resizeDetailMask();
+    resizeLeftSide(false);
+    // getUserMonitorList();
 });
 
-function bindCalendarItem(){
+function bindCalendarItem() {
     var d = document,
         accordionToggles = d.querySelectorAll('#mask_modal_body .js-accordionTrigger'),
         setAria,
@@ -689,16 +756,16 @@ function bindCalendarItem(){
         touchSupported = ('ontouchstart' in window),
         pointerSupported = ('pointerdown' in window);
     console.log(accordionToggles);
-    skipClickDelay = function(e){
+    skipClickDelay = function (e) {
         e.preventDefault();
         e.target.click();
     }
 
-    setAriaAttr = function(el, ariaType, newProperty){
+    setAriaAttr = function (el, ariaType, newProperty) {
         el.setAttribute(ariaType, newProperty);
     };
-    setAccordionAria = function(el1, el2, expanded){
-        switch(expanded) {
+    setAccordionAria = function (el1, el2, expanded) {
+        switch (expanded) {
             case "true":
                 setAriaAttr(el1, 'aria-expanded', 'true');
                 setAriaAttr(el2, 'aria-hidden', 'false');
@@ -712,13 +779,13 @@ function bindCalendarItem(){
         }
     };
 //function
-    switchAccordion = function(e) {
+    switchAccordion = function (e) {
         console.log("triggered");
         e.preventDefault();
         closeAllAccordion(e);
         var thisAnswer = e.target.parentNode.nextElementSibling;
         var thisQuestion = e.target;
-        if(thisAnswer.classList.contains('is-collapsed')) {
+        if (thisAnswer.classList.contains('is-collapsed')) {
             setAccordionAria(thisQuestion, thisAnswer, 'true');
         } else {
             setAccordionAria(thisQuestion, thisAnswer, 'false');
@@ -731,15 +798,15 @@ function bindCalendarItem(){
         thisAnswer.classList.toggle('animateIn');
     };
 
-    closeAllAccordion=function(e){
-        var parent=e.target.parentNode.parentNode;
-        var dtTargets=parent.querySelectorAll('dt a');
-        for(var i=0,len=dtTargets.length;i<len;i++){
-            var titem=dtTargets[i];
-            if(titem!=e.target){
+    closeAllAccordion = function (e) {
+        var parent = e.target.parentNode.parentNode.parentNode;
+        var dtTargets = parent.querySelectorAll('dt a');
+        for (var i = 0, len = dtTargets.length; i < len; i++) {
+            var titem = dtTargets[i];
+            if (titem != e.target) {
                 var thisAnswer = titem.parentNode.nextElementSibling;
                 var thisQuestion = titem;
-                if(thisAnswer.classList.contains('is-collapsed')) {
+                if (thisAnswer.classList.contains('is-collapsed')) {
                     setAccordionAria(thisQuestion, thisAnswer, 'true');
                 } else {
                     setAccordionAria(thisQuestion, thisAnswer, 'false');
@@ -752,18 +819,98 @@ function bindCalendarItem(){
             }
         }
     };
-    for (var i=0,len=accordionToggles.length; i<len; i++) {
-        if(touchSupported) {
+    for (var i = 0, len = accordionToggles.length; i < len; i++) {
+        if (touchSupported) {
             accordionToggles[i].addEventListener('touchstart', skipClickDelay, false);
         }
-        if(pointerSupported){
+        if (pointerSupported) {
             accordionToggles[i].addEventListener('pointerdown', skipClickDelay, false);
         }
         accordionToggles[i].addEventListener('click', switchAccordion, false);
     }
 }
 
+function resizeLeftSide(isLoad) {
+    var bwidth = $('body').width();
 
+    var nw = $("#homemodule_news_ibox").width(), btmH = getCalendarHeight(nw),
+        pheight = $("#page-wrapper").height() - btmH;
+
+    if (!isLoad) {
+        pheight = $("#homemodule_news_row").height();
+    }
+    console.log(bwidth, pheight, btmH, isLoad);
+    if (pheight < 440) {
+        if (!isLoad) {
+            return;
+        } else {
+            pheight = 578;
+        }
+    }
+
+    var topH = Math.floor(pheight * 0.4), midH = Math.floor(pheight * 0.6) - 50;
+    console.log("ResizeLeftSide", $("#homemodule_news_row").height(), pheight, topH, midH);
+    if (bwidth > 1194) {
+        console.log(bwidth);
+        // console.log(isLoad,pheight,topH,midH,btmH);
+        $("#orgInvestChart").css('height', topH - 72);
+        $("#org_panel_Chart").css('height', topH / 2 - 8);
+        $("#merge_panel_Chart").css('height', topH / 2 - 8);
+        $("#fund_panel_Chart").css('height', topH / 2 - 8);
+        $("#event_panel_Chart").css('height', topH / 2 - 8);
+        if (bwidth > 1494) { // 显示table、mix >1500
+            $("#event_mix_charts").css('height', midH - 20);
+            $("#event_bar_charts").css('height', 0);
+            $("#event_pie_charts").css('height', 0);
+            var num=Math.floor((midH-56)/35), tableH=num*35+37;
+            console.log("显示table、mix", midH,num,tableH);
+            v_homepageModel.$data.eventNum=num;
+            $(".event_table_responsive").css('height', tableH);
+        } else { // 折半 显示table、pie、bar (1200-1500)
+            console.log("折半", Math.floor(midH / 2));
+            $("#event_mix_charts").css('height', 0);
+            $("#event_bar_charts").css('height', Math.floor(midH / 2) + 25);
+            $("#event_pie_charts").css('height', Math.floor(midH / 2) - 45);
+
+            var num=Math.floor((Math.floor(midH / 2) - 81)/35), tableH=num*35+37;
+            console.log("显示table、mix", midH,num,tableH);
+            v_homepageModel.$data.eventNum=num;
+            $(".event_table_responsive").css('height', tableH);
+        }
+        $("#project_dashboard_chart").css('height', btmH);
+        $("#company_dashboard_chart").css('height', btmH);
+        $("#report_dashboard_chart").css('height', btmH);
+        $("#elastic_dashboard_chart").css('height', btmH);
+    } else {
+        $("#orgInvestChart").css('height', 200);
+        $("#org_panel_Chart").css('height', 128);
+        $("#merge_panel_Chart").css('height', 128);
+        $("#fund_panel_Chart").css('height', 128);
+        $("#event_panel_Chart").css('height', 128);
+        if (bwidth > 1018) { // table、bar、pie(1024---1200)
+            $("#event_mix_charts").css('height', 0);
+            $("#event_bar_charts").css('height', 180);
+            $("#event_pie_charts").css('height', 180);
+            var num=Math.floor(180/35), tableH=num*35+37;
+            console.log("显示table、mix", midH,num,tableH);
+            v_homepageModel.$data.eventNum=num;
+            $(".event_table_responsive").css('height', tableH);
+        } else { // table、mix(<1024)
+            $("#event_bar_charts").css('height', 0);
+            $("#event_pie_charts").css('height', 0);
+            $("#event_mix_charts").css('height', 280);
+            var num=7, tableH=num*35+37;
+            console.log("显示table、mix", midH,num,tableH);
+            v_homepageModel.$data.eventNum=num;
+            $(".event_table_responsive").css('height', tableH);
+        }
+
+        $("#project_dashboard_chart").css('height', 180);
+        $("#company_dashboard_chart").css('height', 180);
+        $("#report_dashboard_chart").css('height', 180);
+        $("#elastic_dashboard_chart").css('height', 180);
+    }
+}
 
 
 

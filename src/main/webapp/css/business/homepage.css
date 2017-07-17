@@ -221,6 +221,7 @@ table.table-single-line .td-Wmin43 {
     .col-xlg-4{
         width:60%;
         float:left;
+        position:absolute;
     }
     .col-xlg-8{
         /*height:0;*/
