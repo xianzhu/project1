@@ -9,7 +9,7 @@ require.config({
 
 var rptChart, orgPanelChart, eventPanelChart, mergePanelChart, fundPanelChart,
     projDashChart, companyDashChart, reportDashChart,elasticDashChart,
-    eventBarChart,eventPieChart,eventMixChart;
+    eventBarChart,eventPieChart,eventMixChart,eventMixMinChart;
 
 // 股权投资行为趋势
 function showRptEcharts(srcdata, id) {
@@ -281,7 +281,7 @@ function showElasticDashEcharts(srcdata, id) {
 }
 
 // 今日资本事件 - 饼图
-function showEventPieEcharts(srcdata, id) {
+function showEventPieEcharts1(srcdata, id) {
     if (!srcdata) {
         console.log("data is undefined.");
         return;
@@ -335,7 +335,7 @@ function showEventPieEcharts(srcdata, id) {
     }
 }
 // 今日资本事件 - 柱状图
-function showEventBarEcharts(srcdata, id) {
+function showEventBarEcharts1(srcdata, id) {
     if (!srcdata) {
         console.log("data is undefined.");
         return;
@@ -368,7 +368,7 @@ console.log("show eventBarChart",dom.height);
         console.log("reshow eventBarChart");
     }
 }
-
+// 今日资本事件 - 饼图、柱状图
 function showEventMixEcharts(piedata,bardata, id) {
     if (!bardata||!piedata) {
         console.log("data is undefined.");
@@ -426,6 +426,66 @@ function showEventMixEcharts(piedata,bardata, id) {
         console.log("reshow eventMixChart");
     }
 }
+
+// 今日资本事件 - 饼图、柱状图
+function showEventMixMinEcharts(piedata,bardata, id) {
+    if (!bardata||!piedata) {
+        console.log("data is undefined.");
+        return;
+    }
+    var echarts;
+    var moption = clone(eventMixMinOption);
+
+    moption.xAxis[0].data=bardata.durData;
+    moption.series[0].data=bardata.invEarly; // 早期投资
+    moption.series[1].data=bardata.invMiddle; // 中期投资
+    moption.series[2].data=bardata.invLate; // 后期投资
+    moption.series[3].data=bardata.invOther; // 其他投资
+    moption.series[4].data=bardata.exitOne; // 一级市场退出
+    moption.series[5].data=bardata.exitTwo; // 二级市场退出
+
+    moption.series[6].data=piedata.eventOneData;
+    moption.series[7].data=piedata.eventTwoData;
+
+    if (typeof eventMixMinChart == 'undefined') {
+        require(['echarts', 'echarts/chart/pie','echarts/chart/bar'], function (ec) {
+            echarts = ec;
+            var dom = document.getElementById(id);
+            eventMixMinChart = echarts.init(dom);
+            var ecConfig = require('echarts/config');
+
+            eventMixMinChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = moption.series[idx];
+                    // console.log(serie);
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                            var type = serie.data[i].name,ptype=serie.data[i].type;
+                            getEventSubpage(type,ptype);
+                        }
+                    }
+
+                }
+                // console.log(str);
+            })
+            console.log("show eventMixMinChart",dom.height);
+            eventMixMinChart.setOption(moption, true);
+            window.addEventListener('resize', function () {
+                console.log("eventMixMinChart resize",$("#"+id).css('height'),$("#"+id).height());
+                eventMixMinChart.resize && eventMixMinChart.resize();
+            });
+        });
+    } else {
+        eventMixMinChart.setOption(moption, true);
+        console.log("reshow eventMixMinChart");
+    }
+}
+
 
 function allChartResize() {
     if(typeof rptChart!='undefined') {

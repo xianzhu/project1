@@ -208,7 +208,7 @@ var commonPageNum = {
     companyAnalysis_1:10, // 对标预测 - 潜在并购方
     companyAnalysis_2:10, // 对标预测 - 对标上市公司
 
-    homeEventList:7, // 主页 - 今日事件列表
+    homeEventList:14, // 主页 - 今日事件列表
     homeNewsList:6, // 主页 - 新闻列表
     homepageInvest:5, // 主页 - 投资事件弹框
     homepageExit:5, // 主页 - 退出事件弹框

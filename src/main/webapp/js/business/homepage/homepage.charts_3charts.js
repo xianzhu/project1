@@ -7,8 +7,9 @@ require.config({
     }
 });
 
-var rptChart, orgPanelChart, eventPanelChart, MergePanelChart, reportPanelChart,
-    projDashChart, companyDashChart, reportDashChart,elasticDashChart, eventBarChart,eventPieChart;
+var rptChart, orgPanelChart, eventPanelChart, mergePanelChart, fundPanelChart,
+    projDashChart, companyDashChart, reportDashChart,elasticDashChart,
+    eventBarChart,eventPieChart,eventMixChart;
 
 // 股权投资行为趋势
 function showRptEcharts(srcdata, id) {
@@ -321,13 +322,16 @@ function showEventPieEcharts(srcdata, id) {
                 }
                 // console.log(str);
             })
+            console.log("show eventPieChart",dom.height);
             eventPieChart.setOption(moption, true);
             window.addEventListener('resize', function () {
+                console.log("eventPieChart resize",$("#"+id).css('height'),$("#"+id).height());
                 eventPieChart.resize && eventPieChart.resize();
             });
         });
     } else {
         eventPieChart.setOption(moption, true);
+        console.log("reshow eventPieChart");
     }
 }
 // 今日资本事件 - 柱状图
@@ -352,16 +356,109 @@ function showEventBarEcharts(srcdata, id) {
             var dom = document.getElementById(id);
             eventBarChart = echarts.init(dom);
             var ecConfig = require('echarts/config');
-
+console.log("show eventBarChart",dom.height);
             eventBarChart.setOption(moption, true);
             window.addEventListener('resize', function () {
+                console.log("eventBarChart resize",$("#"+id).css('height'),$("#"+id).height());
                 eventBarChart.resize && eventBarChart.resize();
             });
         });
     } else {
         eventBarChart.setOption(moption, true);
+        console.log("reshow eventBarChart");
     }
 }
 
+function showEventMixEcharts(piedata,bardata, id) {
+    if (!bardata||!piedata) {
+        console.log("data is undefined.");
+        return;
+    }
+    var echarts;
+    var moption = clone(eventMixOption);
 
+    moption.xAxis[0].data=bardata.durData;
+    moption.series[0].data=bardata.invEarly; // 早期投资
+    moption.series[1].data=bardata.invMiddle; // 中期投资
+    moption.series[2].data=bardata.invLate; // 后期投资
+    moption.series[3].data=bardata.invOther; // 其他投资
+    moption.series[4].data=bardata.exitOne; // 一级市场退出
+    moption.series[5].data=bardata.exitTwo; // 二级市场退出
 
+    moption.series[6].data=piedata.eventOneData;
+    moption.series[7].data=piedata.eventTwoData;
+
+    if (typeof eventMixChart == 'undefined') {
+        require(['echarts', 'echarts/chart/pie','echarts/chart/bar'], function (ec) {
+            echarts = ec;
+            var dom = document.getElementById(id);
+            eventMixChart = echarts.init(dom);
+            var ecConfig = require('echarts/config');
+
+            eventMixChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = moption.series[idx];
+                    // console.log(serie);
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                            var type = serie.data[i].name,ptype=serie.data[i].type;
+                            getEventSubpage(type,ptype);
+                        }
+                    }
+
+                }
+                // console.log(str);
+            })
+            console.log("show eventMixChart",dom.height);
+            eventMixChart.setOption(moption, true);
+            window.addEventListener('resize', function () {
+                console.log("eventMixChart resize",$("#"+id).css('height'),$("#"+id).height());
+                eventMixChart.resize && eventMixChart.resize();
+            });
+        });
+    } else {
+        eventMixChart.setOption(moption, true);
+        console.log("reshow eventMixChart");
+    }
+}
+
+function allChartResize() {
+    if(typeof rptChart!='undefined') {
+        console.log("rptChart resize");
+        rptChart.resize && rptChart.resize();
+    }
+    if(typeof orgPanelChart!='undefined') {
+        console.log("orgPanelChart resize");
+        orgPanelChart.resize && orgPanelChart.resize();
+    }
+    if(typeof eventPanelChart!='undefined') {
+        console.log("eventPanelChart resize");
+        eventPanelChart.resize && eventPanelChart.resize();
+    }
+    if(typeof mergePanelChart!='undefined') {
+        console.log("MergePanelChart resize");
+        mergePanelChart.resize && mergePanelChart.resize();
+    }
+    if(typeof fundPanelChart!='undefined') {
+        console.log("fundPanelChart resize");
+        fundPanelChart.resize && fundPanelChart.resize();
+    }
+    if(typeof eventBarChart!='undefined') {
+        console.log("eventBarChart resize");
+        eventBarChart.resize && eventBarChart.resize();
+    }
+    if(typeof eventPieChart!='undefined') {
+        console.log("eventPieChart resize");
+        eventPieChart.resize && eventPieChart.resize();
+    }
+    if(typeof eventMixChart!='undefined') {
+        console.log("eventMixChart resize");
+        eventMixChart.resize && eventMixChart.resize();
+    }
+
+}

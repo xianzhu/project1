@@ -952,7 +952,7 @@ var eventPieOption = {
             name: '资本事件',
             type: 'pie',
             radius: [0, '60%'],
-            center: ['45%', '50%'],
+            center: ['45%', '56%'],
             itemStyle: {
                 normal: {
                     label: {
@@ -977,7 +977,7 @@ var eventPieOption = {
             type: 'pie',
             selectedMode: 'single',
             radius: ['70%', '85%'],
-            center: ['45%', '50%'],
+            center: ['45%', '56%'],
             itemStyle: {
                 normal: {
                     labelLine: {
@@ -1154,7 +1154,7 @@ var eventMixOption = {
         x: '48%',
         y: 40,
         x2: 25,
-        y2: 20
+        y2: 30
     },
 
     series: [
@@ -1279,6 +1279,203 @@ var eventMixOption = {
             selectedMode: 'single',
             radius: ['62%', '75%'],
             center:['23%','55%'],
+            tooltip: {
+                trigger: 'item',
+                showDelay: 500,
+                formatter: "{b}<br>{c}({d}%)"
+            },
+            itemStyle: {
+                normal: {
+                    // label:{
+                    //     position: 'outer',
+                    //     textStyle:{
+                    //         color:'#000'
+                    //     },
+                    // },
+                    labelLine: {
+                        length: 1
+                    }
+                }
+            },
+            data: []
+        }
+    ]
+};
+
+// 今日资本事件 - 饼图、柱状图
+var eventMixMinOption = {
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    legend: {
+        show: true,
+        orient: 'vertical',
+        x: 'right',
+        data: ['早期投资', '中期投资', '后期投资', '其他投资','一级市场退出', '二级市场退出']
+    },
+    toolbox: {
+        show: true,
+        orient: 'vertical',
+        y: 'bottom',
+        padding:[5,3,30,5],
+        feature: {
+            mark: {show: false},
+            magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    calculable: false,
+
+    xAxis: [
+        {
+            type: 'category',
+            splitLine: {show: false},
+            data: []
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            position:'left',
+            splitLine: {show: false},
+            splitArea: {show: false}
+        }
+    ],
+    grid: {
+        x: 25,
+        y: '51%',
+        x2: 25,
+        y2: 30
+    },
+
+    series: [
+        {
+            name: '早期投资',
+            type: 'bar',
+            stack: '投资',
+            symbol:'none',
+            itemStyle: {
+                normal: {
+                    color: 'rgba(120,164,135,1)'
+                }
+            },
+            barMaxWidth:15,
+            data: []
+        },
+        {
+            name: '中期投资',
+            type: 'bar',
+            stack: '投资',
+            symbol:'none',
+            itemStyle: {
+                normal: {
+                    color: 'rgba(255,127,80,1)'
+                }
+            },
+            barMaxWidth:15,
+            data: []
+        },
+        {
+            name: '后期投资',
+            type: 'bar',
+            stack: '投资',
+            symbol:'none',
+            barMaxWidth:15,
+            itemStyle: {
+                normal: {
+                    color: 'rgba(135,206,250,1)'
+                }
+            },
+            data: []
+        },
+        {
+            name: '其他投资',
+            type: 'bar',
+            stack: '投资',
+            symbol:'none',
+            barMaxWidth:15,
+            itemStyle: {
+                normal: {
+                    color: 'rgba(218,112,214,1)'
+                }
+            },
+            data: []
+        },
+        {
+            name: '一级市场退出',
+            type: 'bar',
+            stack: '退出',
+            symbol:'none',
+            barMaxWidth:15,
+            itemStyle: {
+                normal: {
+                    color: 'rgba(100,149,247,1)'
+                }
+            },
+            data: []
+        },
+        {
+            name: '二级市场退出',
+            type: 'bar',
+            stack: '退出',
+            symbol:'none',
+            barMaxWidth:15,
+            itemStyle: {
+                normal: {
+                    color: 'rgba(50,205,50,1)'
+                }
+            },
+            data: []
+        },
+
+        {
+            name: '资本事件',
+            type: 'pie',
+            // radius: [0, '55%'],
+            // center: ['23%', '55%'],
+            radius: [0, '22%'],
+            center: ['77%', '24%'],
+            tooltip: {
+                trigger: 'item',
+                showDelay: 500,
+                formatter: "{b}<br>{c}({d}%)"
+            },
+            itemStyle: {
+                normal: {
+                    label: {
+                        position: 'inner',
+                        textStyle:{
+                            color:'#fff'
+                        },
+                        formatter:function (params) {
+                            var result=params.percent+"%";
+                            if(params.percent<15){ // 如果饼图值过小，不显示
+                                result="";
+                            }
+                            return result;
+                        }
+                    },
+                    labelLine: {
+                        show: false,
+                        length:20,
+                        lineStyle:{
+                            color:'#333'
+                        }
+                    }
+                }
+            },
+            data: []
+        },
+        {
+            name: '二级分类',
+            type: 'pie',
+            selectedMode: 'single',
+            radius: ['24.8%', '30%'],
+            center:['77%','24%'],
             tooltip: {
                 trigger: 'item',
                 showDelay: 500,

@@ -212,7 +212,7 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr v-for="ele in eventList">
+                                                    <tr v-for="ele in eventList|numResetFilter">
                                                         <td class="td-Wmin43 td-single" v-text="ele.eventClass"></td>
                                                         <td v-text="ele.eventTitle"
                                                             class="link-handle-pointer td-single"
@@ -231,11 +231,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-item-lm-half-pie" style="padding:0px;">
-                                        <div id="event_pie_charts"></div>
-                                        </div>
-                                        <div class="col-lg-4 col-item-lm-half-bar" style="padding:0px;">
-                                        <div id="event_bar_charts"></div>
+                                        <div class="col-item-hole-chart" style="padding:0px;">
+                                            <div id="event_mixmin_charts"></div>
                                         </div>
                                         <div class="col-xlg-8 col-lg-12" style="padding:0px;">
                                             <div id="event_mix_charts"></div>
