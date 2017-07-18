@@ -8,7 +8,8 @@ require.config({
 });
 
 var rptChart, orgPanelChart, eventPanelChart, mergePanelChart, fundPanelChart,
-    projDashChart, companyDashChart, reportDashChart,elasticDashChart, eventMixChart;
+    projDashChart, companyDashChart, reportDashChart,elasticDashChart,
+    eventBarChart,eventPieChart,eventMixChart,eventMixMinChart;
 
 // 股权投资行为趋势
 function showRptEcharts(srcdata, id) {
@@ -334,17 +335,17 @@ function showEventMixEcharts(piedata,bardata, id) {
                             str += '【系列' + idx + '】' + serie.name + ' : ' +
                                 '【数据' + i + '】' + serie.data[i].name + ' ';
                             var type = serie.data[i].name;
-                            modal_event_list.$data.eventType=type;
-                            modal_event_list.$data.eventPage=0;
+                            v_homepageModel.$data.eventType=type;
+                            v_homepageModel.$data.eventPage=0;
                             getEventSubpage(type);
                             hasselect=true;
                         }
                     }
                 }
                 if(!hasselect){
-                    modal_event_list.$data.eventType='';
-                    modal_event_list.$data.eventPage=0;
-                    // getEventSubpage('');
+                    v_homepageModel.$data.eventType='';
+                    v_homepageModel.$data.eventPage=0;
+                    getEventSubpage('');
                 }
             })
             eventMixChart.setOption(moption, true);
@@ -356,6 +357,61 @@ function showEventMixEcharts(piedata,bardata, id) {
         eventMixChart.setOption(moption, true);
     }
 }
+
+// 今日资本事件 - 饼图、柱状图
+function showEventMixMinEcharts(piedata,bardata, id) {
+    if (!bardata||!piedata) {
+        console.log("data is undefined.");
+        return;
+    }
+    var echarts;
+    var moption = clone(eventMixMinOption);
+
+    moption.xAxis[0].data=bardata.durData;
+    moption.series[0].data=bardata.invEarly; // 早期投资
+    moption.series[1].data=bardata.invMiddle; // 中期投资
+    moption.series[2].data=bardata.invLate; // 后期投资
+    moption.series[3].data=bardata.invOther; // 其他投资
+    moption.series[4].data=bardata.exitOne; // 一级市场退出
+    moption.series[5].data=bardata.exitTwo; // 二级市场退出
+
+    moption.series[6].data=piedata.eventOneData;
+    moption.series[7].data=piedata.eventTwoData;
+
+    if (typeof eventMixMinChart == 'undefined') {
+        require(['echarts', 'echarts/chart/pie','echarts/chart/bar'], function (ec) {
+            echarts = ec;
+            var dom = document.getElementById(id);
+            eventMixMinChart = echarts.init(dom);
+            var ecConfig = require('echarts/config');
+
+            eventMixMinChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = moption.series[idx];
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                            var type = serie.data[i].name;
+                            getEventSubpage(type);
+                        }
+                    }
+
+                }
+            })
+            eventMixMinChart.setOption(moption, true);
+            window.addEventListener('resize', function () {
+                eventMixMinChart.resize && eventMixMinChart.resize();
+            });
+        });
+    } else {
+        eventMixMinChart.setOption(moption, true);
+    }
+}
+
 
 function allChartResize() {
     if(typeof rptChart!='undefined') {
@@ -373,7 +429,12 @@ function allChartResize() {
     if(typeof fundPanelChart!='undefined') {
         fundPanelChart.resize && fundPanelChart.resize();
     }
-
+    if(typeof eventBarChart!='undefined') {
+        eventBarChart.resize && eventBarChart.resize();
+    }
+    if(typeof eventPieChart!='undefined') {
+        eventPieChart.resize && eventPieChart.resize();
+    }
     if(typeof eventMixChart!='undefined') {
         eventMixChart.resize && eventMixChart.resize();
     }
