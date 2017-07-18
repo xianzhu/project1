@@ -8,7 +8,8 @@ require.config({
 });
 
 var rptChart, orgPanelChart, eventPanelChart, mergePanelChart, fundPanelChart,
-    projDashChart, companyDashChart, reportDashChart,elasticDashChart, eventMixChart;
+    projDashChart, companyDashChart, reportDashChart,elasticDashChart,
+    eventBarChart,eventPieChart,eventMixChart,eventMixMinChart;
 
 // 股权投资行为趋势
 function showRptEcharts(srcdata, id) {
@@ -198,10 +199,6 @@ function showProjDashEcharts(srcdata, id) {
             echarts = ec;
             var dom = document.getElementById(id);
             projDashChart = echarts.init(dom);
-            var ecConfig = require('echarts/config');
-            projDashChart.on(ecConfig.EVENT.GAUGE_CLICKED,function(param){
-                gotoCurrentProjectPage();
-            });
             projDashChart.setOption(moption, true);
 
             window.addEventListener('resize', function () {
@@ -226,10 +223,6 @@ function showCompanyDashEcharts(srcdata, id) {
             echarts = ec;
             var dom = document.getElementById(id);
             companyDashChart = echarts.init(dom);
-            var ecConfig = require('echarts/config');
-            companyDashChart.on(ecConfig.EVENT.GAUGE_CLICKED,function(param){
-                // gotoTraderReportPage();
-            });
             companyDashChart.setOption(moption, true);
             window.addEventListener('resize', function () {
                 companyDashChart.resize && companyDashChart.resize();
@@ -253,10 +246,6 @@ function showReportDashEcharts(srcdata, id) {
             echarts = ec;
             var dom = document.getElementById(id);
             reportDashChart = echarts.init(dom);
-            var ecConfig = require('echarts/config');
-            reportDashChart.on(ecConfig.EVENT.GAUGE_CLICKED,function(param){
-                gotoTraderReportPage(); // 哪个report？
-            });
             reportDashChart.setOption(moption, true);
             window.addEventListener('resize', function () {
                 reportDashChart.resize && reportDashChart.resize();
@@ -281,10 +270,6 @@ function showElasticDashEcharts(srcdata, id) {
             echarts = ec;
             var dom = document.getElementById(id);
             elasticDashChart = echarts.init(dom);
-            var ecConfig = require('echarts/config');
-            elasticDashChart.on(ecConfig.EVENT.GAUGE_CLICKED,function(param){
-                gotoNewsPage();
-            });
             elasticDashChart.setOption(moption, true);
             window.addEventListener('resize', function () {
                 elasticDashChart.resize && elasticDashChart.resize();
@@ -295,6 +280,94 @@ function showElasticDashEcharts(srcdata, id) {
     }
 }
 
+// 今日资本事件 - 饼图
+function showEventPieEcharts1(srcdata, id) {
+    if (!srcdata) {
+        console.log("data is undefined.");
+        return;
+    }
+    var echarts;
+    var moption = clone(eventPieOption);
+
+    // for(var i=srcdata.color.length-1;i>=0;i--){
+    //     moption.color.unshift(srcdata.color[i]);
+    // }
+    // console.log(moption.color);
+    moption.series[0].data=srcdata.eventOneData;
+    moption.series[1].data=srcdata.eventTwoData;
+
+    if (typeof eventPieChart == 'undefined') {
+        require(['echarts', 'echarts/chart/pie'], function (ec) {
+            echarts = ec;
+            var dom = document.getElementById(id);
+            eventPieChart = echarts.init(dom);
+            var ecConfig = require('echarts/config');
+
+            eventPieChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = moption.series[idx];
+                    // console.log(serie);
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                            var type = serie.data[i].name,ptype=serie.data[i].type;
+                            getEventSubpage(type,ptype);
+                        }
+                    }
+
+                }
+                // console.log(str);
+            })
+            console.log("show eventPieChart",dom.height);
+            eventPieChart.setOption(moption, true);
+            window.addEventListener('resize', function () {
+                console.log("eventPieChart resize",$("#"+id).css('height'),$("#"+id).height());
+                eventPieChart.resize && eventPieChart.resize();
+            });
+        });
+    } else {
+        eventPieChart.setOption(moption, true);
+        console.log("reshow eventPieChart");
+    }
+}
+// 今日资本事件 - 柱状图
+function showEventBarEcharts1(srcdata, id) {
+    if (!srcdata) {
+        console.log("data is undefined.");
+        return;
+    }
+    var echarts;
+    var moption = clone(eventBarOption);
+    moption.xAxis[0].data=srcdata.durData;
+    moption.series[0].data=srcdata.invEarly; // 早期投资
+    moption.series[1].data=srcdata.invMiddle; // 中期投资
+    moption.series[2].data=srcdata.invLate; // 后期投资
+    moption.series[3].data=srcdata.invOther; // 其他投资
+    moption.series[4].data=srcdata.exitOne; // 一级市场退出
+    moption.series[5].data=srcdata.exitTwo; // 二级市场退出
+
+    if (typeof eventBarChart == 'undefined') {
+        require(['echarts', 'echarts/chart/bar'], function (ec) {
+            echarts = ec;
+            var dom = document.getElementById(id);
+            eventBarChart = echarts.init(dom);
+            var ecConfig = require('echarts/config');
+console.log("show eventBarChart",dom.height);
+            eventBarChart.setOption(moption, true);
+            window.addEventListener('resize', function () {
+                console.log("eventBarChart resize",$("#"+id).css('height'),$("#"+id).height());
+                eventBarChart.resize && eventBarChart.resize();
+            });
+        });
+    } else {
+        eventBarChart.setOption(moption, true);
+        console.log("reshow eventBarChart");
+    }
+}
 // 今日资本事件 - 饼图、柱状图
 function showEventMixEcharts(piedata,bardata, id) {
     if (!bardata||!piedata) {
@@ -326,55 +399,125 @@ function showEventMixEcharts(piedata,bardata, id) {
                 var selected = param.selected;
                 var serie;
                 var str = '当前选择： ';
-                var hasselect=false;
                 for (var idx in selected) {
                     serie = moption.series[idx];
+                    // console.log(serie);
                     for (var i = 0, l = serie.data.length; i < l; i++) {
                         if (selected[idx][i]) {
                             str += '【系列' + idx + '】' + serie.name + ' : ' +
                                 '【数据' + i + '】' + serie.data[i].name + ' ';
-                            var type = serie.data[i].name;
-                            modal_event_list.$data.eventType=type;
-                            modal_event_list.$data.eventPage=0;
-                            getEventSubpage(type);
-                            hasselect=true;
+                            var type = serie.data[i].name,ptype=serie.data[i].type;
+                            getEventSubpage(type,ptype);
                         }
                     }
+
                 }
-                if(!hasselect){
-                    modal_event_list.$data.eventType='';
-                    modal_event_list.$data.eventPage=0;
-                    // getEventSubpage('');
-                }
+                // console.log(str);
             })
+            console.log("show eventMixChart",dom.height);
             eventMixChart.setOption(moption, true);
             window.addEventListener('resize', function () {
+                console.log("eventMixChart resize",$("#"+id).css('height'),$("#"+id).height());
                 eventMixChart.resize && eventMixChart.resize();
             });
         });
     } else {
         eventMixChart.setOption(moption, true);
+        console.log("reshow eventMixChart");
     }
 }
 
+// 今日资本事件 - 饼图、柱状图
+function showEventMixMinEcharts(piedata,bardata, id) {
+    if (!bardata||!piedata) {
+        console.log("data is undefined.");
+        return;
+    }
+    var echarts;
+    var moption = clone(eventMixMinOption);
+
+    moption.xAxis[0].data=bardata.durData;
+    moption.series[0].data=bardata.invEarly; // 早期投资
+    moption.series[1].data=bardata.invMiddle; // 中期投资
+    moption.series[2].data=bardata.invLate; // 后期投资
+    moption.series[3].data=bardata.invOther; // 其他投资
+    moption.series[4].data=bardata.exitOne; // 一级市场退出
+    moption.series[5].data=bardata.exitTwo; // 二级市场退出
+
+    moption.series[6].data=piedata.eventOneData;
+    moption.series[7].data=piedata.eventTwoData;
+
+    if (typeof eventMixMinChart == 'undefined') {
+        require(['echarts', 'echarts/chart/pie','echarts/chart/bar'], function (ec) {
+            echarts = ec;
+            var dom = document.getElementById(id);
+            eventMixMinChart = echarts.init(dom);
+            var ecConfig = require('echarts/config');
+
+            eventMixMinChart.on(ecConfig.EVENT.PIE_SELECTED, function (param) {
+                var selected = param.selected;
+                var serie;
+                var str = '当前选择： ';
+                for (var idx in selected) {
+                    serie = moption.series[idx];
+                    // console.log(serie);
+                    for (var i = 0, l = serie.data.length; i < l; i++) {
+                        if (selected[idx][i]) {
+                            str += '【系列' + idx + '】' + serie.name + ' : ' +
+                                '【数据' + i + '】' + serie.data[i].name + ' ';
+                            var type = serie.data[i].name,ptype=serie.data[i].type;
+                            getEventSubpage(type,ptype);
+                        }
+                    }
+
+                }
+                // console.log(str);
+            })
+            console.log("show eventMixMinChart",dom.height);
+            eventMixMinChart.setOption(moption, true);
+            window.addEventListener('resize', function () {
+                console.log("eventMixMinChart resize",$("#"+id).css('height'),$("#"+id).height());
+                eventMixMinChart.resize && eventMixMinChart.resize();
+            });
+        });
+    } else {
+        eventMixMinChart.setOption(moption, true);
+        console.log("reshow eventMixMinChart");
+    }
+}
+
+
 function allChartResize() {
     if(typeof rptChart!='undefined') {
+        console.log("rptChart resize");
         rptChart.resize && rptChart.resize();
     }
     if(typeof orgPanelChart!='undefined') {
+        console.log("orgPanelChart resize");
         orgPanelChart.resize && orgPanelChart.resize();
     }
     if(typeof eventPanelChart!='undefined') {
+        console.log("eventPanelChart resize");
         eventPanelChart.resize && eventPanelChart.resize();
     }
     if(typeof mergePanelChart!='undefined') {
+        console.log("MergePanelChart resize");
         mergePanelChart.resize && mergePanelChart.resize();
     }
     if(typeof fundPanelChart!='undefined') {
+        console.log("fundPanelChart resize");
         fundPanelChart.resize && fundPanelChart.resize();
     }
-
+    if(typeof eventBarChart!='undefined') {
+        console.log("eventBarChart resize");
+        eventBarChart.resize && eventBarChart.resize();
+    }
+    if(typeof eventPieChart!='undefined') {
+        console.log("eventPieChart resize");
+        eventPieChart.resize && eventPieChart.resize();
+    }
     if(typeof eventMixChart!='undefined') {
+        console.log("eventMixChart resize");
         eventMixChart.resize && eventMixChart.resize();
     }
 

@@ -269,7 +269,12 @@ function gotoOrgPage(id) {
 }
 function gotoProjectPage() {
     console.log("goto project:");
-    var murl = "projects.html?uname=" + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
+    var murl = "projects.html?cur=false&uname=" + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
+    window.location.href = murl;
+}
+function gotoCurrentProjectPage() {
+    console.log("goto project:");
+    var murl = "projects.html?cur=true&uname=" + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
     window.location.href = murl;
 }
 function gotoNewsPage() {

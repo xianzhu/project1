@@ -595,7 +595,7 @@ var dashProjOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '55%'],    // 默认全局居中
+            center: ['40%', '55%'],    // 默认全局居中
             // radius: '75%',
             radius: '95%',
             min: 0,
@@ -680,7 +680,7 @@ var dashCompanyOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '55%'],    // 默认全局居中
+            center: ['40%', '55%'],    // 默认全局居中
             // radius: '75%',
             radius: '95%',
             min: 0,
@@ -765,7 +765,7 @@ var dashReportOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '55%'],    // 默认全局居中
+            center: ['40%', '55%'],    // 默认全局居中
             // radius: '75%',
             radius: '95%',
             min: 0,
@@ -833,7 +833,7 @@ var dashReportOption = {
                     color: '#333'
                 }
             },
-            data: [{value: 1005, name: '研报'}]
+            data: [{value: 1005, name: '报告'}]
         }
     ]
 };
@@ -850,13 +850,12 @@ var dashElasticOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '55%'],    // 默认全局居中
+            center: ['40%', '55%'],    // 默认全局居中
             radius: '95%',
             min: 0,
-            max: 5000,
+            max: 1200,
             endAngle: 0,
             splitNumber: 12,
-            clickable:false,
             axisLine: {            // 坐标轴线
                 lineStyle: {       // 属性lineStyle控制线条样式
                     color: [[1 / 4, 'lime'], [5 / 6, '#1e90ff'], [1, '#ff4500']],
@@ -922,26 +921,211 @@ var dashElasticOption = {
         }
     ]
 };
-
-// 今日资本事件 - 饼图、柱状图
-var eventMixOption = {
+// 今日资本事件 - 饼图
+var eventPieOption = {
+    tooltip: {
+        trigger: 'item',
+        showDelay: 500,
+        hideDelay:10,
+        formatter: "{b}<br>{c}<br>{d}%"
+    },
+    legend: {
+        orient: 'vertical',
+        x: 'right',
+        data: ['一级市场退出', '二级市场退出','早期投资', '中期投资', '后期投资', '其他投资']
+    },
+    calculable: false,
+    // color:[
+    //         '#6495ed',
+    //         'rgba(255,165,0,0.6)',
+    //         '#6f5553',
+    //         '#deb887',
+    //         '#7eb00a',
+    //         '#27727B',
+    //         '#7fffd4',
+    //         '#e2bbff',
+    //         '#ba55d3',
+    //         '#f5994e'
+    // ],
+    series: [
+        {
+            name: '资本事件',
+            type: 'pie',
+            radius: [0, '60%'],
+            center: ['45%', '56%'],
+            itemStyle: {
+                normal: {
+                    label: {
+                        position: 'inner',
+                        textStyle:{
+                            color:'#fff'
+                        }
+                    },
+                    labelLine: {
+                        show: false,
+                        length:-20,
+                        lineStyle:{
+                            color:'#333'
+                        }
+                    }
+                }
+            },
+            data: []
+        },
+        {
+            name: '二级分类',
+            type: 'pie',
+            selectedMode: 'single',
+            radius: ['70%', '85%'],
+            center: ['45%', '56%'],
+            itemStyle: {
+                normal: {
+                    labelLine: {
+                        length: 2
+                    }
+                }
+            },
+            data: []
+        }
+    ]
+};
+// 今日资本事件 - 柱状图
+var eventBarOption = {
     tooltip: {
         trigger: 'axis',
         axisPointer: {
-            type: 'none'
+            type: 'shadow'
         }
     },
     legend: {
-        show: true,
-        x: 'right',
-        padding:[5,40,5,5],
+        show:false,
         data: ['早期投资', '中期投资', '后期投资', '其他投资','一级市场退出', '二级市场退出']
     },
     toolbox: {
         show: true,
         orient: 'vertical',
         y: 'center',
-        padding:[5,15,30,1],
+        feature: {
+            mark: {show: false},
+            magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    calculable: true,
+    xAxis: [
+        {
+            type: 'category',
+            splitLine: {show: false},
+            data: []
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            splitLine: {show: false},
+            splitArea: {show: false}
+        }
+    ],
+    grid: {
+        x: 40,
+        y: 25,
+        x2: 25,
+        y2: 20
+    },
+    series: [
+        {
+            name: '早期投资',
+            type: 'bar',
+            stack: '投资',
+            itemStyle: {
+                normal: {
+                    color: 'rgba(120,164,135,1)'
+                }
+            },
+            barMaxWidth:15,
+            data: []
+        },
+        {
+            name: '中期投资',
+            type: 'bar',
+            stack: '投资',
+            itemStyle: {
+                normal: {
+                    color: 'rgba(255,127,80,1)'
+                }
+            },
+            barMaxWidth:15,
+            data: []
+        },
+        {
+            name: '后期投资',
+            type: 'bar',
+            stack: '投资',
+            barMaxWidth:15,
+            itemStyle: {
+                normal: {
+                    color: 'rgba(135,206,250,1)'
+                }
+            },
+            data: []
+        },
+        {
+            name: '其他投资',
+            type: 'bar',
+            stack: '投资',
+            barMaxWidth:15,
+            itemStyle: {
+                normal: {
+                    color: 'rgba(218,112,214,1)'
+                }
+            },
+            data: []
+        },
+        {
+            name: '一级市场退出',
+            type: 'bar',
+            stack: '退出',
+            barMaxWidth:15,
+            itemStyle: {
+                normal: {
+                    color: 'rgba(50,205,50,1)'
+                }
+            },
+            data: []
+        },
+        {
+            name: '二级市场退出',
+            type: 'bar',
+            stack: '退出',
+            barMaxWidth:15,
+            itemStyle: {
+                normal: {
+                    color: 'rgba(100,149,37,1)'
+                }
+            },
+            data: []
+        }
+    ]
+};
+
+// 今日资本事件 - 饼图、柱状图
+var eventMixOption = {
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    legend: {
+        show: true,
+        x: 'right',
+        data: ['早期投资', '中期投资', '后期投资', '其他投资','一级市场退出', '二级市场退出']
+    },
+    toolbox: {
+        show: true,
+        orient: 'vertical',
+        y: 'center',
         feature: {
             mark: {show: false},
             magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
@@ -969,7 +1153,7 @@ var eventMixOption = {
     grid: {
         x: '48%',
         y: 40,
-        x2: 40,
+        x2: 25,
         y2: 30
     },
 
@@ -1118,14 +1302,13 @@ var eventMixOption = {
         {
             name: '资本事件',
             type: 'pie',
-            radius: [0, '45%'],
-            center: ['23%', '50%'],
+            radius: [0, '28%'],
+            center: ['23%', '55%'],
             tooltip: {
                 trigger: 'item',
                 showDelay: 500,
                 formatter: "{b}<br>{c}({d}%)"
             },
-            clickable:false,
             itemStyle: {
                 normal: {
                     label: {
@@ -1156,8 +1339,8 @@ var eventMixOption = {
             name: '二级分类',
             type: 'pie',
             selectedMode: 'single',
-            radius: ['55%', '75%'],
-            center:['23%','50%'],
+            radius: ['31%', '50%'],
+            center:['23%','55%'],
             tooltip: {
                 trigger: 'item',
                 showDelay: 500,
@@ -1227,9 +1410,9 @@ var eventMixMinOption = {
     ],
     grid: {
         x: 25,
-        y: '51%',
+        y: '53%',
         x2: 25,
-        y2: 30
+        y2: 20
     },
 
     series: [

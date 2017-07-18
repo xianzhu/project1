@@ -201,40 +201,7 @@
                                 </div>
                                 <div class="ibox-content">
                                     <div class="row">
-                                        <div class="col-xlg-4 col-lg-3">
-                                            <div class="table-responsive event_table_responsive">
-                                                <table class="table table-striped table-bordered table-hover table-single-line"
-                                                       id="event_bar_table">
-                                                    <thead>
-                                                    <tr>
-                                                        <th class="td-Wmin43 td-single">类型</th>
-                                                        <th class="td-single">标题</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr v-for="ele in eventList|numResetFilter">
-                                                        <td class="td-Wmin43 td-single" v-text="ele.eventClass"></td>
-                                                        <td v-text="ele.eventTitle"
-                                                            class="link-handle-pointer td-single"
-                                                            v-on:click="getEventDetail(ele.eventTitle,ele.eventClass,ele.eventType)"></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div class="pull-right hide-div">
-                                                    <button style="margin-right:10px;" v-if="eventPageControlFilter(0)"
-                                                            v-on:click="changeEventPage(0)">上页
-                                                    </button>
-                                                    <span v-text="eventPage|currentEventPageFilter"></span>
-                                                    <button style="margin-left:10px;" v-if="eventPageControlFilter(1)"
-                                                            v-on:click="changeEventPage(1)">下页
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-item-hole-chart" style="padding:0px;">
-                                            <div id="event_mixmin_charts"></div>
-                                        </div>
-                                        <div class="col-xlg-8 col-lg-12" style="padding:0px;">
+                                        <div class="col-lg-12" style="padding:0px;">
                                             <div id="event_mix_charts"></div>
                                         </div>
                                     </div>
@@ -242,78 +209,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--&lt;!&ndash;仪表盘&ndash;&gt;-->
-                    <!--<div class="row" id="homemodule_dashboard_row">-->
-                        <!--&lt;!&ndash;项目&ndash;&gt;-->
-                        <!--<div class="col-lg-3 col-md-6 col-sm-6 statistic-dash">-->
-                            <!--<div class="dash">-->
-                                <!--<div class="dash-title ibox-title"><h5>项目</h5></div>-->
-                                <!--<div class="row">-->
-                                    <!--<div class="col-lg-12">-->
-                                        <!--<div id="project_dashboard_chart"></div>-->
-                                        <!--<div class="dash-data">-->
-                                            <!--<div class="dash-data-today">-->
-                                                <!--<strong>今日</strong>-->
-                                                <!--<small v-text="projDashData.current"></small>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--&lt;!&ndash;企业&ndash;&gt;-->
-                        <!--<div class="col-lg-3 col-md-6 col-sm-6 statistic-dash">-->
-                            <!--<div class="dash">-->
-                                <!--<div class="dash-title ibox-title"><h5>企业</h5></div>-->
-                                <!--<div class="row">-->
-                                    <!--<div class="col-lg-12">-->
-                                        <!--<div id="company_dashboard_chart"></div>-->
-                                        <!--<div class="dash-data">-->
-                                            <!--<div class="dash-data-today">-->
-                                                <!--<strong>今日</strong>-->
-                                                <!--<small v-text="companyDashData.current"></small>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--&lt;!&ndash;报告&ndash;&gt;-->
-                        <!--<div class="col-lg-3 col-md-6 col-sm-6 statistic-dash">-->
-                            <!--<div class="dash">-->
-                                <!--<div class="dash-title ibox-title"><h5>报告</h5></div>-->
-                                <!--<div class="row">-->
-                                    <!--<div class="col-lg-12">-->
-                                        <!--<div id="report_dashboard_chart"></div>-->
-                                        <!--<div class="dash-data">-->
-                                            <!--<div class="dash-data-today">-->
-                                                <!--<strong>今日</strong>-->
-                                                <!--<small v-text="reportDashData.current"></small>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--&lt;!&ndash;情报&ndash;&gt;-->
-                        <!--<div class="col-lg-3 col-md-6 col-sm-6 statistic-dash">-->
-                            <!--<div class="dash">-->
-                                <!--<div class="dash-title ibox-title"><h5>情报</h5></div>-->
-                                <!--<div class="row">-->
-                                    <!--<div class="col-lg-12">-->
-                                        <!--<div id="elastic_dashboard_chart"></div>-->
-                                        <!--<div class="dash-data">-->
-                                            <!--<div class="dash-data-today">-->
-                                                <!--<strong>今日</strong>-->
-                                                <!--<small v-text="elasticDashData.current"></small>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
                     <!--仪表盘-->
                     <div class="row" id="homemodule_dashboard_row">
                         <div class="col-lg-12">
@@ -329,50 +224,32 @@
                                 <div class="ibox-content">
                                     <div class="row">
                                         <!--项目-->
-                                        <div class="col-lg-3 col-md-6 col-sm-6 statistic-dash">
+                                        <div class="col-sm-3 col-xs-6 statistic-dash">
                                             <div id="project_dashboard_chart"></div>
-                                            <div class="dash-data">
-                                                <div class="dash-data-today">
-                                                    <strong>今日</strong>
-                                                    <small v-text="projDashData.current"></small>
-                                                </div>
-                                            </div>
+                                            <!--<div class="dash-data">-->
+                                                <!--<div class="dash-data-today">-->
+                                                    <!--<strong>今日</strong>-->
+                                                    <!--<small v-text="projDashData.current"></small>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
                                         </div>
                                         <!--企业-->
-                                        <div class="col-lg-3 col-md-6 col-sm-6 statistic-dash">
+                                        <div class="col-sm-3 col-xs-6 statistic-dash">
                                             <div id="company_dashboard_chart"></div>
-                                            <div class="dash-data">
-                                                <div class="dash-data-today">
-                                                    <strong>今日</strong>
-                                                    <small v-text="companyDashData.current"></small>
-                                                </div>
-                                            </div>
                                         </div>
                                         <!--报告-->
-                                        <div class="col-lg-3 col-md-6 col-sm-6 statistic-dash">
+                                        <div class="col-sm-3 col-xs-6 statistic-dash">
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div id="report_dashboard_chart"></div>
-                                                    <div class="dash-data">
-                                                        <div class="dash-data-today">
-                                                            <strong>今日</strong>
-                                                            <small v-text="reportDashData.current"></small>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!--情报-->
-                                        <div class="col-lg-3 col-md-6 col-sm-6 statistic-dash">
+                                        <div class="col-sm-3 col-xs-6 statistic-dash">
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div id="elastic_dashboard_chart"></div>
-                                                    <div class="dash-data">
-                                                        <div class="dash-data-today">
-                                                            <strong>今日</strong>
-                                                            <small v-text="elasticDashData.current"></small>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -581,6 +458,59 @@
             </div>
         </dl>
     </modal_mask>
+</div>
+
+<!--今日资本事件列表-->
+<div style="display: none;" class="modal-template-mask ibox" id="v-model-event-list"
+     transition="modal" v-show="showModal">
+    <div class="modal-event-wrapper">
+        <div class="modal-event-container">
+            <div class="modal-event-header modal-template-header">
+                <button class="modal-info-close-button detail-close-button" v-on:click="closeEventList()">
+                    <i class="fa fa-close"></i>
+                </button>
+                <h3 style="display:inline-block;">今日资本事件</h3>
+                <span class="m-l font-red" v-text="type"></span>
+            </div>
+            <div class="modal-event-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-responsive event_table_responsive">
+                            <table class="table table-striped table-bordered table-hover table-single-line">
+                                <thead>
+                                <tr>
+                                    <th class="td-single">标题</th>
+                                    <th class="td-Wmin43 td-single">轮次</th>
+                                    <th class="td-single">企业</th>
+                                    <th class="td-W95">发生时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="ele in eList">
+                                    <td v-text="ele.eventTitle"
+                                        class="link-handle-pointer td-single"
+                                        v-on:click="getEventDetail(ele)"></td>
+                                    <td class="td-Wmin43 td-single" v-text="ele.eventClass"></td>
+                                    <td class="td-single" v-text="ele.entCnName"></td>
+                                    <td class="td-W95" v-text="ele.happenDate"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="pull-right" style="padding-right:1px;">
+                                <button style="height:20px;margin-top:3px;margin-right:10px;" v-if="eventPageControlFilter(0)"
+                                        v-on:click="changeEventPage(0)">上页
+                                </button>
+                                <span v-text="eventPage|currentEventPageFilter"></span>
+                                <button style="height:20px;margin-top:3px;margin-left:10px;" v-if="eventPageControlFilter(1)"
+                                        v-on:click="changeEventPage(1)">下页
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--今日资本事件详情-->

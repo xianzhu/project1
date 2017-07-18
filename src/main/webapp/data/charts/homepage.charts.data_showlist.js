@@ -595,7 +595,7 @@ var dashProjOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '55%'],    // 默认全局居中
+            center: ['40%', '55%'],    // 默认全局居中
             // radius: '75%',
             radius: '95%',
             min: 0,
@@ -680,7 +680,7 @@ var dashCompanyOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '55%'],    // 默认全局居中
+            center: ['40%', '55%'],    // 默认全局居中
             // radius: '75%',
             radius: '95%',
             min: 0,
@@ -765,7 +765,7 @@ var dashReportOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '55%'],    // 默认全局居中
+            center: ['40%', '55%'],    // 默认全局居中
             // radius: '75%',
             radius: '95%',
             min: 0,
@@ -850,7 +850,7 @@ var dashElasticOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '55%'],    // 默认全局居中
+            center: ['40%', '55%'],    // 默认全局居中
             radius: '95%',
             min: 0,
             max: 5000,
@@ -922,6 +922,193 @@ var dashElasticOption = {
         }
     ]
 };
+// 今日资本事件 - 饼图
+var eventPieOption = {
+    tooltip: {
+        trigger: 'item',
+        showDelay: 500,
+        hideDelay:10,
+        formatter: "{b}<br>{c}<br>{d}%"
+    },
+    legend: {
+        orient: 'vertical',
+        x: 'right',
+        data: ['一级市场退出', '二级市场退出','早期投资', '中期投资', '后期投资', '其他投资']
+    },
+    calculable: false,
+    // color:[
+    //         '#6495ed',
+    //         'rgba(255,165,0,0.6)',
+    //         '#6f5553',
+    //         '#deb887',
+    //         '#7eb00a',
+    //         '#27727B',
+    //         '#7fffd4',
+    //         '#e2bbff',
+    //         '#ba55d3',
+    //         '#f5994e'
+    // ],
+    series: [
+        {
+            name: '资本事件',
+            type: 'pie',
+            radius: [0, '60%'],
+            center: ['45%', '56%'],
+            itemStyle: {
+                normal: {
+                    label: {
+                        position: 'inner',
+                        textStyle:{
+                            color:'#fff'
+                        }
+                    },
+                    labelLine: {
+                        show: false,
+                        length:-20,
+                        lineStyle:{
+                            color:'#333'
+                        }
+                    }
+                }
+            },
+            data: []
+        },
+        {
+            name: '二级分类',
+            type: 'pie',
+            selectedMode: 'single',
+            radius: ['70%', '85%'],
+            center: ['45%', '56%'],
+            itemStyle: {
+                normal: {
+                    labelLine: {
+                        length: 2
+                    }
+                }
+            },
+            data: []
+        }
+    ]
+};
+// 今日资本事件 - 柱状图
+var eventBarOption = {
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    legend: {
+        show:false,
+        data: ['早期投资', '中期投资', '后期投资', '其他投资','一级市场退出', '二级市场退出']
+    },
+    toolbox: {
+        show: true,
+        orient: 'vertical',
+        y: 'center',
+        feature: {
+            mark: {show: false},
+            magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    calculable: true,
+    xAxis: [
+        {
+            type: 'category',
+            splitLine: {show: false},
+            data: []
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            splitLine: {show: false},
+            splitArea: {show: false}
+        }
+    ],
+    grid: {
+        x: 40,
+        y: 25,
+        x2: 25,
+        y2: 20
+    },
+    series: [
+        {
+            name: '早期投资',
+            type: 'bar',
+            stack: '投资',
+            itemStyle: {
+                normal: {
+                    color: 'rgba(120,164,135,1)'
+                }
+            },
+            barMaxWidth:15,
+            data: []
+        },
+        {
+            name: '中期投资',
+            type: 'bar',
+            stack: '投资',
+            itemStyle: {
+                normal: {
+                    color: 'rgba(255,127,80,1)'
+                }
+            },
+            barMaxWidth:15,
+            data: []
+        },
+        {
+            name: '后期投资',
+            type: 'bar',
+            stack: '投资',
+            barMaxWidth:15,
+            itemStyle: {
+                normal: {
+                    color: 'rgba(135,206,250,1)'
+                }
+            },
+            data: []
+        },
+        {
+            name: '其他投资',
+            type: 'bar',
+            stack: '投资',
+            barMaxWidth:15,
+            itemStyle: {
+                normal: {
+                    color: 'rgba(218,112,214,1)'
+                }
+            },
+            data: []
+        },
+        {
+            name: '一级市场退出',
+            type: 'bar',
+            stack: '退出',
+            barMaxWidth:15,
+            itemStyle: {
+                normal: {
+                    color: 'rgba(50,205,50,1)'
+                }
+            },
+            data: []
+        },
+        {
+            name: '二级市场退出',
+            type: 'bar',
+            stack: '退出',
+            barMaxWidth:15,
+            itemStyle: {
+                normal: {
+                    color: 'rgba(100,149,37,1)'
+                }
+            },
+            data: []
+        }
+    ]
+};
 
 // 今日资本事件 - 饼图、柱状图
 var eventMixOption = {
@@ -940,7 +1127,7 @@ var eventMixOption = {
     toolbox: {
         show: true,
         orient: 'vertical',
-        y: 'center',
+        y: 'bottom',
         padding:[5,15,30,1],
         feature: {
             mark: {show: false},

@@ -415,6 +415,7 @@ define('echarts/chart/gauge', [
             if (!serie.detail.show) {
                 return;
             }
+            var self=this;
             var detail = serie.detail;
             var offsetCenter = detail.offsetCenter;
             var color = detail.backgroundColor;
@@ -424,10 +425,11 @@ define('echarts/chart/gauge', [
             var value = this._getValue(seriesIndex);
             var x = params.center[0] - detail.width / 2 + this.parsePercent(offsetCenter[0], params.radius[1]);
             var y = params.center[1] + this.parsePercent(offsetCenter[1], params.radius[1]);
-            this.shapeList.push(new RectangleShape({
+            var rshape=new RectangleShape({
                 zlevel: serie.zlevel,
                 z: serie.z + (Math.abs(x + detail.width / 2 - params.center[0]) + Math.abs(y + detail.height / 2 - params.center[1]) < textStyle.fontSize ? 2 : 1),
                 hoverable: false,
+                clickable:true,
                 style: {
                     x: x,
                     y: y,
@@ -446,7 +448,11 @@ define('echarts/chart/gauge', [
                     textPosition: 'inside',
                     textColor: textColor === 'auto' ? this._getColor(seriesIndex, value) : textColor
                 }
-            }));
+            });
+            rshape.onclick=function(params){
+                self.messageCenter.dispatch(ecConfig.EVENT.GAUGE_CLICKED, params.event, {}, self.myChart);
+            };
+            this.shapeList.push(rshape);
         },
         _getValue: function (seriesIndex) {
             return this.getDataFromOption(this.series[seriesIndex].data[0]);
