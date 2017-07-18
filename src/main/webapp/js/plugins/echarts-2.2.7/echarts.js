@@ -2691,6 +2691,11 @@ define('echarts/echarts', [
             this.clear();
             this._zr.dispose();
             this._zr = null;
+        },
+        resetchart:function(){
+            for(var i=0;i<this._chartList.length;i++){
+                this._chartList[i].resetchart&&this._chartList[i].resetchart();
+            }
         }
     };
     return self;

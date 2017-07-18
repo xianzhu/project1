@@ -15,7 +15,8 @@
     height: 1em;
     width: 100%;
     /*background-color: #2ba659;*/
-    background-color:#2fa4e7;
+    /*background-color:#2fa4e7;*/
+    background-color:#68aed7;
 }
 
 .accordion dd,
@@ -43,7 +44,8 @@
 .accordionTitle,
 .accordion__Heading {
     /*background-color: #38cc70;*/
-    background-image: linear-gradient(#d1eeff, #87c6ea 60%, #2fa4e7);
+    /*background-image: linear-gradient(#d1eeff, #87c6ea 60%, #2fa4e7);*/
+    background-image: linear-gradient(#9dc8e2, #87c6ea 60%, #68aed7);
     background-repeat: no-repeat;
     text-align: left;
     font-weight: 700;

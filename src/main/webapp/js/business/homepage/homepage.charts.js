@@ -11,7 +11,7 @@ var rptChart, orgPanelChart, eventPanelChart, mergePanelChart, fundPanelChart,
     projDashChart, companyDashChart, reportDashChart,elasticDashChart, eventMixChart;
 
 // 股权投资行为趋势
-function showRptEcharts(srcdata, id) {
+function showRptEcharts2(srcdata, id) {
     if (!srcdata) {
         console.log("data is undefined.");
         return;
@@ -32,9 +32,11 @@ function showRptEcharts(srcdata, id) {
         data.ydata.eNum.push(item.eNum);
         data.ydata.psIbmpa.push(item.psIbmpa);
     }
+
     var moption = clone(orgTrendsOption);
 
     moption.xAxis.data = data.durTime;
+
     moption.series[0].data = [];
     var flag = true;
     for (var j = data.ydata.psIbmpa.length - 1; j >= 0; j--) {
@@ -59,6 +61,73 @@ function showRptEcharts(srcdata, id) {
 
             rptChart.setOption(moption, true);
 
+            window.addEventListener('resize', function () {
+                rptChart.resize && rptChart.resize();
+            });
+        });
+    } else {
+        rptChart.setOption(moption, true);
+    }
+}
+
+function showRptEcharts(srcdata, id) {
+    if (!srcdata) {
+        console.log("data is undefined.");
+        return;
+    }
+    var echarts;
+    var data = {
+        "durTime": [],
+        "ydata": {
+            "iNum": [],
+            "eNum": [],
+            "psIbmpa": []
+        }
+    }
+
+    var srcdatat=[
+        // {"durTime":1,"iNum":0.100184167,"eNum":0.654420922,"psIbmpa":0.114007745},
+        // {"durTime":2,"iNum":0.103558471,"eNum":0.663432383,"psIbmpa":0.198198412},
+        // {"durTime":3,"iNum":0.103709857,"eNum":0.663840097,"psIbmpa":0.197481281},
+        // {"durTime":4,"iNum":0.123794837,"eNum":0.720684449,"psIbmpa":0.195493054},
+        // {"durTime":5,"iNum":0.935107335,"eNum":0.155291005,"psIbmpa":0.130806622},
+        // {"durTime":6,"iNum":0.944563298,"eNum":0.18579699,"psIbmpa":0.171527775},
+        // {"durTime":7,"iNum":0.943336428,"eNum":0.181753834,"psIbmpa":0.179525863},
+        // {"durTime":8,"iNum":0.12648611,"eNum":0.128739003,"psIbmpa":0.980646229},
+        // {"durTime":9,"iNum":0.122201674,"eNum":0.115967247,"psIbmpa":0.904135432},
+        // {"durTime":10,"iNum":0.100184167,"eNum":0.154420922,"psIbmpa":0.914007745}
+
+        {"durTime":1,"iNum":0.900184167,"eNum":0.806302607,"psIbmpa":0.654420922},
+        {"durTime":2,"iNum":0.903558471,"eNum":0.811830305,"psIbmpa":0.663432383},
+        {"durTime":3,"iNum":0.903709857,"eNum":0.812079609,"psIbmpa":0.663840097},
+        {"durTime":4,"iNum":0.923794837,"eNum":0.846206669,"psIbmpa":0.720684449},
+        {"durTime":5,"iNum":0.935107335,"eNum":0.866417497,"psIbmpa":0.755291005},
+        {"durTime":6,"iNum":0.944563298,"eNum":0.883914568,"psIbmpa":0.78579699},
+        {"durTime":7,"iNum":0.943336428,"eNum":0.881611877,"psIbmpa":0.781753834},
+        {"durTime":8,"iNum":0.92648611,"eNum":0.850946715,"psIbmpa":0.728739003},
+        {"durTime":9,"iNum":0.922201674,"eNum":0.843420123,"psIbmpa":0.715967247},
+        {"durTime":10,"iNum":0.900184167,"eNum":0.806302607,"psIbmpa":0.654420922}
+    ];
+    for (var i = 0; i < srcdatat.length; i++) {
+        var item = srcdatat[i];
+        data.durTime.push(item.durTime);
+        data.ydata.iNum.push(item.iNum);
+        data.ydata.eNum.push(item.eNum);
+        data.ydata.psIbmpa.push(item.psIbmpa);
+    }
+    var moption = clone(orgTrendsOption);
+
+    moption.xAxis.data = data.durTime;
+    moption.series[2].data=data.ydata.iNum;
+    moption.series[1].data=data.ydata.eNum;
+    moption.series[0].data=data.ydata.psIbmpa;
+
+    if (typeof rptChart == 'undefined') {
+        require(['echarts', 'echarts/chart/line'], function (ec) {
+            echarts = ec;
+            var dom = document.getElementById(id);
+            rptChart = echarts.init(dom);
+            rptChart.setOption(moption, true);
             window.addEventListener('resize', function () {
                 rptChart.resize && rptChart.resize();
             });
@@ -355,6 +424,11 @@ function showEventMixEcharts(piedata,bardata, id) {
     } else {
         eventMixChart.setOption(moption, true);
     }
+}
+
+function resetEventMixChart(){
+    eventMixChart.resetchart();
+    eventMixChart.resize();
 }
 
 function allChartResize() {

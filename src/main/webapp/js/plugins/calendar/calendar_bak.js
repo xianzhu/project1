@@ -337,6 +337,7 @@
 
             if (markData) {
                 $item.data(MARK_DATA, markData);
+                // console.log($item);
                 $item.html(MARK_DAY_HTML+TEXT_DAY_HTML.repeat({date:d}));
             }
 

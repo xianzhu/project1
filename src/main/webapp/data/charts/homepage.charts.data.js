@@ -23,30 +23,34 @@ var orgTrendsOption = {
         hideDelay:50,
         //backgroundColor:'rgba(0,0,250,0.4)',
         formatter: function (params) {
-            // console.log(params);
-            var tip = params[0].name + "<br>" + params[0].seriesName + ": ";
-            if (typeof params[0].data == 'undefined') {
-                tip += '-';
-            } else {
-                tip += params[0].data.toFixed(3);
+            console.log(params);
+            var tip = params[0].name;
+            for(var i=0;i<params.length;i++){
+                var item=params[i];
+                if (typeof item.data == 'undefined') {
+                    tip += "<br>"+item.series.text+": "+ '-';
+                } else {
+                    tip += "<br>"+item.series.text+": "+item.data.toFixed(3);
+                }
             }
             return tip;
         }
     },
     grid: {
         borderWidth: 0,
-        x: 25,
-        x2: 25,
-        y: 10,
-        y2: 20
+        x: 30,
+        x2: 15,
+        y: 30,
+        y2: 18
     },
     // calculable: true,
     legend: {
-        show: false,
+        show: true,
         data: [
-            {name: 'PMICI'}
+            // "ICI","ISI","IEI"
+            "投资者信心指数","投资者满意指数","投资者预期指数"
         ],
-        x: "center",
+        x: "right",
         y: "top",
         textStyle: {
             color: '#3c3c3c'
@@ -71,6 +75,12 @@ var orgTrendsOption = {
                 width: 1
             }
         },
+        axisTick:{
+            length:3
+        },
+        axisLabel:{
+            margin:4
+        },
         splitLine: {
             show: false
             // 是否显示网格
@@ -81,7 +91,7 @@ var orgTrendsOption = {
         {
             type: 'value',
             name: "",
-            min: 0,
+            // min: 0.6,
             max: 1,
             scale: true,
             axisLabel: {
@@ -105,34 +115,78 @@ var orgTrendsOption = {
     ],
     series: [
         {
-            name: 'PMICI',
+            name: '投资者信心指数',
+            text: 'ICI',
             type: 'line',
             smooth: true,
             symbol: 'none',
-            lineStyle: {normal: {color: "#edafda"}},
             itemStyle: {
                 normal: {
-                    color: 'rgba(247,165,74,0.9)' //"#f7a54a", // "#817b01",
+                    // color: "#87cefa",
+                    // color: "#6495ed",
+                    color: "#00bcd4",
+                    areaStyle:{
+                        // color:"rgba(135,206,250,0.1)",
+                        // color:"rgba(100,149,237,0.1)",
+                        color:"rgba(0,188,212,0.1)",
+                        type:"default"
+                    }
                 }
             },
             data: [],
-            markLine: {
-                symbol: 'none',
-                itemStyle: {
-                    normal: {
-                        label: {
-                            show: false
-                        }
+            yAxisIndex: 0
+        },
+        {
+            name: '投资者满意指数',
+            text: 'ISI',
+            type: 'line',
+            smooth: true,
+            symbol: 'none',
+            itemStyle: {
+                normal: {
+                    color: "#ff7f50",
+                    areaStyle:{
+                        color: "rgba(255,127,80,0.1)",
+                        type:"default"
                     }
-                },
-                data: [
-                    {type: 'average', name: '平均值',tooltip:{show:false}},
-                    [
-                        {name: '参考值', value: 0.4, x: 25, y: 50,tooltip:{show:false}},
-                        {x: 1000, y: 50}
-                    ]
-                ]
+                }
             },
+            data: [],
+            yAxisIndex: 0
+        },
+        {
+            name: '投资者预期指数',
+            text: 'IEI',
+            type: 'line',
+            smooth: true,
+            symbol: 'none',
+            itemStyle: {
+                normal: {
+                    color: "#78a487",
+                    areaStyle:{
+                        color: "rgba(120,164,135,0.1)",
+                        type:"default"
+                    }
+                }
+            },
+            data: [],
+            // markLine: {
+            //     symbol: 'none',
+            //     itemStyle: {
+            //         normal: {
+            //             label: {
+            //                 show: false
+            //             }
+            //         }
+            //     },
+            //     data: [
+            //         {type: 'average', name: '平均值',tooltip:{show:false}},
+            //         [
+            //             {name: '参考值', value: 0.4, x: 25, y: 50,tooltip:{show:false}},
+            //             {x: 1000, y: 50}
+            //         ]
+            //     ]
+            // },
             yAxisIndex: 0
         }
     ]
@@ -210,6 +264,9 @@ var panelOrgOption = {
                     label: {
                         show: true,
                         position: 'right',
+                        textStyle:{
+                            color:"#333"
+                        },
                         formatter: function (params) {
                             return params.name;
                         }

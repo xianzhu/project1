@@ -173,7 +173,27 @@
 }
 
 .modal-event-container{
+    width: 75%;
+    margin: 40px auto 10px auto;
+    overflow: auto;
+    max-width: 800px;
+}
 
+.modal-eventlist-container{
+    width: 75%;
+    margin: 100px auto 10px auto;
+    overflow: auto;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .3s ease;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.modal-eventlist-body{
+    margin:5px 0;
+    overflow:auto;
+    padding:0px 20px 10px 20px;
 }
 
 table.table-single-line{

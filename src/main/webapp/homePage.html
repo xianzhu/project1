@@ -464,7 +464,7 @@
 <div style="display: none;" class="modal-template-mask ibox" id="v-model-event-list"
      transition="modal" v-show="showModal">
     <div class="modal-event-wrapper">
-        <div class="modal-event-container">
+        <div class="modal-eventlist-container">
             <div class="modal-event-header modal-template-header">
                 <button class="modal-info-close-button detail-close-button" v-on:click="closeEventList()">
                     <i class="fa fa-close"></i>
@@ -472,10 +472,11 @@
                 <h3 style="display:inline-block;">今日资本事件</h3>
                 <span class="m-l font-red" v-text="type"></span>
             </div>
-            <div class="modal-event-body">
+            <div class="modal-eventlist-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="table-responsive event_table_responsive">
+                        <!--<div class="table-responsive event_table_responsive">-->
+                        <div v-bind:class="[dataEmpty?'hide-div':'table-responsive event_table_responsive']">
                             <table class="table table-striped table-bordered table-hover table-single-line">
                                 <thead>
                                 <tr>
@@ -486,7 +487,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="ele in eList">
+                                <tr v-for="ele in eventList">
                                     <td v-text="ele.eventTitle"
                                         class="link-handle-pointer td-single"
                                         v-on:click="getEventDetail(ele)"></td>
@@ -505,6 +506,10 @@
                                         v-on:click="changeEventPage(1)">下页
                                 </button>
                             </div>
+                        </div>
+
+                        <div v-bind:class="[dataEmpty?'text-center':'hide-div']">
+                            暂时没有数据
                         </div>
                     </div>
                 </div>
@@ -624,7 +629,7 @@
 <!--<script src="js/plugins/zrender/zrender.js"></script>-->
 <script src="js/plugins/echarts-2.2.7/echarts.js"></script>
 <!--<script src="js/plugins/echarts-2.2.7/esl.js"></script>-->
-<!--<script src="js/plugins/echart2_new/echarts.js"></script>-->
+<!--<script src="js/plugins/echarts2/echarts.js"></script>-->
 
 <script src="js/mycommon/common.data.js"></script>
 <script src="data/menu/common.menu.js"></script>
