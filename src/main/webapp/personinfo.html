@@ -152,12 +152,12 @@
                         <div class="ibox-content">
                             <div v-bind:class="[elasticEmpty?'feed-activity-list hide-div':'feed-activity-list show-div']" style="margin-bottom:35px;">
                                 <div class="feed-element" v-for="item in elasticList">
-                                    <div>
+                                    <div class="display-flow-root">
                                         <a v-bind:href="item.url" v-on:click="openNews(item.url)" target="_blank">
-                                            <strong v-text="item.title"></strong>
-                                            <span v-text="item.time" class="pull-right"></span></a>
-                                        <div v-text="item.content"></div>
+                                            <strong v-text="item.title"></strong></a>
+                                            <small v-text="item.time" class="pull-right"></small>
                                     </div>
+                                    <div v-text="item.content"></div>
                                 </div>
                                 <div class="pull-right" style="margin-top:13px;margin-bottom:2px;">
                                     <button style="margin-right:10px;" v-if="elasticPageControlFilter(0)" v-on:click="changeElasticPage(0)">上页</button>

@@ -406,14 +406,12 @@
                                     <div style="padding:2px 5px;">
                                         <div class="feed-activity-list">
                                             <div class="feed-element" v-for="item in newsList">
-                                                <div>
-                                                    <strong class="pull-right text-navy"
-                                                            v-text="item.channel_name"></strong>
+                                                <div class="display-flow-root">
                                                     <a v-bind:href="item.url" v-on:click="openNews(item.url)"
                                                        target="_blank"><strong v-text="item.title"></strong></a>
-                                                    <div v-text="item.content|getNewsShortStrFilter"></div>
                                                     <small class="text-muted pull-right" v-text="item.time"></small>
                                                 </div>
+                                                <div v-text="item.content|getNewsShortStrFilter"></div>
                                             </div>
                                         </div>
                                     </div>

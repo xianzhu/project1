@@ -151,24 +151,23 @@
                         <div class="ibox-content" v-show="isFirstShow" style="display:none;">
                             <div class="feed-activity-list">
                                 <div class="feed-element" v-for="item in projectList">
-                                    <div>
+                                    <div class="display-flow-root">
+                                        <strong v-text="item.brand"></strong>
                                         <small class="pull-right text-navy link-handle-pointer"
                                                v-text="item.entName|formatStringFilter"
                                                v-on:click="gotoCompany(item.uuid)"></small>
-                                        <strong v-text="item.brand"></strong>
-
-                                        <div class="project-information-div">
-                                            <p>
-                                                <strong class="description-info"><i class="fa fa-comment"></i>简介：</strong>
-                                                <span v-text="item.brief"></span>
-                                            </p>
-                                            <p>
-                                                <strong class="comments-info"><i class="fa fa-comment"></i>观点：</strong>
-                                                <span v-text="item.comments|formatStringFilter"></span>
-                                            </p>
-                                        </div>
-                                        <small class="text-muted pull-right" v-text="item.domain"></small>
                                     </div>
+                                    <div class="project-information-div">
+                                        <p>
+                                            <strong class="description-info"><i class="fa fa-comment"></i>简介：</strong>
+                                            <span v-text="item.brief"></span>
+                                        </p>
+                                        <p>
+                                            <strong class="comments-info"><i class="fa fa-comment"></i>观点：</strong>
+                                            <span v-text="item.comments|formatStringFilter"></span>
+                                        </p>
+                                    </div>
+                                    <small class="text-muted pull-right" v-text="item.domain"></small>
                                 </div>
                             </div>
                         </div>

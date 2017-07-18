@@ -133,12 +133,12 @@
                         <div class="ibox-content">
                             <div class="feed-activity-list" style="padding-bottom: 35px;">
                                 <div class="feed-element" v-for="item in news" v-if="news|checkEmptyFilter">
-                                    <div>
+                                    <div class="display-flow-root">
                                         <a v-bind:href="item.url" v-on:click="openNews(item.url)" target="_blank">
-                                            <strong v-text="item.title"></strong>
-                                            <small class="text-muted pull-right"v-text="item.time"></small></a>
-                                        <div v-text="item.content"></div>
+                                            <strong v-text="item.title"></strong></a>
+                                            <small class="text-muted pull-right"v-text="item.time"></small>
                                     </div>
+                                    <div v-text="item.content"></div>
                                 </div>
                                 <div style="display:none;" v-show="newsEnd">没有更多数据</div>
                                 <div class="pull-right" style="margin-top:13px;margin-bottom:2px;">
@@ -233,11 +233,10 @@
                                     <div id="tab-3" class="tab-pane active">
                                         <div class="panel-body">
                                             <div class="feed-activity-list" style="padding-bottom: 35px;">
-                                                <div class="feed-element" v-for="item in traderReport" v-if="traderReport|checkEmptyFilter">
-                                                    <div>
-                                                        <strong class="pointer-cursor" v-on:click="openPdfOnline(item.url)" v-text="item.report_name"></strong>
-                                                        <div><span class="pull-right" v-text="item.industry_type"></span></div>
-                                                    </div>
+                                                <div class="feed-element single-line" v-for="item in traderReport" v-if="traderReport|checkEmptyFilter">
+                                                        <strong class="link-handle-pointer" v-on:click="openPdfOnline(item.url)"
+                                                                v-text="item.report_name" v-bind:title="item.report_name"></strong>
+                                                        <span class="pull-left" v-text="item.industry_type|traderTypeFilter"></span>
                                                 </div>
                                                 <div style="display:none;" v-show="traderEnd">没有更多数据</div>
                                                 <div class="pull-right" style="margin-top:13px;margin-bottom:2px;">
@@ -251,11 +250,9 @@
                                     <div id="tab-4" class="tab-pane">
                                         <div class="panel-body">
                                             <div class="feed-activity-list" style="padding-bottom: 35px;">
-                                                <div class="feed-element" v-for="item in cvReport" v-if="cvReport|checkEmptyFilter">
-                                                    <div>
-                                                        <strong class="pointer-cursor" v-on:click="openPdfOnline(item.url)" v-text="item.report_name"></strong>
-                                                        <div class="pull-right" v-text="item.industry_name"></div>
-                                                    </div>
+                                                <div class="feed-element single-line" v-for="item in cvReport" v-if="cvReport|checkEmptyFilter">
+                                                    <span class="pull-left" v-text="item.industry_type|cvTypeFilter"></span>
+                                                    <strong class="link-handle-pointer" v-on:click="openPdfOnline(item.url)" v-text="item.report_name" v-bind:title="item.report_name"></strong>
                                                 </div>
                                                 <div style="display:none;" v-show="cvEnd">没有更多数据</div>
                                                 <div class="pull-right" style="margin-top:13px;margin-bottom:2px;">

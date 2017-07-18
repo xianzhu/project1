@@ -16,3 +16,10 @@
     /*color:#0cb9a5;*/
     font-weight:600;
 }
+
+.single-line{
+    table-layout: fixed;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

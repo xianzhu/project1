@@ -141,6 +141,20 @@ var v_mutiSearchModel=new Vue({
             var result= !value;
             console.log(result);
             return result;
+        },
+        cvTypeFilter:function (value) {
+            var result="";
+            if(value&&value!=""){
+                result="["+value+"]";
+            }
+            return result;
+        },
+        traderTypeFilter:function (value) {
+            var result="";
+            if(value&&value!=""){
+                result="["+value+"]";
+            }
+            return result;
         }
     }
 });

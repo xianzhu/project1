@@ -168,14 +168,12 @@
                                 <div class="feed-activity-list" style="padding-bottom:35px;">
                                     <div class="feed-element" v-for="item in newsList" style="display:none;"
                                          v-show="newsList|checkNotEmptyFilter">
-                                        <div>
-                                            <small class="pull-right text-navy" v-text="item.channel_name"></small>
+                                        <div class="display-flow-root">
                                             <a v-bind:href="item.url" v-on:click="openNews(item.url)"
                                                target="_blank"><strong v-text="item.title"></strong></a>
-
-                                            <div v-text="item.content|getNewsShortStrFilter"></div>
                                             <small class="text-muted pull-right" v-text="item.time"></small>
                                         </div>
+                                        <div v-text="item.content|getNewsShortStrFilter"></div>
                                     </div>
                                     <div style="display:none;" v-show="newsEnd">没有更多新闻</div>
                                     <div class="pull-right" style="margin-top:13px;margin-bottom:2px;">
@@ -210,7 +208,7 @@
                                     <div class="feed-activity-list report-lists" style="padding-bottom:35px;">
                                         <div class="feed-element" v-for="item in report" style="display:none;"
                                              v-show="report|checkNotEmptyFilter">
-                                            <div>
+                                            <div class="display-flow-root">
                                                 <strong style="cursor:pointer;"
                                                         v-on:click="openPdfOnline(item.url)"
                                                         v-text="item.report_name"></strong>
@@ -249,14 +247,16 @@
                                      v-show="postProject|checkNotEmptyFilter">
                                     <div class="feed-activity-list">
                                         <div class="feed-element" v-for="item in postProject">
-                                            <div>
-                                                <small class="pull-right text-navy link-handle-pointer"
-                                                       v-text="item.entName|formatStringFilter"
-                                                       v-on:click="gotoEntCompany(item.uuid)"></small>
-                                                <strong v-text="item.brand" class="project-brand link-handle-pointer"
+                                            <div class="display-flow-root">
+                                                  <strong v-text="item.brand" class="project-brand link-handle-pointer"
                                                         data-container="body" data-toggle="popover"
                                                         data-placement="right"
                                                         v-bind:data-content="item.comments|formatCommentsFilter"></strong>
+                                                <small class="pull-right text-navy link-handle-pointer"
+                                                       v-text="item.entName|formatStringFilter"
+                                                       v-on:click="gotoEntCompany(item.uuid)"></small>
+                                            </div>
+                                            <div>
                                                 <div v-text="item.brief"></div>
                                                 <small class="text-muted pull-right" v-text="item.domain"></small>
                                             </div>

@@ -223,6 +223,7 @@ strong.description-info{
 }
 .feed-element{
     padding:5px 10px 0px 10px;
+    margin-top:10px;
     border-bottom:1px solid #eee;
 }
 .industry-list-group{

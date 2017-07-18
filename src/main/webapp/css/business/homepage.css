@@ -164,7 +164,9 @@
     margin-right: 0px;
     margin-top: -15px;
 }
-
+.modal-event-wrapper{
+    display:table-cell;
+}
 .modal-calendar-body{
     margin:0;
     color:#555;
@@ -174,15 +176,13 @@
 
 .modal-event-container{
     width: 75%;
-    margin: 40px auto 10px auto;
-    overflow: auto;
+    margin: 100px auto 20px auto;
     max-width: 800px;
 }
 
 .modal-eventlist-container{
     width: 75%;
-    margin: 100px auto 10px auto;
-    overflow: auto;
+    margin: 100px auto 20px auto;
     max-width: 800px;
     background-color: #fff;
     border-radius: 2px;

@@ -119,6 +119,7 @@ function initModelEventDetail() {
         methods: {
             closeEventDetail: function () {
                 this.$data.showModal = false;
+                modal_event_list.$data.showModal =true;
             }
         },
         filters: {
@@ -594,6 +595,7 @@ function getEventByTitle(element) {
                         $("#v-model-mask-info").css("display", "block");
                     });
                 }
+                modal_event_list.$data.showModal = false;
                 modal_event_info.$data.showModal = true;
             }
         },
@@ -808,7 +810,7 @@ function resizeDetailMask() {
     var mheight = height;
     // console.log(height, mheight);
     $(".modal-eventlist-body").css('maxHeight', mheight - 181);
-    $(".modal-event-body").css('maxHeight', mheight - 121);
+    $(".modal-event-body").css('maxHeight', mheight - 181);
 }
 function resizeLeftSide(isLoad) {
     var bwidth = $('body').width();
