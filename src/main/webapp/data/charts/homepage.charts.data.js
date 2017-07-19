@@ -128,7 +128,7 @@ var orgTrendsOption = {
                     areaStyle:{
                         // color:"rgba(135,206,250,0.1)",
                         // color:"rgba(100,149,237,0.1)",
-                        color:"rgba(0,188,212,0.1)",
+                        color:"rgba(0,188,212,0.2)",
                         type:"default"
                     }
                 }
@@ -146,7 +146,7 @@ var orgTrendsOption = {
                 normal: {
                     color: "#ff7f50",
                     areaStyle:{
-                        color: "rgba(255,127,80,0.1)",
+                        color: "rgba(255,127,80,0.2)",
                         type:"default"
                     }
                 }
@@ -164,7 +164,7 @@ var orgTrendsOption = {
                 normal: {
                     color: "#78a487",
                     areaStyle:{
-                        color: "rgba(120,164,135,0.1)",
+                        color: "rgba(120,164,135,0.2)",
                         type:"default"
                     }
                 }

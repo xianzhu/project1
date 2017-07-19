@@ -354,13 +354,6 @@ if(typeof type != 'undefined'){
 }
 
 $(document).ready(function () {
-    // Add body-small class if window less than 768px
-    if ($(this).width() < 769) {
-        $('body').addClass('body-small')
-    } else {
-        $('body').removeClass('body-small')
-    }
-
     $.easing.def = "easeOutBounce";
 
     $('#side-menu>li').click(function(e){
@@ -376,13 +369,13 @@ $(document).ready(function () {
         }
         e.preventDefault();
     });
-    $('.navbar-report-item').mouseover(function(e){
-        $(this).addClass('show-list');
-    });
-    $('.navbar-report-item').mouseout(function(e){
-        console.log("mouseout");
-        $(this).removeClass('show-list');
-    });
+    // $('.navbar-report-item').mouseover(function(e){
+    //     $(this).addClass('show-list');
+    // });
+    // $('.navbar-report-item').mouseout(function(e){
+    //     console.log("mouseout");
+    //     $(this).removeClass('show-list');
+    // });
     // Full height of sidebar
     function fix_height() {
         var navbarHeigh = $('#nav-wrapper').height();
@@ -396,6 +389,10 @@ $(document).ready(function () {
     }
 
     fix_height();
+
+    $("#logo-img-bar").click(function(){
+        console.log(getWindowSize());
+    });
 
     $('.check-link').click(function () {
         var button = $(this).find('i');
@@ -416,55 +413,17 @@ $(document).ready(function () {
 
         return false;
     });
-
-    // Fixed Sidebar
-    // $(window).bind("load", function () {
-    //     if ($("body").hasClass('fixed-sidebar')) {
-    //         $('.sidebar-collapse').slimScroll({
-    //             height: '100%',
-    //             railOpacity: 0.9
-    //         });
-    //     }
-    // });
-
     $("[data-toggle=popover]") .popover();
 });
 
 // Minimalize menu when screen is less than 768px
-$(window).bind("resize", function () {
-    if ($(this).width() < 769) {
-        $('body').addClass('body-small')
-    } else {
-        $('body').removeClass('body-small')
-    }
-});
-
-// function SmoothlyMenu() {
-//     if($('body').hasClass('mini-navbar')){
-//         $('#logo-img-bar').css("display","none");
-//     }else{
-//         $('#logo-img-bar').css("display","block");
-//     }
-//
-//     if (!$('body').hasClass('mini-navbar') || $('body').hasClass('body-small')) {
-//         // Hide menu in order to smoothly turn on when maximize menu
-//         $('#side-menu').hide();
-//         // For smoothly turn on menu
-//         setTimeout(
-//             function () {
-//                 $('#side-menu').fadeIn(400);
-//             }, 200);
-//     } else if ($('body').hasClass('fixed-sidebar')) {
-//         $('#side-menu').hide();
-//         setTimeout(
-//             function () {
-//                 $('#side-menu').fadeIn(400);
-//             }, 100);
+// $(window).bind("resize", function () {
+//     if ($(this).width() < 769) {
+//         $('body').addClass('body-small')
 //     } else {
-//         // Remove all inline style from jquery fadeIn function to reset menu state
-//         $('#side-menu').removeAttr('style');
+//         $('body').removeClass('body-small')
 //     }
-// }
+// });
 
 // 综合查询
 function searchBarPress(event,value){
