@@ -45,7 +45,7 @@ public class StatisticInfoService {
 
 		try{
 		// 获取机构调研趋势
-		String sql = "select * from stat_trend_all order by stat_date desc limit 7 ";
+		String sql = "select * from rpt_stat_trend_all order by stat_date desc limit 7 ";
 		List<Record> records = Db.find(sql);
 		response.setTrend(transferToTrend(records));
 
