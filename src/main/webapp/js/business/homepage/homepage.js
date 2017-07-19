@@ -55,7 +55,8 @@ function initModelEventListVue() {
         data: {
             showModal: false,
             type: "", // 类型（轮次）
-            elist:[],
+            eventList:[],
+            dataEmpty:true,
             eventPage: 0, // 事件页
             eventEnd: false,
             eventType:'' // 当前选中事件类型
@@ -63,6 +64,7 @@ function initModelEventListVue() {
         methods: {
             closeEventList: function () {
                 this.$data.showModal = false;
+                resetEventMixChart();
             },
             eventPageControlFilter: function (value) {
                 if (value == 0) {
@@ -117,6 +119,7 @@ function initModelEventDetail() {
         methods: {
             closeEventDetail: function () {
                 this.$data.showModal = false;
+                modal_event_list.$data.showModal =true;
             }
         },
         filters: {
@@ -502,6 +505,7 @@ function getEventSubpage(type) {
                                 eventClass: item.investType,
                                 eventTitle: item.eventTitle,
                                 entCnName: item.entCnName,
+                                happenDate:item.happenDate,
                                 eventType: "invest"
                             });
                         }
@@ -515,17 +519,15 @@ function getEventSubpage(type) {
                                 eventClass: item.exitType,
                                 eventTitle: item.eventTitle,
                                 entCnName: item.entCnName,
+                                happenDate:item.happenDate,
                                 eventType: "exit"
                             });
                         }
                     }
                 }
-                modal_event_list.$data.eList=elist;
-                if(elist.length<commonPageNum.homeEventList){
-                    modal_event_list.$data.eventEnd=true;
-                }else{
-                    modal_event_list.$data.eventEnd=false;
-                }
+                modal_event_list.$data.eventList=elist;
+                modal_event_list.$data.dataEmpty=elist.length<=0;
+                modal_event_list.$data.eventEnd=elist.length<commonPageNum.homeEventList;
                 modal_event_list.$data.showModal=true;
             }
         },
@@ -593,6 +595,7 @@ function getEventByTitle(element) {
                         $("#v-model-mask-info").css("display", "block");
                     });
                 }
+                modal_event_list.$data.showModal = false;
                 modal_event_info.$data.showModal = true;
             }
         },
@@ -804,9 +807,10 @@ function bindCalendarItem() {
 
 function resizeDetailMask() {
     var height = $(window).height();
-    var mheight = height - 121;
+    var mheight = height;
     // console.log(height, mheight);
-    $(".modal-event-body").css('maxHeight', mheight);
+    $(".modal-eventlist-body").css('maxHeight', mheight - 181);
+    $(".modal-event-body").css('maxHeight', mheight - 181);
 }
 function resizeLeftSide(isLoad) {
     var bwidth = $('body').width();

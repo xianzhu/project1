@@ -714,3 +714,16 @@ function getSubString(value,length){
     }
     return result;
 }
+
+function getWindowSize() {
+    var wheight=$(window).height(),wwidth=$(window).width();
+    var aheight=window.screen.availHeight,awidth=window.screen.availWidth;
+    // var sheight=window.screen.height, swidth=window.screen.width;
+    console.log("getWindowScreen size:",height,width);
+    var height=wheight,width=wwidth;
+    if(aheight>height){
+        height=aheight;
+        width=awidth;
+    }
+    return [height,width];
+}

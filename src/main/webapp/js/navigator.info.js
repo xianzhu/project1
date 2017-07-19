@@ -45,6 +45,14 @@ function allinfo() {
     info += "<tr><td>flash插件情况：</td><td>" + checkePlugs('Shockwave Flash') + "</td></tr>";
     info += "<tr><td>是否有MediaPlayer：</td><td>" + checkePlugs("MediaPlayer") + "</td></tr>";
     info += "<tr><td>是否有realPlayer:</td><td>" + checkePlugs("RealPlayer") + "</td></tr>";
+    info += "<tr><td>屏幕高度：</td><td>" + $(window).height() + "</td></tr>";
+    info += "<tr><td>屏幕宽度：</td><td>" + $(window).width() + "</td></tr>";
+
+    info += "<tr><td>body高度：</td><td>" + $("body").height() + "</td></tr>";
+    info += "<tr><td>body宽度：</td><td>" + $("body").width() + "</td></tr>";
+    info += "<tr><td>屏幕可用高度：</td><td>" + window.screen.availHeight + "</td></tr>";
+    info += "<tr><td>屏幕可用宽度：</td><td>" + window.screen.availWidth + "</td></tr>";
+
     info += "<tr><td>屏幕分辨率高度：</td><td>" + window.screen.height + "</td></tr>";
     info += "<tr><td>屏幕分辨率宽度：</td><td>" + window.screen.width + "</td></tr>";
     info += "<tr><td>颜色质量：</td><td>" + window.screen.colorDepth + "位</td></tr>";

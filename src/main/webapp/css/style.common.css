@@ -656,6 +656,9 @@ table.dataTable thead th, table.dataTable thead td {
 .position-top-8 {
     top: 8px;
 }
+.display-flow-root{
+    display:flow-root;
+}
 
 .feed-element:first-child {
     margin-top: 0;
@@ -663,14 +666,7 @@ table.dataTable thead th, table.dataTable thead td {
 
 .feed-element {
     padding-bottom: 10px;
-}
-
-.feed-element,
-.feed-element .media {
-    margin-top: 15px;
-}
-
-.feed-element {
+    margin-top: 0;
     overflow: hidden;
 }
 
@@ -893,6 +889,7 @@ html, body {
 
 .wrapper {
     padding: 0 20px;
+    border:1px solid red;
 }
 
 .wrapper-content {

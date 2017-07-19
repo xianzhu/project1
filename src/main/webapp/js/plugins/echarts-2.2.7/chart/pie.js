@@ -738,6 +738,9 @@ define('echarts/chart/pie', [
                 target: ecData.get(target, 'name')
             }, this.myChart);
             this.zr.refreshNextFrame();
+        },
+        resetchart:function () {
+            this.zr.painter.refreshHover();
         }
     };
     zrUtil.inherits(Pie, ChartBase);

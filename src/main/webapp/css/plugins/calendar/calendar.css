@@ -139,7 +139,7 @@
 	color:#ccc;
 }
 .calendar-arrow span,
-.calendar-views .days li[data-calendar-day],
+/*.calendar-views .days li[data-calendar-day],*/
 .calendar-views .view-month li[data-calendar-month] {
     cursor: pointer;
 }
@@ -177,9 +177,14 @@
 .calendar .view-month li[data-calendar-month]:hover {
     background: #eee;
 }
-.calendar .calendar-views .now {
+.calendar .calendar-views .now,.calendar .calendar-views .marked.now {
     color: #fff;
     background: #2fa4e7!important;
+}
+.calendar .calendar-views .marked{
+    color: #ff860d;
+    cursor: pointer;
+    /*background:rgba(84,180,235,0.7);*/
 }
 .calendar .calendar-views .selected {
     color: #fff;
@@ -202,7 +207,7 @@
     margin-left: -100%;
 }
 .calendar .date-text{
-	position:absolute;
+	/*position:absolute;*/
 	/*right:6px;*/
     /*left:23px;*/
 }
