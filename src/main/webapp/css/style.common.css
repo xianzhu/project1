@@ -737,7 +737,9 @@ table.dataTable thead th, table.dataTable thead td {
     padding: 0px 2px;
     font-size: 12px;
 }
-
+#v-search-result-mask-info .html5buttons a{
+    top:0;
+}
 .dataTables_filter label {
     margin-right: 5px;
 }
@@ -889,7 +891,6 @@ html, body {
 
 .wrapper {
     padding: 0 20px;
-    border:1px solid red;
 }
 
 .wrapper-content {
@@ -1845,4 +1846,8 @@ div .chart-h160 {
     margin-bottom:10px;
 }
 
-
+@media (max-width:1500px){
+    #personal_result_table .td-W30{
+        display:none;
+    }
+}

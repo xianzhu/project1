@@ -16,7 +16,7 @@ var v_projParamModel = new Vue({
         industry_list:clone(industrySelectionList),
 
         showInputWarning: false, // 显示输入提示
-        showProjParamDiv: true
+        showProjParamDiv: iscurrent!="true"
     },
     methods: {
         beginProjsearch: function () {
@@ -91,12 +91,8 @@ var v_projectsModel = new Vue({
 });
 
 if(iscurrent=="true"){
-    v_projParamModel.$data.showProjParamDiv=false;
     doProjSearch();
-}else{
-    v_projParamModel.$data.showProjParamDiv=true;
 }
-
 
 function doProjSearch() {
     console.log("doproject search");
@@ -114,32 +110,11 @@ function doProjSearch() {
         count:commonPageNum.projectList
     };
 console.log(params);
-    // var ktype = (data.keyType == "0") ? "公司名" : "品牌";
-    // v_projectsModel.$data.projParamTags.keyType.text = "关键字类型: " + ktype;
-    // v_projectsModel.$data.projParamTags.keyType.isSelected = (data.key_content != "");
     v_projectsModel.$data.projParamTags.keyContent.text = "关键字: " + data.key_content;
-    // v_projectsModel.$data.projParamTags.keyContent.isSelected = (data.key_content != "");
     v_projectsModel.$data.projParamTags.keyContent.isSelected = (data.key_content != "");
-
-    // v_projectsModel.$data.projParamTags.projStage.isSelected = (data.proj_stage != "");
-    // if(data.proj_stage!=""){
-    //     var stateHold = "";
-    //     switch(data.proj_stage){
-    //         case "0":
-    //             stateHold="前期";
-    //             break;
-    //         case "1":
-    //             stateHold="中期";
-    //             break;
-    //         case "2":
-    //             stateHold="后期";
-    //             break;
-    //     }
-    //     v_projectsModel.$data.projParamTags.projStage.text = "项目阶段: " + stateHold;
-    // }
     v_projectsModel.$data.projParamTags.industryClass.text = "行业分类: " + data.industry_class;
     v_projectsModel.$data.projParamTags.industryClass.isSelected = (data.industry_class != "");
-    // console.log(params);
+
     v_projParamModel.$data.showProjParamDiv=false;
     v_projectsModel.$data.isFirstShow=true;
     requestProjectInfo(params);

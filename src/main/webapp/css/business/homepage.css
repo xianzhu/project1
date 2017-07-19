@@ -165,7 +165,7 @@
     margin-top: -15px;
 }
 .modal-event-wrapper{
-    display:table-cell;
+    /*display:table-cell;*/
 }
 .modal-calendar-body{
     margin:0;
@@ -204,8 +204,8 @@ table.table-single-line .td-single{
     overflow: hidden;
     text-overflow: ellipsis;
 }
-table.table-single-line .td-Wmin43 {
-    width:70px;
+table.table-single-line .td-Wtype {
+    width:97px;
     text-align:center;
     padding:8px 4px;
 }
