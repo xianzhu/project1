@@ -2699,7 +2699,8 @@ define('echarts/echarts', [
         }
     };
     return self;
-});define('echarts/config', [], function () {
+});
+define('echarts/config', [], function () {
     var config = {
         CHART_TYPE_LINE: 'line',
         CHART_TYPE_BAR: 'bar',
@@ -4542,7 +4543,8 @@ define('zrender/zrender', [
     zrUtil.inherits(Toolbox, Base);
     require('../component').define('toolbox', Toolbox);
     return Toolbox;
-});define('echarts/component', [], function () {
+});
+define('echarts/component', [], function () {
     var self = {};
     var _componentLibrary = {};
     self.define = function (name, clazz) {
@@ -4553,7 +4555,8 @@ define('zrender/zrender', [
         return _componentLibrary[name];
     };
     return self;
-});define('echarts/component/title', [
+});
+define('echarts/component/title', [
     'require',
     './base',
     'zrender/shape/Text',
@@ -4782,7 +4785,8 @@ define('zrender/zrender', [
     zrUtil.inherits(Title, Base);
     require('../component').define('title', Title);
     return Title;
-});define('echarts/component/tooltip', [
+});
+define('echarts/component/tooltip', [
     'require',
     './base',
     '../util/shape/Cross',
@@ -6023,7 +6027,8 @@ define('zrender/zrender', [
     zrUtil.inherits(Tooltip, Base);
     require('../component').define('tooltip', Tooltip);
     return Tooltip;
-});define('echarts/component/legend', [
+});
+define('echarts/component/legend', [
     'require',
     './base',
     'zrender/shape/Text',
@@ -6709,7 +6714,8 @@ define('zrender/zrender', [
     zrUtil.inherits(Legend, Base);
     require('../component').define('legend', Legend);
     return Legend;
-});define('echarts/util/ecData', [], function () {
+});
+define('echarts/util/ecData', [], function () {
     function pack(shape, series, seriesIndex, data, dataIndex, name, special, special2) {
         var value;
         if (typeof data != 'undefined') {
@@ -6778,7 +6784,8 @@ define('zrender/zrender', [
         get: get,
         clone: clone
     };
-});define('echarts/chart', [], function () {
+});
+define('echarts/chart', [], function () {
     var self = {};
     var _chartLibrary = {};
     self.define = function (name, clazz) {
@@ -6789,7 +6796,8 @@ define('zrender/zrender', [
         return _chartLibrary[name];
     };
     return self;
-});define('zrender/tool/color', [
+});
+define('zrender/tool/color', [
     'require',
     '../tool/util'
 ], function (require) {
@@ -7588,7 +7596,8 @@ define('zrender/zrender', [
         alpha: alpha,
         getData: getData
     };
-});define('echarts/component/timeline', [
+});
+define('echarts/component/timeline', [
     'require',
     './base',
     'zrender/shape/Rectangle',
@@ -8293,7 +8302,8 @@ define('zrender/zrender', [
     zrUtil.inherits(Timeline, Base);
     require('../component').define('timeline', Timeline);
     return Timeline;
-});define('zrender/shape/Image', [
+});
+define('zrender/shape/Image', [
     'require',
     './Base',
     '../tool/util'
@@ -8395,7 +8405,8 @@ define('zrender/zrender', [
     };
     require('../tool/util').inherits(ZImage, Base);
     return ZImage;
-});define('zrender/loadingEffect/Bar', [
+});
+define('zrender/loadingEffect/Bar', [
     'require',
     './Base',
     '../tool/util',
@@ -8467,7 +8478,8 @@ define('zrender/zrender', [
         }
     };
     return Bar;
-});define('zrender/loadingEffect/Bubble', [
+});
+define('zrender/loadingEffect/Bubble', [
     'require',
     './Base',
     '../tool/util',
@@ -8534,7 +8546,8 @@ define('zrender/zrender', [
         }, effectOption.timeInterval);
     };
     return Bubble;
-});define('zrender/loadingEffect/DynamicLine', [
+});
+define('zrender/loadingEffect/DynamicLine', [
     'require',
     './Base',
     '../tool/util',
@@ -8606,7 +8619,8 @@ define('zrender/zrender', [
         }, effectOption.timeInterval);
     };
     return DynamicLine;
-});define('zrender/loadingEffect/Ring', [
+});
+define('zrender/loadingEffect/Ring', [
     'require',
     './Base',
     '../tool/util',
@@ -8746,7 +8760,8 @@ define('zrender/zrender', [
         }, effectOption.timeInterval);
     };
     return Ring;
-});define('zrender/loadingEffect/Spin', [
+});
+define('zrender/loadingEffect/Spin', [
     'require',
     './Base',
     '../tool/util',
@@ -8826,7 +8841,8 @@ define('zrender/zrender', [
         }, effectOption.timeInterval);
     };
     return Spin;
-});define('zrender/loadingEffect/Whirling', [
+});
+define('zrender/loadingEffect/Whirling', [
     'require',
     './Base',
     '../tool/util',
@@ -8911,7 +8927,8 @@ define('zrender/zrender', [
         }, effectOption.timeInterval);
     };
     return Whirling;
-});define('echarts/theme/macarons', [], function () {
+});
+define('echarts/theme/macarons', [], function () {
     var theme = {
         color: [
             '#2ec7c9',
@@ -9100,7 +9117,8 @@ define('zrender/zrender', [
         textStyle: { fontFamily: '微软雅黑, Arial, Verdana, sans-serif' }
     };
     return theme;
-});define('echarts/theme/infographic', [], function () {
+});
+define('echarts/theme/infographic', [], function () {
     var theme = {
         color: [
             '#C1232B',
@@ -9343,7 +9361,8 @@ define('zrender/zrender', [
         textStyle: { fontFamily: '微软雅黑, Arial, Verdana, sans-serif' }
     };
     return theme;
-});define('zrender/dep/excanvas', ['require'], function (require) {
+});
+define('zrender/dep/excanvas', ['require'], function (require) {
     if (!document.createElement('canvas').getContext) {
         (function () {
             var m = Math;
@@ -10465,7 +10484,8 @@ define('zrender/zrender', [
         G_vmlCanvasManager = false;
     }
     return G_vmlCanvasManager;
-});define('zrender/mixin/Eventful', ['require'], function (require) {
+});
+define('zrender/mixin/Eventful', ['require'], function (require) {
     var Eventful = function () {
         this._handlers = {};
     };
@@ -10593,7 +10613,8 @@ define('zrender/zrender', [
         return this;
     };
     return Eventful;
-});define('zrender/tool/log', [
+});
+define('zrender/tool/log', [
     'require',
     '../config'
 ], function (require) {
@@ -10611,12 +10632,14 @@ define('zrender/zrender', [
             }
         }
     };
-});define('zrender/tool/guid', [], function () {
+});
+define('zrender/tool/guid', [], function () {
     var idStart = 2311;
     return function () {
         return 'zrender__' + idStart++;
     };
-});define('zrender/Handler', [
+});
+define('zrender/Handler', [
     'require',
     './config',
     './tool/env',
@@ -11183,7 +11206,8 @@ define('zrender/zrender', [
     };
     util.merge(Handler.prototype, Eventful.prototype, true);
     return Handler;
-});define('zrender/Painter', [
+});
+define('zrender/Painter', [
     'require',
     './config',
     './tool/util',
@@ -11683,7 +11707,8 @@ define('zrender/zrender', [
         };
     };
     return Painter;
-});define('zrender/Storage', [
+});
+define('zrender/Storage', [
     'require',
     './tool/util',
     './Group'
@@ -11939,7 +11964,8 @@ define('zrender/zrender', [
         this._elements = this._renderList = this._roots = this._hoverElements = null;
     };
     return Storage;
-});define('zrender/animation/Animation', [
+});
+define('zrender/animation/Animation', [
     'require',
     './Clip',
     '../tool/color',
@@ -12316,7 +12342,8 @@ define('zrender/zrender', [
         }
     };
     return Animation;
-});define('zrender/tool/vector', [], function () {
+});
+define('zrender/tool/vector', [], function () {
     var ArrayCtor = typeof Float32Array === 'undefined' ? Array : Float32Array;
     var vector = {
         create: function (x, y) {
@@ -12430,7 +12457,8 @@ define('zrender/zrender', [
     vector.dist = vector.distance;
     vector.distSquare = vector.distanceSquare;
     return vector;
-});define('zrender/tool/matrix', [], function () {
+});
+define('zrender/tool/matrix', [], function () {
     var ArrayCtor = typeof Float32Array === 'undefined' ? Array : Float32Array;
     var matrix = {
         create: function () {
@@ -12524,7 +12552,8 @@ define('zrender/zrender', [
         }
     };
     return matrix;
-});define('zrender/loadingEffect/Base', [
+});
+define('zrender/loadingEffect/Base', [
     'require',
     '../tool/util',
     '../shape/Text',
@@ -12626,7 +12655,8 @@ define('zrender/zrender', [
         };
     };
     return Base;
-});define('zrender/Layer', [
+});
+define('zrender/Layer', [
     'require',
     './mixin/Transformable',
     './tool/util',
@@ -12747,7 +12777,8 @@ define('zrender/zrender', [
     };
     util.merge(Layer.prototype, Transformable.prototype);
     return Layer;
-});define('zrender/shape/Text', [
+});
+define('zrender/shape/Text', [
     'require',
     '../tool/area',
     './Base',
@@ -12857,7 +12888,8 @@ define('zrender/zrender', [
     };
     require('../tool/util').inherits(Text, Base);
     return Text;
-});define('zrender/shape/Rectangle', [
+});
+define('zrender/shape/Rectangle', [
     'require',
     './Base',
     '../tool/util'
@@ -12964,7 +12996,8 @@ define('zrender/zrender', [
     };
     require('../tool/util').inherits(Rectangle, Base);
     return Rectangle;
-});define('zrender/tool/area', [
+});
+define('zrender/tool/area', [
     'require',
     './util',
     './curve'
@@ -13497,7 +13530,8 @@ define('zrender/zrender', [
         isInsideCubicStroke: isInsideCubicStroke,
         isInsideQuadraticStroke: isInsideQuadraticStroke
     };
-});define('zrender/shape/Base', [
+});
+define('zrender/shape/Base', [
     'require',
     '../tool/matrix',
     '../tool/guid',
@@ -13901,7 +13935,8 @@ define('zrender/zrender', [
     util.merge(Base.prototype, Transformable.prototype, true);
     util.merge(Base.prototype, Eventful.prototype, true);
     return Base;
-});define('zrender/tool/curve', [
+});
+define('zrender/tool/curve', [
     'require',
     './vector'
 ], function (require) {
@@ -14207,7 +14242,8 @@ define('zrender/zrender', [
         quadraticSubdivide: quadraticSubdivide,
         quadraticProjectPoint: quadraticProjectPoint
     };
-});define('zrender/mixin/Transformable', [
+});
+define('zrender/mixin/Transformable', [
     'require',
     '../tool/matrix',
     '../tool/vector'
@@ -15940,7 +15976,8 @@ define('zrender/zrender', [
     };
     zrUtil.inherits(Base, ComponentBase);
     return Base;
-});define('zrender/shape/Circle', [
+});
+define('zrender/shape/Circle', [
     'require',
     './Base',
     '../tool/util'
@@ -15978,7 +16015,8 @@ define('zrender/zrender', [
     };
     require('../tool/util').inherits(Circle, Base);
     return Circle;
-});define('echarts/util/accMath', [], function () {
+});
+define('echarts/util/accMath', [], function () {
     function accDiv(arg1, arg2) {
         var s1 = arg1.toString();
         var s2 = arg2.toString();
@@ -16030,7 +16068,8 @@ define('zrender/zrender', [
         accAdd: accAdd,
         accSub: accSub
     };
-});define('echarts/util/shape/Icon', [
+});
+define('echarts/util/shape/Icon', [
     'require',
     'zrender/tool/util',
     'zrender/shape/Star',
@@ -16519,7 +16558,8 @@ define('zrender/zrender', [
     };
     zrUtil.inherits(Icon, Base);
     return Icon;
-});define('echarts/util/shape/MarkLine', [
+});
+define('echarts/util/shape/MarkLine', [
     'require',
     'zrender/shape/Base',
     './Icon',
@@ -16680,7 +16720,8 @@ define('zrender/zrender', [
     };
     zrUtil.inherits(MarkLine, Base);
     return MarkLine;
-});define('echarts/util/shape/Symbol', [
+});
+define('echarts/util/shape/Symbol', [
     'require',
     'zrender/shape/Base',
     'zrender/shape/Polygon',
@@ -16779,7 +16820,8 @@ define('zrender/zrender', [
     };
     zrUtil.inherits(Symbol, Base);
     return Symbol;
-});define('zrender/shape/Polyline', [
+});
+define('zrender/shape/Polyline', [
     'require',
     './Base',
     './util/smoothSpline',
@@ -16849,7 +16891,8 @@ define('zrender/zrender', [
     };
     require('../tool/util').inherits(Polyline, Base);
     return Polyline;
-});define('zrender/shape/ShapeBundle', [
+});
+define('zrender/shape/ShapeBundle', [
     'require',
     './Base',
     '../tool/util'
@@ -16925,7 +16968,8 @@ define('zrender/zrender', [
     };
     require('../tool/util').inherits(ShapeBundle, Base);
     return ShapeBundle;
-});define('echarts/util/ecAnimation', [
+});
+define('echarts/util/ecAnimation', [
     'require',
     'zrender/tool/util',
     'zrender/tool/curve',
@@ -17303,7 +17347,8 @@ define('zrender/zrender', [
         line: line,
         markline: markline
     };
-});define('echarts/util/ecEffect', [
+});
+define('echarts/util/ecEffect', [
     'require',
     '../util/ecData',
     'zrender/shape/Circle',
@@ -17632,7 +17677,8 @@ define('zrender/zrender', [
         line: line,
         largeLine: largeLine
     };
-});define('echarts/component/base', [
+});
+define('echarts/component/base', [
     'require',
     '../config',
     '../util/ecData',
@@ -17807,7 +17853,8 @@ define('zrender/zrender', [
         getPrecision: number.getPrecision
     };
     return Base;
-});define('echarts/layout/EdgeBundling', [
+});
+define('echarts/layout/EdgeBundling', [
     'require',
     '../data/KDTree',
     'zrender/tool/vector'
@@ -18117,7 +18164,8 @@ define('zrender/zrender', [
         }()
     };
     return EdgeBundling;
-});define('zrender/shape/Star', [
+});
+define('zrender/shape/Star', [
     'require',
     '../tool/math',
     './Base',
@@ -18195,7 +18243,8 @@ define('zrender/zrender', [
     };
     require('../tool/util').inherits(Star, Base);
     return Star;
-});define('zrender/shape/Heart', [
+});
+define('zrender/shape/Heart', [
     'require',
     './Base',
     './util/PathProxy',
@@ -18241,7 +18290,8 @@ define('zrender/zrender', [
     };
     require('../tool/util').inherits(Heart, Base);
     return Heart;
-});define('zrender/shape/Droplet', [
+});
+define('zrender/shape/Droplet', [
     'require',
     './Base',
     './util/PathProxy',
@@ -18286,7 +18336,8 @@ define('zrender/zrender', [
     };
     require('../tool/util').inherits(Droplet, Base);
     return Droplet;
-});define('zrender/tool/math', [], function () {
+});
+define('zrender/tool/math', [], function () {
     var _radians = Math.PI / 180;
     function sin(angle, isDegrees) {
         return Math.sin(isDegrees ? angle * _radians : angle);
@@ -18306,7 +18357,8 @@ define('zrender/zrender', [
         degreeToRadian: degreeToRadian,
         radianToDegree: radianToDegree
     };
-});define('zrender/shape/util/PathProxy', [
+});
+define('zrender/shape/util/PathProxy', [
     'require',
     '../../tool/vector'
 ], function (require) {
@@ -18464,7 +18516,8 @@ define('zrender/zrender', [
     };
     PathProxy.PathSegment = PathSegment;
     return PathProxy;
-});define('zrender/shape/Line', [
+});
+define('zrender/shape/Line', [
     'require',
     './Base',
     './util/dashedLineTo',
@@ -18504,7 +18557,8 @@ define('zrender/zrender', [
     };
     require('../tool/util').inherits(Line, Base);
     return Line;
-});define('zrender/shape/BezierCurve', [
+});
+define('zrender/shape/BezierCurve', [
     'require',
     './Base',
     '../tool/util'
@@ -18554,7 +18608,8 @@ define('zrender/zrender', [
     };
     require('../tool/util').inherits(BezierCurve, Base);
     return BezierCurve;
-});define('zrender/shape/util/dashedLineTo', [], function () {
+});
+define('zrender/shape/util/dashedLineTo', [], function () {
     var dashPattern = [
         5,
         5
@@ -18586,7 +18641,8 @@ define('zrender/zrender', [
         }
         ctx.lineTo(x2, y2);
     };
-});define('zrender/shape/Polygon', [
+});
+define('zrender/shape/Polygon', [
     'require',
     './Base',
     './util/smoothSpline',
@@ -18684,14 +18740,16 @@ define('zrender/zrender', [
     };
     require('../tool/util').inherits(Polygon, Base);
     return Polygon;
-});define('echarts/util/shape/normalIsCover', [], function () {
+});
+define('echarts/util/shape/normalIsCover', [], function () {
     return function (x, y) {
         var originPos = this.transformCoordToLocal(x, y);
         x = originPos[0];
         y = originPos[1];
         return this.isCoverRect(x, y);
     };
-});define('zrender/shape/util/smoothSpline', [
+});
+define('zrender/shape/util/smoothSpline', [
     'require',
     '../../tool/vector'
 ], function (require) {
@@ -18736,7 +18794,8 @@ define('zrender/zrender', [
         }
         return ret;
     };
-});define('zrender/shape/util/smoothBezier', [
+});
+define('zrender/shape/util/smoothBezier', [
     'require',
     '../../tool/vector'
 ], function (require) {
@@ -18809,7 +18868,8 @@ define('zrender/zrender', [
         }
         return cps;
     };
-});define('echarts/util/ecQuery', [
+});
+define('echarts/util/ecQuery', [
     'require',
     'zrender/tool/util'
 ], function (require) {
@@ -18862,7 +18922,8 @@ define('zrender/zrender', [
         deepQuery: deepQuery,
         deepMerge: deepMerge
     };
-});define('echarts/util/number', [], function () {
+});
+define('echarts/util/number', [], function () {
     function _trim(str) {
         return str.replace(/^\s+/, '').replace(/\s+$/, '');
     }
@@ -18917,7 +18978,8 @@ define('zrender/zrender', [
         addCommas: addCommas,
         getPrecision: getPrecision
     };
-});define('echarts/data/KDTree', [
+});
+define('echarts/data/KDTree', [
     'require',
     './quickSelect'
 ], function (require) {
@@ -19079,7 +19141,8 @@ define('zrender/zrender', [
         return output;
     };
     return KDTree;
-});define('echarts/data/quickSelect', ['require'], function (require) {
+});
+define('echarts/data/quickSelect', ['require'], function (require) {
     function defaultCompareFunc(a, b) {
         return a - b;
     }
@@ -19126,7 +19189,8 @@ define('zrender/zrender', [
         return select(list, left, right, nth, compareFunc);
     }
     return quickSelect;
-});define('echarts/component/dataView', [
+});
+define('echarts/component/dataView', [
     'require',
     './base',
     '../config',
@@ -19441,7 +19505,8 @@ define('zrender/zrender', [
     zrUtil.inherits(DataView, Base);
     require('../component').define('dataView', DataView);
     return DataView;
-});define('echarts/util/shape/Cross', [
+});
+define('echarts/util/shape/Cross', [
     'require',
     'zrender/shape/Base',
     'zrender/shape/Line',
@@ -19474,7 +19539,8 @@ define('zrender/zrender', [
     };
     zrUtil.inherits(Cross, Base);
     return Cross;
-});define('zrender/shape/Sector', [
+});
+define('zrender/shape/Sector', [
     'require',
     '../tool/math',
     '../tool/computeBoundingBox',
@@ -19556,7 +19622,8 @@ define('zrender/zrender', [
     };
     require('../tool/util').inherits(Sector, Base);
     return Sector;
-});define('echarts/util/shape/Candle', [
+});
+define('echarts/util/shape/Candle', [
     'require',
     'zrender/shape/Base',
     'zrender/tool/util',

@@ -718,12 +718,13 @@ function getSubString(value,length){
 function getWindowSize() {
     var wheight=$(window).height(),wwidth=$(window).width();
     var aheight=window.screen.availHeight,awidth=window.screen.availWidth;
-    // var sheight=window.screen.height, swidth=window.screen.width;
-    console.log("getWindowScreen size:",height,width);
+    var sheight=window.screen.height, swidth=window.screen.width;
+
     var height=wheight,width=wwidth;
-    if(aheight>height){
+    if(awidth>width){
         height=aheight;
         width=awidth;
     }
-    return [height,width];
+    console.log("getWindowScreen size:",height,width);
+    return {height:sheight,width:swidth};
 }

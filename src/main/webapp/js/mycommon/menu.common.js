@@ -8,6 +8,8 @@ var uname = getUrlQueryStr("uname", location.href);
 var score=0;
 var type=getUrlQueryStr("comtype",location.href);
 
+resetDivSize();
+
 var searchTypeMap = {
     person:"person",
     orgnazation:"org",
@@ -174,7 +176,8 @@ var v_search_resultModel=new Vue({
                 type: "POST",                            //请求方式
                 data: { //请求参数
                     key:skey,
-                    from:page*commonPageNum.topSearch_person
+                    from:page*commonPageNum.topSearch_person,
+                    count:commonPageNum.topSearch_person
                 },
                 dataType: "json",
                 success: function (res) {
@@ -220,7 +223,8 @@ var v_search_resultModel=new Vue({
                 type: "POST",                            //请求方式
                 data: { //请求参数
                     key:skey,
-                    from:page*commonPageNum.topSearch_org
+                    from:page*commonPageNum.topSearch_org,
+                    count:commonPageNum.topSearch_org
                 },
                 dataType: "json",
                 success: function (res) {
@@ -267,13 +271,19 @@ var v_search_resultModel=new Vue({
                 data: { //请求参数
                     key:skey,
                     from:page*commonPageNum.topSearch_person,
+                    count:commonPageNum.topSearch_person,
                     type:stype
                 },
                 dataType: "json",
                 success: function (res) {
                     if(res.status=='success') {
                         $('#company_result_table').DataTable().destroy();
-                        v_search_resultModel.$data.cResult=res.searchResult;
+                        // v_search_resultModel.$data.cResult=res.searchResult;
+                        var cresult=[];
+                        for(var i=0;i<res.searchResult.length&&i<commonPageNum.topSearch_company;i++){
+                            cresult.push(res.searchResult[i]);
+                        }
+                        v_search_resultModel.$data.cResult=cresult;
                         v_search_resultModel.$data.searchResultEmpty=(res.searchResult.length==0);
                         v_search_resultModel.$data.isEnd=(res.searchResult.length<commonPageNum.topSearch_person);
 
@@ -377,16 +387,7 @@ $(document).ready(function () {
     //     $(this).removeClass('show-list');
     // });
     // Full height of sidebar
-    function fix_height() {
-        var navbarHeigh = $('#nav-wrapper').height();
-        var wrapperHeigh = $('#page-wrapper').height();
 
-        if (navbarHeigh > wrapperHeigh) {
-            $('#page-wrapper').css("min-height", navbarHeigh - 60 + "px");
-        } else {
-            $('#page-wrapper').css("min-height", $(window).height() - 60 + "px");
-        }
-    }
 
     fix_height();
 
@@ -417,13 +418,18 @@ $(document).ready(function () {
 });
 
 // Minimalize menu when screen is less than 768px
-// $(window).bind("resize", function () {
-//     if ($(this).width() < 769) {
-//         $('body').addClass('body-small')
-//     } else {
-//         $('body').removeClass('body-small')
-//     }
-// });
+$(window).bind("resize", fix_height);
+
+function fix_height() {
+    var navbarHeigh = $('#nav-wrapper').height();
+    var wrapperHeigh = $('#page-wrapper').height();
+
+    if (navbarHeigh > wrapperHeigh) {
+        $('#page-wrapper').css("min-height", navbarHeigh - 70 + "px");
+    } else {
+        $('#page-wrapper').css("min-height", $(window).height() - 70 + "px");
+    }
+}
 
 // 综合查询
 function searchBarPress(event,value){
@@ -457,4 +463,135 @@ function doHeaderSearch(){
 
 }
 
+function resetDivSize() {
+    var size=getWindowSize();
+    var height=size.height,width=size.width;
+    console.log(width);
+    if(width>=2560){ // >=2560
+        commonPageNum.topSearch_person=15;//没有足够多数据
+        commonPageNum.topSearch_org=15;//没有足够多数据
+        commonPageNum.topSearch_company=15;//没有足够多数据
+        commonPageNum.orgFocuse=8;//
+        commonPageNum.orgTeam=8;//
+        commonPageNum.orgFund=8;//
+        commonPageNum.orgElastic=16;//
+        commonPageNum.orgFundInvEventNum=31;//
+        commonPageNum.orgFundExitEventNum=31;//
+        commonPageNum.cvReports=31;//
+        commonPageNum.traderReports=31;//
+        commonPageNum.newsList=25;//指定25个返回20个---20个正好
+        commonPageNum.newsTraderReports=9;//
+        commonPageNum.newsProjects=8;//
+        commonPageNum.projectList=8;//
+        commonPageNum.sysMonitorRpt=27;//
+        commonPageNum.sysMonitorMerge=32;//
+        commonPageNum.personNews=17;//指定17个返回16个---16个正好
+        commonPageNum.personEvents=9;//没有足够多数据
+        commonPageNum.homeEventList=15;//没有足够多数据
+        commonPageNum.homeNewsList=16;//指定16个返回15个---15个正好
+        commonPageNum.homepageInvest=7;//没有足够多数据
+        commonPageNum.homepageExit=7;//没有足够多数据
+        commonPageNum.mutisearchCompany=8;//
+        commonPageNum.mutisearchOrg=16;//
+        commonPageNum.mutisearchCv=8;//
+        commonPageNum.mutisearchTrader=8;//
+        commonPageNum.mutiSearchNews=18;//
+        commonPageNum.cusSetMonitor=10;//
+        commonPageNum.simulation=30;//
+    }else if(width>=1920){ // 1920---2560
+        commonPageNum.topSearch_person=13;
+        commonPageNum.topSearch_org=13;
+        commonPageNum.topSearch_company=13;
+        commonPageNum.orgFocuse=5;
+        commonPageNum.orgTeam=5;
+        commonPageNum.orgFund=5;
+        commonPageNum.orgElastic=11;
+        commonPageNum.orgFundInvEventNum=25;
+        commonPageNum.orgFundExitEventNum=25;
+        commonPageNum.cvReports=24;
+        commonPageNum.traderReports=24;
+        commonPageNum.newsList=13;
+        commonPageNum.newsTraderReports=6;
+        commonPageNum.newsProjects=6;
+        commonPageNum.projectList=8;
+        commonPageNum.sysMonitorRpt=17;
+        commonPageNum.sysMonitorMerge=23;
+        commonPageNum.personNews=10;
+        commonPageNum.personEvents=6;
+        commonPageNum.homeEventList=12;
+        commonPageNum.homeNewsList=10;
+        commonPageNum.homepageInvest=6;
+        commonPageNum.homepageExit=6;
+        commonPageNum.mutisearchCompany=6;
+        commonPageNum.mutisearchOrg=12;
+        commonPageNum.mutisearchCv=6;
+        commonPageNum.mutisearchTrader=6;
+        commonPageNum.mutiSearchNews=15;
+        commonPageNum.cusSetMonitor=6;
+        commonPageNum.simulation=20;
+    }else if(width>=1600){ // 1600---1920
+        commonPageNum.topSearch_person=13;
+        commonPageNum.topSearch_org=13;
+        commonPageNum.topSearch_company=13;
+        commonPageNum.orgFocuse=5;
+        commonPageNum.orgTeam=5;
+        commonPageNum.orgFund=5;
+        commonPageNum.orgElastic=11;
+        commonPageNum.orgFundInvEventNum=25;
+        commonPageNum.orgFundExitEventNum=25;
+        commonPageNum.cvReports=24;
+        commonPageNum.traderReports=24;
+        commonPageNum.newsList=13;
+        commonPageNum.newsTraderReports=6;
+        commonPageNum.newsProjects=6;
+        commonPageNum.projectList=8;
+        commonPageNum.sysMonitorRpt=17;
+        commonPageNum.sysMonitorMerge=23;
+        commonPageNum.personNews=10;
+        commonPageNum.personEvents=6;
+        commonPageNum.homeEventList=12;
+        commonPageNum.homeNewsList=10;
+        commonPageNum.homepageInvest=6;
+        commonPageNum.homepageExit=6;
+        commonPageNum.mutisearchCompany=6;
+        commonPageNum.mutisearchOrg=12;
+        commonPageNum.mutisearchCv=6;
+        commonPageNum.mutisearchTrader=6;
+        commonPageNum.mutiSearchNews=15;
+        commonPageNum.cusSetMonitor=6;
+        commonPageNum.simulation=20;
+    }else if(width>1440){ // 1440---1600
+        commonPageNum.topSearch_person=12;
+        commonPageNum.topSearch_org=12;
+        commonPageNum.topSearch_company=12;
+        commonPageNum.orgFocuse=5;
+        commonPageNum.orgTeam=5;
+        commonPageNum.orgFund=5;
+        commonPageNum.orgElastic=9;
+        commonPageNum.orgFundInvEventNum=21;
+        commonPageNum.orgFundExitEventNum=21;
+        commonPageNum.cvReports=22;
+        commonPageNum.traderReports=22;
+        commonPageNum.newsList=12;
+        commonPageNum.newsTraderReports=6;
+        commonPageNum.newsProjects=6;
+        commonPageNum.projectList=8;
+        commonPageNum.sysMonitorRpt=14;
+        commonPageNum.sysMonitorMerge=23;
+        commonPageNum.personNews=10;
+        commonPageNum.personEvents=6;
+        commonPageNum.homeEventList=10;
+        commonPageNum.homeNewsList=10;
+        commonPageNum.homepageInvest=6;
+        commonPageNum.homepageExit=6;
+        commonPageNum.mutisearchCompany=5;
+        commonPageNum.mutisearchOrg=10;
+        commonPageNum.mutisearchCv=5;
+        commonPageNum.mutisearchTrader=5;
+        commonPageNum.mutiSearchNews=13;
+        commonPageNum.cusSetMonitor=6;
+        commonPageNum.simulation=20;
+    }else{ // <=1440
 
+    }
+}

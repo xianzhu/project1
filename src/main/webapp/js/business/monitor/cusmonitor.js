@@ -626,7 +626,8 @@ function getCompanyExtendNode(sid, type, cgy, level, uuid) {
 
                 v_cusMonitorModel.$data.investCompany = data;
                 v_cusMonitorModel.$nextTick(function () {
-                    bindExportedDataTable("invest_table", commonPageNum.cusMonitorEntInvest, "投资企业", {});
+                    bindSimpleDataTable('invest_table',commonPageNum.cusMonitorEntInvest);
+                    // bindExportedDataTable("invest_table", commonPageNum.cusMonitorEntInvest, "投资企业", {});
                 });
 
                 if (data && data.length > 0) {

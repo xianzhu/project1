@@ -154,36 +154,36 @@ if (isTest) {
 }
 
 var commonPageNum = {
-    topSearch_person:10, // 头部导航查询 - 投资者
-    topSearch_org:10, // 头部导航查询 - 机构
-    topSearch_company:10, // 头部导航查询 - 公司
+    topSearch_person:10, // 头部导航查询 - 投资者 -- 后端控制
+    topSearch_org:10, // 头部导航查询 - 机构 -- 后端控制
+    topSearch_company:10, // 头部导航查询 - 公司 -- 后端控制
 
     orgFocuse:5, // 机构信息页 - 最近关注企业
     orgTeam:5, // 机构信息页 - 团队
     orgFund:5, // 机构信息页 - 基金
-    orgElastic:8, // 机构信息页 - 新闻
-    orgFundInvEventNum:15, // 机构基金--事件
-    orgFundExitEventNum:15, // 机构基金--投资退出事件
+    orgElastic:7, // 机构信息页 - 新闻
+    orgFundInvEventNum:12, // 机构基金--事件
+    orgFundExitEventNum:12, // 机构基金--投资退出事件
 
     cvReports:18, // 行业分析报告
     traderReports:18, // 研究报告
 
     newsList:10, // 新闻页 - 新闻
     newsTraderReports:5, // 新闻页 - 研究报告
-    newsProjects:5, // 新闻页 - 项目
+    newsProjects:4, // 新闻页 - 项目
 
     projectList:8, // 项目页 - 项目列表
 
     sysMonitorRpt:12, // 系统监控 - 股权类投资基金监控
-    sysMonitorMerge:18, // 系统监控 - 上市公司并购事件每日监控
+    sysMonitorMerge:19, // 系统监控 - 上市公司并购事件每日监控
 
     cusMonitorOrgInvest:6, // 定制监控 - 机构投资事件
     cusMonitorOrgFamily:6, // 定制监控 - 机构关联族谱
     cusMonitorComInvest:3, // 定制监控 - 企业投资事件
     cusMonitorComExit:3, // 定制监控 - 企业退出事件
-    cusMonitorEntInvest:8, // 定制监控 - 企业投资企业
+    cusMonitorEntInvest:13, // 定制监控 - 企业投资企业
 
-    personNews:15, // 投资者信息 -- 情报
+    personNews:8, // 投资者信息 -- 情报 --后端控制
     personEvents:5, // 投资者信息 -- 投退事件
 
     companyChange:2, // 企业信息 -- 企业变更
@@ -205,10 +205,10 @@ var commonPageNum = {
     companyEquity:5, // 企业信息 -- 股权质押
     companyMortgages:5, // 企业信息 -- 动产抵押
 
-    companyAnalysis_1:10, // 对标预测 - 潜在并购方
-    companyAnalysis_2:10, // 对标预测 - 对标上市公司
+    companyAnalysis_1:10, // 对标预测 - 潜在并购方 --后端控制
+    companyAnalysis_2:10, // 对标预测 - 对标上市公司 -- 后端控制
 
-    homeEventList:14, // 主页 - 今日事件列表
+    homeEventList:10, // 主页 - 今日事件列表
     homeNewsList:6, // 主页 - 新闻列表
     homepageInvest:5, // 主页 - 投资事件弹框
     homepageExit:5, // 主页 - 退出事件弹框
@@ -217,35 +217,10 @@ var commonPageNum = {
     mutisearchOrg:10, // 综合查询 - 机构结果
     mutisearchCv:5, // 综合查询 - 行业分析
     mutisearchTrader:5, // 综合查询 - 研究报告
-    mutiSearchNews: 13, // 综合查询--情报
+    mutiSearchNews: 10, // 综合查询--情报 -- 后端控制
 
     cusSetMonitor:6, // 个人设置 - 监控设置查询结果
-    simulation:8, // 模拟计算
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    homeCvReport:10, // 用户主页--行业分析
-    homeReport:10, // 用户主页--研究报告
-
-
-
-    orgSearch:10, // 机构查询
-    reportSearch:10,
-
-
-    entSearchMergePageNum:20, // 企业搜索--上市公司并购事件每日监控
+    simulation:16, // 模拟计算
 
     common: 10 // 默认
 };

@@ -137,6 +137,7 @@ function initModelEventDetail() {
 
 // 新闻
 function getNewsList() {
+    // console.log("getNewsList");
     $.ajax({
         url: commonUrls.homeNewsUrl,
         type: "get",
@@ -181,6 +182,7 @@ function getNewsList() {
 }
 // 一级市场投资者信心指数--
 function getRptData() {
+    // console.log("getRptData");
     $.ajax({
         url: commonUrls.homepageRptDataUrl,              //请求地址
         type: "POST",                            //请求方式
@@ -212,6 +214,7 @@ function getRptData() {
 }
 // 统计数据
 function getPanelData() {
+    // console.log("getPanelData");
     $.ajax({
         url: commonUrls.homepagePanelDataUrl,              //请求地址
         type: "POST",                            //请求方式
@@ -287,6 +290,7 @@ function getPanelData() {
 }
 // 仪表盘数据
 function getDashboardData() {
+    // console.log("getDashboardData");
     $.ajax({
         url: commonUrls.homepageDashDataUrl,              //请求地址
         type: "POST",                            //请求方式
@@ -351,6 +355,7 @@ function getDashboardData() {
 }
 // 今日事件饼图、柱状图
 function getEventBarData() { // 今日资本事件柱状图、饼图
+    // console.log("getEventBarData");
     var colors = [
         '#99cccc',
         '#6699cc',
@@ -478,6 +483,7 @@ function getEventBarData() { // 今日资本事件柱状图、饼图
 }
 // 今日事件列表
 function getEventSubpage(type) {
+    // console.log("getEventSubpage");
     $.ajax({
         url: commonUrls.homeEventpageUrl,              //请求地址
         type: "POST",                            //请求方式
@@ -511,7 +517,7 @@ function getEventSubpage(type) {
                         }
                     }
                 } else {
-                    console.log("get exit event list");
+                    // console.log("get exit event list");
                     if (response.exitEventList && response.exitEventList.length > 0) {
                         for (var i = 0; i < response.exitEventList.length && i < commonPageNum.homeEventList; i++) {
                             var item = response.exitEventList[i];
@@ -547,7 +553,7 @@ function getEventSubpage(type) {
 // 查看今日资本事件详情
 function getEventByTitle(element) {
     var title=element.eventTitle,type=element.eventClass,ptype=element.eventType;
-    console.log(element);
+    // console.log("getEventByTitle");
     $.ajax({
         url: commonUrls.homeEventDetailUrl,              //请求地址
         type: "POST",                            //请求方式
@@ -590,7 +596,6 @@ function getEventByTitle(element) {
                     $("#exit_data_table").DataTable().destroy();
                     modal_event_info.$data.eList = res.eventsList;
                     modal_event_info.$nextTick(function () {
-                        console.log(".......");
                         bindSimpleDataTable("exit_data_table", commonPageNum.homepageExit);
                         $("#v-model-mask-info").css("display", "block");
                     });
@@ -621,7 +626,7 @@ function setCalendar() {
     var date = new Date();
     var y = date.getFullYear();
     var m = date.getMonth();
-    console.log("setCalendar", nw, nh, winheight);
+    // console.log("setCalendar", nw, nh, winheight);
     $.ajax({
         url: commonUrls.homeCalendarUrl,
         type: "get",
@@ -694,6 +699,7 @@ function setCalendar() {
     });
 }
 function showCalendarInfo(header, data) {
+    // console.log("showCalendarInfo");
     var cListData = [];
     for (var key in data) {
         var kitem = data[key];
@@ -755,7 +761,7 @@ function bindCalendarItem() {
     };
 //function
     switchAccordion = function (e) {
-        console.log("triggered");
+        // console.log("triggered");
         e.preventDefault();
         closeAllAccordion(e);
         var thisAnswer = e.target.parentNode.nextElementSibling;
@@ -806,6 +812,7 @@ function bindCalendarItem() {
 }
 
 function resizeDetailMask() {
+    // console.log("resizeDetailMask");
     var height = $(window).height();
     var mheight = height;
     // console.log(height, mheight);
@@ -813,6 +820,7 @@ function resizeDetailMask() {
     $(".modal-event-body").css('maxHeight', mheight - 181);
 }
 function resizeLeftSide(isLoad) {
+    // console.log("resizeLeftSide");
     var bwidth = $('body').width();
 
     var nw = $("#homemodule_news_ibox").width(), btmH = getCalendarHeight(nw),
@@ -831,7 +839,7 @@ function resizeLeftSide(isLoad) {
     }
 
     var topH = Math.floor(pheight * 0.4), midH = Math.floor(pheight * 0.6) - 50;
-    console.log("ResizeLeftSide", $("#homemodule_news_row").height(), pheight, topH, midH);
+    // console.log("ResizeLeftSide", $("#homemodule_news_row").height(), pheight, topH, midH);
     if (bwidth > 1194) { // >1200
         $("#orgInvestChart").css('height', topH - 72);
         $("#org_panel_Chart").css('height', topH / 2 - 8);
@@ -840,7 +848,7 @@ function resizeLeftSide(isLoad) {
         $("#event_panel_Chart").css('height', topH / 2 - 8);
 
         $("#event_mix_charts").css('height', midH-20);
-        console.log("显示table、mix", midH-20);
+        // console.log("显示table、mix", midH-20);
 
         $("#project_dashboard_chart").css('height', btmH);
         $("#company_dashboard_chart").css('height', btmH);
@@ -861,6 +869,7 @@ function resizeLeftSide(isLoad) {
     }
 }
 $(window).resize(function () {
+    // console.log("window resize");
     var nw = $("#homemodule_news_ibox").width(), newH = $("#homemodule_news_row").height();//,
     winheight = $('body').height() - 60;
     var nh = getCalendarHeight(nw);

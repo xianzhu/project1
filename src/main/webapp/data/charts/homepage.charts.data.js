@@ -652,7 +652,7 @@ var dashProjOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '55%'],    // 默认全局居中
+            center: ['50%', '52%'],    // 默认全局居中
             // radius: '75%',
             radius: '95%',
             min: 0,
@@ -737,7 +737,7 @@ var dashCompanyOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '55%'],    // 默认全局居中
+            center: ['50%', '52%'],    // 默认全局居中
             // radius: '75%',
             radius: '95%',
             min: 0,
@@ -822,7 +822,7 @@ var dashReportOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '55%'],    // 默认全局居中
+            center: ['50%', '52%'],    // 默认全局居中
             // radius: '75%',
             radius: '95%',
             min: 0,
@@ -907,7 +907,7 @@ var dashElasticOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '55%'],    // 默认全局居中
+            center: ['50%', '52%'],    // 默认全局居中
             radius: '95%',
             min: 0,
             max: 5000,

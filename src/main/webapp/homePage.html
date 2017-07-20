@@ -221,7 +221,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="ibox-content">
+                                <div class="ibox-content dashboard-ibox-content">
                                     <div class="row">
                                         <!--项目-->
                                         <div class="col-sm-3 col-xs-6 statistic-dash">
@@ -478,7 +478,7 @@
                                 <thead>
                                 <tr>
                                     <th class="td-single">标题</th>
-                                    <th class="td-Wmin43 td-single">轮次</th>
+                                    <th class="td-Wtype td-single">轮次</th>
                                     <th class="td-single">企业</th>
                                     <th class="td-W95">发生时间</th>
                                 </tr>
@@ -488,7 +488,7 @@
                                     <td v-text="ele.eventTitle"
                                         class="link-handle-pointer td-single"
                                         v-on:click="getEventDetail(ele)"></td>
-                                    <td class="td-Wmin43 td-single" v-text="ele.eventClass"></td>
+                                    <td class="td-Wtype td-single" v-text="ele.eventClass"></td>
                                     <td class="td-single" v-text="ele.entCnName"></td>
                                     <td class="td-W95" v-text="ele.happenDate"></td>
                                 </tr>
