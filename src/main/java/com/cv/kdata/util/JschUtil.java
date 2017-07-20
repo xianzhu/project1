@@ -262,11 +262,11 @@ public class JschUtil {
         JschUtil sftp = new JschUtil();
         sftp.setUsername("appuser");
         sftp.setPassword("1QAZ3edc2WSX");
-        sftp.setHost("116.62.42.50");
+        sftp.setHost("10.27.224.63");
         sftp.setPort(22);
         sftp.login();
 //        sftp.download("/home/appuser/workdir/report/cv/", "2015年中国IPO市场十大事件.pdf","C:/dev/test.pdf");
-        sftp.download("/home/appuser/workdir/report/cv/", "2015年中国IPO市场十大事件.pdf","/home/appuser/test.pdf");
+        sftp.download("/home/appuser/workdir/service/web-spider/report/report_attach/", "H301_XB201706080633978818_1.pdf","/tmp/test.pdf");
         System.out.println("finished!");
         sftp.logout();
     }

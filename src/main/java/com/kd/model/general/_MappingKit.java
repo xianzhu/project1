@@ -58,6 +58,7 @@ public class _MappingKit {
 		arp.addMapping("rds_ent_patent" , RdsEntPatent.class);
 		arp.addMapping("rpt_angel_list", "id", RptAngelList.class);
 		arp.addMapping("rpt_cv" , RptCv.class);
+		arp.addMapping("rpt_ops_stat_trend" , RptOpsStatTrend.class);
 		arp.addMapping("rpt_ent_judge_value" , RptEntJudgeValue.class);
 		arp.addMapping("rpt_org_forcus_ent" , RptOrgForcusEnt.class);
 		arp.addMapping("rpt_org_overall_trends" , RptOrgOverallTrends.class);

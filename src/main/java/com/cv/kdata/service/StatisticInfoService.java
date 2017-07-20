@@ -12,16 +12,14 @@ import org.springframework.stereotype.Service;
 
 import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.dao.LoginInfoMapper;
-import com.cv.kdata.dao.RptOrgOverallTrendsMapper;
 import com.cv.kdata.dao.UserInfoMapper;
-import com.cv.kdata.datasource.DBContextHolder;
-import com.cv.kdata.model.RptOrgOverallTrends;
 import com.cv.kdata.response.DashboardResponse;
 import com.cv.kdata.response.StatEventResponse;
 import com.cv.kdata.response.TrendResponse;
 import com.cv.kdata.util.TimeUtil;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
+import com.kd.model.general.RptOpsStatTrend;
 import com.kdata.defined.model.StatDashboard;
 import com.kdata.defined.model.StatEventOne;
 import com.kdata.defined.model.StatEventTwo;
@@ -33,8 +31,6 @@ public class StatisticInfoService {
 	LoginInfoMapper loginInfoMapper;
 	@Autowired
 	UserInfoMapper userInfoMapper;
-	@Autowired
-	RptOrgOverallTrendsMapper rptOrgOverallTrendsMapper;
 
 	private static Logger LOGGER = LoggerFactory.getLogger(StatisticInfoService.class);
 
@@ -239,8 +235,7 @@ public class StatisticInfoService {
 			return;
 		}
 
-		DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
-		List<RptOrgOverallTrends> trendList = rptOrgOverallTrendsMapper.getOverallTrends();
+		List<RptOpsStatTrend> trendList = RptOpsStatTrend.dao.selectAllRecords();
 		response.setStatus(RDDWebConst.SUCCESS);
 		response.setMessage("Get OverallTrends list success!");
 		response.setTrend(trendList);
