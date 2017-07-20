@@ -48,7 +48,9 @@
         padding-right:20px;
     }
 }
-
+.dashboard-ibox-content{
+    padding:20px 20px 0 20px;
+}
 @media (min-width:1024px) and (max-width:1199px){
     .col-item-lm-half-pie,.col-item-lm-half-bar{
         width:50%;
