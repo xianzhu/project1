@@ -137,13 +137,15 @@
                                 <a class="collapse-link pull-right">
                                     <i class="fa fa-chevron-up"></i>
                                 </a>
-                                <div class="pull-right" style="margin-top:-12px;margin-right:5px;">
-                                    <div class="pull-right btn-group">
-                                        <a class="btn btn-xs btn-order-correlation" title="相关性排序"
-                                                v-bind:class="[elasticOrder==1?'btn-primary':'btn-trans']" v-on:click="changeOrder(1)"></a>
-                                        <a class="btn btn-xs btn-order-time" title="时间排序"
-                                                v-bind:class="[elasticOrder==2?'btn-primary':'btn-trans']" v-on:click="changeOrder(2)"></a>
+                                <div class="pull-right btn-group" style="margin-top:-12px;margin-right:5px;">
+                                    <div class="select-div">
+                                        <select class="elastic-select-control" v-model="elasticOrder" v-on:change="changeOrder()">
+                                            <option value="2">按时间排序</option>
+                                            <option value="1">相关性排序</option>
+                                        </select>
                                     </div>
+                                </div>
+                                <div class="pull-right" style="margin-top:-12px;margin-right:5px;">
                                     <input id="elasticKey" type="text" onkeypress="doElasticFilter(event)"
                                            placeholder="请输入关键字..." class="search-order-key-control form-control">
                                 </div>
@@ -191,9 +193,14 @@
                                 <div class="ibox-title">
                                     <h5>资本--投资事件</h5>
                                     <div class="ibox-tools">
-                                        <a class="collapse-link">
+                                        <a class="collapse-link pull-right">
                                             <i class="fa fa-chevron-up"></i>
                                         </a>
+                                        <div class="pull-right" style="margin-top:-9px;margin-right:5px;">
+                                            <input type="text" id="input-invest-key" onkeypress="doDataSearch(event,1,this.value)"
+                                                   class="form-control input-sm" placeholder="请输入查询关键字...">
+                                            <i class="fa fa-search fa-search-ico" onclick="doSearch(1)"></i>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="ibox-content">
@@ -263,9 +270,14 @@
                                 <div class="ibox-title">
                                     <h5>资本--退出事件</h5>
                                     <div class="ibox-tools">
-                                        <a class="collapse-link">
+                                        <a class="collapse-link pull-right">
                                             <i class="fa fa-chevron-up"></i>
                                         </a>
+                                        <div class="pull-right" style="margin-top:-9px;margin-right:5px;">
+                                            <input type="text" id="input-exit-key" onkeypress="doDataSearch(event,2,this.value)"
+                                                   class="form-control input-sm" placeholder="请输入查询关键字...">
+                                            <i class="fa fa-search fa-search-ico" onclick="doSearch(2)"></i>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="ibox-content">

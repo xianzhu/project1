@@ -425,9 +425,9 @@ function fix_height() {
     var wrapperHeigh = $('#page-wrapper').height();
 
     if (navbarHeigh > wrapperHeigh) {
-        $('#page-wrapper').css("min-height", navbarHeigh - 70 + "px");
+        $('#page-wrapper').css("min-height", navbarHeigh - 60 + "px");
     } else {
-        $('#page-wrapper').css("min-height", $(window).height() - 70 + "px");
+        $('#page-wrapper').css("min-height", $(window).height() - 60 + "px");
     }
 }
 
@@ -477,12 +477,12 @@ function resetDivSize() {
         commonPageNum.orgElastic=16;//
         commonPageNum.orgFundInvEventNum=31;//
         commonPageNum.orgFundExitEventNum=31;//
-        commonPageNum.cvReports=31;//
-        commonPageNum.traderReports=31;//
+        commonPageNum.cvReports=32;//
+        commonPageNum.traderReports=32;//
         commonPageNum.newsList=25;//指定25个返回20个---20个正好
         commonPageNum.newsTraderReports=9;//
         commonPageNum.newsProjects=8;//
-        commonPageNum.projectList=8;//
+        commonPageNum.projectList=9;//
         commonPageNum.sysMonitorRpt=27;//
         commonPageNum.sysMonitorMerge=32;//
         commonPageNum.personNews=17;//指定17个返回16个---16个正好

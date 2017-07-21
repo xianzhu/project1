@@ -21,21 +21,20 @@ var v_personBasicModel=new Vue({
 
         ivsTypeSelections:investTypeSelections,
         ivsCapitalList:[],
-        ivsEnd:false,
+        ivsEnd:true,
         ivsPage:0,
         ivsSubType:"",
 
         extTypeSelections:exitTypeSelections,
         extCapitalList:[],
-        extEnd:false,
+        extEnd:true,
         extPage:0,
         extSubType:""
     },
     ready: function () {
     },
     methods: {
-        changeOrder:function(value){
-            this.elasticOrder=value;
+        changeOrder:function(){
             this.elasticPage=0;
             getSubElasticPage(this.elasticFilterKey);
         },

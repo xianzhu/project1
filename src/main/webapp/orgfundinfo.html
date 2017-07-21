@@ -202,6 +202,15 @@
                                         </div>
                                         <div class="col-xl-2 col-lg-1"></div>
                                     </div>
+                                    <div class="row" style="margin-top:-10px;">
+                                        <div class="col-lg-12">
+                                            <div class="pull-right" style="margin-bottom:5px;">
+                                                <input type="text" id="input-invest-key" onkeypress="doDataSearch(event,1,this.value)"
+                                                       class="form-control input-sm" placeholder="请输入查询关键字...">
+                                                <i class="fa fa-search fa-search-ico" onclick="doSearch(1)"></i>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-hover" id="invest_table">
                                             <thead>
@@ -274,6 +283,15 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-2 col-lg-1"></div>
+                                    </div>
+                                    <div class="row" style="margin-top:-10px;">
+                                        <div class="col-lg-12">
+                                            <div class="pull-right" style="margin-bottom:5px;">
+                                                <input type="text" id="input-exit-key" onkeypress="doDataSearch(event,2,this.value)"
+                                                       class="form-control input-sm" placeholder="请输入查询关键字...">
+                                                <i class="fa fa-search fa-search-ico" onclick="doSearch(2)"></i>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-hover" id="exit_table">

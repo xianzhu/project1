@@ -1,0 +1,41 @@
+
+.traderNavSelect{
+    background-color:#2fa4e7 !important;
+}
+
+.traderTag{
+    position: relative;
+    float: left;
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+    color: #333;
+    white-space: nowrap;
+    margin: 0 8px 5px 0;
+    padding: 0 20px 0 6px;
+    background-color: #fff;
+    border: 1px solid #ff9f20;
+    cursor: pointer;
+}
+
+.traderTag em{
+    position: absolute;
+    width: 20px;
+    top: 0;
+    right: 0;
+    height: 26px;
+    background: url(../../../img/close.png) center no-repeat;
+}
+.modal-select-container{
+    padding:0px;
+    width:440px;
+    margin-top:100px;
+}
+
+.html5buttons a{
+    top:11px;
+}
+.select-ibox-title {
+    background-color:#fff;
+}
+

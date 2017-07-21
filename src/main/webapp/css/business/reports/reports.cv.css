@@ -6,3 +6,53 @@
 .select-ibox-title {
     background-color:#fff;
 }
+.ibox-tools a.modal-close-button{
+    position:relative;
+    margin-right: -12px;
+    margin-top: -14px;
+    color:#333;
+}
+
+.param-tag-row{
+    border-bottom:1px solid #ccc;
+    margin-bottom:10px;
+}
+.param-label{
+    position: relative;
+    float: left;
+    height: 26px;
+    line-height: 26px;
+    font-size: 14px;
+    color: #333;
+}
+.cv-param-tag-label{
+    position: relative;
+    float: left;
+    margin-left:10px;
+    height: 26px;
+    line-height: 26px;
+    font-size: 14px;
+    color: #333;
+    font-weight:500;
+}
+.cv-param-tag {
+    position: relative;
+    float: left;
+    height: 26px;
+    line-height: 26px;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+    margin: 0 8px 5px 0;
+    padding: 0 20px 0 6px;
+    background-color: #fff;
+    border: 1px solid #ff9f20;
+}
+.cv-param-tag em {
+    position: absolute;
+    width: 20px;
+    top: 0;
+    right: 0;
+    height: 26px;
+    background: url(../../img/close.png) center no-repeat;
+}

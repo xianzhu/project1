@@ -93,8 +93,7 @@ var v_mutiSearchModel=new Vue({
                 return !isEnd;
             }
         },
-        changeOrder:function(value){
-            this.newsOrder=value;
+        changeOrder:function(){
             this.newsPage=0;
             if(this.key!="") {
                 getSubNewsPage(this.key, this.newsPage);
@@ -292,6 +291,7 @@ function doSearch(key){
 function getSubNewsPage(key,page){
     var from=page*commonPageNum.mutiSearchNews;
     var order=v_mutiSearchModel.$data.newsOrder;
+    console.log(order);
 
     $.ajax({
         url: commonUrls.mutiSearchNewsUrl,              //请求地址

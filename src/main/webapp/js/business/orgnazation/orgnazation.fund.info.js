@@ -18,17 +18,17 @@ var v_fundBasicModel=new Vue({
         // time:"",
         // amount:"",
         // isEnd:false,
-        curEventModule:0,
+        curEventModule:1,
 
         ivsTypeSelections:investTypeSelections,
         ivsCapitalList:[],
-        ivsEnd:false,
+        ivsEnd:true,
         ivsPage:0,
         ivsSubType:0,
 
         extTypeSelections:exitTypeSelections,
         extCapitalList:[],
-        extEnd:false,
+        extEnd:true,
         extPage:0,
         extSubType:0
     },
@@ -67,7 +67,7 @@ var v_fundBasicModel=new Vue({
                     this.ivsPage++;
                 }
                 //console.log(this.ivsPage);
-                getSubDataPage(this.fid,type,ivsFilterKey,this.ivsPage,this.ivsSubType);
+                getSubDataPage(type,ivsFilterKey,this.ivsPage,this.ivsSubType);
             }else if(type==2){
                 if(value==0){
                     this.extPage--;
@@ -75,7 +75,7 @@ var v_fundBasicModel=new Vue({
                     this.extPage++;
                 }
                 //console.log(this.extPage);
-                getSubDataPage(this.fid,type,extFilterKey,this.extPage,this.extSubType);
+                getSubDataPage(type,extFilterKey,this.extPage,this.extSubType);
             }
         },
         showCapDetail:function(id,type){
@@ -194,10 +194,10 @@ function getFundEventInfo(id){
     v_fundBasicModel.$data.ivsSubType="";
     v_fundBasicModel.$data.extSubType="";
 
-    getSubDataPage(v_fundBasicModel.$data.fid,0,"",0,"");
+    getSubDataPage(0,"",0,"");
 }
 
-function getSubDataPage(fid,type,key,page,subType){
+function getSubDataPage(type,key,page,subType){
     var turl=commonUrls.orgFundCaptailUrl;
     var from,count, etype="invest";
     if(type==0){
@@ -214,7 +214,7 @@ function getSubDataPage(fid,type,key,page,subType){
         count=commonPageNum.orgFundExitEventNum;
     }
     var rdata={
-        id:fid,
+        id:v_fundBasicModel.$data.fid,
         from:from,
         count:count,
         key:key,

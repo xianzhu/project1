@@ -62,6 +62,7 @@ var commonUrls_real = {
     workbenchDeleteUrl:"custInfo/del", // 个人设置--工作台删除
 
     companySearchUrl:"entinfo/search", // 企业查询
+    companyMutiSearchUrl:"entinfo/search", // 企业查询Muti-- 多条件查询
     companyBasicUrl:"entinfo/basic", // 企业--基本信息
     companyDepthUrl:"entinfo/deep", // 企业企业--深度信息
     companyCreditUrl:"entinfo/credit", // 企业--信用报告
@@ -131,6 +132,7 @@ var commonUrls_real_local = {
     workbenchDeleteUrl:hostUrl+"custInfo/del", // 个人设置--工作台删除
 
     companySearchUrl:hostUrl+"entinfo/search", // 企业查询
+    companyMutiSearchUrl:hostUrl+"entinfo/search", // 企业查询Muti-- 多条件查询
     // companyBasicUrl:"testData/company.basic.json",
     // companyDepthUrl:"testData/company.depth.json",
     // companyCreditUrl:"testData/company.credit.json",
@@ -173,6 +175,7 @@ var commonPageNum = {
     newsProjects:4, // 新闻页 - 项目
 
     projectList:8, // 项目页 - 项目列表
+    entSearchList:20, // 企业查询 -- 多条件查询
 
     sysMonitorRpt:12, // 系统监控 - 股权类投资基金监控
     sysMonitorMerge:19, // 系统监控 - 上市公司并购事件每日监控

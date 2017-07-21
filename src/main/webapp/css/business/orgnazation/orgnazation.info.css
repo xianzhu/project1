@@ -1,3 +1,19 @@
+.monitor-add-title{
+    font-size:14px;
+    margin-top:20px;
+    font-weight:600;
+    color:#ff9f20;
+    cursor:pointer;
+    float:left !important;
+    margin-left:6px !important;
+}
+
+.org-ent-name{
+    cursor:pointer;
+    margin-top:20px;
+    font-size:14px;
+    color:#337ab7;
+}
 .form-control, .single-line {
     background-color: #FFFFFF;
     background-image: none;

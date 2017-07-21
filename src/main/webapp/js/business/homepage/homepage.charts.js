@@ -79,48 +79,26 @@ function showRptEcharts(srcdata, id) {
     var data = {
         "durTime": [],
         "ydata": {
-            "iNum": [],
-            "eNum": [],
-            "psIbmpa": []
+            "ici": [],
+            "isi": [],
+            "iei": []
         }
     }
 
-    var srcdatat=[
-        // {"durTime":1,"iNum":0.100184167,"eNum":0.654420922,"psIbmpa":0.114007745},
-        // {"durTime":2,"iNum":0.103558471,"eNum":0.663432383,"psIbmpa":0.198198412},
-        // {"durTime":3,"iNum":0.103709857,"eNum":0.663840097,"psIbmpa":0.197481281},
-        // {"durTime":4,"iNum":0.123794837,"eNum":0.720684449,"psIbmpa":0.195493054},
-        // {"durTime":5,"iNum":0.935107335,"eNum":0.155291005,"psIbmpa":0.130806622},
-        // {"durTime":6,"iNum":0.944563298,"eNum":0.18579699,"psIbmpa":0.171527775},
-        // {"durTime":7,"iNum":0.943336428,"eNum":0.181753834,"psIbmpa":0.179525863},
-        // {"durTime":8,"iNum":0.12648611,"eNum":0.128739003,"psIbmpa":0.980646229},
-        // {"durTime":9,"iNum":0.122201674,"eNum":0.115967247,"psIbmpa":0.904135432},
-        // {"durTime":10,"iNum":0.100184167,"eNum":0.154420922,"psIbmpa":0.914007745}
-
-        {"durTime":1,"iNum":0.900184167,"eNum":0.806302607,"psIbmpa":0.654420922},
-        {"durTime":2,"iNum":0.903558471,"eNum":0.811830305,"psIbmpa":0.663432383},
-        {"durTime":3,"iNum":0.903709857,"eNum":0.812079609,"psIbmpa":0.663840097},
-        {"durTime":4,"iNum":0.923794837,"eNum":0.846206669,"psIbmpa":0.720684449},
-        {"durTime":5,"iNum":0.935107335,"eNum":0.866417497,"psIbmpa":0.755291005},
-        {"durTime":6,"iNum":0.944563298,"eNum":0.883914568,"psIbmpa":0.78579699},
-        {"durTime":7,"iNum":0.943336428,"eNum":0.881611877,"psIbmpa":0.781753834},
-        {"durTime":8,"iNum":0.92648611,"eNum":0.850946715,"psIbmpa":0.728739003},
-        {"durTime":9,"iNum":0.922201674,"eNum":0.843420123,"psIbmpa":0.715967247},
-        {"durTime":10,"iNum":0.900184167,"eNum":0.806302607,"psIbmpa":0.654420922}
-    ];
-    for (var i = 0; i < srcdatat.length; i++) {
-        var item = srcdatat[i];
+    for (var i = 0; i < srcdata.length; i++) {
+        var item = srcdata[i];
         data.durTime.push(item.durTime);
-        data.ydata.iNum.push(item.iNum);
-        data.ydata.eNum.push(item.eNum);
-        data.ydata.psIbmpa.push(item.psIbmpa);
+        data.ydata.ici.push(item.ici);
+        data.ydata.isi.push(item.isi);
+        data.ydata.iei.push(item.iei);
     }
     var moption = clone(orgTrendsOption);
 
     moption.xAxis.data = data.durTime;
-    moption.series[2].data=data.ydata.iNum;
-    moption.series[1].data=data.ydata.eNum;
-    moption.series[0].data=data.ydata.psIbmpa;
+    // 0--ici;1--isi;2--iei
+    moption.series[0].data=data.ydata.ici; // ici
+    moption.series[1].data=data.ydata.isi; // isi
+    moption.series[2].data=data.ydata.iei; // iei
 
     if (typeof rptChart == 'undefined') {
         require(['echarts', 'echarts/chart/line'], function (ec) {
@@ -296,8 +274,9 @@ function showCompanyDashEcharts(srcdata, id) {
             var dom = document.getElementById(id);
             companyDashChart = echarts.init(dom);
             var ecConfig = require('echarts/config');
+
             companyDashChart.on(ecConfig.EVENT.GAUGE_CLICKED,function(param){
-                // gotoTraderReportPage();
+                gotoCompanySearchPage();
             });
             companyDashChart.setOption(moption, true);
             window.addEventListener('resize', function () {

@@ -21,7 +21,7 @@ var v_orgBasicModel=new Vue({
         elasticPage:0,
         elasticFilterKey:"",
         orgId:orgId,
-        isInMonitor:!checkOrgIfInMonitor(orgId)
+        isInMonitor:checkOrgIfInMonitor(orgId)
     },
     ready:function(){
 
@@ -277,7 +277,7 @@ function getFundListInfo() {
 }
 
 function refreshOrgMonitor(){
-    v_orgBasicModel.$data.isInMonitor=!checkOrgIfInMonitor(orgId);
+    v_orgBasicModel.$data.isInMonitor=checkOrgIfInMonitor(orgId);
 }
 
 // $(document).ready(function () {

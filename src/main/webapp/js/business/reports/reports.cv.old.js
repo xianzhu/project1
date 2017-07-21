@@ -24,14 +24,8 @@ var v_cvReportModel=new Vue({
         key:"",
         cvtypeSelections:cvTypeSelections,
         cvResult:[],
-        showConditions:false,
-        showConditionTypes:false,
         cvIsEnd:false,
         cvResultPage:0,
-        cvParamTags: {
-            keyContent: {key: "keyContent", text: "", isSelected: false}, // 关键字
-            typeList: []
-        },
         cvResultTypes:"",
         cvFilterKey:""
     },
@@ -91,29 +85,6 @@ var v_cvReportModel=new Vue({
 getSubResultPage("",0,"");
 
 function getSubResultPage(key,page,types){ // rType: 0--all;1--cv;2--other
-    console.log(key,types);
-    v_cvReportModel.$data.cvParamTags.keyContent.text="关键字: "+key;
-    v_cvReportModel.$data.cvParamTags.keyContent.isSelected=(key!="");
-
-    var flag=false,splittypes=[];
-    v_cvReportModel.$data.cvParamTags.typeList=[];
-    if(types.length>0) {
-        splittypes=types.split(",");
-        console.log(splittypes);
-        if (splittypes.length > 0 && splittypes[0] != "0") {
-            for (var i = 0; i < splittypes.length; i++) {
-                var item = splittypes[i];
-                v_cvReportModel.$data.cvParamTags.typeList.push({"text": cvTypeItems["T" + item]});
-            }
-        }
-    }
-    v_cvReportModel.$data.showConditionTypes=(v_cvReportModel.$data.cvParamTags.typeList.length>0&&v_cvReportModel.$data.cvParamTags.typeList.length!=6);
-    if(v_cvReportModel.$data.cvParamTags.keyContent.isSelected||v_cvReportModel.$data.showConditionTypes){
-        v_cvReportModel.$data.showConditions=true;
-    }else{
-        v_cvReportModel.$data.showConditions=false;
-    }
-
     var from=page*commonPageNum.cvReports;
     $.ajax({
         url: commonUrls.reportUrl,              //请求地址
@@ -161,15 +132,14 @@ function updateCvTable(data){
         v_cvReportModel.$data.cvIsEnd=false;
     }
     v_cvReportModel.$nextTick(function () {
-        // var options={
-        //     dom:'<"html5buttons"B><"searchToolbar dataTables_filter">tp',
-        //     initComplete:function(){
-        //         // console.log(key);
-        //         $("div.searchToolbar").html('<label>搜索:<input id="cvFilterInput" type="search" onkeypress="doDataSearch(event,this.value)" class="form-control input-sm" placeholder="请输入查询..." value="' + v_cvReportModel.$data.cvFilterKey + '"></label>');
-        //     }
-        // }
-        // bindDataTable("cvResult_table",-1,"行业分析报告查询结果", cvReportButtons,options);
-        bindSimpleDataTable("cvResult_table",-1);
+        var options={
+            dom:'<"html5buttons"B><"searchToolbar dataTables_filter">tp',
+            initComplete:function(){
+                // console.log(key);
+                $("div.searchToolbar").html('<label>搜索:<input id="cvFilterInput" type="search" onkeypress="doDataSearch(event,this.value)" class="form-control input-sm" placeholder="请输入查询..." value="' + v_cvReportModel.$data.cvFilterKey + '"></label>');
+            }
+        }
+        bindDataTable("cvResult_table",-1,"行业分析报告查询结果", cvReportButtons,options);
     });
 }
 
@@ -199,7 +169,7 @@ function showTypeFilter(){
 function doTypeSelect(){
     var subTypes=[];
     var subType="";
-
+    console.log(type);
     for(var i=0;i<v_cvReportModel.$data.cvtypeSelections.length;i++){
         var item=v_cvReportModel.$data.cvtypeSelections[i];
         if($("#cvTypeSelect_"+item.value).hasClass("fa-check-square")){
@@ -232,12 +202,4 @@ function doDataSearch(event,key){
     }
 }
 
-function doSearch() {
-    var key=$("#input-filter-key").val();
-    console.log(key);
-    v_cvReportModel.$data.cvFilterKey=key;
-    v_cvReportModel.$data.cvResultPage=0;
-    v_cvReportModel.$data.cvResultTypes="";
-    bothCheck();
-    getSubResultPage(key,0,"");
-}
+

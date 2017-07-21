@@ -154,14 +154,15 @@ function updateInvestTable(data) {
     }
     v_personBasicModel.$nextTick(function () {
         console.log("next tick");
-        var options={
-            dom:'<"html5buttons"B><"investToolbar dataTables_filter">tp',
-            initComplete:function(){
-                console.log(ivsFilterKey);
-                $("div.investToolbar").html('<label>搜索:<input id="ivsFilterInput" type="search" onkeypress="doDataSearch(event,1,this.value)" class="form-control input-sm" placeholder="请输入查询..." value="' + ivsFilterKey + '"></label>');
-            }
-        }
-        bindDataTable("invest_table",onePageLength,"机构资本--投资事件", investButtons,options);
+        // var options={
+        //     dom:'<"html5buttons"B><"investToolbar dataTables_filter">tp',
+        //     initComplete:function(){
+        //         console.log(ivsFilterKey);
+        //         $("div.investToolbar").html('<label>搜索:<input id="ivsFilterInput" type="search" onkeypress="doDataSearch(event,1,this.value)" class="form-control input-sm" placeholder="请输入查询..." value="' + ivsFilterKey + '"></label>');
+        //     }
+        // }
+        // bindDataTable("invest_table",onePageLength,"机构资本--投资事件", investButtons,options);
+        bindSimpleDataTable("invest_table",onePageLength);
     });
 }
 
@@ -174,13 +175,14 @@ function updateExitTable(data) {
         v_personBasicModel.$data.extEnd = false;
     }
     v_personBasicModel.$nextTick(function () {
-        var options={
-            dom:'<"html5buttons"B><"exitToolbar dataTables_filter">tp',
-            initComplete:function(){
-                $("div.exitToolbar").html('<label>搜索:<input id="extFilterInput" type="search" onkeypress="doDataSearch(event,2,this.value)" class="form-control input-sm" placeholder="请输入查询..." value="' + extFilterKey + '"></label>');
-            }
-        }
-        bindDataTable("exit_table", onePageLength, "机构资本--退出事件", exitButtons,options);
+        // var options={
+        //     dom:'<"html5buttons"B><"exitToolbar dataTables_filter">tp',
+        //     initComplete:function(){
+        //         $("div.exitToolbar").html('<label>搜索:<input id="extFilterInput" type="search" onkeypress="doDataSearch(event,2,this.value)" class="form-control input-sm" placeholder="请输入查询..." value="' + extFilterKey + '"></label>');
+        //     }
+        // }
+        // bindDataTable("exit_table", onePageLength, "机构资本--退出事件", exitButtons,options);
+        bindSimpleDataTable("exit_table", onePageLength);
     });
 }
 
@@ -190,15 +192,36 @@ function doDataSearch(event,type,key){
     if (event.keyCode == 13) { // 回车搜索
         var subType=0;
         if(type==1){
+            key=key=$("#input-invest-key").val();
+            ivsFilterKey=key;
             v_personBasicModel.$data.ivsPage=0;
             v_personBasicModel.$data.ivsSubType="";
         }else if(type==2){
+            key=key=$("#input-exit-key").val();
+            extFilterKey=key;
             v_personBasicModel.$data.extPage=0;
             v_personBasicModel.$data.extSubType="";
         }
         typeRecheck(type);
         getSubDataPage(type,key,0,"");
     }
+}
+
+function doSearch(type) {
+    var key;
+    if(type==1){
+        key=key=$("#input-invest-key").val();
+        ivsFilterKey=key;
+        v_personBasicModel.$data.ivsPage=0;
+        v_personBasicModel.$data.ivsSubType="";
+    }else if(type==2){
+        key=key=$("#input-exit-key").val();
+        extFilterKey=key;
+        v_personBasicModel.$data.extPage=0;
+        v_personBasicModel.$data.extSubType="";
+    }
+    typeRecheck(type);
+    getSubDataPage(type,key,0,"");
 }
 
 function showTypeFilter(type){

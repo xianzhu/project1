@@ -2,9 +2,10 @@
     font-size:14px;
     margin-top:16px;
     font-weight:600;
+    color:#ff9f20;
     cursor:pointer;
     float:left !important;
-    margin-left:10px !important;
+    margin-left:2px !important;
 }
 .company-page-row .current-page-title,.company-page-row .normal-page-title{
     font-size:20px;

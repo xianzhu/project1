@@ -101,6 +101,7 @@ define('echarts/chart/gauge', [
             backgroundColor: 'rgba(0,0,0,0)',
             borderWidth: 0,
             borderColor: '#ccc',
+            clickable:true,
             width: 100,
             height: 40,
             offsetCenter: [
@@ -429,7 +430,8 @@ define('echarts/chart/gauge', [
                 zlevel: serie.zlevel,
                 z: serie.z + (Math.abs(x + detail.width / 2 - params.center[0]) + Math.abs(y + detail.height / 2 - params.center[1]) < textStyle.fontSize ? 2 : 1),
                 hoverable: false,
-                clickable:true,
+                // clickable:true,
+                clickable:this.query(detail, 'clickable'),
                 style: {
                     x: x,
                     y: y,

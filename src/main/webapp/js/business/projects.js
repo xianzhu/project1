@@ -20,10 +20,8 @@ var v_projParamModel = new Vue({
     },
     methods: {
         beginProjsearch: function () {
-            // if (this.key_content == "") {
-            //     this.$data.showInputWarning = true;
-            //     return;
-            // }
+            v_projectsModel.$data.projPage=0;
+            v_projectsModel.$data.projEnd=false;
             doProjSearch();
         },
         cancelProjparam: function () {
@@ -46,13 +44,16 @@ var v_projectsModel = new Vue({
     el: "#v-projectsModel",
     data: {
         isFirstShow: false,
+        showConditions:false,
         projParamTags: {
             keyType:{key:"key",text:"",isSelected:false},// 关键字类型
             keyContent:{key:"keyContent",text:"",isSelected:false}, // 关键字
             projStage:{key:"projStage",text:"",isSelected:false}, // 是否国内项目
             industryClass:{key:"industryClass",text:"",isSelected:false} // 行业分类
         }, // 填写的参数列表
-        projectList: [] // 项目列表
+        projectList: [], // 项目列表
+        projPage:0,
+        projEnd:false
     },
     ready: function () {
     },
@@ -67,9 +68,33 @@ var v_projectsModel = new Vue({
         },
         removeSelectedParam:function (key) {
             v_projectsModel.$data.projParamTags[key].isSelected=false;
-        }
+        },
+        pageControlFilter:function(value){
+            var page=0;
+            var isEnd=false;
+
+            if(value==0){
+                //console.log('上:',type,page!=0);
+                return this.projPage!=0;
+            }else{
+                //console.log('下:',type,!isEnd);
+                return !this.projEnd;
+            }
+        },
+        changePage:function(value){
+            if(value==0){
+                this.projPage--;
+            }else{
+                this.projPage++;
+            }
+            doProjSearch();
+        },
     },
     filters: {
+        currentPageFilter:function(value){
+            var p=value+1;
+            return "第"+p+"页";
+        },
         stateHoldFilter: function (value) {
             return value == 0 ? '否' : '是';
         },
@@ -95,28 +120,43 @@ if(iscurrent=="true"){
 }
 
 function doProjSearch() {
-    console.log("doproject search");
+    console.log("doproject search",commonPageNum.projectList);
     var data = v_projParamModel.$data;
-    // v_projectsModel.$data.projParamTags = [];
+
     if(data.industry_class=="全部"){
         data.industry_class="";
     }
+    var from=v_projectsModel.$data.projPage*commonPageNum.projectList,
+        count=from+commonPageNum.projectList>=60?(60-from):commonPageNum.projectList;
     var params = {
         // key_type: data.key_content,
         // proj_stage: data.proj_stage,
         key: (data.key_content != "")? data.key_content:"",
         domain:data.industry_class,
-        from:0,
-        count:commonPageNum.projectList
+        from:from,
+        count:count
     };
-console.log(params);
+
     v_projectsModel.$data.projParamTags.keyContent.text = "关键字: " + data.key_content;
     v_projectsModel.$data.projParamTags.keyContent.isSelected = (data.key_content != "");
     v_projectsModel.$data.projParamTags.industryClass.text = "行业分类: " + data.industry_class;
     v_projectsModel.$data.projParamTags.industryClass.isSelected = (data.industry_class != "");
 
+    var flag=false;
+    for(var key in v_projectsModel.$data.projParamTags){
+        var item=v_projectsModel.$data.projParamTags[key];
+        if(item.isSelected){
+            flag=true;
+        }
+    }
+    v_projectsModel.$data.showConditions=flag;
     v_projParamModel.$data.showProjParamDiv=false;
     v_projectsModel.$data.isFirstShow=true;
+    if(from+count>=60){
+        v_projectsModel.$data.projEnd=true;
+    }else{
+        v_projectsModel.$data.projEnd=false;
+    }
     requestProjectInfo(params);
 }
 
