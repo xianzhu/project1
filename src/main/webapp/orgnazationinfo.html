@@ -401,7 +401,8 @@
 <script type="x/template" id="modal-template">
     <div class="modal-mask" v-show="show" transition="modal">
         <div class="modal-wrapper">
-            <div class="modal-container">
+            <div class="modal-container modal-container-info">
+                <button class="modal-info-close-button" @click="show = false"><i class="fa fa-close"></i> </button>
                 <div class="modal-header" style="border-bottom: 1px solid #7f7f7f">
                     <slot name="header">
                         default header
@@ -412,7 +413,7 @@
                         default body
                     </slot>
                 </div>
-                <div class="modal-footer" style="border-top: 1px solid #7f7f7f">
+                <div class="modal-footer" style="display:none;">
                     <slot name="footer">
                         <!--default footer-->
                         <button class="modal-default-button"

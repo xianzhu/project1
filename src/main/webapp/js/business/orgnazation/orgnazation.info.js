@@ -62,9 +62,11 @@ var v_orgBasicModel=new Vue({
             }
         },
         addToMonitor:function(content,id){
-            var type=customerSettings.orgMonitorType;
-            setMonitorData(type,content,id);
-            setTimeout(refreshOrgMonitor,1000*2);
+            if(!v_orgBasicModel.$data.isInMonitor){
+                var type=customerSettings.orgMonitorType;
+                setMonitorData(type,content,id);
+                setTimeout(refreshOrgMonitor,1000*2);
+            }
         }
     },
     filters:{
