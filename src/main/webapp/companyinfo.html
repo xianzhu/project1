@@ -34,7 +34,7 @@
                             <strong class="font-bold">，</strong>
                         </span>
                         <span class="text-welcome text-xs m-r f-l m-l">
-                            <strong class="font-bold">当前积分：</strong>
+                            <strong class="font-bold">当前积分</strong>
                             <span v-text="uscore" style="color:orangered"></span>
                             <strong class="font-bold">分</strong>
                         </span>
@@ -112,7 +112,7 @@
             <div class="row">
                 <div class="col-lg-12 company-page-row">
                         <h2 class="pull-left" style="margin-left: 5px;font-size:32px;margin-top:0px;" v-text="info.ent_name"></h2>
-                    <span class="monitor-add-title" v-on:click="addToMonitor(info.ent_name,info.ent_id)">
+                    <span v-bind:class="[isInMonitor? 'monitor-add-title':'monitor-add-title-click']" v-on:click="addToMonitor(info.ent_name,info.ent_id)">
                         <i v-bind:class="[isInMonitor? 'fa fa-star':'fa fa-star-o']"
                            v-bind:title="[isInMonitor? '已监控':'加入监控']"></i>
                     </span>

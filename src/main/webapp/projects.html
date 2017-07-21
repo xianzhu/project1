@@ -33,7 +33,7 @@
                             <strong class="font-bold">，</strong>
                         </span>
                         <span class="text-welcome text-xs m-r f-l m-l">
-                            <strong class="font-bold">当前积分：</strong>
+                            <strong class="font-bold">当前积分</strong>
                             <span v-text="uscore" style="color:orangered"></span>
                             <strong class="font-bold">分</strong>
                         </span>
@@ -164,6 +164,7 @@
                                 <div class="feed-element" v-for="item in projectList">
                                     <div class="display-flow-root">
                                         <strong v-text="item.brand"></strong>
+                                        <small class="text-muted display-domain-label" v-text="item.domain"></small>
                                         <small class="pull-right text-navy link-handle-pointer"
                                                v-text="item.entName|formatStringFilter"
                                                v-on:click="gotoCompany(item.uuid)"></small>
@@ -178,7 +179,7 @@
                                             <span v-text="item.comments|formatStringFilter"></span>
                                         </p>
                                     </div>
-                                    <small class="text-muted pull-right" v-text="item.domain"></small>
+                                    <!--<small class="text-muted pull-right" v-text="item.domain"></small>-->
                                 </div>
                                 <div style="display:none;" v-show="projEnd">没有更多数据</div>
                                 <div class="pull-right" style="margin-top:13px;margin-bottom:2px;">

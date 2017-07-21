@@ -107,7 +107,7 @@
     margin-left:4px;
 }
 .proj-param-div .control-label{
-    padding-top:0px;
+    padding-top:2px;
 }
 
 .param-line-industry{
@@ -238,11 +238,11 @@ li.industry-list-item label:hover{
 }
 .filter-input-div{
     display:inline-block;
-    /*width:calc(100% - 64px);*/
-    width:calc(100% - 80px);
+    width:calc(100% - 64px);
+    /*width:calc(100% - 80px);*/
     position:absolute;
-    /*left:64px;*/
-    left:80px;
+    left:64px;
+    /*left:80px;*/
 }
 .proj-param-div .filter-input-div input{
     width:calc(100% - 0px);
@@ -252,4 +252,16 @@ li.industry-list-item label:hover{
 }
 .fa-m-r{
     margin-right:2px;
+}
+
+.display-flow-root strong{
+    font-size:18px;
+}
+.display-flow-root small{
+    font-size:14px;
+}
+.display-domain-label{
+    margin-left:10px;
+    color:#2b2975;
+    /*color:#ff9f20;*/
 }

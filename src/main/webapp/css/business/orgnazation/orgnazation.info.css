@@ -1,11 +1,13 @@
-.monitor-add-title{
+.monitor-add-title,.monitor-add-title-click{
     font-size:14px;
     margin-top:20px;
     font-weight:600;
     color:#ff9f20;
-    cursor:pointer;
     float:left !important;
     margin-left:6px !important;
+}
+.monitor-add-title-click{
+    cursor:pointer;
 }
 
 .org-ent-name{

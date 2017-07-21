@@ -511,6 +511,7 @@ table.dataTable thead th, table.dataTable thead td {
     background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
     background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+    /*background: linear-gradient(to bottom, rgba(255, 167, 38, 0.2) 0%, rgba(247, 147, 28, 0.9) 100%);*/
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#1a000000', GradientType=0);
 }
 
@@ -793,7 +794,7 @@ table.dataTable thead th, table.dataTable thead td {
 
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     /*background-color: #41314f;*/
     background-color: rgba(255, 255, 255, 0.1);
     color: #676a6c;
@@ -821,16 +822,16 @@ html, body {
     /*background-image: linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);*/
     /*background-image: linear-gradient(#2fa4e7, #87c6ea 60%, #3b444c);*/
     /*background-image:linear-gradient(#54b4eb,#2fa4e7 60%,#338BB8);*/
-    background-image:linear-gradient(#87c6ea,#2fa4e7 60%,#338BB8);
-    background-repeat: no-repeat;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff54b4eb', endColorstr='#ff1d9ce5', GradientType=0);
-    border-bottom: 1px solid #178acc;
-    filter: none;
+    /*background-image:linear-gradient(#87c6ea,#2fa4e7 60%,#338BB8);*/
+    /*background-repeat: no-repeat;*/
+    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff54b4eb', endColorstr='#ff1d9ce5', GradientType=0);*/
+    /*border-bottom: 1px solid #178acc;*/
+    /*filter: none;*/
     -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 
-    background-color: #2fa4e7;
-    border-color: #1995dc;
+    background-color: #2b2975;
+    border-color: #49469e;
 }
 
 .user-logo {
@@ -849,8 +850,10 @@ html, body {
     border: none;
 }
 
-.text-welcome {
-    color: #333333;
+.welcome-message {
+    color: #fff;
+    font-size:18px;
+    height:30px;
 }
 .welcome-name{
     color:#cc6600;
@@ -873,7 +876,8 @@ html, body {
     top: 60px;
     min-height: 420px;
     z-index: 999;
-    background-color: #3b444c;
+    /*background-color: #2b2975;*/
+    background-color: #54528e;
 }
 
 #page-wrapper {
@@ -904,8 +908,7 @@ html, body {
 }
 
 .nav > li > a {
-    /*color: #a7b1c2;*/
-    color: #157ab5;
+    color:#fff;
     font-weight: 600;
     padding: 14px 5px 14px 5px;
 }
@@ -930,13 +933,13 @@ html, body {
 .nav.nav-first-level > li.current > a {
     /*border-left: 4px solid #ecba52;*/
     border-left: 4px solid #2fa4e7;
-    color: #ffffff !important;
+    color:#f7941f !important;
     background-color: #157ab5 !important;
 }
 .nav.nav-first-level > li.active > a {
     /*border-left: 4px solid #ecba52;*/
     border-left: 4px solid #2fa4e7;
-    color: #ccc;
+    color: #fff;
     background-color: transparent;
 }
 .nav.nav-first-level {
@@ -988,7 +991,8 @@ html, body {
 
 .nav.navbar-top-links > li > a, .nav.navbar-top-links > li.tools-bar-item li a {
     /*color: #999c9e;*/
-    color: #333333;
+    font-size:20px;
+    color: #fff;
 }
 
 .nav.navbar-top-links > li > a:hover,
@@ -1021,12 +1025,14 @@ html, body {
 }
 
 .navbar-top-links .search-bar .search-type-select {
-    position: relative;
+    /*position: relative;*/
     float: left;
-    padding: 2px;
-    width: 70px;
-    height: 32px;
-    font-size: 14px;
+    padding-left:2px;
+    padding-bottom:2px;
+    margin-top:-4px;
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
 }
 
 .search-bar .input-group-addon {
@@ -1034,10 +1040,12 @@ html, body {
     display: none;
     position: relative;
     float: left;
-    width: 45px;
+    width: 50px;
     height: 32px;
+    color:#fff;
     line-height: 28px;
-    font-size: 13px;
+    font-size: 16px;
+    margin-top:-4px;
     background-color: transparent;
     border: none;
     left: 2px;
@@ -1049,20 +1057,22 @@ html, body {
 }
 
 .search-bar.company-selected-li .search-key-input {
-    width: calc(100% - 120px);
+    width: calc(100% - 130px);
 }
 
 .search-bar .search-key-input {
     position: relative;
+    margin-top:-4px;
     left: 5px;
-    width: calc(100% - 75px);
-    height: 32px;
+    font-size:16px;
+    width: calc(100% - 80px);
+    height: 30px;
 }
 
 .search-bar i.search-ico {
     position: absolute;
     right: 7px;
-    top: 9px;
+    top: 4px;
 }
 
 .navbar-top-links .navbar-report-item .report-lists:hover,
@@ -1104,12 +1114,13 @@ html, body {
 
 .navbar-top-links > li:last-child {
     margin-right: 15px;
+    margin-top:-4px;
 }
 
 .navbar-top-links li a {
     cursor: pointer;
     padding: 20px 10px;
-    min-height: 50px;
+    /*min-height: 50px;*/
 }
 
 .nav.nav-second-level > li.active {
