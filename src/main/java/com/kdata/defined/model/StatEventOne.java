@@ -2,12 +2,12 @@ package com.kdata.defined.model;
 
 public class StatEventOne {
 	private int id;
+	private int exitOne;
+	private int exitTwo;
 	private int investEarly;
 	private int investMiddle;
 	private int investLate;
 	private int investOther;
-	private int exitOne;
-	private int exitTwo;
 	private String countDate;
 
 	public int getId() {

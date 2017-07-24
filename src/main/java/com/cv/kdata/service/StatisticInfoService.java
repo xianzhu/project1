@@ -102,7 +102,7 @@ public class StatisticInfoService {
 			String sql = "select a.*, b.round_name from stat_event_round_two a "
 					+ "left join event_round_two b "
 					+ "on a.type_id=b.id where a.create_time>? "
-					+ "order by b.father_id asc";
+					+ "order by b.id asc";
 			List<Record> records = Db.find(sql,date);
 			response.setEvent2(transferToEvent2(records));
 
