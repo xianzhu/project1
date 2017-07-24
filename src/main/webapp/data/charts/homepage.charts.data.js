@@ -48,7 +48,7 @@ var orgTrendsOption = {
         show: true,
         data: [
             // "ICI","ISI","IEI"
-            "投资者信心指数","投资者满意指数","投资者预期指数"
+            "投资者信心指数(ICI)","投资者满意指数(ISI)","投资者预期指数(IEI)"
         ],
         x: "right",
         y: "top",
@@ -115,15 +115,31 @@ var orgTrendsOption = {
     ],
     series: [
         {
-            name: '投资者信心指数',
+            name: '投资者信心指数(ICI)',
             text: 'ICI',
             type: 'line',
             smooth: true,
             symbol: 'none',
             itemStyle: {
                 normal: {
-                    // color: "#87cefa",
-                    // color: "#6495ed",
+                    color: "#ff7f50",
+                    areaStyle:{
+                        color: "rgba(255,127,80,0.3)",
+                        type:"default"
+                    }
+                }
+            },
+            data: [],
+            yAxisIndex: 0
+        },
+        {
+            name: '投资者满意指数(ISI)',
+            text: 'ISI',
+            type: 'line',
+            smooth: true,
+            symbol: 'none',
+            itemStyle: {
+                normal: {
                     color: "#00bcd4",
                     areaStyle:{
                         // color:"rgba(135,206,250,0.1)",
@@ -137,25 +153,7 @@ var orgTrendsOption = {
             yAxisIndex: 0
         },
         {
-            name: '投资者满意指数',
-            text: 'ISI',
-            type: 'line',
-            smooth: true,
-            symbol: 'none',
-            itemStyle: {
-                normal: {
-                    color: "#ff7f50",
-                    areaStyle:{
-                        color: "rgba(255,127,80,0.2)",
-                        type:"default"
-                    }
-                }
-            },
-            data: [],
-            yAxisIndex: 0
-        },
-        {
-            name: '投资者预期指数',
+            name: '投资者预期指数(IEI)',
             text: 'IEI',
             type: 'line',
             smooth: true,
@@ -654,9 +652,10 @@ var dashProjOption = {
             type: 'gauge',
             center: ['50%', '52%'],    // 默认全局居中
             // radius: '75%',
-            radius: '95%',
+            radius: '90%',
             min: 0,
             max: 100,
+            clickable:false,
             endAngle: 0,
             splitNumber: 5,
             axisLine: {            // 坐标轴线
@@ -739,9 +738,10 @@ var dashCompanyOption = {
             type: 'gauge',
             center: ['50%', '52%'],    // 默认全局居中
             // radius: '75%',
-            radius: '95%',
+            radius: '90%',
             min: 0,
             max: 20000,
+            clickable:false,
             endAngle: 0,
             splitNumber: 10,
             axisLine: {            // 坐标轴线
@@ -824,10 +824,11 @@ var dashReportOption = {
             type: 'gauge',
             center: ['50%', '52%'],    // 默认全局居中
             // radius: '75%',
-            radius: '95%',
+            radius: '90%',
             min: 0,
             max: 700,
             endAngle: 0,
+            clickable:false,
             splitNumber: 7,
             axisLine: {            // 坐标轴线
                 lineStyle: {       // 属性lineStyle控制线条样式
@@ -908,7 +909,7 @@ var dashElasticOption = {
             name: '当日量',
             type: 'gauge',
             center: ['50%', '52%'],    // 默认全局居中
-            radius: '95%',
+            radius: '90%',
             min: 0,
             max: 5000,
             endAngle: 0,

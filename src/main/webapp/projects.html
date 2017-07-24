@@ -33,7 +33,7 @@
                             <strong class="font-bold">，</strong>
                         </span>
                         <span class="text-welcome text-xs m-r f-l m-l">
-                            <strong class="font-bold">当前积分：</strong>
+                            <strong class="font-bold">当前积分</strong>
                             <span v-text="uscore" style="color:orangered"></span>
                             <strong class="font-bold">分</strong>
                         </span>
@@ -108,7 +108,7 @@
     <div id="page-wrapper">
         <div class="wrapper wrapper-content" id="v-projectsModel">
             <!--查询参数-->
-            <div class="row">
+            <div class="row" style="display:none;">
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
@@ -141,33 +141,55 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>项目查询结果</h5>
+                            <h5>项目列表(仅提供符合条件的前60条记录)</h5>
                             <div class="ibox-tools">
+                                <a class="search-tool-btn" title="项目搜索" v-on:click="openProjectSearch()">
+                                    <i class="fa fa-search"></i>
+                                </a>
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="ibox-content" v-show="isFirstShow" style="display:none;">
+                            <div class="row" v-show="showConditions">
+                                <div class="col-lg-12 param-tag-row">
+                                    <label class="param-label">查询条件：</label>
+                                    <span style="display:none;" class="proj-param-tag" v-for="tag in projParamTags" v-show="tag.isSelected">
+                                        <span v-text="tag.text"></span>
+                                    </span>
+                                </div>
+                            </div>
                             <div class="feed-activity-list">
                                 <div class="feed-element" v-for="item in projectList">
                                     <div class="display-flow-root">
                                         <strong v-text="item.brand"></strong>
+                                        <small class="text-muted display-domain-label" v-text="item.domain"></small>
                                         <small class="pull-right text-navy link-handle-pointer"
                                                v-text="item.entName|formatStringFilter"
                                                v-on:click="gotoCompany(item.uuid)"></small>
                                     </div>
                                     <div class="project-information-div">
                                         <p>
-                                            <strong class="description-info"><i class="fa fa-comment"></i>简介：</strong>
+                                            <strong class="description-info"><i class="fa fa-comment fa-m-r"></i>简介：</strong>
                                             <span v-text="item.brief"></span>
                                         </p>
                                         <p>
-                                            <strong class="comments-info"><i class="fa fa-comment"></i>观点：</strong>
+                                            <strong class="comments-info"><i class="fa fa-comment fa-m-r"></i>观点：</strong>
                                             <span v-text="item.comments|formatStringFilter"></span>
                                         </p>
                                     </div>
-                                    <small class="text-muted pull-right" v-text="item.domain"></small>
+                                    <!--<small class="text-muted pull-right" v-text="item.domain"></small>-->
+                                </div>
+                                <div style="display:none;" v-show="projEnd">没有更多数据</div>
+                                <div class="pull-right" style="margin-top:13px;margin-bottom:2px;">
+                                    <button style="margin-right:10px;" v-if="pageControlFilter(0)"
+                                            v-on:click="changePage(0)">上页
+                                    </button>
+                                    <span v-text="projPage|currentPageFilter"></span>
+                                    <button style="margin-left:10px;" v-if="pageControlFilter(1)"
+                                            v-on:click="changePage(1)">下页
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -291,7 +313,7 @@
             <div class="modal-wrapper-lg">
                 <div class="modal-container-lg form-horizontal">
                     <div class="hr-line-title">
-                        <span style="font-size:18px;">项目查询条件设置</span>
+                        <span style="font-size:18px;">项目查询</span>
                         <button class="modal-close-button" v-on:click="cancelProjparam()"><i class="fa fa-close"></i> </button>
                     </div>
                     <div class="form-group-m">
@@ -336,9 +358,9 @@
                         </div>
                     </div>
                     <!--<div class="hr-line-title"></div>-->
-                    <div style="margin-bottom:15px;">
-                        <button class="modal-setting-button" v-on:click="cancelProjparam()">取 消</button>
-                        <button class="modal-setting-button" v-on:click="beginProjsearch()">确 定</button>
+                    <div style="margin-bottom:15px;margin-right: 15px;">
+                        <button class="btn-default modal-setting-button" v-on:click="cancelProjparam()">取 消</button>
+                        <button class="btn-default modal-setting-button" v-on:click="beginProjsearch()">确 定</button>
                     </div>
                 </div>
             </div>

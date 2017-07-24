@@ -19,7 +19,7 @@ var v_companyInfoModel=new Vue({
         stockRightModule:0, // 1-股东；2-投资企业；3-分支机构；4-董监高；5-参控股子公司；6-大股东；7-机构控股；8-关注企业
         // copyRightModule:0, // 1-专利；2-软件著作权
         // lawModule:0, // 1-法务；2-经营异常；3-股权质押；4-
-        isInMonitor:!checkEntIfInMonitor(cid),
+        isInMonitor:checkEntIfInMonitor(cid),
 
         changeList:[], // 企业变更
         stockHolder:[], // 股东
@@ -60,9 +60,11 @@ var v_companyInfoModel=new Vue({
     },
     methods: {
         addToMonitor:function(content,id){
-            var type=customerSettings.entMonitorType;
-            setMonitorData(type,content,id);
-            setTimeout(refreshEntMonitor,1000*2);
+            if(!v_companyInfoModel.$data.isInMonitor){
+                var type=customerSettings.entMonitorType;
+                setMonitorData(type,content,id);
+                setTimeout(refreshEntMonitor,1000*2);
+            }
         },
         changePageModule:function (value) {
             this.$data.curPageModule=value;
@@ -203,7 +205,7 @@ function getBasicInfo(){
 }
 
 function refreshEntMonitor(){
-    v_companyInfoModel.$data.isInMonitor=!checkEntIfInMonitor(cid);
+    v_companyInfoModel.$data.isInMonitor=checkEntIfInMonitor(cid);
 }
 
 // $(document).ready(function () {

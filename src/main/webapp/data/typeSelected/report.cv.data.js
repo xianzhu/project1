@@ -2,7 +2,7 @@
  * Created by a88u on 2016/10/17.
  */
 var cvTypeSelections = [ // 报告查询类型选择--CV
-    {text: "全部", value: "0", isSelected: true, isAll: true},
+    // {text: "全部", value: "0", isSelected: true, isAll: true},
     {text: "VC/PE", value: "2001001", isSelected: true, isAll: false},
     {text: "IPO", value: "2001002", isSelected: true, isAll: false},
     {text: "并购", value: "2001003", isSelected: true, isAll: false},

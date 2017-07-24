@@ -1,11 +1,8 @@
 .modal-mask.modal-mask-setting{
-    z-index:99;
+    z-index:999;
+    top:0;
 }
-.modal-setting-button {
-    float: right;
-    background: transparent;
-    border: none;
-}
+
 @media (min-width: 768px){
     .form-group-m{
         margin-left:15px;
@@ -46,34 +43,6 @@
     max-width: 560px;
 }
 
-.modal-close-button{
-    margin-right: -20px;
-    margin-top: -15px;
-    float: right;
-    background: transparent;
-    border: none;
-    position: relative;
-}
-.modal-wrapper-lg{
-    /*display: table-cell;*/
-    vertical-align: middle;
-    margin-top:calc(4% + 60px);
-    margin-left:calc(50% - 325px);
-    max-width:650px;
-}
-
-@media (min-width: 992px) {
-    .modal-wrapper-lg{
-        /*display: table-cell;*/
-        vertical-align: middle;
-    }
-}
-
-@media (max-width: 768px) {
-    .modal-wrapper-lg{
-        vertical-align: middle;
-    }
-}
 .modal-container-info {
     width: 280px;
     margin: calc(30% - 140px) auto 5px auto;
@@ -136,6 +105,18 @@
     width:100%;
     float:left;
 }
+.param-tag-row{
+    border-bottom:1px solid #ccc;
+    margin-bottom:10px;
+}
+.param-label{
+    position: relative;
+    float: left;
+    height: 26px;
+    line-height: 26px;
+    font-size: 14px;
+    color: #333;
+}
 .sim-param-tag {
     position: relative;
     float: left;
@@ -148,7 +129,6 @@
     padding: 0 20px 0 6px;
     background-color: #fff;
     border: 1px solid #ff9f20;
-    cursor: pointer;
 }
 .sim-param-tag em {
     position: absolute;

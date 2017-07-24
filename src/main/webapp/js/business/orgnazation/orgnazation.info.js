@@ -21,7 +21,7 @@ var v_orgBasicModel=new Vue({
         elasticPage:0,
         elasticFilterKey:"",
         orgId:orgId,
-        isInMonitor:!checkOrgIfInMonitor(orgId)
+        isInMonitor:checkOrgIfInMonitor(orgId)
     },
     ready:function(){
 
@@ -62,9 +62,11 @@ var v_orgBasicModel=new Vue({
             }
         },
         addToMonitor:function(content,id){
-            var type=customerSettings.orgMonitorType;
-            setMonitorData(type,content,id);
-            setTimeout(refreshOrgMonitor,1000*2);
+            if(!v_orgBasicModel.$data.isInMonitor){
+                var type=customerSettings.orgMonitorType;
+                setMonitorData(type,content,id);
+                setTimeout(refreshOrgMonitor,1000*2);
+            }
         }
     },
     filters:{
@@ -277,7 +279,7 @@ function getFundListInfo() {
 }
 
 function refreshOrgMonitor(){
-    v_orgBasicModel.$data.isInMonitor=!checkOrgIfInMonitor(orgId);
+    v_orgBasicModel.$data.isInMonitor=checkOrgIfInMonitor(orgId);
 }
 
 // $(document).ready(function () {

@@ -10,9 +10,20 @@
     margin-right:0px;
     margin-top:-13px;
 }
-
-
-
+@media (max-width:1439px){
+    .td-lg-show{
+        display:none;
+    }
+}
+@media (max-width:1300px){
+    .td-md-show{
+        display:none;
+    }
+}
+.modal-template-list .half-item{
+    width:50%;
+    float:left;
+}
 
 
 

@@ -302,7 +302,11 @@ function gotoTraderReportPage() {
     var murl = "traderReports.html?uname=" + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
     window.location.href = murl;
 }
-
+function gotoCompanySearchPage() {
+    console.log("goto companySearch");
+    var murl = "companySearch.html?uname=" + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
+    window.location.href = murl;
+}
 function gotoCompanyPage(id, type,stock_code) {  // 0---A股；1---新三板；2---非上市
     console.log("gotocompany:", id, ', ', type);
     if (id && id != "" && id != null && id.length > 3) {

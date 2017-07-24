@@ -74,8 +74,8 @@ var v_newsModel=new Vue({
             }
 
         },
-        changeOrder:function(order){
-            this.newsOrder=order;
+        changeOrder:function(){
+            // this.newsOrder=order;
             this.newsPage=0;
             getSubNewsPage();
         },
@@ -101,10 +101,6 @@ var v_newsModel=new Vue({
         currentPageFilter:function(value){
             var p=value+1;
             return "第"+p+"页";
-        },
-        orderStringFilter:function(value){
-            //console.log("order:", value);
-            return value==1? "时间排序":"相关性排序";
         },
         formatStringFilter:function(value){
             if(value&&value.toLowerCase()!="null"){

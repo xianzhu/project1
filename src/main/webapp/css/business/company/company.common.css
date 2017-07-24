@@ -1,10 +1,13 @@
-.company-page-row .monitor-add-title{
+.company-page-row .monitor-add-title,.company-page-row .monitor-add-title-click{
     font-size:14px;
-    margin-top:16px;
+    margin-top:20px;
     font-weight:600;
-    cursor:pointer;
+    color:#ff9f20;
     float:left !important;
-    margin-left:10px !important;
+    margin-left:6px !important;
+}
+.company-page-row .monitor-add-title-click{
+    cursor:pointer;
 }
 .company-page-row .current-page-title,.company-page-row .normal-page-title{
     font-size:20px;

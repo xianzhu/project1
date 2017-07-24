@@ -33,7 +33,7 @@
                             <strong class="font-bold">，</strong>
                         </span>
                         <span class="text-welcome text-xs m-r f-l m-l">
-                            <strong class="font-bold">当前积分：</strong>
+                            <strong class="font-bold">当前积分</strong>
                             <span v-text="uscore" style="color:orangered"></span>
                             <strong class="font-bold">分</strong>
                         </span>
@@ -116,16 +116,12 @@
                                 <a class="collapse-link pull-right">
                                     <i class="fa fa-chevron-up"></i>
                                 </a>
-                                <div class="pull-right" style="margin-top:-8px;margin-right:5px;">
-                                    <div class="pull-right btn-group">
-                                        <!--<button class="btn btn-xs position-top-8" v-bind:class="[newsOrder==1?'btn-primary':'btn-white']" v-on:click="changeOrder(1)">相关性排序</button>-->
-                                        <!--<button class="btn btn-xs position-top-8" v-bind:class="[newsOrder==2?'btn-primary':'btn-white']" v-on:click="changeOrder(2)">时间排序</button>-->
-                                        <a class="btn btn-xs btn-order-correlation" title="相关性排序"
-                                                v-bind:class="[newsOrder==1?'btn-primary':'btn-trans']"
-                                                v-on:click="changeOrder(1)"></a>
-                                        <a class="btn btn-xs btn-order-time" title="时间排序"
-                                                v-bind:class="[newsOrder==2?'btn-primary':'btn-trans']"
-                                                v-on:click="changeOrder(2)"></a>
+                                <div class="pull-right btn-group" style="margin-top:-11px;margin-right:5px;">
+                                    <div class="select-div">
+                                        <select class="elastic-select-control" v-model="newsOrder" v-on:change="changeOrder()">
+                                            <option value="2">按时间排序</option>
+                                            <option value="1">相关性排序</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

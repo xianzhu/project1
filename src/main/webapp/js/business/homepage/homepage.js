@@ -632,7 +632,8 @@ function setCalendar() {
         type: "get",
         data: {
             date: '2017-01-01',
-            to: '2017-12-31'
+            to: '2017-12-31',
+            count:1000
         },
         dataType: "json",
         success: function (res) {

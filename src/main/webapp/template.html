@@ -3,12 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>模板页</title>
+    <title>主页</title>
     <link rel="icon" href="img/logo-ico.png" type="image/png">
     <link href="css/common/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="css/plugins/jqDataTables/jquery.dataTables.css" rel="stylesheet">
-    <link href="css/plugins/jqDataTables/extensions/buttons/buttons.dataTables.css" rel="stylesheet">
     <link href="css/common/modal-mask.css" rel="stylesheet">
     <link href="css/mycommon/loading-animate.css" rel="stylesheet">
     <link href="css/style.common.css" rel="stylesheet">
@@ -33,7 +31,7 @@
                             <strong class="font-bold">，</strong>
                         </span>
                         <span class="text-welcome text-xs m-r f-l m-l">
-                            <strong class="font-bold">当前积分：</strong>
+                            <strong class="font-bold">当前积分</strong>
                             <span v-text="uscore" style="color:orangered"></span>
                             <strong class="font-bold">分</strong>
                         </span>
@@ -88,7 +86,7 @@
                 <li v-bind:class="{'current active':item.isActive}" v-for="item in menuList">
                     <a href="#" v-on:click="goto(item.pageurl,id)" v-bind:title="item.name">
                         <!--<i class="fa fa-th-large"></i>-->
-                        <i v-bind:class="[item.ico? item.ico:'fa fa-th-large']" ></i>
+                        <i v-bind:class="[item.ico? item.ico:'fa fa-th-large']"></i>
                         <span class="nav-label"
                               v-text="item.text"></span>
                         <span class="fa" v-bind:class="{'arrow':item.showChild}"></span></a>
@@ -97,7 +95,7 @@
                             <a v-bind:title="cItem.name"
                                v-on:click="goto(cItem.pageurl,id)">
                                 <i v-bind:class="[cItem.ico? cItem.ico:'fa fa-th-large']"></i>
-                                <span  v-text="cItem.text"></span>
+                                <span v-text="cItem.text"></span>
                             </a></li>
                     </ul>
                 </li>
@@ -106,7 +104,8 @@
     </div>
 
     <div id="page-wrapper">
-        <div class="wrapper wrapper-content" id="v-pageModel">
+        <div class="wrapper wrapper-content" id="v-Model">
+
         </div>
     </div>
 </div>
@@ -127,7 +126,7 @@
                         <div class="no-m-b no-border ibox">
                             <div class="ibox-content ibox-content-withpage">
                                 <div v-bind:class="[currentModule==1? 'table-responsive show-div':'table-responsive hide-div']">
-                                <!--<div class="table-responsive" v-if="checkModule(1)">-->
+                                    <!--<div class="table-responsive" v-if="checkModule(1)">-->
                                     <table class="table table-striped table-bordered table-hover"
                                            id="personal_result_table">
                                         <thead>
@@ -141,7 +140,8 @@
                                         </thead>
                                         <tbody>
                                         <tr v-for="ele in pResult">
-                                            <td class="cursor-link-only" v-on:click="gotoPersonal(ele.userId)" v-text="ele.userName"></td>
+                                            <td class="cursor-link-only" v-on:click="gotoPersonal(ele.userId)"
+                                                v-text="ele.userName"></td>
                                             <td class="td-W30" v-text="ele.sex"></td>
                                             <td v-text="ele.title"></td>
                                             <td v-text="ele.organizeName"></td>
@@ -161,7 +161,8 @@
                                         </thead>
                                         <tbody>
                                         <tr role="row" v-for="ele in oResult">
-                                            <td v-text="ele.orgCnName" style="cursor:pointer" v-on:click="gotoOrg(ele.orgId)"></td>
+                                            <td v-text="ele.orgCnName" style="cursor:pointer"
+                                                v-on:click="gotoOrg(ele.orgId)"></td>
                                             <td v-text="ele.orgCnShort"></td>
                                             <td v-text="ele.orgMapEntity|formatDataFilter"></td>
                                         </tr>
@@ -217,15 +218,11 @@
     </div>
 </div>
 
-<script src="js/plugins/jqDataTables/jquery.dataTables.js"></script>
-<script src="js/plugins/jqDataTables/extensions/buttons/dataTables.buttons.js"></script>
-<script src="js/plugins/jqDataTables/extensions/buttons/buttons.print.js"></script>
-<script src="js/plugins/jqDataTables/extensions/buttons/buttons.html5.js"></script>
-
 <script src="js/mycommon/common.data.js"></script>
 <script src="data/menu/common.menu.js"></script>
 <script src="js/mycommon/function.common.js"></script>
 <script src="js/mycommon/menu.common.js"></script>
 <script src="js/mycommon/ibox.function.js"></script>
+<script src="js/mycommon/mask.info.js"></script>
 </body>
 </html>

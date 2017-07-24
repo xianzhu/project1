@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>企业基本信息</title>
+    <title>企业查询</title>
     <link rel="icon" href="img/logo-ico.png" type="image/png">
     <link href="css/common/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -12,8 +12,7 @@
     <link href="css/common/modal-mask.css" rel="stylesheet">
     <link href="css/mycommon/loading-animate.css" rel="stylesheet">
     <link href="css/style.common.css" rel="stylesheet">
-    <link href="css/business/company/company.common.css" rel="stylesheet">
-
+    <link href="css/business/company/company.search.css" rel="stylesheet">
     <script src="js/common/jquery-2.1.1.js"></script>
     <script src="js/common/jquery.easing.1.3.js"></script>
     <script src="js/common/bootstrap.min.js"></script>
@@ -89,7 +88,7 @@
                 <li v-bind:class="{'current active':item.isActive}" v-for="item in menuList">
                     <a href="#" v-on:click="goto(item.pageurl,id)" v-bind:title="item.name">
                         <!--<i class="fa fa-th-large"></i>-->
-                        <i v-bind:class="[item.ico? item.ico:'fa fa-th-large']" ></i>
+                        <i v-bind:class="[item.ico? item.ico:'fa fa-th-large']"></i>
                         <span class="nav-label"
                               v-text="item.text"></span>
                         <span class="fa" v-bind:class="{'arrow':item.showChild}"></span></a>
@@ -98,7 +97,7 @@
                             <a v-bind:title="cItem.name"
                                v-on:click="goto(cItem.pageurl,id)">
                                 <i v-bind:class="[cItem.ico? cItem.ico:'fa fa-th-large']"></i>
-                                <span  v-text="cItem.text"></span>
+                                <span v-text="cItem.text"></span>
                             </a></li>
                     </ul>
                 </li>
@@ -107,27 +106,72 @@
     </div>
 
     <div id="page-wrapper">
-        <div class="wrapper wrapper-content" id="v-companyBasicModel">
-            <!--公司名称-->
+        <div class="wrapper wrapper-content" id="v-entSearchModel">
+            <!--公司-->
             <div class="row">
-                <div class="col-lg-12 company-page-row">
-                        <h1 class="pull-left" style="margin-top:0px;" v-text="info.entName"></h1>
-                    <div class="pull-left" style="padding-top:8px;">
-                        <span v-bind:class="[curPageModule==1? 'current-page-title':'normal-page-title']"
-                              v-on:click="changePageModule(1)">基本信息</span>
-                        <span v-bind:class="[curPageModule==2? 'current-page-title':'normal-page-title']"
-                              v-on:click="changePageModule(2)">财务数据</span>
-                        <span v-bind:class="[curPageModule==3? 'current-page-title':'normal-page-title']"
-                              v-on:click="changePageModule(3)">对标预测</span>
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>企业列表(仅提供符合条件的前60条记录)</h5>
+                            <div class="ibox-tools">
+                                <a class="search-tool-btn" title="企业搜索" v-on:click="openEntSearch()">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row" v-show="showConditions">
+                                <div class="col-lg-12 param-tag-row">
+                                    <label class="param-label">查询条件：</label>
+                                    <span style="display:none;" class="ent-param-tag" v-show="entParamTags.keyContent.isSelected">
+                                        <span v-text="entParamTags.keyContent.text"></span>
+                                    </span>
+                                    <span style="display:none;" class="ent-param-tag" v-show="entParamTags.isStock.isSelected">
+                                        <span v-text="entParamTags.isStock.text"></span>
+                                    </span>
+                                    <span style="display:none;" v-show="showConditionTypes">
+                                        <label class="ent-param-tag-label">类型分类：</label>
+                                        <span class="ent-param-tag" v-for="tag in entParamTags.typeList">
+                                            <span v-text="tag.text"></span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="entResult_table">
+                                    <thead>
+                                    <tr>
+                                        <th class="td-W-40">公司名称</th>
+                                        <th class="td-W-60">经营范围</th>
+                                        <th class="td-W110">经营状态</th>
+                                        <th class="td-W75">法人</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="ele in entList">
+                                        <td class="td-W-40 link-handle-pointer" v-text="ele.ent_name" v-on:click="gotoCompany(ele.ent_id,ele.is_stock)"></td>
+                                        <td class="td-W-60" v-text="ele.biz_area"></td>
+                                        <td class="td-W110" v-text="ele.biz_stat"></td>
+                                        <td class="td-W75" v-text="ele.legal_person"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="pull-right">
+                                    <button style="margin-right:10px;" v-if="pageControlFilter(0)"
+                                            v-on:click="changeResultPage(0)">上页
+                                    </button>
+                                    <span v-text="entPage|currentPageFilter"></span>
+                                    <button style="margin-left:10px;" v-if="pageControlFilter(1)"
+                                            v-on:click="changeResultPage(1)">下页
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                        <span class="monitor-add-title" v-if="isInMonitor" v-on:click="addToMonitor(info.entName,info.entId)">加入监控</span>
-
-
                 </div>
-            </div>
-
-            <div class="row">
-
             </div>
         </div>
     </div>
@@ -163,7 +207,8 @@
                                         </thead>
                                         <tbody>
                                         <tr v-for="ele in pResult">
-                                            <td class="cursor-link-only" v-on:click="gotoPersonal(ele.userId)" v-text="ele.userName"></td>
+                                            <td class="cursor-link-only" v-on:click="gotoPersonal(ele.userId)"
+                                                v-text="ele.userName"></td>
                                             <td class="td-W30" v-text="ele.sex"></td>
                                             <td v-text="ele.title"></td>
                                             <td v-text="ele.organizeName"></td>
@@ -183,7 +228,8 @@
                                         </thead>
                                         <tbody>
                                         <tr role="row" v-for="ele in oResult">
-                                            <td v-text="ele.orgCnName" style="cursor:pointer" v-on:click="gotoOrg(ele.orgId)"></td>
+                                            <td v-text="ele.orgCnName" style="cursor:pointer"
+                                                v-on:click="gotoOrg(ele.orgId)"></td>
                                             <td v-text="ele.orgCnShort"></td>
                                             <td v-text="ele.orgMapEntity|formatDataFilter"></td>
                                         </tr>
@@ -238,41 +284,70 @@
         </div>
     </div>
 </div>
-<!--信息提示框*******************info-->
-<script type="x/template" id="modal-template">
-    <div class="modal-mask" v-show="show" transition="modal">
-        <div class="modal-wrapper">
-            <div class="modal-container">
-                <div class="modal-header" style="border-bottom: 1px solid #7f7f7f">
-                    <slot name="header">
-                        default header
-                    </slot>
-                </div>
-                <div class="modal-body">
-                    <slot name="body">
-                        default body
-                    </slot>
-                </div>
-                <div class="modal-footer" style="border-top: 1px solid #7f7f7f">
-                    <slot name="footer">
-                        <!--default footer-->
-                        <button class="modal-default-button"
-                                @click="show = false">
-                            确定
-                        </button>
-                    </slot>
+
+<!--企业参数设置-->
+<div id="v-entParamModel">
+    <div style="display:none;" class="modal-mask modal-mask-setting" transition="modal" v-show="showEntParamDiv">
+        <div class="row">
+            <div class="modal-wrapper-lg">
+                <div class="modal-setting-container modal-container form-horizontal">
+                    <div class="hr-line-title">
+                        <span style="font-size:18px;">企业查询</span>
+                        <button class="modal-close-button" v-on:click="cancelEntparam()"><i class="fa fa-close"></i> </button>
+                    </div>
+                    <div class="form-group-m">
+                        <div class="row" style="margin-right:5px;margin-left:5px;">
+                            <!--关键字-->
+                            <div class="ent-param-div param-line-key key-param-group">
+                                <label class="control-label label-overflow">关键字</label>
+                                <input  class="param-input-div key-input-control" v-model="key_content">
+                            </div>
+                            <!--搜索范围-->
+                            <div class="ent-param-div param-line-industry">
+                                <label class="control-label label-overflow">搜索范围</label>
+                                <ul class="param-input-div param-range-input">
+                                    <li class="form-control list-range-item range-all selected" value="all">
+                                        <label>全部</label>
+                                    </li>
+                                    <li class="form-control list-range-item range-single text-center"
+                                        item-data="公司名称" value="name" id="range-item-name">
+                                        <label>公司名称</label>
+                                    </li>
+                                    <li class="form-control list-range-item range-single text-center"
+                                        item-data="股东" value="holder" id="range-item-holder">
+                                        <label>股东</label>
+                                    </li>
+                                    <li class="form-control list-range-item range-single text-center"
+                                        item-data="法人代表" value="legal" id="range-item-legal">
+                                        <label>法人代表</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--是否上市公司-->
+                            <div class="ent-param-div param-line-industry">
+                                <label class="control-label label-overflow">上市公司</label>
+                                <ul class="param-input-div">
+                                    <li class="form-control list-stock-item">
+                                        <input checked type="radio" name="isStock" value="0">不限
+                                    </li>
+                                    <li class="form-control list-stock-item short-item">
+                                        <input type="radio" name="isStock" value="1">是
+                                    </li>
+                                    <li class="form-control list-stock-item short-item">
+                                        <input type="radio" name="isStock" value="2">否
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:15px;">
+                        <button class="btn-default modal-setting-button" v-on:click="cancelEntparam()">取 消</button>
+                        <button class="btn-default modal-setting-button" v-on:click="beginEntsearch()">确 定</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</script>
-<!-- 信息提示框 模态框 -->
-<div id="v-model-mask-info">
-    <modal_mask :show.sync="showModal">
-        <h3 slot="header" v-text="header"></h3>
-
-        <p slot="body" style="font-size:14px;text-align: center" v-text="information"></p>
-    </modal_mask>
 </div>
 
 <script src="js/plugins/jqDataTables/jquery.dataTables.js"></script>
@@ -285,8 +360,7 @@
 <script src="js/mycommon/function.common.js"></script>
 <script src="js/mycommon/menu.common.js"></script>
 <script src="js/mycommon/ibox.function.js"></script>
-<script src="js/mycommon/function.cookie.js"></script>
-<script src="js/mycommon/mask.info.js"></script>
-<script src="js/business/company/company.common.js"></script>
+
+<script src="js/business/company/company.search.js"></script>
 </body>
 </html>

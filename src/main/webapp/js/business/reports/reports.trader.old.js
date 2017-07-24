@@ -26,12 +26,6 @@ var v_traderReportModel=new Vue({
         pitem:traderList[0].children, // 研究报告子类
         traderTags:[], // 当前选中类别
         traderResult:[],
-        showConditions:false,
-        showConditionTypes:false,
-        traderParamTags: {
-            keyContent: {key: "keyContent", text: "", isSelected: false}, // 关键字
-            typeList: []
-        },
         traderIsEnd:false,
         traderResultPage:0,
         traderResultTypes:"",
@@ -135,30 +129,6 @@ var v_traderReportModel=new Vue({
 getSubResultPage("",0,"");
 
 function getSubResultPage(key,page,types){
-    console.log(types);
-
-    v_traderReportModel.$data.traderParamTags.keyContent.text="关键字: "+key;
-    v_traderReportModel.$data.traderParamTags.keyContent.isSelected=(key!="");
-
-    var flag=false,splittypes=[];
-    v_traderReportModel.$data.traderParamTags.typeList=[];
-    if(types.length>0) {
-        splittypes=types.split(",");
-        console.log(splittypes);
-        if (splittypes.length > 0 && splittypes[0] != "0") {
-            for (var i = 0; i < splittypes.length; i++) {
-                var item = splittypes[i];
-                v_traderReportModel.$data.traderParamTags.typeList.push({"text": traderItems["T" + item],"value":item});
-            }
-        }
-    }
-    v_traderReportModel.$data.showConditionTypes=(v_traderReportModel.$data.traderParamTags.typeList.length>0&&v_traderReportModel.$data.traderParamTags.typeList.length!=traderItems.length);
-    if(v_traderReportModel.$data.traderParamTags.keyContent.isSelected||v_traderReportModel.$data.showConditionTypes){
-        v_traderReportModel.$data.showConditions=true;
-    }else{
-        v_traderReportModel.$data.showConditions=false;
-    }
-
     var from=page*commonPageNum.traderReports;
     $.ajax({
         url: commonUrls.reportUrl,              //请求地址
@@ -208,14 +178,13 @@ function updateTraderTable(data){
         v_traderReportModel.$data.traderIsEnd=false;
     }
     v_traderReportModel.$nextTick(function () {
-        // var options={
-        //     dom:'<"html5buttons"B><"searchToolbar dataTables_filter">tp',
-        //     initComplete:function(){
-        //         $("div.searchToolbar").html('<label>搜索:<input id="ivsFilterInput" type="search" onkeypress="doDataSearch(event,this.value)" class="form-control input-sm" placeholder="请输入查询..." value="' + v_traderReportModel.$data.traderFilterKey + '"></label>');
-        //     }
-        // }
-        // bindDataTable("traderResult_table",-1,"研究报告查询结果", traderReportButtons,options);
-        bindSimpleDataTable("traderResult_table",-1);
+        var options={
+            dom:'<"html5buttons"B><"searchToolbar dataTables_filter">tp',
+            initComplete:function(){
+                $("div.searchToolbar").html('<label>搜索:<input id="ivsFilterInput" type="search" onkeypress="doDataSearch(event,this.value)" class="form-control input-sm" placeholder="请输入查询..." value="' + v_traderReportModel.$data.traderFilterKey + '"></label>');
+            }
+        }
+        bindDataTable("traderResult_table",-1,"研究报告查询结果", traderReportButtons,options);
     });
 }
 
@@ -242,43 +211,23 @@ function doDataSearch(event,value){
         getSubResultPage(key,0,"");
     }
 }
-function doSearch() {
-    var key=$("#ivsFilterInput").val();
-    console.log(key);
-    v_traderReportModel.$data.traderFilterKey=key;
-    v_traderReportModel.$data.traderResultPage=0;
-    v_traderReportModel.$data.traderResultTypes="";
-    bothCheck();
-    getSubResultPage(key,0,"");
-}
-function showTypeFilter(type){
-    v_traderReportModel.$data.traderTags=[];
 
+function showTypeFilter(type){
     for(var i=0;i<v_traderReportModel.$data.traderSelections.length;i++){
         var item=v_traderReportModel.$data.traderSelections[i];
-        var flag=false;
-        for(var t=0;t<v_traderReportModel.$data.traderParamTags.typeList.length;t++){
-            if(v_traderReportModel.$data.traderParamTags.typeList[t].value==item.value){
-                flag=true;
-                break;
-            }
-        }
-        if(flag){
-            console.log(item.text);
-            item.isSelected=true;
-            v_traderReportModel.$data.traderTags.push({text:item.text,value:item.value});
+        if(item.isSelected){
             $("#traderSelect_"+item.value).removeClass("fa-square-o").addClass("fa-check-square");// 勾选
         }else{
-            item.isSelected=false;
             $("#traderSelect_"+item.value).addClass("fa-square-o").removeClass("fa-check-square");// 不勾选
         }
     }
     $("#traderSelect").show(500);
 }
 
-function doTypeSelect(){
+function doTypeSelect(type){
     var subTypes=[];
     var subType="";
+    console.log(type);
     for(var i=0;i<v_traderReportModel.$data.traderTags.length;i++){
         var item=v_traderReportModel.$data.traderTags[i];
         subTypes.push(item.value);
