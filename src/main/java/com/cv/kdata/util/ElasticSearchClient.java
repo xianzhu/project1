@@ -23,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cv.kdata.conf.ConfigurationHelper;
+import com.cv.kdata.conf.ConfigurationManager;
 import com.kdata.defined.model.Information;
 
 
@@ -297,5 +298,41 @@ public class ElasticSearchClient {
 
 		// 3. 解析结果
 		return analysisResult(res);
+	}
+
+	/**
+	 * 删除两天前的微信记录
+	 */
+	public void deleteWechatRecords(){
+
+		SearchResponse res = null;
+
+		QueryBuilder wchatTypeFilter = QueryBuilders.termQuery("doc.media_type", 2);
+		QueryBuilder wchatTimeFilter = QueryBuilders.rangeQuery("doc.create_time").lt("2017-07-18");
+
+		QueryBuilder wChatFilters = QueryBuilders.boolQuery().must(wchatTypeFilter).must(wchatTimeFilter);
+
+		query = QueryBuilders.matchAllQuery();
+
+		res = client.prepareSearch("mediasql").setTypes().setQuery(query).setPostFilter(wChatFilters)
+				.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setExplain(true)
+				.execute().actionGet();
+
+		SearchHits shs = res.getHits();
+		for (SearchHit it : shs) {
+			Map<String, Object> fields = it.getSource();
+			if (!fields.isEmpty()) {
+
+				System.out.println(it.getId());
+				client.prepareDelete("mediasql", "doc", it.getId()).execute().actionGet();
+//				System.out.println(response.isFound());
+			}
+		}
+
+	}
+
+	public static void main(String args[]){
+		 ConfigurationManager.initInstance("/dev/keandata/keandata/src/main/webapp/WEB-INF/web.config");
+		new ElasticSearchClient().deleteWechatRecords();
 	}
 }

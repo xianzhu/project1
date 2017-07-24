@@ -34,6 +34,21 @@ public class EntInfoController {
 		return JsonKit.toJson(basicResponse);
 	}
 
+	/**
+	 * 这个搜索是针对企业名、股东、法人的搜索
+	 * @param request
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/entinfo/index",method={RequestMethod.GET,RequestMethod.POST}, produces = "application/json; charset=utf-8")
+	@ResponseBody
+    public Object index(HttpServletRequest request,Model model){
+		EntInfoResponse basicResponse = new EntInfoResponse();
+
+		entInfoService.search(request,basicResponse);
+		return JsonKit.toJson(basicResponse);
+	}
+
 	@RequestMapping(value="/entinfo/basic", produces = "application/json; charset=utf-8",method={RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
    public Object basicInfo(HttpServletRequest request,Model model){

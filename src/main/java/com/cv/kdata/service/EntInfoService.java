@@ -614,6 +614,94 @@ public class EntInfoService {
 		basicResponse.setSearchResult(results);
 	}
 
+
+	/**
+	 * 对一下信息进行定制搜索
+	 * 1. 是否上市公司
+	 * 2. 关键字
+	 * 3. 关键字对应的字段（公司、法人、股东）
+	 *
+	 * @param request
+	 * @param response
+	 * @param basicResponse
+	 */
+	public void search(HttpServletRequest request, EntInfoResponse basicResponse) {
+		Boolean isStock = Boolean.parseBoolean(request.getParameter("type"));
+
+		List<Object> params = new ArrayList<>();
+
+
+		String key = request.getParameter("key");
+		int range = StringUtil.parseInt(request.getParameter("range"),111);
+		int from = StringUtil.parseInt(request.getParameter("from"),0);
+		int count = StringUtil.parseInt(request.getParameter("count"),20);
+
+		String holderSql = "";	//股东查询
+		String entSql = "";	//企业查询+法人查询
+		String condition = "";
+
+		if(!StringUtil.isNullOrEmpty(key) && range <=111){
+
+			if(1 == range/100){
+				//企业查询
+				condition += "ent_name like ? ";
+				params.add("%" + key + "%");
+			}
+			if(1 == (range/10)%10){
+				//法人查询
+				if(StringUtil.isNullOrEmpty(condition)){
+					condition += " legal_person=? ";
+
+				}else{
+					condition +=" or legal_person=? ";
+				}
+				params.add(key);
+			}
+
+
+			if(1 == range%10){
+				//股东查询，分上市公司和非上市公司
+				if(isStock){
+					//上市公司从上市公司对应的关系查询
+					holderSql = "(select d.uuid from stock_feature_all_uuid d left join "
+							+ " stock_holder_latest e on d.stock_code = e.stock_code "
+							+ " where e.holder_name=?)";
+					params.add(key);
+
+				}else{
+					//非上市公司从企业股东查询
+					holderSql = " (select uuid from ent_holder where name=?) ";
+					params.add(key);
+
+				}
+
+				if(StringUtil.isNullOrEmpty(condition)){
+					condition += String.format(" ent_id in " + holderSql);
+
+				}else{
+					condition += String.format(" or ent_id in " + holderSql);
+				}
+
+			}
+		}
+
+		if(StringUtil.isNullOrEmpty(condition)){
+			condition = "1=1";
+		}
+		entSql = String.format("select ent_id, ent_name,biz_area from "
+				+ "ent_basic_info where %s "
+				+ "order by update_time desc limit ?,?",condition);
+		params.add(from);
+		params.add(count);
+
+		System.out.println(entSql);
+		List<Record> results = Db.find(entSql, params.toArray());
+
+		basicResponse.setStatus(RDDWebConst.SUCCESS);
+		basicResponse.setMessage("success!");
+		basicResponse.setSearchResult(results);
+	}
+
 	/**
 	 *
 	 *
