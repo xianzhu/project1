@@ -232,6 +232,7 @@ function sendMonitor(options) {
         window[id] = undefined;
     };
     window[id] = img;
+    console.log("记录埋点");
     img.src = 'testData/loginout.json?url=' + options.url; // 此处设置src
 }
 
@@ -329,11 +330,12 @@ function gotoCompanyByCode(code, type) {
             if (res) {
                 console.log("if", res);
                 var id = res;
-                if (code.substr(0, 2) == "80") { // 新三板
-                    gotoCompanyPage(id, 1,code);
-                } else { // A股
-                    gotoCompanyPage(id, 0,code);
-                }
+                // if (code.substr(0, 2) == "80") { // 新三板
+                //     gotoCompanyPage(id, 1,code);
+                // } else { // A股
+                //     gotoCompanyPage(id, 0,code);
+                // }
+                gotoCompanyPage(id, type,code);
             } else {
                 console.log("not found:", code);
             }

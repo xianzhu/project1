@@ -67,36 +67,11 @@
     overflow:auto;
 }
 .company-info > div,.about-info > div{line-height: 22px;}
-.company-info > div label{font-size: 10px; font-weight: bold;width: 40%;}
-.company-info > div span{width: 60%;}
-.about-info > div label{font-size: 10px; font-weight: bold;width: 20%;float:left;}
-.about-info > div span{width: 80%;float:left;}
-.about-info > div div{width: 80%;float:left;}
-
-@media (min-width:768px) {
-    .about-info > div label{font-size: 10px; font-weight: bold;width: 30%;}
-    .about-info > div span{width: 70%;}
-    .about-info > div div{width: 70%;}
-    .about-info > div.hole-line label{font-size: 10px; font-weight: bold;width: 15%;}
-    .about-info > div.hole-line span{width: 85%;}
-    .about-info > div.hole-line div{width: 85%;}
-}
-@media (min-width:1024px) {
-    .about-info > div label{font-size: 10px; font-weight: bold;width: 20%;}
-    .about-info > div span{width: 80%;}
-    .about-info > div div{width: 80%;}
-    .about-info > div.hole-line label{font-size: 10px; font-weight: bold;width: 10%;}
-    .about-info > div.hole-line span{width: 90%;}
-    .about-info > div.hole-line div{width: 90%;}
-}
-@media (min-width:1200px) and (max-width:1350px) {
-    .about-info > div label{font-size: 10px; font-weight: bold;width: 28%;}
-    .about-info > div span{width: 72%;}
-    .about-info > div div{width: 72%;}
-    .about-info > div.hole-line label{font-size: 10px; font-weight: bold;width: 14%;}
-    .about-info > div.hole-line span{width: 86%;}
-    .about-info > div.hole-line div{width: 86%;}
-}
+.company-info > div label{font-size: 10px; font-weight: bold;width: 105px;}
+.company-info > div span{width: calc(100% - 105px);}
+.about-info > div label{font-size: 10px; font-weight: bold;width: 60px;float:left;}
+.about-info > div span{width: calc(100% - 60px);float:left;}
+.about-info > div div{width: calc(100% - 60px);float:left;}
 
 .unselectable{
     -webkit-user-select: none;

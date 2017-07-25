@@ -122,6 +122,7 @@ var v_companyInfoModel=new Vue({
         },
 
         gotoCompany:function(stock_code,type){
+            console.log(stock_code,type);
             gotoCompanyByCode(stock_code,type);
         },
         gotoCompanyById:function(id){
@@ -146,6 +147,13 @@ var v_companyInfoModel=new Vue({
             var result=false;
             if(value&&value.length>0){
                 result=true;
+            }
+            return result;
+        },
+        checkIfEmptyFilter:function(value){
+            var result=true;
+            if(value&&value.length>0){
+                result=false;
             }
             return result;
         },

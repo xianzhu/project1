@@ -112,7 +112,7 @@
                 <div class="col-lg-7 page-left-wrapper">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>用户监控</h5>
+                            <h5>定制监控</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link pull-right">
                                     <i class="fa fa-chevron-up"></i>
@@ -442,13 +442,13 @@
                                             <thead>
                                             <tr>
                                                 <th>名称</th>
-                                                <th>简称</th>
+                                                <!--<th>简称</th>-->
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr v-for="item in orgFamilyList">
                                                 <td v-text="item.orgEntity" class="link-handle-pointer" v-on:click="gotoCompany(item.uuid)"></td>
-                                                <td v-text="item.orgCnShort"></td>
+                                                <!--<td v-text="item.orgCnShort"></td>-->
                                             </tr>
                                             </tbody>
                                         </table>
@@ -610,8 +610,11 @@
 
 <!-- 信息提示框*******************info-->
 <script type="x/template" id="modal-template">
-    <div class="modal-template-mask" v-show="show" transition="modal">
-        <div class="modal-template-wrapper">
+    <!--<div class="modal-template-mask" v-show="show" transition="modal">-->
+        <!--<div class="modal-template-wrapper">-->
+
+    <div class="modal-mask" v-show="show" transition="modal">
+        <div class="modal-wrapper">
             <div class="modal-container-info">
                 <button class="modal-info-close-button" @click="show = false"><i class="fa fa-close"></i> </button>
                 <div class="modal-header">

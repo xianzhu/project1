@@ -399,6 +399,20 @@ function getEventBarData() { // 今日资本事件柱状图、饼图
                 for (var i = 0; i < response.event1.length; i++) {
                     var item = response.event1[i];
                     if (i == 0) {
+                        if (item.exitOne != 0) {
+                            pieData.color.push('rgba(100,149,237,1)');
+                            pieData.eventOneData.push({
+                                name: "一级市场退出", value: item.exitOne, type: "exit",
+                                itemStyle: {normal: {color: 'rgba(100,149,237,1)'}}
+                            });
+                        }
+                        if (item.exitTwo != 0) {
+                            pieData.color.push('rgba(50,205,50,1)');
+                            pieData.eventOneData.push({
+                                name: "二级市场退出", value: item.exitTwo, type: "exit",
+                                itemStyle: {normal: {color: 'rgba(50,205,50,1)'}}
+                            });
+                        }
                         if (item.investEarly != 0) {
                             pieData.color.push('rgba(120,164,135,1)');
                             pieData.eventOneData.push({
@@ -425,20 +439,6 @@ function getEventBarData() { // 今日资本事件柱状图、饼图
                             pieData.eventOneData.push({
                                 name: "其他投资", value: item.investOther, type: "invest",
                                 itemStyle: {normal: {color: 'rgba(218,112,214,1)'}}
-                            });
-                        }
-                        if (item.exitOne != 0) {
-                            pieData.color.push('rgba(100,149,237,1)');
-                            pieData.eventOneData.push({
-                                name: "一级市场退出", value: item.exitOne, type: "exit",
-                                itemStyle: {normal: {color: 'rgba(100,149,237,1)'}}
-                            });
-                        }
-                        if (item.exitTwo != 0) {
-                            pieData.color.push('rgba(50,205,50,1)');
-                            pieData.eventOneData.push({
-                                name: "二级市场退出", value: item.exitTwo, type: "exit",
-                                itemStyle: {normal: {color: 'rgba(50,205,50,1)'}}
                             });
                         }
                     }
@@ -534,6 +534,7 @@ function getEventSubpage(type) {
                 modal_event_list.$data.eventList=elist;
                 modal_event_list.$data.dataEmpty=elist.length<=0;
                 modal_event_list.$data.eventEnd=elist.length<commonPageNum.homeEventList;
+                // modal_event_list.$data.eventEnd=(elist.length==0);
                 modal_event_list.$data.showModal=true;
             }
         },
@@ -813,7 +814,7 @@ function bindCalendarItem() {
 }
 
 function resizeDetailMask() {
-    // console.log("resizeDetailMask");
+    // console.log("resize Detail Mask");
     var height = $(window).height();
     var mheight = height;
     // console.log(height, mheight);

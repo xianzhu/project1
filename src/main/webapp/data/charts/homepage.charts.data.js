@@ -120,6 +120,7 @@ var orgTrendsOption = {
             type: 'line',
             smooth: true,
             symbol: 'none',
+            clickable: false,
             itemStyle: {
                 normal: {
                     color: "#ff7f50",
@@ -138,6 +139,7 @@ var orgTrendsOption = {
             type: 'line',
             smooth: true,
             symbol: 'none',
+            clickable: false,
             itemStyle: {
                 normal: {
                     color: "#00bcd4",
@@ -158,6 +160,7 @@ var orgTrendsOption = {
             type: 'line',
             smooth: true,
             symbol: 'none',
+            clickable: false,
             itemStyle: {
                 normal: {
                     color: "#78a487",

@@ -182,9 +182,9 @@
                                             <div id="tab-2" class="tab-pane">
                                                 <div class="panel-body">
                                                     <div class="row about-info">
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>电话:</label><span
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>联系电话:</label><span
                                                                 v-text="info.tel"></span></div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>邮件:</label><span
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><label>邮箱地址:</label><span
                                                                 v-text="info.email"></span></div>
                                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hole-line"><label>注册地址:</label><span
                                                                 v-text="info.reg_addr"></span></div>
@@ -256,6 +256,9 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div v-show="changeList|checkIfEmptyFilter">
+                                        <p class="text-center">没有更多数据</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -286,7 +289,7 @@
                             <div id="tab-3" class="tab-pane active">
                                 <div class="panel-body">
                                     <!--股东-->
-                                    <div class="table-responsive">
+                                    <div class="table-responsive" style="display: none;" v-show="stockHolder|checkEmptyFilter">
                                         <table class="table table-striped table-bordered table-hover" id="holder_table">
                                             <thead>
                                             <tr>
@@ -306,12 +309,15 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div v-show="stockHolder|checkIfEmptyFilter">
+                                        <p class="text-center">没有更多数据</p>
+                                    </div>
                                 </div>
                             </div>
                             <div id="tab-4" class="tab-pane">
                                 <div class="panel-body">
                                     <!--投资企业-->
-                                    <div class="table-responsive">
+                                    <div class="table-responsive" style="display: none;" v-show="investCompany|checkEmptyFilter">
                                         <table class="table table-striped table-bordered table-hover" id="invest_table">
                                             <thead>
                                             <tr>
@@ -329,13 +335,15 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div v-show="investCompany|checkIfEmptyFilter">
+                                        <p class="text-center">没有更多数据</p>
+                                    </div>
                                 </div>
                             </div>
                             <div id="tab-5" class="tab-pane">
                                 <div class="panel-body">
                                     <!--分支机构-->
-                                    <div class="table-responsive">
-                                        <div class="table-responsive">
+                                        <div class="table-responsive" style="display: none;" v-show="branchs|checkEmptyFilter">
                                             <table class="table table-striped table-bordered table-hover" id="branch_table">
                                                 <thead>
                                                 <tr>
@@ -351,14 +359,15 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                        <div v-show="branchs|checkIfEmptyFilter">
+                                            <p class="text-center">没有更多数据</p>
+                                        </div>
                                 </div>
                             </div>
                             <div id="tab-6" class="tab-pane">
                                 <div class="panel-body">
                                     <!--董监高-->
-                                    <div class="table-responsive">
-                                        <div class="table-responsive">
+                                        <div class="table-responsive" style="display: none;" v-show="highlevelTeams|highlevelFilter|checkEmptyFilter">
                                             <table class="table table-striped table-bordered table-hover" id="team_table">
                                                 <thead>
                                                 <tr>
@@ -386,14 +395,15 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                        <div v-show="highlevelTeams|highlevelFilter|checkIfEmptyFilter">
+                                            <p class="text-center">没有更多数据</p>
+                                        </div>
                                 </div>
                             </div>
                             <div id="tab-7" class="tab-pane">
                                 <div class="panel-body">
                                     <!--参控股子公司-->
-                                    <div class="table-responsive">
-                                        <div class="table-responsive" >
+                                        <div class="table-responsive" style="display: none;" v-show="entCtrl|checkEmptyFilter">
                                             <table class="table table-striped table-bordered table-hover" id="subinvest_table">
                                                 <thead>
                                                 <tr>
@@ -417,21 +427,22 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                        <div v-show="entCtrl|checkIfEmptyFilter">
+                                            <p class="text-center">没有更多数据</p>
+                                        </div>
                                 </div>
                             </div>
                             <div id="tab-8" class="tab-pane">
                                 <div class="panel-body">
                                     <!--十大股东-->
-                                    <div class="table-responsive">
-                                        <div class="table-responsive">
+                                        <div class="table-responsive" style="display: none;" v-show="stockHolderLatest|checkEmptyFilter">
                                             <table class="table table-striped table-bordered table-hover" id="stockholder_table">
                                                 <thead>
                                                 <tr>
-                                                    <th>股本性质</th>
                                                     <th style="width:20%">股东名称</th>
                                                     <th>股东性质</th>
                                                     <th>股东类型</th>
+                                                    <th>股本性质</th>
                                                     <th>持股数量(股)</th>
                                                     <th>持股比例(%)</th>
                                                     <th>持股比例变动</th>
@@ -441,27 +452,28 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr v-for="item in stockHolderLatest">
-                                                    <td v-text="item.stockChar"></td>
-                                                    <td v-text="item.holderName"></td>
-                                                    <td v-text="item.holderChar"></td>
-                                                    <td v-text="item.holderType"></td>
+                                                    <td v-text="item.holder_name"></td>
+                                                    <td v-text="item.holder_char"></td>
+                                                    <td v-text="item.holder_type"></td>
+                                                    <td v-text="item.stock_char"></td>
                                                     <td v-text="item.qty"></td>
-                                                    <td v-text="item.stockRatio"></td>
-                                                    <td v-text="item.qtyChange"></td>
-                                                    <td v-text="item.stockRatioChange"></td>
-                                                    <td v-text="item.reportDate"></td>
+                                                    <td v-text="item.stock_ratio"></td>
+                                                    <td v-text="item.qty_change"></td>
+                                                    <td v-text="item.stock_ratio_change"></td>
+                                                    <td v-text="item.report_date"></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                        <div v-show="stockHolderLatest|checkIfEmptyFilter">
+                                            <p class="text-center">没有更多数据</p>
+                                        </div>
                                 </div>
                             </div>
                             <div id="tab-9" class="tab-pane">
                                 <div class="panel-body">
                                     <!--机构控股-->
-                                    <div class="table-responsive">
-                                        <div class="table-responsive">
+                                        <div class="table-responsive" style="display: none;" v-show="orgholder|checkEmptyFilter">
                                             <table class="table table-striped table-bordered table-hover" id="orgholder_table">
                                                 <thead>
                                                 <tr>
@@ -485,14 +497,15 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                        <div v-show="orgholder|checkIfEmptyFilter">
+                                            <p class="text-center">没有更多数据</p>
+                                        </div>
                                 </div>
                             </div>
                             <div id="tab-10" class="tab-pane">
                                 <div class="panel-body">
                                     <!--关联企业-->
-                                    <div class="table-responsive">
-                                        <div class="table-responsive">
+                                        <div class="table-responsive" style="display: none;" v-show="perRelation|checkEmptyFilter">
                                             <table class="table table-striped table-bordered" id="relation_table">
                                                 <thead>
                                                 <tr>
@@ -512,10 +525,10 @@
                                                 </tr>
                                                 </tbody>
                                             </table>
-
-
                                         </div>
-                                    </div>
+                                        <div v-show="perRelation|checkIfEmptyFilter">
+                                            <p class="text-center">没有更多数据</p>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -531,7 +544,7 @@
                         <div class="tab-content">
                             <div id="tab-11" class="tab-pane active">
                                 <div class="panel-body">
-                                    <div class="table-responsive">
+                                    <div class="table-responsive" style="display: none;" v-show="patentList|checkEmptyFilter">
                                         <table class="table table-striped table-bordered table-hover" id="patent_table">
                                             <thead>
                                             <tr>
@@ -555,11 +568,14 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div v-show="patentList|checkIfEmptyFilter">
+                                        <p class="text-center">没有更多数据</p>
+                                    </div>
                                 </div>
                             </div>
                             <div id="tab-12" class="tab-pane">
                                 <div class="panel-body">
-                                    <div class="table-responsive">
+                                    <div class="table-responsive" style="display: none;" v-show="softCopyrightsList|checkEmptyFilter">
                                         <table class="table table-striped table-bordered table-hover" id="softCopy_table">
                                             <thead>
                                             <tr>
@@ -581,6 +597,9 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div v-show="softCopyrightsList|checkIfEmptyFilter">
+                                        <p class="text-center">没有更多数据</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -599,7 +618,7 @@
                             <div id="tab-13" class="tab-pane active">
                                 <div class="panel-body">
                                     <!--法务-->
-                                    <div class="table-responsive">
+                                    <div class="table-responsive" style="display: none;" v-show="entLawList|checkEmptyFilter">
                                         <table class="table table-striped table-bordered table-hover" id="law_table">
                                             <thead>
                                             <tr>
@@ -619,12 +638,15 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div v-show="entLawList|checkIfEmptyFilter">
+                                        <p class="text-center">没有更多数据</p>
+                                    </div>
                                 </div>
                             </div>
                             <div id="tab-14" class="tab-pane">
                                 <div class="panel-body">
                                     <!--经营异常-->
-                                    <div class="table-responsive">
+                                    <div class="table-responsive" style="display: none;" v-show="abnormalItemList|checkEmptyFilter">
                                         <table class="table table-striped table-bordered table-hover" id="abnormal_table">
                                             <thead>
                                             <tr>
@@ -646,12 +668,15 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div v-show="abnormalItemList|checkIfEmptyFilter">
+                                        <p class="text-center">没有更多数据</p>
+                                    </div>
                                 </div>
                             </div>
                             <div id="tab-15" class="tab-pane">
                                 <div class="panel-body">
                                     <!--股权质押-->
-                                    <div class="table-responsive">
+                                    <div class="table-responsive" style="display: none;" v-show="equityList|checkEmptyFilter">
                                         <table class="table table-striped table-bordered table-hover" id="equity_table">
                                             <thead>
                                             <tr>
@@ -681,12 +706,15 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div v-show="equityList|checkIfEmptyFilter">
+                                        <p class="text-center">没有更多数据</p>
+                                    </div>
                                 </div>
                             </div>
                             <div id="tab-16" class="tab-pane">
                                 <div class="panel-body">
                                     <!--动产抵押-->
-                                    <div class="table-responsive">
+                                    <div class="table-responsive" style="display: none;" v-show="mortgagesList|checkEmptyFilter">
                                         <table class="table table-striped table-bordered table-hover" id="mortgages_table">
                                             <thead>
                                             <tr>
@@ -707,6 +735,9 @@
                                             </tr>
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <div v-show="mortgagesList|checkIfEmptyFilter">
+                                        <p class="text-center">没有更多数据</p>
                                     </div>
                                 </div>
                             </div>
@@ -854,7 +885,9 @@
                                     </tbody>
                                 </table>
                             </div>
-
+                            <div v-show="firstModel|checkIfEmptyFilter">
+                                <p class="text-center">没有更多数据</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -898,7 +931,9 @@
                                     </tbody>
                                 </table>
                             </div>
-
+                            <div v-show="secondModel|checkIfEmptyFilter">
+                                <p class="text-center">没有更多数据</p>
+                            </div>
                         </div>
                     </div>
                 </div>
