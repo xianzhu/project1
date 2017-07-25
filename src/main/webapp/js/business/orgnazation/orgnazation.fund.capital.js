@@ -243,7 +243,6 @@ Vue.component('modal_mask', {
 var modal_mask_info = initModelMaskVue();
 
 function initModelMaskVue(){
-    //console.log("initModelMaskVue");
     v_model_mask_info=new Vue({
         el:"#v-model-mask-info",
         data:{
@@ -254,10 +253,26 @@ function initModelMaskVue(){
         filters:{
             formatDataFilter:function(value){
                 return toDataFormat(value);
+            },
+            strFormatFilter:function (value) {
+                var result="-";
+                if(value&&value!=null&&value!="null"&&value!=""){
+                    result=value;
+                }
+                // console.log(value,result);
+                return result;
+            },
+            dataFormatFilter:function (value) {
+                var result="-";
+                if(typeof value!="undefined"&&value!=null&&value!="null"){
+                    result=value;
+                }
+                // console.log(typeof value!="undefined",value!=null,value!="null",value!="",value==0);
+                // console.log(value,result);
+                return result;
             }
         }
     });
-    //console.log("model: ",v_model_mask_info);
     return v_model_mask_info;
 }
 
