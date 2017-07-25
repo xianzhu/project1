@@ -201,8 +201,16 @@ public class ElasticSearchService {
 			}
 		}
 
-		List<Information> infos = ConstElasticClient.getElasticSeachClient().search_extend(key, null, null, channel, from,
+		List<Information> infos = null;
+		if (!StringUtil.isNullOrEmpty(key)) {
+			infos = ConstElasticClient.getElasticSeachClient().search_extend(key, null, null, channel, from,
 				count);
+		}else{
+			//key==null 返回最新新闻
+			infos = ConstElasticClient.getElasticSeachClient().search_top(key, null, null, channel, from,
+					count);
+		}
+
 		if ("2".equals(request.getParameter("order")) && infos != null && infos.size() > 1) {
 			Collections.sort(infos);
 		}
