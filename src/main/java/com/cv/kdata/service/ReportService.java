@@ -452,7 +452,7 @@ public class ReportService {
 			return;
 		}
 
-		String root_folder = "/home/appuser/workdir/report";
+		String root_folder = "/home/appuser/workdir/report/";
 		ResultSet rs = null;
 		String sql = "select attachment from rpt_trader where id=?";
 		Object[] parameters = { id };
@@ -513,7 +513,7 @@ public class ReportService {
 			return;
 		}
 
-		String root_folder = "/home/appuser/workdir/service/web-spider/report";
+		String root_folder = "/home/appuser/workdir/service/web-spider/report/";
 		ResultSet rs = null;
 		String sql = "select attachment from rpt_trader where id=?";
 		Object[] parameters = { id };
