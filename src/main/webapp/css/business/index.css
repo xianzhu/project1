@@ -148,6 +148,7 @@ input:-webkit-autofill,input:-webkit-autofill:focus{
 .form-control-warning{
     color:#ec8409;
     border:none;
+    background-color: transparent;
     font-size:12px;
     font-weight:500;
     padding:0 12px;

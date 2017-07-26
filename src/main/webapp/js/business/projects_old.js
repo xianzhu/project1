@@ -129,6 +129,8 @@ function doProjSearch() {
     var from=v_projectsModel.$data.projPage*commonPageNum.projectList,
         count=from+commonPageNum.projectList>=60?(60-from):commonPageNum.projectList;
     var params = {
+        // key_type: data.key_content,
+        // proj_stage: data.proj_stage,
         key: (data.key_content != "")? data.key_content:"",
         domain:data.industry_class,
         from:from,
@@ -177,7 +179,7 @@ function requestProjectInfo(params){
                 var response=res;
                 v_projectsModel.$data.projectList=response.projectList;
                 v_projectsModel.$nextTick(function(){
-
+                    // initPopover();
                 });
             }
         }
@@ -192,7 +194,6 @@ function oninputIndustryKey(event,value) {
 
 function showIndustryList() {
     console.log("show");
-    v_projParamModel.$data.ifilterKey="";
     $("#filter_input_div").css('opacity','1').css('display','inline-block');
     document.getElementById("filter_input_dom").focus();
 }
@@ -214,15 +215,13 @@ function clearIndustryInput() {
     console.log("clear");
     v_projParamModel.$data.industry_class="";
     v_projParamModel.$data.ifilterKey="";
-    clearClick=true;
+
     v_projParamModel.$nextTick(function () {
         console.log("next");
-        // clearClick=true;
+        clearClick=true;
         $("#filter_input_div").css('opacity','1').css('display','inline-block');
         document.getElementById("filter_input_dom").focus();
     });
 }
-
-
 
 

@@ -331,11 +331,12 @@ function hideIndustryList() {
             $("#filter_input_div").css('opacity','1').css('display','none');
         }
         clearClick=false;
-    },1000);
+    },500);
 }
 
 function showIndustryKeyFunc() {
     console.log("show input Key div");
+    v_newsModel.$data.ifilterKey="";
     $("#filter_input_div").css('opacity','1').css('display','inline-block');
     document.getElementById("ifilterKey_input").focus();
 }
@@ -349,9 +350,9 @@ function clearIndustryInput() {
     v_newsModel.$data.ifilterKey="";
     v_newsModel.$data.industryKey="";
     v_newsModel.$data.iFilterType="";
+    console.log("next");
+    clearClick=true;
     v_newsModel.$nextTick(function () {
-        console.log("next");
-        clearClick=true;
         $("#filter_input_div").css('opacity','1').css('display','inline-block');
         document.getElementById("ifilterKey_input").focus();
     });

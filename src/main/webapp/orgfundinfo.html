@@ -529,7 +529,7 @@
                                             </div>
                                             <div class="row" id="exit_data_row">
                                                 <ul class="todo-list small-list modal-template-list">
-                                                    <li class="half-item"><strong>投资总金额</strong>
+                                                    <li class="half-item"><strong>投资总金额(万美元)</strong>
                                                         <slot name="amount"></slot>
                                                     </li>
                                                     <li class="half-item"><strong>退出时持股比例</strong>
@@ -556,17 +556,17 @@
 <div id="v-model-mask-info">
     <modal_mask :show.sync="showModal">
         <h3 slot="header" v-text="information.eventTitle"></h3>
-        <p slot="capitalDesc" v-text="information.eventDesc"></p>
-        <span slot="person" v-text="information.person_name"></span>
-        <span slot="fund" v-text="information.fundName"></span>
+        <p slot="capitalDesc" v-text="information.eventDesc|strFormatFilter"></p>
+        <span slot="person" v-text="information.person_name|strFormatFilter"></span>
+        <span slot="fund" v-text="information.fundName|strFormatFilter"></span>
         <span slot="time" v-text="information.happenDate|formatDataFilter"></span>
-        <span slot="target" v-text="information.orgCnName"></span>
+        <span slot="target" v-text="information.orgCnName|strFormatFilter"></span>
         <h5 slot="dataTitle" v-text="dataTitle"></h5>
 
-        <span slot="amount" v-text="information.totalInvest"></span>
-        <span slot="stockRight" v-text="information.stockRight"></span>
-        <span slot="IRR" v-text="information.irr"></span>
-        <span slot="returnRate" v-text="information.bringRate"></span>
+        <span slot="amount" v-text="information.totalInvest|dataFormatFilter"></span>
+        <span slot="stockRight" v-text="information.stockRight|dataFormatFilter"></span>
+        <span slot="IRR" v-text="information.irr|dataFormatFilter"></span>
+        <span slot="returnRate" v-text="information.bringRate|dataFormatFilter"></span>
     </modal_mask>
 </div>
 

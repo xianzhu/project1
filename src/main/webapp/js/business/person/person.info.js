@@ -176,6 +176,18 @@ var v_personBasicModel=new Vue({
 });
 
 getBasicInfo();
+$(window).ready(function () {
+    resizeDetailMask();
+});
+$(window).resize(function () {
+    resizeDetailMask();
+});
+function resizeDetailMask() {
+    var height = $(window).height();
+    var mheight = height;
+    console.log("modal-event-body");
+    $(".modal-event-body").css('maxHeight', mheight - 181);
+}
 
 // 情报搜索
 function doElasticFilter(event){

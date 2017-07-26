@@ -2,6 +2,8 @@
  * Created by a88u on 2016/10/27.
  */
 menuList.ciassociated.isActive=true;
+var defaultFilterKey="pleaseSearch",
+    noInputMsg="请在右上方输入关键字,选择统计表";
 
 var v_industryToolsModel=new Vue({
     el:"#v-industryToolsModel",
@@ -9,7 +11,8 @@ var v_industryToolsModel=new Vue({
         selectTableTitle:"",
         hasSelected:false,
         showWait:false,
-        filterKey:"pleaseSearch",
+        filterKey:defaultFilterKey,
+        inputMsg:noInputMsg,
         tableSelections:selectedTables,
         result:[],
         hasRecords:true,
@@ -23,9 +26,14 @@ var v_industryToolsModel=new Vue({
     },
     filters:{
         checkEmptyFilter:function(value){
-            var result=false;
+            var result=true;
             if(value&&value.length>0){
-                result=true;
+                result=false;
+            }
+            if(this.$data.filterKey==defaultFilterKey){
+                this.$data.inputMsg=noInputMsg;
+            }else{
+                this.$data.inputMsg="您输入的关键字没有匹配的统计数据，请重新输入！";
             }
             return result;
         }
@@ -47,7 +55,7 @@ function doTableFilter(value) {
     if (value != "") {
         v_industryToolsModel.$data.filterKey = value;
     } else {
-        v_industryToolsModel.$data.filterKey = "pleaseSearch";
+        v_industryToolsModel.$data.filterKey = defaultFilterKey;
     }
 }
 function getDataList(value,title){

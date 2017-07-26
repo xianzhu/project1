@@ -225,16 +225,5 @@
     max-width:650px;
 }
 
-@media (min-width: 992px) {
-    .modal-wrapper-lg{
-        /*display: table-cell;*/
-        vertical-align: middle;
-    }
-}
 
-@media (max-width: 768px) {
-    .modal-wrapper-lg{
-        vertical-align: middle;
-    }
-}
 

@@ -5,7 +5,9 @@ menuList.monitor.isActive=true;
 menuList.monitor.showChild=true;
 menuList.monitor.childMenu.cusMonitor.isActive=true;
 
-resize();
+$(window).ready(function () {
+    resize();
+});
 
 function resize() {
     var cheight = $("#page-wrapper").height()+7;
@@ -13,7 +15,15 @@ function resize() {
         cheight = 100;
     }
     console.log(cheight);
+    resizeDetailMask();
     $("#inventForceChart").css("height", cheight + "px");
+}
+
+function resizeDetailMask() {
+    var height = $(window).height();
+    var mheight = height;
+    console.log("modal-changeinfo-body");
+    $(".modal-changeinfo-body").css('maxHeight', mheight - 181);
 }
 
 var monitorType = {
@@ -373,13 +383,12 @@ function refresh() {
     }
     var dom = document.getElementById("inventForceChart");
     myChart = echarts.init(dom);
-
     myChart.setOption(myoption, true);
-
     myChart.on("click", focus);
 }
 
 $(window).resize(function () {
+    resize();
     setTimeout(refresh, 1000);
 });
 

@@ -45,15 +45,6 @@
 
 .modal-container-info {
     width: 280px;
-    margin: calc(30% - 140px) auto 5px auto;
-    max-height: calc(100% - 70px);
-    overflow: auto;
-    padding: 0px 30px;
-    background-color: rgba(250, 250, 250, 0.9);
-    border-radius: 2px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-    transition: all .8s ease;
-    font-family: Helvetica, Arial, sans-serif;
 }
 .modal-info-close-button {
     margin-right: -30px;

@@ -90,8 +90,8 @@ function getAnalysisInfo(){
 
                 $("#analysis_table_1").DataTable().destroy();
                 $("#analysis_table_2").DataTable().destroy();
-                v_companyInfoModel.$data.firstModel=res.stockXsbMatchInfo;
-                v_companyInfoModel.$data.secondModel=res.stockPotentialMaInfo;
+                v_companyInfoModel.$data.firstModel=res.stockPotentialMaInfo; // 并购标的
+                v_companyInfoModel.$data.secondModel=res.stockXsbMatchInfo; // 对标
                 v_companyInfoModel.$data.finacialData.debtRatio=res.stockCharts.debtRatio;
                 v_companyInfoModel.$data.finacialData.rOEAnnualized=res.stockCharts.rOEAnnualized;
                 v_companyInfoModel.$data.finacialData.totalRevenue=res.stockCharts.totalRevenue;
