@@ -600,6 +600,9 @@ public class EntInfoService {
 					name = name.replace("_min", "");
 					sql += " and " + name + " >= ? ";
 					params.add(Double.parseDouble(value));
+				} else if (name.equalsIgnoreCase("legal")){
+					sql += " and a.legal_person like ? ";
+					params.add("%" + value + "%");
 				}
 			}
 		}
@@ -621,6 +624,7 @@ public class EntInfoService {
 	 * 2. 关键字
 	 * 3. 关键字对应的字段（公司、法人、股东）
 	 *
+	 * 暂时没用
 	 * @param request
 	 * @param response
 	 * @param basicResponse
@@ -632,34 +636,40 @@ public class EntInfoService {
 
 
 		String key = request.getParameter("key");
-		int range = StringUtil.parseInt(request.getParameter("range"),111);
+		int range = StringUtil.parseInt(request.getParameter("range"),11);
 		int from = StringUtil.parseInt(request.getParameter("from"),0);
 		int count = StringUtil.parseInt(request.getParameter("count"),20);
 
-		String holderSql = "";	//股东查询
 		String entSql = "";	//企业查询+法人查询
 		String condition = "";
 
-		if(!StringUtil.isNullOrEmpty(key) && range <=111){
+		String sql = "select a.ent_id,a.ent_name,a.biz_area "
+				+ " from ent_basic_info a "
+				+ "%s stock_feature_all b "
+				+ "on a.ent_name = b.cn_name where %s "
+				+ "order by update_time desc limit ?,?";
 
-			if(1 == range/100){
+
+		if(!StringUtil.isNullOrEmpty(key) && range <=11){
+
+			if(1 == range/10){
 				//企业查询
-				condition += "ent_name like ? ";
+				condition += "a.ent_name like ? ";
 				params.add("%" + key + "%");
 			}
-			if(1 == (range/10)%10){
+			if(1 == range%10){
 				//法人查询
 				if(StringUtil.isNullOrEmpty(condition)){
-					condition += " legal_person=? ";
+					condition += " a.legal_person=? ";
 
 				}else{
-					condition +=" or legal_person=? ";
+					condition +=" or a.legal_person=? ";
 				}
 				params.add(key);
 			}
 
 
-			if(1 == range%10){
+			/*if(1 == range%10){
 				//股东查询，分上市公司和非上市公司
 				if(isStock){
 					//上市公司从上市公司对应的关系查询
@@ -682,15 +692,18 @@ public class EntInfoService {
 					condition += String.format(" or ent_id in " + holderSql);
 				}
 
-			}
+			}*/
 		}
 
 		if(StringUtil.isNullOrEmpty(condition)){
 			condition = "1=1";
 		}
-		entSql = String.format("select ent_id, ent_name,biz_area from "
-				+ "ent_basic_info where %s "
-				+ "order by update_time desc limit ?,?",condition);
+
+		if (isStock) {// 上市公司
+			entSql = String.format(sql, " inner join " ,condition);
+		} else {
+			entSql = String.format(sql, " left join ",condition);
+		}
 		params.add(from);
 		params.add(count);
 
