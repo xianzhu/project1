@@ -24,6 +24,7 @@ function resizeDetailMask() {
     var mheight = height;
     console.log("modal-changeinfo-body");
     $(".modal-changeinfo-body").css('maxHeight', mheight - 181);
+    $(".modal-event-body").css('maxHeight', mheight - 181);
 }
 
 var monitorType = {
@@ -79,7 +80,43 @@ var v_cusMonitorModel = new Vue({
             change_info_modal.$data.changeInfo = item;
             console.log(change_info_modal.$data.changeInfo);
             change_info_modal.$data.showModal = true;
-        }
+        },
+        showCapDetail:function(id){
+            var etype="invest";
+            $.ajax({
+                url: commonUrls.monitorOrgEventDetailUrl,              //请求地址
+                type: "get",                            //请求方式
+                data: { //请求参数
+                    id:id,
+                    type:etype
+                },
+                dataType: "json",
+                success: function (res) {
+                    if(res.status=='failure'){
+                        //goToLoginout();
+                        console.log("failure",res.message);
+                    }else if(res.status=="timeout"){
+                        console.log("timeout");
+                        goToNotlogon();
+                    }else if(res.status=='success') {
+                        var response = res;
+
+                        showCapitalDetail(response);
+                    }
+                },
+                fail: function (status) {
+                    console.error("event id=", id, " error. status=", status);
+                },
+                statusCode: {
+                    404: function() {
+                        goTo404();
+                    },
+                    500:function(){
+                        goTo500();
+                    }
+                }
+            });
+        },
     },
     filters: {
         checkEmptyFilter: function (value) {
@@ -593,7 +630,7 @@ function getOrgInfo(id) {
                 $("#orgInvest_table").DataTable().destroy();
                 v_cusMonitorModel.$data.orgInvestList = res.inventList;
                 v_cusMonitorModel.$nextTick(function () {
-                    bindExportedDataTable("orgInvest_table", commonPageNum.cusMonitorOrgInvest, "机构投资事件", {});
+                    bindSimpleDataTable("orgInvest_table", commonPageNum.cusMonitorOrgInvest);
                 })
             }
         },
@@ -636,7 +673,6 @@ function getCompanyExtendNode(sid, type, cgy, level, uuid) {
                 v_cusMonitorModel.$data.investCompany = data;
                 v_cusMonitorModel.$nextTick(function () {
                     bindSimpleDataTable('invest_table',commonPageNum.cusMonitorEntInvest);
-                    // bindExportedDataTable("invest_table", commonPageNum.cusMonitorEntInvest, "投资企业", {});
                 });
 
                 if (data && data.length > 0) {
@@ -728,14 +764,14 @@ function getOrgFamilyNode(sid, type, cgy, level, oid) {
                 goToNotlogon();
             } else if (res.status == 'success') {
                 var response = res;
-                console.log(response.extendList);
+                // console.log(response.extendList);
 
                 $("#orgFamily_table").DataTable().destroy();
                 var data = response.extendList;
 
                 v_cusMonitorModel.$data.orgFamilyList = data;
                 v_cusMonitorModel.$nextTick(function () {
-                    bindExportedDataTable("orgFamily_table", commonPageNum.cusMonitorOrgFamily, "关联族谱", {});
+                    bindSimpleDataTable("orgFamily_table", commonPageNum.cusMonitorOrgFamily);
                 });
 
                 if (data && data.length > 0) {

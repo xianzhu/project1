@@ -133,7 +133,7 @@
                                         <span v-text="entParamTags.isStock.text"></span>
                                     </span>
                                     <span style="display:none;" v-show="showConditionTypes">
-                                        <label class="ent-param-tag-label">类型分类：</label>
+                                        <label class="ent-param-tag-label">搜索范围：</label>
                                         <span class="ent-param-tag" v-for="tag in entParamTags.typeList">
                                             <span v-text="tag.text"></span>
                                         </span>
@@ -212,7 +212,7 @@
                                             <td class="td-W30" v-text="ele.sex"></td>
                                             <td v-text="ele.title"></td>
                                             <td v-text="ele.organizeName"></td>
-                                            <td v-text="ele.focusDomain"></td>
+                                            <td v-text="ele.focusDomain|strFormatFilter"></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -314,10 +314,6 @@
                                         <label>公司名称</label>
                                     </li>
                                     <li class="form-control list-range-item range-single text-center"
-                                        item-data="股东" value="holder" id="range-item-holder">
-                                        <label>股东</label>
-                                    </li>
-                                    <li class="form-control list-range-item range-single text-center"
                                         item-data="法人代表" value="legal" id="range-item-legal">
                                         <label>法人代表</label>
                                     </li>
@@ -343,6 +339,7 @@
                     <div style="margin-bottom:15px;">
                         <button class="btn-default modal-setting-button" v-on:click="cancelEntparam()">取 消</button>
                         <button class="btn-default modal-setting-button" v-on:click="beginEntsearch()">确 定</button>
+                        <label v-bind:class="[showInputWarning?'form-input-warning':'hide-div']">请填写关键字！</label>
                     </div>
                 </div>
             </div>

@@ -37,18 +37,5 @@ function login() {
     });
 }
 
-function showLoginView() {
-    // $(".loginColumns").show(500);
-    $(".Bomb-box").show(500);
-}
 
-function hideLoginView() {
-    // $(".loginColumns").hide(500);
-    $(".Bomb-box").hide(500);
-}
 
-$(function(){
-    $('.bg').click(function (e) {
-        $(".Bomb-box").hide(500);
-    });
-});

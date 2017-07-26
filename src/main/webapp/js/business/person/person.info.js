@@ -234,7 +234,7 @@ function getBasicInfo(){
                     v_personBasicModel.$data.hasLongDesc=false;
                 }
                 var domains=[];
-                if(res.investor.focusDomain&&res.investor.focusDomain.length>0&&res.investor.focusDomain!="NULL"){
+                if(res.investor.focusDomain&&res.investor.focusDomain.length>0&&res.investor.focusDomain!="NULL"&&res.investor.focusDomain!="null"){
                     var fdomains=res.investor.focusDomain.split(" ");
                     for(var i=0;i<fdomains.length;i++){
                         console.log(fdomains[i]);

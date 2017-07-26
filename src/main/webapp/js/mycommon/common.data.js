@@ -31,6 +31,7 @@ var commonUrls_real = {
     monitorEntFinanceUrl:"entinfo/finance", // 定制监控页--企业融资情况
     monitorEntInvestUrl:"entinfo/invest", // 定制监控页--企业投资企业
     monitorOrgCaptialUrl:"org/captail", // 定制监控页--机构投资退出事件
+    monitorOrgEventDetailUrl:"org/detail", // 定制监控页--机构投资事件详情
     monitorOrgFamilyUrl:"org/extend", // 定制监控页--机构族谱
 
     sysMonitorMergeUrl:"entinfo/top", // 系统监控页--企业并购每日监控
@@ -62,7 +63,7 @@ var commonUrls_real = {
     workbenchDeleteUrl:"custInfo/del", // 个人设置--工作台删除
 
     companySearchUrl:"entinfo/search", // 企业查询
-    companyMutiSearchUrl:"entinfo/search", // 企业查询Muti-- 多条件查询
+    companyMutiSearchUrl:"entinfo/index", // 企业查询Muti-- 多条件查询
     companyBasicUrl:"entinfo/basic", // 企业--基本信息
     companyDepthUrl:"entinfo/deep", // 企业企业--深度信息
     companyCreditUrl:"entinfo/credit", // 企业--信用报告
@@ -99,8 +100,8 @@ var commonUrls_real_local = {
     monitorEntBasicUrl:hostUrl+"entinfo/basic", // 定制监控页--企业变更信息
     monitorEntFinanceUrl:hostUrl+"entinfo/finance", // 定制监控页--企业融资情况
     monitorEntInvestUrl:hostUrl+"entinfo/invest", // 定制监控页--企业投资企业
-    // monitorEntInvestUrl:"testData/cusmonitor.entinvest.json",
     monitorOrgCaptialUrl:hostUrl+"org/captail", // 定制监控页--机构投资退出事件
+    monitorOrgEventDetailUrl:hostUrl+"org/detail", // 定制监控页--机构投资事件详情
     monitorOrgFamilyUrl:hostUrl+"org/extend", // 定制监控页--机构族谱
 
     sysMonitorMergeUrl:hostUrl+"entinfo/top", // 系统监控页--企业并购每日监控
@@ -132,7 +133,7 @@ var commonUrls_real_local = {
     workbenchDeleteUrl:hostUrl+"custInfo/del", // 个人设置--工作台删除
 
     companySearchUrl:hostUrl+"entinfo/search", // 企业查询
-    companyMutiSearchUrl:hostUrl+"entinfo/search", // 企业查询Muti-- 多条件查询
+    companyMutiSearchUrl:hostUrl+"entinfo/index", // 企业查询Muti-- 多条件查询
     // companyBasicUrl:"testData/company.basic.json",
     // companyDepthUrl:"testData/company.depth.json",
     // companyCreditUrl:"testData/company.credit.json",

@@ -222,7 +222,7 @@ var panelOrgOption = {
     grid: {
         borderWidth: 0,
         x: 12,
-        x2: 12,
+        x2: 38,
         y: 28,
         y2: 15
     },
@@ -439,6 +439,17 @@ var panelMergeOption = {
         },
         textStyle: {
             fontSize: 8
+        },
+        formatter:function (params) {
+            var result = params[0].name;
+            params.forEach(function (item) {
+                var icolor=item.series.itemStyle.normal.color;
+                result+='<br>'
+                result += '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' + icolor + '"></span>';
+                result+=item.seriesName+": "+item.data;
+            });
+
+            return result;
         }
     },
     legend: {
@@ -521,7 +532,7 @@ var panelMergeOption = {
             stack: '总量',
             itemStyle: {
                 normal: {
-                    color:'rgba(0,250,154,1)'
+                    color: 'rgba(255,215,0,1)'
                 }
             },
             data: []
@@ -534,7 +545,7 @@ var panelMergeOption = {
             stack: '总量',
             itemStyle: {
                 normal: {
-                    color: 'rgba(255,215,0,1)'
+                    color:"#f07f50"
                 }
             },
             data: []

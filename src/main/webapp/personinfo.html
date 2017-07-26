@@ -109,7 +109,7 @@
     <div id="page-wrapper">
         <div class="wrapper wrapper-content" id="v-personBasicModel">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-lg-left-side">
                     <div class="row"><div class="col-lg-12"><div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>简介</h5>
@@ -171,7 +171,8 @@
                         </div>
                     </div></div></div>
                 </div>
-                <div class="col-lg-6">
+                <!--关注领域-->
+                <div class="col-lg-6 col-lg-right-side">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="ibox float-e-margins">
@@ -514,7 +515,7 @@
                                             <td class="td-W30" v-text="ele.sex"></td>
                                             <td v-text="ele.title"></td>
                                             <td v-text="ele.organizeName"></td>
-                                            <td v-text="ele.focusDomain"></td>
+                                            <td v-text="ele.focusDomain|strFormatFilter"></td>
                                         </tr>
                                         </tbody>
                                     </table>

@@ -351,6 +351,13 @@ var v_search_resultModel=new Vue({
         },
         formatDataFilter:function(value){
             return toDataFormat(value);
+        },
+        strFormatFilter:function (value) {
+            var result="-";
+            if(typeof value!="undefined"&&value!=null&&value!="null"&&value!=""){
+                result=value;
+            }
+            return result;
         }
     }
 });

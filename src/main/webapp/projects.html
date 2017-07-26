@@ -234,7 +234,7 @@
                                             <td class="td-W30" v-text="ele.sex"></td>
                                             <td v-text="ele.title"></td>
                                             <td v-text="ele.organizeName"></td>
-                                            <td v-text="ele.focusDomain"></td>
+                                            <td v-text="ele.focusDomain|strFormatFilter"></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -321,10 +321,6 @@
                             <!--关键字-->
                             <div class="proj-param-div param-line-key key-param-group">
                                 <label class="control-label label-overflow">关键字</label>
-                                <!--<select v-model="keyType" id="keyType" class="form-input-control" style="display:none;">-->
-                                    <!--<option selected="selected" value="0">公司名</option>-->
-                                    <!--<option value="1">品牌</option>-->
-                                <!--</select>-->
                                 <input class="form-input-control" v-model="key_content">
                             </div>
                             <!--行业分类-->
@@ -340,32 +336,14 @@
                                     <ul class="industry-list-group"><!---->
                                     <li v-for="item in industry_list|filterBy ifilterKey in 'text'" class="industry-list-item">
                                         <label v-on:click="selectedIndustryClass(item)"
-                                               v-text="item.text"></label><!--v-bind:value="item|getValueFilter"-->
+                                               v-text="item.text"></label>
                                     </li>
-                                    <!--<input class="form-input-control" name="industry_name" list="industry_datalist"-->
-                                           <!--type="text" id="filter_input_dom">-->
-                                    <!--<i class="fa fa-close clear-filter-ico" onclick="clearIndustryInput()"></i>-->
-                                    <!--<datalist id="industry_datalist">-->
-                                        <!--<option v-for="item in industry_list" v-on:click="selectedIndustryClass(item)"-->
-                                                <!--v-bind:data_value="item|getValueFilter" v-bind:value="item.text"></option>-->
-                                    <!--</datalist>-->
                                 </ul>
                                 </div>
                             </div>
-                            <!--&lt;!&ndash;项目阶段 不用&ndash;&gt;-->
-                            <!--<div class="proj-param-div param-line-state" style="display:none;">-->
-                                <!--<label class="control-label label-overflow">项目阶段</label>-->
-                                <!--<select v-model="proj_stage" id="proj_stage" class="form-input-control">-->
-                                    <!--<option selected="selected" value="">未知</option>-->
-                                    <!--<option value="0">前期</option>-->
-                                    <!--<option value="1">中期</option>-->
-                                    <!--<option value="2">后期</option>-->
-                                <!--</select>-->
-                            <!--</div>-->
                         </div>
                     </div>
-                    <!--<div class="hr-line-title"></div>-->
-                    <div style="margin-bottom:15px;margin-right: 15px;">
+                    <div style="margin-bottom:18px;margin-right: 15px;">
                         <button class="btn-default modal-setting-button" v-on:click="cancelProjparam()">取 消</button>
                         <button class="btn-default modal-setting-button" v-on:click="beginProjsearch()">确 定</button>
                     </div>
