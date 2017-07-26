@@ -624,7 +624,7 @@ public class EntInfoService {
 	 * 2. 关键字
 	 * 3. 关键字对应的字段（公司、法人、股东）
 	 *
-	 * 暂时没用
+	 * 暂时没加股东
 	 * @param request
 	 * @param response
 	 * @param basicResponse
@@ -643,7 +643,7 @@ public class EntInfoService {
 		String entSql = "";	//企业查询+法人查询
 		String condition = "";
 
-		String sql = "select a.ent_id,a.ent_name,a.biz_area "
+		String sql = "select a.ent_id,a.ent_name,a.biz_area,a.legal_person,a.biz_stat "
 				+ " from ent_basic_info a "
 				+ "%s stock_feature_all b "
 				+ "on a.ent_name = b.cn_name where %s "
