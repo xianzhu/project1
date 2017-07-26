@@ -127,7 +127,7 @@ public class StatisticInfoService {
 		List<StatTrendAll> trendList = new ArrayList<>();
 		for (Record record : records) {
 			StatTrendAll trend = new StatTrendAll();
-			trend.setId(record.get("id"));
+//			trend.setId(record.get("id"));
 			trend.setAm(record.getDouble("am"));
 			trend.setBroker(record.getDouble("broker"));
 			trend.setBank(record.getDouble("bank"));

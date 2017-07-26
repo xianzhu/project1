@@ -21,6 +21,7 @@ public class DailyEventGeneralObject implements Serializable, Comparable<DailyEv
 	String happenDate;
 	String eventClass;   //invest or exit
 	String orgCnName;
+	String userName;
 	String fundName;
 	double stockRight;
 	double amount;
@@ -135,5 +136,11 @@ public class DailyEventGeneralObject implements Serializable, Comparable<DailyEv
 		}
 		int i = o.getCreateTime().compareToIgnoreCase(this.getCreateTime());
 		return i;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 }
