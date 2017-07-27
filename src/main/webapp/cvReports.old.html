@@ -225,7 +225,7 @@
                                            id="personal_result_table">
                                         <thead>
                                         <tr>
-                                            <th>姓名</th>
+                                            <th class="td-W40">姓名</th>
                                             <th class="td-W30">性别</th>
                                             <th>职务</th>
                                             <th>机构</th>
@@ -234,7 +234,7 @@
                                         </thead>
                                         <tbody>
                                         <tr v-for="ele in pResult">
-                                            <td class="cursor-link-only" v-on:click="gotoPersonal(ele.userId)" v-text="ele.userName"></td>
+                                            <td class="td-W40 cursor-link-only" v-on:click="gotoPersonal(ele.userId)" v-text="ele.userName"></td>
                                             <td class="td-W30" v-text="ele.sex"></td>
                                             <td v-text="ele.title"></td>
                                             <td v-text="ele.organizeName"></td>

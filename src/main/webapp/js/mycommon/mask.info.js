@@ -34,7 +34,7 @@ function initModelMaskVue(){
 
 
 function showInfo(header, infomation) {
-    //console.log(header,', ',infomation);
+    console.log(header,', ',infomation);
     modal_mask_info.$data.header = header;
     modal_mask_info.$data.information = infomation;
     modal_mask_info.$data.showModal = true;

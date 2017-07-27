@@ -187,9 +187,9 @@ Vue.component('modal_mask', {
         }
     }
 });
-var modal_mask_info = initModelMaskVue();
-function initModelMaskVue(){
-    v_model_mask_info=new Vue({
+var modal_mask_detail = initModelMaskDetailVue();
+function initModelMaskDetailVue(){
+    v_model_mask_detail=new Vue({
         el:"#v-model-mask-capital",
         data:{
             showModal:false,
@@ -215,12 +215,12 @@ function initModelMaskVue(){
             }
         }
     });
-    return v_model_mask_info;
+    return v_model_mask_detail;
 }
 function showCapitalDetail(capital) {
-    modal_mask_info.$data.information = capital.inventEvent;
-    modal_mask_info.$data.dataTitle="投资事件数据";
-    modal_mask_info.$data.showModal = true;
+    modal_mask_detail.$data.information = capital.inventEvent;
+    modal_mask_detail.$data.dataTitle="投资事件数据";
+    modal_mask_detail.$data.showModal = true;
 }
 
 
