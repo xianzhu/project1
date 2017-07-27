@@ -285,7 +285,7 @@
                                             <td class="td-W30" v-text="ele.sex"></td>
                                             <td v-text="ele.title"></td>
                                             <td v-text="ele.organizeName"></td>
-                                            <td v-text="ele.focusDomain"></td>
+                                            <td v-text="ele.focusDomain|strFormatFilter"></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -419,7 +419,7 @@
                         </div>
                     </div>
                     <div class="hr-line-title" style="border:none;"></div>
-                    <div style="margin-bottom:15px;">
+                    <div style="margin-bottom:15px;margin-right:15px;">
                         <button class="modal-setting-button" v-on:click="cancelSimulation()">取 消</button>
                         <button class="modal-setting-button" v-on:click="beginSimulation()">确 定</button>
                     </div>

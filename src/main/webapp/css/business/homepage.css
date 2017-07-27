@@ -10,7 +10,42 @@
 .statistic-panel{
     color:#fff;
 }
+.event-stat-panel{
+    /*background-color:#8bc34a;*/
+    /*background-color:rgba(153,204,204,1); // #99cccc*/
+    /*background-color:rgba(55,198,192,1); // #56a36c*/
+    /*background-color:#81c2d6;*/
+    background-color:#bfdbb8;
+    /*background-color:rgba(112,161,159,1); // #70a19f*/
+    /*background-color:rgba(209,230,185,1);*/
+}
+.org-stat-panel{
+    /*background-color:#4FABC2;*/
+    background-color:#81c2d6;
+    /*background-color:#00bcd4*/
+    /*background-color:rgba(185,220,237,1); // #b9dced*/
+    /*background-color:rgba(102,153,204,1); // #6699cc;*/
+    /*background-color:rgba(152,218,226,1);*/
+}
+.merge-stat-panel{
+    /*background-color:#ba68c8;*/
+    /*background-color:rgba(153,153,204,1); // #9999cc;*/
+    /*background-color:#8192d6;*/
+    background-color:#82abba;
+    /*background-color:#d9b3e6;*/
+    /*background-color:rgba(233,201,238,1);*/
 
+}
+.fund-stat-panel{
+    /*background-color:#FAC26E;*/
+    /*background-color:#FFE4B5;*/
+    background-color:#D1AD69;
+    /*background-color:#dcf7a1;*/
+    /*background-color:rgba(255,204,153,1); // #ffcc99;*/
+    /*background-color:rgba(204,153,51,1); // #cc9933*/
+    /*background-color:rgba(238,231,206,1); // #eee7ce*/
+    /*background-color:rgba(246,223,189,1);*/
+}
 @media (min-width:1200px){
     .page-left-wrapper{
         height:100%;
@@ -168,20 +203,29 @@
     margin-right: 0px;
     margin-top: -15px;
 }
+.modal-event-list-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 60px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+}
 .modal-event-wrapper{
     /*display:table-cell;*/
+}
+.modal-event-container {
+    width: 90%;
+    max-width:1200px;
 }
 .modal-calendar-body{
     margin:0;
     color:#555;
     position:relative;
     padding:15px;
-}
-
-.modal-event-container{
-    width: 75%;
-    margin: 100px auto 20px auto;
-    max-width: 800px;
 }
 
 .modal-eventlist-container{

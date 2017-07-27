@@ -114,7 +114,7 @@
     <div id="page-wrapper">
         <div class="wrapper wrapper-content" id="v-fundBasicModel">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-lg-left-side">
                     <!--简介-->
                     <div class="row">
                         <div class="col-lg-12">
@@ -155,7 +155,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-lg-right-side">
                     <div class="tabs-container">
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#tab-1">资本投资事件</a> </li>
@@ -371,7 +371,7 @@
                                             <td class="td-W30" v-text="ele.sex"></td>
                                             <td v-text="ele.title"></td>
                                             <td v-text="ele.organizeName"></td>
-                                            <td v-text="ele.focusDomain"></td>
+                                            <td v-text="ele.focusDomain|strFormatFilter"></td>
                                         </tr>
                                         </tbody>
                                     </table>

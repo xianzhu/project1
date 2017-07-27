@@ -5,6 +5,7 @@
 var v_entParamModel = new Vue({
     el: "#v-entParamModel",
     data: {
+        showInputWarning:false,
         showEntParamDiv:false,
         key_content: "" // 关键字
     },
@@ -163,17 +164,28 @@ function doEntSearch() {
     v_entSearchModel.$data.searchFilter.range=[];
     if($(".range-all").hasClass("selected")){
         v_entSearchModel.$data.showConditionTypes=false;
+        params.range="11";
     }else{
-        var tags=$(".range-single.selected"),ptags=[];
+        if(data.key_content==""){ // 如果不是全部范围，必须填关键字
+            v_entParamModel.$data.showInputWarning = true;
+            return;
+        }
+        var tags=$(".range-single.selected"),
+            ptags={
+                "name":{value:"0"},
+                "legal":{value:"0"}
+            };
         v_entSearchModel.$data.showConditionTypes=true;
         for(var i=0;i<tags.length;i++){
             var node=tags[i];
             var text=$(node).attr("item-data"),value=$(node).attr("value");
-            ptags.push(value);
+            // ptags.push(value);
+            ptags[value].value="1";
             v_entSearchModel.$data.searchFilter.range.push(value);
             v_entSearchModel.$data.entParamTags.typeList.push({"text":text,"value":value})
         }
-        params.range=ptags.join(",");
+        params.range=ptags["name"].value+ptags["legal"].value;
+
     }
 
     v_entSearchModel.$data.showConditions=v_entSearchModel.$data.entParamTags.keyContent.isSelected||v_entSearchModel.$data.entParamTags.isStock.isSelected||v_entSearchModel.$data.showConditionTypes;

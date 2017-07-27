@@ -466,7 +466,7 @@
                                             <td class="td-W30" v-text="ele.sex"></td>
                                             <td v-text="ele.title"></td>
                                             <td v-text="ele.organizeName"></td>
-                                            <td v-text="ele.focusDomain"></td>
+                                            <td v-text="ele.focusDomain|strFormatFilter"></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -584,7 +584,7 @@
 </div>
 
 <!--今日资本事件详情-->
-<div style="display: none;" class="modal-template-mask ibox" id="v-model-event-info"
+<div style="display: none;" class="modal-event-mask ibox" id="v-model-event-info"
      transition="modal" v-show="showModal">
     <div class="modal-event-wrapper">
         <div class="modal-event-container">

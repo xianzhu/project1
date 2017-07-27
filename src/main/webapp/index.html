@@ -14,74 +14,58 @@
     <link href="css/style.common.css" rel="stylesheet">
     <script src="js/common/jquery-2.1.1.js"></script>
     <script src="js/common/md5.js"></script>
-    <script src="js/mycommon/common.data.js"></script>
-    <script src="js/business/index.js"></script>
+
 </head>
 <body>
 <div>
-    <div class="nav-header">
-        <a class="brand pull-left" href="#">
-            <img src="img/logo_src_ico.png">
-        </a>
-
+    <div class="earth-img-containter" style="position:absolute;width:100%;height:100%;">
+        <img class="earth-img"  src="img/index-center.png">
     </div>
-    <div class="loginColumns text-center loginscreen animated fadeInDown">
-        <div class="row">
-            <div class="logo-name col-md-8">
-                <img hidefocus="true" src="img/logo_src_02.png">
-                <h3>遇见可桉，预见你的世界</h3>
-            </div>
-            <div class="input-side col-md-4">
+    <div class="nav-header">
+        <div class="brand pull-left">
+            <img src="img/kdlogo-1.png">
+        </div>
+        <div class="pull-right">
+            <a class="login-link" onclick="showLoginView()">登录</a>
+        </div>
+    </div>
+    <div class="Bomb-box" style="display:none;">
+        <div class="bg"></div>
+        <div class="loginColumns text-center loginscreen animated fadeInDown">
+            <!--<div style="position:relative;text-align: right;top:23px;">-->
+                <!--<button type="button" class="btn btn-trans btn-sm btn-close-ico" onclick="hideLoginView()"><span-->
+                        <!--class="glyphicon glyphicon-remove"></span></button>-->
+            <!--</div>-->
+            <div class="input-side">
+                <div class="logo-row">
+                    <img src="img/index-logo.png">
+                </div>
                 <div class="form-group">
                     <div class="form-input-line">
                         <!--<label class="form-label">用户名</label>-->
-                        <input type="email" id="unameIpt" class="form-control" placeholder="用户名" required="">
+                        <input type="text" autocomplete="noff" id="unameIpt" value=""
+                               class="form-control" placeholder="用户名" required="">
                     </div>
                 </div>
-                <div class="form-group" style="margin-bottom:15px;">
+                <div class="form-group" style="margin-bottom:25px;">
                     <div class="form-input-line">
                         <!--<label class="form-label">密码</label>-->
-                        <input type="password" id="pwdIpt" class="form-control" placeholder="密码" required="">
+                        <input type="password" autocomplete="noff" id="pwdIpt" value=""
+                               class="form-control" placeholder="密码" required="">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label id="warning" class="form-control form-control-warning" style="display:none;">请输入用户名密码</label>
+                <div class="form-group form-control-warning-group" style="display:none;">
+                    <label id="warning" class="form-control form-control-warning" style="margin-bottom:10px;">请输入用户名密码</label>
                 </div>
-                <div class="form-group">
-                    <button class="btn btn-primary block m-b" style="width:35%;float:right;" onclick="login()">Login</button>
+                <div class="form-group form-group-btn">
+                    <button class="btn btn-primary block" onclick="login()">登录</button>
+                    <!--<button class="btn btn-primary block" onclick="hideLoginView()">Cancel</button>-->
                 </div>
-
-                <!--<a href="login.html#"><small>Forgot password?</small></a>-->
-                <!--<p class="text-muted text-center"><small>Do not have an account?</small></p>-->
-                <!--<a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>-->
             </div>
-            <!--<p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>-->
         </div>
-
-        <!--<div>-->
-        <!--<div class="logo-name">-->
-        <!--<img hidefocus="true" src="img/logo_src_02.png">-->
-        <!--<h3>遇见可桉，预见你的世界</h3>-->
-        <!--</div>-->
-        <!--<div class="m-t">-->
-        <!--<div class="form-group">-->
-        <!--<input type="email" id="unameIpt" class="form-control" placeholder="Username" required="">-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-        <!--<input type="password" id="pwdIpt" class="form-control" placeholder="Password" required="">-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-        <!--<label id="warning" class="form-control form-control-warning" style="display:none;"></label>-->
-        <!--</div>-->
-        <!--<button class="btn btn-primary block full-width m-b" onclick="login()">Login</button>-->
-
-        <!--&lt;!&ndash;<a href="login.html#"><small>Forgot password?</small></a>&ndash;&gt;-->
-        <!--&lt;!&ndash;<p class="text-muted text-center"><small>Do not have an account?</small></p>&ndash;&gt;-->
-        <!--&lt;!&ndash;<a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>&ndash;&gt;-->
-        <!--</div>-->
-        <!--&lt;!&ndash;<p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>&ndash;&gt;-->
-        <!--</div>-->
     </div>
 </div>
+<script src="js/mycommon/common.data.js"></script>
+<script src="js/business/index.js"></script>
 </body>
 </html>
