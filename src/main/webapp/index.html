@@ -14,12 +14,13 @@
     <link href="css/style.common.css" rel="stylesheet">
     <script src="js/common/jquery-2.1.1.js"></script>
     <script src="js/common/md5.js"></script>
-    <script src="js/mycommon/common.data.js"></script>
-    <script src="js/business/index.js"></script>
+
 </head>
 <body>
 <div>
-    <img class="earth-img" src="img/index-center.png">
+    <div class="earth-img-containter" style="position:absolute;width:100%;height:100%;">
+        <img class="earth-img"  src="img/index-center.png">
+    </div>
     <div class="nav-header">
         <div class="brand pull-left">
             <img src="img/kdlogo-1.png">
@@ -37,30 +38,34 @@
             <!--</div>-->
             <div class="input-side">
                 <div class="logo-row">
-                    <img src="img/logo_src_ico.png">
+                    <img src="img/index-logo.png">
                 </div>
                 <div class="form-group">
                     <div class="form-input-line">
                         <!--<label class="form-label">用户名</label>-->
-                        <input type="email" id="unameIpt" class="form-control" placeholder="用户名" required="">
+                        <input type="text" autocomplete="noff" id="unameIpt" value=""
+                               class="form-control" placeholder="用户名" required="">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:25px;">
                     <div class="form-input-line">
                         <!--<label class="form-label">密码</label>-->
-                        <input type="password" id="pwdIpt" class="form-control" placeholder="密码" required="">
+                        <input type="password" autocomplete="noff" id="pwdIpt" value=""
+                               class="form-control" placeholder="密码" required="">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label id="warning" class="form-control form-control-warning" style="display:none;">请输入用户名密码</label>
+                <div class="form-group form-control-warning-group" style="display:none;">
+                    <label id="warning" class="form-control form-control-warning" style="margin-bottom:10px;">请输入用户名密码</label>
                 </div>
                 <div class="form-group form-group-btn">
-                    <button class="btn btn-primary block" onclick="login()">Login</button>
+                    <button class="btn btn-primary block" onclick="login()">登录</button>
                     <!--<button class="btn btn-primary block" onclick="hideLoginView()">Cancel</button>-->
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="js/mycommon/common.data.js"></script>
+<script src="js/business/index.js"></script>
 </body>
 </html>

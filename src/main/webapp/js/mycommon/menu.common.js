@@ -475,9 +475,9 @@ function resetDivSize() {
     var height=size.height,width=size.width;
     console.log(width);
     if(width>=2560){ // >=2560
-        commonPageNum.topSearch_person=15;//没有足够多数据
-        commonPageNum.topSearch_org=15;//没有足够多数据
-        commonPageNum.topSearch_company=15;//没有足够多数据
+        commonPageNum.topSearch_person=10;//
+        commonPageNum.topSearch_org=10;//
+        commonPageNum.topSearch_company=10;//
         commonPageNum.orgFocuse=8;//
         commonPageNum.orgTeam=8;//
         commonPageNum.orgFund=8;//
@@ -493,7 +493,7 @@ function resetDivSize() {
         commonPageNum.sysMonitorRpt=27;//
         commonPageNum.sysMonitorMerge=32;//
         commonPageNum.personNews=17;//指定17个返回16个---16个正好
-        commonPageNum.personEvents=9;//没有足够多数据
+        commonPageNum.personEvents=9;//
         commonPageNum.homeEventList=15;//没有足够多数据
         commonPageNum.homeNewsList=16;//指定16个返回15个---15个正好
         commonPageNum.homepageInvest=7;//没有足够多数据
