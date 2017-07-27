@@ -31,4 +31,9 @@ public class RDDWebConst {
 	public static final int INVALID_VALUE = -1;
 
 	public static final String TOKEN = "cookie_code";
+	public static final String USERNAME = "user_name";
+
+	//tracking
+	public static final String KAFKA_HOST = "10.27.224.63:9192";
+	public static final String TRACKTOPIC = "tracking";
 }

@@ -50,6 +50,11 @@
     	
     	<bean class="com.cv.kdata.interceptor.LoginValidation"></bean>
     	</mvc:interceptor>
+    	
+    	<mvc:interceptor>
+    	<mvc:mapping path="/**"/>
+    	<bean class="com.cv.kdata.interceptor.TrackInterceptor"></bean>
+    	</mvc:interceptor>
    </mvc:interceptors>
    
    <mvc:default-servlet-handler />

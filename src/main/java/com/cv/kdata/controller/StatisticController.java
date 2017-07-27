@@ -56,4 +56,17 @@ public class StatisticController {
 		service.getOverallTrends(request, response);
 		return response;
 	}
+
+	/**
+	 * 这个接口是统计日志操作，操作信息会被截取，不返回任何东西
+	 * @param request
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/stat/operation",method={RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+	public Object otherOperations(HttpServletRequest request,Model model){
+		//do nothing;
+		return null;
+	}
 }

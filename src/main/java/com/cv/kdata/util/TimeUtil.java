@@ -31,6 +31,12 @@ public class TimeUtil {
 		return time;
 	}
 
+	public static String getDateBefore(int day) {
+		Date currentDate = Calendar.getInstance().getTime();
+		String time = dateFormat.format(getDateBefore(currentDate, day));
+		return time;
+	}
+
 	/**
 	 * 得到几天前的时间
 	 *

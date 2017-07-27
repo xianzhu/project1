@@ -58,6 +58,7 @@ public class LoginLogoutService {
 
 			response.setToken(token);
 			req.getSession().setAttribute(RDDWebConst.TOKEN, token);
+			req.getSession().setAttribute(RDDWebConst.USERNAME, username);
 			writeLog(req, loginInfo.getUid(), response.getStatus());
 		}else{
 			response.setStatus(RDDWebConst.FAILURE);
@@ -95,6 +96,7 @@ public class LoginLogoutService {
 
 	public void logout(HttpServletRequest req, LoginLogoutResponse response){
 		req.getSession().removeAttribute(RDDWebConst.TOKEN);
+		req.getSession().removeAttribute(RDDWebConst.USERNAME);
 		response.setStatus(RDDWebConst.SUCCESS);
 		response.setMessage("logout success!");
 	}
