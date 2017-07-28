@@ -31,6 +31,7 @@ public class KafkaProducerHelper implements Runnable{
 	public void run() {
 		// TODO Auto-generated method stub
 		kafkaProducer.send(record);
+		kafkaProducer.close();
 	}
 
 }
