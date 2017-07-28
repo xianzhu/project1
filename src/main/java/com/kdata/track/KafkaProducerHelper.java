@@ -1,32 +1,17 @@
 package com.kdata.track;
 
-import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutionException;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
-public class KafkaProducerHelper {
+public class KafkaProducerHelper implements Runnable{
 
 	private KafkaProducer<String, String> kafkaProducer = null;
-	private static Map<String, KafkaProducerHelper> host2ProducerHelper = new ConcurrentHashMap<String, KafkaProducerHelper>();
+	private ProducerRecord<String, String> record;
 
-	public static KafkaProducerHelper getInstance(String kafkaHosts) {
-		synchronized (KafkaProducerHelper.class) {
-			KafkaProducerHelper inst = host2ProducerHelper.get(kafkaHosts);
-			if (inst == null) {
-				inst = new KafkaProducerHelper(kafkaHosts);
-				host2ProducerHelper.put(kafkaHosts, inst);
-			}
-			return inst;
-		}
-
-	}
-
-	public KafkaProducerHelper(String kafkaHosts) {
+	public KafkaProducerHelper(String kafkaHosts,String topic, String key, String values) {
 		Properties props = new Properties();
 		props.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaHosts);
 		props.setProperty(ProducerConfig.ACKS_CONFIG, "1");
@@ -39,11 +24,12 @@ public class KafkaProducerHelper {
 		props.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
 				"org.apache.kafka.common.serialization.StringSerializer");
 		kafkaProducer = new KafkaProducer<String, String>(props);
+		record = new ProducerRecord<String, String>(topic, key, values);
 	}
 
-	public void send(String topic, String key, String values) throws InterruptedException, ExecutionException {
-
-		ProducerRecord<String, String> record = new ProducerRecord<String, String>(topic, key, values);
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
 		kafkaProducer.send(record);
 	}
 

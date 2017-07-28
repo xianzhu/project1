@@ -403,7 +403,7 @@ public class ReportService {
 			return;
 		}
 
-		String root_folder = "/home/appuser/workdir/service/web-spider/report";
+		String root_folder = "/home/appuser/workdir/report/";
 		ResultSet rs = null;
 		String sql = "select report_path from rpt_cv where rid=?";
 		Object[] parameters = { id };

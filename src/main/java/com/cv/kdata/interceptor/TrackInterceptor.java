@@ -33,18 +33,18 @@ public class TrackInterceptor implements HandlerInterceptor {
 					model.setSession((String) request.getSession().getAttribute(RDDWebConst.TOKEN));
 					model.setUserName((String) request.getSession().getAttribute(RDDWebConst.USERNAME));
 				}
-				Map<String,String> header = new HashMap<String,String>();
-				header.put("referer",request.getHeader("referer"));
-				header.put("origin",request.getHeader("origin"));
-				header.put("user-agent",request.getHeader("user-agent"));
+				Map<String, String> header = new HashMap<String, String>();
+				header.put("referer", request.getHeader("referer"));
+				header.put("origin", request.getHeader("origin"));
+				header.put("user-agent", request.getHeader("user-agent"));
 				model.setHeader(header);
 				model.setParas(request.getParameterMap());
 				model.setTime(TimeUtil.getCurrentTime());
 				model.setStatus(Integer.toString(response.getStatus()));
 				String time = Calendar.getInstance().getTime().toString();
 
-				KafkaProducerHelper.getInstance(RDDWebConst.KAFKA_HOST).send(RDDWebConst.TRACKTOPIC, time,
-						JSON.toJSONString(model));
+				new Thread(new KafkaProducerHelper(RDDWebConst.KAFKA_HOST, RDDWebConst.TRACKTOPIC, time,
+						JSON.toJSONString(model))).start();
 			}
 		} catch (Exception e) {
 
@@ -76,10 +76,10 @@ public class TrackInterceptor implements HandlerInterceptor {
 				model.setUserName((String) request.getSession().getAttribute(RDDWebConst.USERNAME));
 			}
 
-			Map<String,String> header = new HashMap<String,String>();
-			header.put("referer",request.getHeader("referer"));
-			header.put("origin",request.getHeader("origin"));
-			header.put("user-agent",request.getHeader("user-agent"));
+			Map<String, String> header = new HashMap<String, String>();
+			header.put("referer", request.getHeader("referer"));
+			header.put("origin", request.getHeader("origin"));
+			header.put("user-agent", request.getHeader("user-agent"));
 			model.setHeader(header);
 
 			model.setParas(request.getParameterMap());
@@ -87,8 +87,8 @@ public class TrackInterceptor implements HandlerInterceptor {
 			model.setStatus(Integer.toString(response.getStatus()));
 			String time = Calendar.getInstance().getTime().toString();
 
-			KafkaProducerHelper.getInstance(RDDWebConst.KAFKA_HOST).send(RDDWebConst.TRACKTOPIC, time,
-					JSON.toJSONString(model));
+			new Thread(new KafkaProducerHelper(RDDWebConst.KAFKA_HOST, RDDWebConst.TRACKTOPIC, time,
+					JSON.toJSONString(model))).start();
 		} catch (Exception e) {
 
 		}
