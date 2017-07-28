@@ -2,8 +2,6 @@ package com.kdata.defined.model;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 public class TrackModel {
 
 	private String session;
@@ -56,11 +54,4 @@ public class TrackModel {
 	public void setHeader(Map<String, String> header) {
 		this.header = header;
 	}
-
-	public void addHeader(HttpServletRequest request){
-		header.put("referer",request.getHeader("referer"));
-		header.put("origin",request.getHeader("origin"));
-		header.put("user-agent",request.getHeader("user-agent"));
-	}
-
 }

@@ -1,6 +1,8 @@
 package com.cv.kdata.interceptor;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +33,11 @@ public class TrackInterceptor implements HandlerInterceptor {
 					model.setSession((String) request.getSession().getAttribute(RDDWebConst.TOKEN));
 					model.setUserName((String) request.getSession().getAttribute(RDDWebConst.USERNAME));
 				}
-				model.addHeader(request);
+				Map<String,String> header = new HashMap<String,String>();
+				header.put("referer",request.getHeader("referer"));
+				header.put("origin",request.getHeader("origin"));
+				header.put("user-agent",request.getHeader("user-agent"));
+				model.setHeader(header);
 				model.setParas(request.getParameterMap());
 				model.setTime(TimeUtil.getCurrentTime());
 				model.setStatus(Integer.toString(response.getStatus()));
@@ -69,7 +75,13 @@ public class TrackInterceptor implements HandlerInterceptor {
 				model.setSession((String) request.getSession().getAttribute(RDDWebConst.TOKEN));
 				model.setUserName((String) request.getSession().getAttribute(RDDWebConst.USERNAME));
 			}
-			model.addHeader(request);
+
+			Map<String,String> header = new HashMap<String,String>();
+			header.put("referer",request.getHeader("referer"));
+			header.put("origin",request.getHeader("origin"));
+			header.put("user-agent",request.getHeader("user-agent"));
+			model.setHeader(header);
+
 			model.setParas(request.getParameterMap());
 			model.setTime(TimeUtil.getCurrentTime());
 			model.setStatus(Integer.toString(response.getStatus()));
