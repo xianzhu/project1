@@ -31,6 +31,7 @@ public class TrackInterceptor implements HandlerInterceptor {
 					model.setSession((String) request.getSession().getAttribute(RDDWebConst.TOKEN));
 					model.setUserName((String) request.getSession().getAttribute(RDDWebConst.USERNAME));
 				}
+				model.addHeader(request);
 				model.setParas(request.getParameterMap());
 				model.setTime(TimeUtil.getCurrentTime());
 				model.setStatus(Integer.toString(response.getStatus()));
@@ -68,6 +69,7 @@ public class TrackInterceptor implements HandlerInterceptor {
 				model.setSession((String) request.getSession().getAttribute(RDDWebConst.TOKEN));
 				model.setUserName((String) request.getSession().getAttribute(RDDWebConst.USERNAME));
 			}
+			model.addHeader(request);
 			model.setParas(request.getParameterMap());
 			model.setTime(TimeUtil.getCurrentTime());
 			model.setStatus(Integer.toString(response.getStatus()));
