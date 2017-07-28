@@ -162,7 +162,7 @@
                                             <tbody>
                                             <tr v-for="item in entInvestFinanceList">
                                                 <td v-text="item.investType|formatStringFilter"></td>
-                                                <td v-text="item.eventTitle"></td>
+                                                <td v-on:click="showCapDetail(item.eventId,1)" class="link-handle-pointer" v-text="item.eventTitle"></td>
                                                 <td v-text="item.orgCnName"></td>
                                                 <!--<td v-text="item.amount"></td>-->
                                             </tr>
@@ -523,7 +523,7 @@
                                            id="personal_result_table">
                                         <thead>
                                         <tr>
-                                            <th>姓名</th>
+                                            <th class="td-W40">姓名</th>
                                             <th class="td-W30">性别</th>
                                             <th>职务</th>
                                             <th>机构</th>
@@ -532,7 +532,7 @@
                                         </thead>
                                         <tbody>
                                         <tr v-for="ele in pResult">
-                                            <td class="cursor-link-only" v-on:click="gotoPersonal(ele.userId)" v-text="ele.userName"></td>
+                                            <td class="td-W40 cursor-link-only" v-on:click="gotoPersonal(ele.userId)" v-text="ele.userName"></td>
                                             <td class="td-W30" v-text="ele.sex"></td>
                                             <td v-text="ele.title"></td>
                                             <td v-text="ele.organizeName"></td>
@@ -777,6 +777,7 @@
         <div class="change-contant" slot="change_after" v-text="changeInfo.afterContent"></div>
     </change_info_modal>
 </div>
+
 <script src="js/plugins/jqDataTables/jquery.dataTables.js"></script>
 <script src="js/plugins/jqDataTables/extensions/buttons/dataTables.buttons.js"></script>
 <script src="js/plugins/jqDataTables/extensions/buttons/buttons.print.js"></script>
@@ -789,7 +790,7 @@
 <script src="js/mycommon/ibox.function.js"></script>
 <script src="js/mycommon/mask.info.js"></script>
 
-<script src="data/charts/monitor.chart.data.js"></script>
+<script src="data/charts/monitor.chart.data_old.js"></script>
 <script src="js/business/monitor/cusmonitor.capital.js"></script>
 <script src="js/business/monitor/cusmonitor.js"></script>
 </body>

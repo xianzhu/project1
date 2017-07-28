@@ -60,11 +60,12 @@ $(function(){
 });
 $(window).ready(function () {
     resizeEarthImg();
+    canvasStarShow();
 });
 function resizeEarthImg() {
     var iheight=$(".earth-img").height(),cheight=$("body").height();
     var itop=(cheight-iheight)*0.5,ltop=(cheight-302)*0.45;
-    console.log(iheight,cheight,itop);
+    // console.log(iheight,cheight,itop);
     if(iheight==0){
         setInterval(resizeEarthImg,100);
     }else{

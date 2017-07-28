@@ -40,10 +40,6 @@ var v_cusMonitorModel = new Vue({
         monitorTypeSelect: 0, // 当前监控类型选择
 
         investCompany: [], // 投资企业
-        //familyOrg:[],
-        //focusCompany:[],
-        //ivsCapitalList:[],
-        //extCapitalList:[],
 
         orgInvestList: [], // 投资事件
         orgFamilyList: [], // 关联族谱
@@ -100,7 +96,6 @@ var v_cusMonitorModel = new Vue({
                         goToNotlogon();
                     }else if(res.status=='success') {
                         var response = res;
-
                         showCapitalDetail(response);
                     }
                 },
@@ -215,15 +210,12 @@ function requireCallback(ec) {
 
 // 点击选中时显示
 function focus(param) {
-    //console.log(param);
+    console.log("focus click");
     var data = param.data;
     //console.log(data);
     var links = myoption.series[0].links;
     var nodes = myoption.series[0].nodes;
-    if (
-        data.source != null
-        && data.target != null
-    ) { //点击的是边
+    if (data.source != null && data.target != null) { //点击的是边
         //var sourceNode = nodes.filter(function (n) {return n.id == data.source})[0];
         //var targetNode = nodes.filter(function (n) {return n.id == data.target})[0];
     } else { // 点击的是点
@@ -334,6 +326,7 @@ function requestNewData() {
                 getCompanyExtendNode(id, type, cgy, level, uuid);
                 getCompanyInfo(uuid); // 联动
             } else {
+                console.log("showInfo");
                 showInfo("提示", "不支持更深一级扩展！");
             }
         }
@@ -397,31 +390,35 @@ function updateData(item) {
         getOrgExtendNode("org_" + item.mid, nodeType.org, 0, 0, item.mid);
     }
 
-    // 增加支点
-    myoption.series[0].nodes.push({
-        category: 4,
-        name: "com_random",
-        //symbol: symbolType.company,
-        value: 0,
-        type: nodeType.company,
-        text: "",
-        label: '',
-        level: 0,
-        uuid: ""
-    });
+    // // 增加支点
+    // myoption.series[0].nodes.push({
+    //     category: 4,
+    //     name: "com_random",
+    //     //symbol: symbolType.company,
+    //     value: 0,
+    //     type: nodeType.company,
+    //     text: "",
+    //     label: '',
+    //     level: 0,
+    //     uuid: ""
+    // });
     setTimeout(refresh, 1000);
 }
 
 // 刷新charts
 function refresh() {
-    //console.log("refresh");
+    // console.log("refresh");
     if (myChart && myChart.dispose) {
         myChart.dispose();
     }
     var dom = document.getElementById("inventForceChart");
+
     myChart = echarts.init(dom);
     myChart.setOption(myoption, true);
-    myChart.on("click", focus);
+    // myChart.on("click", focus);
+    var ecConfig = require('echarts/config');
+    console.log(ecConfig.EVENT.CLICK);
+    myChart.on(ecConfig.EVENT.CLICK,focus);
 }
 
 $(window).resize(function () {
@@ -717,7 +714,7 @@ function getCompanyExtendNode(sid, type, cgy, level, uuid) {
                                 source: sid,
                                 target: "com_" + tid,
                                 text: "", // "投资企业",
-                                weight: Math.random() * 50 + 1 // 20
+                     //           weight: Math.random() * 50 + 1 // 20
                             });
                         }
                     }
@@ -827,7 +824,7 @@ function getOrgFamilyNode(sid, type, cgy, level, oid) {
                                 source: sid,
                                 target: "com_" + tid,
                                 text: "", // we, // "机构族谱",
-                                weight: we
+                     //           weight: we
                             });
                         }
                     }
@@ -938,7 +935,7 @@ function getOrgComInvestNode(sid, type, cgy, level, uuid) {
                                 source: sid,
                                 target: "com_" + tid,
                                 text: "", // "投资企业",
-                                weight: Math.random() * 50 + 1 // 20
+                   //             weight: Math.random() * 50 + 1 // 20
                             });
                         }
                     }

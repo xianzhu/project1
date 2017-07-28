@@ -552,7 +552,13 @@ table.dataTable thead th, table.dataTable thead td {
     float: left;
     font-weight: 600;
 }
-
+.ibox-title h5.large-title{
+    font-size:18px;
+}
+.ibox-title h5.large-title span{
+    margin-left:5px;
+    font-size:14px;
+}
 .ibox-title .label {
     float: left;
     margin-left: 4px;

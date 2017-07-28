@@ -141,7 +141,7 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>项目列表(仅提供符合条件的前60条记录)</h5>
+                            <h5 class="large-title">项目列表<span>(仅提供符合条件的前60条记录)</span></h5>
                             <div class="ibox-tools">
                                 <a class="search-tool-btn" title="项目搜索" v-on:click="openProjectSearch()">
                                     <i class="fa fa-search"></i>
@@ -221,7 +221,7 @@
                                            id="personal_result_table">
                                         <thead>
                                         <tr>
-                                            <th>姓名</th>
+                                            <th class="td-W40">姓名</th>
                                             <th class="td-W30">性别</th>
                                             <th>职务</th>
                                             <th>机构</th>
@@ -230,7 +230,7 @@
                                         </thead>
                                         <tbody>
                                         <tr v-for="ele in pResult">
-                                            <td class="cursor-link-only" v-on:click="gotoPersonal(ele.userId)" v-text="ele.userName"></td>
+                                            <td class="td-W40 cursor-link-only" v-on:click="gotoPersonal(ele.userId)" v-text="ele.userName"></td>
                                             <td class="td-W30" v-text="ele.sex"></td>
                                             <td v-text="ele.title"></td>
                                             <td v-text="ele.organizeName"></td>
