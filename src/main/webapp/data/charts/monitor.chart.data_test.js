@@ -155,7 +155,7 @@ var relation_org_option = {
                     }
                 }
             },
-            draggable: true,
+            draggable: false,
             minRadius : 3,
             maxRadius : 13,
             linkSymbol: 'arrow',
