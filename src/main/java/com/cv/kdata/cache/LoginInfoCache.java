@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.cv.kdata.cont.RDDWebConst;
 import com.cv.kdata.util.MysqlHelper;
-
+import com.cv.kdata.util.StringUtil;
 
 public class LoginInfoCache {
 	private static LoginInfoCache instance = new LoginInfoCache();
@@ -16,27 +16,33 @@ public class LoginInfoCache {
 		return instance;
 	}
 
-	private LoginInfoCache(){
+	private LoginInfoCache() {
 		ResultSet rs = null;
 		String sql = "select cookie, uid from login_info";
-		try{
+		try {
 			rs = MysqlHelper.getInstance(RDDWebConst.PESEER_LOGIN).getResultSet(sql);
-			while (rs.next()){
-				loginMap.put(rs.getString("cookie"), rs.getString("uid"));
+			while (rs.next()) {
+				if (!StringUtil.isNullOrEmpty(rs.getString("cookie"))) {
+					loginMap.put(rs.getString("cookie"), rs.getString("uid"));
+				}
 
 			}
-		}catch(Exception ex){
+		} catch (Exception ex) {
 			ex.printStackTrace();
-		}finally {
+		} finally {
 			MysqlHelper.getInstance(RDDWebConst.PESEER_LOGIN).close(rs);
 		}
 	}
 
-	public String getUid(String cookie){
+	public String getUid(String cookie) {
 		return loginMap.get(cookie);
 	}
 
-	public void putUid(String cookie, String uid){
+	public void putUid(String cookie, String uid) {
 		loginMap.put(cookie, uid);
+	}
+
+	public void removeCookie(String cookie){
+		loginMap.remove(cookie);
 	}
 }

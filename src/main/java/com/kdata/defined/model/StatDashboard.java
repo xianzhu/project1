@@ -7,6 +7,7 @@ public class StatDashboard {
 	private int statMedian;
 	private int statMax;
 	private int count;
+	private int total;
 	private String statDate;
 
 	public int getId() {
@@ -45,6 +46,12 @@ public class StatDashboard {
 	}
 	public void setCount(int count) {
 		this.count = count;
+	}
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
 	}
 	public String getStatDate() {
 		return statDate;

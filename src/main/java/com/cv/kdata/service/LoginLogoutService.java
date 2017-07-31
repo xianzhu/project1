@@ -33,25 +33,32 @@ public class LoginLogoutService {
 	UserInfoMapper userInfoMapper;
 
 	private static Logger LOGGER = LoggerFactory.getLogger(LoginLogoutService.class);
-	public void login(HttpServletRequest req, LoginLogoutResponse response){
+
+	public void login(HttpServletRequest req, LoginLogoutResponse response) {
 		String username = req.getParameter("user_name");
 		String password = req.getParameter("password");
 
 		DBContextHolder.setDbType(DBContextHolder.PESEER_LOGIN);
 		LoginInfo loginInfo = loginInfoMapper.selectByUserName(username);
 
-		if(null != loginInfo && MD5Util.strMD5Validation(loginInfo.decryptPwd(), password)){
+		/*登录这个地方目前支持多点登录。
+		如果只支持单点登录，需要在这里判断token是否存在。
+		如果存在是否继续登录，继续登录就覆盖token。实现单点登录。
+		其他地方如logout, 拦截验证这些不需要再修改。*/
+		if (null != loginInfo && MD5Util.strMD5Validation(loginInfo.decryptPwd(), password)) {
 			response.setStatus("success");
 			response.setMessage("登录成功");
 			String token = loginInfo.getCookie();
-			if(StringUtil.isNullOrEmpty(token)){
+			if (StringUtil.isNullOrEmpty(token)) {
 				token = UUID.randomUUID().toString();
 				loginInfo.setCookie(token);
+				loginInfo.setUpdateTime(new Date());
 				loginInfoMapper.updateByPrimaryKey(loginInfo);
 			}
+
 			LoginInfoCache.getInstance().putUid(token, loginInfo.getUid());
 			UserInfoWithBLOBs user = userInfoMapper.selectByPrimaryKey(loginInfo.getUid());
-			if(user != null){
+			if (user != null) {
 				user.setLastLoginTime(new Date());
 				userInfoMapper.updateByPrimaryKeySelective(user);
 			}
@@ -60,14 +67,14 @@ public class LoginLogoutService {
 			req.getSession().setAttribute(RDDWebConst.TOKEN, token);
 			req.getSession().setAttribute(RDDWebConst.USERNAME, username);
 			writeLog(req, loginInfo.getUid(), response.getStatus());
-		}else{
+		} else {
 			response.setStatus(RDDWebConst.FAILURE);
 			response.setMessage("用户名或密码错误");
-			LOGGER.info(String.format("The userName = %s and password = %s is not correct!", username,password));
+			LOGGER.info(String.format("The userName = %s and password = %s is not correct!", username, password));
 		}
 	}
 
-	private void writeLog(HttpServletRequest req, String uid, String status){
+	private void writeLog(HttpServletRequest req, String uid, String status) {
 		RequestConext requestConext = new RequestConext();
 		parseRequest(req, uid, requestConext);
 		LoginRequestContext loginRequestContext = new LoginRequestContext(requestConext);
@@ -79,7 +86,7 @@ public class LoginLogoutService {
 		LogWriterHelper.getInstance().offer(loginRequestContext);
 	}
 
-	private void parseRequest(HttpServletRequest req, String uid,RequestConext requestConext) {
+	private void parseRequest(HttpServletRequest req, String uid, RequestConext requestConext) {
 
 		if (uid == null) {
 			String token = (String) req.getSession().getAttribute(RDDWebConst.TOKEN);
@@ -94,7 +101,16 @@ public class LoginLogoutService {
 		requestConext.user_agent = req.getHeader("user-agent");
 	}
 
-	public void logout(HttpServletRequest req, LoginLogoutResponse response){
+	public void logout(HttpServletRequest req, LoginLogoutResponse response) {
+		String token = (String) req.getSession().getAttribute(RDDWebConst.TOKEN);
+		LoginInfoCache.getInstance().removeCookie(token);
+		DBContextHolder.setDbType(DBContextHolder.PESEER_LOGIN);
+		LoginInfo loginInfo = loginInfoMapper.selectByCookie(token);
+		if (loginInfo != null) {
+			loginInfo.setCookie(null);
+			loginInfo.setUpdateTime(new Date());
+			loginInfoMapper.updateByPrimaryKey(loginInfo);
+		}
 		req.getSession().removeAttribute(RDDWebConst.TOKEN);
 		req.getSession().removeAttribute(RDDWebConst.USERNAME);
 		response.setStatus(RDDWebConst.SUCCESS);

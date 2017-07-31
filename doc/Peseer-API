@@ -9,6 +9,11 @@ http://localhost:8080/keandata/elasticsearch/top
 http://localhost:8080/keandata/login?user_name=vip_caoyi&password=caoyi
 3. 退出
 http://localhost:8080/keandata/logout
+
+登录这个地方目前支持多点登录。
+如果只支持单点登录，需要在/login里面判断token是否存在。
+如果存在是否继续登录，继续登录就覆盖token。实现单点登录。
+其他地方如logout, 拦截验证这些不需要再修改。
 =============================================================================
 
 用户页

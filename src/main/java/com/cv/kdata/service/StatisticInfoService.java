@@ -169,6 +169,7 @@ public class StatisticInfoService {
 			trend.setStatMin(record.getInt("std_median"));
 			trend.setStatMin(record.getInt("std_max"));
 			trend.setCount(record.getInt("daily_count"));
+			trend.setTotal(record.getInt("total"));
 			trend.setStatDate(record.getStr("count_date"));
 			trendList.add(trend);
 		}
