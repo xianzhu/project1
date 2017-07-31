@@ -58,6 +58,9 @@ var v_projectsModel = new Vue({
     ready: function () {
     },
     methods: {
+        openCompany:function(id){
+            openCompanybyId(id);
+        },
         gotoCompany: function (id) {
             console.log(id);
             gotoCompanybyId(id);

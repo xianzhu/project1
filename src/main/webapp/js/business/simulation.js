@@ -53,8 +53,9 @@ var v_simulationModel = new Vue({
     },
     methods: {
         gotoCompanyByCode: function (stockcode, type) {
-            console.log(stockcode,type);
-            gotoCompanyByCode(stockcode, type);
+            // gotoCompanyByCode(stockcode, type);
+            openCompanyByCode(stockcode, type);
+
         },
         // changeModule:function (value) {
         //     this.$data.currentModule=value;

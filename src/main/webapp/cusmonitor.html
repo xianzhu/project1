@@ -7,6 +7,8 @@
     <link rel="icon" href="img/logo-ico.png" type="image/png">
     <link href="css/common/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/switchery/switchery.css" rel="stylesheet">
+    <link href="css/plugins/jQueryUI/jquery-ui.css" rel="stylesheet">
     <link href="css/plugins/jqDataTables/jquery.dataTables.css" rel="stylesheet">
     <link href="css/plugins/jqDataTables/extensions/buttons/buttons.dataTables.css" rel="stylesheet">
     <link href="css/common/modal-mask.css" rel="stylesheet">
@@ -123,9 +125,29 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <div class="row">
+                            <div class="row" id="org_force_chart" style="display:none;">
+                                <div class="col-lg-12" style="padding-right:25px;">
+                                    <div class="force-tools">
+                                        <div class="force-label-btn" title="节点名称">
+                                            <button class="btn-force-reset" onclick="resetChart()" title="原图"><i class="fa fa-refresh"></i> </button>
+                                            <input type="checkbox" class="js-switch js-force-label" />
+                                        </div>
+                                    </div>
+                                    <div id="range_slider" class="range-slider">
+                                        <a class='ui-slider-handle ui-state-default ui-corner-all ui-slider-handle-min' href='#'>
+                                            <span>0</span>
+                                        </a>
+                                        <a class='ui-slider-handle ui-state-default ui-corner-all ui-slider-handle-max' href='#'>
+                                            <span>0</span>
+                                        </a>
+                                    </div>
+                                    <div id="orgForceChart"></div>
+                                </div>
+                            </div>
+
+                            <div class="row" id="com_force_chart" style="display:none;">
                                 <div class="col-lg-12">
-                                    <div id="inventForceChart"></div>
+                                    <div id="comForceChart"></div>
                                 </div>
                             </div>
 
@@ -782,6 +804,8 @@
 <script src="js/plugins/jqDataTables/extensions/buttons/dataTables.buttons.js"></script>
 <script src="js/plugins/jqDataTables/extensions/buttons/buttons.print.js"></script>
 <script src="js/plugins/jqDataTables/extensions/buttons/buttons.html5.js"></script>
+<script src="js/plugins/switchery/switchery.js"></script>
+<script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="js/plugins/echarts-2.2.7/echarts.js"></script>
 <script src="js/mycommon/common.data.js"></script>
 <script src="data/menu/common.menu.js"></script>
@@ -790,8 +814,9 @@
 <script src="js/mycommon/ibox.function.js"></script>
 <script src="js/mycommon/mask.info.js"></script>
 
-<script src="data/charts/monitor.chart.data_old.js"></script>
+<script src="data/charts/monitor.chart.data.js"></script>
 <script src="js/business/monitor/cusmonitor.capital.js"></script>
+<script src="js/business/monitor/cusmonitor.company.js"></script>
 <script src="js/business/monitor/cusmonitor.js"></script>
 </body>
 </html>

@@ -31,8 +31,7 @@ var v_newsModel=new Vue({
             sendMonitor({url:url});
         },
         gotoEntCompany:function(id){ // 项目推荐跳转的一定是非上市公司
-            console.log(id);
-            gotoCompanybyId(id);
+            openCompanybyId(id);
         },
         pageControlFilter:function(value,type){
             //console.log(value,", ",this.newsPage,",",this.isEnd);

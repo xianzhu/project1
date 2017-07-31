@@ -199,7 +199,7 @@
                                     <tbody>
                                     <tr v-for="ele in cvResult">
                                         <td v-text="ele.industry_type"></td>
-                                        <td v-text="ele.report_name" style="cursor:pointer"
+                                        <td v-text="ele.report_name" class="link-handle-pointer"
                                             v-on:click="openPdfOnline(ele.url)"></td>
                                         <td v-text="ele.time"></td>
                                     </tr>

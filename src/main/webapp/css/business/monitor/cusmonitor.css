@@ -94,3 +94,47 @@
     font-size:15px;
     margin-bottom:0px;
 }
+
+.force-label-btn{
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    z-index: 10;
+}
+.btn-force-reset{
+    border:none;
+    background-color:transparent;
+    margin-right:5px;
+}
+.switchery{
+    height:15px;
+    width:30px;
+    margin-top: -4px;
+}
+.switchery > small {
+    height:15px;
+    width:15px;
+}
+.range-slider{
+    position: absolute;
+    bottom: 5%;
+    right:15px;
+    height: calc(50% - 40px);
+    max-height:150px;
+    min-height:80px;
+    width:5px;
+}
+a.ui-slider-handle:focus{
+    outline:none;
+}
+.ui-slider-vertical .ui-slider-handle{
+    width:13px;
+    height:10px;
+}
+.ui-slider-vertical .ui-slider-handle span{
+    padding-right:15px;
+    float:right;
+}
+.ui-slider-vertical .ui-slider-handle span:hover,.ui-slider-vertical .ui-slider-handle span:focus{
+    border:none;
+}

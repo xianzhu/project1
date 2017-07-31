@@ -1,43 +1,32 @@
 /**
  * Created by a88u on 2016/10/30.
  */
-menuList.monitor.isActive=true;
-menuList.monitor.showChild=true;
-menuList.monitor.childMenu.cusMonitor.isActive=true;
+menuList.monitor.isActive = true;
+menuList.monitor.showChild = true;
+menuList.monitor.childMenu.cusMonitor.isActive = true;
 
-$(window).ready(function () {
-    resize();
-});
-
-function resize() {
-    var cheight = $("#page-wrapper").height()+7;
-    if (cheight < 100) {
-        cheight = 100;
-    }
-    console.log(cheight);
-    resizeDetailMask();
-    $("#inventForceChart").css("height", cheight + "px");
+var nodeLevel = {
+    node_2: 1,
+    node_3: 2
 }
+var categoryModel={
+    source:0, // 监控源
+    current:1, // 当前选中
+    node_3:2, // 关联经营实体对外投资企业
+    node_2:3, // 关联经营实体
+    node_3_key:4, // 关键企业
+    node_2_from:5, // 投资方
+    node_2_to:6, // 被投资方
+    normal:7 // 选中实体非相关
 
-function resizeDetailMask() {
-    var height = $(window).height();
-    var mheight = height;
-    console.log("modal-changeinfo-body");
-    $(".modal-changeinfo-body").css('maxHeight', mheight - 181);
-    $(".modal-event-body").css('maxHeight', mheight - 181);
 }
-
-var monitorType = {
-    company: 1,
-    org: 2
-};
 
 var v_cusMonitorModel = new Vue({
     el: "#v-cusMonitorModel",
     data: {
         monitorList: [],
         currentMonitorSelect: 0, // 当前监控项选择
-        monitorTypeSelect: 0, // 当前监控类型选择
+        monitorTypeSelect: 0, // 当前监控类型选择  1--公司，2--机构
 
         investCompany: [], // 投资企业
 
@@ -77,24 +66,24 @@ var v_cusMonitorModel = new Vue({
             console.log(change_info_modal.$data.changeInfo);
             change_info_modal.$data.showModal = true;
         },
-        showCapDetail:function(id){
-            var etype="invest";
+        showCapDetail: function (id) {
+            var etype = "invest";
             $.ajax({
                 url: commonUrls.monitorOrgEventDetailUrl,              //请求地址
                 type: "get",                            //请求方式
                 data: { //请求参数
-                    id:id,
-                    type:etype
+                    id: id,
+                    type: etype
                 },
                 dataType: "json",
                 success: function (res) {
-                    if(res.status=='failure'){
+                    if (res.status == 'failure') {
                         //goToLoginout();
-                        console.log("failure",res.message);
-                    }else if(res.status=="timeout"){
+                        console.log("failure", res.message);
+                    } else if (res.status == "timeout") {
                         console.log("timeout");
                         goToNotlogon();
-                    }else if(res.status=='success') {
+                    } else if (res.status == 'success') {
                         var response = res;
                         showCapitalDetail(response);
                     }
@@ -103,10 +92,10 @@ var v_cusMonitorModel = new Vue({
                     console.error("event id=", id, " error. status=", status);
                 },
                 statusCode: {
-                    404: function() {
+                    404: function () {
                         goTo404();
                     },
-                    500:function(){
+                    500: function () {
                         goTo500();
                     }
                 }
@@ -153,68 +142,20 @@ var v_cusMonitorModel = new Vue({
     }
 });
 
-var selectNode;
-var echarts;
-var myChart;
-var myoption = clone(relation_company_option);
+var selectNode, // 点击选中节点
+    valueStep = 3, // 机构监控节点value step
+    sliderMax = 0, // 关联度最大值
+    echarts, // 绘图echarts
+    myOrgChart,  // 机构图
+    myComChart; // 企业图
 
-var nodeType = {
-    company: 1,
-    org: 2
-};
 
-var symbolType = {
-    company: "circle",
-    //company:"image://img/charts/company001.png",
-    org: "rectangle"
-};
-
-getMonitorList();
-
-require.config({
-    paths: {
-        echarts: 'js/plugins/echarts-2.2.7'
-    }
-});
-
-require(['echarts', 'echarts/chart/force'], requireCallback);
-
-Vue.component('change_info_modal', {
-    template: '#change-info-template',
-    props: {
-        show: {
-            type: Boolean,
-            required: true,
-            twoWay: true
-        }
-    }
-});
-
-var change_info_modal = initChangeModelVue();
-
-function initChangeModelVue() {
-    //console.log("change-info-template");
-    v_change_info_modal = new Vue({
-        el: "#v-change-info-modal",
-        data: {
-            showModal: false,
-            changeInfo: {}
-        }
-    });
-    return v_change_info_modal;
-}
-
-function requireCallback(ec) {
-    echarts = ec;
-}
-
-// 点击选中时显示
-function focus(param) {
-    console.log("focus click");
+function focusOrg(param) {
+    // console.log("focus click");
     var data = param.data;
     //console.log(data);
-    var links = myoption.series[0].links;
-    var nodes = myoption.series[0].nodes;
+    var links = myOrgChart._option.series[0].links;
+    var nodes = myOrgChart._option.series[0].nodes;
     if (data.source != null && data.target != null) { //点击的是边
         //var sourceNode = nodes.filter(function (n) {return n.id == data.source})[0];
         //var targetNode = nodes.filter(function (n) {return n.id == data.target})[0];
@@ -222,18 +163,17 @@ function focus(param) {
         selectNode = nodes.filter(function (n) {
             return n.name == data.name
         })[0];
-        console.log("选中了" + data.name + '(' + data.name + ')');
+        console.log("选中了" + data.name, data);
 
         if (selectNode.level == 3) {
             showInfo("提示", "不提供更深扩展！");
             return;
         }
-        requestNewData();
+        requestOrgNewData();
     }
 }
 
 function getMonitorList() {
-    console.log(v_userModel.$data.uname);
     $.ajax({
         url: commonUrls.custMonitorUrl,              //请求地址
         type: "POST",                            //请求方式
@@ -252,8 +192,6 @@ function getMonitorList() {
                 goToNotlogon();
             } else if (res.status == 'success') {
                 var response = res;
-                //console.log("response", response);
-
                 var result = [];
                 for (var i = 0; i < res.monitorList.length; i++) {
                     var item = res.monitorList[i];
@@ -278,9 +216,7 @@ function getMonitorList() {
                         });
                     }
                 }
-
                 v_cusMonitorModel.$data.monitorList = result;
-
                 v_cusMonitorModel.$nextTick(function () {
                     if (result.length > 0) {
                         $("#currentMonitorSelect").val(result[0].index);
@@ -303,7 +239,7 @@ function getMonitorList() {
     });
 }
 
-function requestNewData() {
+function requestOrgNewData() {
     if (selectNode) {
         var id = selectNode.name; // 唯一标识
         var type = selectNode.type; // 类型
@@ -319,12 +255,12 @@ function requestNewData() {
                 return;
             }
 
-            if ((level == 0) || (v_cusMonitorModel.$data.monitorTypeSelect == 2 && level == 1)) {
+            if (level == nodeLevel.node_2) {
                 var uuid = selectNode.uuid;
                 reSetOptionNodes("com_" + uuid);
                 v_cusMonitorModel.$data.currentNodeId = selectNode.uuid;
-                getCompanyExtendNode(id, type, cgy, level, uuid);
-                getCompanyInfo(uuid); // 联动
+                getOrgComExtendNode(id, type, cgy, level, uuid);
+                getOrgCompanyInfo(uuid); // 联动
             } else {
                 console.log("showInfo");
                 showInfo("提示", "不支持更深一级扩展！");
@@ -346,17 +282,21 @@ function requestNewData() {
         console.log("init monitor point")
     }
 }
-
 // 选择监控点之后更新监控点信息
 function updateData(item) {
-    var name = item.mid;
-    var text = item.content;
+    var name = item.mid, text = item.content;
+    var myoption, ecConfig = require('echarts/config');
 
     if (item.type == monitorType.company) { // 公司
+        $("#com_force_chart").css("display", 'block');
+        $("#org_force_chart").css("display", 'none');
+        if (myComChart && myComChart.dispose) {
+            myComChart.dispose();
+        }
         myoption = clone(relation_company_option);
         v_cusMonitorModel.$data.monitorTypeSelect = 1;
-
-        myoption.series[0].nodes.push({
+        myoption.title.text = item.content;
+        myoption.series[0].nodes.push({ // 企业监控，监控源
             category: 0,
             name: "com_" + item.mid,
             symbol: symbolType.company,
@@ -368,13 +308,29 @@ function updateData(item) {
             uuid: item.mid
         });
         v_cusMonitorModel.$data.currentNodeId = "companyParent"; // 为初始化企业监控的当前选中点
+
+        var cdom = document.getElementById("comForceChart");
+        myComChart = echarts.init(cdom);
+        myComChart.on(ecConfig.EVENT.CLICK, focusCom);
+        window.addEventListener('resize', function () {
+            myComChart.resize && myComChart.resize();
+        });
+        myComChart.setOption(myoption, true);
         getCompanyInfo(item.mid);
-        getCompanyExtendNode("com_"+item.mid, nodeType.company, 0, 0, item.mid);
+        getCompanyExtendNode("com_" + item.mid, nodeType.company, 0, 0, item.mid);
     } else if (item.type == monitorType.org) { // 机构
+        $("#com_force_chart").css("display", 'none');
+        $("#org_force_chart").css("display", 'block');
+        if (myOrgChart && myOrgChart.dispose) {
+            myOrgChart.dispose();
+        }
         myoption = clone(relation_org_option);
+        myoption.title.text = item.content;
         v_cusMonitorModel.$data.monitorTypeSelect = 2;
-        //v_cusMonitorModel.$data.currentSelect=2;
-        myoption.series[0].nodes.push({
+
+        sliderMax = 0;
+        var odom = document.getElementById("orgForceChart");
+        myoption.series[0].nodes.push({ // 添加机构监控 -- 监控源
             category: 0,
             name: "org_" + item.mid,
             symbol: symbolType.org,
@@ -386,268 +342,76 @@ function updateData(item) {
             oid: item.mid
         });
         v_cusMonitorModel.$data.currentNodeId = item.mid;
+
+        myOrgChart = echarts.init(odom);
+        myOrgChart.on(ecConfig.EVENT.CLICK, focusOrg);
+        window.addEventListener('resize', function () {
+            myOrgChart.resize && myOrgChart.resize();
+        });
+        myOrgChart.setOption(myoption, true);
+        myOrgChart._option.legend.data=['关联经营实体','关联经营实体对外投资企业','关键企业'];
         getOrgInfo(item.mid);
         getOrgExtendNode("org_" + item.mid, nodeType.org, 0, 0, item.mid);
     }
-
-    // // 增加支点
-    // myoption.series[0].nodes.push({
-    //     category: 4,
-    //     name: "com_random",
-    //     //symbol: symbolType.company,
-    //     value: 0,
-    //     type: nodeType.company,
-    //     text: "",
-    //     label: '',
-    //     level: 0,
-    //     uuid: ""
-    // });
-    setTimeout(refresh, 1000);
 }
 
 // 刷新charts
 function refresh() {
-    // console.log("refresh");
-    if (myChart && myChart.dispose) {
-        myChart.dispose();
+    if (v_cusMonitorModel.$data.monitorTypeSelect == monitorType.company) {
+        if (myComChart._option) {
+            myComChart.refresh();
+        }
+    } else if (v_cusMonitorModel.$data.monitorTypeSelect == monitorType.org) {
+        if (myOrgChart) {
+            myOrgChart.refresh();
+        }
+    } else {
+        console.log("re-fresh error", v_cusMonitorModel.$data.monitorTypeSelect);
     }
-    var dom = document.getElementById("inventForceChart");
-
-    myChart = echarts.init(dom);
-    myChart.setOption(myoption, true);
-    // myChart.on("click", focus);
-    var ecConfig = require('echarts/config');
-    console.log(ecConfig.EVENT.CLICK);
-    myChart.on(ecConfig.EVENT.CLICK,focus);
 }
 
-$(window).resize(function () {
-    resize();
-    setTimeout(refresh, 1000);
-});
-
+// force点击后，先把全部复位
 function reSetOptionNodes(id) {
-    //console.log(id);
-    for (var i = 0; i < myoption.series[0].nodes.length; i++) {
-        var node = myoption.series[0].nodes[i];
+    var nodes = myOrgChart._option.series[0].nodes;
+    for (var i = 0; i < nodes.length; i++) {
+        var node = nodes[i];
         if (node.category == 0) { // 如果是监控源，保持不变
             continue;
         }
         if (id == node.name) {
-            node.category = 1;
+            node.category = categoryModel.current;
         } else {
-            node.category = 2;
+            node.category=categoryModel.normal;
         }
     }
 }
 
-// 更改监控对象响应
-function changeMonitorSelection() {
-    v_cusMonitorModel.$data.currentMonitorSelect = $("#currentMonitorSelect").val();
-    var item = v_cusMonitorModel.$data.monitorList[v_cusMonitorModel.$data.currentMonitorSelect];
-    v_cusMonitorModel.$data.monitorTypeSelect = item.type;
-    //console.log(v_cusMonitorModel.$data.monitorTypeSelect);
-    updateData(item);
-}
-
-// 获取企业表信息--变更、法务、经营异常、股权质押、动产抵押，融资情况
-function getCompanyInfo(id) {
-    if (v_cusMonitorModel.$data.monitorTypeSelect == 2) { // 机构关联族谱企业点
-        v_cusMonitorModel.$data.currentSelect = 3;
-        //getCompanyReportInfo(id);
-    } else { // 监控企业点
-        v_cusMonitorModel.$data.currentSelect = 1;
-        getCompanyReportInfo(id);
-        getCompanyBasicInfo(id);
-        getCompanyFinanceInfo(id);
+// 获取机构关联--投资企业点
+function getOrgComExtendNode(sid, type, cgy, level, uuid) {
+    var links = myOrgChart._option.series[0].links, nodes = myOrgChart._option.series[0].nodes;
+    for (var i = 0; i < links.length; i++) {
+        var link = links[i];
+        if (link.source == sid) { // 被投资方--〉tIndex
+            var tnode = nodes[link.tIndex];
+            if (tnode.level == nodeLevel.node_2) {
+                tnode.category = 5;
+            } else if (tnode.level == nodeLevel.node_3) {
+                if (tnode.toNum == 1) {
+                    tnode.category = 2;
+                } else {
+                    tnode.category = 4;
+                }
+            }
+        } else if (link.target == sid) { // 投资方--〉sIndex
+            var snode = nodes[link.sIndex];
+            snode.category = 6;
+        }
     }
-    //console.log(v_cusMonitorModel.$data.monitorTypeSelect,', ',v_cusMonitorModel.$data.currentSelect);
 
+    myOrgChart._option.legend.data=['当前选中','投资方','被投资方','关联经营实体对外投资企业','关键企业','选中实体非相关'];
+    setTimeout(refresh, 1000);
 }
-// 法务、经营异常、股权质押、动产抵押
-function getCompanyReportInfo(id) {
-    $.ajax({
-        url: commonUrls.monitorEntCreditUrl,
-        type: "POST",
-        data: {
-            id: id
-        },
-        dataType: "json",
-        success: function (res) {
-            if (res.status == 'failure') {
-                //goToLoginout();
-                console.log("failure", res.message);
-            } else if (res.status == "timeout") {
-                console.log("timeout");
-                goToNotlogon();
-            } else if (res.status == 'success') {
-                var response = res;
-                //console.log("response", response);
-
-                var entLawInfos = [];
-                if (response.entLawInfos && response.entLawInfos.length > 0) {
-                    entLawInfos.push(response.entLawInfos[0]);
-                }
-
-                var entAbnormalItemInfos = [];
-                if (response.entAbnormalItemInfos && response.entAbnormalItemInfos.length > 0) {
-                    entAbnormalItemInfos.push(response.entAbnormalItemInfos[0]);
-                }
-
-                var entEquityInfos = [];
-                if (response.entEquityInfos && response.entEquityInfos.length > 0) {
-                    entEquityInfos.push(response.entEquityInfos[0]);
-                }
-
-                var entMortgagesInfos = [];
-                if (response.entMortgagesInfos && response.entMortgagesInfos.length > 0) {
-                    entMortgagesInfos.push(response.entMortgagesInfos[0]);
-                }
-                v_cusMonitorModel.$data.entLawList = entLawInfos;
-                v_cusMonitorModel.$data.abnormalItemList = entAbnormalItemInfos;
-                v_cusMonitorModel.$data.equityList = entEquityInfos;
-                v_cusMonitorModel.$data.mortgagesList = entMortgagesInfos;
-            }
-        },
-        fail: function (status) {
-            console.error("event id=", id, " error. status=", status);
-        },
-        statusCode: {
-            404: function () {
-                goTo404();
-            },
-            500: function () {
-                goTo500();
-            }
-        }
-    });
-}
-var flag=true;
-// 变更
-function getCompanyBasicInfo(id) {
-    var url=flag? commonUrls.monitorEntBasicUrl:commonUrls.monitorEntBasicUrl_2;
-    flag=!flag;
-    $.ajax({
-        url: url,              //请求地址
-        type: "POST",                            //请求方式
-        data: { //请求参数
-            id: id
-        },
-        dataType: "json",
-        success: function (res) {
-            if (res.status == "failure") {
-                console.log("failure", res.message);
-            } else if (res.status == "timeout") {
-                console.log("timeout");
-                goToNotlogon();
-            } else if (res.status == "success") {
-                var response = res;
-                var entChgRecordInfos = [];
-                if (response.entChgRecordInfos && response.entChgRecordInfos.length > 0) {
-                    entChgRecordInfos.push(res.entChgRecordInfos[0]);
-                }
-                v_cusMonitorModel.$data.changeList = entChgRecordInfos;
-            }
-        },
-        fail: function (status) {
-            console.error("event id=", id, " error. status=", status);
-        },
-        statusCode: {
-            404: function () {
-                goTo404();
-            },
-            500: function () {
-                goTo500();
-            }
-        }
-    });
-}
-// 企业融资情况
-function getCompanyFinanceInfo(id) {
-    $.ajax({
-        url: commonUrls.monitorEntFinanceUrl,              //请求地址
-        type: "POST",                            //请求方式
-        data: { //请求参数
-            id: id
-        },
-        dataType: "json",
-        success: function (res) {
-            if (res.status == "failure") {
-                console.log("failure", res.message);
-            } else if (res.status == "timeout") {
-                console.log("timeout");
-                goToNotlogon();
-            } else if (res.status == "success") {
-                var response = res;
-                $("#entInvest_table").DataTable().destroy();
-                $("#entExit_table").DataTable().destroy();
-
-                v_cusMonitorModel.$data.entInvestFinanceList = response.entFinancalList;
-                v_cusMonitorModel.$data.entExitFinanceList = response.entExitEventList;
-                v_cusMonitorModel.$nextTick(function () {
-                    bindSimpleDataTable("entInvest_table", commonPageNum.cusMonitorComInvest);
-                    bindSimpleDataTable("entExit_table", commonPageNum.cusMonitorComExit);
-                });
-            }
-        },
-        fail: function (status) {
-            console.error("event id=", id, " error. status=", status);
-        },
-        statusCode: {
-            404: function () {
-                goTo404();
-            },
-            500: function () {
-                goTo500();
-            }
-        }
-    });
-}
-
-// 获取机构表信息--投资事件
-function getOrgInfo(id) {
-    v_cusMonitorModel.$data.currentSelect = 2;
-    $.ajax({
-        url: commonUrls.monitorOrgCaptialUrl,              //请求地址
-        type: "POST",                            //请求方式
-        data: { //请求参数
-            id: id
-        },
-        dataType: "json",
-        success: function (res) {
-            if (res.status == 'failure') {
-                //goToLoginout();
-                console.log("failure", res.message);
-            } else if (res.status == "timeout") {
-                console.log("timeout");
-                goToNotlogon();
-            } else if (res.status == 'success') {
-                var response = res;
-
-                $("#orgInvest_table").DataTable().destroy();
-                v_cusMonitorModel.$data.orgInvestList = res.inventList;
-                v_cusMonitorModel.$nextTick(function () {
-                    bindSimpleDataTable("orgInvest_table", commonPageNum.cusMonitorOrgInvest);
-                })
-            }
-        },
-        fail: function (status) {
-            console.error("event id=", id, " error. status=", status);
-        },
-        statusCode: {
-            404: function () {
-                goTo404();
-            },
-            500: function () {
-                goTo500();
-            }
-        }
-    });
-}
-
-// 获取投资企业点
-function getCompanyExtendNode(sid, type, cgy, level, uuid) {
-    //console.log("getCompanyExtendNode:", sid, type, cgy, level, uuid);
+function getOrgComExtendNode_old(sid, type, cgy, level, uuid) {
     $.ajax({
         url: commonUrls.monitorEntInvestUrl,              //请求地址
         type: "POST",                            //请求方式
@@ -669,57 +433,75 @@ function getCompanyExtendNode(sid, type, cgy, level, uuid) {
 
                 v_cusMonitorModel.$data.investCompany = data;
                 v_cusMonitorModel.$nextTick(function () {
-                    bindSimpleDataTable('invest_table',commonPageNum.cusMonitorEntInvest);
+                    bindSimpleDataTable('invest_table', commonPageNum.cusMonitorEntInvest);
                 });
 
+                var myopt = myOrgChart._option;
                 if (data && data.length > 0) {
                     for (var i = 0; i < data.length; i++) {
                         var tid = data[i].iUuid;
                         var name = data[i].name;
-                        //var isNew=Math.random()>0.5;
-                        var found = false;
                         // 处理node
-                        for (var j = 0; j < myoption.series[0].nodes.length; j++) {
-                            if ("com_" + tid == myoption.series[0].nodes[j].name) {
-                                found = true;
-                                myoption.series[0].nodes[j].category = 3;
+                        for (var j = 0; j < myopt.series[0].nodes.length; j++) {
+                            if ("com_" + tid == myopt.series[0].nodes[j].name) {
+                                // myopt.series[0].nodes[j].category = 3;
+                                var cnode = myopt.series[0].nodes[j];
+                                if (cnode.level == nodeLevel.node_2) {
+                                    cnode.category = 3;
+                                } else if (cnode.level == nodeLevel.node_3) {
+                                    if (cnode.toNum == 1) {
+                                        cnode.category = 2;
+                                    } else {
+                                        cnode.category = 4;
+                                    }
+                                }
                                 break;
                             }
-                        }
-                        if (!found) { // 投资企业
-                            myoption.series[0].nodes.push({
-                                name: "com_" + tid,
-                                symbol: symbolType.company,
-                                type: nodeType.company,
-                                category: 3,
-                                text: name,
-                                label: formatLabel(name),
-                                value: 10 - level * 5,
-                                level: level + 1,
-                                uuid: tid
-                            });
-                        }
-                        // 处理link
-                        var lfound = false;
-                        //console.log(tid, sid);
-                        for (var j = 0; j < myoption.series[0].links.length; j++) {
-                            var link = myoption.series[0].links[j];
-                            if ("com_" + tid == link.target && sid == link.source) {
-                                lfound = true;
-                                break;
-                            }
-                        }
-                        if (!lfound) {
-                            myoption.series[0].links.push({
-                                source: sid,
-                                target: "com_" + tid,
-                                text: "", // "投资企业",
-                     //           weight: Math.random() * 50 + 1 // 20
-                            });
                         }
                     }
                 }
                 setTimeout(refresh, 1000);
+            }
+        },
+        fail: function (status) {
+            console.error("event id=", id, " error. status=", status);
+        },
+        statusCode: {
+            404: function () {
+                goTo404();
+            },
+            500: function () {
+                goTo500();
+            }
+        }
+    });
+}
+
+// 获取机构关联--投资企业点 列表信息
+function getOrgCompanyInfo(uuid) {
+    $.ajax({
+        url: commonUrls.monitorEntInvestUrl,              //请求地址
+        type: "POST",                            //请求方式
+        data: { //请求参数
+            id: uuid
+        },
+        dataType: "json",
+        success: function (res) {
+            if (res.status == 'failure') {
+                console.log("failure", res.message);
+            } else if (res.status == "timeout") {
+                console.log("timeout");
+                goToNotlogon();
+            } else if (res.status == 'success') {
+                var response = res;
+
+                $("#invest_table").DataTable().destroy();
+                var data = response.entInvestInfos;
+
+                v_cusMonitorModel.$data.investCompany = data;
+                v_cusMonitorModel.$nextTick(function () {
+                    bindSimpleDataTable('invest_table', commonPageNum.cusMonitorEntInvest);
+                });
             }
         },
         fail: function (status) {
@@ -743,8 +525,8 @@ function getOrgExtendNode(sid, type, cgy, level, oid) {
     }
 }
 
+// 机构族谱预测
 function getOrgFamilyNode(sid, type, cgy, level, oid) {
-    // 机构族谱预测
     $.ajax({
         url: commonUrls.monitorOrgFamilyUrl,              //请求地址
         type: "POST",                            //请求方式
@@ -779,59 +561,62 @@ function getOrgFamilyNode(sid, type, cgy, level, oid) {
                         var found = false;
                         var mid = "com_" + tid;
 
-                        subnodes.push({
+                        var subnode = {
                             id: mid,
                             type: nodeType.company,
                             category: 3,
                             level: level + 1,
-                            uuid: tid
-                        });
+                            uuid: tid,
+                            indexId: -1
+                        };
+
                         // 处理node
-                        for (var j = 0; j < myoption.series[0].nodes.length; j++) {
-                            if ("com_" + tid == myoption.series[0].nodes[j].name) {
+                        for (var j = 0; j < myOrgChart._option.series[0].nodes.length; j++) {
+                            if ("com_" + tid == myOrgChart._option.series[0].nodes[j].name) {
                                 found = true;
-                                myoption.series[0].nodes[j].category = 3;
+                                myOrgChart._option.series[0].nodes[j].category = 3;
                                 break;
                             }
                         }
                         if (!found) {
-                            myoption.series[0].nodes.push({
+                            myOrgChart._option.series[0].nodes.push({ // 添加机构监控 -- 机构族谱 -- 二级企业
                                 name: mid,
                                 type: nodeType.company,
                                 symbol: symbolType.company,
                                 category: 3,
                                 text: name,
+                                fromNum: 0,
+                                toNum: 0,
                                 label: formatLabel(name),
-                                value: 10 - level * 5,
+                                value: valueStep * 2,
                                 level: level + 1,
                                 uuid: tid
                             });
+                            subnode.indexId = myOrgChart._option.series[0].nodes.length - 1;
                         }
-                        // 处理link
-                        var lfound = false;
-                        //console.log(tid, sid);
-                        for (var j = 0; j < myoption.series[0].links.length; j++) {
-                            var link = myoption.series[0].links[j];
-                            if ("com_" + tid == link.target && sid == link.source) {
-                                lfound = true;
-                                break;
-                            }
-                        }
-                        if (!lfound) {
-                            var we = Math.random() * 50 + 1;
-                            //console.log(we);
-                            myoption.series[0].links.push({
-                                source: sid,
-                                target: "com_" + tid,
-                                text: "", // we, // "机构族谱",
-                     //           weight: we
-                            });
-                        }
+                        subnodes.push(subnode);
+                        // // 处理link
+                        // var lfound = false;
+                        // for (var j = 0; j < myOrgChart._option.series[0].links.length; j++) {
+                        //     var link = myOrgChart._option.series[0].links[j];
+                        //     if ("com_" + tid == link.target && sid == link.source) {
+                        //         lfound = true;
+                        //         break;
+                        //     }
+                        // }
+                        // if (!lfound) {
+                        //     var we = Math.random() * 50 + 1;
+                        //     myOrgChart._option.series[0].links.push({
+                        //         source: sid,
+                        //         target: "com_" + tid,
+                        //         text: "", // we, // "机构族谱",
+                        //         //           weight: we
+                        //     });
+                        // }
                     }
-//console.log(subnodes);
+                    refresh();
                     getMutiComExtendNode(subnodes);
                 }
-                setTimeout(refresh, 1000);
             }
         },
         fail: function (status) {
@@ -849,31 +634,15 @@ function getOrgFamilyNode(sid, type, cgy, level, oid) {
 
 }
 
-// 分行显示公司名、机构名
-function formatLabel(source) {
-    var result = "";
-    var len = source.length;
-
-    if (len > 6) {
-        var pos = parseInt(len / 2);
-        result = source.substring(0, pos) + "\n" + source.substring(pos, len);
-    } else {
-        result = source;
-    }
-    //console.log(len, result);
-    return result;
-}
-
+// 获取所有机构关联企业的投资企业
 function getMutiComExtendNode(comList) {
-    //console.log("getMutiComExtendNode", comList.length);
     for (var i = 0; i < comList.length; i++) {
         var item = comList[i];
-        getOrgComInvestNode(item.id, item.type, item.category, item.level, item.uuid);
+        getOrgComInvestNode(item.indexId, item.id, item.type, item.category, item.level, item.uuid);
     }
 }
-
-function getOrgComInvestNode(sid, type, cgy, level, uuid) {
-    //console.log("getCompanyExtendNode:", sid, type, cgy, level, uuid);
+// 机构--获取关联企业的投资企业（在此次设置企业的关联度）
+function getOrgComInvestNode(sIndex, sid, type, cgy, level, uuid) {
     $.ajax({
         url: commonUrls.monitorEntInvestUrl,              //请求地址
         type: "POST",                            //请求方式
@@ -890,55 +659,105 @@ function getOrgComInvestNode(sid, type, cgy, level, uuid) {
                 goToNotlogon();
             } else if (res.status == 'success') {
                 var response = res;
-
                 var data = response.entInvestInfos;
-
                 if (data && data.length > 0) {
+                    // 处理投资企业node
+                    var snode = myOrgChart._option.series[0].nodes[sIndex];
+                    // var snode;
+                    // for (var j = 0; j < myOrgChart._option.series[0].nodes.length; j++) {
+                    //     var inode = myOrgChart._option.series[0].nodes[j];
+                    //     if (sid == inode.name) {
+                    //         snode=inode;
+                    //         break;
+                    //     }
+                    // }
+
                     for (var i = 0; i < data.length; i++) {
-                        var tid = data[i].iUuid;
+                        var tid = data[i].iUuid; // 被投资企业
                         var name = data[i].name;
                         //var isNew=Math.random()>0.5;
                         var found = false;
-                        // 处理node
-                        for (var j = 0; j < myoption.series[0].nodes.length; j++) {
-                            if ("com_" + tid == myoption.series[0].nodes[j].name) {
+                        // 处理被投资企业node
+                        for (var j = 0; j < myOrgChart._option.series[0].nodes.length; j++) {
+                            var iname = myOrgChart._option.series[0].nodes[j].name;
+                            if ("com_" + tid == iname) {
                                 found = true;
-                                //myoption.series[0].nodes[j].category = 2;
+                                myOrgChart._option.series[0].nodes[j].toNum += 1;
+
+                                if (myOrgChart._option.series[0].nodes[j].level == nodeLevel.node_3) { // 如果是三级节点，源点计数
+                                    if (myOrgChart._option.series[0].nodes[j].toNum > 1) {
+                                        myOrgChart._option.series[0].nodes[j].category = 4;
+                                    }
+                                    snode.fromNum += 1; // 只计算相关的三级企业
+                                    snode.value += valueStep;
+                                    // console.log("found",myOrgChart._option.series[0].nodes[j].toNum,myOrgChart._option.series[0].nodes[j].level);
+                                    if (snode.fromNum > sliderMax) {
+                                        resetSliderRange(snode.fromNum);
+                                    } else {
+                                        resetSliderRange(sliderMax);
+                                    }
+                                }
+
+                                myOrgChart._option.series[0].links.push({
+                                    source: sid,
+                                    target: "com_" + tid,
+                                    text: "", // "投资企业",
+                                    sIndex: sIndex,
+                                    tIndex: j
+                                });
                                 break;
                             }
                         }
                         if (!found) { // 投资企业
-                            myoption.series[0].nodes.push({
+                            snode.fromNum += 1; // 只计算相关的三级企业
+                            snode.value += valueStep;
+                            if (snode.fromNum > sliderMax) {
+                                resetSliderRange(snode.fromNum);
+                            } else {
+                                resetSliderRange(sliderMax);
+                            }
+
+                            myOrgChart._option.series[0].nodes.push({ // 添加机构监控 -- 关联企业的投资企业 -- 三级企业
                                 name: "com_" + tid,
-                                symbol: symbolType.company,
                                 type: nodeType.company,
+                                symbol: symbolType.company,
                                 category: 2,
                                 text: name,
+                                fromNum: 0,
+                                toNum: 1,
                                 label: formatLabel(name),
-                                value: 10 - level * 5,
+                                value: valueStep,
                                 level: level + 1,
                                 uuid: tid
                             });
-                        }
-                        // 处理link
-                        var lfound = false;
-                        //console.log(tid, sid);
-                        for (var j = 0; j < myoption.series[0].links.length; j++) {
-                            var link = myoption.series[0].links[j];
-                            if ("com_" + tid == link.target && sid == link.source) {
-                                lfound = true;
-                                break;
-                            }
-                        }
-                        if (!lfound) {
-                            myoption.series[0].links.push({
+                            myOrgChart._option.series[0].links.push({
                                 source: sid,
                                 target: "com_" + tid,
                                 text: "", // "投资企业",
-                   //             weight: Math.random() * 50 + 1 // 20
+                                sIndex: sIndex,
+                                tIndex: myOrgChart._option.series[0].nodes.length - 1
                             });
                         }
+                        // // 处理link
+                        // var lfound = false;
+                        // //console.log(tid, sid);
+                        // for (var j = 0; j < myOrgChart._option.series[0].links.length; j++) {
+                        //     var link = myOrgChart._option.series[0].links[j];
+                        //     if ("com_" + tid == link.target && sid == link.source) {
+                        //         lfound = true;
+                        //         break;
+                        //     }
+                        // }
+                        // if (!lfound) {
+                        //     myOrgChart._option.series[0].links.push({
+                        //         source: sid,
+                        //         target: "com_" + tid,
+                        //         text: "", // "投资企业",
+                        //         //             weight: Math.random() * 50 + 1 // 20
+                        //     });
+                        // }
                     }
+                    refresh();
                 }
             }
         },
@@ -955,3 +774,104 @@ function getOrgComInvestNode(sid, type, cgy, level, uuid) {
         }
     });
 }
+
+function resetSliderRange(value) {
+    $("#range_slider").slider({
+        orientation: "vertical",
+        range: true,
+        max: value,
+        min: 0,
+        values: [0, value],
+        slide: function (event, ui) {
+            $("#range_slider .ui-slider-handle-min span").html(ui.values[0]);
+            $("#range_slider .ui-slider-handle-max span").html(ui.values[1]);
+
+            var max = ui.values[1], min = ui.values[0], nodes = myOrgChart._option.series[0].nodes;
+            var tempList = [];
+            for (var i = 1; i < nodes.length; i++) { // 对监控源不做判断,处理二级节点
+                nodes[i].tempFrom = nodes[i].fromNum;
+                nodes[i].tempTo = nodes[i].toNum;
+                if (nodes[i].level == nodeLevel.node_2) {
+                    if (nodes[i].tempFrom < min || nodes[i].tempFrom > max) {
+                        tempList.push(nodes[i].name);
+                        nodes[i].ignore = true;
+                    } else {
+                        nodes[i].ignore = false;
+                    }
+                } else {
+                    nodes[i].ignore = false;
+                }
+            }
+
+            for (var iN = 0; iN < tempList.length; iN++) {
+                var name = tempList[iN];
+                for (var ilink = 0; ilink < myOrgChart._option.series[0].links.length; ilink++) {
+                    var link = myOrgChart._option.series[0].links[ilink];
+                    if (name == link.source) {
+                        var tname = link.target;
+                        for (var i = 1; i < nodes.length; i++) { // 处理三级节点
+                            var tnode = nodes[i];
+                            if (tname == tnode.name) {
+                                if (tnode.level == nodeLevel.node_3) {
+                                    tnode.tempTo -= 1;
+                                    if (tnode.tempTo <= 0) {
+                                        tnode.ignore = true;
+                                    } else {
+                                        tnode.ignore = false;
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            myOrgChart.refresh();
+        }
+    });
+    $("#range_slider .ui-slider-handle-min span").html(0);
+    $("#range_slider .ui-slider-handle-max span").html(value);
+    for (var i = 0; i < myOrgChart._option.series[0].nodes.length; i++) {
+        var cnode = myOrgChart._option.series[0].nodes[i];
+        if (cnode.level == nodeLevel.node_2) {
+            cnode.value = 6 + 10 * cnode.fromNum / value;
+        }
+    }
+    sliderMax = value;
+}
+
+// 复位图谱
+function resetChart() {
+    var nodes = myOrgChart._option.series[0].nodes;
+    for (var i = 1; i < nodes.length; i++) {
+        var node = nodes[i];
+        node.ignore = false;
+        if (node.level == nodeLevel.node_2) {
+            node.category = 3;
+        } else if (node.level == nodeLevel.node_3) {
+            if (node.toNum > 1) {
+                node.category = 4;
+            } else {
+                node.category = 2;
+            }
+        }
+    }
+    $("#range_slider .ui-slider-handle-min span").html(0);
+    $("#range_slider .ui-slider-handle-max span").html(sliderMax);
+    $("#range_slider").slider("values", [0, sliderMax]);
+
+    myOrgChart._option.legend.data=['关联经营实体','关联经营实体对外投资企业','关键企业'];
+    myOrgChart.refresh();
+}
+
+function printOption(value) {
+    var nodes = myOrgChart._option.series[0].nodes;
+    for (var i = 1; i < nodes.length; i++) {
+        var node = nodes[i];
+        if (node.level == value) {
+            console.log(i, node.category);
+        }
+    }
+}
+
+

@@ -316,6 +316,38 @@ function gotoCompanyPage(id, type,stock_code) {  // 0---A股；1---新三板；2
         window.location.href = murl;
     }
 }
+function openCompanyByCode(code, type) {
+    $.ajax({
+        url: commonUrls.companyIdUrl,              //请求地址
+        type: "POST",                            //请求方式
+        data: { //请求参数
+            id: code
+        },
+        dataType: "text",
+        success: function (res) {
+            var response = res;
+            console.log(res);
+            if (res) {
+                console.log("if", res);
+                var id = res;
+                openCompanyPage(id, type,code);
+            } else {
+                console.log("not found:", code);
+            }
+        },
+        fail: function (status) {
+            console.error("event id=", id, " error. status=", status);
+        },
+        statusCode: {
+            404: function () {
+                goTo404();
+            },
+            500: function () {
+                goTo500();
+            }
+        }
+    });
+}
 function gotoCompanyByCode(code, type) {
     $.ajax({
         url: commonUrls.companyIdUrl,              //请求地址
@@ -392,10 +424,57 @@ function gotoCompanybyId(id) {
         });
     }
 }
+function openCompanyPage(id, type,stock_code) {  // 0---A股；1---新三板；2---非上市
+    console.log("gotocompany:", id, ', ', type);
+    if (id && id != "" && id != null && id.length > 3) {
+        var murl = "companyinfo.html?id=" + id + "&comtype=" + type + "&uname="
+            + v_userModel.$data.uname + "&score=" + v_userModel.$data.uscore;
+        window.open(murl,"_blank");
+    }
+}
+function openCompanybyId(id) {
+    console.log(id);
+    if (id && id != "NULL" && id != "-") {
+        $.ajax({
+            url: commonUrls.companyIdUrl,              //请求地址
+            type: "POST",                            //请求方式
+            data: { //请求参数
+                id: id
+            },
+            dataType: "text",
+            success: function (res) {
+                var response = res;
+                console.log(res);
+                if (res) {
+                    console.log("gotoCompanybyId：上市，", res);
+                    if (res.substr(0, 2) == "80") { // 新三板
+                        gotoCompanyPage(id, 1,res);
+                    } else { // A股
+                        gotoCompanyPage(id, 0,res);
+                    }
+                } else {
+                    console.log("gotoCompanybyId: 非上市");
+                    openCompanyPage(id, 2,"");
+                }
+            },
+            fail: function (status) {
+                console.error("event id=", id, " error. status=", status);
+            },
+            statusCode: {
+                404: function () {
+                    goTo404();
+                },
+                500: function () {
+                    goTo500();
+                }
+            }
+        });
+    }
+}
 
 function goTo404() {
     console.log("goto 404");
-//window.location.href="404.html";
+window.location.href="404.html";
 }
 function goTo500() {
 
