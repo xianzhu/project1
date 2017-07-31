@@ -19,16 +19,9 @@ var relation_org_option = {
     legend: {
         x: 'right',
         padding:[5,75,5,5],
-        data:['关联经营实体','关联经营实体对外投资企业','关键企业','当前选中','投资方','被投资方','选中实体非相关'],
+        data:['关联经营实体','当前选中','关联经营实体对外投资企业','关键企业','投资方','被投资方'],
         selected: {
-            '监控源': false,
-            '关联经营实体':true,
-            '关联经营实体对外投资企业':true,
-            '关键企业':true,
-            '当前选中':true,
-            '投资方':true,
-            '被投资方':true,
-            '选中实体非相关':true
+            '监控源': false
         }
     },
     series : [
@@ -70,7 +63,7 @@ var relation_org_option = {
                                 lineWidth : 5
                             },
                             label: {
-                                show: false,
+                                show: true,
                                 position:'top',
                                 textStyle: {
                                     color: '#000080',
@@ -85,10 +78,10 @@ var relation_org_option = {
                     itemStyle: {
                         normal: {
                             // color : '#9acd32'
-                            color : '#9293ea',
+                            color : '#c1daea',
                             nodeStyle : {
                                 brushType : 'both',
-                                strokeColor : '#9293ea',
+                                strokeColor : '#c1daea',
                                 lineWidth : 5
                             },
                             label: {
@@ -143,70 +136,6 @@ var relation_org_option = {
                             }
                         }
                     }
-                },
-                {
-                    name:'投资方',
-                    itemStyle: {
-                        normal: {
-                            color : '#3eff14',
-                            nodeStyle : {
-                                brushType : 'both',
-                                strokeColor : '#3eff14',
-                                lineWidth : 5
-                            },
-                            label: {
-                                show: false,
-                                position:'top',
-                                textStyle: {
-                                    color: '#0000ff',
-                                    size:8
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    name:'被投资方',
-                    itemStyle: {
-                        normal: {
-                            color : '#899724',
-                            nodeStyle : {
-                                brushType : 'both',
-                                strokeColor : '#899724',
-                                lineWidth : 5
-                            },
-                            label: {
-                                show: false,
-                                position:'top',
-                                textStyle: {
-                                    color: '#0000ff',
-                                    size:8
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    name:'选中实体非相关',
-                    itemStyle: {
-                        normal: {
-                            // color : '#9acd32'
-                            color : '#eee',
-                            nodeStyle : {
-                                brushType : 'both',
-                                strokeColor : '#c1daea',
-                                lineWidth : 5
-                            },
-                            label: {
-                                show: false,
-                                position:'top',
-                                textStyle: {
-                                    color: '#ccc',
-                                    size:8
-                                }
-                            }
-                        }
-                    }
                 }
             ],
             itemStyle: {
@@ -228,7 +157,7 @@ var relation_org_option = {
             },
             draggable: false,
             minRadius : 3,
-            maxRadius : 16,
+            maxRadius : 13,
             linkSymbol: 'arrow',
             linkSymbolSize:[10,5],
             gravity: 1.1,
@@ -257,7 +186,7 @@ var relation_company_option = {
     },
     legend: {
         x: 'right',
-        data:['监控源','被投资企业']
+        data:['监控源','当前选中','其他','被投资企业']
     },
     series : [
         {
@@ -281,6 +210,7 @@ var relation_company_option = {
                     name: '当前选中',
                     itemStyle: {
                         normal: {
+                            //color : '#87cdfa'
                             color:'#38a6ec',
                             nodeStyle : {
                                 brushType : 'both',

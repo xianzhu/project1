@@ -119,9 +119,8 @@
     position: absolute;
     bottom: 5%;
     right:15px;
-    height: calc(50% - 40px);
-    max-height:150px;
-    min-height:80px;
+    height: calc(100% - 80px);
+    max-height:300px;
     width:5px;
 }
 a.ui-slider-handle:focus{

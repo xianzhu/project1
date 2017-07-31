@@ -207,10 +207,10 @@
                                         <div class="feed-element" v-for="item in report" style="display:none;"
                                              v-show="report|checkNotEmptyFilter">
                                             <div class="display-flow-root">
-                                                <strong style="cursor:pointer;"
+                                                <strong class="link-handle-pointer project-brand"
                                                         v-on:click="openPdfOnline(item.url)"
                                                         v-text="item.report_name"></strong>
-                                                <small class="text-muted pull-right text-navy"
+                                                <small class="text-muted pull-right"
                                                        v-text="item.time"></small>
                                             </div>
                                         </div>
