@@ -30,6 +30,9 @@ var v_homepageModel = new Vue({
             } else {
                 return "";
             }
+        },
+        toThousandsFormat:function (value) {
+            return toThousandsFormat(value);
         }
     }
 });
@@ -290,7 +293,7 @@ function getPanelData() {
 }
 // 仪表盘数据
 function getDashboardData() {
-    // console.log("getDashboardData");
+    // console.log("get DashboardData");
     $.ajax({
         url: commonUrls.homepageDashDataUrl,              //请求地址
         type: "POST",                            //请求方式
@@ -314,22 +317,22 @@ function getDashboardData() {
                     if (item.name == "企业") {
                         dashC = item;
                         v_homepageModel.$data.companyDashData = {
-                            current: item.count, total: item.statMax
+                            current: item.count, total: item.total
                         };
                     } else if (item.name == "报告") {
                         dashR = item;
                         v_homepageModel.$data.reportDashData = {
-                            current: item.count, total: item.statMax
+                            current: item.count, total: item.total
                         };
                     } else if (item.name == "情报") {
                         dashE = item;
                         v_homepageModel.$data.elasticDashData = {
-                            current: item.count, total: item.statMax
+                            current: item.count, total: item.total
                         };
                     } else if (item.name == "项目") {
                         dashP = item;
                         v_homepageModel.$data.projDashData = {
-                            current: item.count, total: item.statMax
+                            current: item.count, total: item.total
                         };
                     }
                 }

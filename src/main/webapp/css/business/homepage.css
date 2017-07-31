@@ -86,7 +86,7 @@
     }
 }
 .dashboard-ibox-content{
-    padding:20px 20px 0 20px;
+    padding:0px 20px 0 20px;
 }
 @media (min-width:1024px) and (max-width:1199px){
     .col-item-lm-half-pie,.col-item-lm-half-bar{
@@ -150,8 +150,12 @@
 .dash-data{
     position:absolute;
     right:20px;
-    top:5px;
-    padding-right:5px;
+    top:10px;
+    font-size:16px;
+    /*padding-right:5px;*/
+}
+.dash-data-today strong{
+    margin-right:3px;
 }
 .dash-title{
     height: 28px;
@@ -163,6 +167,7 @@
 #project_dashboard_chart,#company_dashboard_chart,
 #report_dashboard_chart,#elastic_dashboard_chart{
     height:180px;
+    margin-top:20px;
 }
 #event_bar_charts,#event_pie_charts,#event_mix_charts{
     height:280px;

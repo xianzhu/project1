@@ -546,32 +546,6 @@ function checkNotEmptyList(value) {
     return result;
 }
 
-// 退出登录
-function loginOut() {
-    $.ajax({
-        url: commonUrls.loginoutUrl,
-        type: "POST",    //请求方式
-        data: {},     //请求参数
-        dataType: "json",
-        success: function (res) {
-            console.log("res:", res);
-            //var response = res.data;
-            //if(res.status=="success") {
-            //    window.location.href = "index.html";
-            //}else if(res.status=="failure"){
-            //    if(res.message=="未登录或者登录已经失效"){
-            //        goToNotlogon();
-            //    }
-            //}
-            window.location.href = "index.html";
-        },
-        fail: function (res) {
-            console.error("error. message=", res);
-            window.location.href = "index.html";
-        }
-    });
-}
-
 // key-value键值对
 function Map() {
     var struct = function (key, value) {
@@ -639,7 +613,6 @@ function Map() {
 function toRateFormat(value, fixed) {
     return parseFloat(value * 100).toFixed(fixed) + "%";
 }
-
 function toDataFormat(value) {
     var result = "";
     if (value && value != null && value.toLowerCase() != "null") {
@@ -650,12 +623,20 @@ function toDataFormat(value) {
     }
     return result;
 }
-
 function toAmountFormat(value, fixed, unit) {
     var value = (parseFloat(value).toFixed(fixed) + '').replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,');
     return unit + value;
 }
-
+function toThousandsFormat(num) {
+    var num = (num || 0).toString(), result = '';
+    while (num.length > 3) {
+        result = ',' + num.slice(-3) + result;
+        num = num.slice(0, num.length - 3);
+    }
+    if (num) { result = num + result; }
+    return result;
+}
+// 登录
 function login() {
     var name = "test1";
     var password = "test1";
@@ -690,6 +671,31 @@ function login() {
     });
 
     return false;
+}
+// 退出登录
+function loginOut() {
+    $.ajax({
+        url: commonUrls.loginoutUrl,
+        type: "POST",    //请求方式
+        data: {},     //请求参数
+        dataType: "json",
+        success: function (res) {
+            console.log("res:", res);
+            //var response = res.data;
+            //if(res.status=="success") {
+            //    window.location.href = "index.html";
+            //}else if(res.status=="failure"){
+            //    if(res.message=="未登录或者登录已经失效"){
+            //        goToNotlogon();
+            //    }
+            //}
+            window.location.href = "index.html";
+        },
+        fail: function (res) {
+            console.error("error. message=", res);
+            window.location.href = "index.html";
+        }
+    });
 }
 
 function setMonitorData(type, content, mid) {
