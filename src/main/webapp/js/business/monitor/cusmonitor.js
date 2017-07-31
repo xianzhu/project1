@@ -12,11 +12,11 @@ var nodeLevel = {
 var categoryModel={
     source:0, // 监控源
     current:1, // 当前选中
-    node_3:2, // 关联经营实体对外投资企业
+    node_3:2, // 对外投资企业
     node_2:3, // 关联经营实体
     node_3_key:4, // 关键企业
     node_2_from:5, // 投资方
-    node_2_to:6, // 被投资方
+    node_2_to:6, // 关联机构
     normal:7 // 选中实体非相关
 
 }
@@ -349,7 +349,7 @@ function updateData(item) {
             myOrgChart.resize && myOrgChart.resize();
         });
         myOrgChart.setOption(myoption, true);
-        myOrgChart._option.legend.data=['关联经营实体','关联经营实体对外投资企业','关键企业'];
+        myOrgChart._option.legend.data=['关联经营实体','对外投资企业','关键企业'];
         getOrgInfo(item.mid);
         getOrgExtendNode("org_" + item.mid, nodeType.org, 0, 0, item.mid);
     }
@@ -391,7 +391,7 @@ function getOrgComExtendNode(sid, type, cgy, level, uuid) {
     var links = myOrgChart._option.series[0].links, nodes = myOrgChart._option.series[0].nodes;
     for (var i = 0; i < links.length; i++) {
         var link = links[i];
-        if (link.source == sid) { // 被投资方--〉tIndex
+        if (link.source == sid) { // 关联机构--〉tIndex
             var tnode = nodes[link.tIndex];
             if (tnode.level == nodeLevel.node_2) {
                 tnode.category = 5;
@@ -408,7 +408,7 @@ function getOrgComExtendNode(sid, type, cgy, level, uuid) {
         }
     }
 
-    myOrgChart._option.legend.data=['当前选中','投资方','被投资方','关联经营实体对外投资企业','关键企业','选中实体非相关'];
+    myOrgChart._option.legend.data=['当前选中','投资方','关联机构','对外投资企业','关键企业','选中实体非相关'];
     setTimeout(refresh, 1000);
 }
 function getOrgComExtendNode_old(sid, type, cgy, level, uuid) {
@@ -860,7 +860,7 @@ function resetChart() {
     $("#range_slider .ui-slider-handle-max span").html(sliderMax);
     $("#range_slider").slider("values", [0, sliderMax]);
 
-    myOrgChart._option.legend.data=['关联经营实体','关联经营实体对外投资企业','关键企业'];
+    myOrgChart._option.legend.data=['关联经营实体','对外投资企业','关键企业'];
     myOrgChart.refresh();
 }
 
