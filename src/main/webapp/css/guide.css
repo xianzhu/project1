@@ -96,7 +96,8 @@ ul{
     text-indent: 2em;
     font-size:16px;
     margin-left:16px;
-    margin-right:25%;
+    margin-right:16px;
+    /*margin-right:25%;*/
     orphans:0; text-align:left;
 }
 .main-side .normal-p-li{
