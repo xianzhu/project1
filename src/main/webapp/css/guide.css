@@ -1,0 +1,139 @@
+body{
+    font-family:宋体;
+}
+
+.font-16{
+
+    font-size:16px;
+}
+
+.font-105{
+    font-size:10.5px;
+}
+
+.f-cal{
+    font-family:Calibri;
+}
+
+.f-b{
+    font-weight:bold;
+}
+
+h1,h2,h3{
+    orphans:0; page-break-after:avoid; page-break-inside:avoid; text-align:justify;
+}
+
+ul{
+    -webkit-padding-start: 30px;
+}
+
+.m-t{
+    margin-top:15px;
+}
+
+.backTop{
+    margin-top:5px;
+    cursor:pointer;
+}
+
+.nav-header{
+    margin-top:10px;
+    margin-left:15px;
+
+    font-size:18px;
+}
+.nav-list{
+    -webkit-margin-before: 0.5em;
+}
+.nav-item{
+    cursor:pointer;
+    /*font-weight:bold;*/
+    padding:5px 0;
+}
+.cur{ background:#293846; color:#fff;font-weight:bold;}
+.nav-side{
+    width:240px;
+    position:fixed;
+    height:100%;
+    overflow-y: auto;
+    color:#a7b1c2;
+    background-color: #2f4050;
+    z-index: 10;
+}
+.main-side{
+    margin:0 0 0 240px;
+    position:absolute;
+    padding:0 30px;
+    /*height:calc(100% - 70px);*/
+    width:calc(100% - 250px);
+    overflow-y:auto;
+    box-sizing: border-box;
+}
+
+.main-side h1{
+    font-size:32px; line-height:241%; margin:17px 0px 16.5px;
+    font-weight:bold;
+}
+.main-side h2{
+    font-size:24px; line-height:173%; margin:13px 0px;
+    font-weight:bold;
+
+}
+.main-side h3{
+    font-size:20px; line-height:173%; margin:13px 0px;
+    font-weight:bold;
+}
+.main-side h3 i{
+    margin-right:4px;
+}
+.main-side h4{
+    font-size:18px; font-weight:bold;
+    line-height:173%;
+    margin:13px 0px; orphans:0;
+
+}
+.main-side .normal-p{
+    text-indent: 2em;
+    font-size:16px;
+    margin-left:16px;
+    margin-right:25%;
+    orphans:0; text-align:left;
+}
+.main-side .normal-p-li{
+    font-size:16px;
+    margin-left:16px;
+    orphans:0;
+    text-align:left;
+}
+.main-side .img-p{
+    margin:0px 0px 0px 15px;
+    orphans:0; text-align:center;
+}
+.main-side .p-m-18{
+    text-indent: 2em;
+    margin:0px 0px 0px 18px;
+   orphans:0; text-align:left;
+}
+.main-side .p-m-36{
+    text-indent:2em;
+    margin:0px 0px 0px 36px; orphans:0; text-align:left;
+}
+.main-side .p-m-100{
+    margin:0px 0px 0px 100px; orphans:0; text-align:left;
+}
+.main-side .p-indent{
+    margin-left: 108px;
+}
+.img-normal{
+    text-align:center;cursor:pointer;
+    -aw-left-pos:0px; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0px; -aw-wrap-type:inline;
+}
+.main-content{
+    width:calc(99% - 20px);
+}
+
+.content-part{
+
+}
+
+
