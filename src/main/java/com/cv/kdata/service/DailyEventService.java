@@ -150,7 +150,7 @@ public class DailyEventService {
 
 		String sql = "select event_id, event_title, happen_date, ent_cn_name,invest_type "
 				+ "from ops_invest_event_detail "
-				+ "where create_time > ? ";
+				+ "where update_time > ? ";
 
 		if(!StringUtil.isNullOrEmpty(type)){
 			sql = sql + "and invest_type=? ";
@@ -203,7 +203,7 @@ public class DailyEventService {
 
 		String sql = "select event_id, event_title, happen_date, ent_cn_name,exit_type "
 				+ "from ops_exit_event_detail "
-				+ "where create_time > ? ";
+				+ "where update_time > ? ";
 		if(!StringUtil.isNullOrEmpty(type)){
 			sql = sql + "and exit_type=? ";
 			para.add(type);
