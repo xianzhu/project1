@@ -828,7 +828,7 @@ function resizeLeftSide(isLoad) {
     // console.log("resizeLeftSide");
     var bwidth = $('body').width();
 
-    var nw = $("#homemodule_news_ibox").width(), btmH = getCalendarHeight(nw),
+    var nw = $("#homemodule_news_ibox").width(), btmH = getCalendarHeight(nw)-2,
         pheight = $("#page-wrapper").height() - btmH;
 
     if (!isLoad) {
@@ -853,7 +853,6 @@ function resizeLeftSide(isLoad) {
         $("#event_panel_Chart").css('height', topH / 2 - 8);
 
         $("#event_mix_charts").css('height', midH-20);
-        // console.log("显示table、mix", midH-20);
 
         $("#project_dashboard_chart").css('height', btmH);
         $("#company_dashboard_chart").css('height', btmH);
