@@ -89,8 +89,8 @@
     /*padding:0 20px;*/
     padding-left:20px;
     padding-right:20px;
-    padding-top:0;
-    padding-bottom:0;
+    /*padding-top:0;*/
+    /*padding-bottom:0;*/
 }
 @media (min-width:1024px) and (max-width:1199px){
     .col-item-lm-half-pie,.col-item-lm-half-bar{
