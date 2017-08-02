@@ -34,6 +34,9 @@ var v_personBasicModel=new Vue({
     ready: function () {
     },
     methods: {
+        openElastic:function(url){
+            sendMonitor({url:url});
+        },
         changeOrder:function(){
             this.elasticPage=0;
             getSubElasticPage(this.elasticFilterKey);

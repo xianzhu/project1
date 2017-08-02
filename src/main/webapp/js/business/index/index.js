@@ -2,6 +2,7 @@
  * Created by a88u on 2017/7/14.
  */
 
+
 function login() {
     var url=commonUrls.loginUrl;
     var uname = $("#unameIpt").val(), password = $("#pwdIpt").val();
@@ -19,7 +20,8 @@ function login() {
         dataType: 'json',
         data: {
             user_name: uname,
-            password: pwd
+            password: pwd,
+            navInfo:commonNavInfo
         },
         success: function (res) {
             console.log(res);
@@ -29,7 +31,7 @@ function login() {
                 $(".form-control-warning-group").css("display", 'block');
             } else {
                 var response = res;
-                console.log("login success:", response);
+                console.log("login success:", response.token);
                 window.location.href = "homePage.html?uname=" + uname + "&score=0";
             }
         },
@@ -75,4 +77,3 @@ function resizeEarthImg() {
         }
     }
 }
-

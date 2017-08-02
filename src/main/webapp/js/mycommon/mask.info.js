@@ -23,8 +23,9 @@ function initModelMaskVue(){
             header:""
         },
         methods:{
-            openurl:function (url) {
+            openCalendarUrl:function (url) {
                 openUrl(url);
+                sendMonitor({url:url});
             }
         }
     });

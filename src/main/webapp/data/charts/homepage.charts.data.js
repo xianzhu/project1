@@ -922,7 +922,7 @@ var dashElasticOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['45%', '52%'],    // 默认全局居中
+            center: ['50%', '52%'],    // 默认全局居中
             radius: '90%',
             min: 0,
             max: 5000,

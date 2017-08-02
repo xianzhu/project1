@@ -224,7 +224,22 @@ function openUrl(url) {
     window.open(url);
 }
 
+// 获取当前页
+function getCurrentPageUrl() {
+    var urlStr=window.location.href;
+    var url = decodeURI(urlStr);
+
+    var args = url.split(".html");
+    var retval;
+
+    var str = args[0];
+    args = str.split("/");
+    retval=args[args.length-1];
+    return retval;
+
+}
 function sendMonitor(options) {
+    var src = commonUrls.trackingUrl,localUrl=getCurrentPageUrl();
     var img = new Image(),
         id = 'img' + new Date();
     img.id = id;
@@ -232,8 +247,15 @@ function sendMonitor(options) {
         window[id] = undefined;
     };
     window[id] = img;
-    console.log("记录埋点");
-    img.src = 'testData/loginout.json?url=' + options.url; // 此处设置src
+
+    var params = "?reqpage="+localUrl;
+    $.each(options, function (name, value) {
+        params = params + "&" + name;
+        params += "=";
+        params = params + value;
+    });
+    src=src+params;
+    img.src = src; // 此处设置src
 }
 
 // 跳转综合查询

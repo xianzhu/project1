@@ -41,9 +41,6 @@ var v_cvReportModel=new Vue({
         openPdfOnline:function(path){
             openFilesOnline(path);
         },
-        openNews:function(url){
-            sendMonitor({url:url});
-        },
         pageControlFilter:function(type,value){
             if(value==0){
                 return this.cvResultPage!=0;

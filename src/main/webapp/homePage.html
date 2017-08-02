@@ -458,7 +458,7 @@
                        v-text="item.name"></a>
                 </dt>
                 <dd class="accordion-content accordionItem is-collapsed" aria-hidden="true" v-bind:id="item.domid">
-                    <p v-text="item.comment" class="calendar-open-link" v-on:click="openurl(item.url)"></p>
+                    <p v-text="item.comment" class="calendar-open-link" v-on:click="openCalendarUrl(item.url)"></p>
                 </dd>
             </div>
         </dl>
