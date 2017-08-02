@@ -30,6 +30,9 @@ var v_homepageModel = new Vue({
             } else {
                 return "";
             }
+        },
+        toThousandsFormat:function (value) {
+            return toThousandsFormat(value);
         }
     }
 });
@@ -290,7 +293,7 @@ function getPanelData() {
 }
 // 仪表盘数据
 function getDashboardData() {
-    // console.log("getDashboardData");
+    // console.log("get DashboardData");
     $.ajax({
         url: commonUrls.homepageDashDataUrl,              //请求地址
         type: "POST",                            //请求方式
@@ -314,22 +317,22 @@ function getDashboardData() {
                     if (item.name == "企业") {
                         dashC = item;
                         v_homepageModel.$data.companyDashData = {
-                            current: item.count, total: item.statMax
+                            current: item.count, total: item.total
                         };
                     } else if (item.name == "报告") {
                         dashR = item;
                         v_homepageModel.$data.reportDashData = {
-                            current: item.count, total: item.statMax
+                            current: item.count, total: item.total
                         };
                     } else if (item.name == "情报") {
                         dashE = item;
                         v_homepageModel.$data.elasticDashData = {
-                            current: item.count, total: item.statMax
+                            current: item.count, total: item.total
                         };
                     } else if (item.name == "项目") {
                         dashP = item;
                         v_homepageModel.$data.projDashData = {
-                            current: item.count, total: item.statMax
+                            current: item.count, total: item.total
                         };
                     }
                 }
@@ -825,7 +828,7 @@ function resizeLeftSide(isLoad) {
     // console.log("resizeLeftSide");
     var bwidth = $('body').width();
 
-    var nw = $("#homemodule_news_ibox").width(), btmH = getCalendarHeight(nw),
+    var nw = $("#homemodule_news_ibox").width(), btmH = getCalendarHeight(nw)-2,
         pheight = $("#page-wrapper").height() - btmH;
 
     if (!isLoad) {
@@ -850,7 +853,6 @@ function resizeLeftSide(isLoad) {
         $("#event_panel_Chart").css('height', topH / 2 - 8);
 
         $("#event_mix_charts").css('height', midH-20);
-        // console.log("显示table、mix", midH-20);
 
         $("#project_dashboard_chart").css('height', btmH);
         $("#company_dashboard_chart").css('height', btmH);

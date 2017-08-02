@@ -19,15 +19,15 @@ var relation_org_option = {
     legend: {
         x: 'right',
         padding:[5,75,5,5],
-        data:['关联经营实体','关联经营实体对外投资企业','关键企业','当前选中','投资方','被投资方','选中实体非相关'],
+        data:['关联经营实体','对外投资企业','关键企业','当前选中','投资方','关联机构','选中实体非相关'],
         selected: {
             '监控源': false,
             '关联经营实体':true,
-            '关联经营实体对外投资企业':true,
+            '对外投资企业':true,
             '关键企业':true,
             '当前选中':true,
             '投资方':true,
-            '被投资方':true,
+            '关联机构':true,
             '选中实体非相关':true
         }
     },
@@ -81,7 +81,7 @@ var relation_org_option = {
                     }
                 },
                 {
-                    name:'关联经营实体对外投资企业',
+                    name:'对外投资企业',
                     itemStyle: {
                         normal: {
                             // color : '#9acd32'
@@ -145,7 +145,7 @@ var relation_org_option = {
                     }
                 },
                 {
-                    name:'投资方',
+                    name:'关联机构',
                     itemStyle: {
                         normal: {
                             color : '#3eff14',
@@ -166,7 +166,7 @@ var relation_org_option = {
                     }
                 },
                 {
-                    name:'被投资方',
+                    name:'投资方',
                     itemStyle: {
                         normal: {
                             color : '#899724',

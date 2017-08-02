@@ -222,4 +222,4 @@ console.log(ice.candidate);
     }, function(){});}
 //Test: Print the IP addresses into the console
 
-getIPs(function(ip){console.log("getIPs",ip);});
+getIPs(function(ip){console.log("get IPs",ip);});

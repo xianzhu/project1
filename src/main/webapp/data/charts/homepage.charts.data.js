@@ -59,16 +59,6 @@ var orgTrendsOption = {
     xAxis: {
         type: 'category',
         boundaryGap: false,
-        // margin : 4,
-        //nameGap : 1,
-        // axisLabel : {
-        //    show:true,
-        //    textStyle : {
-        //        color : '#000000',
-        //        fontSize : 4
-        //    },
-        //    margin : 8  // 标签与X轴距离
-        // },
         axisLine: {
             lineStyle: {
                 color: 'rgba(25,25,25,1)',
@@ -96,8 +86,7 @@ var orgTrendsOption = {
             scale: true,
             axisLabel: {
                 textStyle: {
-                    color: '#3c3c3c',
-                    fontSize: 4
+                    color: '#3c3c3c'
                 },
                 margin: 4
             },
@@ -438,7 +427,7 @@ var panelMergeOption = {
             return [0,0];
         },
         textStyle: {
-            fontSize: 8
+            fontSize: 10
         },
         formatter:function (params) {
             var result = params[0].name;
@@ -664,7 +653,7 @@ var dashProjOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '52%'],    // 默认全局居中
+            center: ['45%', '52%'],    // 默认全局居中
             // radius: '75%',
             radius: '90%',
             min: 0,
@@ -750,7 +739,7 @@ var dashCompanyOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '52%'],    // 默认全局居中
+            center: ['45%', '52%'],    // 默认全局居中
             // radius: '75%',
             radius: '90%',
             min: 0,
@@ -836,7 +825,7 @@ var dashReportOption = {
         {
             name: '当日量',
             type: 'gauge',
-            center: ['50%', '52%'],    // 默认全局居中
+            center: ['45%', '52%'],    // 默认全局居中
             // radius: '75%',
             radius: '90%',
             min: 0,

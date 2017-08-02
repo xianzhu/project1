@@ -870,6 +870,7 @@ html, body {
     top: 5px;
     left: 5px;
     position: relative;
+    cursor:pointer;
 }
 
 #nav-wrapper {

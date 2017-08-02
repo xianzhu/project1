@@ -399,7 +399,8 @@ $(document).ready(function () {
     fix_height();
 
     $("#logo-img-bar").click(function(){
-        console.log(getWindowSize());
+        // console.log(getWindowSize());
+        window.open("guide.html","_blank");
     });
 
     $('.check-link').click(function () {

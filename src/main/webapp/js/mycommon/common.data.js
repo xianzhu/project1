@@ -74,6 +74,8 @@ var commonUrls_real = {
 
     industryToolsUrl:"tools/ciassociated", // 行业统计
     simulationUrl:"tools/xsblistmatching", // 模拟计算
+
+    trackingUrl:"stat/operation" // 埋点
 };
 
 var commonUrls_real_local = {
@@ -149,6 +151,8 @@ var commonUrls_real_local = {
 
     industryToolsUrl:hostUrl+"tools/ciassociated", // 行业统计
     simulationUrl:hostUrl+"tools/xsblistmatching", // 模拟计算
+
+    trackingUrl:hostUrl+"stat/operation" // 埋点
 };
 
 var commonUrls = commonUrls_real;

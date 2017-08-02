@@ -224,7 +224,22 @@ function openUrl(url) {
     window.open(url);
 }
 
+// 获取当前页
+function getCurrentPageUrl() {
+    var urlStr=window.location.href;
+    var url = decodeURI(urlStr);
+
+    var args = url.split(".html");
+    var retval;
+
+    var str = args[0];
+    args = str.split("/");
+    retval=args[args.length-1];
+    return retval;
+
+}
 function sendMonitor(options) {
+    var src = commonUrls.trackingUrl,localUrl=getCurrentPageUrl();
     var img = new Image(),
         id = 'img' + new Date();
     img.id = id;
@@ -232,8 +247,15 @@ function sendMonitor(options) {
         window[id] = undefined;
     };
     window[id] = img;
-    console.log("记录埋点");
-    img.src = 'testData/loginout.json?url=' + options.url; // 此处设置src
+
+    var params = "?reqpage="+localUrl;
+    $.each(options, function (name, value) {
+        params = params + "&" + name;
+        params += "=";
+        params = params + value;
+    });
+    src=src+params;
+    img.src = src; // 此处设置src
 }
 
 // 跳转综合查询
@@ -546,32 +568,6 @@ function checkNotEmptyList(value) {
     return result;
 }
 
-// 退出登录
-function loginOut() {
-    $.ajax({
-        url: commonUrls.loginoutUrl,
-        type: "POST",    //请求方式
-        data: {},     //请求参数
-        dataType: "json",
-        success: function (res) {
-            console.log("res:", res);
-            //var response = res.data;
-            //if(res.status=="success") {
-            //    window.location.href = "index.html";
-            //}else if(res.status=="failure"){
-            //    if(res.message=="未登录或者登录已经失效"){
-            //        goToNotlogon();
-            //    }
-            //}
-            window.location.href = "index.html";
-        },
-        fail: function (res) {
-            console.error("error. message=", res);
-            window.location.href = "index.html";
-        }
-    });
-}
-
 // key-value键值对
 function Map() {
     var struct = function (key, value) {
@@ -639,7 +635,6 @@ function Map() {
 function toRateFormat(value, fixed) {
     return parseFloat(value * 100).toFixed(fixed) + "%";
 }
-
 function toDataFormat(value) {
     var result = "";
     if (value && value != null && value.toLowerCase() != "null") {
@@ -650,12 +645,20 @@ function toDataFormat(value) {
     }
     return result;
 }
-
 function toAmountFormat(value, fixed, unit) {
     var value = (parseFloat(value).toFixed(fixed) + '').replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,');
     return unit + value;
 }
-
+function toThousandsFormat(num) {
+    var num = (num || 0).toString(), result = '';
+    while (num.length > 3) {
+        result = ',' + num.slice(-3) + result;
+        num = num.slice(0, num.length - 3);
+    }
+    if (num) { result = num + result; }
+    return result;
+}
+// 登录
 function login() {
     var name = "test1";
     var password = "test1";
@@ -690,6 +693,31 @@ function login() {
     });
 
     return false;
+}
+// 退出登录
+function loginOut() {
+    $.ajax({
+        url: commonUrls.loginoutUrl,
+        type: "POST",    //请求方式
+        data: {},     //请求参数
+        dataType: "json",
+        success: function (res) {
+            console.log("res:", res);
+            //var response = res.data;
+            //if(res.status=="success") {
+            //    window.location.href = "index.html";
+            //}else if(res.status=="failure"){
+            //    if(res.message=="未登录或者登录已经失效"){
+            //        goToNotlogon();
+            //    }
+            //}
+            window.location.href = "index.html";
+        },
+        fail: function (res) {
+            console.error("error. message=", res);
+            window.location.href = "index.html";
+        }
+    });
 }
 
 function setMonitorData(type, content, mid) {

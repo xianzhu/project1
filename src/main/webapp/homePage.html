@@ -224,30 +224,40 @@
                                         <!--项目-->
                                         <div class="col-sm-3 col-xs-6 statistic-dash">
                                             <div id="project_dashboard_chart"></div>
-                                            <!--<div class="dash-data">-->
-                                                <!--<div class="dash-data-today">-->
-                                                    <!--<strong>今日</strong>-->
-                                                    <!--<small v-text="projDashData.current"></small>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
+                                            <div class="dash-data">
+                                                <div class="dash-data-today">
+                                                    <strong>总量</strong>
+                                                    <small v-text="projDashData.total|toThousandsFormat"></small>
+                                                </div>
+                                            </div>
                                         </div>
                                         <!--企业-->
                                         <div class="col-sm-3 col-xs-6 statistic-dash">
                                             <div id="company_dashboard_chart"></div>
+                                            <div class="dash-data">
+                                                <div class="dash-data-today">
+                                                    <strong>总量</strong>
+                                                    <small v-text="companyDashData.total|toThousandsFormat"></small>
+                                                </div>
+                                            </div>
                                         </div>
                                         <!--报告-->
                                         <div class="col-sm-3 col-xs-6 statistic-dash">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div id="report_dashboard_chart"></div>
+                                            <div id="report_dashboard_chart"></div>
+                                            <div class="dash-data">
+                                                <div class="dash-data-today">
+                                                    <strong>总量</strong>
+                                                    <small v-text="reportDashData.total|toThousandsFormat"></small>
                                                 </div>
                                             </div>
                                         </div>
                                         <!--情报-->
                                         <div class="col-sm-3 col-xs-6 statistic-dash">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div id="elastic_dashboard_chart"></div>
+                                            <div id="elastic_dashboard_chart"></div>
+                                            <div class="dash-data">
+                                                <div class="dash-data-today">
+                                                    <strong>总量</strong>
+                                                    <small v-text="elasticDashData.total|toThousandsFormat"></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -448,7 +458,7 @@
                        v-text="item.name"></a>
                 </dt>
                 <dd class="accordion-content accordionItem is-collapsed" aria-hidden="true" v-bind:id="item.domid">
-                    <p v-text="item.comment" class="calendar-open-link" v-on:click="openurl(item.url)"></p>
+                    <p v-text="item.comment" class="calendar-open-link" v-on:click="openCalendarUrl(item.url)"></p>
                 </dd>
             </div>
         </dl>

@@ -155,7 +155,7 @@
                             <div v-bind:class="[elasticEmpty?'feed-activity-list hide-div':'feed-activity-list show-div']" style="margin-bottom:35px;">
                                 <div class="feed-element" v-for="item in elasticList">
                                     <div class="display-flow-root">
-                                        <a v-bind:href="item.url" v-on:click="openNews(item.url)" target="_blank">
+                                        <a v-bind:href="item.url" v-on:click="openElastic(item.url)" target="_blank">
                                             <strong v-text="item.title"></strong></a>
                                             <small v-text="item.time" class="pull-right"></small>
                                     </div>
