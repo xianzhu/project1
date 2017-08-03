@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.cv.kdata.model.UdfConsult;
 import com.cv.kdata.model.UdfEvent;
@@ -80,7 +79,7 @@ public class ToolsPlatformController {
 			ciService.searchCiCptocSca(basicResponse);
 			ciService.searchCiOlVideoIncm(basicResponse);
 		}
-		
+
 		model.addAttribute("data", basicResponse);
 		return "industryTools";
 	}
@@ -102,6 +101,9 @@ public class ToolsPlatformController {
 		UserInfoCustResponse basicResponse = new UserInfoCustResponse();
 
 		String object = request.getParameter("object");
+		if(null == object){
+			object = "0";
+		}
 
 		switch (object) {
 		case "1":// 事件定制

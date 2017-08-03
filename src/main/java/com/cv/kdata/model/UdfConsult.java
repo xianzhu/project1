@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class UdfConsult implements Serializable {
-	
+
     /**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
     private Integer id;
@@ -20,6 +20,8 @@ public class UdfConsult implements Serializable {
     private Date updateTime;
 
     private String content;
+
+    private String reply;
 
     public Integer getId() {
         return id;
@@ -68,4 +70,13 @@ public class UdfConsult implements Serializable {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
+
+	public String getReply() {
+		return reply;
+	}
+
+	public void setReply(String reply) {
+		this.reply = reply;
+	}
+
 }
