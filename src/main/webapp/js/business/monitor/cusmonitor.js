@@ -9,15 +9,15 @@ var nodeLevel = {
     node_2: 1,
     node_3: 2
 }
-var categoryModel={
-    source:0, // 监控源
-    current:1, // 当前选中
-    node_3:2, // 对外投资企业
-    node_2:3, // 关联经营实体
-    node_3_key:4, // 关键企业
-    node_2_from:5, // 投资方
-    node_2_to:6, // 关联机构
-    normal:7 // 选中实体非相关
+var categoryModel = {
+    source: 0, // 监控源
+    current: 1, // 当前选中
+    node_3: 2, // 对外投资企业
+    node_2: 3, // 关联经营实体
+    node_3_key: 4, // 关键企业
+    node_2_from: 5, // 投资方
+    node_2_to: 6, // 关联机构
+    normal: 7 // 选中实体非相关
 
 }
 
@@ -346,10 +346,12 @@ function updateData(item) {
         myOrgChart = echarts.init(odom);
         myOrgChart.on(ecConfig.EVENT.CLICK, focusOrg);
         window.addEventListener('resize', function () {
+            console.log("resize org chart");
             myOrgChart.resize && myOrgChart.resize();
         });
+
         myOrgChart.setOption(myoption, true);
-        myOrgChart._option.legend.data=['关联经营实体','对外投资企业','关键企业'];
+        myOrgChart._option.legend.data = ['关联经营实体', '对外投资企业', '关键企业'];
         getOrgInfo(item.mid);
         getOrgExtendNode("org_" + item.mid, nodeType.org, 0, 0, item.mid);
     }
@@ -381,7 +383,7 @@ function reSetOptionNodes(id) {
         if (id == node.name) {
             node.category = categoryModel.current;
         } else {
-            node.category=categoryModel.normal;
+            node.category = categoryModel.normal;
         }
     }
 }
@@ -408,7 +410,7 @@ function getOrgComExtendNode(sid, type, cgy, level, uuid) {
         }
     }
 
-    myOrgChart._option.legend.data=['当前选中','投资方','关联机构','对外投资企业','关键企业','选中实体非相关'];
+    myOrgChart._option.legend.data = ['当前选中', '投资方', '关联机构', '对外投资企业', '关键企业', '选中实体非相关'];
     setTimeout(refresh, 1000);
 }
 function getOrgComExtendNode_old(sid, type, cgy, level, uuid) {
@@ -842,36 +844,56 @@ function resetSliderRange(value) {
 
 // 复位图谱
 function resetChart() {
-    var nodes = myOrgChart._option.series[0].nodes;
-    for (var i = 1; i < nodes.length; i++) {
-        var node = nodes[i];
-        node.ignore = false;
-        if (node.level == nodeLevel.node_2) {
-            node.category = 3;
-        } else if (node.level == nodeLevel.node_3) {
-            if (node.toNum > 1) {
-                node.category = 4;
-            } else {
-                node.category = 2;
+    var tempoption = clone(myOrgChart._option),
+        ecConfig = require('echarts/config');
+
+    myOrgChart.showLoading({
+        text: '数据获取中',
+        effect: 'whirling'
+    });
+    setTimeout(function () {
+        var nodes = tempoption.series[0].nodes;
+        for (var i = 1; i < nodes.length; i++) {
+            var node = nodes[i];
+            node.ignore = false;
+            if (node.level == nodeLevel.node_2) {
+                node.category = 3;
+            } else if (node.level == nodeLevel.node_3) {
+                if (node.toNum > 1) {
+                    node.category = 4;
+                } else {
+                    node.category = 2;
+                }
             }
         }
-    }
-    $("#range_slider .ui-slider-handle-min span").html(0);
-    $("#range_slider .ui-slider-handle-max span").html(sliderMax);
-    $("#range_slider").slider("values", [0, sliderMax]);
+        $("#range_slider .ui-slider-handle-min span").html(0);
+        $("#range_slider .ui-slider-handle-max span").html(sliderMax);
+        $("#range_slider").slider("values", [0, sliderMax]);
 
-    myOrgChart._option.legend.data=['关联经营实体','对外投资企业','关键企业'];
-    myOrgChart.refresh();
+        var odom = document.getElementById("orgForceChart");
+        myOrgChart = echarts.init(odom);
+        myOrgChart.on(ecConfig.EVENT.CLICK, focusOrg);
+
+        tempoption.legend.data = ['关联经营实体', '对外投资企业', '关键企业', '当前选中', '投资方', '关联机构', '选中实体非相关'];
+        myOrgChart.setOption(tempoption, true);
+        myOrgChart._option.legend.data = ['关联经营实体', '对外投资企业', '关键企业'];
+        refresh();
+        myOrgChart.hideLoading();
+    }, 1000);
+
 }
 
+// for test
 function printOption(value) {
-    var nodes = myOrgChart._option.series[0].nodes;
-    for (var i = 1; i < nodes.length; i++) {
-        var node = nodes[i];
-        if (node.level == value) {
-            console.log(i, node.category);
-        }
-    }
+    // var nodes = myOrgChart._option.series[0].nodes;
+    // for (var i = 1; i < nodes.length; i++) {
+    //     var node = nodes[i];
+    //     if (node.level == value) {
+    //         console.log(i, node.category);
+    //     }
+    // }
+
+    console.log(myOrgChart._option.legend);
 }
 
 
