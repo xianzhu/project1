@@ -42,6 +42,11 @@
     from pm_exit_event_detail
     where event_id = #{eventId,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByUuid" resultMap="ResultMapWithBLOBs">
+  	select * from pm_exit_event_detail where ent_uuid=#{uuid}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from pm_exit_event_detail
     where event_id = #{eventId,jdbcType=INTEGER}

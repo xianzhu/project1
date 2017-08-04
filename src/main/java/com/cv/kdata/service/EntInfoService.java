@@ -18,6 +18,7 @@ import com.cv.kdata.dao.CiMoneySupMapper;
 import com.cv.kdata.dao.CiRcaPayMapper;
 import com.cv.kdata.dao.CiSfScaMapper;
 import com.cv.kdata.dao.EntBasicInfoMapper;
+import com.cv.kdata.dao.PMExitEventDetailMapper;
 import com.cv.kdata.dao.PMInvestEventDetailMapper;
 import com.cv.kdata.dao.RptEntJudgeValueMapper;
 import com.cv.kdata.dao.RptToeMaMapper;
@@ -33,6 +34,7 @@ import com.cv.kdata.model.CiMoneySup;
 import com.cv.kdata.model.CiRcaPay;
 import com.cv.kdata.model.CiSfSca;
 import com.cv.kdata.model.EntBasicInfo;
+import com.cv.kdata.model.PMExitEventDetail;
 import com.cv.kdata.model.PMInvestEventDetail;
 import com.cv.kdata.model.StockACapitalDebtIndexResponse;
 import com.cv.kdata.model.StockEquityCtrl;
@@ -71,6 +73,8 @@ public class EntInfoService {
 	EntBasicInfoMapper entBasicInfoMapper;
 	@Autowired
 	PMInvestEventDetailMapper investEventDetailMapper;
+	@Autowired
+	PMExitEventDetailMapper exitEventDetailMapper;
 
 	// 获取企业基本信息
 	public void getEntBasicInfo(HttpServletRequest req, EntInfoResponse response) {
@@ -836,8 +840,10 @@ public class EntInfoService {
 		String uuid = req.getParameter("id");
 		DBContextHolder.setDbType(DBContextHolder.PESEER_ONLINE);
 		List<PMInvestEventDetail> list = investEventDetailMapper.selectByUuid(uuid);
+		List<PMExitEventDetail> exitList = exitEventDetailMapper.selectByUuid(uuid);
 		response.setStatus(RDDWebConst.SUCCESS);
 		response.setMessage("Get FinanceInfo list success!");
 		response.setEntFinancalList(list);
+		response.setEntExitEventList(exitList);
 	}
 }

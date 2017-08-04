@@ -152,10 +152,11 @@ public class ElasticSearchClient {
 		}
 
 		// 创建2天以内的微信信息
-//		QueryBuilder wchatTypeFilter = QueryBuilders.termQuery("doc.media_type", 2);
-//		QueryBuilder wchatTimeFilter = QueryBuilders.rangeQuery("doc.create_time").lt(TimeUtil.getDaysBefore(2));
-////		from().to(TimeUtil.getCurrentTime());
-//		QueryBuilder wChatFilters = QueryBuilders.boolQuery().must(wchatTypeFilter).must(wchatTimeFilter);
+		// 暂时无法实现mustnot(A&&B),这样A&&B都会被过滤掉
+		/*QueryBuilder wchatTypeFilter = QueryBuilders.termQuery("doc.media_type", 2);
+		QueryBuilder wchatTimeFilter = QueryBuilders.rangeQuery("doc.create_time").lt("2017-08-02T02:18:10.000+0000");
+//		from().to(TimeUtil.getCurrentTime());
+		QueryBuilder wChatFilters = QueryBuilders.boolQuery().must(wchatTypeFilter).must(wchatTimeFilter);*/
 		// 4. 合并过滤规则
 		if (timeFilter != null && channelFilter != null) {
 			filter = QueryBuilders.boolQuery().must(timeFilter).must(channelFilter);
@@ -308,7 +309,7 @@ public class ElasticSearchClient {
 		SearchResponse res = null;
 
 		QueryBuilder wchatTypeFilter = QueryBuilders.termQuery("doc.media_type", 2);
-		QueryBuilder wchatTimeFilter = QueryBuilders.rangeQuery("doc.create_time").lt("2017-07-18");
+		QueryBuilder wchatTimeFilter = QueryBuilders.rangeQuery("doc.create_time").lt(TimeUtil.getDaysBefore(2));
 
 		QueryBuilder wChatFilters = QueryBuilders.boolQuery().must(wchatTypeFilter).must(wchatTimeFilter);
 
