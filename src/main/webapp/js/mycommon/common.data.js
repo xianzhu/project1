@@ -104,6 +104,7 @@ var commonUrls_real_local = {
     monitorEntInvestUrl:hostUrl+"entinfo/invest", // 定制监控页--企业投资企业
     monitorOrgCaptialUrl:hostUrl+"org/captail", // 定制监控页--机构投资退出事件
     monitorOrgEventDetailUrl:hostUrl+"org/detail", // 定制监控页--机构投资事件详情
+
     monitorOrgFamilyUrl:hostUrl+"org/extend", // 定制监控页--机构族谱
 
     sysMonitorMergeUrl:hostUrl+"entinfo/top", // 系统监控页--企业并购每日监控

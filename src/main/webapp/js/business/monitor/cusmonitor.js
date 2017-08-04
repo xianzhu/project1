@@ -66,8 +66,11 @@ var v_cusMonitorModel = new Vue({
             console.log(change_info_modal.$data.changeInfo);
             change_info_modal.$data.showModal = true;
         },
-        showCapDetail: function (id) {
+        showCapDetail: function (id,type) {
             var etype = "invest";
+            if(type==2){
+                etype="exit";
+            }
             $.ajax({
                 url: commonUrls.monitorOrgEventDetailUrl,              //请求地址
                 type: "get",                            //请求方式
@@ -85,7 +88,7 @@ var v_cusMonitorModel = new Vue({
                         goToNotlogon();
                     } else if (res.status == 'success') {
                         var response = res;
-                        showCapitalDetail(response);
+                        showCapitalDetail(response,type);
                     }
                 },
                 fail: function (status) {

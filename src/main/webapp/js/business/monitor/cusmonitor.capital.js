@@ -217,10 +217,20 @@ function initModelMaskDetailVue(){
     });
     return v_model_mask_detail;
 }
-function showCapitalDetail(capital) {
-    modal_mask_detail.$data.information = capital.inventEvent;
-    modal_mask_detail.$data.dataTitle="投资事件数据";
-    modal_mask_detail.$data.showModal = true;
+function showCapitalDetail(capital,type) {
+    if(type==1){
+        $("#invest_data_row").css("display","block");
+        $("#exit_data_row").css("display","none");
+        modal_mask_detail.$data.information = capital.inventEvent;
+        modal_mask_detail.$data.dataTitle="投资事件数据";
+        modal_mask_detail.$data.showModal = true;
+    }else{
+        $("#invest_data_row").css("display","none");
+        $("#exit_data_row").css("display","block");
+        modal_mask_detail.$data.information = capital.exitEvent;
+        modal_mask_detail.$data.dataTitle="退出事件数据";
+        modal_mask_detail.$data.showModal = true;
+    }
 }
 
 
