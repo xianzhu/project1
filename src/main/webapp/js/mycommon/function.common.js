@@ -703,14 +703,6 @@ function loginOut() {
         dataType: "json",
         success: function (res) {
             console.log("res:", res);
-            //var response = res.data;
-            //if(res.status=="success") {
-            //    window.location.href = "index.html";
-            //}else if(res.status=="failure"){
-            //    if(res.message=="未登录或者登录已经失效"){
-            //        goToNotlogon();
-            //    }
-            //}
             window.location.href = "index.html";
         },
         fail: function (res) {
@@ -718,6 +710,7 @@ function loginOut() {
             window.location.href = "index.html";
         }
     });
+    window.location.href = "index.html";
 }
 
 function setMonitorData(type, content, mid) {
