@@ -13,43 +13,65 @@ var commonObjType={
     event:{id:1,value:"event"}, // del
     cv:{id:2,value:"cv"},
     trader:{id:3,value:"trader"},
-    cousult:{id:4,value:"consult"}, // del
+    consult:{id:4,value:"consult"}, // del
     monitor:{id:5,value:"monitor"},
     feedback:{id:6,value:"qa"} // del
 }
 
 $('#eventTimePicker').datepicker({dateFormat:'yy-mm-dd'});
 
+var v_deleteModel=new Vue({
+    el:"#v-deleteConformModel",
+    data:{
+        showDeleteDiv:false,
+        id:"",
+        obj:""
+    },
+    methods:{
+        doOK:function () {
+            v_deleteModel.$data.showDeleteDiv=false;
+            doItemDelete(v_deleteModel.$data.id,v_deleteModel.$data.obj);
+        },
+        doCancel:function () {
+            v_deleteModel.$data.showDeleteDiv=false;
+        }
+    }
+});
+
 var v_maskmodalModel=new Vue({
     el:"#v-maskmodalModel",
     data:{
         modifyItemId:"",
 
-        // currentEventModel:0,
-        currentIntelModel:0,
-        currentResearchModel:0,
-        // currentAdvisoryModel:0,
-        currentMonitorModel:0,
-
+        currentIntelModel:0,// 行业分析
         intelTypeList: intellgence_type, // 行业类型列表
         intelDateList: intellgence_date_type, // 行业时间列表
         intelTypeSelect:"", // 行业类型选择
         intelDateSelect:"", // 行业时间选择
         intelCustContent:"", // 行业自定义内容
+        showIntelligenceDiv:false,// 行业分析
 
+        currentResearchModel:0,// 研究报告
         researchTypeList: trader_type, // 研报类型列表
         researchDateList: trader_date_type, // 研报时间列表
         researchTypeSelect:"", // 研报类型选择
         researchDateSelect:"", // 研报时间选择
+        showResearchDiv:false,// 研究报告
 
+        // 事件
+        // currentEventModel:0,
         // eventTypeList: event_type, // 事件类型列表
         // eventTypeSelect:"", // 事件类型选择
         // eventTitle:"", // 事件标题
         // eventParams:clone(init_event_param), // 用于数据绑定的事件参数
+        // showEventDiv:false,
 
-        // advisoryContent:"",
-        // feedbackContent:"",
+        currentConsultModel:0, // 业务咨询
+        consultContent:"", // 业务咨询内容
+        consultReply:"", // 业务咨询回复
+        showConsultDiv:false,
 
+        currentMonitorModel:0, // 监控
         monitorTypeList:monitor_type, // 监控类型列表
         monitorTypeSelect:"", // 监控类型选择
         monitorContent:"", // 监控关键字
@@ -57,13 +79,7 @@ var v_maskmodalModel=new Vue({
         monitorSearchShow:false, // 监控查询
         monitorResultList:[],
         monitorSearchKey:"",
-
-        // showEventDiv:false,
-        showResearchDiv:false,
-        showIntelligenceDiv:false,
-        // showAdvisoryDiv:false,
-        showMonitorDiv:false,
-        // showFeedbackDiv:false
+        showMonitorDiv:false, // 监控
     },
     methods:{
         cancelIntel: function () {
@@ -77,6 +93,10 @@ var v_maskmodalModel=new Vue({
         cancelMonitor: function () {
             this.showMonitorDiv = false;
             this.currentMonitorModel = 0;
+        },
+        cancelConsult:function () {
+            this.showConsultDiv=false;
+            this.currentConsultModel=0;
         },
         submitIntel:function(){
             var etype=this.intelTypeSelect;
@@ -117,6 +137,27 @@ var v_maskmodalModel=new Vue({
             }
             doItemOperation(datas,operation_type,commonObjType.trader);
             this.showResearchDiv=false;
+        },
+        submitConsult:function(){
+            if(this.consultContent==""){
+                showInfo("提示","请填写咨询内容！");
+                return;
+            }
+            var ccontent=this.consultContent;
+
+            var datas={
+                content:ccontent
+            };
+            var operation_type="";
+            if(this.currentConsultModel==1){ // edit
+                datas.id=this.modifyItemId;
+                operation_type=cOperationType.update;
+            }else if(this.currentConsultModel==2){ // add
+                operation_type=cOperationType.insert;
+                datas.uid=v_userModel.$data.uname;
+            }
+            doItemOperation(datas,operation_type,commonObjType.consult);
+            this.showConsultDiv=false;
         },
         submitMonitor:function(){
             var etype=this.monitorTypeSelect;
@@ -208,7 +249,7 @@ var v_cusSettingModel=new Vue({
         commonObj:commonObjType,
         // eventList:[], // 事件
         researchList:[], // 研究报告
-        // advisoryList:[], // 业务咨询
+        consultList:[], // 业务咨询
         //feedbackList:[],
         intelList:[], // 行业分析
 
@@ -286,9 +327,31 @@ var v_cusSettingModel=new Vue({
                 bindSimpleDataTable("monitor_result_table",commonPageNum.cusSetMonitor);
             });
         },
+        doConsultEdit:function(item){
+            v_maskmodalModel.$data.modifyItemId = item.id;
+            v_maskmodalModel.$data.consultContent=item.content;
 
+            v_maskmodalModel.$data.showConsultDiv = true;
+            v_maskmodalModel.$data.currentConsultModel = 1;
+        },
+        doConsultView:function (item) {
+            v_maskmodalModel.$data.consultContent=item.content;
+            v_maskmodalModel.$data.consultReply=item.reply;
+
+            v_maskmodalModel.$data.showConsultDiv = true;
+            v_maskmodalModel.$data.currentConsultModel = 0;
+        },
+        doConsultAdd: function () {
+            v_maskmodalModel.$data.consultContent="";
+            v_maskmodalModel.$data.showConsultDiv = true;
+            v_maskmodalModel.$data.currentConsultModel = 2;
+        },
         doDelete:function(id,obj){ // 加一个监控，需要根据servlet配置，待定
-            doItemDelete(id,obj);
+// 增加删除确认提示
+            v_deleteModel.$data.id=id;
+            v_deleteModel.$data.obj=obj;
+            v_deleteModel.$data.showDeleteDiv=true;
+            // doItemDelete(id,obj);
         }
     },
     filters: {
@@ -390,8 +453,8 @@ function getDataList(){
                 var response = res;
                 console.log("response", response);
                 v_cusSettingModel.$data.intelList=response.cvList; // 行业分析
-                // v_cusSettingModel.$data.advisoryList=response.consultList; // 业务咨询
                 v_cusSettingModel.$data.researchList=response.traderList; // 研究报告
+                v_cusSettingModel.$data.consultList=response.consultList; // 业务咨询
 
                 getMonitorList(response.monitorList); // 监控
                 // v_cusSettingModel.$data.eventList=response.eventList; // 事件
@@ -473,8 +536,8 @@ function refreshData(objId){
                 console.log("response", response);
                 if(objId==commonObjType.cv.id){ // 行业分析
                     v_cusSettingModel.$data.intelList=response.cvList;
-                // }else if(objId==commonObjType.cousult.id){ // 业务咨询
-                //     v_cusSettingModel.$data.advisoryList=response.consultList;
+                }else if(objId==commonObjType.consult.id){ // 业务咨询
+                    v_cusSettingModel.$data.consultList=response.consultList;
                 }else if(objId==commonObjType.trader.id){ // 研究报告
                     v_cusSettingModel.$data.researchList=response.traderList;
                 }else if(objId==commonObjType.monitor.id){ // 监控
@@ -553,7 +616,8 @@ function doItemOperation(datas,operaType,object){
                 goTo404();
             },
             500:function(){
-                goTo500();
+                // goTo500();
+                showInfo("提示","操作未成功.请联系我们。状态码：500");
             }
         }
     });
@@ -673,7 +737,18 @@ function changeMonitorSelection(){
 //     }
 //     return false;
 // }
-
-
-
+function resizeDetailMask() {
+    // console.log("resize Detail Mask");
+    var height = $(window).height();
+    var mheight = height;
+    // console.log(height, mheight);
+    $(".modal-consult-body").css('maxHeight', mheight - 181);
+    $(".modal-monitor-body").css('maxHeight', mheight - 181);
+}
+$(document).ready(function () {
+    resizeDetailMask();
+});
+$(window).resize(function () {
+    resizeDetailMask();
+});
 

@@ -296,6 +296,7 @@ function getCompanyFinanceInfo(id) {
 
                 v_cusMonitorModel.$data.entInvestFinanceList = response.entFinancalList;
                 v_cusMonitorModel.$data.entExitFinanceList = response.entExitEventList;
+
                 v_cusMonitorModel.$nextTick(function () {
                     bindSimpleDataTable("entInvest_table", commonPageNum.cusMonitorComInvest);
                     bindSimpleDataTable("entExit_table", commonPageNum.cusMonitorComExit);
